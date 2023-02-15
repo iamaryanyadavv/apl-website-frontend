@@ -1,0 +1,26 @@
+.homeseasonspage {
+    position: relative;
+}
+
+.homeseasonspage:before {
+    content: ' ';
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.6;
+    background-image: url('../../assets/images/GeneralBackgroundAPL1.jpg');
+    background-repeat: no-repeat;
+    background-position: 50% 0;
+    background-size: cover;
+}
+
+.hsbackg {
+    position: relative;
+    padding: 18% 10% 0% 10%;
+}
+.hsquote{
+    text-align: center;
+}

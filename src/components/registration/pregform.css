@@ -1,0 +1,17 @@
+::placeholder{
+    color: white !important;
+    font-weight:300;
+    opacity: 1;
+}
+
+span{
+    color: white !important;
+}
+
+.photobtn{
+    width: 210px;
+}
+
+.dp-btn{
+    margin: 0px 20px 0px 20px !important;
+}

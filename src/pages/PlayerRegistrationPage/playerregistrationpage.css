@@ -1,0 +1,25 @@
+.playerregistrationlanding {
+    position: relative;
+}
+
+.playerregistrationlanding:before {
+    content: ' ';
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.3;
+    background-image: url('../../assets/images/Number10Substitute.jpg');
+    background-repeat: no-repeat;
+    background-position: 50% 0;
+    background-size: cover;
+}
+  
+.pregbackg{
+    position: relative;
+    border-color: white !important;
+    border-width: 5px;
+    padding: 3%;
+}
