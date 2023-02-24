@@ -2,6 +2,7 @@ import { Col, Grid, Image, Text, Link } from "@nextui-org/react";
 import React from "react";
 import Grey from '../../assets/images/Grey.jpeg';
 import './teamcontent.css';
+import AryanYadav from '../../assets/avatars/AdminTeam/webteam_aryanyadav.jpeg';
 
 export default function TeamContent(){
     return(
@@ -1274,7 +1275,7 @@ export default function TeamContent(){
                         </Grid.Container>
 
                         
-                        {/* HOD */}
+                        {/* Members */}
                         <Grid.Container gap={4}
                         css={{
                             jc: 'center',
@@ -1290,7 +1291,7 @@ export default function TeamContent(){
                                     jc: 'center',
                                     textAlign: 'center'
                                 }}>
-                                    <Image src={Grey} className='hods' />
+                                    <Image src={AryanYadav} className='hods' />
                                     <Text hideIn={'xs'}
                                     css={{
                                         jc: 'center',
@@ -1388,7 +1389,7 @@ export default function TeamContent(){
                                         Developer
                                     </Text>
                                     <Text>
-                                        <a href="https://www.instagram.com/zahaanxspj/">@zahaanxspj</a>
+                                        <a href="https://zahaanshapoorjee.netlify.app/">zahaanshaporjee.netlify.app</a>
                                     </Text>
                                 </Col>
                             </Grid>
