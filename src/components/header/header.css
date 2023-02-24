@@ -1,53 +1,3 @@
-/* .nextui-c-hhqfap{
-    box-shadow: none;
-}
-
-.nextui-c-egxOLa{
-    justify-content: center;
-    background-color: black !important;
-}
-
-.nextui-c-kOXsPe{
-    color: white;
-    font-weight: bold;
-}
-
-.nextui-c-yrlUe-kJGdUE-activeColor-default{
-    --nextui--navbarItemActiveColor: Black;
-    --nextui--navbarItemHighlightBackgroundColor: White;
-    --nextui--navbarItemHighlightTextColor: Black;
-}
-
-.nextui-c-fyNvBR{
-    justify-content: flex-start !important;
-} */
-
-
-/* .nextui-navbar-container{
-    background: black !important;
-    align-items: center;
-}
-.nextui-navbar-brand{
-    color: white !important;
-    font-weight: bold;
-}
-
-.nextui-navbar-link{
-    color: white !important;
-}
-.nextui-navbar-link:hover{
-    color: black !important;
-}
-
-.nextui-navbar-cursor_highlight:hover{
-    text-decoration-color: black m !important;
-    color: white !important
-}
-
-.nextui-navbar-toggle-icon{
-    color: white !important;
-} */
-
 .nextui-c-yrlUe-kJGdUE-activeColor-default{
     --nextui--navbarItemActiveColor: white !important;
     --nextui--navbarItemHighlightBackgroundColor: rgb(255, 255, 255) !important;
@@ -61,3 +11,4 @@
 .nextui-c-kzikkm-hfnKRU-color-default{
     --nextui--linkColor: white!important ;
 }
+

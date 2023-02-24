@@ -8,12 +8,16 @@ function Footer(){
             css={{
                 jc: 'center',
                 textAlign: 'center',
+                alignItems: 'center',
+                borderStyle: 'solid',
+                borderColor: '$gray600',
+                borderWidth: '1px 0px 0px 0px'
             }}>
                 <Text
-        css={{
-            paddingTop: '1%',
-            paddingBottom: '2%'
-        }}>
+                css={{
+                    paddingTop: '1%',
+                    paddingBottom: '1%',
+                }}>
                     Made with 🤍 by Aryan Yadav and Zahaan Shaporjee
                 </Text>
             </Row>

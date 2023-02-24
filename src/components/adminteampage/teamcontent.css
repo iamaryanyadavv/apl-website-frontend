@@ -1,0 +1,34 @@
+@media screen and (min-width: 650px) {
+    .directors{
+        width: 300px;
+        height: 300px;
+        border-radius: 200px;
+    }
+    .hods{
+        width: 200px;
+        height: 200px;
+        border-radius: 150px;
+    }
+    .member{
+        width: 150px;
+        height: 150px;
+        border-radius: 100px;
+    }
+}
+@media screen and (max-width: 650px) {
+    .directors{
+        width: 200px;
+        height: 200px;
+        border-radius: 100px;
+    }
+    .hods{
+        width: 150px;
+        height: 150px;
+        border-radius: 100px;
+    }
+    .member{
+        width: 80px;
+        height: 80px;
+        border-radius: 100px;
+    }
+}

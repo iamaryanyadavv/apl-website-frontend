@@ -1,25 +1,35 @@
-import { Card, Col, Container, Grid, Text, Button } from "@nextui-org/react";
+import { Card, Col, Grid, Text, Button } from "@nextui-org/react";
 import React from "react";
 import JoseMourinho from './JoseMourinho.jpeg';
-import Cristiano from './Cristiano.jpeg';
 import Cristiano2 from './Cristiano2.jpeg';
 export default function RegCards(){
     return(
         <div>
 
-            <Text h1
+            <Text hideIn={'xs'}
             css={{
+                fontSize: '$7xl',
                 textAlign: 'center',
                 fontWeight: '$semibold',
-                paddingBottom: '1.5%'
+                paddingBottom: '1.5%',
+                paddingTop: '20px'
+            }}>
+                    APL 6.0 REGISTRATION
+            </Text>
+            <Text showIn={'xs'}
+            css={{
+                fontSize: '$3xl',
+                textAlign: 'center',
+                fontWeight: '$semibold',
+                paddingTop: '10%'
             }}>
                     APL 6.0 REGISTRATION
             </Text>
 
-            <Text h3
+            <Text hideIn={'xs'}
             css={{
-                display: 'flex',
                 jc: 'center',
+                fontSize: '$3xl',
                 alignItems: 'center',
                 paddingRight: '10%',
                 paddingLeft: '10%',
@@ -30,23 +40,53 @@ export default function RegCards(){
             }}>
                 “You miss 100% of the shots you don't take” -Wayne Getzky
             </Text>
+            <Text showIn={'xs'}
+            css={{
+                jc: 'center',
+                fontSize: '$xl',
+                alignItems: 'center',
+                padding: '10%',
+                fontFamily: 'DS',
+                fontWeight: 'normal',
+                textAlign: 'center'
+            }}>
+                “You miss 100% of the shots you don't take” -Wayne Getzky
+            </Text>
 
-            <Text h2
+            <Text hideIn={'xs'}
                 css={{
-                    display: 'flex',
                     jc: 'center',
+                    fontSize:'$2xl',
                     fontWeight: '$semibold',
-                    paddingBottom: '0%',
-                    marginBottom: '0%',
                     textAlign: 'center'
                 }}>
                     The time has come!
-                </Text>
+            </Text>
+            <Text showIn={'xs'}
+                css={{
+                    jc: 'center',
+                    fontSize:'$xl',
+                    fontWeight: '$semibold',
+                    textAlign: 'center'
+                }}>
+                    The time has come!
+            </Text>
 
-            <Text h2
+            <Text hideIn={'xs'}
             css={{
-                display: 'flex',
                 jc: 'center',
+                fontSize:'$2xl',
+                fontWeight: '$semibold',
+                paddingTop: '0%',
+                paddingBottom: '0%',
+                textAlign: 'center'
+            }}>
+                Who do you choose to be: Team Owner or Team Player?
+            </Text>
+            <Text showIn={'xs'}
+            css={{
+                jc: 'center',
+                fontSize:'$xl',
                 fontWeight: '$semibold',
                 paddingTop: '0%',
                 paddingBottom: '0%',
@@ -199,7 +239,6 @@ export default function RegCards(){
                     paddingBottom: '0.5%',
                     textAlign: 'center',
                     fontSize: '$sm',
-                    paddingBottom: '2%'
                 }}>
                     Please read all registration rules before registering!
             </Text>

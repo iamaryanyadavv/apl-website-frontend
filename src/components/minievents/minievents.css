@@ -1,0 +1,39 @@
+.calendar{
+    width: fit-content;
+    height: fit-content;
+    margin: 0px 10px 0px 10px;
+    color: black;
+    padding: 5px;
+    border-radius: 10px;
+    background-color: rgb(141, 224, 141);
+}
+
+@media screen and (max-width: 650px) {
+    .eventpics{
+        width:300px;
+        height: 300px;
+        border-radius: 20px;
+    }
+}
+@media screen and (min-width: 650px) {
+    .eventpics{
+        width: 400px;
+        height: 400px;
+        border-radius: 20px;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .eventpicfifa{
+        width: 300px;
+        height: 300px;
+        border-radius: 20px;
+    }
+}
+@media screen and (min-width: 650px) {
+    .eventpicfifa{
+        width: 400px;
+        height: 400px;
+        border-radius: 20px;
+    }
+}

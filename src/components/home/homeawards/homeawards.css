@@ -1,0 +1,27 @@
+.homeawardspage {
+    position: relative;
+}
+
+.homeawardspage:before {
+    content: ' ';
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.4;
+    background-image: url('../../../assets/images/GironaFC.jpg');
+    background-repeat: no-repeat;
+    background-position: 50% 0;
+    background-size: cover;
+    border-radius: 40px;
+}
+
+.habackg {
+    position: relative;
+    padding: 5% 10% 2.5% 10%;
+}
+.haquote{
+    text-align: center;
+}

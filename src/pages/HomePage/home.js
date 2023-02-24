@@ -1,16 +1,23 @@
 import React from "react";
-import HomeLanding from "../../components/home/homelanding.js";
-import HomeAwards from "../../components/home/homeawards.js";
-import HomeSeasons from "../../components/home/homeseasons.js";
-import HomeSlots from "../../components/home/homeslots.js";
+import HomeLanding from "../../components/home/homelanding/homelanding"
+import HomeCarousel from "../../components/home/homecarousel/homecarousel"
+import NewsTicker from "../../components/home/marquee/marquee";
+import Prizes from "../../components/home/prizes/prizes";
+import HomeEvents from "../../components/home/homeevents/homeevents";
+import HomeTeam from "../../components/home/hometeam/hometeam";
 
 const Home = () => {
     return(
         <div>
+            <NewsTicker/>
+
             <HomeLanding/>
-            <HomeAwards/>
-            <HomeSeasons/>
-            <HomeSlots/>
+            <HomeCarousel/>
+            <Prizes/>
+            <HomeEvents/>
+            <HomeTeam/>
+
+            <NewsTicker/>
         </div>
     );
 };

@@ -1,18 +1,16 @@
 import React from "react";
 import "./header.css";
-import { Navbar, Link, useTheme } from "@nextui-org/react";
+import { Navbar, Link, } from "@nextui-org/react";
 import { FaInstagram } from 'react-icons/fa';
 
 function Header() {
-    const { theme } = useTheme()
     const items = [
       {name: 'Home', href:'/'},
+      {name: 'APL 6.0', href: '/seasons/apl6'},
+      {name: 'RoadToAPL', href:'/roadtoapl'},
       {name: 'Registration', href:'/registration'},
-      {name: 'Schedule', href:'/schedule'},
       {name: 'Slots', href:'/slots'},
       {name: 'Seasons', href:'/seasons'},
-      {name: 'About', href:'/about'},
-      {name: 'Contact', href:'/contact'}
     ]
 
     var active = window.location.pathname
@@ -29,6 +27,7 @@ function Header() {
               {item.name}
             </Navbar.Link>
           ))}
+          
         </Navbar.Content>
         <Navbar.Content>
           <Link href="https://www.instagram.com/apl.ashoka/">

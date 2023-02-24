@@ -1,0 +1,4 @@
+.footnavbar-item:hover{
+    text-decoration: underline !important;
+    opacity: 1;
+}

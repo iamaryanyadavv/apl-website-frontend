@@ -1,0 +1,40 @@
+.roadtoAPLpage{
+    position: relative;
+}
+
+.roadtoAPLpage:before {
+    content: ' ';
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.5;
+    background-image: url('../../assets/images/AllianzArena3.jpeg');
+    background-repeat: no-repeat;
+    background-position: 50% 0;
+    background-size: cover;
+}
+  
+.RTAPLbackg{
+    position: relative;
+    border-color: white !important;
+    border-width: 5px;
+    padding: 3%;
+}
+
+@media screen and (max-width: 960px) {
+    .rtAPLpics{
+        width: 200px;
+        height: 200px;
+        border-radius: 20px;
+    }
+}
+@media screen and (min-width: 960px) {
+    .rtAPLpics{
+        width: 250px;
+        height: 250px;
+        border-radius: 20px;
+    }
+}

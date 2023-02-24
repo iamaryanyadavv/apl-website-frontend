@@ -10,8 +10,8 @@
     top: 0;
     width: 100%;
     height: 100%;
-    opacity: 0.9;
-    background-image: url('../../assets/images/FieldBirdView.jpeg');
+    opacity: 0.75;
+    background-image: url('../../assets/images/TrainingFootball2.jpg');
     background-repeat: no-repeat;
     background-position: 50% 0;
     background-size: cover;
@@ -22,4 +22,13 @@
     border-color: white !important;
     border-width: 5px;
     padding: 3%;
+}
+
+.calendly-inline-widget, 
+.calendly-inline-widget *, 
+.calendly-badge-widget, 
+.calendly-badge-widget *, 
+.calendly-overlay, 
+.calendly-overlay *{
+    border-radius: 20px !important;
 }
