@@ -1,4 +1,6 @@
 import './App.css';
+import axios from 'axios';
+import { useState, useEffect } from 'react';
 import { createTheme, NextUIProvider } from '@nextui-org/react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Header from './components/header/header.js';
@@ -37,7 +39,12 @@ const theme = createTheme({
   }
 })
 
+
+
 function App() {
+
+  
+
     return(
         
       <NextUIProvider theme={theme}>

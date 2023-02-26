@@ -23,7 +23,7 @@ function Header() {
         </Navbar.Brand>
         <Navbar.Content hideIn="xs" variant="highlight-rounded">
         {items.map((item, index) => (
-            <Navbar.Link key={item} isActive={item.href===active.substring(0,item.href.length+1)} href={item.href}>
+            <Navbar.Link key={index} isActive={item.href===active.substring(0,item.href.length+1)} href={item.href}>
               {item.name}
             </Navbar.Link>
           ))}
@@ -39,7 +39,7 @@ function Header() {
         </Navbar.Content>
         <Navbar.Collapse showIn="xs">
         {items.map((item, index) => (
-          <Navbar.CollapseItem key={item} isActive={item.href===active.substring(0,item.href.length+1)}>
+          <Navbar.CollapseItem key={index} isActive={item.href===active.substring(0,item.href.length+1)}>
             <Link href={item.href}
               css={{
                 minWidth: "100%",

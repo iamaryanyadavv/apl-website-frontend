@@ -1,6 +1,7 @@
 import React from "react";
 import { Grid } from "@nextui-org/react";
 import GradientHeading from "../../components/headings/gradientheading";
+import EachPlayerCard from "../../components/players/eachplayer";
 
 export default function APL5PlayersPage(){
     return(
@@ -15,7 +16,7 @@ export default function APL5PlayersPage(){
                 gradient='45deg, #388EE9 20%, #09EBEE 100%'
             />
             <Grid>
-                
+                <EachPlayerCard/>
             </Grid>
         </Grid.Container>
     )
