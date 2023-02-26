@@ -1,0 +1,21 @@
+
+@media screen and (min-width: 650px) {
+    .season-card{
+        width: 350px;
+        height: 466.67px;
+    }
+    .season-item-card{
+        width: 350px;
+        height: 466.67px;
+    }
+}
+@media screen and (max-width: 650px) {
+    .season-card{
+        width: 270px;
+        height: 360px;
+    }
+    .season-item-card{
+        width: 270px;
+        height: 360px;
+    }
+}

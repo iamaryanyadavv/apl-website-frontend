@@ -1,7 +1,7 @@
 import React from "react";
 import "./header.css";
 import { Navbar, Link, } from "@nextui-org/react";
-import { FaInstagram } from 'react-icons/fa';
+import { FaInstagram, FaYoutube } from 'react-icons/fa';
 
 function Header() {
     const items = [
@@ -30,8 +30,11 @@ function Header() {
           
         </Navbar.Content>
         <Navbar.Content>
-          <Link href="https://www.instagram.com/apl.ashoka/">
-            <FaInstagram />
+          <Link target="_blank" href="https://www.instagram.com/apl.ashoka/">
+            <FaInstagram className="instagram-logo" size={'20px'} />
+          </Link>
+          <Link target="_blank" href="https://www.youtube.com/@ashokapremierleague1964">
+            <FaYoutube className="youtube-logo" size={'20px'}/>
           </Link>
         </Navbar.Content>
         <Navbar.Collapse showIn="xs">

@@ -2,99 +2,17 @@ import { Card, Col, Grid, Text, Button } from "@nextui-org/react";
 import React from "react";
 import JoseMourinho from './JoseMourinho.jpeg';
 import Cristiano2 from './Cristiano2.jpeg';
+import QuoteHeading from "../headings/quoteheading";
+
 export default function RegCards(){
     return(
         <div>
 
-            <Text hideIn={'xs'}
-            css={{
-                fontSize: '$7xl',
-                textAlign: 'center',
-                fontWeight: '$semibold',
-                paddingBottom: '1.5%',
-                paddingTop: '20px'
-            }}>
-                    APL 6.0 REGISTRATION
-            </Text>
-            <Text showIn={'xs'}
-            css={{
-                fontSize: '$3xl',
-                textAlign: 'center',
-                fontWeight: '$semibold',
-                paddingTop: '10%'
-            }}>
-                    APL 6.0 REGISTRATION
-            </Text>
-
-            <Text hideIn={'xs'}
-            css={{
-                jc: 'center',
-                fontSize: '$3xl',
-                alignItems: 'center',
-                paddingRight: '10%',
-                paddingLeft: '10%',
-                paddingBottom: '1.5%',
-                fontFamily: 'DS',
-                fontWeight: 'normal',
-                textAlign: 'center'
-            }}>
-                “You miss 100% of the shots you don't take” -Wayne Getzky
-            </Text>
-            <Text showIn={'xs'}
-            css={{
-                jc: 'center',
-                fontSize: '$xl',
-                alignItems: 'center',
-                padding: '10%',
-                fontFamily: 'DS',
-                fontWeight: 'normal',
-                textAlign: 'center'
-            }}>
-                “You miss 100% of the shots you don't take” -Wayne Getzky
-            </Text>
-
-            <Text hideIn={'xs'}
-                css={{
-                    jc: 'center',
-                    fontSize:'$2xl',
-                    fontWeight: '$semibold',
-                    textAlign: 'center'
-                }}>
-                    The time has come!
-            </Text>
-            <Text showIn={'xs'}
-                css={{
-                    jc: 'center',
-                    fontSize:'$xl',
-                    fontWeight: '$semibold',
-                    textAlign: 'center'
-                }}>
-                    The time has come!
-            </Text>
-
-            <Text hideIn={'xs'}
-            css={{
-                jc: 'center',
-                fontSize:'$2xl',
-                fontWeight: '$semibold',
-                paddingTop: '0%',
-                paddingBottom: '0%',
-                textAlign: 'center'
-            }}>
-                Who do you choose to be: Team Owner or Team Player?
-            </Text>
-            <Text showIn={'xs'}
-            css={{
-                jc: 'center',
-                fontSize:'$xl',
-                fontWeight: '$semibold',
-                paddingTop: '0%',
-                paddingBottom: '0%',
-                textAlign: 'center'
-            }}>
-                Who do you choose to be: Team Owner or Team Player?
-            </Text>
-            
+            <QuoteHeading
+                heading='REGISTRATION'
+                quote='“You miss 100% of the shots you don&apos;t take” -Wayne Getzky'
+                description='The time has come! Who do you choose to be: Team Owner or Team Player?'
+            />
             
             <Grid.Container gap={8}
             css={{

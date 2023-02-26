@@ -28,7 +28,8 @@ export default function RoadToAPLContent(){
             css={{
                 jc: 'center',
                 textAlign: 'center',
-                alignItems: 'center'
+                alignItems: 'center',
+                paddingTop: '60px'
             }}>
                 <Grid>
                     <Grid.Container gap={2}

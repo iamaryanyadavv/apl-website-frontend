@@ -55,7 +55,7 @@ export default function MeetTeamHeading () {
                             color: '$gray800',
                             paddingBottom: '50px'
                         }}>
-                            People who have made APL possible!
+                            People who have made APL 6.0 possible!
                         </Text>
                     </Grid>
                 </Grid.Container>

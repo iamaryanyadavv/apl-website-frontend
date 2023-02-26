@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Row, Text } from "@nextui-org/react";
+import { Container, Row, Text, Link } from "@nextui-org/react";
 
 function Footer(){
     return(
@@ -13,13 +13,45 @@ function Footer(){
                 borderColor: '$gray600',
                 borderWidth: '1px 0px 0px 0px'
             }}>
-                <Text
+                <Text hideIn={'xs'}
                 css={{
-                    paddingTop: '1%',
-                    paddingBottom: '1%',
+                    padding: '1% 0.35%',
+                    fontSize: '$normal'
                 }}>
-                    Made with 🤍 by Aryan Yadav and Zahaan Shaporjee
+                    Made with 🤍 by
                 </Text>
+                <Text showIn={'xs'}
+                css={{
+                    padding: '1%',
+                }}>
+                    By
+                </Text>
+                <Link
+                css={{
+                    color: '#3694ff'
+                }} target='_blank' href="https://aryanyadav.com/"
+                >
+                    Aryan Yadav
+                </Link>
+                <Text hideIn={'xs'}
+                css={{
+                    padding: '1% 0.35%'
+                }}>
+                    and 
+                </Text>
+                <Text showIn={'xs'}
+                css={{
+                    padding: '1%'
+                }}>
+                    and 
+                </Text>
+                <Link 
+                css={{
+                    color: '#3694ff'
+                }} target='_blank' href="https://zahaanshapoorjee.netlify.app/"
+                >
+                    Zahaan Shapoorjee
+                </Link>
             </Row>
         </Container>
     )

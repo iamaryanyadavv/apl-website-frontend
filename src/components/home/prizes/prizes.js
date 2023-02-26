@@ -1,6 +1,6 @@
 import React from "react";
 import './prizes.css';
-import { Row, Col, Text, Grid, Image } from "@nextui-org/react";
+import { Row, Col, Text, Grid, Image, Spacer } from "@nextui-org/react";
 import goldmedal from "./gold-medal.png";
 import silvermedal from "./silver-medal.png";
 import bronzemedal from "./bronze-medal.png";
@@ -35,7 +35,7 @@ export default function Prizes () {
                                 fontSize: "$5xl" ,
                                 textAlign: 'center',
                                 fontWeight: '$semibold',
-                                padding: '4% 10px 0px 10px',
+                                padding: '15% 10px 0px 10px',
                                 color: "$yellow600"
                             }}>
                                     Prizes
@@ -48,12 +48,20 @@ export default function Prizes () {
                 jc: 'center',
                 textAlign: 'center',
                 alignItems: 'center',
-                paddingBottom: '70px'
             }}>
-                <Text
+                <Text hideIn={'xs'}
                 css={{
                     fontSize: '$lg',
-                    color: '$gray800'
+                    color: '$gray800',
+                    paddingBottom: '50px'
+                }}>
+                    Win these cash prizes at APL 6.0!
+                </Text>
+                <Text showIn={'xs'}
+                css={{
+                    fontSize: '$lg',
+                    color: '$gray800',
+                    paddingBottom: '40px'
                 }}>
                     Win these cash prizes at APL 6.0!
                 </Text>
@@ -120,15 +128,7 @@ export default function Prizes () {
 
                     <Grid>
                         <Col>
-                            <Text
-                            css={{
-                                fontSize: '$xl',
-                                color: 'White',
-                                fontWeight: '$medium',
-                                paddingBottom: '10px'
-                            }}>
-                                Worth It
-                            </Text>
+                            <Spacer y={2.25} />
                             <Col
                             css={{
                                 padding: '25px',
@@ -177,7 +177,7 @@ export default function Prizes () {
                                 fontWeight: '$medium',
                                 paddingBottom: '10px'
                             }}>
-                                Can Rager
+                                Rager Worthy
                             </Text>
                             <Col
                             css={{
@@ -219,168 +219,7 @@ export default function Prizes () {
 
                 </Grid.Container>
 
-            {/* <Row> 
-                <Col>
-                    <Grid.Container 
-                    css={{
-                        jc: 'center',
-                        textAlign: 'center',
-                        paddingBottom: '1.75%'
-                    }}>
-
-                        <Col
-                        css={{
-                            width: '280px',
-                            height: '220px',
-                            borderStyle: "solid",
-                            borderColor: '#FAE481',
-                            borderWidth: '4px',
-                            borderRadius: '30px',
-                            backgroundColor: '#C5B358',
-                        }}
-                        >
-                            <Row
-                            css={{
-                                jc: 'center',
-                                
-                            }}> 
-                                <div className="rupee-icon">
-                                    <FaRupeeSign color="black" size={'20px'}/>
-                                </div>
-                                <Text
-                                css={{
-                                    jc: 'center',
-                                    textAlign: 'center',
-                                    alignItems: 'center',
-                                    fontSize: '4rem',
-                                    fontWeight: '$bold',
-                                    color: 'Black',
-                                    padding: '0% 0% 0% 0%'
-                                }}>
-                                    30,000 
-                                </Text>
-                            </Row>
-                        
-                            <Row
-                            css={{
-                                jc: 'center',
-                                textAlign: 'center',
-                                alignItems: 'center',
-                            }}>
-                                    <Image width={'80px'} height={'80px'} src={goldmedal}/>
-                            </Row>
-                            
-                        </Col>
-
-                    </Grid.Container>
-                    <Grid.Container gap={1}
-                    css={{
-                        jc: 'center',
-                        textAlign: 'center',
-                    }}>
-                            <Grid
-                            css={{
-                                jc: 'center',
-                                textAlign: 'center',
-                                alignItems: 'center',
-                                padding: '3% 2% 2% 3%',
-                            }}>
-                                    <Col
-                                    css={{
-                                        width: '240px',
-                                        height: '190px',
-                                        borderStyle: "solid",
-                                        borderColor: 'rgb(200 205 211)',
-                                        borderWidth: '4px',
-                                        borderRadius: '30px',
-                                        backgroundColor: 'rgb(150 168 177)'
-                                    }}
-                                    >
-                                        <Row
-                                        css={{
-                                            jc: 'center',
-                                            
-                                        }}> 
-                                            <div className="rupee-icon">
-                                                <FaRupeeSign color="black" size={'17.5px'}/>
-                                            </div>
-                                            <Text>
-                                            </Text>
-                                            <Text
-                                            css={{
-                                                jc: 'center',
-                                                textAlign: 'center',
-                                                alignItems: 'center',
-                                                fontSize: '3rem',
-                                                fontWeight: '$bold',
-                                                color: 'Black',
-                                                padding: '0% 0% 0% 0%'
-                                            }}>
-                                                15,000 
-                                            </Text>
-                                        </Row>
-                                        <Row
-                                        css={{
-                                            jc: 'center',
-                                            textAlign: 'center',
-                                            alignItems: 'center',
-                                        }}>
-                                                <Image width={'70px'} height={'70px'} src={silvermedal}/>
-                                        </Row>   
-                                    </Col>
-                            </Grid>
-                            <Grid
-                            css={{
-                                jc: 'center',
-                                textAlign: 'center',
-                                alignItems: 'center',
-                                padding: '5% 5% 5% 3%',
-                            }}>
-                                    <Col
-                                    css={{
-                                        width: '190px',
-                                        height: '160px',
-                                        borderStyle: "solid",
-                                        borderColor: 'rgb(213 191 150)',
-                                        borderWidth: '4px',
-                                        borderRadius: '30px',
-                                        backgroundColor: 'rgb(175 153 112)',
-                                    }}
-                                    >
-                                        <Row
-                                        css={{
-                                            jc: 'center',
-                                            
-                                        }}> 
-                                            <div className="rupee-icon">
-                                                <FaRupeeSign color="black" size={'15px'}/>
-                                            </div>
-                                            <Text
-                                            css={{
-                                                jc: 'center',
-                                                textAlign: 'center',
-                                                alignItems: 'center',
-                                                fontSize: '2.5rem',
-                                                fontWeight: '$bold',
-                                                color: 'Black',
-                                                padding: '0% 0% 0% 0%'
-                                            }}>
-                                                5,000 
-                                            </Text>
-                                        </Row>
-                                        <Row
-                                        css={{
-                                            jc: 'center',
-                                            textAlign: 'center',
-                                            alignItems: 'center',
-                                        }}>
-                                                <Image width={'60px'} height={'60px'} src={bronzemedal}/>
-                                        </Row>   
-                                    </Col>
-                            </Grid>
-                    </Grid.Container>
-                </Col>
-            </Row> */}
+            
         </Col>
     )
 }

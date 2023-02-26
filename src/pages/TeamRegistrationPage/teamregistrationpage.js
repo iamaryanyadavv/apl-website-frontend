@@ -15,7 +15,7 @@ export default function TeamRegistrationPage() {
                     fontWeight: '$semibold',
                     paddingBottom: '1.5%'
                 }}>
-                    APL 6.0 PLAYER REGISTRATION
+                    APL 6.0 TEAM REGISTRATION
                 </Text>
                 <Text
                 css={{

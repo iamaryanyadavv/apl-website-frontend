@@ -7,7 +7,7 @@ export default function EventsHead () {
         css={{
             jc: 'center',
             textAlign: 'center',
-            paddingTop: '5%'
+            paddingTop: '2.5%'
         }}>
             <Grid>
                 <Grid.Container

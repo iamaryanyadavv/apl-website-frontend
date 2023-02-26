@@ -6,7 +6,7 @@ import "../homelanding/homelanding.css";
 import "../homeawards/homeawards.css";
 import "../homeseasons/homeseasons.css";
 import "../homeslots/homeslots.css";
-import { Button, Text, Grid, Link } from "@nextui-org/react";
+import { Button, Text, Grid } from "@nextui-org/react";
 
 export default function HomeCarousel () {
 
@@ -14,8 +14,8 @@ export default function HomeCarousel () {
         <Carousel
         showDots={true}
         infiniteLoop={true}
-        autoPlay={true}
-        slidesToSlide={4}
+        autoPlay={false}
+        slidesToSlide={3}
         stopOnHover={true}
         swipeable={true}
         useKeyboardArrows={true}
@@ -80,7 +80,7 @@ export default function HomeCarousel () {
                                             fontWeight: 'normal',
                                             fontSize: '$4xl'
                                         }}>
-                                            "In football, attack wins you games, defence wins you championships” - Sir Alex Ferguson
+                                            "Attack wins you games but defence wins you championships” - Sir Alex Ferguson
                                         </Text>
                                         <Text showIn={'xs'} className="hssquote"
                                         css={{
@@ -91,7 +91,7 @@ export default function HomeCarousel () {
                                             fontWeight: 'normal',
                                             fontSize: '$2xl'
                                         }}>
-                                            "Always remember: Attack wins you games, defence wins you championships” - Sir Alex Ferguson
+                                            "Attack wins you games but defence wins you championships” - Sir Alex Ferguson
                                         </Text>
                                     </Grid>
                                 </Grid.Container>
@@ -315,7 +315,7 @@ export default function HomeCarousel () {
                                             fontWeight: 'normal',
                                             fontSize: '$4xl'
                                         }}>
-                                            "In football, there's something greater than the result, more lasting: a legacy” - Xavi
+                                            "There's something greater than the result in football, more lasting: a legacy” - Xavi
                                         </Text>
                                         <Text showIn={'xs'} className="hssquote"
                                         css={{
@@ -326,7 +326,7 @@ export default function HomeCarousel () {
                                             fontWeight: 'normal',
                                             fontSize: '$2xl'
                                         }}>
-                                            "In football, there's something greater than the result, more lasting - a legacy” - Xavi
+                                            "There's something greater than the result in football, more lasting: a legacy” - Xavi
                                         </Text>
                                     </Grid>
                                 </Grid.Container>
@@ -461,7 +461,7 @@ export default function HomeCarousel () {
                                     fontWeight: 'normal',
                                     fontSize: '$4xl'
                                 }}>
-                                    “In football ,the worst blindness is seeing only the ball” - Nelson Falcāo Rodriguez
+                                    “Worst blindness a footballer can have is seeing only the ball” - Nelson Rodriguez
                                 </Text>
                                 <Text showIn={'xs'} className="hsquote"
                                 css={{
@@ -472,7 +472,7 @@ export default function HomeCarousel () {
                                     fontWeight: 'normal',
                                     fontSize: '$2xl'
                                 }}>
-                                    “In football ,the worst blindness is seeing only the ball” - Nelson Falcāo Rodriguez
+                                    “Worst blindness a footballer can have is seeing only the ball” - Nelson Rodriguez
                                 </Text>
     
                                 <Text hideIn={'xs'}

@@ -4,8 +4,9 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Header from './components/header/header.js';
 import Footer from './components/footer/footer.js';
 import FootNavbar from './components/footnavbar/footnavbar';
+import ComingSoon from './components/comingsoon/comingsoon';
 import Home from './pages/HomePage/home';
-import Seasons from './pages/SeasonsPage/seasons.js';
+import SeasonsPage from './pages/SeasonsPage/seasonspage.js';
 import RoadToAPL from './pages/RoadToAPL/roadtoaplpage.js';
 import SlotBookingPage from './pages/SlotBookingPage/slotbookingpage.js';
 import RegistrationPage from './pages/RegistrationPage/registration.js';
@@ -44,9 +45,12 @@ function App() {
           <div className='container'>
             <Router>
               <Routes>
+                <Route exact path="/comingsoon" element={<ComingSoon/>} />
+
                 <Route exact path="/" element={<Home/>} />
 
-                <Route exact path="/seasons" element={<Seasons/>} />
+                <Route exact path="/seasons" element={<SeasonsPage/>} />
+
 
                 {/* APL 5 */}
                 <Route exact path="/seasons/apl5" element={<APL5LandingPage/>} /> 

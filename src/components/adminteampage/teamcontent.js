@@ -1,7 +1,8 @@
-import { Col, Grid, Image, Text, Link } from "@nextui-org/react";
+import { Col, Grid, Image, Text, Link, Row } from "@nextui-org/react";
 import React from "react";
 import Grey from '../../assets/images/Grey.jpeg';
 import './teamcontent.css';
+import { FaInstagram } from "react-icons/fa";
 import AryanYadav from '../../assets/avatars/AdminTeam/webteam_aryanyadav.jpeg';
 
 export default function TeamContent(){
@@ -62,9 +63,13 @@ export default function TeamContent(){
                             }}>
                                 Director
                             </Text>
-                            <Text>
-                                <a href="https://www.instagram.com/dhrthi.bhat/">@dhrthi.bhat</a>
+                            <Text
+                            css={{
+                                padding: '0% 2.5%'
+                            }}>
+                                <a target="_blank" href="https://www.instagram.com/dhrthi.bhat/">@dhrthi.bhat</a>
                             </Text>
+                            
                         </Col>
                     </Grid>
 
@@ -111,7 +116,7 @@ export default function TeamContent(){
                                 Director
                             </Text>
                             <Text>
-                                <a href="https://www.instagram.com/uday_0901/">@uday_0901</a>
+                                <a target="_blank" href="https://www.instagram.com/uday_0901/">@uday_0901</a>
                             </Text>
                         </Col>
                     </Grid>
@@ -1332,7 +1337,7 @@ export default function TeamContent(){
                                         Developer
                                     </Text>
                                     <Text>
-                                        <a href="https://aryanyadav.com/">aryanyadav.com</a>
+                                        <a target="_blank" href="https://aryanyadav.com/">aryanyadav.com</a>
                                     </Text>
                                 </Col>
                             </Grid>
@@ -1389,7 +1394,7 @@ export default function TeamContent(){
                                         Developer
                                     </Text>
                                     <Text>
-                                        <a href="https://zahaanshapoorjee.netlify.app/">zahaanshaporjee.netlify.app</a>
+                                        <a target="_blank" href="https://zahaanshapoorjee.netlify.app/">zahaanshaporjee.netlify.app</a>
                                     </Text>
                                 </Col>
                             </Grid>
