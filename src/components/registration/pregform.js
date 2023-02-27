@@ -22,18 +22,12 @@ export default function PRegForm(){
         {
             console.log(codeResponse);
             setSignedIn(true);
-            console.log(signedin);
-            signInStatus();
+            document.getElementById("googleSignIn").innerHTML = "Signed In"
         },
         flow: 'auth-code',
         
       });
-      function signInStatus()
-      {
-        console.log("CHANGING");
-        document.getElementsByClassName('signInButton').innerHTML = "Signed in!";
-      }
-
+      
     const batchItems = [
         { key: "UG25", name: "UG 2025" },
         { key: "UG24", name: "UG 2024" },
@@ -134,11 +128,6 @@ export default function PRegForm(){
     alert("You must fill all fields to submit the form...");
 }
 
-    useEffect(()=>{
-        document.getElementsByClassName("signInButton").innerHTML = "New text!";
-        console.log("re rendering!");
-    }, [signedin]);
-
     return(
         <div>
             <Grid.Container gap={2}
@@ -151,7 +140,7 @@ export default function PRegForm(){
                     width: '1024px'
                 }}>
                     <div className="googlelogin">
-            <button auto_select = "false" className="signInButton" onClick={() => {
+            <button auto_select = "false" className="signInButton" id="googleSignIn" onClick={() => {
                 login();
             }}>
                 Sign In to Google

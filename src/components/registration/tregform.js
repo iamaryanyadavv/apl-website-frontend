@@ -22,6 +22,7 @@ export default function TRegForm() {
         {
             console.log(codeResponse);
             setSignedIn(true);
+            document.getElementById("googleSignIn").innerHTML = "Signed In"
             console.log(signedin);
         },
         flow: 'auth-code',
@@ -71,7 +72,7 @@ export default function TRegForm() {
     return(
         <div>
             <div className="googlelogin">
-            <button auto_select = "false" className="signInButton" onClick={() => {
+            <button auto_select = "false" className="signInButton" id="googleSignIn" onClick={() => {
                 login();
             }}>
                 Sign In to Google
