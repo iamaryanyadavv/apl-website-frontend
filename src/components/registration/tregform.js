@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import './tregform.css';
 import { Grid, Text, Input, Radio, Button} from "@nextui-org/react";
+import { useGoogleLogin } from '@react-oauth/google';
 
 export default function TRegForm() {
 
@@ -14,9 +15,68 @@ export default function TRegForm() {
     const [owner3, SetOwner3] = useState('');
     const [owner4, SetOwner4] = useState('');
     const [owner5, SetOwner5] = useState('');
+    const [signedin, setSignedIn] = useState(false);
+
+    const login = useGoogleLogin({
+        onSuccess: codeResponse => 
+        {
+            console.log(codeResponse);
+            setSignedIn(true);
+            console.log(signedin);
+        },
+        flow: 'auth-code',
+        
+      });
+
+      async function sendForm(e)
+    {
+        if(teamname & managername & manageremail & managerphone & totalowners==1 & owner1 ||
+        teamname & managername & manageremail & managerphone & totalowners==2 & owner1 & owner2 ||
+        teamname & managername & manageremail & managerphone & totalowners==3 & owner1 & owner2 & owner3 ||
+        teamname & managername & manageremail & managerphone & totalowners==4 & owner1 & owner2 & owner3 & owner4 || 
+        teamname & managername & manageremail & managerphone & totalowners==5 & owner1 & owner2 & owner3 & owner4 & owner5
+        )
+        {
+        try{
+        let res = await fetch("https://localhost:3001/",
+        {
+            method: "POST",
+            body: JSON.stringify({
+                teamname:teamname,
+                managername:managername,
+                manageremail:manageremail,
+                managerphone:managerphone,
+              }),
+              headers:{
+                "accepts":"application/json"
+            }
+        });
+        let resJson = await res.json();
+        if(res.status==200)
+        {
+            console.log("SUCCESS");
+        }
+        else
+        console.log("FAILED");
+    }
+        catch(error)
+        {
+            console.log(error);
+        }
+    }
+    else
+    alert("You must fill all fields to submit the form...");
+}
 
     return(
         <div>
+            <div className="googlelogin">
+            <button auto_select = "false" className="signInButton" onClick={() => {
+                login();
+            }}>
+                Sign In to Google
+            </button> 
+            </div>
             <Grid.Container gap={2}
             css={{
                 jc: 'center',
@@ -41,7 +101,7 @@ export default function TRegForm() {
                         jc: 'center',
                     }}>
                         <Grid>
-                            <Input onChange={(event)=>{SetTeamname(event.target.value)}} animated={true} placeholder='Team Name' type='text' bordered clearable required/>
+                            <Input disabled={!signedin} onChange={(event)=>{SetTeamname(event.target.value)}} animated={true} placeholder='Team Name' type='text' bordered clearable required/>
                         </Grid>
 
                     </Grid.Container>
@@ -66,15 +126,15 @@ export default function TRegForm() {
                         jc: 'center',
                     }}>
                         <Grid>
-                            <Input onChange={(event)=>{SetManagername(event.target.value); SetOwner1(event.target.value)}} animated={true} placeholder='Full Name' type='text' bordered clearable required/>
+                            <Input disabled={!signedin} onChange={(event)=>{SetManagername(event.target.value); SetOwner1(event.target.value)}} animated={true} placeholder='Full Name' type='text' bordered clearable required/>
                         </Grid>
 
                         <Grid>
-                            <Input css={{width:'300px'}} onChange={(event)=>{SetManageremail(event.target.value)}} animated={true} placeholder='Email ID' type='text' bordered clearable/>
+                            <Input disabled={!signedin} css={{width:'300px'}} onChange={(event)=>{SetManageremail(event.target.value)}} animated={true} placeholder='Email ID' type='text' bordered clearable/>
                         </Grid>
 
                         <Grid>
-                            <Input onChange={(event)=>{SetManagerphone(event.target.value)}} animated={true} placeholder='Phone' type='text' bordered clearable required/>
+                            <Input disabled={!signedin} onChange={(event)=>{SetManagerphone(event.target.value)}} animated={true} placeholder='Phone' type='text' bordered clearable required/>
                         </Grid>
 
                     </Grid.Container>
@@ -128,7 +188,7 @@ export default function TRegForm() {
                                 jc: 'center'
                             }}>
                                 <Grid>
-                                    <Input onChange={(event)=>{SetOwner1(event.target.value)}} bordered labelLeft="1st" labelRight='(Manager)' placeholder={owner1} />
+                                    <Input disabled={!signedin} onChange={(event)=>{SetOwner1(event.target.value)}} bordered labelLeft="1st" labelRight='(Manager)' placeholder={owner1} />
                                 </Grid>
                             </Grid.Container>
                         </div>
@@ -139,10 +199,10 @@ export default function TRegForm() {
                                     jc: 'center'
                                 }}>
                                     <Grid>
-                                        <Input onChange={(event)=>{SetOwner1(event.target.value)}} bordered labelLeft="1st" labelRight='(Manager)' placeholder={managername} />
+                                        <Input disabled={!signedin} onChange={(event)=>{SetOwner1(event.target.value)}} bordered labelLeft="1st" labelRight='(Manager)' placeholder={managername} />
                                     </Grid>
                                     <Grid>
-                                        <Input onChange={(event)=>{SetOwner2(event.target.value)}} bordered labelLeft="2nd" placeholder="Full Name" />
+                                        <Input disabled={!signedin} onChange={(event)=>{SetOwner2(event.target.value)}} bordered labelLeft="2nd" placeholder="Full Name" />
                                     </Grid>
                                 </Grid.Container>
                             </div>
@@ -155,13 +215,13 @@ export default function TRegForm() {
                                     jc: 'center'
                                 }}>
                                     <Grid>
-                                        <Input onChange={(event)=>{SetOwner1(event.target.value)}} bordered labelLeft="1st" labelRight='(Manager)' placeholder={managername} />
+                                        <Input disabled={!signedin} onChange={(event)=>{SetOwner1(event.target.value)}} bordered labelLeft="1st" labelRight='(Manager)' placeholder={managername} />
                                     </Grid>
                                     <Grid>
-                                        <Input onChange={(event)=>{SetOwner2(event.target.value)}} bordered labelLeft="2nd" placeholder="Full Name" />
+                                        <Input disabled={!signedin} onChange={(event)=>{SetOwner2(event.target.value)}} bordered labelLeft="2nd" placeholder="Full Name" />
                                     </Grid>
                                     <Grid>
-                                        <Input onChange={(event)=>{SetOwner3(event.target.value)}} bordered labelLeft="3rd" placeholder="Full Name" />
+                                        <Input disabled={!signedin} onChange={(event)=>{SetOwner3(event.target.value)}} bordered labelLeft="3rd" placeholder="Full Name" />
                                     </Grid>
                                 </Grid.Container>
                                 </div>
@@ -174,16 +234,16 @@ export default function TRegForm() {
                                         jc: 'center'
                                     }}>
                                         <Grid>
-                                            <Input onChange={(event)=>{SetOwner1(event.target.value)}} bordered labelLeft="1st" labelRight='(Manager)' placeholder={managername} />
+                                            <Input disabled={!signedin} onChange={(event)=>{SetOwner1(event.target.value)}} bordered labelLeft="1st" labelRight='(Manager)' placeholder={managername} />
                                         </Grid>
                                         <Grid>
-                                            <Input onChange={(event)=>{SetOwner2(event.target.value)}} bordered labelLeft="2nd" placeholder="Full Name" />
+                                            <Input disabled={!signedin} onChange={(event)=>{SetOwner2(event.target.value)}} bordered labelLeft="2nd" placeholder="Full Name" />
                                         </Grid>
                                         <Grid>
-                                            <Input onChange={(event)=>{SetOwner3(event.target.value)}} bordered labelLeft="3rd" placeholder="Full Name" />
+                                            <Input disabled={!signedin} onChange={(event)=>{SetOwner3(event.target.value)}} bordered labelLeft="3rd" placeholder="Full Name" />
                                         </Grid>
                                         <Grid>
-                                            <Input onChange={(event)=>{SetOwner4(event.target.value)}} bordered labelLeft="4th" placeholder="Full Name" />
+                                            <Input disabled={!signedin} onChange={(event)=>{SetOwner4(event.target.value)}} bordered labelLeft="4th" placeholder="Full Name" />
                                         </Grid>
                                     </Grid.Container>
                                     </div>
@@ -195,19 +255,19 @@ export default function TRegForm() {
                                         jc: 'center'
                                     }}>
                                         <Grid>
-                                            <Input onChange={(event)=>{SetOwner1(event.target.value)}} bordered labelLeft="1st" labelRight='(Manager)' placeholder={managername} />
+                                            <Input disabled={!signedin} onChange={(event)=>{SetOwner1(event.target.value)}} bordered labelLeft="1st" labelRight='(Manager)' placeholder={managername} />
                                         </Grid>
                                         <Grid>
-                                            <Input onChange={(event)=>{SetOwner2(event.target.value)}} bordered labelLeft="2nd" placeholder="Full Name" />
+                                            <Input disabled={!signedin} onChange={(event)=>{SetOwner2(event.target.value)}} bordered labelLeft="2nd" placeholder="Full Name" />
                                         </Grid>
                                         <Grid>
-                                            <Input onChange={(event)=>{SetOwner3(event.target.value)}} bordered labelLeft="3rd" placeholder="Full Name" />
+                                            <Input disabled={!signedin} onChange={(event)=>{SetOwner3(event.target.value)}} bordered labelLeft="3rd" placeholder="Full Name" />
                                         </Grid>
                                         <Grid>
-                                            <Input onChange={(event)=>{SetOwner4(event.target.value)}} bordered labelLeft="4th" placeholder="Full Name" />
+                                            <Input disabled={!signedin} onChange={(event)=>{SetOwner4(event.target.value)}} bordered labelLeft="4th" placeholder="Full Name" />
                                         </Grid>
                                         <Grid>
-                                            <Input onChange={(event)=>{SetOwner5(event.target.value)}} bordered labelLeft="5th" placeholder="Full Name" />
+                                            <Input disabled={!signedin} onChange={(event)=>{SetOwner5(event.target.value)}} bordered labelLeft="5th" placeholder="Full Name" />
                                         </Grid>
                                     </Grid.Container>
                                     </div>
@@ -229,7 +289,7 @@ export default function TRegForm() {
                         jc: 'center',
                     }}>
                         <Grid>
-                            <Button onPress={()=>console.log(teamname, managername, manageremail, managerphone, totalowners, owner1, owner2, owner3, owner4, owner5)} shadow rounded bordered auto ghost> Submit </Button>
+                            <Button onPress={sendForm} shadow rounded bordered auto ghost> Submit </Button>
                         </Grid>
                     </Grid.Container>
                 </Grid>

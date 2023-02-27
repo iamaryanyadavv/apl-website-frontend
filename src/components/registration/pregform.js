@@ -96,6 +96,8 @@ export default function PRegForm(){
 
     async function sendForm(e)
     {
+        if(firstname & middlename & lastname & batch & phonenumber & gender & primarypos & secondpos & comment)
+        {
         try{
         let res = await fetch("https://localhost:3001/",
         {
@@ -104,7 +106,7 @@ export default function PRegForm(){
                 firstname: firstname,
                 middlename:middlename,
                 lastname:lastname,
-                batch:phonenumber,
+                batch:batch,
                 phonenumber:phonenumber,
                 gender:gender,
                 position1:primarypos,
@@ -128,6 +130,9 @@ export default function PRegForm(){
             console.log(error);
         }
     }
+    else
+    alert("You must fill all fields to submit the form...");
+}
 
     useEffect(()=>{
         document.getElementsByClassName("signInButton").innerHTML = "New text!";
