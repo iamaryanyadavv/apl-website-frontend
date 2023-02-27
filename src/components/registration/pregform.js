@@ -1,6 +1,8 @@
 import { Grid, Input, useInput, Text, Dropdown, Button } from "@nextui-org/react";
 import './pregform.css';
 import React, {useState} from "react";
+import { useEffect } from "react";
+import { useGoogleLogin } from '@react-oauth/google';
 
 export default function PRegForm(){
 
@@ -13,7 +15,24 @@ export default function PRegForm(){
     const [secondpos, setSecondPos] = useState('');
     const [comment, setComment] = useState('');
     const [image, setImage] = useState();
-
+    const [phonenumber,setPhonenumber] = useState('');
+    const [signedin, setSignedIn] = useState(false);
+    const login = useGoogleLogin({
+        onSuccess: codeResponse => 
+        {
+            console.log(codeResponse);
+            setSignedIn(true);
+            console.log(signedin);
+            signInStatus();
+        },
+        flow: 'auth-code',
+        
+      });
+      function signInStatus()
+      {
+        console.log("CHANGING");
+        document.getElementsByClassName('signInButton').innerHTML = "Signed in!";
+      }
 
     const batchItems = [
         { key: "UG25", name: "UG 2025" },
@@ -65,13 +84,49 @@ export default function PRegForm(){
             color: "",
           };
         const isValid = validatePhone(value);
+        if(isValid)
+        {
+            setPhonenumber(value);
+        }
         return {
           text: isValid ? "Valid" : "Invalid",
           color: isValid ? "success" : "error",
         };
     }, [value]);
 
-    
+    function sendForm()
+    {
+        let url = 'https://api.sheety.co/48283899d39c0e67c8c4094cf131eddf/aplDbTest/sheet1';
+        let body = 
+    {
+        "sheet1": {
+           "firstname":firstname,
+           "middlename":middlename,
+           "lastname":lastname,
+           "batch":batch.currentKey,
+           "phonenumber":phonenumber,
+           "gender":gender.currentKey,
+           "position1":primarypos.currentKey,
+           "position2":secondpos.currentKey,
+           "comments":comment
+         }
+       }
+    fetch(url, {
+      method: 'POST',
+      body: JSON.stringify(body),
+      headers: { 'Content-Type': 'application/json' }
+    })
+    .then((response) => response.json())
+    .then(json => {
+      console.log(json.sheet1);
+    });
+    }
+
+    useEffect(()=>{
+        document.getElementsByClassName("signInButton").innerHTML = "New text!";
+        console.log("re rendering!");
+    }, [signedin]);
+
     return(
         <div>
             <Grid.Container gap={2}
@@ -83,6 +138,13 @@ export default function PRegForm(){
                     jc: 'center',
                     width: '1024px'
                 }}>
+                    <div className="googlelogin">
+            <button auto_select = "false" className="signInButton" onClick={() => {
+                login();
+            }}>
+                Sign In to Google
+            </button>           
+        </div>  
                     <Text
                     css={{
                         jc:'center',
@@ -97,15 +159,15 @@ export default function PRegForm(){
                         jc: 'center',
                     }}>
                         <Grid>
-                            <Input onChange={(event)=>{setFirstName(event.target.value)}} animated={true} placeholder='First' type='text' bordered clearable required/>
+                            <Input  disabled={!signedin}  onChange={(event)=>{setFirstName(event.target.value)}} animated={true} placeholder='First' type='text' bordered clearable required/>
                         </Grid>
 
                         <Grid>
-                            <Input onChange={(event)=>{setMiddleName(event.target.value)}} animated={true} placeholder='Middle' type='text' bordered clearable/>
+                            <Input disabled={!signedin} onChange={(event)=>{setMiddleName(event.target.value)}} animated={true} placeholder='Middle' type='text' bordered clearable/>
                         </Grid>
 
                         <Grid>
-                            <Input onChange={(event)=>{setLastName(event.target.value)}} animated={true} placeholder='Last' type='text' bordered clearable required/>
+                            <Input disabled={!signedin} onChange={(event)=>{setLastName(event.target.value)}} animated={true} placeholder='Last' type='text' bordered clearable required/>
                         </Grid>
 
                     </Grid.Container>
@@ -133,7 +195,7 @@ export default function PRegForm(){
                                 fontWeight: '$semibold'
                             }}>Batch
                             </Text>
-                            <Dropdown>
+                            <Dropdown isDisabled= {!signedin}>
                                 {batch === '' 
                                 ? <Dropdown.Button className="dp-btn" default light>Choose</Dropdown.Button>
                                 : <Dropdown.Button className="dp-btn" default light>{batch}</Dropdown.Button>
@@ -163,7 +225,7 @@ export default function PRegForm(){
                                 fontWeight: '$semibold'
                             }}>Phone
                             </Text>
-                            <Input width='200px' {...bindings} onClearClick={reset} status={helper.color} color={helper.color} helperColor={helper.color} helperText={helper.text} animated={true} placeholder='Ph' type='text' bordered clearable required/>
+                            <Input disabled={!signedin} width='200px' {...bindings} onClearClick={reset} status={helper.color} color={helper.color} helperColor={helper.color} helperText={helper.text} animated={true} placeholder='Phone Number' type='text' bordered clearable required/>
                         </Grid>
                         <Grid>
                             <Text
@@ -175,12 +237,12 @@ export default function PRegForm(){
                                 fontWeight: '$semibold'
                             }}>Gender
                             </Text>
-                            <Dropdown>
+                            <Dropdown isDisabled= {!signedin}>
                                 {gender === '' 
                                 ? <Dropdown.Button className="dp-btn" default light>Choose</Dropdown.Button>
                                 : <Dropdown.Button className="dp-btn" default light>{gender}</Dropdown.Button>
                                 }
-                                <Dropdown.Menu onSelectionChange={setGender} disallowEmptySelection selectionMode="single" selectedKeys={gender} aria-label="Dynamic Actions" items={genderItems}>
+                                <Dropdown.Menu disabled={!signedin} onSelectionChange={setGender} disallowEmptySelection selectionMode="single" selectedKeys={gender} aria-label="Dynamic Actions" items={genderItems}>
                                     {(item) => (
                                     <Dropdown.Item
                                         key={item.key}
@@ -217,7 +279,7 @@ export default function PRegForm(){
                                         fontWeight: '$semibold'
                                     }}>Position I
                                     </Text>
-                                    <Dropdown>
+                                    <Dropdown isDisabled= {!signedin}>
                                         {primarypos === '' 
                                         ? <Dropdown.Button className="dp-btn" css={{ jc: 'center' }} default light>General</Dropdown.Button>
                                         : <Dropdown.Button className="dp-btn" css={{ jc: 'center' }} default light>{primarypos}</Dropdown.Button>
@@ -250,7 +312,7 @@ export default function PRegForm(){
                                 fontWeight: '$semibold'
                             }}>Photo
                             </Text>
-                            <input onChange={(event)=>setImage(event.target.files[0])} className="photobtn" animated={true} type='file' accept="image/*" required/>
+                            <input disabled={!signedin} onChange={(event)=>setImage(event.target.files[0])} className="photobtn" animated={true} type='file' accept="image/*" required/>
                         </Grid>
                         <Grid>
                             <Text
@@ -261,12 +323,12 @@ export default function PRegForm(){
                                 fontWeight: '$semibold'
                             }}>Position II
                             </Text>
-                            <Dropdown>
+                            <Dropdown isDisabled= {!signedin}>
                                         {secondpos === '' 
                                         ? <Dropdown.Button className="dp-btn" css={{ jc: 'center' }} default light>Preferred</Dropdown.Button>
                                         : <Dropdown.Button className="dp-btn" css={{ jc: 'center' }} default light>{secondpos}</Dropdown.Button>
                                         }
-                                <Dropdown.Menu onSelectionChange={setSecondPos} selectionMode="single" selectedKeys={secondpos} aria-label="Dynamic Actions" items={PreferredPosItems}>
+                                <Dropdown.Menu disabled={!signedin} onSelectionChange={setSecondPos} selectionMode="single" selectedKeys={secondpos} aria-label="Dynamic Actions" items={PreferredPosItems}>
                                     {(item) => (
                                     <Dropdown.Item
                                         key={item.key}
@@ -296,7 +358,7 @@ export default function PRegForm(){
                             <Input css={{
                                 jc: 'center',
                                 textAlign: 'center'
-                            }} onChange={(event)=>setComment(event.target.value)} width='300px' animated={true} placeholder="Any Comments? (Don't roast me)" type='text' bordered clearable></Input>
+                            }} disabled={!signedin} onChange={(event)=>setComment(event.target.value)} width='300px' animated={true} placeholder="Any Comments? (Don't roast me)" type='text' bordered clearable></Input>
                         </Grid>
                             
                     </Grid.Container>
@@ -311,7 +373,7 @@ export default function PRegForm(){
                         jc: 'center',
                     }}>
                         <Grid>
-                            <Button onPress={()=>console.log(firstname,middlename,lastname,batch,gender,value,primarypos,secondpos,comment,image)} shadow rounded bordered auto ghost> Submit </Button>
+                            <Button disabled={!signedin} onPress={sendForm} shadow rounded bordered auto ghost> Submit </Button>
                         </Grid>
                     </Grid.Container>
                 </Grid>
