@@ -94,32 +94,39 @@ export default function PRegForm(){
         };
     }, [value]);
 
-    function sendForm()
+    async function sendForm(e)
     {
-        let url = 'https://api.sheety.co/48283899d39c0e67c8c4094cf131eddf/aplDbTest/sheet1';
-        let body = 
-    {
-        "sheet1": {
-           "firstname":firstname,
-           "middlename":middlename,
-           "lastname":lastname,
-           "batch":batch.currentKey,
-           "phonenumber":phonenumber,
-           "gender":gender.currentKey,
-           "position1":primarypos.currentKey,
-           "position2":secondpos.currentKey,
-           "comments":comment
-         }
-       }
-    fetch(url, {
-      method: 'POST',
-      body: JSON.stringify(body),
-      headers: { 'Content-Type': 'application/json' }
-    })
-    .then((response) => response.json())
-    .then(json => {
-      console.log(json.sheet1);
-    });
+        try{
+        let res = await fetch("https://localhost:3001/",
+        {
+            method: "POST",
+            body: JSON.stringify({
+                firstname: firstname,
+                middlename:middlename,
+                lastname:lastname,
+                batch:phonenumber,
+                phonenumber:phonenumber,
+                gender:gender,
+                position1:primarypos,
+                position2:secondpos,
+                comments:comment
+              }),
+              headers:{
+                "accepts":"application/json"
+            }
+        });
+        let resJson = await res.json();
+        if(res.status==200)
+        {
+            console.log("SUCCESS");
+        }
+        else
+        console.log("FAILED");
+    }
+        catch(error)
+        {
+            console.log(error);
+        }
     }
 
     useEffect(()=>{
