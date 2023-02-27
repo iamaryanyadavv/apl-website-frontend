@@ -1,8 +1,8 @@
 import { Grid, Input, useInput, Text, Dropdown, Button } from "@nextui-org/react";
 import './pregform.css';
 import React, {useState} from "react";
-import { useEffect } from "react";
 import { useGoogleLogin } from '@react-oauth/google';
+import jwt_decode from "jwt-decode";
 
 export default function PRegForm(){
 
@@ -20,14 +20,14 @@ export default function PRegForm(){
     const login = useGoogleLogin({
         onSuccess: codeResponse => 
         {
-            console.log(codeResponse);
             setSignedIn(true);
             document.getElementById("googleSignIn").innerHTML = "Signed In"
+            console.log(codeResponse);
         },
         flow: 'auth-code',
         
       });
-      
+
     const batchItems = [
         { key: "UG25", name: "UG 2025" },
         { key: "UG24", name: "UG 2024" },

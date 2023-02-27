@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import './tregform.css';
 import { Grid, Text, Input, Radio, Button} from "@nextui-org/react";
 import { useGoogleLogin } from '@react-oauth/google';
+import jwtDecode from "jwt-decode";
 
 export default function TRegForm() {
 
@@ -18,12 +19,13 @@ export default function TRegForm() {
     const [signedin, setSignedIn] = useState(false);
 
     const login = useGoogleLogin({
-        onSuccess: codeResponse => 
+        onSuccess: credentialResponse => 
         {
-            console.log(codeResponse);
             setSignedIn(true);
-            document.getElementById("googleSignIn").innerHTML = "Signed In"
+            document.getElementById("googleSignIn").innerHTML = "Signed In as:"
             console.log(signedin);
+            const USER_CREDENTIAL = jwtDecode(credentialResponse.credential);
+            console.log("sasa"+USER_CREDENTIAL);
         },
         flow: 'auth-code',
         
