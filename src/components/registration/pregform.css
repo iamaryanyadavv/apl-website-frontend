@@ -12,6 +12,9 @@
     margin: 0px 20px 0px 20px !important;
 }
 
+iframe{
+  color-scheme: light
+}
 
 .signInButton
 {   

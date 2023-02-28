@@ -1,29 +1,11 @@
 import { Grid, Input, useInput, Text, Dropdown, Button, Col } from "@nextui-org/react";
 import './pregform.css';
 import React, {useState, useEffect} from "react";
-import { useGoogleLogin } from '@react-oauth/google';
+import { googleLogout, useGoogleLogin } from '@react-oauth/google';
 import axios from 'axios';
 import jwt_decode from "jwt-decode";
 
 export default function PRegForm(){
-
-    const [firstname, setFirstName] = useState('');
-    const [middlename, setMiddleName] = useState('');
-    const [lastname, setLastName] = useState('');
-    const [batch, setBatch] = useState('');
-    const [gender, setGender] = useState('');
-    const [primarypos, setPrimaryPos] = useState('');
-    const [secondpos, setSecondPos] = useState('');
-    const [comment, setComment] = useState('');
-    const [image, setImage] = useState();
-    const [phonenumber,setPhonenumber] = useState('');
-    const [signedin, setSignedIn] = useState(false);
-    const [SignInButtonText, setSignInButtonText] = useState('Google Sign In');
-    const [SignedInEmailID, setSignInEmailID] = useState('');
-    const [User, setUser] = useState('');
-    const [GoogleProfile, setGoogleProfile] = useState();
-
-    
 
     const batchItems = [
         { key: "UG25", name: "UG 2025" },
@@ -63,6 +45,23 @@ export default function PRegForm(){
         { key: 'ST', name: 'Striker (ST)'}
     ]
 
+    const [firstname, setFirstName] = useState('');
+    const [middlename, setMiddleName] = useState('');
+    const [lastname, setLastName] = useState('');
+    const [batch, setBatch] = useState('');
+    const [gender, setGender] = useState('');
+    const [primarypos, setPrimaryPos] = useState('');
+    const [secondpos, setSecondPos] = useState('');
+    const [comment, setComment] = useState('');
+    const [image, setImage] = useState();
+    const [phonenumber,setPhonenumber] = useState('');
+    const [signedin, setSignedIn] = useState(false);
+    const [SignInButtonText, setSignInButtonText] = useState('Google Sign In');
+    const [SignedInEmailID, setSignInEmailID] = useState('');
+    const [User, setUser] = useState({});
+    const [UserName, setUserName] = useState('');
+    const [UserEmail, setUserEmail] = useState('');
+
     const { value, reset, bindings } = useInput("");
 
     const validatePhone = (value) => {
@@ -89,9 +88,6 @@ export default function PRegForm(){
         onSuccess: codeResponse => 
         {
             setSignedIn(true);
-            setSignInButtonText('Signed in as: '.concat(SignedInEmailID))
-            console.log(codeResponse);
-            setUser(codeResponse);
         },
         flow: 'auth-code',
         
@@ -123,7 +119,7 @@ export default function PRegForm(){
         });
 
         let resJson = await res.json();
-        if(res.status==200)
+        if(res.status===200)
         {
             console.log("SUCCESS");
         }
@@ -139,24 +135,46 @@ export default function PRegForm(){
         alert("You must fill all fields to submit the form...");
     }
 
-useEffect(
-    () => {
-        if (User){
-            console.log(User);
-            axios
-                .get(`https://www.googleapis.com/oauth2/v1/userinfo?access_token=${User.access_token}`, {
-                    headers: {
-                        Authorization: `Bearer ${User.access_token}`,
-                        Accept: 'application/json'
-                    }
-                })
-                .then((res) => {
-                    setGoogleProfile(res.data);
-                })
-                .catch((err) => console.log(err))
-        }
+    function handleCallbackresponse(response){
+        var userObject = jwt_decode(response.credential)
+        setUser(userObject);
+        var userName = userObject.name;
+        setUserName(userName);
+        var userEmail = userObject.email;
+        setUserEmail(userEmail);
+        setSignedIn(true);
+        document.getElementById("GoogleButton").hidden = true;
     }
-)
+
+    useEffect(()=>{
+        window.google.accounts.id.initialize({
+            client_id: "307601456989-5ii0dp5jhqah6snpkuf9ff1jajp67ku6.apps.googleusercontent.com",
+            callback: handleCallbackresponse
+        });
+        window.google.accounts.id.renderButton(
+            document.getElementById("GoogleButton"),
+            { theme: 'filled_black', size: 'large', shape: 'pill', }
+        );
+    }, [])
+
+    // useEffect(
+    //     () => {
+    //         if (User){
+    //             console.log(User);
+    //             axios
+    //                 .get(`https://www.googleapis.com/oauth2/v1/userinfo?access_token=${User.access_token}`, {
+    //                     headers: {
+    //                         Authorization: `Bearer ${User.access_token}`,
+    //                         Accept: 'application/json'
+    //                     }
+    //                 })
+    //                 .then((res) => {
+    //                     setGoogleProfile(res.data);
+    //                 })
+    //                 .catch((err) => console.log(err))
+    //         }
+    //     }
+    // )
 
     return(
         <div>
@@ -170,49 +188,104 @@ useEffect(
                     jc: 'center',
                     alignItems: 'center'
                 }}>
-                    <Grid.Container gap={0}
+                    <Grid.Container
+                    css={{
+                        jc: 'center',
+
+                    }}>
+                        <div className="GoogleButton" id='GoogleButton'></div>
+                    </Grid.Container>
+
+                    {Object.keys(User).length != 0 &&
+                    <div>
+                        <Grid.Container gap={2}
                     css={{
                         jc: 'center',
                         alignItems: 'center'
                     }}>
-
-                        <Grid
+                        
+                        
+                        <Text
                         css={{
                             jc: 'center',
                             alignItems: 'center',
-                            textAlign: 'center'
+                            fontSize: '$xl',
+                            fontWeight: '$semibold'
                         }}>
-                            <Text
-                            css={{
-                                padding: 'px'
-                            }}>
-                                This form is open to only Ashoka University students.
-                            </Text>
-                        </Grid>
-                        
+                            Welcome {UserName}!
+                        </Text>
                     </Grid.Container>
-                    <Grid.Container gap={0}
+
+                    <Grid.Container
                     css={{
                         jc: 'center',
                         alignItems: 'center'
                     }}>
-
-                        <Grid
+                        
+                        <Text
                         css={{
                             jc: 'center',
                             alignItems: 'center',
-                            textAlign: 'center'
+                            fontSize: '$xl',
+                            fontWeight: '$semibold'
                         }}>
-                            <Text
-                            css={{
-                                paddingBottom: '15px'
-                            }}>
-                                Please login via your @ashoka.edu.in email ID for form access.
-                            </Text>
-                        </Grid>
+                            You're signed in with {UserEmail}.
+                        </Text>
                         
                     </Grid.Container>
+                    
+                    </div>
+                    
+                    }
+                    {!signedin &&
+                    <div>
+                        <Grid.Container gap={0}
+                        css={{
+                            jc: 'center',
+                            alignItems: 'center'
+                        }}>
 
+                            <Grid
+                            css={{
+                                jc: 'center',
+                                alignItems: 'center',
+                                textAlign: 'center'
+                            }}>
+                                <Text
+                                css={{
+                                    padding: 'px'
+                                }}>
+                                    This form is open to only Ashoka University students.
+                                </Text>
+                            </Grid>
+                            
+                        </Grid.Container>
+
+                        <Grid.Container gap={0}
+                        css={{
+                            jc: 'center',
+                            alignItems: 'center'
+                        }}>
+
+                            <Grid
+                            css={{
+                                jc: 'center',
+                                alignItems: 'center',
+                                textAlign: 'center'
+                            }}>
+                                <Text
+                                css={{
+                                    paddingBottom: '15px'
+                                }}>
+                                    Please login via your @ashoka.edu.in email ID for form access.
+                                </Text>
+                            </Grid>
+                            
+                        </Grid.Container> 
+                    </div>}
+                    
+                       
+                    
                     <Grid.Container gap={0}
                     css={{
                         jc: 'center',
@@ -225,21 +298,21 @@ useEffect(
                             alignItems: 'center',
                             textAlign: 'center'
                         }}>
-                            <Button auto 
+                            {/* <Button auto 
+                            css={{
+                                background: '$gray900',
+                            }}
+                            onPress={()=>{
+                                login();
+                            }}>
+                                <Text
                                 css={{
-                                    background: '$gray900',
-                                }}
-                                onPress={()=>{
-                                    login();
+                                    color: 'Black',
+                                    fontWeight: '$semibold',
                                 }}>
-                                    <Text
-                                    css={{
-                                        color: 'Black',
-                                        fontWeight: '$semibold',
-                                    }}>
-                                        {SignInButtonText}
-                                    </Text>
-                                </Button>
+                                    {SignInButtonText}
+                                </Text>
+                            </Button> */}
                         </Grid>
 
                     </Grid.Container>
