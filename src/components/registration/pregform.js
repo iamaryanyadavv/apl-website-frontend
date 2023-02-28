@@ -1,7 +1,8 @@
-import { Grid, Input, useInput, Text, Dropdown, Button } from "@nextui-org/react";
+import { Grid, Input, useInput, Text, Dropdown, Button, Col } from "@nextui-org/react";
 import './pregform.css';
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import { useGoogleLogin } from '@react-oauth/google';
+import axios from 'axios';
 import jwt_decode from "jwt-decode";
 
 export default function PRegForm(){
@@ -17,16 +18,12 @@ export default function PRegForm(){
     const [image, setImage] = useState();
     const [phonenumber,setPhonenumber] = useState('');
     const [signedin, setSignedIn] = useState(false);
-    const login = useGoogleLogin({
-        onSuccess: codeResponse => 
-        {
-            setSignedIn(true);
-            document.getElementById("googleSignIn").innerHTML = "Signed In"
-            console.log(codeResponse);
-        },
-        flow: 'auth-code',
-        
-      });
+    const [SignInButtonText, setSignInButtonText] = useState('Google Sign In');
+    const [SignedInEmailID, setSignInEmailID] = useState('');
+    const [User, setUser] = useState('');
+    const [GoogleProfile, setGoogleProfile] = useState();
+
+    
 
     const batchItems = [
         { key: "UG25", name: "UG 2025" },
@@ -88,6 +85,19 @@ export default function PRegForm(){
         };
     }, [value]);
 
+    const login = useGoogleLogin({
+        onSuccess: codeResponse => 
+        {
+            setSignedIn(true);
+            setSignInButtonText('Signed in as: '.concat(SignedInEmailID))
+            console.log(codeResponse);
+            setUser(codeResponse);
+        },
+        flow: 'auth-code',
+        
+    });
+
+
     async function sendForm(e)
     {
         if(firstname & middlename & lastname & batch & phonenumber & gender & primarypos & secondpos & comment)
@@ -106,11 +116,12 @@ export default function PRegForm(){
                 position1:primarypos,
                 position2:secondpos,
                 comments:comment
-              }),
-              headers:{
+                }),
+            headers:{
                 "accepts":"application/json"
             }
         });
+
         let resJson = await res.json();
         if(res.status==200)
         {
@@ -118,67 +129,154 @@ export default function PRegForm(){
         }
         else
         console.log("FAILED");
+        }
+            catch(error)
+            {
+                console.log(error);
+            }
+        }
+        else
+        alert("You must fill all fields to submit the form...");
     }
-        catch(error)
-        {
-            console.log(error);
+
+useEffect(
+    () => {
+        if (User){
+            console.log(User);
+            axios
+                .get(`https://www.googleapis.com/oauth2/v1/userinfo?access_token=${User.access_token}`, {
+                    headers: {
+                        Authorization: `Bearer ${User.access_token}`,
+                        Accept: 'application/json'
+                    }
+                })
+                .then((res) => {
+                    setGoogleProfile(res.data);
+                })
+                .catch((err) => console.log(err))
         }
     }
-    else
-    alert("You must fill all fields to submit the form...");
-}
+)
 
     return(
         <div>
             <Grid.Container gap={2}
             css={{
-                jc:'center'
+                jc: 'center',
+                alignItems: 'center'
             }}>
-                <Grid 
+                <Grid
                 css={{
                     jc: 'center',
-                    width: '1024px'
+                    alignItems: 'center'
                 }}>
-                    <div className="googlelogin">
-            <button auto_select = "false" className="signInButton" id="googleSignIn" onClick={() => {
-                login();
-            }}>
-                Sign In to Google
-            </button>           
-        </div>  
-                    <Text
+                    <Grid.Container gap={0}
                     css={{
-                        jc:'center',
-                        textAlign: 'center',
-                        paddingBottom: '2%',
-                        fontSize: '$4xl',
-                        fontWeight: '$semibold'
-                    }}>Full Name</Text>
+                        jc: 'center',
+                        alignItems: 'center'
+                    }}>
+
+                        <Grid
+                        css={{
+                            jc: 'center',
+                            alignItems: 'center',
+                            textAlign: 'center'
+                        }}>
+                            <Text
+                            css={{
+                                padding: 'px'
+                            }}>
+                                This form is open to only Ashoka University students.
+                            </Text>
+                        </Grid>
+                        
+                    </Grid.Container>
+                    <Grid.Container gap={0}
+                    css={{
+                        jc: 'center',
+                        alignItems: 'center'
+                    }}>
+
+                        <Grid
+                        css={{
+                            jc: 'center',
+                            alignItems: 'center',
+                            textAlign: 'center'
+                        }}>
+                            <Text
+                            css={{
+                                paddingBottom: '15px'
+                            }}>
+                                Please login via your @ashoka.edu.in email ID for form access.
+                            </Text>
+                        </Grid>
+                        
+                    </Grid.Container>
+
+                    <Grid.Container gap={0}
+                    css={{
+                        jc: 'center',
+                        alignItems: 'center',
+                        paddingBottom: '5%'
+                    }}>
+                        <Grid
+                        css={{
+                            jc: 'center',
+                            alignItems: 'center',
+                            textAlign: 'center'
+                        }}>
+                            <Button auto 
+                                css={{
+                                    background: '$gray900',
+                                }}
+                                onPress={()=>{
+                                    login();
+                                }}>
+                                    <Text
+                                    css={{
+                                        color: 'Black',
+                                        fontWeight: '$semibold',
+                                    }}>
+                                        {SignInButtonText}
+                                    </Text>
+                                </Button>
+                        </Grid>
+
+                    </Grid.Container>
 
                     <Grid.Container gap={2}
                     css={{
                         jc: 'center',
+                        alignItems: 'center'
                     }}>
-                        <Grid>
-                            <Input  disabled={!signedin}  onChange={(event)=>{setFirstName(event.target.value)}} animated={true} placeholder='First' type='text' bordered clearable required/>
-                        </Grid>
+                        <Text
+                        css={{
+                            jc:'center',
+                            textAlign: 'center',
+                            paddingBottom: '2%',
+                            fontSize: '$4xl',
+                            fontWeight: '$semibold'
+                        }}>Full Name</Text>
 
-                        <Grid>
-                            <Input disabled={!signedin} onChange={(event)=>{setMiddleName(event.target.value)}} animated={true} placeholder='Middle' type='text' bordered clearable/>
-                        </Grid>
+                        <Grid.Container gap={2}
+                        css={{
+                            jc: 'center',
+                        }}>
+                            <Grid>
+                                <Input  disabled={!signedin}  onChange={(event)=>{setFirstName(event.target.value)}} animated={'true'} placeholder='First' type='text'  clearable required/>
+                            </Grid>
 
-                        <Grid>
-                            <Input disabled={!signedin} onChange={(event)=>{setLastName(event.target.value)}} animated={true} placeholder='Last' type='text' bordered clearable required/>
-                        </Grid>
+                            <Grid>
+                                <Input disabled={!signedin} onChange={(event)=>{setMiddleName(event.target.value)}} animated={'true'} placeholder='Middle' type='text'  clearable/>
+                            </Grid>
 
+                            <Grid>
+                                <Input disabled={!signedin} onChange={(event)=>{setLastName(event.target.value)}} animated={'true'} placeholder='Last' type='text' clearable required/>
+                            </Grid>
+
+                        </Grid.Container>
                     </Grid.Container>
-                </Grid>
 
-                <Grid
-                css={{
-                    jc: 'center',
-                    width: '1024px'
-                }}>
                     <Grid.Container gap={2}
                     css={{
                         jc: 'center'
@@ -215,7 +313,7 @@ export default function PRegForm(){
                         </Grid>
                         <Grid 
                         css={{
-                            width: '250px'
+                            
                         }}>
                             <Text
                             css={{
@@ -226,7 +324,7 @@ export default function PRegForm(){
                                 fontWeight: '$semibold'
                             }}>Phone
                             </Text>
-                            <Input disabled={!signedin} width='200px' {...bindings} onClearClick={reset} status={helper.color} color={helper.color} helperColor={helper.color} helperText={helper.text} animated={true} placeholder='Phone Number' type='text' bordered clearable required/>
+                            <Input disabled={!signedin} width='200px' {...bindings} onClearClick={reset} status={helper.color} color={helper.color} helperColor={helper.color} helperText={helper.text} animated={'true'} placeholder='Phone Number' type='text' clearable required/>
                         </Grid>
                         <Grid>
                             <Text
@@ -256,18 +354,12 @@ export default function PRegForm(){
                             </Dropdown>
                         </Grid>
                     </Grid.Container>
-                </Grid>
-                
-                <Grid
-                css={{
-                    jc: "center",
-                    width: '1024px'
-                }}>
+
                     <Grid.Container gap={2}
                     css={{
                         jc: 'center'
                     }}>
-                    <Grid
+                        <Grid
                         css={{
                             jc:'center',
                             textAlign: 'center'
@@ -298,6 +390,7 @@ export default function PRegForm(){
                                     </Dropdown>
                             
                         </Grid>
+
                         <Grid 
                         css={{
                             width: '300px',
@@ -313,8 +406,9 @@ export default function PRegForm(){
                                 fontWeight: '$semibold'
                             }}>Photo
                             </Text>
-                            <input disabled={!signedin} onChange={(event)=>setImage(event.target.files[0])} className="photobtn" animated={true} type='file' accept="image/*" required/>
+                            <input disabled={!signedin} onChange={(event)=>setImage(event.target.files[0])} className="photobtn" animated={'true'} type='file' accept="image/*" required/>
                         </Grid>
+
                         <Grid>
                             <Text
                             css={{
@@ -342,43 +436,44 @@ export default function PRegForm(){
                             </Dropdown>
                         </Grid>
                     </Grid.Container>
-                </Grid>
 
-                <Grid
-                css={{
-                    jc: "center",
-                    width: '1024px'
-                }}>
                     <Grid.Container gap={2}
                     css={{
                         jc: 'center',
-                        alignItems: 'center',
-                        textAlign: 'center'
+                        alignItems: 'center'
                     }}>
                         <Grid>
                             <Input css={{
                                 jc: 'center',
                                 textAlign: 'center'
-                            }} disabled={!signedin} onChange={(event)=>setComment(event.target.value)} width='300px' animated={true} placeholder="Any Comments? (Don't roast me)" type='text' bordered clearable></Input>
+                            }} disabled={!signedin} onChange={(event)=>setComment(event.target.value)} width='300px' animated={'true'} placeholder="Any Comments? (Don't roast me)" type='text' clearable></Input>
                         </Grid>
-                            
                     </Grid.Container>
-                </Grid>
-            
-                <Grid
-                css={{
-                    width: '1024px'
-                }}>
+
                     <Grid.Container gap={2}
                     css={{
                         jc: 'center',
                     }}>
                         <Grid>
-                            <Button disabled={!signedin} onPress={sendForm} shadow rounded bordered auto ghost> Submit </Button>
+                            <Button auto rounded
+                            css={{
+                                background: '$gray900'
+                            }}>
+                                <Text
+                                css={{
+                                    color: 'Black',
+                                    fontWeight: '$semibold'
+                                }}>
+                                    Register
+                                </Text>
+                            </Button>
                         </Grid>
+                        {/* disabled={!signedin} */}
                     </Grid.Container>
+
                 </Grid>
             </Grid.Container>
+
         </div>
     )
 }

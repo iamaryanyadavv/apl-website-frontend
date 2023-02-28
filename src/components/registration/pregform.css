@@ -4,10 +4,6 @@
     opacity: 1;
 }
 
-span{
-    color: white !important;
-}
-
 .photobtn{
     width: 210px;
 }
@@ -15,6 +11,8 @@ span{
 .dp-btn{
     margin: 0px 20px 0px 20px !important;
 }
+
+
 .signInButton
 {   
     color: white;
