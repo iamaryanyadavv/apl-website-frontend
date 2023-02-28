@@ -33,7 +33,7 @@ export default function PlayerRegistrationPage() {
                     fontWeight: '$medium',
                     padding: '0% 20% 2% 20%'
                 }}>
-                    Fill out the form below and pay the required registration fee to complete your registration!
+                    Fill out the form* below and pay the required registration fee to complete your registration!
                 </Text>
                 <Text showIn={'xs'}
                 css={{
@@ -42,7 +42,7 @@ export default function PlayerRegistrationPage() {
                     fontWeight: '$medium',
                     paddingBottom: '5%'
                 }}>
-                    Fill out the form below and pay the required registration fee to complete your registration!
+                    Fill out the form* below and pay the required registration fee to complete your registration!
                 </Text>
                 <PRegForm/>
             </div>

@@ -13,6 +13,7 @@ export default function EachPlayerCard(){
     const [TestString, setTestString] = useState('');
     const [WholeImageFile, setWholeImageFile] = useState('');
     const [FinalFile, setFinalFile] = useState('');
+    
     function chunkSubstr(str, size) {
         const numChunks = Math.ceil(str.length / size)
         const chunks = new Array(numChunks)
@@ -25,6 +26,7 @@ export default function EachPlayerCard(){
 
     const convertBlobToBase64 = async (blob) => { // blob data
         const img = await blobToBase64(blob);
+        setFinalFile(img);
 
         await fetch('http://localhost:3001/seasons/apl5/players',{
             method: 'POST',
@@ -44,7 +46,7 @@ export default function EachPlayerCard(){
         reader.onerror = error => reject(error);
     });
     
-    const sendImageChunks = async (e) => {
+    const sendImage = async (e) => {
 
         const options = {
             maxSizeMB: 0.030,
@@ -55,10 +57,6 @@ export default function EachPlayerCard(){
         const compressedFile = await imageCompression(WholeImageFile, options);
         console.log(compressedFile);
         console.log(convertBlobToBase64(compressedFile));
-        // console.log(FinalFile);
-
-
-        
     }
 
 
@@ -119,12 +117,12 @@ export default function EachPlayerCard(){
                 </Button>
                 <Button
                     onPress={()=>{
-                        sendImageChunks();
+                        sendImage();
                     }}
                 >
                     Send Chunks
                 </Button>
-                <img src={ImageBase64}></img>
+                <img src={FinalFile}></img>
             </div> 
             }
         </div>
