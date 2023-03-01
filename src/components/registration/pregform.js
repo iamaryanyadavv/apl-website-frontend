@@ -224,7 +224,7 @@ export default function PRegForm(){
         })
     } 
 
-    // funciton to handle callback fro google sign in
+    // funciton to handle callback for google sign in
     function handleCallbackresponse(response){
         var userObject = jwt_decode(response.credential)  
         getRegisteredPlayersEmailData(userObject);
