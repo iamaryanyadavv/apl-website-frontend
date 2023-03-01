@@ -123,6 +123,9 @@ export default function EachPlayerCard(){
                     Send Chunks
                 </Button>
                 <img src={FinalFile}></img>
+                <Text>
+                    {PlayerData.values}
+                </Text>
             </div> 
             }
         </div>
