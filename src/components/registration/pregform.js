@@ -134,6 +134,13 @@ export default function PRegForm(){
             setSecondposStatus('error')
         }
         if(firstname && lastname && batch && phonenumber && gender && primarypos && secondpos){
+            setFirstnameStatus('warning');
+            setLastnameStatus('warning');
+            setBatchStatus('warning');
+            setPhonenumberStatus('warning');
+            setGenderStatus('warning');
+            setPrimaryposStatus('warning');
+            setSecondposStatus('warning');
             return true
         }
     }
@@ -445,6 +452,33 @@ export default function PRegForm(){
                                 </Grid>
     
                             </Grid.Container>
+
+                        </Grid.Container>
+                        <Grid.Container gap={2}
+                        css={{
+                            jc: 'center',
+                            alignItems: 'center'
+                        }}>
+                            <Grid
+                            css={{
+                                textAlign: 'center',
+                                
+                            }}>
+                                <Col>
+                                    <Text 
+                                    css={{
+                                        jc:'center',
+                                        textAlign: 'center',
+                                        paddingBottom: '5%',
+                                        fontSize: '$4xl',
+                                        fontWeight: '$semibold'
+                                    }}>
+                                        Email ID
+                                    </Text>
+                                    <Input width="300px" readOnly placeholder={emailID} />
+                                </Col>
+                            </Grid>
+                            
                         </Grid.Container>
     
                         {/* batch, phonenumber, gender */}
@@ -689,15 +723,12 @@ export default function PRegForm(){
                                     background: '$gray900'
                                 }}
                                 onPress={()=>{
+                                    if(initialImage)
+                                    {
+                                        convertImage();
+                                    }
                                     setModalVisibility(CheckForm());
-                                    setFirstnameStatus('warning');
-                                    setLastnameStatus('warning');
-                                    setBatchStatus('warning');
-                                    setPhonenumberStatus('warning');
-                                    setGenderStatus('warning');
-                                    setPrimaryposStatus('warning');
-                                    setSecondposStatus('warning');
-                                    convertImage();
+                                    
                                 }}>
                                     <Text
                                     css={{
