@@ -268,7 +268,7 @@ export default function TRegForm() {
                 managerphone:managerphone,
               }),
               headers:{
-                "accepts":"application/json"
+                "Content-type":"application/json"
             }
         });
         let resJson = await res.json();

@@ -15,7 +15,7 @@ export default function SeasonsContent(){
                 <SeasonCard season='5.0' semester='SPRING 2022' src={APL5Cover} href='/seasons/apl5' />
             </Grid>
             <Grid> 
-                <SeasonCard season='4.0' semester='SPRING 2019' src={APL4Cover} href='/seasons/apl4' />
+                <SeasonCard season='4.0' semester='SPRING 2019' src={APL4Cover} href='/comingsoon' />
             </Grid> 
         </Grid.Container>
     )

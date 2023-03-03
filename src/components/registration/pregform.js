@@ -1,4 +1,4 @@
-import { Grid, Input, Modal, Text, Dropdown, Button, Row, Col, Avatar} from "@nextui-org/react";
+import { Grid, Input, Modal, Text, Dropdown, Button, Row, Col, Avatar, Loading} from "@nextui-org/react";
 import './pregform.css';
 import React, {useState, useEffect} from "react";
 import imageCompression from 'browser-image-compression';
@@ -27,19 +27,10 @@ export default function PRegForm(){
         { key: 'Attacker', name: 'Attacker'}
     ];
     const PreferredPosItems=[
-        { key: 'GK', name: 'Goalkeeper (GK)' },
-        { key: 'CB', name: 'Center Back (CB)' },
-        { key: 'RB', name: 'Right Back (RB)' },
-        { key: 'LB', name: 'Left Back (LB)' },
-        { key: 'CDM', name: 'Center Defensive Mid (CDM)' },
-        { key: 'CM', name: 'Center Mid (CM)' },
-        { key: 'CAM', name: 'Center Attacking Mid (CAM)' },
-        { key: 'LM', name: 'Left Mid (LM)' },
-        { key: 'RM', name: 'Right Mid (RM)' },
-        { key: 'LW', name: 'Left Wing (LW)'},
-        { key: 'RW', name: 'Right Wing (RW)'},
-        { key: 'CF', name: 'Center Forward (CF)'},
-        { key: 'ST', name: 'Striker (ST)'}
+        { key: "Goalkeeper", name: 'Goalkeeper'},
+        { key: 'Defender', name: 'Defender'},
+        { key: 'Midfielder', name: 'Midfielder'},
+        { key: 'Attacker', name: 'Attacker'}
     ];
 
     const [firstname, setFirstName] = useState('');
@@ -66,17 +57,21 @@ export default function PRegForm(){
 
     const [initialImage, setInitialImage] = useState('');
     const [finalImage, setFinalImage] = useState('');
+    const [finalFile, setFinalFile] = useState('');
+    const [finalFileName, setFinalFileName] = useState('');
 
     const [phonenumber,setPhonenumber] = useState('');
     const [PhonenumberStatus, setPhonenumberStatus] = useState('');
 
     const [emailID, setEmailID] = useState('');
+    const [EmailIDStatus, setEmailIDStatus] = useState('');
 
     const [AlreadyRegistered, setAlreadyRegistered] = useState(false);
     const [RegistrationDone, setRegistrationDone] = useState(false);
 
     const [HelperColor, setHelperColor] = useState('');
     const [ModalVisibility, setModalVisibility] = useState(false);
+    const [LoginLoader, setLoginLoader] = useState(false);
 
     const [signedin, setSignedIn] = useState(false);
     const [User, setUser] = useState({});
@@ -102,6 +97,12 @@ export default function PRegForm(){
         }
         if(!lastname){
             setLastnameStatus('error')
+        }
+        if(emailID){
+            setEmailIDStatus('success')
+        }
+        if(!emailID){
+            setEmailIDStatus('error')
         }
         if(batch){
             setBatchStatus('success')
@@ -136,6 +137,7 @@ export default function PRegForm(){
         if(firstname && lastname && batch && phonenumber && gender && primarypos && secondpos){
             setFirstnameStatus('warning');
             setLastnameStatus('warning');
+            setEmailIDStatus('warning');
             setBatchStatus('warning');
             setPhonenumberStatus('warning');
             setGenderStatus('warning');
@@ -145,15 +147,14 @@ export default function PRegForm(){
         }
     }
 
-    // function to send final player data to database
+    // function to send final player data to sheets and image to gdrive
     async function sendForm(e)
     {
         //required inputs: firstname, lastname, batch, phonenumber, gender, position 1, position 2, 
         //not required inputs: middlename, image, comment
         
         if(firstname && lastname && batch && phonenumber && gender && primarypos && secondpos)
-        { console.log(finalImage)
-
+        { 
             // image, firstname, middlename, lastname, emailid, batch, phone, gender, primarypos, secondpos, comment
             await fetch('http://localhost:3001/registration/player',{
             method: 'POST',
@@ -173,11 +174,27 @@ export default function PRegForm(){
             })
         })
         }
+        
     }
-
+    // function to send image to googledrive
+    async function sendImage(imagedata){
+        var imageName = User.given_name+User.family_name
+        let ImageData = new FormData();
+        console.log(ImageData)
+        ImageData.append('file', imagedata);
+        if(ImageData){
+            // sending image to google drive
+            console.log('is it fetching')
+            await fetch('http://localhost:3001/registration/playerimage',{
+                method: 'POST',
+                headers:{Value: "multipart/form-data"},
+                body: ImageData
+            })
+        }
+    }
     
     // functions to convert image to base64
-    const convertImage = async (e) => {
+    const convertImageToBase64 = async (e) => {
         const options = {
             maxSizeMB: 0.030,
             maxWidthOrHeight: 720,
@@ -185,8 +202,8 @@ export default function PRegForm(){
         }
 
         const compressedFile = await imageCompression(initialImage, options);
-        console.log(compressedFile);
-        console.log(convertBlobToBase64(compressedFile));
+        
+        convertBlobToBase64(compressedFile)
     }
 
     const convertBlobToBase64 = async (blob) => { // blob data
@@ -207,51 +224,76 @@ export default function PRegForm(){
         .then(response=>response.json())
         .then((data)=>{
             var isSignedin = false
-            data.values.map((item)=>{   
-                if(userObject.email!=item[0]){
-                    isSignedin=true
+            if(data.values){
+                for(var i = 0; i < data.values.length; i++){
+                    if(userObject.email!=data.values[i][0]){
+                        isSignedin=true
+                    }
+                    else{
+                        isSignedin=false
+                        break;
+                    }
+                }
+                if(isSignedin===true){
+                    setLoginLoader(false);
+                    setSignedIn(true)
+                    document.getElementById("GoogleButton").hidden = true;
+                    setUser(userObject);
+                    setFirstName(userObject.given_name)
+                    setLastName(userObject.family_name)
+                    setAlreadyRegistered(false)
+                    setEmailID(userObject.email);
+                    // console.log('Signed in')
                 }
                 else{
-                    isSignedin=false
-                }
-            })
-            if(isSignedin===true){
-                setSignedIn(true)
-                document.getElementById("GoogleButton").hidden = true;
-                setUser(userObject);
-                setEmailID(userObject.email);
-                // console.log('Signed in')
+                    setLoginLoader(false);
+                    setSignedIn(false)
+                    setAlreadyRegistered(true)
+                    document.getElementById("GoogleButton").hidden = false;
+                    // console.log('Did not sign in')
+                }   
             }
-            else{
-                setSignedIn(false)
-                setAlreadyRegistered(true)
-                document.getElementById("GoogleButton").hidden = false;
-                // console.log('Did not sign in')
-            }    
+            else if(!data.values){
+                setLoginLoader(false);
+                setSignedIn(true)
+                setUser(userObject);
+                setFirstName(userObject.given_name)
+                setLastName(userObject.family_name)
+                setAlreadyRegistered(false)
+                setEmailID(userObject.email);
+            }
+            
+             
         })
     } 
 
     // funciton to handle callback for google sign in
     function handleCallbackresponse(response){
-        var userObject = jwt_decode(response.credential)  
+        
+        var userObject = jwt_decode(response.credential)
+        setLoginLoader(true);
+        document.getElementById("GoogleButton").hidden = true;
+
         getRegisteredPlayersEmailData(userObject);
     }
     
     useEffect( ()=>{
-        window.google.accounts.id.initialize({
-            client_id: "307601456989-5ii0dp5jhqah6snpkuf9ff1jajp67ku6.apps.googleusercontent.com",
-            callback: handleCallbackresponse
-        });
-
-        window.google.accounts.id.renderButton(
-            document.getElementById("GoogleButton"),
-            { theme: 'outlined', size: 'large', shape: 'pill',}
-        ); 
+        window.setTimeout(()=>{
+            window.google.accounts.id.initialize({
+                client_id: "307601456989-5ii0dp5jhqah6snpkuf9ff1jajp67ku6.apps.googleusercontent.com",
+                callback: handleCallbackresponse
+            });
+            
+            window.google.accounts.id.renderButton(
+                document.getElementById("GoogleButton"),
+                { theme: 'outlined', size: 'large', shape: 'pill',}
+            ); 
+        }, 1500)
+        
     }, [])
 
     return(
         <div>
-            {!RegistrationDone &&
                 <Grid.Container gap={2}
                 css={{
                     jc: 'center',
@@ -265,14 +307,14 @@ export default function PRegForm(){
                         <Grid.Container
                         css={{
                             jc: 'center',
-    
+
                         }}>
+                            
                             <div className="GoogleButton" id='GoogleButton'></div>
                         </Grid.Container>
-    
                         
-    
-                        {Object.keys(User).length != 0 &&
+
+                        {Object.keys(User).length != 0 && //Display welcome message to user if User Object is not empty
                         <div>
                             <Grid.Container gap={2}
                             css={{
@@ -291,7 +333,7 @@ export default function PRegForm(){
                                     Welcome {User.name}!
                                 </Text>
                             </Grid.Container>
-    
+
                             <Grid.Container
                             css={{
                                 jc: 'center',
@@ -324,18 +366,60 @@ export default function PRegForm(){
                                 </Text>
                                 
                             </Grid.Container>
+
+                            <Modal
+                            open={signedin}
+                            closeButton
+                            >
+                                    <Modal.Header
+                                    css={{
+                                        paddingTop: '0px',
+                                    }}>
+                                        <Col>
+                                            <Text 
+                                            css={{
+                                                textAlign: 'center',
+                                                fontSize: '$3xl',
+                                                fontWeight: '$bold',
+                                                color: '$green600',
+                                                borderStyle: 'solid',
+                                                borderWidth: '0px 0px 1px 0px',
+                                                borderColor: '$gray800'
+                                            }}>
+                                                Success!
+                                            </Text>
+                                            
+                                        </Col>
+                                    </Modal.Header>
+                                    <Modal.Body
+                                    css={{
+                                        paddingTop: '0px'
+                                    }}>
+                                        <Text 
+                                        css={{
+                                            textAlign: 'center',
+                                            fontSize: '$xl',
+                                            fontWeight: '$semibold',
+                                            color: 'white',
+                                        }}>
+                                            You have been successfully logged in as {User.name}
+                                        </Text>
+                                    </Modal.Body>
+                                    
+                            </Modal>
                         
                         </div>
                         }
-    
-                        {!signedin &&
+
+                        {!signedin && !LoginLoader && //Show login buttons when not signed in and LoginLoader===false
                         <div>
+                            
                             <Grid.Container gap={0}
                             css={{
                                 jc: 'center',
                                 alignItems: 'center'
                             }}>
-    
+
                                 <Grid
                                 css={{
                                     jc: 'center',
@@ -351,13 +435,13 @@ export default function PRegForm(){
                                 </Grid>
                                 
                             </Grid.Container>
-    
+
                             <Grid.Container gap={0}
                             css={{
                                 jc: 'center',
                                 alignItems: 'center'
                             }}>
-    
+
                                 <Grid
                                 css={{
                                     jc: 'center',
@@ -373,28 +457,75 @@ export default function PRegForm(){
                                 </Grid>
                                 
                             </Grid.Container> 
-                        </div>}
-    
-                        {AlreadyRegistered && 
-                            <Grid.Container
-                            css={{
-                                jc: 'center',
-                                alignItems: 'center',
-                                textAlign: 'center'
-                            }}>
-                                <Grid>
-                                    <Text
-                                    css={{
-                                        textAlign: 'center',
-                                        fontSize: '$3xl',
-                                        fontWeight: '$bold',
-                                        color: '$red600',
-                                        paddingBottom: '20px'
-                                    }}>
-                                        YOU HAVE ALREADY REGISTERED WITH THIS EMAIL ID!
-                                    </Text>
-                                </Grid>
-                            </Grid.Container>
+                            
+                        </div>
+                        }
+                        {LoginLoader && //Show loader when LoginLoader===true - for the lag between loggin in and shoing welcome message
+                        <Grid.Container
+                        css={{
+                            jc: 'center',
+                            alignItems: 'center',
+                        }}>
+                            <Grid>
+                                <Loading
+                                size="xl"
+                                color='white'
+
+                                />
+                            </Grid>
+                        </Grid.Container>
+                        }
+                        {AlreadyRegistered && //If user is already registered, show error message
+                            <div>
+                                <Grid.Container
+                                css={{
+                                    jc: 'center',
+                                    alignItems: 'center',
+                                    textAlign: 'center'
+                                }}>
+                                    <Modal
+                                    open={AlreadyRegistered}
+                                    closeButton
+                                    onClose={()=>setAlreadyRegistered(false)}
+                                    >
+                                            <Modal.Header
+                                            css={{
+                                                paddingTop: '0px',
+                                            }}>
+                                                <Col>
+                                                    <Text 
+                                                    css={{
+                                                        textAlign: 'center',
+                                                        fontSize: '$3xl',
+                                                        fontWeight: '$bold',
+                                                        color: '$red600',
+                                                        borderStyle: 'solid',
+                                                        borderWidth: '0px 0px 1px 0px',
+                                                        borderColor: '$gray800'
+                                                    }}>
+                                                        Error!
+                                                    </Text>
+                                                    
+                                                </Col>
+                                            </Modal.Header>
+                                            <Modal.Body
+                                            css={{
+                                                paddingTop: '0px'
+                                            }}>
+                                                <Text 
+                                                css={{
+                                                    textAlign: 'center',
+                                                    fontSize: '$xl',
+                                                    fontWeight: '$bold',
+                                                    color: 'white',
+                                                }}>
+                                                    It seems that you have already registered with this email address.
+                                                </Text>
+                                            </Modal.Body>
+                                            
+                                    </Modal>
+                                </Grid.Container>
+                            </div>
                         }
                         
                         {/* firstname, middlename, lastname */}
@@ -411,76 +542,106 @@ export default function PRegForm(){
                                 fontSize: '$4xl',
                                 fontWeight: '$semibold'
                             }}>Full Name</Text>
-    
+
                             <Grid.Container gap={2}
                             css={{
                                 jc: 'center',
                             }}>
-    
                                 {/* Firstname */}
+                                {firstname &&
                                 <Grid>
-                                    <Input disabled={!signedin} status={FirstnameStatus}  helperColor={HelperColor}
-                                    onChange={(event)=>{
-                                        setFirstName(event.target.value); 
-                                        if(event.target.value){
-                                            setFirstnameStatus('success')
-                                        }
-                                        else if(!event.target.value){
-                                            setFirstnameStatus('error')
-                                        }
-                                    }} 
-                                    animated={'true'} placeholder='First' type='text' clearable required/>
+                                    <Input onChange={(event)=>{setFirstName(event.target.value)}} width="200px" status={FirstnameStatus} disabled={!signedin} placeholder={User.given_name} />
                                 </Grid>
-    
+                                }
+                                {!firstname && 
+                                <Grid>
+                                    <Input onChange={(event)=>{setFirstName(event.target.value)}} width="200px" status={FirstnameStatus} disabled={!signedin} placeholder='First' />
+                                </Grid>
+                                }
+                                
+                                
+
                                 {/* Middlename */}
                                 <Grid>
-                                    <Input disabled={!signedin} onChange={(event)=>{setMiddleName(event.target.value)}} animated={'true'} placeholder='Middle' type='text'  clearable/>
+                                    <Input width="200px" disabled={!signedin} onChange={(event)=>{setMiddleName(event.target.value)}} animated={'true'} placeholder='Middle' type='text'  clearable/>
                                 </Grid>
-    
+
+
                                 {/* Lastname */}
-                                <Grid>
-                                    <Input disabled={!signedin} status={LastnameStatus}  helperColor={HelperColor}
-                                    onChange={(event)=>{
-                                        setLastName(event.target.value);
-                                        if(event.target.value){
-                                            setLastnameStatus('success')
-                                        }
-                                        else(
-                                            setLastnameStatus('error')
-                                        )
-                                    }} animated={'true'} placeholder='Last' type='text' clearable required/>
+                                {lastname &&
+                                <Grid> 
+                                    <Input onChange={(event)=>{setLastName(event.target.value)}} width="200px" status={LastnameStatus} disabled={!signedin} placeholder={User.family_name} />
                                 </Grid>
-    
+                                }
+                                {!lastname && 
+                                <Grid>
+                                    <Input onChange={(event)=>{setLastName(event.target.value)}} width="200px" status={LastnameStatus} disabled={!signedin} placeholder='Last' />
+                                </Grid>
+                                }
+
                             </Grid.Container>
 
                         </Grid.Container>
-                        <Grid.Container gap={2}
-                        css={{
-                            jc: 'center',
-                            alignItems: 'center'
-                        }}>
-                            <Grid
+
+                        {/* email */}
+                        {emailID &&
+                            <Grid.Container gap={2}
                             css={{
-                                textAlign: 'center',
-                                
+                                jc: 'center',
+                                alignItems: 'center'
                             }}>
-                                <Col>
-                                    <Text 
-                                    css={{
-                                        jc:'center',
-                                        textAlign: 'center',
-                                        paddingBottom: '5%',
-                                        fontSize: '$4xl',
-                                        fontWeight: '$semibold'
-                                    }}>
-                                        Email ID
-                                    </Text>
-                                    <Input width="300px" readOnly placeholder={emailID} />
-                                </Col>
-                            </Grid>
-                            
-                        </Grid.Container>
-    
+                                <Grid
+                                css={{
+                                    textAlign: 'center',
+                                    
+                                }}>
+                                    <Col>
+                                        <Text 
+                                        css={{
+                                            jc:'center',
+                                            textAlign: 'center',
+                                            paddingBottom: '5%',
+                                            fontSize: '$4xl',
+                                            fontWeight: '$semibold'
+                                        }}>
+                                            Email ID
+                                        </Text>
+                                        <Input width="300px" status={EmailIDStatus} disabled readOnly placeholder={emailID} />
+                                    </Col>
+                                </Grid>
+                                
+                            </Grid.Container>
+                        }
+                        {!emailID && 
+                            <Grid.Container gap={2}
+                            css={{
+                                jc: 'center',
+                                alignItems: 'center'
+                            }}>
+                                <Grid
+                                css={{
+                                    textAlign: 'center',
+                                    
+                                }}>
+                                    <Col>
+                                        <Text 
+                                        css={{
+                                            jc:'center',
+                                            textAlign: 'center',
+                                            paddingBottom: '5%',
+                                            fontSize: '$4xl',
+                                            fontWeight: '$semibold'
+                                        }}>
+                                            Email ID
+                                        </Text>
+                                        <Input width="300px" disabled readOnly placeholder='Email ID' />
+                                    </Col>
+                                </Grid>
+                                
+                            </Grid.Container>
+                        }
+                        
+
                         {/* batch, phonenumber, gender */}
                         <Grid.Container gap={2}
                         css={{
@@ -523,7 +684,7 @@ export default function PRegForm(){
                                     </Dropdown.Menu>
                                 </Dropdown>
                             </Grid>
-    
+
                             {/* Phone */}
                             <Grid 
                             css={{
@@ -558,7 +719,7 @@ export default function PRegForm(){
                                     animated={'true'} 
                                     placeholder='Phone Number' type='text' clearable required/>
                             </Grid>
-    
+
                             {/* Gender */}
                             <Grid>
                                 <Text
@@ -595,7 +756,7 @@ export default function PRegForm(){
                                 </Dropdown>
                             </Grid>
                         </Grid.Container>
-    
+
                         {/* primarypos, image, secondarypos */}
                         <Grid.Container gap={2}
                         css={{
@@ -640,7 +801,7 @@ export default function PRegForm(){
                                         </Dropdown>
                                 
                             </Grid>
-    
+
                             {/* image */}
                             <Grid 
                             css={{
@@ -695,7 +856,7 @@ export default function PRegForm(){
                                 </Dropdown>
                             </Grid>
                         </Grid.Container>
-    
+
                         {/* comment */}
                         <Grid.Container gap={2}
                         css={{
@@ -708,10 +869,10 @@ export default function PRegForm(){
                                 <Input css={{
                                     jc: 'center',
                                     textAlign: 'center'
-                                }} disabled={!signedin} onChange={(event)=>setComment(event.target.value)} width='300px' animated={'true'} placeholder="Any Comments? (Don't roast me)" type='text' clearable></Input>
+                                }} disabled={!signedin} onChange={(event)=>setComment(event.target.value)} width='320px' animated={'true'} placeholder="Comments? (Injuries, don't roast me at the auction...)" type='text' clearable></Input>
                             </Grid>
                         </Grid.Container>
-    
+
                         {/* payment button */}
                         <Grid.Container gap={2}
                         css={{
@@ -724,8 +885,9 @@ export default function PRegForm(){
                                 }}
                                 onPress={()=>{
                                     if(initialImage)
-                                    {
-                                        convertImage();
+                                    {  
+                                        console.log(initialImage)
+                                        convertImageToBase64();
                                     }
                                     setModalVisibility(CheckForm());
                                     
@@ -738,14 +900,14 @@ export default function PRegForm(){
                                         Pay
                                     </Text>
                                 </Button>
-    
+
                                 <Modal
                                 closeButton
                                 open={ModalVisibility}
                                 onClose={()=>{
                                     setModalVisibility(false)
                                 }}>
-    
+
                                     <Modal.Header>
                                         <Col>
                                             <Text
@@ -762,17 +924,17 @@ export default function PRegForm(){
                                                 fontSize: '$md',
                                                 fontWeight: '$normal',
                                                 textAlign: 'center',
-                                                color: '$gray700'
+                                                color: '$gray900'
                                             }}>
                                                 Check your details one last time before paying!
                                             </Text>
                                         </Col>
                                         
                                     </Modal.Header>
-    
+
                                     <Modal.Body>
-    
-    
+
+
                                         <Grid.Container
                                         css={{
                                             jc: 'center',
@@ -807,7 +969,7 @@ export default function PRegForm(){
                                                             }}>
                                                                 {firstname}
                                                             </Text>
-    
+
                                                             <Text showIn={'xs'}
                                                             css={{
                                                                 fontSize: '$md',
@@ -887,7 +1049,7 @@ export default function PRegForm(){
                                                             }}>
                                                                 {lastname}
                                                             </Text>
-    
+
                                                             <Text showIn={'xs'}
                                                             css={{
                                                                 fontSize: '$md',
@@ -906,7 +1068,7 @@ export default function PRegForm(){
                                                         </Row>
                                                     </Grid>
                                                 </Grid.Container>
-    
+
                                                 {/* email id */}
                                                 <Grid.Container gap={0.5}
                                                 css={{
@@ -929,7 +1091,7 @@ export default function PRegForm(){
                                                         }}>
                                                             {emailID}
                                                         </Text>
-    
+
                                                         <Text showIn={'xs'}
                                                         css={{
                                                             fontSize: '$md',
@@ -947,7 +1109,7 @@ export default function PRegForm(){
                                                         </Text>
                                                     
                                                 </Grid.Container>
-    
+
                                                 {/* batch, gender */}
                                                 <Grid.Container gap={0.5}
                                                 css={{
@@ -1032,7 +1194,7 @@ export default function PRegForm(){
                                                         </Row>
                                                     </Grid>
                                                 </Grid.Container>
-    
+
                                                 {/* number */}
                                                 <Grid.Container gap={0.5}
                                                 css={{
@@ -1040,7 +1202,7 @@ export default function PRegForm(){
                                                     alignItems: 'center',
                                                     textAlign: 'center'
                                                 }}>
-    
+
                                                     <Grid>
                                                         <Row
                                                         css={{
@@ -1080,7 +1242,7 @@ export default function PRegForm(){
                                                         </Row>
                                                     </Grid>
                                                 </Grid.Container>
-    
+
                                                 {/* pos1, pos2 */}
                                                 <Grid.Container gap={0.5}
                                                 css={{
@@ -1165,7 +1327,7 @@ export default function PRegForm(){
                                                         </Row>
                                                     </Grid>
                                                 </Grid.Container>
-    
+
                                                 {/* picture */}
                                                 <Grid.Container gap={0.5}
                                                 css={{
@@ -1205,7 +1367,7 @@ export default function PRegForm(){
                                                     </Grid>
                                                     
                                                 </Grid.Container>
-    
+
                                                 {/* comment */}
                                                 <Grid.Container gap={0.5}
                                                 css={{
@@ -1257,7 +1419,7 @@ export default function PRegForm(){
                                             </Grid>
                                         </Grid.Container>
                                     </Modal.Body>
-    
+
                                     <Modal.Footer
                                     css={{
                                         jc: 'center',
@@ -1269,6 +1431,7 @@ export default function PRegForm(){
                                         }}
                                         onPress={(e)=>{
                                             sendForm(e);
+                                            // sendImage(initialImage);
                                             setRegistrationDone(true);
                                             
                                             setModalVisibility(false);
@@ -1282,538 +1445,13 @@ export default function PRegForm(){
                                             </Text>
                                         </Button>
                                     </Modal.Footer>
-    
+
                                 </Modal>
                             </Grid>
                         </Grid.Container>
-    
+
                     </Grid>
                 </Grid.Container>
-            }
-            {RegistrationDone &&
-                <Grid.Container
-                css={{
-                    jc: 'center',
-                    textAlign: 'center',
-                    alignItems: 'center',
-                }}>
-                    <Grid>
-                        <Grid.Container
-                        css={{
-                            jc: 'center',
-                            alignItems: 'center'
-                        }}>
-                            <Text
-                            css={{
-                                color: '$green600',
-                                fontSize: '$5xl',
-                                fontWeight: '$semibold'
-                            }}>
-                                Registration Complete!
-                            </Text>
-                        </Grid.Container>
-                        <Grid.Container
-                        css={{
-                            jc: 'center',
-                            alignItems: 'center'
-                        }}>
-                            <Text
-                            css={{
-                                color: 'white',
-                                fontSize: '$2xl',
-                                fontWeight: '$medium',
-                                paddingBottom: '40px'
-                            }}>
-                                You can find the player details below!
-                            </Text>
-                        </Grid.Container>
-                        <Grid.Container
-                        css={{
-                            jc: 'center',
-                            alignItems: 'center'
-                        }}>
-                            <Grid>
-                                {/* first, middle, last */}
-                                <Grid.Container gap={0.5}
-                                css={{
-                                    jc: 'center',
-                                    alignItems: 'center',
-                                    textAlign: 'center'
-                                }}>
-                                    <Grid>
-                                        <Row
-                                        css={{
-                                            jc: 'center',
-                                            textAlign: 'center'
-                                        }}>
-                                            <Text hideIn={'xs'}
-                                            css={{
-                                                fontSize: '$lg',
-                                                paddingRight: '4px',
-                                                color: '$gray700'
-                                            }}>
-                                                First Name: 
-                                            </Text>
-                                            <Text hideIn={'xs'}
-                                            css={{
-                                                fontSize: '$lg',
-                                                fontWeight: '$semibold'
-                                            }}>
-                                                {firstname}
-                                            </Text>
-
-                                            <Text showIn={'xs'}
-                                            css={{
-                                                fontSize: '$md',
-                                                paddingRight: '4px',
-                                                color: '$gray700'
-                                            }}>
-                                                First Name: 
-                                            </Text>
-                                            <Text showIn={'xs'}
-                                            css={{
-                                                fontSize: '$md',
-                                                fontWeight: '$semibold'
-                                            }}>
-                                                {firstname}
-                                            </Text>
-                                        </Row>
-                                    </Grid>
-                                    <Grid>
-                                        {middlename && 
-                                            <Row
-                                            css={{
-                                                jc: 'center',
-                                                textAlign: 'center'
-                                            }}>
-                                                <Text hideIn={'xs'}
-                                                css={{
-                                                    fontSize: '$lg',
-                                                    paddingRight: '4px',
-                                                    color: '$gray700'
-                                                }}>
-                                                    Middle Name: 
-                                                </Text>
-                                                <Text hideIn={'xs'}
-                                                css={{
-                                                    fontSize: '$lg',
-                                                    fontWeight: '$semibold'
-                                                }}>
-                                                    {middlename}
-                                                </Text>
-
-                                                <Text showIn={'xs'}
-                                                css={{
-                                                    fontSize: '$md',
-                                                    paddingRight: '4px',
-                                                    color: '$gray700'
-                                                }}>
-                                                    Middle Name: 
-                                                </Text>
-                                                <Text showIn={'xs'}
-                                                css={{
-                                                    fontSize: '$md',
-                                                    fontWeight: '$semibold'
-                                                }}>
-                                                    {middlename}
-                                                </Text>
-                                            </Row>
-                                        }
-                                    </Grid>
-                                    <Grid>
-                                        <Row
-                                        css={{
-                                            jc: 'center',
-                                            textAlign: 'center'
-                                        }}>
-                                            <Text hideIn={'xs'}
-                                            css={{
-                                                fontSize: '$lg',
-                                                paddingRight: '4px',
-                                                color: '$gray700'
-                                            }}>
-                                                Last Name: 
-                                            </Text>
-                                            <Text hideIn={'xs'}
-                                            css={{
-                                                fontSize: '$lg',
-                                                fontWeight: '$semibold'
-                                            }}>
-                                                {lastname}
-                                            </Text>
-
-                                            <Text showIn={'xs'}
-                                            css={{
-                                                fontSize: '$md',
-                                                paddingRight: '4px',
-                                                color: '$gray700'
-                                            }}>
-                                                Last Name: 
-                                            </Text>
-                                            <Text showIn={'xs'}
-                                            css={{
-                                                fontSize: '$md',
-                                                fontWeight: '$semibold'
-                                            }}>
-                                                {lastname}
-                                            </Text>
-                                        </Row>
-                                    </Grid>
-                                </Grid.Container>
-
-                                {/* email id */}
-                                <Grid.Container gap={0.5}
-                                css={{
-                                    jc: 'center',
-                                    alignItems: 'center',
-                                    textAlign: 'center'
-                                }}>
-                                        <Text hideIn={'xs'}
-                                        css={{
-                                            fontSize: '$lg',
-                                            paddingRight: '4px',
-                                            color: '$gray700'
-                                        }}>
-                                            Email ID:  
-                                        </Text>
-                                        <Text hideIn={'xs'}
-                                        css={{
-                                            fontSize: '$lg',
-                                            fontWeight: '$semibold'
-                                        }}>
-                                            {emailID}
-                                        </Text>
-
-                                        <Text showIn={'xs'}
-                                        css={{
-                                            fontSize: '$md',
-                                            paddingRight: '4px',
-                                            color: '$gray700'
-                                        }}>
-                                            Email ID:  
-                                        </Text>
-                                        <Text showIn={'xs'}
-                                        css={{
-                                            fontSize: '$md',
-                                            fontWeight: '$semibold'
-                                        }}>
-                                            {emailID}
-                                        </Text>
-                                    
-                                </Grid.Container>
-
-                                {/* batch, gender */}
-                                <Grid.Container gap={0.5}
-                                css={{
-                                    jc: 'center',
-                                    alignItems: 'center',
-                                    textAlign: 'center'
-                                }}>
-                                    <Grid>
-                                        <Row
-                                        css={{
-                                            jc: 'center',
-                                            textAlign: 'center'
-                                        }}>
-                                            <Text hideIn={'xs'}
-                                            css={{
-                                                fontSize: '$lg',
-                                                paddingRight: '4px',
-                                                color: '$gray700'
-                                            }}>
-                                                Batch:  
-                                            </Text>
-                                            <Text hideIn={'xs'}
-                                            css={{
-                                                fontSize: '$lg',
-                                                fontWeight: '$semibold'
-                                            }}>
-                                                {batch}
-                                            </Text>
-                                            <Text showIn={'xs'}
-                                            css={{
-                                                fontSize: '$md',
-                                                paddingRight: '4px',
-                                                color: '$gray700'
-                                            }}>
-                                                Batch:  
-                                            </Text>
-                                            <Text showIn={'xs'}
-                                            css={{
-                                                fontSize: '$md',
-                                                fontWeight: '$semibold'
-                                            }}>
-                                                {batch}
-                                            </Text>
-                                        </Row>
-                                    </Grid>
-                                    <Grid>
-                                        <Row
-                                        css={{
-                                            jc: 'center',
-                                            textAlign: 'center'
-                                        }}>
-                                            <Text hideIn={'xs'}
-                                            css={{
-                                                fontSize: '$lg',
-                                                paddingRight: '4px',
-                                                color: '$gray700'
-                                            }}>
-                                                Gender: 
-                                            </Text>
-                                            <Text hideIn={'xs'}
-                                            css={{
-                                                fontSize: '$lg',
-                                                fontWeight: '$semibold'
-                                            }}>
-                                                {gender}
-                                            </Text>
-                                            <Text showIn={'xs'}
-                                            css={{
-                                                fontSize: '$md',
-                                                paddingRight: '4px',
-                                                color: '$gray700'
-                                            }}>
-                                                Gender: 
-                                            </Text>
-                                            <Text showIn={'xs'}
-                                            css={{
-                                                fontSize: '$md',
-                                                fontWeight: '$semibold'
-                                            }}>
-                                                {gender}
-                                            </Text>
-                                        </Row>
-                                    </Grid>
-                                </Grid.Container>
-
-                                {/* number */}
-                                <Grid.Container gap={0.5}
-                                css={{
-                                    jc: 'center',
-                                    alignItems: 'center',
-                                    textAlign: 'center'
-                                }}>
-
-                                    <Grid>
-                                        <Row
-                                        css={{
-                                            jc: 'center',
-                                            textAlign: 'center'
-                                        }}>
-                                            <Text hideIn={'xs'}
-                                            css={{
-                                                fontSize: '$lg',
-                                                paddingRight: '4px',
-                                                color: '$gray700'
-                                            }}>
-                                                Phone Number: 
-                                            </Text>
-                                            <Text hideIn={'xs'}
-                                            css={{
-                                                fontSize: '$lg',
-                                                fontWeight: '$semibold'
-                                            }}>
-                                                {phonenumber}
-                                            </Text>
-                                            <Text showIn={'xs'}
-                                            css={{
-                                                fontSize: '$md',
-                                                paddingRight: '4px',
-                                                color: '$gray700'
-                                            }}>
-                                                Phone Number: 
-                                            </Text>
-                                            <Text showIn={'xs'}
-                                            css={{
-                                                fontSize: '$md',
-                                                fontWeight: '$semibold'
-                                            }}>
-                                                {phonenumber}
-                                            </Text>
-                                        </Row>
-                                    </Grid>
-                                </Grid.Container>
-
-                                {/* pos1, pos2 */}
-                                <Grid.Container gap={0.5}
-                                css={{
-                                    jc: 'center',
-                                    alignItems: 'center',
-                                    textAlign: 'center'
-                                }}>
-                                    <Grid>
-                                        <Row
-                                        css={{
-                                        
-                                            textAlign: 'center'
-                                        }}>
-                                            <Text hideIn={'xs'}
-                                            css={{
-                                                fontSize: '$lg',
-                                                paddingRight: '4px',
-                                                color: '$gray700'
-                                            }}>
-                                                Position I: 
-                                            </Text>
-                                            <Text hideIn={'xs'}
-                                            css={{
-                                                fontSize: '$lg',
-                                                fontWeight: '$semibold'
-                                            }}>
-                                                {primarypos}
-                                            </Text>
-                                            <Text showIn={'xs'}
-                                            css={{
-                                                fontSize: '$md',
-                                                paddingRight: '4px',
-                                                color: '$gray700'
-                                            }}>
-                                                Position I: 
-                                            </Text>
-                                            <Text showIn={'xs'}
-                                            css={{
-                                                fontSize: '$md',
-                                                fontWeight: '$semibold'
-                                            }}>
-                                                {primarypos}
-                                            </Text>
-                                        </Row>
-                                    </Grid>
-                                    <Grid>
-                                        <Row
-                                        css={{
-                                            
-                                            textAlign: 'center'
-                                        }}>
-                                            <Text hideIn={'xs'}
-                                            css={{
-                                                fontSize: '$lg',
-                                                paddingRight: '4px',
-                                                color: '$gray700'
-                                            }}>
-                                                Position II: 
-                                            </Text>
-                                            <Text hideIn={'xs'}
-                                            css={{
-                                                fontSize: '$lg',
-                                                fontWeight: '$semibold'
-                                            }}>
-                                                {secondpos}
-                                            </Text>
-                                            <Text showIn={'xs'}
-                                            css={{
-                                                fontSize: '$md',
-                                                paddingRight: '4px',
-                                                color: '$gray700'
-                                            }}>
-                                                Position II: 
-                                            </Text>
-                                            <Text showIn={'xs'}
-                                            css={{
-                                                fontSize: '$md',
-                                                fontWeight: '$semibold'
-                                            }}>
-                                                {secondpos}
-                                            </Text>
-                                        </Row>
-                                    </Grid>
-                                </Grid.Container>
-
-                                {/* picture */}
-                                <Grid.Container gap={0.5}
-                                css={{
-                                    jc: 'center',
-                                    alignItems: 'center',
-                                    textAlign: 'center'
-                                }}>
-                                    <Grid>
-                                    {finalImage &&
-                                        <Row
-                                        css={{
-                                            alignItems: 'center'
-                                        }}>
-                                            <Text hideIn={'xs'}
-                                            css={{
-                                                fontSize: '$lg',
-                                                paddingRight: '4px',
-                                                color: '$gray700'
-                                            }}>
-                                                Picture: 
-                                            </Text>
-                                            <Text showIn={'xs'}
-                                            css={{
-                                                fontSize: '$md',
-                                                paddingRight: '4px',
-                                                color: '$gray700'
-                                            }}>
-                                                Picture: 
-                                            </Text>
-                                            <Avatar
-                                                src={finalImage}
-                                                size='xl'
-                                            />
-                                            
-                                        </Row>
-                                    }
-                                    </Grid>
-                                    
-                                </Grid.Container>
-
-                                {/* comment */}
-                                <Grid.Container gap={0.5}
-                                css={{
-                                    jc: 'center',
-                                    alignItems: 'center',
-                                    textAlign: 'center'
-                                }}>
-                                    <Grid>
-                                        {comment &&
-                                            <Row
-                                            css={{
-                                                
-                                                textAlign: 'center'
-                                            }}>
-                                                <Text hideIn={'xs'}
-                                                css={{
-                                                    fontSize: '$lg',
-                                                    paddingRight: '4px',
-                                                    color: '$gray700'
-                                                }}>
-                                                    Comment: 
-                                                </Text>
-                                                <Text hideIn={'xs'}
-                                                css={{
-                                                    fontSize: '$lg',
-                                                    fontWeight: '$semibold'
-                                                }}>
-                                                    {comment}
-                                                </Text>
-                                                <Text showIn={'xs'}
-                                                css={{
-                                                    fontSize: '$md',
-                                                    paddingRight: '4px',
-                                                    color: '$gray700'
-                                                }}>
-                                                    Comment: 
-                                                </Text>
-                                                <Text showIn={'xs'}
-                                                css={{
-                                                    fontSize: '$md',
-                                                    fontWeight: '$semibold'
-                                                }}>
-                                                    {comment}
-                                                </Text>
-                                            </Row>
-                                        }
-                                    </Grid>
-                                </Grid.Container>
-                            </Grid>
-                        </Grid.Container>
-                    </Grid>
-                </Grid.Container>
-            }
-
         </div>
     )
 }
