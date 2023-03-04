@@ -4,6 +4,7 @@ import React, {useState, useEffect} from "react";
 import imageCompression from 'browser-image-compression';
 import jwt_decode from "jwt-decode";
 
+
 export default function PRegForm(){
 
     const batchItems = [
@@ -33,6 +34,9 @@ export default function PRegForm(){
         { key: 'Attacker', name: 'Attacker'}
     ];
 
+
+    //User filled in deails
+
     const [firstname, setFirstName] = useState('');
     const [FirstnameStatus, setFirstnameStatus] = useState('');
 
@@ -55,10 +59,13 @@ export default function PRegForm(){
 
     const [comment, setComment] = useState('');
 
-    const [initialImage, setInitialImage] = useState('');
-    const [finalImage, setFinalImage] = useState('');
-    const [finalFile, setFinalFile] = useState('');
-    const [finalFileName, setFinalFileName] = useState('');
+    const [initialImage, setInitialImage] = useState();
+    const [finalImage, setFinalImage] = useState();
+    const [finalFile, setFinalFile] = useState();
+    const [finalFileName, setFinalFileName] = useState();
+
+    const [paymentSC, setPaymentSC] = useState();
+    const [paymentSCUploaded, setPaymentSCUploaded] = useState();
 
     const [phonenumber,setPhonenumber] = useState('');
     const [PhonenumberStatus, setPhonenumberStatus] = useState('');
@@ -66,13 +73,15 @@ export default function PRegForm(){
     const [emailID, setEmailID] = useState('');
     const [EmailIDStatus, setEmailIDStatus] = useState('');
 
+    // variables to store result of check if user already registered
     const [AlreadyRegistered, setAlreadyRegistered] = useState(false);
     const [RegistrationDone, setRegistrationDone] = useState(false);
 
-    const [HelperColor, setHelperColor] = useState('');
+    // to control details check modal and loader while signing in details
     const [ModalVisibility, setModalVisibility] = useState(false);
     const [LoginLoader, setLoginLoader] = useState(false);
-
+    
+    //variable to control if user signed in
     const [signedin, setSignedIn] = useState(false);
     const [User, setUser] = useState({});
     //     onSuccess: codeResponse => 
@@ -82,7 +91,6 @@ export default function PRegForm(){
     //     flow: 'auth-code',
         
     // });
-
 
     // function to check if all required fields are filled
     function CheckForm(){
@@ -134,7 +142,7 @@ export default function PRegForm(){
         if(!secondpos){
             setSecondposStatus('error')
         }
-        if(firstname && lastname && batch && phonenumber && gender && primarypos && secondpos){
+        if(firstname && lastname && batch && phonenumber && gender && primarypos && secondpos && paymentSC){
             setFirstnameStatus('warning');
             setLastnameStatus('warning');
             setEmailIDStatus('warning');
@@ -176,19 +184,31 @@ export default function PRegForm(){
         }
         
     }
-    // function to send image to googledrive
-    async function sendImage(imagedata){
+
+    // function to send profile image to googledrive
+    async function sendProfileImage(imagedata){
         var imageName = User.given_name+User.family_name
-        let ImageData = new FormData();
-        console.log(ImageData)
-        ImageData.append('file', imagedata);
+        const ImageData = new FormData();
+        ImageData.append('file', imagedata, imageName);
         if(ImageData){
-            // sending image to google drive
-            console.log('is it fetching')
             await fetch('http://localhost:3001/registration/playerimage',{
                 method: 'POST',
                 headers:{Value: "multipart/form-data"},
                 body: ImageData
+            })
+        }
+    }
+
+    // function to send payment image to googledrive
+    async function sendPaymentImage(paymentdata){
+        var paymentName = User.given_name+User.family_name+'Payment'
+        const PaymentData = new FormData();
+        PaymentData.append('file', paymentdata, paymentName);
+        if(PaymentData){
+            await fetch('http://localhost:3001/registration/playerpaymentimage',{
+                method: 'POST',
+                headers:{Value: "multipart/form-data"},
+                body: PaymentData
             })
         }
     }
@@ -278,6 +298,7 @@ export default function PRegForm(){
     }
     
     useEffect( ()=>{
+        setLoginLoader(true)
         window.setTimeout(()=>{
             window.google.accounts.id.initialize({
                 client_id: "307601456989-5ii0dp5jhqah6snpkuf9ff1jajp67ku6.apps.googleusercontent.com",
@@ -288,7 +309,8 @@ export default function PRegForm(){
                 document.getElementById("GoogleButton"),
                 { theme: 'outlined', size: 'large', shape: 'pill',}
             ); 
-        }, 1500)
+            setLoginLoader(false)
+        }, 2000)
         
     }, [])
 
@@ -459,6 +481,7 @@ export default function PRegForm(){
                             </Grid.Container> 
                             
                         </div>
+
                         }
                         {LoginLoader && //Show loader when LoginLoader===true - for the lag between loggin in and shoing welcome message
                         <Grid.Container
@@ -475,6 +498,7 @@ export default function PRegForm(){
                             </Grid>
                         </Grid.Container>
                         }
+
                         {AlreadyRegistered && //If user is already registered, show error message
                             <div>
                                 <Grid.Container
@@ -486,7 +510,7 @@ export default function PRegForm(){
                                     <Modal
                                     open={AlreadyRegistered}
                                     closeButton
-                                    onClose={()=>setAlreadyRegistered(false)}
+                                    onClose={()=>{setAlreadyRegistered(false); window.location.pathname='/registration/player'; }}
                                     >
                                             <Modal.Header
                                             css={{
@@ -550,12 +574,30 @@ export default function PRegForm(){
                                 {/* Firstname */}
                                 {firstname &&
                                 <Grid>
-                                    <Input onChange={(event)=>{setFirstName(event.target.value)}} width="200px" status={FirstnameStatus} disabled={!signedin} placeholder={User.given_name} />
+                                    <Input onChange={(event)=>{
+                                        setFirstName(event.target.value);
+                                        if(event.target.value) {
+                                            setFirstnameStatus('success')
+                                        }
+                                        else if(!event.target.value){
+                                            setFirstnameStatus('error')
+                                        }
+                                    }} 
+                                    width="200px" status={FirstnameStatus} disabled={!signedin} placeholder={User.given_name} />
                                 </Grid>
                                 }
                                 {!firstname && 
                                 <Grid>
-                                    <Input onChange={(event)=>{setFirstName(event.target.value)}} width="200px" status={FirstnameStatus} disabled={!signedin} placeholder='First' />
+                                    <Input onChange={(event)=>{
+                                        setFirstName(event.target.value)
+                                        if(event.target.value) {
+                                            setFirstnameStatus('success')
+                                        }
+                                        else if(!event.target.value){
+                                            setFirstnameStatus('error')
+                                        }
+                                        }} 
+                                        width="200px" status={FirstnameStatus} disabled={!signedin} placeholder='First' />
                                 </Grid>
                                 }
                                 
@@ -570,12 +612,31 @@ export default function PRegForm(){
                                 {/* Lastname */}
                                 {lastname &&
                                 <Grid> 
-                                    <Input onChange={(event)=>{setLastName(event.target.value)}} width="200px" status={LastnameStatus} disabled={!signedin} placeholder={User.family_name} />
+                                    <Input onChange={(event)=>{
+                                        setLastName(event.target.value)
+                                        if(event.target.value){
+                                            setLastnameStatus('success')
+                                        }
+                                        else if(!event.target.value){
+                                            setLastnameStatus('error')
+                                        }
+                                        
+                                        }} 
+                                        width="200px" status={LastnameStatus} disabled={!signedin} placeholder={User.family_name} />
                                 </Grid>
                                 }
                                 {!lastname && 
                                 <Grid>
-                                    <Input onChange={(event)=>{setLastName(event.target.value)}} width="200px" status={LastnameStatus} disabled={!signedin} placeholder='Last' />
+                                    <Input onChange={(event)=>{
+                                        setLastName(event.target.value)
+                                        if(event.target.value){
+                                            setLastnameStatus('success')
+                                        }
+                                        else if(!event.target.value){
+                                            setLastnameStatus('error')
+                                        }
+                                        }} 
+                                        width="200px" status={LastnameStatus} disabled={!signedin} placeholder='Last' />
                                 </Grid>
                                 }
 
@@ -864,13 +925,60 @@ export default function PRegForm(){
                             alignItems: 'center',
                             paddingBottom:'20px'
                         }}>
-                            {/* Comment */}
+                            <Col>
+                                <Text
+                                css={{
+                                    jc:'center',
+                                    textAlign: 'center',
+                                    fontSize: '$4xl',
+                                    fontWeight: '$semibold'
+                                }}>
+                                    Comments
+                                </Text>
+                            </Col>
                             <Grid>
                                 <Input css={{
                                     jc: 'center',
                                     textAlign: 'center'
                                 }} disabled={!signedin} onChange={(event)=>setComment(event.target.value)} width='320px' animated={'true'} placeholder="Comments? (Injuries, don't roast me at the auction...)" type='text' clearable></Input>
                             </Grid>
+                        </Grid.Container>
+
+                        {/* payment details */}
+                        <Grid.Container gap={2}
+                        css={{
+                            jc: 'center',
+                            alignItems: 'center',
+                            paddingBottom:'20px'
+                        }}>
+                            <Col>
+                                {paymentSCUploaded===false && 
+                                <Text
+                                css={{
+                                    jc: 'center',
+                                    textAlign: 'center',
+                                    color: '$red600',
+                                    fontSize: '$xl',
+                                    fontWeight: '$semibold'
+                                }}>
+                                    Please upload payment screenshot from your UPI service app!
+                                </Text>
+                                }
+                                
+                                <Text
+                                css={{
+                                    jc:'center',
+                                    textAlign: 'center',
+                                    fontSize: '$4xl',
+                                    fontWeight: '$semibold'
+                                }}>
+                                    UPI Payment
+                                </Text>
+                            </Col>
+                            <Grid>
+                                <input disabled={!signedin} onChange={(event)=>{setPaymentSC(event.target.files[0]); }} className="photobtn" animated={'true'} type='file' accept="image/*" required/>
+                            </Grid>
+                            
                         </Grid.Container>
 
                         {/* payment button */}
@@ -885,12 +993,14 @@ export default function PRegForm(){
                                 }}
                                 onPress={()=>{
                                     if(initialImage)
-                                    {  
-                                        console.log(initialImage)
-                                        convertImageToBase64();
+                                    {convertImageToBase64()}
+                                    if(paymentSC){
+                                        setPaymentSCUploaded(true)
+                                    }
+                                    if(!paymentSC){
+                                        setPaymentSCUploaded(false)
                                     }
                                     setModalVisibility(CheckForm());
-                                    
                                 }}>
                                     <Text
                                     css={{
@@ -1431,9 +1541,9 @@ export default function PRegForm(){
                                         }}
                                         onPress={(e)=>{
                                             sendForm(e);
-                                            // sendImage(initialImage);
+                                            sendPaymentImage(paymentSC)
+                                            sendProfileImage(initialImage);
                                             setRegistrationDone(true);
-                                            
                                             setModalVisibility(false);
                                         }}>
                                             <Text
@@ -1441,7 +1551,7 @@ export default function PRegForm(){
                                                 color: 'Black',
                                                 fontWeight: '$semibold'
                                             }}>
-                                                Pay
+                                                Register
                                             </Text>
                                         </Button>
                                     </Modal.Footer>
@@ -1452,6 +1562,7 @@ export default function PRegForm(){
 
                     </Grid>
                 </Grid.Container>
+            
         </div>
     )
 }

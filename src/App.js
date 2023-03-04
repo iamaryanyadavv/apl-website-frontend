@@ -13,6 +13,7 @@ import RoadToAPL from './pages/RoadToAPL/roadtoaplpage.js';
 import SlotBookingPage from './pages/SlotBookingPage/slotbookingpage.js';
 import RegistrationPage from './pages/RegistrationPage/registration.js';
 import PlayerRegistrationPage from './pages/PlayerRegistrationPage/playerregistrationpage.js';
+import PlayerCheckoutForm from './components/registration/playercheckoutform';
 import TeamRegistrationPage from './pages/TeamRegistrationPage/teamregistrationpage.js';
 import TeamPage from './pages/TeamPage/team';
 import EventsPage from './pages/EventsPage/eventspage';
@@ -81,6 +82,7 @@ function App() {
                 {/* Registration */}
                 <Route exact path="/registration" element={<RegistrationPage/>} />
                 <Route exact path="/registration/player" element={<PlayerRegistrationPage/>} />
+                <Route exact path="/registration/player/payment" element={<PlayerCheckoutForm/>} />
                 <Route exact path="/registration/team" element={<TeamRegistrationPage/>} />
 
                 {/* Meet The Team */}
