@@ -51,8 +51,6 @@ export default function TRegForm() {
     const [initialImage, setInitialImage] = useState('');
     const [finalImage, setFinalImage] = useState('');
 
-    const [emailID, setEmailID] = useState('');
-
     const [AlreadyRegistered, setAlreadyRegistered] = useState(false);
     const [RegistrationDone, setRegistrationDone] = useState(false);
 
@@ -62,6 +60,7 @@ export default function TRegForm() {
 
     const [paymentSC, setPaymentSC] = useState();
     const [paymentSCUploaded, setPaymentSCUploaded] = useState();
+    const [teamlogoUploaded, setTeamlogoUploaded] = useState();
 
     const [User, setUser] = useState({});
 
@@ -162,7 +161,7 @@ export default function TRegForm() {
         }
         
 
-        if(managername && manageremail && managerphone && totalowners==5 && owner1 && owner2 && owner3 && owner4 && owner5 && paymentSC){
+        if(teamname && managername && manageremail && managerphone && totalowners==='5' && owner1 && owner2 && owner3 && owner4 && owner5 && paymentSC && teamlogoUploaded){
             setTeamnamestatus('warning');
             SetManagernamestatus('warning');
             SetManagerphonestatus('warning');
@@ -175,7 +174,7 @@ export default function TRegForm() {
             SetOwner5status('warning');
             return true
         }
-        else if(managername && manageremail && managerphone && totalowners==4 && owner1 && owner2 && owner3 && owner4 && paymentSC)
+        else if(teamname && managername && manageremail && managerphone && totalowners==='4' && owner1 && owner2 && owner3 && owner4 && paymentSC && teamlogoUploaded)
         {
             setTeamnamestatus('warning');
             SetManagernamestatus('warning');
@@ -188,7 +187,7 @@ export default function TRegForm() {
             SetOwner4status('warning');
             return true
         }
-        else if(managername && manageremail && managerphone && totalowners==3 && owner1 && owner2 && owner3 && paymentSC)
+        else if(teamname && managername && manageremail && managerphone && totalowners==='3' && owner1 && owner2 && owner3 && paymentSC && teamlogoUploaded)
         {
             setTeamnamestatus('warning');
             SetManagernamestatus('warning');
@@ -200,7 +199,7 @@ export default function TRegForm() {
             SetOwner3status('warning');
             return true
         }
-        else if(managername && manageremail && managerphone && totalowners==2 && owner1 && owner2 && paymentSC) 
+        else if(teamname && managername && manageremail && managerphone && totalowners==='2' && owner1 && owner2 && paymentSC && teamlogoUploaded) 
         {
             setTeamnamestatus('warning');
             SetManagernamestatus('warning');
@@ -211,8 +210,9 @@ export default function TRegForm() {
             SetOwner2status('warning');
             return true
         }
-        else if(managername && manageremail && managerphone && totalowners==1 && owner1 && paymentSC)
+        else if(teamname && managername && manageremail && managerphone && totalowners==='1' && owner1 && paymentSC && teamlogoUploaded)
         {
+            console.log('here')
             setTeamnamestatus('warning');
             SetManagernamestatus('warning');
             SetManagerphonestatus('warning');
@@ -249,8 +249,8 @@ export default function TRegForm() {
         }
     }
 
-    const getRegisteredPlayersEmailData= async (userObject) =>{
-        await fetch('http://localhost:3001/registration/player')
+    const getRegisteredTeamsEmailData= async (userObject) =>{
+        await fetch('http://localhost:3001/registration/team')
         .then(response=>response.json())
         .then((data)=>{
             var isSignedin = false
@@ -269,13 +269,11 @@ export default function TRegForm() {
                     setSignedIn(true)
                     document.getElementById("GoogleButton").hidden = true;
                     setUser(userObject);
-                    setEmailID(userObject.email);
                     SetManageremail(userObject.email);
                     SetManagername(userObject.given_name+" "+userObject.family_name);
                     SetOwner1(userObject.given_name+" "+userObject.family_name);
                     setAlreadyRegistered(false)
                     SetManageremailstatus('success')
-                    SetManagernamestatus('success')
                     SetOwner1status('success')
                 }
                 else{
@@ -287,58 +285,120 @@ export default function TRegForm() {
             }
             else if(!data.values){
                 setLoginLoader(false);
-                setSignedIn(false)
-                setAlreadyRegistered(true)
-                document.getElementById("GoogleButton").hidden = false;
+                setSignedIn(true)
+                setAlreadyRegistered(false)
+                document.getElementById("GoogleButton").hidden = true;
+                setUser(userObject);
+                SetManageremail(userObject.email);
+                SetManagername(userObject.given_name+" "+userObject.family_name);
+                SetOwner1(userObject.given_name+" "+userObject.family_name);
+                setAlreadyRegistered(false)
+                SetManageremailstatus('success')
+                SetOwner1status('success')
             }
             
              
         })
     } 
 
-
-
-    
-
-      async function sendForm(e)
+    async function sendForm(e)
     {
-        if(teamname & managername & manageremail & managerphone & totalowners==1 & owner1 ||
-        teamname & managername & manageremail & managerphone & totalowners==2 & owner1 & owner2 ||
-        teamname & managername & manageremail & managerphone & totalowners==3 & owner1 & owner2 & owner3 ||
-        teamname & managername & manageremail & managerphone & totalowners==4 & owner1 & owner2 & owner3 & owner4 || 
-        teamname & managername & manageremail & managerphone & totalowners==5 & owner1 & owner2 & owner3 & owner4 & owner5
-        )
-        {
-        try{
-        let res = await fetch("https://localhost:3001/",
-        {
+        if(teamname && managername && manageremail && managerphone && totalowners===1 && owner1 && !owner2 && !owner3 && !owner4 && !owner5 ){
+            console.log('coming in owner1')
+            await fetch("http://localhost:3001/registration/team",{
             method: "POST",
-            body: JSON.stringify({
-                teamname:teamname,
-                managername:managername,
-                manageremail:manageremail,
-                managerphone:managerphone,
-              }),
-              headers:{
+            headers:{
                 "Content-type":"application/json"
-            }
+            },
+            body: JSON.stringify({
+                teamlogo: finalImage,
+                teamname: teamname,
+                managername: managername,
+                manageremail: manageremail,
+                managerphone: managerphone,
+                totalowners: totalowners,
+                teamownersnames: owner1,
+                teamownersemailIDs: manageremail
+              }),
         });
-        let resJson = await res.json();
-        if(res.status==200)
-        {
-            console.log("SUCCESS");
         }
-        else
-        console.log("FAILED");
-    }
-        catch(error)
-        {
-            console.log(error);
+        if(teamname && managername && manageremail && managerphone && totalowners===2 && owner1 && owner2 && !owner3 && !owner4 && !owner5 ){
+            console.log('coming in owner1+2')
+            await fetch("http://localhost:3001/registration/team",{
+            method: "POST",
+            headers:{
+                "Content-type":"application/json"
+            },
+            body: JSON.stringify({
+                teamlogo: finalImage,
+                teamname: teamname,
+                managername: managername,
+                manageremail: manageremail,
+                managerphone: managerphone,
+                totalowners: totalowners,
+                teamownersnames: owner1 + ', ' + owner2,
+                teamownersemailIDs: manageremail + ', ' + owner2email
+              }),
+        });
         }
+        if(teamname && managername && manageremail && managerphone && totalowners===3 && owner1 && owner2 && owner3 && !owner4 && !owner5 ){
+            await fetch("http://localhost:3001/registration/team",{
+            method: "POST",
+            headers:{
+                "Content-type":"application/json"
+            },
+            body: JSON.stringify({
+                teamlogo: finalImage,
+                teamname: teamname,
+                managername: managername,
+                manageremail: manageremail,
+                managerphone: managerphone,
+                totalowners: totalowners,
+                teamownersnames: owner1 + ', ' + owner2 + ', ' + owner3,
+                teamownersemailIDs: manageremail + ', ' + owner2email + ', ' + owner3email
+              }),
+        });
+        }
+        if(teamname && managername && manageremail && managerphone && totalowners===4 && owner1 && owner2 && owner3 && owner4 && !owner5 ){
+            await fetch("http://localhost:3001/registration/team",{
+            method: "POST",
+            headers:{
+                "Content-type":"application/json"
+            },
+            body: JSON.stringify({
+                teamlogo: finalImage,
+                teamname: teamname,
+                managername: managername,
+                manageremail: manageremail,
+                managerphone: managerphone,
+                totalowners: totalowners,
+                teamownersnames: owner1 + ', ' + owner2 + ', ' + owner3 + ', ' + owner4,
+                teamownersemailIDs: manageremail + ', ' + owner2email + ', ' + owner3email + ', ' + owner4email
+              }),
+        });
+        }
+        if(teamname & managername & manageremail & managerphone & totalowners===5 & owner1 & owner2 & owner3 & owner4 & owner5){
+            await fetch("http://localhost:3001/registration/team",{
+            method: "POST",
+            headers:{
+                "Content-type":"application/json"
+            },
+            body: JSON.stringify({
+                teamlogo: finalImage,
+                teamname: teamname,
+                managername: managername,
+                manageremail: manageremail,
+                managerphone: managerphone,
+                totalowners: totalowners,
+                teamownersnames: owner1 + ', ' + owner2 + ', ' + owner3 + ', ' + owner4 + ', ' + owner5,
+                teamownersemailIDs: manageremail + ', ' + owner2email + ', ' + owner3email + ', ' + owner4email + ', ' + owner5email
+              }),
+        });
+        }
+        
     }
-}
 
-    const convertImage = async (e) => {
+    const convertImageToBase64 = async (e) => {
         const options = {
             maxSizeMB: 0.030,
             maxWidthOrHeight: 720,
@@ -365,7 +425,7 @@ export default function TRegForm() {
     function handleCallbackresponse(response){
         var userObject = jwt_decode(response.credential) 
         setLoginLoader(true); 
-        getRegisteredPlayersEmailData(userObject);
+        getRegisteredTeamsEmailData(userObject);
     }
     
     useEffect( ()=>{
@@ -398,7 +458,7 @@ export default function TRegForm() {
                             paddingTop:"1%"
                         }}>
                             <div className="GoogleButton" id='GoogleButton'></div>
-                        </Grid.Container>
+                </Grid.Container>
                         {Object.keys(User).length != 0 &&
                         <div>
                             <Grid.Container gap={2}
@@ -541,6 +601,7 @@ export default function TRegForm() {
                                 
                             </Grid.Container> 
                         </div>}
+
                         {LoginLoader && //Show loader when LoginLoader===true - for the lag between loggin in and shoing welcome message
                         <Grid.Container
                         css={{
@@ -556,59 +617,60 @@ export default function TRegForm() {
                             </Grid>
                         </Grid.Container>
                         }
+
                         {AlreadyRegistered && //If user is already registered, show error message
                            
-                                <Grid.Container
-                                css={{
-                                    jc: 'center',
-                                    alignItems: 'center',
-                                    textAlign: 'center'
-                                }}>
-                                    <Modal
-                                    open={AlreadyRegistered}
-                                    closeButton
-                                    onClose={()=>{setAlreadyRegistered(false); window.location.pathname='/registration/player'; }}
-                                    >
-                                            <Modal.Header
+                        <Grid.Container
+                        css={{
+                            jc: 'center',
+                            alignItems: 'center',
+                            textAlign: 'center'
+                        }}>
+                            <Modal
+                            open={AlreadyRegistered}
+                            closeButton
+                            onClose={()=>{setAlreadyRegistered(false); window.location.pathname='/registration/team'; }}
+                            >
+                                    <Modal.Header
+                                    css={{
+                                        paddingTop: '0px',
+                                    }}>
+                                        <Col>
+                                            <Text 
                                             css={{
-                                                paddingTop: '0px',
+                                                textAlign: 'center',
+                                                fontSize: '$3xl',
+                                                fontWeight: '$bold',
+                                                color: '$red600',
+                                                borderStyle: 'solid',
+                                                borderWidth: '0px 0px 1px 0px',
+                                                borderColor: '$gray800'
                                             }}>
-                                                <Col>
-                                                    <Text 
-                                                    css={{
-                                                        textAlign: 'center',
-                                                        fontSize: '$3xl',
-                                                        fontWeight: '$bold',
-                                                        color: '$red600',
-                                                        borderStyle: 'solid',
-                                                        borderWidth: '0px 0px 1px 0px',
-                                                        borderColor: '$gray800'
-                                                    }}>
-                                                        Error!
-                                                    </Text>
-                                                    
-                                                </Col>
-                                            </Modal.Header>
-                                            <Modal.Body
-                                            css={{
-                                                paddingTop: '0px'
-                                            }}>
-                                                <Text 
-                                                css={{
-                                                    textAlign: 'center',
-                                                    fontSize: '$xl',
-                                                    fontWeight: '$bold',
-                                                    color: 'white',
-                                                }}>
-                                                    It seems that you have already registered with this email address.
-                                                </Text>
-                                            </Modal.Body>
+                                                Error!
+                                            </Text>
                                             
-                                    </Modal>
-                                </Grid.Container>
+                                        </Col>
+                                    </Modal.Header>
+                                    <Modal.Body
+                                    css={{
+                                        paddingTop: '0px'
+                                    }}>
+                                        <Text 
+                                        css={{
+                                            textAlign: 'center',
+                                            fontSize: '$xl',
+                                            fontWeight: '$bold',
+                                            color: 'white',
+                                        }}>
+                                            It seems that you have already registered with this email address.
+                                        </Text>
+                                    </Modal.Body>
+                                    
+                            </Modal>
+                        </Grid.Container>
                            
                         }          
-
+                {/* Teamname */}
                 <Grid 
                 css={{
                     jc: 'center',
@@ -636,12 +698,13 @@ export default function TRegForm() {
                                 else if(!event.target.value){
                                     setTeamnamestatus('error')
                                 }
-                                }} animated={true} placeholder='Team Name' type='text' bordered clearable required/>
+                                }} animated={true} placeholder='Team Name' type='text'  clearable required/>
                         </Grid>
 
                     </Grid.Container>
                 </Grid>
-
+                
+                {/* Manager */}
                 <Grid 
                 css={{
                     jc: 'center',
@@ -660,6 +723,7 @@ export default function TRegForm() {
                     css={{
                         jc: 'center',
                     }}>
+                        {/* Manager name */}
                         {managername &&
                         <Grid>
                             <Input disabled={!signedin} status={Managernamestatus} onChange={(event)=>
@@ -669,10 +733,11 @@ export default function TRegForm() {
                                     }
                                     else if(!event.target.value){
                                         SetManagernamestatus('error')
-                                    }}} animated={true} value={User.given_name} type='text' bordered clearable required/>
+                                    }}} animated={true} placeholder={managername} type='text' clearable required/>
                         </Grid>
-                                }
-                               {!managername &&
+                        }
+
+                        {!managername &&
                         <Grid>
                             <Input disabled={!signedin} status={Managernamestatus} onChange={(event)=>
                                 {SetManagername(event.target.value); SetOwner1(event.target.value);
@@ -681,9 +746,11 @@ export default function TRegForm() {
                                     }
                                     else if(!event.target.value){
                                         SetManagernamestatus('error')
-                                    }}} animated={true} placeholder={'Manager Name'} type='text' bordered clearable required/>
+                                    }}} animated={true} placeholder={'Manager Name'} type='text'   clearable required/>
                         </Grid>
-                                } 
+                        } 
+                        
+                        {/* Manager email */}
                         {manageremail &&
                         <Grid>
                             <Input disabled status={Manageremailstatus} css={{width:'300px'}} onChange={(event)=>{SetManageremail(event.target.value)
@@ -693,7 +760,7 @@ export default function TRegForm() {
                             else if(!event.target.value){
                                 SetManageremailstatus('error')
                             }
-                            }} animated={true} readOnly value={manageremail} type='text' bordered clearable/>
+                            }} animated={true} readOnly placeholder={manageremail} type='text'   clearable/>
                         </Grid>
                         }
                         {!manageremail &&
@@ -705,7 +772,7 @@ export default function TRegForm() {
                             else if(!event.target.value){
                                 SetManageremailstatus('error')
                             }
-                            }} animated={true} readOnly placeholder='Email ID' type='text' bordered clearable/>
+                            }} animated={true} readOnly placeholder='Email ID' type='text'   clearable/>
                         </Grid>
                         }
 
@@ -716,12 +783,13 @@ export default function TRegForm() {
                             }
                             else if(event.target.value.length===10){
                                 SetManagerphonestatus('success')
-                            }}} animated={true} placeholder='Phone' type='text' bordered clearable required/>
+                            }}} animated={true} placeholder='Phone' type='text'   clearable required/>
                         </Grid>
 
                     </Grid.Container>
                 </Grid>
                     
+                {/* Team Owners */}
                 <Grid 
                 css={{
                     jc: 'center',
@@ -757,7 +825,8 @@ export default function TRegForm() {
                         </Grid>
                     </Grid.Container>
                 </Grid>
-
+                
+                {/* Owners details */}
                 <Grid 
                 css={{
                     jc: 'center',
@@ -770,7 +839,7 @@ export default function TRegForm() {
                                 jc: 'center'
                             }}>
                                 <Grid>
-                                    <Input disabled={!signedin} status={owner1status} onChange={(event)=>{
+                                    <Input disabled status={owner1status} onChange={(event)=>{
                                         SetOwner1(event.target.value)
                                         if(event.target.value){
                                             SetOwner1status('success')
@@ -778,7 +847,7 @@ export default function TRegForm() {
                                         else if(!event.target.value){
                                             SetOwner1status('error')
                                         }
-                                        }} bordered labelLeft="1st" labelRight='(Manager)' value={managername} />
+                                        }} labelLeft="1st" labelRight='(Manager)' placeholder={managername} />
                                 </Grid>
                             </Grid.Container>
                         </div>
@@ -795,7 +864,7 @@ export default function TRegForm() {
                                         }
                                         else if(!event.target.value){
                                             SetOwner1status('error')
-                                        }}} bordered labelLeft="1st" labelRight='(Manager)' placeholder={managername} />
+                                        }}}   labelLeft="1st" labelRight='(Manager)' placeholder={managername} />
                                     </Grid>
                                     <Grid.Container gap={1}
                                             css={{
@@ -809,7 +878,7 @@ export default function TRegForm() {
                                             else if(!event.target.value){
                                                 SetOwner2status('error')
                                             }
-                                        }} bordered labelLeft="2nd" placeholder="Full Name" />
+                                        }}   labelLeft="2nd" placeholder="Full Name" />
                                         </Grid>
                                         <Grid>
                                             <Input disabled={!signedin} status={owner2emailstatus} onChange={(event)=>{setOwner2email(event.target.value)
@@ -818,7 +887,7 @@ export default function TRegForm() {
                                             }
                                             else if(!event.target.value){
                                                 SetOwneremail2status('error')
-                                            }}} bordered labelLeft="2nd" placeholder="Email Address" />
+                                            }}}   labelLeft="2nd" placeholder="Email Address" />
                                         </Grid>
                                         </Grid.Container>
                                         
@@ -839,7 +908,7 @@ export default function TRegForm() {
                                         }
                                         else if(!event.target.value){
                                             SetOwner1status('error')
-                                        }}} bordered labelLeft="1st" labelRight='(Manager)' placeholder={managername} />
+                                        }}}   labelLeft="1st" labelRight='(Manager)' placeholder={managername} />
                                     </Grid>
                                     <Grid.Container gap={1}
                                             css={{
@@ -853,7 +922,7 @@ export default function TRegForm() {
                                             else if(!event.target.value){
                                                 SetOwner2status('error')
                                             }
-                                            }} bordered labelLeft="2nd" placeholder="Full Name" />
+                                            }}   labelLeft="2nd" placeholder="Full Name" />
                                         </Grid>
                                         <Grid>
                                             <Input disabled={!signedin} status={owner2emailstatus} onChange={(event)=>{setOwner2email(event.target.value)
@@ -862,7 +931,7 @@ export default function TRegForm() {
                                             }
                                             else if(!event.target.value){
                                                 SetOwneremail2status('error')
-                                            }}} bordered labelLeft="2nd" placeholder="Email Address" />
+                                            }}}   labelLeft="2nd" placeholder="Email Address" />
                                         </Grid>
                                         </Grid.Container>
                                         <Grid.Container gap={1}
@@ -878,7 +947,7 @@ export default function TRegForm() {
                                                 SetOwner3status('error')
                                             }
                                             
-                                            }} bordered labelLeft="3rd" placeholder="Full Name" />
+                                            }}   labelLeft="3rd" placeholder="Full Name" />
                                         </Grid>
                                         <Grid>
                                             <Input disabled={!signedin} status={owner3emailstatus} onChange={(event)=>{setOwner3email(event.target.value)
@@ -887,7 +956,7 @@ export default function TRegForm() {
                                             }
                                             else if(!event.target.value){
                                                 SetOwneremail3status('error')
-                                            }}} bordered labelLeft="3rd" placeholder="Email Address" />
+                                            }}}   labelLeft="3rd" placeholder="Email Address" />
                                         </Grid>
                                         </Grid.Container>
                                 </Grid.Container>
@@ -907,7 +976,7 @@ export default function TRegForm() {
                                             }
                                             else if(!event.target.value){
                                                 SetOwner1status('error')
-                                            }}} bordered labelLeft="1st" labelRight='(Manager)' placeholder={managername} />
+                                            }}}   labelLeft="1st" labelRight='(Manager)' placeholder={managername} />
                                         </Grid>
                                         <Grid.Container gap={1}
                                             css={{
@@ -920,7 +989,7 @@ export default function TRegForm() {
                                             }
                                             else if(!event.target.value){
                                                 SetOwner2status('error')
-                                            }}} bordered labelLeft="2nd" placeholder="Full Name" />
+                                            }}}   labelLeft="2nd" placeholder="Full Name" />
                                         </Grid>
                                         <Grid>
                                             <Input disabled={!signedin} status={owner2emailstatus} onChange={(event)=>{setOwner2email(event.target.value)
@@ -929,7 +998,7 @@ export default function TRegForm() {
                                             }
                                             else if(!event.target.value){
                                                 SetOwneremail2status('error')
-                                            }}} bordered labelLeft="2nd" placeholder="Email Address" />
+                                            }}}   labelLeft="2nd" placeholder="Email Address" />
                                         </Grid>
                                         </Grid.Container>
                                         <Grid.Container gap={1}
@@ -943,7 +1012,7 @@ export default function TRegForm() {
                                             }
                                             else if(!event.target.value){
                                                 SetOwner3status('error')
-                                            }}} bordered labelLeft="3rd" placeholder="Full Name" />
+                                            }}}   labelLeft="3rd" placeholder="Full Name" />
                                         </Grid>
                                         <Grid>
                                             <Input disabled={!signedin} status={owner3emailstatus} onChange={(event)=>{setOwner3email(event.target.value)
@@ -952,7 +1021,7 @@ export default function TRegForm() {
                                             }
                                             else if(!event.target.value){
                                                 SetOwneremail3status('error')
-                                            }}} bordered labelLeft="3rd" placeholder="Email Address" />
+                                            }}}   labelLeft="3rd" placeholder="Email Address" />
                                         </Grid>
                                         </Grid.Container>
                                         <Grid.Container gap={1}
@@ -966,7 +1035,7 @@ export default function TRegForm() {
                                             }
                                             else if(!event.target.value){
                                                 SetOwner4status('error')
-                                            }}} bordered labelLeft="4th" placeholder="Full Name" />
+                                            }}}   labelLeft="4th" placeholder="Full Name" />
                                         </Grid>
                                         <Grid>
                                             <Input disabled={!signedin} status={owner4emailstatus} onChange={(event)=>{setOwner4email(event.target.value)
@@ -975,7 +1044,7 @@ export default function TRegForm() {
                                             }
                                             else if(!event.target.value){
                                                 SetOwneremail4status('error')
-                                            }}} bordered labelLeft="4th" placeholder="Email Address" />
+                                            }}}   labelLeft="4th" placeholder="Email Address" />
                                         </Grid>
                                         </Grid.Container>
                                     </Grid.Container>
@@ -995,7 +1064,7 @@ export default function TRegForm() {
                                             }
                                             else if(!event.target.value){
                                                 SetOwner1status('error')
-                                            }}} bordered labelLeft="1st" labelRight='(Manager)' placeholder={managername} />
+                                            }}}   labelLeft="1st" labelRight='(Manager)' placeholder={managername} />
                                         </Grid>
                                         <Grid.Container gap={1}
                                             css={{
@@ -1008,7 +1077,7 @@ export default function TRegForm() {
                                             }
                                             else if(!event.target.value){
                                                 SetOwner2status('error')
-                                            }}} bordered labelLeft="2nd" placeholder="Full Name" />
+                                            }}}   labelLeft="2nd" placeholder="Full Name" />
                                         </Grid>
                                         <Grid>
                                             <Input disabled={!signedin} status={owner2emailstatus} onChange={(event)=>{setOwner2email(event.target.value)
@@ -1017,7 +1086,7 @@ export default function TRegForm() {
                                             }
                                             else if(!event.target.value){
                                                 SetOwneremail2status('error')
-                                            }}} bordered labelLeft="2nd" placeholder="Email Address" />
+                                            }}}   labelLeft="2nd" placeholder="Email Address" />
                                         </Grid>
                                         </Grid.Container>
                                         <Grid.Container gap={1}
@@ -1031,7 +1100,7 @@ export default function TRegForm() {
                                             }
                                             else if(!event.target.value){
                                                 SetOwner3status('error')
-                                            }}} bordered labelLeft="3rd" placeholder="Full Name" />
+                                            }}}   labelLeft="3rd" placeholder="Full Name" />
                                         </Grid>
                                         <Grid>
                                             <Input disabled={!signedin} status={owner3emailstatus} onChange={(event)=>{setOwner3email(event.target.value)
@@ -1040,7 +1109,7 @@ export default function TRegForm() {
                                             }
                                             else if(!event.target.value){
                                                 SetOwneremail3status('error')
-                                            }}} bordered labelLeft="3rd" placeholder="Email Address" />
+                                            }}}   labelLeft="3rd" placeholder="Email Address" />
                                         </Grid>
                                         </Grid.Container>
                                         <Grid.Container gap={1}
@@ -1054,7 +1123,7 @@ export default function TRegForm() {
                                             }
                                             else if(!event.target.value){
                                                 SetOwner4status('error')
-                                            }}} bordered labelLeft="4th" placeholder="Full Name" />
+                                            }}}   labelLeft="4th" placeholder="Full Name" />
                                         </Grid>
                                         <Grid>
                                             <Input disabled={!signedin} status={owner4emailstatus} onChange={(event)=>{setOwner4email(event.target.value)
@@ -1063,7 +1132,7 @@ export default function TRegForm() {
                                             }
                                             else if(!event.target.value){
                                                 SetOwneremail4status('error')
-                                            }}} bordered labelLeft="4th" placeholder="Email Address" />
+                                            }}}   labelLeft="4th" placeholder="Email Address" />
                                         </Grid>
                                         </Grid.Container>
                                         <Grid.Container gap={1}
@@ -1077,7 +1146,7 @@ export default function TRegForm() {
                                             }
                                             else if(!event.target.value){
                                                 SetOwner5status('error')
-                                            }}} bordered labelLeft="5th" placeholder="Full Name" />
+                                            }}}   labelLeft="5th" placeholder="Full Name" />
                                         </Grid>
                                         <Grid>
                                             <Input disabled={!signedin} status={owner5emailstatus} onChange={(event)=>{setOwner5email(event.target.value)
@@ -1086,7 +1155,7 @@ export default function TRegForm() {
                                             }
                                             else if(!event.target.value){
                                                 SetOwneremail5status('error')
-                                            }}} bordered labelLeft="5th" placeholder="Email Address" />
+                                            }}}   labelLeft="5th" placeholder="Email Address" />
                                         </Grid>
                                         </Grid.Container>
                                     </Grid.Container>
@@ -1098,28 +1167,48 @@ export default function TRegForm() {
                     
 
                 </Grid>
+
+                {/* Team logo and payment details */}
                 <Grid
                 css={{
                     width: '1024px'
                 }}>
-                <Grid.Container css={{
-                        jc: 'center',
-                        display: 'flex',
-                        flexDirection: 'column',
-                        alignItems: 'center'
-                    }}>
-                        <Text css={{
-                                jc:'center',
-                                textAlign: 'center',
-                                paddingBottom: '1%',
-                                fontSize: '$4xl',
-                                fontWeight: '$semibold'
-                            }}>
-                                Team Logo
-                        </Text>
-                <input disabled={!signedin} onChange={(event)=>setInitialImage(event.target.files[0])} className="photobtn" animated={'true'} type='file' accept="image/*" required/>
-                </Grid.Container >
-                <Grid.Container gap={2}
+                    <Grid.Container css={{
+                            jc: 'center',
+                            display: 'flex',
+                            flexDirection: 'column',
+                            alignItems: 'center'
+                        }}>
+                            <Col>
+                            {teamlogoUploaded===false && 
+                                    <Text
+                                    css={{
+                                        jc: 'center',
+                                        textAlign: 'center',
+                                        color: '$red600',
+                                        fontSize: '$xl',
+                                        fontWeight: '$semibold',
+                                        paddingTop: '1.5%'
+                                    }}>
+                                        Please upload the Team Logo!
+                                    </Text>
+                                    }
+                                    <Text css={{
+                                    jc:'center',
+                                    textAlign: 'center',
+                                    paddingBottom: '1%',
+                                    fontSize: '$4xl',
+                                    fontWeight: '$semibold'
+                                }}>
+                                    Team Logo
+                            </Text>
+                            </Col>
+                            
+                    <input disabled={!signedin} onChange={(event)=>{setInitialImage(event.target.files[0]);}} className="photobtn" animated={'true'} type='file' accept="image/*" required/>
+                    </Grid.Container>
+
+                    {/* Payment details */}
+                    <Grid.Container gap={2}
                         css={{
                             jc: 'center',
                             alignItems: 'center',
@@ -1134,7 +1223,8 @@ export default function TRegForm() {
                                     textAlign: 'center',
                                     color: '$red600',
                                     fontSize: '$xl',
-                                    fontWeight: '$semibold'
+                                    fontWeight: '$semibold',
+                                    paddingTop: '1.5%'
                                 }}>
                                     Please upload payment screenshot from your UPI service app!
                                 </Text>
@@ -1154,21 +1244,42 @@ export default function TRegForm() {
                                 <input disabled={!signedin} onChange={(event)=>{setPaymentSC(event.target.files[0]); }} className="photobtn" animated={'true'} type='file' accept="image/*" required/>
                             </Grid>
                             
-                        </Grid.Container>
-
+                    </Grid.Container>
+                
+                {/* payment button */}
                     <Grid.Container gap={4}
                     css={{
                         jc: 'center'
                     }}>
                         <Grid>
-                            <Button onPress={()=>{
-                                setModalVisibility(CheckForm());
+                            <Button auto rounded disabled={!signedin}
+                            css={{
+                                background: '$gray900'
+                            }}
+                            onPress={()=>{
                                 if(initialImage)
-                                {
-                                    convertImage();
+                                {   convertImageToBase64();
+                                    setTeamlogoUploaded(true)
                                 }
-                                
-                            }} shadow rounded bordered auto ghost> Submit </Button>
+                                if(!initialImage){
+                                    setTeamlogoUploaded(false)
+                                }
+                                if(paymentSC){
+                                    setPaymentSCUploaded(true)
+                                }
+                                if(!paymentSC){
+                                    setPaymentSCUploaded(false)
+                                }
+                                setModalVisibility(CheckForm());
+                            }}>
+                                <Text
+                                css={{
+                                    color: 'Black',
+                                    fontWeight: '$semibold'
+                                }}>
+                                    Register
+                                </Text>
+                            </Button>
                             
                             <Modal
                                 closeButton
@@ -1425,7 +1536,7 @@ export default function TRegForm() {
     
                                                
                                                 
-                                                    {totalowners==5 &&
+                                                    {totalowners===5 &&
                                                     <Grid.Container gap={0.5}
                                                     css={{
                                                         jc: 'center',
@@ -1625,7 +1736,7 @@ export default function TRegForm() {
                                 </Grid.Container>
                                                 }
                                                 {
-                                                    totalowners==4 &&
+                                                    totalowners===4 &&
                                                     <Grid.Container gap={0.5}
                                                     css={{
                                                         jc: 'center',
@@ -1788,7 +1899,7 @@ export default function TRegForm() {
 
                                                 }
                                                 {
-                                                    totalowners==3 &&
+                                                    totalowners===3 &&
                                                     <Grid.Container gap={0.5}
                                                     css={{
                                                         jc: 'center',
@@ -1912,7 +2023,7 @@ export default function TRegForm() {
                                 </Grid.Container>
                                                 }
                                                 {
-                                                    totalowners==2 &&
+                                                    totalowners===2 &&
                                                     <Grid.Container gap={0.5}
                                                     css={{
                                                         jc: 'center',
@@ -1999,7 +2110,7 @@ export default function TRegForm() {
 
                                                 }
                                                 {
-                                                     totalowners==1 &&
+                                                     totalowners===1 &&
                                                      <Grid.Container gap={0.5}
                                                      css={{
                                                          jc: 'center',
@@ -2104,9 +2215,8 @@ export default function TRegForm() {
                                         }}
                                         onPress={(e)=>{
                                             sendForm(e);
-                                            sendPaymentImage(paymentSC)
+                                            sendPaymentImage(paymentSC);
                                             sendTeamLogo(initialImage);
-                                            setRegistrationDone(true);
                                             setModalVisibility(false);
                                         }}>
                                             <Text
@@ -2114,7 +2224,7 @@ export default function TRegForm() {
                                                 color: 'Black',
                                                 fontWeight: '$semibold'
                                             }}>
-                                                Pay
+                                                Register
                                             </Text>
                                         </Button>
                                     </Modal.Footer>
@@ -2127,1430 +2237,6 @@ export default function TRegForm() {
             
             
         }   
-            {RegistrationDone &&
-                <Grid.Container
-                css={{
-                    jc: 'center',
-                    textAlign: 'center',
-                    alignItems: 'center',
-                }}>
-                    <Grid>
-                        <Grid.Container
-                        css={{
-                            jc: 'center',
-                            alignItems: 'center'
-                        }}>
-                            <Text
-                            css={{
-                                color: '$green600',
-                                fontSize: '$5xl',
-                                fontWeight: '$semibold'
-                            }}>
-                                Registration Complete!
-                            </Text>
-                        </Grid.Container>
-                        <Grid.Container
-                        css={{
-                            jc: 'center',
-                            alignItems: 'center'
-                        }}>
-                            <Text
-                            css={{
-                                color: 'white',
-                                fontSize: '$2xl',
-                                fontWeight: '$medium',
-                                paddingBottom: '40px'
-                            }}>
-                                You can find the your team details below!
-                            </Text>
-                        </Grid.Container>
-                        <Grid.Container
-                        css={{
-                            jc: 'center',
-                            alignItems: 'center'
-                        }}>
-                            <Grid>
-                                <Grid.Container gap={0.5}
-                                css={{
-                                    jc: 'center',
-                                    alignItems: 'center',
-                                    textAlign: 'center'
-                                }}>
-                                    <Grid>
-                                        <Row
-                                        css={{
-                                            jc: 'center',
-                                            textAlign: 'center'
-                                        }}>
-                                            <Text hideIn={'xs'}
-                                            css={{
-                                                fontSize: '$lg',
-                                                paddingRight: '4px',
-                                                color: '$gray700'
-                                            }}>
-                                                Team Name: 
-                                            </Text>
-                                            <Text hideIn={'xs'}
-                                            css={{
-                                                fontSize: '$lg',
-                                                fontWeight: '$semibold'
-                                            }}>
-                                                {teamname}
-                                            </Text>
-
-                                            <Text showIn={'xs'}
-                                            css={{
-                                                fontSize: '$md',
-                                                paddingRight: '4px',
-                                                color: '$gray700'
-                                            }}>
-                                                Team Name: 
-                                            </Text>
-                                            <Text showIn={'xs'}
-                                            css={{
-                                                fontSize: '$md',
-                                                fontWeight: '$semibold'
-                                            }}>
-                                                {teamname}
-                                            </Text>
-                                        </Row>
-                                    </Grid>
-                                </Grid.Container>
-                                <Grid.Container gap={0.5}
-                                css={{
-                                    jc: 'center',
-                                    alignItems: 'center',
-                                    textAlign: 'center'
-                                }}>
-                                        <Text hideIn={'xs'}
-                                        css={{
-                                            fontSize: '$lg',
-                                            paddingRight: '4px',
-                                            color: '$gray700'
-                                        }}>
-                                            Manager Name:  
-                                        </Text>
-                                        <Text hideIn={'xs'}
-                                        css={{
-                                            fontSize: '$lg',
-                                            fontWeight: '$semibold'
-                                        }}>
-                                            {managername}
-                                        </Text>
-
-                                        <Text showIn={'xs'}
-                                        css={{
-                                            fontSize: '$md',
-                                            paddingRight: '4px',
-                                            color: '$gray700'
-                                        }}>
-                                            Manager Name:  
-                                        </Text>
-                                        <Text showIn={'xs'}
-                                        css={{
-                                            fontSize: '$md',
-                                            fontWeight: '$semibold'
-                                        }}>
-                                            {managername}
-                                        </Text>
-                                    
-                                </Grid.Container>
-                                <Grid.Container gap={0.5}
-                                css={{
-                                    jc: 'center',
-                                    alignItems: 'center',
-                                    textAlign: 'center'
-                                }}>
-                                    <Grid>
-                                        <Row
-                                        css={{
-                                            jc: 'center',
-                                            textAlign: 'center'
-                                        }}>
-                                            <Text hideIn={'xs'}
-                                            css={{
-                                                fontSize: '$lg',
-                                                paddingRight: '4px',
-                                                color: '$gray700'
-                                            }}>
-                                                Manager Email ID:  
-                                            </Text>
-                                            <Text hideIn={'xs'}
-                                            css={{
-                                                fontSize: '$lg',
-                                                fontWeight: '$semibold'
-                                            }}>
-                                                {manageremail}
-                                            </Text>
-                                            <Text showIn={'xs'}
-                                            css={{
-                                                fontSize: '$md',
-                                                paddingRight: '4px',
-                                                color: '$gray700'
-                                            }}>
-                                                Manager Email ID:  
-                                            </Text>
-                                            <Text showIn={'xs'}
-                                            css={{
-                                                fontSize: '$md',
-                                                fontWeight: '$semibold'
-                                            }}>
-                                                {manageremail}
-                                            </Text>
-                                        </Row>
-                                    </Grid>
-                                    <Grid>
-                                        <Row
-                                        css={{
-                                            jc: 'center',
-                                            textAlign: 'center'
-                                        }}>
-                                            <Text hideIn={'xs'}
-                                            css={{
-                                                fontSize: '$lg',
-                                                paddingRight: '4px',
-                                                color: '$gray700'
-                                            }}>
-                                                Manager Phone Number: 
-                                            </Text>
-                                            <Text hideIn={'xs'}
-                                            css={{
-                                                fontSize: '$lg',
-                                                fontWeight: '$semibold'
-                                            }}>
-                                                {managerphone}
-                                            </Text>
-                                            <Text showIn={'xs'}
-                                            css={{
-                                                fontSize: '$md',
-                                                paddingRight: '4px',
-                                                color: '$gray700'
-                                            }}>
-                                                Manager Phone Number: 
-                                            </Text>
-                                            <Text showIn={'xs'}
-                                            css={{
-                                                fontSize: '$md',
-                                                fontWeight: '$semibold'
-                                            }}>
-                                                {managerphone}
-                                            </Text>
-                                        </Row>
-                                    </Grid>
-                                </Grid.Container>
-                                <Grid.Container gap={0.5}
-                                css={{
-                                    jc: 'center',
-                                    alignItems: 'center',
-                                    textAlign: 'center'
-                                }}>
-
-                                    <Grid>
-                                        <Row
-                                        css={{
-                                            jc: 'center',
-                                            textAlign: 'center'
-                                        }}>
-                                            <Text hideIn={'xs'}
-                                            css={{
-                                                fontSize: '$lg',
-                                                paddingRight: '4px',
-                                                color: '$gray700'
-                                            }}>
-                                                 Number of Team Owners: 
-                                            </Text>
-                                            <Text hideIn={'xs'}
-                                            css={{
-                                                fontSize: '$lg',
-                                                fontWeight: '$semibold'
-                                            }}>
-                                                {totalowners}
-                                            </Text>
-                                            <Text showIn={'xs'}
-                                            css={{
-                                                fontSize: '$md',
-                                                paddingRight: '4px',
-                                                color: '$gray700'
-                                            }}>
-                                                Number of Team Owners: 
-                                            </Text>
-                                            <Text showIn={'xs'}
-                                            css={{
-                                                fontSize: '$md',
-                                                fontWeight: '$semibold'
-                                            }}>
-                                                {totalowners}
-                                            </Text>
-                                        </Row>
-                                    </Grid>
-                                </Grid.Container>
-
-                                {totalowners ==5 && 
-                                
-                                <Grid.Container gap={0.5}
-                                css={{
-                                    jc: 'center',
-                                    alignItems: 'center',
-                                    textAlign: 'center'
-                                }}>
-                                    <Grid css={{
-                                        jc: 'center',
-                                        alignItems: 'center'
-                                    }}>
-                                        <Row
-                                        css={{
-                                        
-                                            textAlign: 'center'
-                                        }}>
-                                            <Text hideIn={'xs'}
-                                            css={{
-                                                fontSize: '$lg',
-                                                paddingRight: '4px',
-                                                color: '$gray700'
-                                            }}>
-                                                Owner 1 Name: 
-                                            </Text>
-                                            <Text hideIn={'xs'}
-                                            css={{
-                                                fontSize: '$lg',
-                                                fontWeight: '$semibold'
-                                            }}>
-                                                {owner1}
-                                            </Text>
-                                            <Text showIn={'xs'}
-                                            css={{
-                                                fontSize: '$md',
-                                                paddingRight: '4px',
-                                                color: '$gray700'
-                                            }}>
-                                                Owner 1 Name: 
-                                            </Text>
-                                            <Text showIn={'xs'}
-                                            css={{
-                                                fontSize: '$md',
-                                                fontWeight: '$semibold'
-                                            }}>
-                                                {owner1}
-                                            </Text>
-                                        </Row>
-                                    </Grid>
-                                    <Grid.Container gap={1} css={{
-                                        jc:'center',
-                                        display: 'flex',
-                                        flexDirection: 'row',
-                                        alignItems: 'center'
-                                    }}>
-                                    <Grid css={{
-                                        jc:'center',
-                                        display: 'flex',
-                                        flexDirection: 'row',
-                                        alignItems: 'center'
-                                    }}>
-                                        <Row
-                                        css={{
-                                            
-                                            textAlign: 'center'
-                                        }}>
-                                            <Text hideIn={'xs'}
-                                            css={{
-                                                fontSize: '$lg',
-                                                paddingRight: '4px',
-                                                color: '$gray700'
-                                            }}>
-                                                Owner 2 Name: 
-                                            </Text>
-                                            <Text hideIn={'xs'}
-                                            css={{
-                                                fontSize: '$lg',
-                                                fontWeight: '$semibold'
-                                            }}>
-                                                {owner2}
-                                            </Text>
-                                            <Text showIn={'xs'}
-                                            css={{
-                                                fontSize: '$md',
-                                                paddingRight: '4px',
-                                                color: '$gray700'
-                                            }}>
-                                                Owner 2 Name: 
-                                            </Text>
-                                            <Text showIn={'xs'}
-                                            css={{
-                                                fontSize: '$md',
-                                                fontWeight: '$semibold'
-                                            }}>
-                                                {owner2}
-                                            </Text>
-                                        </Row>
-                                    </Grid>
-                                    <Grid css={{
-                                        jc:'center',
-                                    }}>
-                                        <Row
-                                        css={{
-                                            
-                                            textAlign: 'center'
-                                        }}>
-                                            <Text hideIn={'xs'}
-                                            css={{
-                                                fontSize: '$lg',
-                                                paddingRight: '4px',
-                                                color: '$gray700'
-                                            }}>
-                                                Owner 2 Email ID: 
-                                            </Text>
-                                            <Text hideIn={'xs'}
-                                            css={{
-                                                fontSize: '$lg',
-                                                fontWeight: '$semibold'
-                                            }}>
-                                                {owner2email}
-                                            </Text>
-                                            <Text showIn={'xs'}
-                                            css={{
-                                                fontSize: '$md',
-                                                paddingRight: '4px',
-                                                color: '$gray700'
-                                            }}>
-                                                Owner 2 Email ID: 
-                                            </Text>
-                                            <Text showIn={'xs'}
-                                            css={{
-                                                fontSize: '$md',
-                                                fontWeight: '$semibold'
-                                            }}>
-                                                {owner2email}
-                                            </Text>
-                                        </Row>
-                                    </Grid>
-                                    </Grid.Container>
-
-                                    <Grid.Container css={{
-                                        jc:'center',
-                                        display: 'flex',
-                                        flexDirection: 'row',
-                                        alignItems: 'center'
-                                    }} gap={1}>
-                                    <Grid css={{
-                                        jc:'center',
-                                        display: 'flex',
-                                        flexDirection: 'row'
-
-                                    }}>
-                                        <Row
-                                        css={{
-                                            
-                                            textAlign: 'center'
-                                        }}>
-                                            <Text hideIn={'xs'}
-                                            css={{
-                                                fontSize: '$lg',
-                                                paddingRight: '4px',
-                                                color: '$gray700'
-                                            }}>
-                                                Owner 3 Name: 
-                                            </Text>
-                                            <Text hideIn={'xs'}
-                                            css={{
-                                                fontSize: '$lg',
-                                                fontWeight: '$semibold'
-                                            }}>
-                                                {owner3}
-                                            </Text>
-                                            <Text showIn={'xs'}
-                                            css={{
-                                                fontSize: '$md',
-                                                paddingRight: '4px',
-                                                color: '$gray700'
-                                            }}>
-                                                Owner 3 Name: 
-                                            </Text>
-                                            <Text showIn={'xs'}
-                                            css={{
-                                                fontSize: '$md',
-                                                fontWeight: '$semibold'
-                                            }}>
-                                                {owner3}
-                                            </Text>
-                                        </Row>
-                                    </Grid>
-                                    <Grid css={{
-                                        jc:'center'
-                                    }}>
-                                        <Row
-                                        css={{
-                                            
-                                            textAlign: 'center'
-                                        }}>
-                                            <Text hideIn={'xs'}
-                                            css={{
-                                                fontSize: '$lg',
-                                                paddingRight: '4px',
-                                                color: '$gray700'
-                                            }}>
-                                                Owner 3 Email ID: 
-                                            </Text>
-                                            <Text hideIn={'xs'}
-                                            css={{
-                                                fontSize: '$lg',
-                                                fontWeight: '$semibold'
-                                            }}>
-                                                {owner3email}
-                                            </Text>
-                                            <Text showIn={'xs'}
-                                            css={{
-                                                fontSize: '$md',
-                                                paddingRight: '4px',
-                                                color: '$gray700'
-                                            }}>
-                                                Owner 3 Email ID: 
-                                            </Text>
-                                            <Text showIn={'xs'}
-                                            css={{
-                                                fontSize: '$md',
-                                                fontWeight: '$semibold'
-                                            }}>
-                                                {owner3email}
-                                            </Text>
-                                        </Row>
-                                    </Grid>
-                                    </Grid.Container>
-                                    <Grid.Container css={{
-                                        jc:'center',
-                                        display: 'flex',
-                                        flexDirection: 'row',
-                                        alignItems: 'center'
-                                    }} gap={1}>
-                                    <Grid css={{
-                                        jc:'center',
-                                        display: 'flex',
-                                        flexDirection: 'row'
-
-                                    }}>
-                                        <Row
-                                        css={{
-                                            
-                                            textAlign: 'center'
-                                        }}>
-                                            <Text hideIn={'xs'}
-                                            css={{
-                                                fontSize: '$lg',
-                                                paddingRight: '4px',
-                                                color: '$gray700'
-                                            }}>
-                                                Owner 4 Name: 
-                                            </Text>
-                                            <Text hideIn={'xs'}
-                                            css={{
-                                                fontSize: '$lg',
-                                                fontWeight: '$semibold'
-                                            }}>
-                                                {owner4}
-                                            </Text>
-                                            <Text showIn={'xs'}
-                                            css={{
-                                                fontSize: '$md',
-                                                paddingRight: '4px',
-                                                color: '$gray700'
-                                            }}>
-                                                Owner 4 Name: 
-                                            </Text>
-                                            <Text showIn={'xs'}
-                                            css={{
-                                                fontSize: '$md',
-                                                fontWeight: '$semibold'
-                                            }}>
-                                                {owner4}
-                                            </Text>
-                                        </Row>
-                                    </Grid>
-                                    <Grid css={{
-                                        jc:'center'
-                                    }}>
-                                        <Row
-                                        css={{
-                                            
-                                            textAlign: 'center'
-                                        }}>
-                                            <Text hideIn={'xs'}
-                                            css={{
-                                                fontSize: '$lg',
-                                                paddingRight: '4px',
-                                                color: '$gray700'
-                                            }}>
-                                                Owner 4 Email ID: 
-                                            </Text>
-                                            <Text hideIn={'xs'}
-                                            css={{
-                                                fontSize: '$lg',
-                                                fontWeight: '$semibold'
-                                            }}>
-                                                {owner4email}
-                                            </Text>
-                                            <Text showIn={'xs'}
-                                            css={{
-                                                fontSize: '$md',
-                                                paddingRight: '4px',
-                                                color: '$gray700'
-                                            }}>
-                                                Owner 4 Email ID: 
-                                            </Text>
-                                            <Text showIn={'xs'}
-                                            css={{
-                                                fontSize: '$md',
-                                                fontWeight: '$semibold'
-                                            }}>
-                                                {owner4email}
-                                            </Text>
-                                        </Row>
-                                    </Grid>
-                                    </Grid.Container>
-                                    <Grid.Container css={{
-                                        jc:'center',
-                                        display: 'flex',
-                                        flexDirection: 'row',
-                                        alignItems: 'center'
-                                    }} gap={1}>
-                                    <Grid css={{
-                                        jc:'center',
-                                        display: 'flex',
-                                        flexDirection: 'row'
-
-                                    }}>
-                                        <Row
-                                        css={{
-                                            
-                                            textAlign: 'center'
-                                        }}>
-                                            <Text hideIn={'xs'}
-                                            css={{
-                                                fontSize: '$lg',
-                                                paddingRight: '4px',
-                                                color: '$gray700'
-                                            }}>
-                                                Owner 5 Name: 
-                                            </Text>
-                                            <Text hideIn={'xs'}
-                                            css={{
-                                                fontSize: '$lg',
-                                                fontWeight: '$semibold'
-                                            }}>
-                                                {owner5}
-                                            </Text>
-                                            <Text showIn={'xs'}
-                                            css={{
-                                                fontSize: '$md',
-                                                paddingRight: '4px',
-                                                color: '$gray700'
-                                            }}>
-                                                Owner 5 Name: 
-                                            </Text>
-                                            <Text showIn={'xs'}
-                                            css={{
-                                                fontSize: '$md',
-                                                fontWeight: '$semibold'
-                                            }}>
-                                                {owner5}
-                                            </Text>
-                                        </Row>
-                                    </Grid>
-                                    <Grid css={{
-                                        jc:'center'
-                                    }}>
-                                        <Row
-                                        css={{
-                                            
-                                            textAlign: 'center'
-                                        }}>
-                                            <Text hideIn={'xs'}
-                                            css={{
-                                                fontSize: '$lg',
-                                                paddingRight: '4px',
-                                                color: '$gray700'
-                                            }}>
-                                                Owner 5 Email ID: 
-                                            </Text>
-                                            <Text hideIn={'xs'}
-                                            css={{
-                                                fontSize: '$lg',
-                                                fontWeight: '$semibold'
-                                            }}>
-                                                {owner5email}
-                                            </Text>
-                                            <Text showIn={'xs'}
-                                            css={{
-                                                fontSize: '$md',
-                                                paddingRight: '4px',
-                                                color: '$gray700'
-                                            }}>
-                                                Owner 5 Email ID: 
-                                            </Text>
-                                            <Text showIn={'xs'}
-                                            css={{
-                                                fontSize: '$md',
-                                                fontWeight: '$semibold'
-                                            }}>
-                                                {owner5email}
-                                            </Text>
-                                        </Row>
-                                    </Grid>
-                                    </Grid.Container>
-                                            
-
-                                </Grid.Container>}
-
-                                {totalowners ==4 && 
-                                
-                                <Grid.Container gap={0.5}
-                                css={{
-                                    jc: 'center',
-                                    alignItems: 'center',
-                                    textAlign: 'center'
-                                }}>
-                                    <Grid>
-                                        <Row
-                                        css={{
-                                        
-                                            textAlign: 'center'
-                                        }}>
-                                            <Text hideIn={'xs'}
-                                            css={{
-                                                fontSize: '$lg',
-                                                paddingRight: '4px',
-                                                color: '$gray700'
-                                            }}>
-                                                Owner 1 Name: 
-                                            </Text>
-                                            <Text hideIn={'xs'}
-                                            css={{
-                                                fontSize: '$lg',
-                                                fontWeight: '$semibold'
-                                            }}>
-                                                {owner1}
-                                            </Text>
-                                            <Text showIn={'xs'}
-                                            css={{
-                                                fontSize: '$md',
-                                                paddingRight: '4px',
-                                                color: '$gray700'
-                                            }}>
-                                                Owner 1 Name: 
-                                            </Text>
-                                            <Text showIn={'xs'}
-                                            css={{
-                                                fontSize: '$md',
-                                                fontWeight: '$semibold'
-                                            }}>
-                                                {owner1}
-                                            </Text>
-                                        </Row>
-                                    </Grid>
-                                    <Grid.Container>
-                                    <Grid css={{
-                                        jc:'center',
-                                        display: 'flex',
-                                        flexDirection: 'row'
-
-                                    }}>
-                                        <Row
-                                        css={{
-                                            
-                                            textAlign: 'center'
-                                        }}>
-                                            <Text hideIn={'xs'}
-                                            css={{
-                                                fontSize: '$lg',
-                                                paddingRight: '4px',
-                                                color: '$gray700'
-                                            }}>
-                                                Owner 2 Name: 
-                                            </Text>
-                                            <Text hideIn={'xs'}
-                                            css={{
-                                                fontSize: '$lg',
-                                                fontWeight: '$semibold'
-                                            }}>
-                                                {owner2}
-                                            </Text>
-                                            <Text showIn={'xs'}
-                                            css={{
-                                                fontSize: '$md',
-                                                paddingRight: '4px',
-                                                color: '$gray700'
-                                            }}>
-                                                Owner 2 Name: 
-                                            </Text>
-                                            <Text showIn={'xs'}
-                                            css={{
-                                                fontSize: '$md',
-                                                fontWeight: '$semibold'
-                                            }}>
-                                                {owner2}
-                                            </Text>
-                                        </Row>
-                                    </Grid>
-                                    <Grid css={{
-                                        jc:'center'
-                                    }}>
-                                        <Row
-                                        css={{
-                                            
-                                            textAlign: 'center'
-                                        }}>
-                                            <Text hideIn={'xs'}
-                                            css={{
-                                                fontSize: '$lg',
-                                                paddingRight: '4px',
-                                                color: '$gray700'
-                                            }}>
-                                                Owner 2 Email ID: 
-                                            </Text>
-                                            <Text hideIn={'xs'}
-                                            css={{
-                                                fontSize: '$lg',
-                                                fontWeight: '$semibold'
-                                            }}>
-                                                {owner2email}
-                                            </Text>
-                                            <Text showIn={'xs'}
-                                            css={{
-                                                fontSize: '$md',
-                                                paddingRight: '4px',
-                                                color: '$gray700'
-                                            }}>
-                                                Owner 2 Email ID: 
-                                            </Text>
-                                            <Text showIn={'xs'}
-                                            css={{
-                                                fontSize: '$md',
-                                                fontWeight: '$semibold'
-                                            }}>
-                                                {owner2email}
-                                            </Text>
-                                        </Row>
-                                    </Grid>
-                                    </Grid.Container>
-
-                                    <Grid.Container>
-                                    <Grid css={{
-                                        jc:'center',
-                                        display: 'flex',
-                                        flexDirection: 'row'
-
-                                    }}>
-                                        <Row
-                                        css={{
-                                            
-                                            textAlign: 'center'
-                                        }}>
-                                            <Text hideIn={'xs'}
-                                            css={{
-                                                fontSize: '$lg',
-                                                paddingRight: '4px',
-                                                color: '$gray700'
-                                            }}>
-                                                Owner 3 Name: 
-                                            </Text>
-                                            <Text hideIn={'xs'}
-                                            css={{
-                                                fontSize: '$lg',
-                                                fontWeight: '$semibold'
-                                            }}>
-                                                {owner3}
-                                            </Text>
-                                            <Text showIn={'xs'}
-                                            css={{
-                                                fontSize: '$md',
-                                                paddingRight: '4px',
-                                                color: '$gray700'
-                                            }}>
-                                                Owner 3 Name: 
-                                            </Text>
-                                            <Text showIn={'xs'}
-                                            css={{
-                                                fontSize: '$md',
-                                                fontWeight: '$semibold'
-                                            }}>
-                                                {owner3}
-                                            </Text>
-                                        </Row>
-                                    </Grid>
-                                    <Grid css={{
-                                        jc:'center'
-                                    }}>
-                                        <Row
-                                        css={{
-                                            
-                                            textAlign: 'center'
-                                        }}>
-                                            <Text hideIn={'xs'}
-                                            css={{
-                                                fontSize: '$lg',
-                                                paddingRight: '4px',
-                                                color: '$gray700'
-                                            }}>
-                                                Owner 3 Email ID: 
-                                            </Text>
-                                            <Text hideIn={'xs'}
-                                            css={{
-                                                fontSize: '$lg',
-                                                fontWeight: '$semibold'
-                                            }}>
-                                                {owner3email}
-                                            </Text>
-                                            <Text showIn={'xs'}
-                                            css={{
-                                                fontSize: '$md',
-                                                paddingRight: '4px',
-                                                color: '$gray700'
-                                            }}>
-                                                Owner 3 Email ID: 
-                                            </Text>
-                                            <Text showIn={'xs'}
-                                            css={{
-                                                fontSize: '$md',
-                                                fontWeight: '$semibold'
-                                            }}>
-                                                {owner3email}
-                                            </Text>
-                                        </Row>
-                                    </Grid>
-                                    </Grid.Container>
-                                    <Grid.Container>
-                                    <Grid css={{
-                                        jc:'center',
-                                        display: 'flex',
-                                        flexDirection: 'row'
-
-                                    }}>
-                                        <Row
-                                        css={{
-                                            
-                                            textAlign: 'center'
-                                        }}>
-                                            <Text hideIn={'xs'}
-                                            css={{
-                                                fontSize: '$lg',
-                                                paddingRight: '4px',
-                                                color: '$gray700'
-                                            }}>
-                                                Owner 4 Name: 
-                                            </Text>
-                                            <Text hideIn={'xs'}
-                                            css={{
-                                                fontSize: '$lg',
-                                                fontWeight: '$semibold'
-                                            }}>
-                                                {owner4}
-                                            </Text>
-                                            <Text showIn={'xs'}
-                                            css={{
-                                                fontSize: '$md',
-                                                paddingRight: '4px',
-                                                color: '$gray700'
-                                            }}>
-                                                Owner 4 Name: 
-                                            </Text>
-                                            <Text showIn={'xs'}
-                                            css={{
-                                                fontSize: '$md',
-                                                fontWeight: '$semibold'
-                                            }}>
-                                                {owner4}
-                                            </Text>
-                                        </Row>
-                                    </Grid>
-                                    <Grid css={{
-                                        jc:'center'
-                                    }}>
-                                        <Row
-                                        css={{
-                                            
-                                            textAlign: 'center'
-                                        }}>
-                                            <Text hideIn={'xs'}
-                                            css={{
-                                                fontSize: '$lg',
-                                                paddingRight: '4px',
-                                                color: '$gray700'
-                                            }}>
-                                                Owner 4 Email ID: 
-                                            </Text>
-                                            <Text hideIn={'xs'}
-                                            css={{
-                                                fontSize: '$lg',
-                                                fontWeight: '$semibold'
-                                            }}>
-                                                {owner4email}
-                                            </Text>
-                                            <Text showIn={'xs'}
-                                            css={{
-                                                fontSize: '$md',
-                                                paddingRight: '4px',
-                                                color: '$gray700'
-                                            }}>
-                                                Owner 4 Email ID: 
-                                            </Text>
-                                            <Text showIn={'xs'}
-                                            css={{
-                                                fontSize: '$md',
-                                                fontWeight: '$semibold'
-                                            }}>
-                                                {owner4email}
-                                            </Text>
-                                        </Row>
-                                    </Grid>
-                                    </Grid.Container>
-                                </Grid.Container>}
-
-                                {totalowners ==3 && 
-                                
-                                <Grid.Container gap={0.5}
-                                css={{
-                                    jc: 'center',
-                                    alignItems: 'center',
-                                    textAlign: 'center'
-                                }}>
-                                    <Grid>
-                                        <Row
-                                        css={{
-                                        
-                                            textAlign: 'center'
-                                        }}>
-                                            <Text hideIn={'xs'}
-                                            css={{
-                                                fontSize: '$lg',
-                                                paddingRight: '4px',
-                                                color: '$gray700'
-                                            }}>
-                                                Owner 1 Name: 
-                                            </Text>
-                                            <Text hideIn={'xs'}
-                                            css={{
-                                                fontSize: '$lg',
-                                                fontWeight: '$semibold'
-                                            }}>
-                                                {owner1}
-                                            </Text>
-                                            <Text showIn={'xs'}
-                                            css={{
-                                                fontSize: '$md',
-                                                paddingRight: '4px',
-                                                color: '$gray700'
-                                            }}>
-                                                Owner 1 Name: 
-                                            </Text>
-                                            <Text showIn={'xs'}
-                                            css={{
-                                                fontSize: '$md',
-                                                fontWeight: '$semibold'
-                                            }}>
-                                                {owner1}
-                                            </Text>
-                                        </Row>
-                                    </Grid>
-                                    <Grid.Container>
-                                    <Grid css={{
-                                        jc:'center',
-                                        display: 'flex',
-                                        flexDirection: 'row'
-
-                                    }}>
-                                        <Row
-                                        css={{
-                                            
-                                            textAlign: 'center'
-                                        }}>
-                                            <Text hideIn={'xs'}
-                                            css={{
-                                                fontSize: '$lg',
-                                                paddingRight: '4px',
-                                                color: '$gray700'
-                                            }}>
-                                                Owner 2 Name: 
-                                            </Text>
-                                            <Text hideIn={'xs'}
-                                            css={{
-                                                fontSize: '$lg',
-                                                fontWeight: '$semibold'
-                                            }}>
-                                                {owner2}
-                                            </Text>
-                                            <Text showIn={'xs'}
-                                            css={{
-                                                fontSize: '$md',
-                                                paddingRight: '4px',
-                                                color: '$gray700'
-                                            }}>
-                                                Owner 2 Name: 
-                                            </Text>
-                                            <Text showIn={'xs'}
-                                            css={{
-                                                fontSize: '$md',
-                                                fontWeight: '$semibold'
-                                            }}>
-                                                {owner2}
-                                            </Text>
-                                        </Row>
-                                    </Grid>
-                                    <Grid css={{
-                                        jc:'center'
-                                    }}>
-                                        <Row
-                                        css={{
-                                            
-                                            textAlign: 'center'
-                                        }}>
-                                            <Text hideIn={'xs'}
-                                            css={{
-                                                fontSize: '$lg',
-                                                paddingRight: '4px',
-                                                color: '$gray700'
-                                            }}>
-                                                Owner 2 Email ID: 
-                                            </Text>
-                                            <Text hideIn={'xs'}
-                                            css={{
-                                                fontSize: '$lg',
-                                                fontWeight: '$semibold'
-                                            }}>
-                                                {owner2email}
-                                            </Text>
-                                            <Text showIn={'xs'}
-                                            css={{
-                                                fontSize: '$md',
-                                                paddingRight: '4px',
-                                                color: '$gray700'
-                                            }}>
-                                                Owner 2 Email ID: 
-                                            </Text>
-                                            <Text showIn={'xs'}
-                                            css={{
-                                                fontSize: '$md',
-                                                fontWeight: '$semibold'
-                                            }}>
-                                                {owner2email}
-                                            </Text>
-                                        </Row>
-                                    </Grid>
-                                    </Grid.Container>
-
-                                    <Grid.Container>
-                                    <Grid css={{
-                                        jc:'center',
-                                        display: 'flex',
-                                        flexDirection: 'row'
-
-                                    }}>
-                                        <Row
-                                        css={{
-                                            
-                                            textAlign: 'center'
-                                        }}>
-                                            <Text hideIn={'xs'}
-                                            css={{
-                                                fontSize: '$lg',
-                                                paddingRight: '4px',
-                                                color: '$gray700'
-                                            }}>
-                                                Owner 3 Name: 
-                                            </Text>
-                                            <Text hideIn={'xs'}
-                                            css={{
-                                                fontSize: '$lg',
-                                                fontWeight: '$semibold'
-                                            }}>
-                                                {owner3}
-                                            </Text>
-                                            <Text showIn={'xs'}
-                                            css={{
-                                                fontSize: '$md',
-                                                paddingRight: '4px',
-                                                color: '$gray700'
-                                            }}>
-                                                Owner 3 Name: 
-                                            </Text>
-                                            <Text showIn={'xs'}
-                                            css={{
-                                                fontSize: '$md',
-                                                fontWeight: '$semibold'
-                                            }}>
-                                                {owner3}
-                                            </Text>
-                                        </Row>
-                                    </Grid>
-                                    <Grid css={{
-                                        jc:'center'
-                                    }}>
-                                        <Row
-                                        css={{
-                                            
-                                            textAlign: 'center'
-                                        }}>
-                                            <Text hideIn={'xs'}
-                                            css={{
-                                                fontSize: '$lg',
-                                                paddingRight: '4px',
-                                                color: '$gray700'
-                                            }}>
-                                                Owner 3 Email ID: 
-                                            </Text>
-                                            <Text hideIn={'xs'}
-                                            css={{
-                                                fontSize: '$lg',
-                                                fontWeight: '$semibold'
-                                            }}>
-                                                {owner3email}
-                                            </Text>
-                                            <Text showIn={'xs'}
-                                            css={{
-                                                fontSize: '$md',
-                                                paddingRight: '4px',
-                                                color: '$gray700'
-                                            }}>
-                                                Owner 3 Email ID: 
-                                            </Text>
-                                            <Text showIn={'xs'}
-                                            css={{
-                                                fontSize: '$md',
-                                                fontWeight: '$semibold'
-                                            }}>
-                                                {owner3email}
-                                            </Text>
-                                        </Row>
-                                    </Grid>
-                                    </Grid.Container>
-                                </Grid.Container>}
-
-                                
-                                {totalowners ==2 && 
-                                
-                                <Grid.Container gap={0.5}
-                                css={{
-                                    jc: 'center',
-                                    alignItems: 'center',
-                                    textAlign: 'center'
-                                }}>
-                                    <Grid>
-                                        <Row
-                                        css={{
-                                        
-                                            textAlign: 'center'
-                                        }}>
-                                            <Text hideIn={'xs'}
-                                            css={{
-                                                fontSize: '$lg',
-                                                paddingRight: '4px',
-                                                color: '$gray700'
-                                            }}>
-                                                Owner 1 Name: 
-                                            </Text>
-                                            <Text hideIn={'xs'}
-                                            css={{
-                                                fontSize: '$lg',
-                                                fontWeight: '$semibold'
-                                            }}>
-                                                {owner1}
-                                            </Text>
-                                            <Text showIn={'xs'}
-                                            css={{
-                                                fontSize: '$md',
-                                                paddingRight: '4px',
-                                                color: '$gray700'
-                                            }}>
-                                                Owner 1 Name: 
-                                            </Text>
-                                            <Text showIn={'xs'}
-                                            css={{
-                                                fontSize: '$md',
-                                                fontWeight: '$semibold'
-                                            }}>
-                                                {owner1}
-                                            </Text>
-                                        </Row>
-                                    </Grid>
-                                    <Grid.Container>
-                                    <Grid css={{
-                                        jc:'center',
-                                        display: 'flex',
-                                        flexDirection: 'row'
-
-                                    }}>
-                                        <Row
-                                        css={{
-                                            
-                                            textAlign: 'center'
-                                        }}>
-                                            <Text hideIn={'xs'}
-                                            css={{
-                                                fontSize: '$lg',
-                                                paddingRight: '4px',
-                                                color: '$gray700'
-                                            }}>
-                                                Owner 2 Name: 
-                                            </Text>
-                                            <Text hideIn={'xs'}
-                                            css={{
-                                                fontSize: '$lg',
-                                                fontWeight: '$semibold'
-                                            }}>
-                                                {owner2}
-                                            </Text>
-                                            <Text showIn={'xs'}
-                                            css={{
-                                                fontSize: '$md',
-                                                paddingRight: '4px',
-                                                color: '$gray700'
-                                            }}>
-                                                Owner 2 Name: 
-                                            </Text>
-                                            <Text showIn={'xs'}
-                                            css={{
-                                                fontSize: '$md',
-                                                fontWeight: '$semibold'
-                                            }}>
-                                                {owner2}
-                                            </Text>
-                                        </Row>
-                                    </Grid>
-                                    <Grid css={{
-                                        jc:'center'
-                                    }}>
-                                        <Row
-                                        css={{
-                                            
-                                            textAlign: 'center'
-                                        }}>
-                                            <Text hideIn={'xs'}
-                                            css={{
-                                                fontSize: '$lg',
-                                                paddingRight: '4px',
-                                                color: '$gray700'
-                                            }}>
-                                                Owner 2 Email ID: 
-                                            </Text>
-                                            <Text hideIn={'xs'}
-                                            css={{
-                                                fontSize: '$lg',
-                                                fontWeight: '$semibold'
-                                            }}>
-                                                {owner2email}
-                                            </Text>
-                                            <Text showIn={'xs'}
-                                            css={{
-                                                fontSize: '$md',
-                                                paddingRight: '4px',
-                                                color: '$gray700'
-                                            }}>
-                                                Owner 2 Email ID: 
-                                            </Text>
-                                            <Text showIn={'xs'}
-                                            css={{
-                                                fontSize: '$md',
-                                                fontWeight: '$semibold'
-                                            }}>
-                                                {owner2email}
-                                            </Text>
-                                        </Row>
-                                    </Grid>
-                                    </Grid.Container>
-
-                                    
-                                </Grid.Container>}
-
-                                {totalowners ==1 && 
-                                
-                                <Grid.Container gap={0.5}
-                                css={{
-                                    jc: 'center',
-                                    alignItems: 'center',
-                                    textAlign: 'center'
-                                }}>
-                                    <Grid>
-                                        <Row
-                                        css={{
-                                        
-                                            textAlign: 'center'
-                                        }}>
-                                            <Text hideIn={'xs'}
-                                            css={{
-                                                fontSize: '$lg',
-                                                paddingRight: '4px',
-                                                color: '$gray700'
-                                            }}>
-                                                Owner 1 Name: 
-                                            </Text>
-                                            <Text hideIn={'xs'}
-                                            css={{
-                                                fontSize: '$lg',
-                                                fontWeight: '$semibold'
-                                            }}>
-                                                {owner1}
-                                            </Text>
-                                            <Text showIn={'xs'}
-                                            css={{
-                                                fontSize: '$md',
-                                                paddingRight: '4px',
-                                                color: '$gray700'
-                                            }}>
-                                                Owner 1 Name: 
-                                            </Text>
-                                            <Text showIn={'xs'}
-                                            css={{
-                                                fontSize: '$md',
-                                                fontWeight: '$semibold'
-                                            }}>
-                                                {owner1}
-                                            </Text>
-                                        </Row>
-                                    </Grid>        
-                                </Grid.Container>}
-                                
-
-                                {/* picture */}
-                                <Grid.Container gap={0.5}
-                                css={{
-                                    jc: 'center',
-                                    alignItems: 'center',
-                                    textAlign: 'center'
-                                }}>
-                                    <Grid>
-                                    {finalImage &&
-                                        <Row
-                                        css={{
-                                            alignItems: 'center'
-                                        }}>
-                                            <Text hideIn={'xs'}
-                                            css={{
-                                                fontSize: '$lg',
-                                                paddingRight: '4px',
-                                                color: '$gray700'
-                                            }}>
-                                                Team Logo: 
-                                            </Text>
-                                            <Text showIn={'xs'}
-                                            css={{
-                                                fontSize: '$md',
-                                                paddingRight: '4px',
-                                                color: '$gray700'
-                                            }}>
-                                                Picture: 
-                                            </Text>
-                                            <Avatar
-                                                src={finalImage}
-                                                size='xl'
-                                            />
-                                            
-                                        </Row>
-                                    }
-                                    </Grid>
-                                    
-                                </Grid.Container>
-                            </Grid>
-                        </Grid.Container>
-                    </Grid>
-                </Grid.Container>
-            }
 
         </div>
     )

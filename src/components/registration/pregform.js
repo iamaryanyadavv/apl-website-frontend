@@ -84,13 +84,6 @@ export default function PRegForm(){
     //variable to control if user signed in
     const [signedin, setSignedIn] = useState(false);
     const [User, setUser] = useState({});
-    //     onSuccess: codeResponse => 
-    //     {
-    //         setSignedIn(true);
-    //     },
-    //     flow: 'auth-code',
-        
-    // });
 
     // function to check if all required fields are filled
     function CheckForm(){
@@ -155,7 +148,7 @@ export default function PRegForm(){
         }
     }
 
-    // function to send final player data to sheets and image to gdrive
+    // function to send final player data to sheets
     async function sendForm(e)
     {
         //required inputs: firstname, lastname, batch, phonenumber, gender, position 1, position 2, 
@@ -201,7 +194,7 @@ export default function PRegForm(){
 
     // function to send payment image to googledrive
     async function sendPaymentImage(paymentdata){
-        var paymentName = User.given_name+User.family_name+'Payment'
+        var paymentName = User.given_name+User.family_name + ' Payment'
         const PaymentData = new FormData();
         PaymentData.append('file', paymentdata, paymentName);
         if(PaymentData){
@@ -486,6 +479,7 @@ export default function PRegForm(){
                         </div>
 
                         }
+
                         {LoginLoader && //Show loader when LoginLoader===true - for the lag between loggin in and shoing welcome message
                         <Grid.Container
                         css={{
@@ -586,7 +580,7 @@ export default function PRegForm(){
                                             setFirstnameStatus('error')
                                         }
                                     }} 
-                                    width="200px"  status={FirstnameStatus} disabled={!signedin} value={User.given_name} />
+                                    width="200px"  status={FirstnameStatus} disabled={!signedin} placeholder={firstname} />
                                 </Grid>
                                 }
                                 {!firstname && 
@@ -625,7 +619,7 @@ export default function PRegForm(){
                                         }
                                         
                                         }} 
-                                        width="200px" status={LastnameStatus} disabled={!signedin} value={User.family_name} />
+                                        width="200px" status={LastnameStatus} disabled={!signedin} placeholder={lastname} />
                                 </Grid>
                                 }
                                 {!lastname && 
@@ -670,7 +664,7 @@ export default function PRegForm(){
                                         }}>
                                             Email ID
                                         </Text>
-                                        <Input width="300px" status={EmailIDStatus} disabled readOnly value={emailID} />
+                                        <Input width="300px" readOnly value={emailID} />
                                     </Col>
                                 </Grid>
                                 
@@ -698,7 +692,7 @@ export default function PRegForm(){
                                         }}>
                                             Email ID
                                         </Text>
-                                        <Input width="300px" disabled readOnly placeholder='Email ID' />
+                                        <Input width="300px"  readOnly placeholder='Email ID' />
                                     </Col>
                                 </Grid>
                                 
@@ -1010,7 +1004,7 @@ export default function PRegForm(){
                                         color: 'Black',
                                         fontWeight: '$semibold'
                                     }}>
-                                        Pay
+                                        Register
                                     </Text>
                                 </Button>
 
