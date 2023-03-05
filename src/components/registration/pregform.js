@@ -263,6 +263,9 @@ export default function PRegForm(){
                     setLastName(userObject.family_name)
                     setAlreadyRegistered(false)
                     setEmailID(userObject.email);
+                    setFirstnameStatus('success');
+                    setLastnameStatus('success');
+                    setEmailIDStatus('success');
                     // console.log('Signed in')
                 }
                 else{
@@ -583,7 +586,7 @@ export default function PRegForm(){
                                             setFirstnameStatus('error')
                                         }
                                     }} 
-                                    width="200px" status={FirstnameStatus} disabled={!signedin} placeholder={User.given_name} />
+                                    width="200px"  status={FirstnameStatus} disabled={!signedin} value={User.given_name} />
                                 </Grid>
                                 }
                                 {!firstname && 
@@ -622,7 +625,7 @@ export default function PRegForm(){
                                         }
                                         
                                         }} 
-                                        width="200px" status={LastnameStatus} disabled={!signedin} placeholder={User.family_name} />
+                                        width="200px" status={LastnameStatus} disabled={!signedin} value={User.family_name} />
                                 </Grid>
                                 }
                                 {!lastname && 
@@ -667,7 +670,7 @@ export default function PRegForm(){
                                         }}>
                                             Email ID
                                         </Text>
-                                        <Input width="300px" status={EmailIDStatus} disabled readOnly placeholder={emailID} />
+                                        <Input width="300px" status={EmailIDStatus} disabled readOnly value={emailID} />
                                     </Col>
                                 </Grid>
                                 

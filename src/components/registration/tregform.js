@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 import './tregform.css';
-import { Grid, Input, Modal, Text, Dropdown, Button, Row, Col, Avatar, Radio} from "@nextui-org/react";
+import { Grid, Input, Loading, Modal, Text, Dropdown, Button, Row, Col, Avatar, Radio} from "@nextui-org/react";
 import { useGoogleLogin } from '@react-oauth/google';
 import jwt_decode from "jwt-decode";
 import imageCompression from 'browser-image-compression';
@@ -58,6 +58,10 @@ export default function TRegForm() {
 
     const [HelperColor, setHelperColor] = useState('');
     const [ModalVisibility, setModalVisibility] = useState(false);
+    const [LoginLoader, setLoginLoader] = useState(false);
+
+    const [paymentSC, setPaymentSC] = useState();
+    const [paymentSCUploaded, setPaymentSCUploaded] = useState();
 
     const [User, setUser] = useState({});
 
@@ -158,7 +162,7 @@ export default function TRegForm() {
         }
         
 
-        if(managername && manageremail && managerphone && totalowners==5 && owner1 && owner2 && owner3 && owner4 && owner5){
+        if(managername && manageremail && managerphone && totalowners==5 && owner1 && owner2 && owner3 && owner4 && owner5 && paymentSC){
             setTeamnamestatus('warning');
             SetManagernamestatus('warning');
             SetManagerphonestatus('warning');
@@ -171,7 +175,7 @@ export default function TRegForm() {
             SetOwner5status('warning');
             return true
         }
-        else if(managername && manageremail && managerphone && totalowners==4 && owner1 && owner2 && owner3 && owner4)
+        else if(managername && manageremail && managerphone && totalowners==4 && owner1 && owner2 && owner3 && owner4 && paymentSC)
         {
             setTeamnamestatus('warning');
             SetManagernamestatus('warning');
@@ -184,7 +188,7 @@ export default function TRegForm() {
             SetOwner4status('warning');
             return true
         }
-        else if(managername && manageremail && managerphone && totalowners==3 && owner1 && owner2 && owner3)
+        else if(managername && manageremail && managerphone && totalowners==3 && owner1 && owner2 && owner3 && paymentSC)
         {
             setTeamnamestatus('warning');
             SetManagernamestatus('warning');
@@ -196,7 +200,7 @@ export default function TRegForm() {
             SetOwner3status('warning');
             return true
         }
-        else if(managername && manageremail && managerphone && totalowners==2 && owner1 && owner2)
+        else if(managername && manageremail && managerphone && totalowners==2 && owner1 && owner2 && paymentSC) 
         {
             setTeamnamestatus('warning');
             SetManagernamestatus('warning');
@@ -207,7 +211,7 @@ export default function TRegForm() {
             SetOwner2status('warning');
             return true
         }
-        else if(managername && manageremail && managerphone && totalowners==1 && owner1)
+        else if(managername && manageremail && managerphone && totalowners==1 && owner1 && paymentSC)
         {
             setTeamnamestatus('warning');
             SetManagernamestatus('warning');
@@ -219,34 +223,82 @@ export default function TRegForm() {
         }
     }
 
+    async function sendTeamLogo(imagedata){
+        var imageName = teamname;
+        const ImageData = new FormData();
+        ImageData.append('file', imagedata, imageName);
+        if(ImageData){
+            await fetch('http://localhost:3001/registration/teamlogo',{
+                method: 'POST',
+                headers:{Value: "multipart/form-data"},
+                body: ImageData
+            })
+        }
+    }
+
+    async function sendPaymentImage(paymentdata){
+        var paymentName = teamname + " Payment";
+        const PaymentData = new FormData();
+        PaymentData.append('file', paymentdata, paymentName);
+        if(PaymentData){
+            await fetch('http://localhost:3001/registration/teampaymentimages',{
+                method: 'POST',
+                headers:{Value: "multipart/form-data"},
+                body: PaymentData
+            })
+        }
+    }
+
     const getRegisteredPlayersEmailData= async (userObject) =>{
         await fetch('http://localhost:3001/registration/player')
         .then(response=>response.json())
         .then((data)=>{
             var isSignedin = false
-            data.values.map((item)=>{   
-                if(userObject.email!=item[0]){
-                    isSignedin=true
+            if(data.values){
+                for(var i = 0; i < data.values.length; i++){
+                    if(userObject.email!=data.values[i][0]){
+                        isSignedin=true
+                    }
+                    else{
+                        isSignedin=false
+                        break;
+                    }
+                }
+                if(isSignedin===true){
+                    setLoginLoader(false)
+                    setSignedIn(true)
+                    document.getElementById("GoogleButton").hidden = true;
+                    setUser(userObject);
+                    setEmailID(userObject.email);
+                    SetManageremail(userObject.email);
+                    SetManagername(userObject.given_name+" "+userObject.family_name);
+                    SetOwner1(userObject.given_name+" "+userObject.family_name);
+                    setAlreadyRegistered(false)
+                    SetManageremailstatus('success')
+                    SetManagernamestatus('success')
+                    SetOwner1status('success')
                 }
                 else{
-                    isSignedin=false
-                }
-            })
-            if(isSignedin===true){
-                setSignedIn(true)
-                document.getElementById("GoogleButton").hidden = true;
-                setUser(userObject);
-                setEmailID(userObject.email);
-                // console.log('Signed in')
+                    setLoginLoader(false);
+                    setSignedIn(false)
+                    setAlreadyRegistered(true)
+                    document.getElementById("GoogleButton").hidden = false;
+                }   
             }
-            else{
+            else if(!data.values){
+                setLoginLoader(false);
                 setSignedIn(false)
                 setAlreadyRegistered(true)
                 document.getElementById("GoogleButton").hidden = false;
-                // console.log('Did not sign in')
-            }    
+            }
+            
+             
         })
     } 
+
+
+
+    
 
       async function sendForm(e)
     {
@@ -311,20 +363,25 @@ export default function TRegForm() {
     });
 
     function handleCallbackresponse(response){
-        var userObject = jwt_decode(response.credential)  
+        var userObject = jwt_decode(response.credential) 
+        setLoginLoader(true); 
         getRegisteredPlayersEmailData(userObject);
     }
     
     useEffect( ()=>{
-        window.google.accounts.id.initialize({
-            client_id: "307601456989-5ii0dp5jhqah6snpkuf9ff1jajp67ku6.apps.googleusercontent.com",
-            callback: handleCallbackresponse
-        });
-
-        window.google.accounts.id.renderButton(
-            document.getElementById("GoogleButton"),
-            { theme: 'outlined', size: 'large', shape: 'pill',}
-        ); 
+        setLoginLoader(true)
+        window.setTimeout(()=>{
+            window.google.accounts.id.initialize({
+                client_id: "307601456989-5ii0dp5jhqah6snpkuf9ff1jajp67ku6.apps.googleusercontent.com",
+                callback: handleCallbackresponse
+            });
+            
+            window.google.accounts.id.renderButton(
+                document.getElementById("GoogleButton"),
+                { theme: 'outlined', size: 'large', shape: 'pill',}
+            ); 
+            setLoginLoader(false)
+        }, 2000)
     }, [])
 
     return(
@@ -338,7 +395,7 @@ export default function TRegForm() {
                 <Grid.Container
                         css={{
                             jc: 'center',
-    
+                            paddingTop:"1%"
                         }}>
                             <div className="GoogleButton" id='GoogleButton'></div>
                         </Grid.Container>
@@ -394,11 +451,51 @@ export default function TRegForm() {
                                 </Text>
                                 
                             </Grid.Container>
+                            <Modal
+                            open={signedin}
+                            closeButton
+                            >
+                                    <Modal.Header
+                                    css={{
+                                        paddingTop: '0px',
+                                    }}>
+                                        <Col>
+                                            <Text 
+                                            css={{
+                                                textAlign: 'center',
+                                                fontSize: '$3xl',
+                                                fontWeight: '$bold',
+                                                color: '$green600',
+                                                borderStyle: 'solid',
+                                                borderWidth: '0px 0px 1px 0px',
+                                                borderColor: '$gray800'
+                                            }}>
+                                                Success!
+                                            </Text>
+                                            
+                                        </Col>
+                                    </Modal.Header>
+                                    <Modal.Body
+                                    css={{
+                                        paddingTop: '0px'
+                                    }}>
+                                        <Text 
+                                        css={{
+                                            textAlign: 'center',
+                                            fontSize: '$xl',
+                                            fontWeight: '$semibold',
+                                            color: 'white',
+                                        }}>
+                                            You have been successfully logged in as {User.name}
+                                        </Text>
+                                    </Modal.Body>
+                                    
+                            </Modal>
                         
                         </div>
                         }
     
-                        {!signedin &&
+                        {!signedin && !LoginLoader &&
                         <div>
                             <Grid.Container gap={0}
                             css={{
@@ -444,28 +541,73 @@ export default function TRegForm() {
                                 
                             </Grid.Container> 
                         </div>}
-    
-                        {AlreadyRegistered && 
-                            <Grid.Container
-                            css={{
-                                jc: 'center',
-                                alignItems: 'center',
-                                textAlign: 'center'
-                            }}>
-                                <Grid>
-                                    <Text
-                                    css={{
-                                        textAlign: 'center',
-                                        fontSize: '$3xl',
-                                        fontWeight: '$bold',
-                                        color: '$red600',
-                                        paddingBottom: '20px'
-                                    }}>
-                                        YOU HAVE ALREADY REGISTERED WITH THIS EMAIL ID!
-                                    </Text>
-                                </Grid>
-                            </Grid.Container>
+                        {LoginLoader && //Show loader when LoginLoader===true - for the lag between loggin in and shoing welcome message
+                        <Grid.Container
+                        css={{
+                            jc: 'center',
+                            alignItems: 'center',
+                        }}>
+                            <Grid>
+                                <Loading
+                                size="xl"
+                                color='white'
+
+                                />
+                            </Grid>
+                        </Grid.Container>
                         }
+                        {AlreadyRegistered && //If user is already registered, show error message
+                           
+                                <Grid.Container
+                                css={{
+                                    jc: 'center',
+                                    alignItems: 'center',
+                                    textAlign: 'center'
+                                }}>
+                                    <Modal
+                                    open={AlreadyRegistered}
+                                    closeButton
+                                    onClose={()=>{setAlreadyRegistered(false); window.location.pathname='/registration/player'; }}
+                                    >
+                                            <Modal.Header
+                                            css={{
+                                                paddingTop: '0px',
+                                            }}>
+                                                <Col>
+                                                    <Text 
+                                                    css={{
+                                                        textAlign: 'center',
+                                                        fontSize: '$3xl',
+                                                        fontWeight: '$bold',
+                                                        color: '$red600',
+                                                        borderStyle: 'solid',
+                                                        borderWidth: '0px 0px 1px 0px',
+                                                        borderColor: '$gray800'
+                                                    }}>
+                                                        Error!
+                                                    </Text>
+                                                    
+                                                </Col>
+                                            </Modal.Header>
+                                            <Modal.Body
+                                            css={{
+                                                paddingTop: '0px'
+                                            }}>
+                                                <Text 
+                                                css={{
+                                                    textAlign: 'center',
+                                                    fontSize: '$xl',
+                                                    fontWeight: '$bold',
+                                                    color: 'white',
+                                                }}>
+                                                    It seems that you have already registered with this email address.
+                                                </Text>
+                                            </Modal.Body>
+                                            
+                                    </Modal>
+                                </Grid.Container>
+                           
+                        }          
 
                 <Grid 
                 css={{
@@ -518,6 +660,7 @@ export default function TRegForm() {
                     css={{
                         jc: 'center',
                     }}>
+                        {managername &&
                         <Grid>
                             <Input disabled={!signedin} status={Managernamestatus} onChange={(event)=>
                                 {SetManagername(event.target.value); SetOwner1(event.target.value);
@@ -526,27 +669,53 @@ export default function TRegForm() {
                                     }
                                     else if(!event.target.value){
                                         SetManagernamestatus('error')
-                                    }}} animated={true} placeholder='Full Name' type='text' bordered clearable required/>
+                                    }}} animated={true} value={User.given_name} type='text' bordered clearable required/>
                         </Grid>
-
+                                }
+                               {!managername &&
                         <Grid>
-                            <Input disabled={!signedin} status={Manageremailstatus} css={{width:'300px'}} onChange={(event)=>{SetManageremail(event.target.value)
+                            <Input disabled={!signedin} status={Managernamestatus} onChange={(event)=>
+                                {SetManagername(event.target.value); SetOwner1(event.target.value);
+                                    if(event.target.value){
+                                        SetManagernamestatus('success')
+                                    }
+                                    else if(!event.target.value){
+                                        SetManagernamestatus('error')
+                                    }}} animated={true} placeholder={'Manager Name'} type='text' bordered clearable required/>
+                        </Grid>
+                                } 
+                        {manageremail &&
+                        <Grid>
+                            <Input disabled status={Manageremailstatus} css={{width:'300px'}} onChange={(event)=>{SetManageremail(event.target.value)
                             if(event.target.value){
                                 SetManageremailstatus('success')
                             }
                             else if(!event.target.value){
                                 SetManageremailstatus('error')
                             }
-                            }} animated={true} placeholder='Email ID' type='text' bordered clearable/>
+                            }} animated={true} readOnly value={manageremail} type='text' bordered clearable/>
                         </Grid>
+                        }
+                        {!manageremail &&
+                        <Grid>
+                            <Input disabled status={Manageremailstatus} css={{width:'300px'}} onChange={(event)=>{SetManageremail(event.target.value)
+                            if(event.target.value){
+                                SetManageremailstatus('success')
+                            }
+                            else if(!event.target.value){
+                                SetManageremailstatus('error')
+                            }
+                            }} animated={true} readOnly placeholder='Email ID' type='text' bordered clearable/>
+                        </Grid>
+                        }
 
                         <Grid>
                             <Input disabled={!signedin} status={Managerphonestatus} onChange={(event)=>{SetManagerphone(event.target.value)
-                            if(event.target.value){
-                                SetManagerphonestatus('success')
-                            }
-                            else if(!event.target.value){
+                            if(event.target.value.length>10 || event.target.value.length<10){
                                 SetManagerphonestatus('error')
+                            }
+                            else if(event.target.value.length===10){
+                                SetManagerphonestatus('success')
                             }}} animated={true} placeholder='Phone' type='text' bordered clearable required/>
                         </Grid>
 
@@ -609,7 +778,7 @@ export default function TRegForm() {
                                         else if(!event.target.value){
                                             SetOwner1status('error')
                                         }
-                                        }} bordered labelLeft="1st" labelRight='(Manager)' placeholder={owner1} />
+                                        }} bordered labelLeft="1st" labelRight='(Manager)' value={managername} />
                                 </Grid>
                             </Grid.Container>
                         </div>
@@ -950,6 +1119,43 @@ export default function TRegForm() {
                         </Text>
                 <input disabled={!signedin} onChange={(event)=>setInitialImage(event.target.files[0])} className="photobtn" animated={'true'} type='file' accept="image/*" required/>
                 </Grid.Container >
+                <Grid.Container gap={2}
+                        css={{
+                            jc: 'center',
+                            alignItems: 'center',
+                            paddingBottom:'20px',
+                            paddingTop:'20px'
+                        }}>
+                            <Col>
+                                {paymentSCUploaded===false && 
+                                <Text
+                                css={{
+                                    jc: 'center',
+                                    textAlign: 'center',
+                                    color: '$red600',
+                                    fontSize: '$xl',
+                                    fontWeight: '$semibold'
+                                }}>
+                                    Please upload payment screenshot from your UPI service app!
+                                </Text>
+                                }
+                                
+                                <Text
+                                css={{
+                                    jc:'center',
+                                    textAlign: 'center',
+                                    fontSize: '$4xl',
+                                    fontWeight: '$semibold'
+                                }}>
+                                    UPI Payment
+                                </Text>
+                            </Col>
+                            <Grid>
+                                <input disabled={!signedin} onChange={(event)=>{setPaymentSC(event.target.files[0]); }} className="photobtn" animated={'true'} type='file' accept="image/*" required/>
+                            </Grid>
+                            
+                        </Grid.Container>
+
                     <Grid.Container gap={4}
                     css={{
                         jc: 'center'
@@ -963,6 +1169,7 @@ export default function TRegForm() {
                                 }
                                 
                             }} shadow rounded bordered auto ghost> Submit </Button>
+                            
                             <Modal
                                 closeButton
                                 open={ModalVisibility}
@@ -1879,7 +2086,10 @@ export default function TRegForm() {
                                                     </Grid>
                                                     
                                                 </Grid.Container>
+                                                
                                             </Grid>
+                                            
+                                            
                                         </Grid.Container>
                                     </Modal.Body>
     
@@ -1894,6 +2104,8 @@ export default function TRegForm() {
                                         }}
                                         onPress={(e)=>{
                                             sendForm(e);
+                                            sendPaymentImage(paymentSC)
+                                            sendTeamLogo(initialImage);
                                             setRegistrationDone(true);
                                             setModalVisibility(false);
                                         }}>
@@ -1910,7 +2122,6 @@ export default function TRegForm() {
                                 </Modal>
                         </Grid>
                     </Grid.Container>
-                    
                 </Grid>
             </Grid.Container>
             
