@@ -7,8 +7,8 @@
 
 # testing
 /coverage
-localhost-key.pem
-localhost.pem
+/localhost-key.pem
+/localhost.pem
 # production
 /build
 
