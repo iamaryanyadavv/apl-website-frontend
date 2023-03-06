@@ -172,6 +172,10 @@ export default function TRegForm() {
             SetOwner3status('warning');
             SetOwner4status('warning');
             SetOwner5status('warning');
+            SetOwneremail5status('warning');
+            SetOwneremail4status('warning');
+            SetOwneremail3status('warning');
+            SetOwneremail2status('warning');
             return true
         }
         else if(teamname && managername && manageremail && managerphone && totalowners==='4' && owner1 && owner2 && owner3 && owner4 && paymentSC && teamlogoUploaded)
@@ -185,6 +189,9 @@ export default function TRegForm() {
             SetOwner2status('warning');
             SetOwner3status('warning');
             SetOwner4status('warning');
+            SetOwneremail4status('warning');
+            SetOwneremail3status('warning');
+            SetOwneremail2status('warning');
             return true
         }
         else if(teamname && managername && manageremail && managerphone && totalowners==='3' && owner1 && owner2 && owner3 && paymentSC && teamlogoUploaded)
@@ -197,6 +204,8 @@ export default function TRegForm() {
             SetOwner1status('warning');
             SetOwner2status('warning');
             SetOwner3status('warning');
+            SetOwneremail3status('warning');
+            SetOwneremail2status('warning');
             return true
         }
         else if(teamname && managername && manageremail && managerphone && totalowners==='2' && owner1 && owner2 && paymentSC && teamlogoUploaded) 
@@ -208,6 +217,7 @@ export default function TRegForm() {
             SetTotalownersstatus('warning');
             SetOwner1status('warning');
             SetOwner2status('warning');
+            SetOwneremail2status('warning');
             return true
         }
         else if(teamname && managername && manageremail && managerphone && totalowners==='1' && owner1 && paymentSC && teamlogoUploaded)
