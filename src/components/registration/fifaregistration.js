@@ -128,6 +128,7 @@ export default function FifaRegForm(){
         }
     }
 }
+
 useEffect( ()=>{
     setLoginLoader(true)
     window.setTimeout(()=>{
@@ -288,45 +289,7 @@ useEffect( ()=>{
 
     
     return(
-        <div className="fifaregpage">
-            <Text hideIn={'xs'}
-                css={{
-                    textAlign: 'center',
-                    fontSize: '$5xl',
-                    fontWeight: '$semibold',
-                    paddingBottom: '1.5%',
-                    paddingTop:"1.5%"
-                }}>
-                    FIFA TOURNAMENT REGISTRATION
-                </Text>
-                <Text showIn={'xs'}
-                css={{
-                    textAlign: 'center',
-                    fontSize: '$3xl',
-                    fontWeight: '$semibold',
-                    padding: '10% 5%',
-                    paddingTop:"0"
-                }}>
-                    FIFA TOURNAMENT REGISTRATION
-                </Text>
-                <Text hideIn={'xs'}
-                css={{
-                    textAlign: 'center',
-                    fontSize:'$2xl',
-                    fontWeight: '$medium',
-                    padding: '0% 20% 2% 20%'
-                }}>
-                    Fill out the form* below and pay the required registration fee to complete your registration!
-                </Text>
-                <Text showIn={'xs'}
-                css={{
-                    textAlign: 'center',
-                    fontSize:'$xl',
-                    fontWeight: '$medium',
-                    paddingBottom: '5%'
-                }}>
-                    Fill out the form* below and pay the required registration fee to complete your registration!
-                </Text>
+        <div>
                 <Grid.Container gap={2}
                 css={{
                     jc: 'center',
@@ -863,7 +826,25 @@ useEffect( ()=>{
                                     fontSize: '$4xl',
                                     fontWeight: '$semibold'
                                 }}>
-                                    UPI Payment
+                                    Payment
+                                </Text>
+                                <Text 
+                                css={{
+                                    jc:'center',
+                                    textAlign: 'center',
+                                    fontSize: '$xl',
+                                    fontWeight: '$medium'
+                                }}>
+                                    Please pay the amount to Uday Srivastava, via PayTM or GPay.
+                                </Text>
+                                <Text 
+                                css={{
+                                    jc:'center',
+                                    textAlign: 'center',
+                                    fontSize: '$xl',
+                                    fontWeight: '$medium'
+                                }}>
+                                    (8447906230, UPI ID: )
                                 </Text>
                             </Col>
                             <Grid>
@@ -1313,7 +1294,6 @@ useEffect( ()=>{
 
                     </Grid>
                 </Grid.Container>
-            
         </div>
         )
     }

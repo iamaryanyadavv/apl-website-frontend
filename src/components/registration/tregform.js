@@ -679,40 +679,49 @@ export default function TRegForm() {
                             </Modal>
                         </Grid.Container>
                            
-                        }          
-                {/* Teamname */}
-                <Grid 
-                css={{
-                    jc: 'center',
-                    width: '1024px'
-                }}>
-                    <Text
-                    css={{
-                        jc:'center',
-                        textAlign: 'center',
-                        paddingBottom: '1%',
-                        fontSize: '$4xl',
-                        fontWeight: '$semibold'
-                    }}>Team</Text>
+                        }   
 
-                    <Grid.Container gap={2}
-                    css={{
-                        jc: 'center',
-                    }}>
-                        <Grid>
-                            <Input helperColor={HelperColor} disabled={!signedin} status={Teamnamestatus} onChange={(event)=>{
-                                SetTeamname(event.target.value)
-                                if(event.target.value){
-                                    setTeamnamestatus('success')
-                                }
-                                else if(!event.target.value){
-                                    setTeamnamestatus('error')
-                                }
-                                }} animated={true} placeholder='Team Name' type='text'  clearable required/>
-                        </Grid>
+                        <Grid.Container gap={2}
+                        css={{
+                            jc: 'center',
+                            alignItems: 'center'
+                        }}>
+                            {/* Teamname */}
+                            <Grid 
+                            css={{
+                                jc: 'center',
+                                width: '1024px'
+                            }}>
+                                <Text
+                                css={{
+                                    jc:'center',
+                                    textAlign: 'center',
+                                    paddingBottom: '1%',
+                                    fontSize: '$4xl',
+                                    fontWeight: '$semibold'
+                                }}>Team</Text>
 
-                    </Grid.Container>
-                </Grid>
+                                <Grid.Container gap={2}
+                                css={{
+                                    jc: 'center',
+                                }}>
+                                    <Grid>
+                                        <Input helperColor={HelperColor} disabled={!signedin} status={Teamnamestatus} onChange={(event)=>{
+                                            SetTeamname(event.target.value)
+                                            if(event.target.value){
+                                                setTeamnamestatus('success')
+                                            }
+                                            else if(!event.target.value){
+                                                setTeamnamestatus('error')
+                                            }
+                                            }} animated={true} placeholder='Team Name' type='text'  clearable required/>
+                                    </Grid>
+
+                                </Grid.Container>
+                            </Grid>
+
+                        </Grid.Container>       
+                
                 
                 {/* Manager */}
                 <Grid 
@@ -1183,7 +1192,7 @@ export default function TRegForm() {
                 css={{
                     width: '1024px'
                 }}>
-                    <Grid.Container css={{
+                    <Grid.Container gap={2} css={{
                             jc: 'center',
                             display: 'flex',
                             flexDirection: 'column',
@@ -1247,7 +1256,25 @@ export default function TRegForm() {
                                     fontSize: '$4xl',
                                     fontWeight: '$semibold'
                                 }}>
-                                    UPI Payment
+                                    Payment
+                                </Text>
+                                <Text 
+                                css={{
+                                    jc:'center',
+                                    textAlign: 'center',
+                                    fontSize: '$xl',
+                                    fontWeight: '$medium'
+                                }}>
+                                    Please pay the amount (5000) to Uday Srivastava, via PayTM or GPay.
+                                </Text>
+                                <Text 
+                                css={{
+                                    jc:'center',
+                                    textAlign: 'center',
+                                    fontSize: '$xl',
+                                    fontWeight: '$medium'
+                                }}>
+                                    (8447906230, UPI ID: )
                                 </Text>
                             </Col>
                             <Grid>
@@ -2244,7 +2271,6 @@ export default function TRegForm() {
                     </Grid.Container>
                 </Grid>
             </Grid.Container>
-            
             
         }   
 
