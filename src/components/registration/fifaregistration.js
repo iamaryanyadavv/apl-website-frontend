@@ -288,13 +288,14 @@ useEffect( ()=>{
 
     
     return(
-        <div>
+        <div className="fifaregpage">
             <Text hideIn={'xs'}
                 css={{
                     textAlign: 'center',
                     fontSize: '$5xl',
                     fontWeight: '$semibold',
-                    paddingBottom: '1.5%'
+                    paddingBottom: '1.5%',
+                    paddingTop:"1.5%"
                 }}>
                     FIFA TOURNAMENT REGISTRATION
                 </Text>
@@ -303,7 +304,8 @@ useEffect( ()=>{
                     textAlign: 'center',
                     fontSize: '$3xl',
                     fontWeight: '$semibold',
-                    padding: '10% 5%'
+                    padding: '10% 5%',
+                    paddingTop:"0"
                 }}>
                     FIFA TOURNAMENT REGISTRATION
                 </Text>
