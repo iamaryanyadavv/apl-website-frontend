@@ -1543,13 +1543,15 @@ export default function PRegForm(){
                                             setRegistrationDone(true);
                                             setModalVisibility(false);
                                         }}>
-                                            <Text
+                                            {/* <Text
                                             css={{
                                                 color: 'Black',
                                                 fontWeight: '$semibold'
                                             }}>
-                                                Register
-                                            </Text>
+                                                Pay
+                                            </Text> */}
+                                            <a href="https://www.instamojo.com/@testingrightnowforapl/l639029eaa66b4bbbbb30744adfef7b48/" rel="im-checkout" data-text="Pay" data-css-style="color:#ffffff; background:#000000; width:180px; border-radius:30px"   data-layout="vertical">PAY</a>
+                                            <script src="https://js.instamojo.com/v1/button.js"></script>
                                         </Button>
                                     </Modal.Footer>
 

@@ -241,14 +241,26 @@ export default function RoadToAPLContent(){
                                                         color: 'rgb(255 0 64)'
                                                     }}/>
                                                     <Grid>
-                                                        <Text
-                                                        css={{
-                                                            jc: 'center',
-                                                            fontWeight: '$medium',
-                                                            textAlign: 'left',
-                                                        }}>
-                                                            Website or Mess
-                                                        </Text>
+                                                        <Row>
+                                                            <Text 
+                                                            css={{
+                                                                jc: 'center',
+                                                                fontWeight: '$medium',
+                                                                textAlign: 'left',
+                                                                paddingRight: '5px'
+                                                            }}>
+                                                                <a href="/registration/player" >Website</a>
+                                                            </Text>
+                                                            <Text
+                                                            css={{
+                                                                jc: 'center',
+                                                                fontWeight: '$medium',
+                                                                textAlign: 'left',
+                                                            }}>
+                                                                or Mess
+                                                            </Text>
+                                                        </Row>
+                                                        
                                                     </Grid>
                                                 </Grid.Container>
 
@@ -485,14 +497,25 @@ export default function RoadToAPLContent(){
                                                         color: 'rgb(255 0 64)'
                                                     }}/>
                                                     <Grid>
-                                                        <Text
-                                                        css={{
-                                                            jc: 'center',
-                                                            fontWeight: '$medium',
-                                                            textAlign: 'left',
-                                                        }}>
-                                                            Website or Mess
-                                                        </Text>
+                                                        <Row>
+                                                            <Text 
+                                                            css={{
+                                                                jc: 'center',
+                                                                fontWeight: '$medium',
+                                                                textAlign: 'left',
+                                                                paddingRight: '5px'
+                                                            }}>
+                                                                <a href="/registration/team" >Website</a>
+                                                            </Text>
+                                                            <Text
+                                                            css={{
+                                                                jc: 'center',
+                                                                fontWeight: '$medium',
+                                                                textAlign: 'left',
+                                                            }}>
+                                                                or Mess
+                                                            </Text>
+                                                        </Row>
                                                     </Grid>
                                                 </Grid.Container>
 
