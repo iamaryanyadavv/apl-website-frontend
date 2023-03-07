@@ -1,0 +1,135 @@
+body
+{
+    content: ' ';
+    display: block;
+    position: relative;
+    left: 0;
+    top: 10%;
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+    background-image: url('fifaregistrationimage.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    }
+::placeholder{
+    color: white !important;
+    font-weight:300;
+    opacity: 1;
+}
+
+.photobtn{
+    width: 210px;
+}
+
+.dp-btn{
+    margin: 0px 20px 0px 20px !important;
+}
+
+iframe{
+  color-scheme: light;
+}
+@media screen and (min-width: 650px) {
+  .nextui-c-grJsex-ikUaMfZ-css{
+    width: 550px;
+  }
+}
+@media screen and (max-width: 650px) {
+  .nextui-c-grJsex-ikUaMfZ-css{
+    width: 300px;
+  }
+}
+
+
+.signInButton
+{   
+    color: white;
+    max-width: 10vw;
+    background-color: rgb(37, 37, 37);
+    border-radius: 50px;
+    padding: 1%;
+    
+}
+
+.googlelogin
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2vh;
+    padding: 0;
+}
+
+
+/* CSS */
+.signInButton{
+  text-align: center;
+  padding-right: 0.5em;
+  border: none;
+  outline: none;
+  color: rgb(255, 255, 255);
+  background: #111;
+  cursor: pointer;
+  position: relative;
+  z-index: 0;
+  border-radius: 10px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: auto;
+  white-space:normal !important;
+  word-wrap:break-word;  
+}
+
+.signInButton:before {
+  content: "";
+  background: linear-gradient(
+    45deg,
+    #ff0000,
+    #ff7300,
+    #fffb00,
+    #48ff00,
+    #00ffd5,
+    #002bff,
+    #7a00ff,
+    #ff00c8,
+    #ff0000
+  );
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  background-size: 400%;
+  z-index: -1;
+  filter: blur(5px);
+  -webkit-filter: blur(5px);
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  animation: glowing-button-85 20s linear infinite;
+  transition: opacity 0.3s ease-in-out;
+  border-radius: 10px;
+}
+
+@keyframes glowing-button-85 {
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 400% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
+.signInButton:after {
+  z-index: -1;
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #222;
+  left: 0;
+  top: 0;
+  border-radius: 10px;
+}
+
