@@ -51,11 +51,6 @@ export default function FifaRegForm(){
     const [signedin, setSignedIn] = useState(false);
     const [User, setUser] = useState({});
 
-    const [initialImage, setInitialImage] = useState();
-    const [finalImage, setFinalImage] = useState();
-    const [finalFile, setFinalFile] = useState();
-    const [finalFileName, setFinalFileName] = useState();
-
     const [paymentSC, setPaymentSC] = useState();
     const [paymentSCUploaded, setPaymentSCUploaded] = useState();
 
@@ -79,6 +74,7 @@ export default function FifaRegForm(){
         }
         if(!participantoneemail){
             setParticipantoneemailStatus('error')
+        }
         if(participanttwo){
             setParticipanttwoStatus('success')
         }
@@ -113,7 +109,14 @@ export default function FifaRegForm(){
         {
             setParticipanttwobatchStatus('error')
         }
-
+        if(paymentSC)
+        {
+            setPaymentSCUploaded('success')
+        }
+        if(!paymentSC)
+        {
+            setPaymentSCUploaded('error')
+        }
         if(participantone && participantonephone.length===10 && participantoneemail && participanttwo && participanttwophone.length===10 && participanttwoemail && participantonebatch && participanttwobatch && paymentSC){
             setParticipantoneStatus('warning');
             setParticipantonephoneStatus('warning');
@@ -123,11 +126,10 @@ export default function FifaRegForm(){
             setParticipanttwoemailStatus('warning');
             setParticipantonebatchStatus('warning');
             setParticipanttwobatchStatus('warning');
-
             return true
         }
     }
-}
+
 
 useEffect( ()=>{
     setLoginLoader(true)
@@ -146,16 +148,14 @@ useEffect( ()=>{
     
 }, [])
 
-    // function to send final player data to sheets
     async function sendForm(e)
     {
-        //required inputs: firstname, lastname, batch, phonenumber, gender, position 1, position 2, 
-        //not required inputs: middlename, image, comment
-        
-        if(participantone && participanttwo && participanttwoemail && participantoneemail && participantonephone && participanttwophone && participantonebatch && participanttwobatch && finalImage)
+      
+        console.log('entere')
+        if(participantone && participanttwo && participanttwoemail && participantoneemail && participantonephone && participanttwophone && participantonebatch && participanttwobatch && paymentSC)
         { 
-            // image, firstname, middlename, lastname, emailid, batch, phone, gender, primarypos, secondpos, comment
-            await fetch('http://localhost:3001/registration/player',{
+            console.log('Sending')
+            await fetch('http://localhost:3001/registration/fifa',{
             method: 'POST',
             headers:{"Content-type":"application/json"},
             body: JSON.stringify({
@@ -167,7 +167,7 @@ useEffect( ()=>{
                 participanttwophone: participanttwophone,
                 participanttwoemail: participanttwoemail,
                 participanttwobatch: participanttwobatch,
-                image: finalImage
+                image: paymentSC
             })
         })
         }
@@ -203,6 +203,7 @@ useEffect( ()=>{
     }
     
     // functions to convert image to base64
+
     const convertImageToBase64 = async (e) => {
         const options = {
             maxSizeMB: 0.030,
@@ -210,14 +211,14 @@ useEffect( ()=>{
             useWebWorker: true
         }
 
-        const compressedFile = await imageCompression(initialImage, options);
+        const compressedFile = await imageCompression(paymentSC, options);
         
         convertBlobToBase64(compressedFile)
     }
 
     const convertBlobToBase64 = async (blob) => { // blob data
         const img = await blobToBase64(blob);
-        setFinalImage(img);
+        setPaymentSC(img);
     }
       
     const blobToBase64 = blob => new Promise((resolve, reject) => {
@@ -236,7 +237,6 @@ useEffect( ()=>{
             var isSignedin = false
             if(data.values){
                 for(var i = 0; i < data.values.length; i++){
-                    console.log(userObject.email)
                     if(userObject.email!=data.values[i][0]){
                         isSignedin=true
                     }
@@ -255,14 +255,12 @@ useEffect( ()=>{
                     setParticipantoneemail(userObject.email);
                     setParticipantoneStatus('success'); 
                     setParticipantoneemailStatus('success');
-                    // console.log('Signed in')
                 }
                 else{
                     setLoginLoader(false);
                     setSignedIn(false)
                     setAlreadyRegistered(true)
                     document.getElementById("GoogleButton").hidden = false;
-                    // console.log('Did not sign in')
                 }   
             }
             else if(!data.values){
@@ -575,7 +573,7 @@ useEffect( ()=>{
                                 </Grid>
                                 }
                                 {/* Participant One Phone */}
-                                {participantonephone &&
+                               
                                 <Grid> 
                                     <Input onChange={(event)=>{
                                         setParticipantonephone(event.target.value)
@@ -590,47 +588,16 @@ useEffect( ()=>{
                                     width="200px" status={participantonephoneStatus} disabled={!signedin} animated={'true'} 
                                     placeholder='Phone Number' type='text' clearable required  />
                                 </Grid>
-                                }
-                                {!participantonephone && 
-                                <Grid>
-                                    <Input onChange={(event)=>{
-                                        setParticipantonephone(event.target.value)
-                                        if(event.target.value.length>10 || event.target.value.length<10){
-                                            setParticipantonephoneStatus('error')
-                                        }
-                                        else if(event.target.value.length===10){
-                                            setParticipantonephoneStatus('success')
-                                        }
-                                    }}
-                                    
-                                    width="200px" status={participantonephoneStatus} disabled={!signedin} animated={'true'} 
-                                    placeholder='Phone Number' type='text' clearable required />
-                                </Grid>
-                                }
-
-                            {participantoneemail &&
                                 <Grid
                                 css={{
                                     textAlign: 'center',
                                     
                                 }}>
                                     <Col>
-                                        <Input width="300px" status={participantoneemailStatus} readOnly value={User.email} />
+                                        <Input width="300px" status={participantoneemailStatus} readOnly value={User.email} placeholder='Email ID' />
                                     </Col>
                                 </Grid>
-                        }
-                        {!participantoneemail && 
-                                <Grid
-                                css={{
-                                    textAlign: 'center',
-                                    
-                                }}>
-                                    <Col>
-                                        <Input width="300px" status={participantoneemailStatus} readOnly placeholder='Email ID' />
-                                    </Col>
-                                </Grid>
-                        }
-
+                        
                             <Grid
                             css={{
                                 jc:'center',
@@ -682,10 +649,10 @@ useEffect( ()=>{
                             css={{
                                 jc: 'center',
                             }}>
-                                {participanttwo &&
+                                
                                 <Grid>
                                     <Input onChange={(event)=>{
-                                        participanttwo(event.target.value);
+                                        setParticipanttwo(event.target.value);
                                         if(event.target.value) {
                                             setParticipanttwoStatus('success')
                                         }
@@ -693,77 +660,35 @@ useEffect( ()=>{
                                             setParticipanttwoStatus('error')
                                         }
                                     }} 
-                                    width="200px"  status={participanttwoStatus} disabled={!signedin} placeholder={participanttwo} />
+                                    width="200px"  status={participanttwoStatus} disabled={!signedin} placeholder='Full Name' />
                                 </Grid>
-                                }
-                                {!participanttwo && 
-                                <Grid>
-                                    <Input onChange={(event)=>{
-                                        setParticipanttwo(event.target.value)
-                                        if(event.target.value) {
-                                            setParticipanttwoStatus('success')
-                                        }
-                                        else if(!event.target.value){
-                                            setParticipanttwoStatus('error')
-                                        }
-                                        }} 
-                                        width="200px" status={participanttwoStatus} disabled={!signedin} placeholder='Name' />
-                                </Grid>
-                                }
-                                {/* Participant Two Phone */}
-                                {participanttwophone &&
                                 <Grid> 
                                     <Input onChange={(event)=>{
                                         setParticipanttwophone(event.target.value)
                                         if(event.target.value.length===10){
-                                            setParticipanttwophone('success')
+                                            setParticipanttwophoneStatus('success')
                                         }
                                         else{
-                                            setParticipanttwophone('error')
+                                            setParticipanttwophoneStatus('error')
                                         }
                                         
                                         }} 
-                                        width="200px" status={participanttwophoneStatus} disabled={!signedin} placeholder={participanttwophone} />
-                                </Grid>
-                                }
-                                {!participanttwophone && 
-                                <Grid>
-                                    <Input onChange={(event)=>{
-                                        setParticipanttwophone(event.target.value)
-                                        if(event.target.value.length===10){
-                                            setParticipanttwophone('success')
-                                        }
-                                        else{
-                                            setParticipanttwophone('error')
-                                        }
-                                        }} 
                                         width="200px" status={participanttwophoneStatus} disabled={!signedin} placeholder='Phone Number' />
                                 </Grid>
-                                }
-
-                        {participanttwoemail &&
-                                <Grid
-                                css={{
-                                    textAlign: 'center',
-                                    
-                                }}>
-                                    <Col>
-                                        <Input width="300px" readOnly value={participanttwoemail} />
-                                    </Col>
+                                <Grid> 
+                                    <Input onChange={(event)=>{
+                                        setParticipanttwoemail(event.target.value)
+                                        if(event.target.value.length){
+                                            setParticipanttwoemailStatus('success')
+                                        }
+                                        else{
+                                            setParticipanttwoemailStatus('error')
+                                        }
+                                        
+                                        }} 
+                                        width="300px" status={participanttwoemailStatus} disabled={!signedin} placeholder='Email ID' />
                                 </Grid>
-                        }
-                        {!participanttwoemail && 
-                                <Grid
-                                css={{
-                                    textAlign: 'center',
-                                    
-                                }}>
-                                    <Col>
-                                        <Input width="300px"  readOnly placeholder='Email ID' />
-                                    </Col>
-                                </Grid>
-                        }
-
+                        
                             <Grid
                             css={{
                                 jc:'center',
@@ -868,15 +793,15 @@ useEffect( ()=>{
                                     background: '$gray900'
                                 }}
                                 onPress={()=>{
-                                    if(initialImage)
-                                    {convertImageToBase64()}
                                     if(paymentSC){
                                         setPaymentSCUploaded(true)
                                     }
                                     if(!paymentSC){
                                         setPaymentSCUploaded(false)
                                     }
+                        
                                     setModalVisibility(CheckForm());
+                                    console.log('Check Form Done')
                                 }}>
                                     <Text
                                     css={{
@@ -892,7 +817,15 @@ useEffect( ()=>{
                                 open={ModalVisibility}
                                 onClose={()=>{
                                     setModalVisibility(false)
-                                }}>
+                                }}
+                                css={
+                                    {
+                                        display:'flex',
+                                        flexWrap:'nowrap'
+                                    }
+                                }
+                                
+                                >
 
                                     <Modal.Header>
                                         <Col>
@@ -924,15 +857,46 @@ useEffect( ()=>{
                                         <Grid.Container
                                         css={{
                                             jc: 'center',
-                                            alignItems: 'center'
+                                            alignItems: 'center',
+                                            display:'flex',
+                                            flexDirection: 'column',
+                                            justifyContent:'center',
+                                            alignContent:'center',
+                                            flexWrap:'nowrap'
+                                        
                                         }}>
-                                            <Grid>
+                                            <Grid> 
+                                            <Grid css={{
+                                                            jc: 'center',
+                                                            textAlign: 'center',
+                                                            marginBottom: 0
+                                                        }}>
+                                                        <Row
+                                                        css={{
+                                                            jc: 'center',
+                                                            textAlign: 'center',
+                                                            marginBottom: 0
+                                                        }}>
+                                                            <Text 
+                                                            css={{
+                                                                fontSize: '$lg',
+                                                                paddingRight: '4px',
+                                                                color: 'white',
+                                                                fontWeight:'$bold',
+                                                                
+                                                            }} h1>
+                                                                Participant 1
+                                                            </Text>
+                                                        </Row>
+                                                    </Grid>
                                                 <Grid.Container gap={0.5}
                                                 css={{
                                                     jc: 'center',
                                                     alignItems: 'center',
                                                     textAlign: 'center'
                                                 }}>
+                                                    </Grid.Container> 
+                                                    <Grid>
                                                     <Grid>
                                                         <Row
                                                         css={{
@@ -945,7 +909,7 @@ useEffect( ()=>{
                                                                 paddingRight: '4px',
                                                                 color: '$gray700'
                                                             }}>
-                                                                Name of Participant 1 
+                                                                Name: 
                                                             </Text>
                                                             <Text hideIn={'xs'}
                                                             css={{
@@ -961,7 +925,7 @@ useEffect( ()=>{
                                                                 paddingRight: '4px',
                                                                 color: '$gray700'
                                                             }}>
-                                                                Name of Participant 1: 
+                                                                Name: 
                                                             </Text>
                                                             <Text showIn={'xs'}
                                                             css={{
@@ -972,7 +936,6 @@ useEffect( ()=>{
                                                             </Text>
                                                         </Row>
                                                     </Grid>
-                                                    <Grid>
                                                         {participantoneemail && 
                                                             <Row
                                                             css={{
@@ -985,7 +948,7 @@ useEffect( ()=>{
                                                                     paddingRight: '4px',
                                                                     color: '$gray700'
                                                                 }}>
-                                                                    Email ID of Participant 1: 
+                                                                    Email: 
                                                                 </Text>
                                                                 <Text hideIn={'xs'}
                                                                 css={{
@@ -1001,7 +964,7 @@ useEffect( ()=>{
                                                                     paddingRight: '4px',
                                                                     color: '$gray700'
                                                                 }}>
-                                                                   Email ID of Participant 1: 
+                                                                   Email: 
                                                                 </Text>
                                                                 <Text showIn={'xs'}
                                                                 css={{
@@ -1017,7 +980,9 @@ useEffect( ()=>{
                                                         <Row
                                                         css={{
                                                             jc: 'center',
-                                                            textAlign: 'center'
+                                                            textAlign: 'center',
+                                                            display: 'flex',
+                                                            flexDirection: 'row'
                                                         }}>
                                                             <Text hideIn={'xs'}
                                                             css={{
@@ -1025,7 +990,7 @@ useEffect( ()=>{
                                                                 paddingRight: '4px',
                                                                 color: '$gray700'
                                                             }}>
-                                                                Phone Number of Participant One: 
+                                                                Phone Number: 
                                                             </Text>
                                                             <Text hideIn={'xs'}
                                                             css={{
@@ -1041,7 +1006,7 @@ useEffect( ()=>{
                                                                 paddingRight: '4px',
                                                                 color: '$gray700'
                                                             }}>
-                                                                Phone Number of Participant One: 
+                                                                Phone Number: 
                                                             </Text>
                                                             <Text showIn={'xs'}
                                                             css={{
@@ -1051,8 +1016,7 @@ useEffect( ()=>{
                                                                 {participantonephone}
                                                             </Text>
                                                         </Row>
-                                                    </Grid>
-
+                                                        <Grid/>
                                                     <Grid>
                                                         <Row
                                                         css={{
@@ -1065,7 +1029,7 @@ useEffect( ()=>{
                                                                 paddingRight: '4px',
                                                                 color: '$gray700'
                                                             }}>
-                                                                Batch of Participant One: 
+                                                                Batch: 
                                                             </Text>
                                                             <Text hideIn={'xs'}
                                                             css={{
@@ -1081,7 +1045,7 @@ useEffect( ()=>{
                                                                 paddingRight: '4px',
                                                                 color: '$gray700'
                                                             }}>
-                                                                Batch of Participant One: 
+                                                                Batch: 
                                                             </Text>
                                                             <Text showIn={'xs'}
                                                             css={{
@@ -1091,14 +1055,53 @@ useEffect( ()=>{
                                                                 {participantonebatch}
                                                             </Text>
                                                         </Row>
+                                                        </Grid>
+                                                    </Grid> 
+                                            </Grid>
+                                        </Grid.Container>
+                                        <Grid.Container
+                                        css={{
+                                            jc: 'center',
+                                            alignItems: 'center',
+                                            display:'flex',
+                                            flexDirection: 'column',
+                                            justifyContent:'center',
+                                            alignContent:'center',
+                                            flexWrap:'nowrap',
+                                            marginTop:'6%'
+                                        }}>
+                                            <Grid> 
+                                            <Grid css={{
+                                                            jc: 'center',
+                                                            textAlign: 'center',
+                                                            marginBottom: 0     
+                                                        }}>
+                                                        <Row
+                                                        css={{
+                                                            jc: 'center',
+                                                            textAlign: 'center',
+                                                            marginBottom: 0
+                                                        }}>
+                                                            <Text 
+                                                            css={{
+                                                                fontSize: '$lg',
+                                                                paddingRight: '4px',
+                                                                color: 'white',
+                                                                fontWeight:'$bold',
+                                                                
+                                                            }} h1>
+                                                                Participant 2
+                                                            </Text>
+                                                        </Row>
                                                     </Grid>
-                                                </Grid.Container>                
-                                                <Grid.Container gap={0.5}
-                                                css={{
-                                                    jc: 'center',
-                                                    alignItems: 'center',
-                                                    textAlign: 'center'
-                                                }}>
+                                                        <Grid.Container gap={0.5}
+                                                        css={{
+                                                            jc: 'center',
+                                                            alignItems: 'center',
+                                                            textAlign: 'center'
+                                                        }}>
+                                                    </Grid.Container> 
+                                                    <Grid>
                                                     <Grid>
                                                         <Row
                                                         css={{
@@ -1111,7 +1114,7 @@ useEffect( ()=>{
                                                                 paddingRight: '4px',
                                                                 color: '$gray700'
                                                             }}>
-                                                                Name of Participant 2 
+                                                                Name: 
                                                             </Text>
                                                             <Text hideIn={'xs'}
                                                             css={{
@@ -1127,7 +1130,7 @@ useEffect( ()=>{
                                                                 paddingRight: '4px',
                                                                 color: '$gray700'
                                                             }}>
-                                                                Name of Participant 2: 
+                                                                Name: 
                                                             </Text>
                                                             <Text showIn={'xs'}
                                                             css={{
@@ -1138,7 +1141,6 @@ useEffect( ()=>{
                                                             </Text>
                                                         </Row>
                                                     </Grid>
-                                                    <Grid>
                                                         {participanttwoemail && 
                                                             <Row
                                                             css={{
@@ -1151,7 +1153,7 @@ useEffect( ()=>{
                                                                     paddingRight: '4px',
                                                                     color: '$gray700'
                                                                 }}>
-                                                                    Email ID of Participant 2: 
+                                                                    Email: 
                                                                 </Text>
                                                                 <Text hideIn={'xs'}
                                                                 css={{
@@ -1167,7 +1169,7 @@ useEffect( ()=>{
                                                                     paddingRight: '4px',
                                                                     color: '$gray700'
                                                                 }}>
-                                                                   Email ID of Participant 2: 
+                                                                   Email: 
                                                                 </Text>
                                                                 <Text showIn={'xs'}
                                                                 css={{
@@ -1183,7 +1185,9 @@ useEffect( ()=>{
                                                         <Row
                                                         css={{
                                                             jc: 'center',
-                                                            textAlign: 'center'
+                                                            textAlign: 'center',
+                                                            display: 'flex',
+                                                            flexDirection: 'row'
                                                         }}>
                                                             <Text hideIn={'xs'}
                                                             css={{
@@ -1191,7 +1195,7 @@ useEffect( ()=>{
                                                                 paddingRight: '4px',
                                                                 color: '$gray700'
                                                             }}>
-                                                                Phone Number of Participant Two: 
+                                                                Phone Number: 
                                                             </Text>
                                                             <Text hideIn={'xs'}
                                                             css={{
@@ -1207,7 +1211,7 @@ useEffect( ()=>{
                                                                 paddingRight: '4px',
                                                                 color: '$gray700'
                                                             }}>
-                                                                Phone Number of Participant Two: 
+                                                                Phone Number: 
                                                             </Text>
                                                             <Text showIn={'xs'}
                                                             css={{
@@ -1217,8 +1221,7 @@ useEffect( ()=>{
                                                                 {participanttwophone}
                                                             </Text>
                                                         </Row>
-                                                    </Grid>
-
+                                                        <Grid/>
                                                     <Grid>
                                                         <Row
                                                         css={{
@@ -1231,7 +1234,7 @@ useEffect( ()=>{
                                                                 paddingRight: '4px',
                                                                 color: '$gray700'
                                                             }}>
-                                                                Batch of Participant Two: 
+                                                                Batch: 
                                                             </Text>
                                                             <Text hideIn={'xs'}
                                                             css={{
@@ -1247,7 +1250,7 @@ useEffect( ()=>{
                                                                 paddingRight: '4px',
                                                                 color: '$gray700'
                                                             }}>
-                                                                Batch of Participant Two: 
+                                                                Batch: 
                                                             </Text>
                                                             <Text showIn={'xs'}
                                                             css={{
@@ -1257,9 +1260,8 @@ useEffect( ()=>{
                                                                 {participanttwobatch}
                                                             </Text>
                                                         </Row>
-                                                    </Grid>
-                                                </Grid.Container>
-
+                                                        </Grid>
+                                                    </Grid> 
                                             </Grid>
                                         </Grid.Container>
                                     </Modal.Body>
@@ -1274,9 +1276,10 @@ useEffect( ()=>{
                                             background: '$gray900'
                                         }}
                                         onPress={(e)=>{
-                                            sendForm(e);
                                             sendPaymentImage(paymentSC)
-                                            sendProfileImage(initialImage);
+                                            convertImageToBase64();
+                                            sendPaymentImage(paymentSC)
+                                            sendForm(e);
                                             setRegistrationDone(true);
                                             setModalVisibility(false);
                                         }}>
@@ -1287,8 +1290,8 @@ useEffect( ()=>{
                                             }}>
                                                 Pay
                                             </Text> */}
-                                            <a href="https://www.instamojo.com/@testingrightnowforapl/l639029eaa66b4bbbbb30744adfef7b48/" rel="im-checkout" data-text="Pay" data-css-style="color:#ffffff; background:#000000; width:180px; border-radius:30px"   data-layout="vertical">PAY</a>
-                                            <script src="https://js.instamojo.com/v1/button.js"></script>
+                                            {/* <a href="https://www.instamojo.com/@testingrightnowforapl/l639029eaa66b4bbbbb30744adfef7b48/" rel="im-checkout" data-text="Pay" data-css-style="color:#ffffff; background:#000000; width:180px; border-radius:30px"   data-layout="vertical">PAY</a> */}
+                                            {/* <script src="https://js.instamojo.com/v1/button.js"></script> */}
                                         </Button>
                                     </Modal.Footer>
 
