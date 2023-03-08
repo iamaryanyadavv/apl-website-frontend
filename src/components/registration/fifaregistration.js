@@ -160,12 +160,12 @@ useEffect( ()=>{
             headers:{"Content-type":"application/json"},
             body: JSON.stringify({
                 participantone: participantone,
-                participanttwo: participanttwo,
-                participantoneemail: participantoneemail,
-                participanttwoemail: participanttwoemail,
                 participantonephone: participantonephone,
-                participanttwophone: participanttwophone,
+                participantoneemail: participantoneemail,
                 participantonebatch: participantonebatch,
+                participanttwo: participanttwo,
+                participanttwophone: participanttwophone,
+                participanttwoemail: participanttwoemail,
                 participanttwobatch: participanttwobatch,
                 image: finalImage
             })
@@ -236,6 +236,7 @@ useEffect( ()=>{
             var isSignedin = false
             if(data.values){
                 for(var i = 0; i < data.values.length; i++){
+                    console.log(userObject.email)
                     if(userObject.email!=data.values[i][0]){
                         isSignedin=true
                     }
@@ -252,7 +253,7 @@ useEffect( ()=>{
                     setParticipantone(userObject.given_name + " "+userObject.family_name)
                     setAlreadyRegistered(false)
                     setParticipantoneemail(userObject.email);
-                    setParticipantoneStatus('success');
+                    setParticipantoneStatus('success'); 
                     setParticipantoneemailStatus('success');
                     // console.log('Signed in')
                 }
@@ -556,21 +557,21 @@ useEffect( ()=>{
                                             setParticipantoneStatus('error')
                                         }
                                     }} 
-                                    width="200px"  status={participantoneStatus} disabled={!signedin} placeholder={participantone} />
+                                    width="200px"  status={participantoneStatus} disabled={!signedin} value={participantone} />
                                 </Grid>
                                 }
                                 {!participantone && 
                                 <Grid>
                                     <Input onChange={(event)=>{
-                                        setParticipantonephone(event.target.value)
+                                        setParticipantone(event.target.value)
                                         if(event.target.value) {
-                                            setParticipantonephoneStatus('success')
+                                            setParticipantoneStatus('success')
                                         }
                                         else if(!event.target.value){
-                                            setParticipantonephoneStatus('error')
+                                            setParticipantoneStatus('error')
                                         }
                                         }} 
-                                        width="200px" status={participantonephoneStatus} disabled={!signedin} placeholder='Name' />
+                                        width="200px" status={participantoneStatus} disabled={!signedin} placeholder='Name' />
                                 </Grid>
                                 }
                                 {/* Participant One Phone */}
@@ -578,29 +579,32 @@ useEffect( ()=>{
                                 <Grid> 
                                     <Input onChange={(event)=>{
                                         setParticipantonephone(event.target.value)
-                                        if(event.target.value){
-                                            setParticipantonephone('success')
+                                        if(event.target.value.length>10 || event.target.value.length<10){
+                                            setParticipantonephoneStatus('error')
                                         }
-                                        else if(!event.target.value){
-                                            setParticipantonephone('error')
+                                        else if(event.target.value.length===10){
+                                            setParticipantonephoneStatus('success')
                                         }
-                                        
-                                        }} 
-                                        width="200px" status={participantonephoneStatus} disabled={!signedin} placeholder={participantonephone} />
+                                    }}
+                                    
+                                    width="200px" status={participantonephoneStatus} disabled={!signedin} animated={'true'} 
+                                    placeholder='Phone Number' type='text' clearable required  />
                                 </Grid>
                                 }
                                 {!participantonephone && 
                                 <Grid>
                                     <Input onChange={(event)=>{
                                         setParticipantonephone(event.target.value)
-                                        if(event.target.value){
-                                            setParticipantonephone('success')
+                                        if(event.target.value.length>10 || event.target.value.length<10){
+                                            setParticipantonephoneStatus('error')
                                         }
-                                        else if(!event.target.value){
-                                            setParticipantonephone('error')
+                                        else if(event.target.value.length===10){
+                                            setParticipantonephoneStatus('success')
                                         }
-                                        }} 
-                                        width="200px" status={participantonephoneStatus} disabled={!signedin} placeholder='Phone Number' />
+                                    }}
+                                    
+                                    width="200px" status={participantonephoneStatus} disabled={!signedin} animated={'true'} 
+                                    placeholder='Phone Number' type='text' clearable required />
                                 </Grid>
                                 }
 
@@ -611,7 +615,7 @@ useEffect( ()=>{
                                     
                                 }}>
                                     <Col>
-                                        <Input width="300px" readOnly value={participantoneemail} />
+                                        <Input width="300px" status={participantoneemailStatus} readOnly value={User.email} />
                                     </Col>
                                 </Grid>
                         }
@@ -622,7 +626,7 @@ useEffect( ()=>{
                                     
                                 }}>
                                     <Col>
-                                        <Input width="300px"  readOnly placeholder='Email ID' />
+                                        <Input width="300px" status={participantoneemailStatus} readOnly placeholder='Email ID' />
                                     </Col>
                                 </Grid>
                         }
@@ -711,10 +715,10 @@ useEffect( ()=>{
                                 <Grid> 
                                     <Input onChange={(event)=>{
                                         setParticipanttwophone(event.target.value)
-                                        if(event.target.value){
+                                        if(event.target.value.length===10){
                                             setParticipanttwophone('success')
                                         }
-                                        else if(!event.target.value){
+                                        else{
                                             setParticipanttwophone('error')
                                         }
                                         
@@ -726,10 +730,10 @@ useEffect( ()=>{
                                 <Grid>
                                     <Input onChange={(event)=>{
                                         setParticipanttwophone(event.target.value)
-                                        if(event.target.value){
+                                        if(event.target.value.length===10){
                                             setParticipanttwophone('success')
                                         }
-                                        else if(!event.target.value){
+                                        else{
                                             setParticipanttwophone('error')
                                         }
                                         }} 
