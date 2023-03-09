@@ -52,7 +52,7 @@ export default function TeamsCard(props){
                     css={{
                         textAlign: 'center'
                     }}>
-                        Pictures
+                        &#x2022; Pictures
                     </Text>
                     <Grid.Container gap={1}
                     css={{

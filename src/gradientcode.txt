@@ -1,0 +1,5 @@
+"45deg, $green600 40%, $green800 100%" Green
+'45deg, #388EE9 20%, #09EBEE 100%' Blue
+"45deg, $yellow600 40%, $yellow800 100%" Yellow
+"45deg, $red600 50%, $red800 100%" Red
+"45deg, $purple600 -20%, $pink600 100%" Purple

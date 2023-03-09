@@ -74,11 +74,6 @@ export default function FootNavbar () {
                         alignItems: 'center'
                     }}>
                         <Grid>
-                            <Link className="footnavbar-item" href="/schedule" >
-                                Schedule
-                            </Link>
-                        </Grid>
-                        <Grid>
                             <Link className="footnavbar-item" href="/slots" >
                                 Slots
                             </Link>

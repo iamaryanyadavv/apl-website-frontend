@@ -24,7 +24,7 @@ const NewsTicker = () => {
           paddingLeft: '2px'
         }}
       >
-        APL 6.0 owner and player registrations open on 13th of march, 2023! 
+        APL 6.0 owner and player registrations open on 23th of march, 2023! 
         Head on to the registrations page!
       </p>
     </Marquee>

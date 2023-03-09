@@ -1,78 +1,34 @@
-import { Button, Input, Text, Image} from "@nextui-org/react";
+import { Button, Input, Text, Image, Grid, Col} from "@nextui-org/react";
 import { Loading } from '@nextui-org/react';
 import React from "react";
 import { useState, useEffect } from "react";
-import imageCompression from 'browser-image-compression';
+import Black from '../../assets/images/Black.jpeg'
+import './eachplayer.css';
 
 
 export default function EachPlayerCard(){
     const [Fetching, setFetching] = useState(true);
     const [PlayerData, setPlayerData] = useState([]);
-    const [ImageBase64, setImageBase64] = useState('');
-    const [ChoppedImageBase64, setChoppedImageBase64] = useState([]);
-    const [TestString, setTestString] = useState('');
-    const [WholeImageFile, setWholeImageFile] = useState('');
-    const [FinalFile, setFinalFile] = useState('');
-    
-    function chunkSubstr(str, size) {
-        const numChunks = Math.ceil(str.length / size)
-        const chunks = new Array(numChunks)
-      
-        for (let i = 0, o = 0; i < numChunks; ++i, o += size) {
-          chunks[i] = str.substr(o, size)
-        }
-        setChoppedImageBase64(chunks);
-    }
 
-    const convertBlobToBase64 = async (blob) => { // blob data
-        const img = await blobToBase64(blob);
-        setFinalFile(img);
-
-        await fetch('http://localhost:3001/seasons/apl5/players',{
-            method: 'POST',
-            headers:{"Content-type":"application/json"},
-            body: JSON.stringify({
-                image: img,
-                name: TestString
-            })
-        })
-
-      }
-      
-    const blobToBase64 = blob => new Promise((resolve, reject) => {
-        const reader = new FileReader();
-        reader.readAsDataURL(blob);
-        reader.onload = () => {resolve(reader.result); }
-        reader.onerror = error => reject(error);
-    });
-    
-    const sendImage = async (e) => {
-
-        const options = {
-            maxSizeMB: 0.030,
-            maxWidthOrHeight: 720,
-            useWebWorker: true
-        }
-
-        const compressedFile = await imageCompression(WholeImageFile, options);
-        console.log(compressedFile);
-        console.log(convertBlobToBase64(compressedFile));
-    }
-
-
+    // Player array - 
+    // 0: ID
+    // 1: Picture
+    // 2: Name
+    // 3: PrimaryPosition
+    // 4: SecondaryPosition
+    // 5: Comments
+    // 6: Gender
+    // 7: Batch
+    // 8: Tier
+    // 9: Team
+    // 10: Price
     const getData = async () => {
         await fetch('http://localhost:3001/seasons/apl5/players')
         .then(response => response.json())
         .then((data)=>{
             setPlayerData(data);
-            isFetchingData(data);
+            setFetching(false);
         })
-    }
-
-    const isFetchingData = (Data) => {
-        if(Data){
-            setFetching(false)
-        }
     }
 
     useEffect( () => {
@@ -80,54 +36,132 @@ export default function EachPlayerCard(){
     }, [])
 
     return(
-        <div>
-            {/* <FileBase64 type="file" multiple={false}
-            onDone={(data) => {
-                setImageBase64(data.base64)
-            }}/> */}
-            <input type='file' accept='image/*' onChange={(event)=>{
-                setWholeImageFile(event.target.files[0]);
+        <div>   
+            {Fetching===true && 
+            <Grid.Container
+            css={{
+                jc: 'center',
+                alignItems: 'center',
+                height: '60vh'
             }}>
-            </input>
-            <input type='text' onChange={(event)=>{
-                setTestString(event.target.value)
-            }}></input>
-            {Fetching === true ? 
-            <div>
-                <Loading>
-                    Fetching
-                </Loading>
-            </div> 
-            : 
-            <div>
-                <Button 
-                    onPress={()=>{
-                        chunkSubstr(ImageBase64, 50000);
-                    }}
-                >
-                    Make Chunks
-                </Button>
-                <Button
-                    onPress={()=>{
-                        console.log(WholeImageFile);
-                        console.log(TestString)
-                    }}
-                >
-                    Check WHole
-                </Button>
-                <Button
-                    onPress={()=>{
-                        sendImage();
-                    }}
-                >
-                    Send Chunks
-                </Button>
-                <img src={FinalFile}></img>
-                <Text>
-                    {PlayerData.values}
-                </Text>
-            </div> 
+                <Loading
+                size="xl"
+                color={'white'}
+                />
+            </Grid.Container>
+            }
+            {!Fetching && 
+            <Grid.Container gap={2}
+            css={{
+                jc: 'center',
+                alignItems: 'center'
+            }}>
+                {/* Tier 1 Block*/}
+                <Grid.Container gap={2}
+                css={{
+                    jc: 'center',
+                    alignItems: 'center',
+                    backgroundColor: 'rgb(20,20,20)',
+                    borderRadius: '20px'
+                }}>
+
+                    {/* Heading */}
+                    <Grid.Container gap={2}
+                    css={{
+                        jc: 'center',
+                        alignItems: 'center'
+                    }}>
+                        <Text
+                        css={{
+                            jc: 'center',
+                            alignItems: 'center',
+                            fontSize: '$5xl',
+                            fontWeight: '$semibold',
+                            paddingBottom: '40px'
+                        }}>
+                            TIER 1
+                        </Text>
+                    </Grid.Container>
+
+                    {/* Content */}
+                    <Grid.Container
+                    css={{
+                        jc: 'center',
+                        alignItems: 'center'
+                    }}>
+                        
+                            <Grid
+                            css={{
+                                padding: '10px 10px 15px 10px',
+                                backgroundColor: '#dcdcdc',
+                                borderRadius: '10px'
+                            }}>
+                                {PlayerData.forEach((Player)=>{
+                                {console.log(Player[2])}
+                                <Col
+                                css={{
+                                    textAlign: 'center',
+                                    alignItems: 'center'
+                                }}>
+                                <img src={Black} className='player-picture'/>
+                                <Text
+                                css={{
+                                    color: 'Black',
+                                    backgroundColor: '#dcdcdc',
+                                    fontSize: '$xl',
+                                    fontWeight: '$semibold'
+                                }}>
+                                    {Player[2]}
+                                </Text>
+                                </Col>
+                                })}
+                            </Grid>
+
+                    </Grid.Container>
+                        {/* <Grid
+                        css={{
+                            padding: '10px 10px 15px 10px',
+                            backgroundColor: '#dcdcdc',
+                            borderRadius: '10px'
+                        }}>
+                            <Col
+                            css={{
+                                textAlign: 'center',
+                                alignItems: 'center'
+                            }}>
+                            <img src={Black} className='player-picture'/>
+                            <Text
+                            css={{
+                                color: 'Black',
+                                backgroundColor: '#dcdcdc',
+                                fontSize: '$xl',
+                                fontWeight: '$semibold'
+                            }}>
+                                First Last
+                            </Text>
+                            </Col>
+                        </Grid> */}
+
+                </Grid.Container>
+
+                {/* Tier 2 Block */}
+                <Grid.Container>
+
+                </Grid.Container>
+
+                {/* Tier 3 Block */}
+                <Grid.Container>
+
+                </Grid.Container>
+
+                {/* Tier 4 Block */}
+                <Grid.Container>
+
+                </Grid.Container>
+            </Grid.Container>
             }
         </div>
+        
+        
     )
 }

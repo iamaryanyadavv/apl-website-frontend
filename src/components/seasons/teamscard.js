@@ -1,5 +1,5 @@
 import React from "react";
-import { Grid, Card, Col, Text, Button, Link} from "@nextui-org/react";
+import { Grid, Card, Col, Text, Button, Link, Row} from "@nextui-org/react";
 import './seasons.css';
 
 export default function TeamsCard(props){
@@ -48,19 +48,36 @@ export default function TeamsCard(props){
             }}
             >
                 <Col>
-                    <Text
+                    <Row
                     css={{
-                        textAlign: 'center'
+                        jc:'center',
+                        alignItems: 'center'
                     }}>
-                        Teams List
-                    </Text>
+                        
+                        <Text
+                        css={{
+                            textAlign: 'center',
+                            padding: '0% 2.5%'
+                        }}>
+                            &#x2022; Teams List
+                        </Text>
+                        <Text
+                        css={{
+                            textAlign: 'center',
+                            padding: '0% 2.5%'
+                        }}>
+                            &#x2022; Budget Sheet
+                        </Text>
+                        <Text
+                        css={{
+                            textAlign: 'center',
+                            padding: '0% 2.5%'
+                        }}>
+                            &#x2022; Rules
+                        </Text>
+
+                    </Row>
                     
-                    <Text
-                    css={{
-                        textAlign: 'center'
-                    }}>
-                        Budget Sheet
-                    </Text>
                     <Grid.Container gap={1}
                     css={{
                         jc: 'center',

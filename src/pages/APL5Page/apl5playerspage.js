@@ -15,9 +15,7 @@ export default function APL5PlayersPage(){
                 description='You can find all players that took part in APL Season 5.0 here tier wise!'
                 gradient='45deg, #388EE9 20%, #09EBEE 100%'
             />
-            <Grid>
-                <EachPlayerCard/>
-            </Grid>
+            <EachPlayerCard/>
         </Grid.Container>
     )
 }

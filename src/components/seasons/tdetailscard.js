@@ -1,5 +1,5 @@
 import React from "react";
-import { Grid, Card, Col, Text, Button, Link} from "@nextui-org/react";
+import { Grid, Card, Col, Text, Button, Link, Row} from "@nextui-org/react";
 import './seasons.css';
 
 export default function TournamentDetailsCard(props){
@@ -48,24 +48,35 @@ export default function TournamentDetailsCard(props){
             }}
             >
                 <Col>
-                    <Text
+                    <Row
                     css={{
-                        textAlign: 'center'
+                        jc:'center',
+                        alignItems: 'center'
                     }}>
-                        Fixtures
-                    </Text>
-                    <Text
-                    css={{
-                        textAlign: 'center'
-                    }}>
-                        Standings
-                    </Text>
-                    <Text
-                    css={{
-                        textAlign: 'center'
-                    }}>
-                        Rules
-                    </Text>
+                        
+                        <Text
+                        css={{
+                            textAlign: 'center',
+                            padding: '0% 2.5%'
+                        }}>
+                            &#x2022; Fixtures
+                        </Text>
+                        <Text
+                        css={{
+                            textAlign: 'center',
+                            padding: '0% 2.5%'
+                        }}>
+                            &#x2022; Standings
+                        </Text>
+                        <Text
+                        css={{
+                            textAlign: 'center',
+                            padding: '0% 2.5%'
+                        }}>
+                            &#x2022; Rules
+                        </Text>
+
+                    </Row>
                     <Grid.Container gap={1}
                     css={{
                         jc: 'center',

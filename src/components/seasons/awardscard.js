@@ -1,5 +1,5 @@
 import React from "react";
-import { Grid, Card, Col, Text, Button, Link} from "@nextui-org/react";
+import { Grid, Card, Col, Text, Button, Link, Row} from "@nextui-org/react";
 import './seasons.css';
 
 export default function AwardsCard(props){
@@ -48,24 +48,35 @@ export default function AwardsCard(props){
             }}
             >
                 <Col>
-                    <Text
+                    <Row
                     css={{
-                        textAlign: 'center'
+                        jc:'center',
+                        alignItems: 'center'
                     }}>
-                        1st, 2nd & 3rd Place
-                    </Text>
-                    <Text
-                    css={{
-                        textAlign: 'center'
-                    }}>
-                        MVPs
-                    </Text>
-                    <Text
-                    css={{
-                        textAlign: 'center'
-                    }}>
-                        Top Scorer(s)
-                    </Text>
+                        
+                        <Text
+                        css={{
+                            textAlign: 'center',
+                            padding: '0% 2.5%'
+                        }}>
+                            &#x2022; Ranking
+                        </Text>
+                        <Text
+                        css={{
+                            textAlign: 'center',
+                            padding: '0% 2.5%'
+                        }}>
+                            &#x2022; MVPs
+                        </Text>
+                        <Text
+                        css={{
+                            textAlign: 'center',
+                            padding: '0% 2.5%'
+                        }}>
+                            &#x2022; Top Scorer(s)
+                        </Text>
+
+                    </Row>
                     <Grid.Container gap={1}
                     css={{
                         jc: 'center',
