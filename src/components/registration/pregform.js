@@ -3,6 +3,7 @@ import './pregform.css';
 import React, {useState, useEffect} from "react";
 import imageCompression from 'browser-image-compression';
 import jwt_decode from "jwt-decode";
+import { useTicker } from "../../hooks";
 
 
 export default function PRegForm(){
@@ -33,7 +34,11 @@ export default function PRegForm(){
         { key: 'Midfielder', name: 'Midfielder'},
         { key: 'Attacker', name: 'Attacker'}
     ];
+    
+    //12:30pm on 13th March, 2023 GMT or 6pm on 13th March, 2023 IST
+    const endDate = "2023-03-13T12:30:00.000Z"; 
 
+    const { days, hours, minutes, seconds, isTimeUp } = useTicker(endDate);
 
     //User filled in deails
 
@@ -75,15 +80,41 @@ export default function PRegForm(){
 
     // variables to store result of check if user already registered
     const [AlreadyRegistered, setAlreadyRegistered] = useState(false);
-    const [RegistrationDone, setRegistrationDone] = useState(false);
+    const [RegistrationDone, setRegistrationDone] = useState();
 
     // to control details check modal and loader while signing in details
     const [ModalVisibility, setModalVisibility] = useState(false);
     const [LoginLoader, setLoginLoader] = useState(false);
+
+    const [RegStatusModal, setRegStatusModal] = useState(false);
     
     //variable to control if user signed in
     const [signedin, setSignedIn] = useState(false);
     const [User, setUser] = useState({});
+
+    //function to check if registration was successful
+    async function checkIfRegSuccess(emailID){
+        await fetch('http://localhost:3001/registration/player')
+        .then(response=>response.json())
+        .then((data)=>{
+            if(data.values){
+                for(var i = 0; i < data.values.length; i++){
+                    if(emailID===data.values[i][0]){
+                        setRegStatusModal(true)
+                        setRegistrationDone(true)
+                    }
+                    else if(emailID!==data.values[i][0]){
+                        setRegStatusModal(false)
+                        setRegistrationDone(false)
+                    }
+                }
+            }
+            else if(!data.values){
+                setRegStatusModal(true)
+                setRegistrationDone(true)
+            }
+        })
+    }
 
     // function to check if all required fields are filled
     function CheckForm(){
@@ -239,7 +270,7 @@ export default function PRegForm(){
             var isSignedin = false
             if(data.values){
                 for(var i = 0; i < data.values.length; i++){
-                    if(userObject.email!=data.values[i][0]){
+                    if(userObject.email!==data.values[i][0]){
                         isSignedin=true
                     }
                     else{
@@ -308,10 +339,350 @@ export default function PRegForm(){
             setLoginLoader(false)
         }, 2000)
         
-    }, [])
+    }, [isTimeUp, RegistrationDone])
 
     return(
         <div>
+            
+        {!isTimeUp && 
+            <div>
+                <Grid.Container  gap={0}
+                css={{
+                    jc: 'center',
+                    alignItems: 'center',
+                }}>
+                
+                <Grid.Container
+                css={{
+                    jc: 'center',
+                    alignItems: 'center'
+                }}>
+                    <Text hideIn={'xs'}
+                    css={{
+                        textAlign: 'center',
+                        fontSize: '$5xl',
+                        fontWeight: '$semibold',
+                        paddingBottom: '1.5%'
+                    }}>
+                        APL 6.0 PLAYER REGISTRATION
+                    </Text>
+                    <Text showIn={'xs'}
+                    css={{
+                        textAlign: 'center',
+                        fontSize: '$3xl',
+                        fontWeight: '$semibold',
+                        padding: '10% 5% 0% 5%'
+                    }}>
+                        APL 6.0 PLAYER REGISTRATION
+                    </Text>
+                </Grid.Container>
+
+                <Grid.Container
+                css={{
+                    jc: 'center',
+                    alignItems: 'center',
+                    height: '70vh'
+                }}>
+                    <Grid.Container 
+                    css={{
+                        jc: 'center',
+                        alignItems: 'center'
+                    }}>
+                        <Grid.Container gap={0}
+                        css={{
+                            jc: 'center',
+                            alignItems: 'center',
+                        }}>
+                            <Text hideIn={'xs'}
+                            css={{
+                                jc: 'center',
+                                alignItems: 'center',
+                                fontSize: '$5xl',
+                                fontWeight: '$medium',
+                            }}>
+                                REGISTRATION OPENS IN...
+                            </Text>
+                            <Text showIn={'xs'}
+                            css={{
+                                jc: 'center',
+                                alignItems: 'center',
+                                fontSize: '$2xl',
+                                fontWeight: '$medium',
+                            }}>
+                                REGISTRATION OPENS IN...
+                            </Text>
+                        </Grid.Container>
+
+                        <Row
+                        css={{
+                            jc: 'center',
+                        }}>
+                            
+
+                            <Col
+                            css={{
+                                width: 'max-content'
+                            }}>
+                                <Grid.Container 
+                                css={{
+                                    jc: 'center',
+                                }}>
+                                    <Text hideIn={'xs'}
+                                    css={{
+                                        fontSize: '$9xl'
+                                    }}>
+                                        {days}
+                                    </Text>
+                                    <Text showIn={'xs'}
+                                    css={{
+                                        fontSize: '$6xl'
+                                    }}>
+                                        {days}
+                                    </Text>
+                                </Grid.Container>
+                                <Grid.Container 
+                                css={{
+                                    jc: 'center',
+                                }}>
+                                    <Text hideIn={'xs'}
+                                    css={{
+                                        fontSize: '$2xl'
+                                    }}>
+                                        Days
+                                    </Text>
+                                    <Text showIn={'xs'}
+                                    css={{
+                                        fontSize: '$lg'
+                                    }}>
+                                        Days
+                                    </Text>
+                                </Grid.Container>
+                            </Col>
+
+                            <Text hideIn={'xs'}
+                            css={{
+                                fontSize: '$9xl',
+                                padding: '0% 5%'
+                            }}>
+                                :
+                            </Text>
+                            <Text showIn={'xs'}
+                            css={{
+                                fontSize: '$6xl',
+                                padding: '0% 2.5%'
+                            }}>
+                                :
+                            </Text>
+
+                            <Col
+                            css={{
+                                width: 'max-content'
+                            }}>
+                                <Grid.Container 
+                                css={{
+                                    jc: 'center',
+                                }}>
+                                    <Text hideIn={'xs'}
+                                    css={{
+                                        fontSize: '$9xl'
+                                    }}>
+                                        {hours}
+                                    </Text>
+                                    <Text showIn={'xs'}
+                                    css={{
+                                        fontSize: '$6xl'
+                                    }}>
+                                        {hours}
+                                    </Text>
+                                </Grid.Container>
+                                <Grid.Container 
+                                css={{
+                                    jc: 'center',
+                                }}>
+                                    <Text hideIn={'xs'}
+                                    css={{
+                                        fontSize: '$2xl'
+                                    }}>
+                                        Hours
+                                    </Text>
+                                    <Text showIn={'xs'}
+                                    css={{
+                                        fontSize: '$lg'
+                                    }}>
+                                        Hours
+                                    </Text>
+                                </Grid.Container>
+                            </Col>
+
+                            <Text hideIn={'xs'}
+                            css={{
+                                fontSize: '$9xl',
+                                padding: '0% 5%'
+                            }}>
+                                :
+                            </Text>
+                            <Text showIn={'xs'}
+                            css={{
+                                fontSize: '$6xl',
+                                padding: '0% 2.5%'
+                            }}>
+                                :
+                            </Text>
+
+                            <Col
+                            css={{
+                                width: 'max-content'
+                            }}>
+                                <Grid.Container 
+                                css={{
+                                    jc: 'center',
+                                }}>
+                                    <Text hideIn={'xs'}
+                                    css={{
+                                        fontSize: '$9xl'
+                                    }}>
+                                        {minutes}
+                                    </Text>
+                                    <Text showIn={'xs'}
+                                    css={{
+                                        fontSize: '$6xl'
+                                    }}>
+                                        {minutes}
+                                    </Text>
+                                </Grid.Container>
+                                <Grid.Container 
+                                css={{
+                                    jc: 'center',
+                                }}>
+                                    <Text hideIn={'xs'}
+                                    css={{
+                                        fontSize: '$2xl'
+                                    }}>
+                                        Minutes
+                                    </Text>
+                                    <Text showIn={'xs'}
+                                    css={{
+                                        fontSize: '$lg'
+                                    }}>
+                                        Minutes
+                                    </Text>
+                                </Grid.Container>
+                            </Col>
+
+                            <Text hideIn={'xs'}
+                            css={{
+                                fontSize: '$9xl',
+                                padding: '0% 5%'
+                            }}>
+                                :
+                            </Text>
+                            <Text showIn={'xs'}
+                            css={{
+                                fontSize: '$6xl',
+                                padding: '0% 2.5%'
+                            }}>
+                                :
+                            </Text>
+
+                            <Col
+                            css={{
+                                width: 'max-content'
+                            }}>
+                                <Grid.Container 
+                                css={{
+                                    jc: 'center',
+                                }}>
+                                    <Text hideIn={'xs'}
+                                    css={{
+                                        fontSize: '$9xl'
+                                    }}>
+                                        {seconds}
+                                    </Text>
+                                    <Text showIn={'xs'}
+                                    css={{
+                                        fontSize: '$6xl'
+                                    }}>
+                                        {seconds}
+                                    </Text>
+                                </Grid.Container>
+                                <Grid.Container 
+                                css={{
+                                    jc: 'center',
+                                }}>
+                                    <Text hideIn={'xs'}
+                                    css={{
+                                        fontSize: '$2xl'
+                                    }}>
+                                        Seconds
+                                    </Text>
+                                    <Text showIn={'xs'}
+                                    css={{
+                                        fontSize: '$lg'
+                                    }}>
+                                        Seconds
+                                    </Text>
+                                </Grid.Container>
+                            </Col>
+                                
+                            
+
+                        </Row>
+                    </Grid.Container>
+                </Grid.Container>
+
+                
+
+                </Grid.Container>
+            </div>
+        }
+
+        {isTimeUp &&
+            <div>
+                {/* Heading */}
+                <Grid.Container gap={2}
+                css={{
+                    jc: 'center',
+                    alignItems: 'center'
+                }}>
+                    <Text hideIn={'xs'}
+                    css={{
+                        textAlign: 'center',
+                        fontSize: '$5xl',
+                        fontWeight: '$semibold',
+                        paddingBottom: '1.5%'
+                    }}>
+                        APL 6.0 PLAYER REGISTRATION
+                    </Text>
+                    <Text showIn={'xs'}
+                    css={{
+                        textAlign: 'center',
+                        fontSize: '$3xl',
+                        fontWeight: '$semibold',
+                        padding: '10% 5%'
+                    }}>
+                        APL 6.0 PLAYER REGISTRATION
+                    </Text>
+                    <Text hideIn={'xs'}
+                    css={{
+                        textAlign: 'center',
+                        fontSize:'$2xl',
+                        fontWeight: '$medium',
+                        padding: '0% 20% 2% 20%'
+                    }}>
+                        Fill out the form* below and pay the required registration fee to complete your registration!
+                    </Text>
+                    <Text showIn={'xs'}
+                    css={{
+                        textAlign: 'center',
+                        fontSize:'$xl',
+                        fontWeight: '$medium',
+                        paddingBottom: '5%'
+                    }}>
+                        Fill out the form* below and pay the required registration fee to complete your registration!
+                    </Text>
+
+                </Grid.Container>
+                {/* Form */}
                 <Grid.Container gap={2}
                 css={{
                     jc: 'center',
@@ -332,7 +703,7 @@ export default function PRegForm(){
                         </Grid.Container>
                         
 
-                        {Object.keys(User).length != 0 && //Display welcome message to user if User Object is not empty
+                        {Object.keys(User).length !== 0 && //Display welcome message to user if User Object is not empty
                         <div>
                             <Grid.Container gap={2}
                             css={{
@@ -1558,8 +1929,8 @@ export default function PRegForm(){
                                             sendForm(e);
                                             sendPaymentImage(paymentSC)
                                             sendProfileImage(initialImage);
-                                            setRegistrationDone(true);
                                             setModalVisibility(false);
+                                            checkIfRegSuccess(emailID)
                                         }}>
                                             <Text
                                             css={{
@@ -1568,18 +1939,113 @@ export default function PRegForm(){
                                             }}>
                                                 Pay
                                             </Text>
-                                            <a href="https://www.instamojo.com/@testingrightnowforapl/l639029eaa66b4bbbbb30744adfef7b48/" rel="im-checkout" data-text="Pay" data-css-style="color:#ffffff; background:#000000; width:180px; border-radius:30px"   data-layout="vertical">PAY</a>
-                                            <script src="https://js.instamojo.com/v1/button.js"></script>
                                         </Button>
                                     </Modal.Footer>
 
+                                </Modal >
+
+                                {RegistrationDone===true && 
+                                <Modal
+                                open={RegStatusModal}
+                                closeButton
+                                onClose={()=>{
+                                    setRegStatusModal(false)
+                                    window.location.pathname='./registration/player'
+                                }}
+                                >
+                                        <Modal.Header
+                                        css={{
+                                            paddingTop: '0px',
+                                        }}>
+                                            <Col>
+                                                <Text 
+                                                css={{
+                                                    textAlign: 'center',
+                                                    fontSize: '$3xl',
+                                                    fontWeight: '$bold',
+                                                    color: '$green600',
+                                                    borderStyle: 'solid',
+                                                    borderWidth: '0px 0px 1px 0px',
+                                                    borderColor: '$gray800'
+                                                }}>
+                                                    Success!
+                                                </Text>
+                                                
+                                            </Col>
+                                        </Modal.Header>
+                                        <Modal.Body
+                                        css={{
+                                            paddingTop: '0px'
+                                        }}>
+                                            <Text 
+                                            css={{
+                                                textAlign: 'center',
+                                                fontSize: '$xl',
+                                                fontWeight: '$semibold',
+                                                color: 'white',
+                                            }}>
+                                                You have been successfully registered as {User.name}
+                                            </Text>
+                                        </Modal.Body>
+                                        
                                 </Modal>
+                                }
+
+                                {RegistrationDone===false && 
+                                <Modal
+                                open={RegStatusModal}
+                                closeButton
+                                onClose={()=>{
+                                    setRegStatusModal(false)
+                                    window.location.pathname='./registration/player'
+                                }}
+                                >
+                                        <Modal.Header
+                                        css={{
+                                            paddingTop: '0px',
+                                        }}>
+                                            <Col>
+                                                <Text 
+                                                css={{
+                                                    textAlign: 'center',
+                                                    fontSize: '$3xl',
+                                                    fontWeight: '$bold',
+                                                    color: '$red600',
+                                                    borderStyle: 'solid',
+                                                    borderWidth: '0px 0px 1px 0px',
+                                                    borderColor: '$gray800'
+                                                }}>
+                                                    Error!
+                                                </Text>
+                                                
+                                            </Col>
+                                        </Modal.Header>
+                                        <Modal.Body
+                                        css={{
+                                            paddingTop: '0px'
+                                        }}>
+                                            <Text 
+                                            css={{
+                                                textAlign: 'center',
+                                                fontSize: '$xl',
+                                                fontWeight: '$semibold',
+                                                color: 'white',
+                                            }}>
+                                                You were not able to register as {User.name}. Please try again...
+                                            </Text>
+                                        </Modal.Body>
+                                        
+                                </Modal>
+                                }
                             </Grid>
                         </Grid.Container>
 
                     </Grid>
                 </Grid.Container>
             
-        </div>
+            </div>
+        }
+        </div> 
+        
     )
 }

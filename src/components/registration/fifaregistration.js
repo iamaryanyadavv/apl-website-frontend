@@ -131,22 +131,22 @@ export default function FifaRegForm(){
     }
 
 
-useEffect( ()=>{
-    setLoginLoader(true)
-    window.setTimeout(()=>{
-        window.google.accounts.id.initialize({
-            client_id: "307601456989-5ii0dp5jhqah6snpkuf9ff1jajp67ku6.apps.googleusercontent.com",
-            callback: handleCallbackresponse
-        });
+    useEffect( ()=>{
+        setLoginLoader(true)
+        window.setTimeout(()=>{
+            window.google.accounts.id.initialize({
+                client_id: "307601456989-5ii0dp5jhqah6snpkuf9ff1jajp67ku6.apps.googleusercontent.com",
+                callback: handleCallbackresponse
+            });
+            
+            window.google.accounts.id.renderButton(
+                document.getElementById("GoogleButton"),
+                { theme: 'outlined', size: 'large', shape: 'pill',}
+            ); 
+            setLoginLoader(false)
+        }, 2000)
         
-        window.google.accounts.id.renderButton(
-            document.getElementById("GoogleButton"),
-            { theme: 'outlined', size: 'large', shape: 'pill',}
-        ); 
-        setLoginLoader(false)
-    }, 2000)
-    
-}, [])
+    }, [])
 
     async function sendForm(e)
     {
@@ -525,6 +525,8 @@ useEffect( ()=>{
                                 </Grid.Container>
                             </div>
                         }
+
+                        {/* Participant 1 */}
                         <Grid.Container gap={2}
                         css={{
                             jc: 'center',
@@ -594,7 +596,7 @@ useEffect( ()=>{
                                     
                                 }}>
                                     <Col>
-                                        <Input width="300px" status={participantoneemailStatus} readOnly value={User.email} placeholder='Email ID' />
+                                        <Input width="300px" status={participantoneemailStatus} readOnly disabled={!signedin} value={User.email} placeholder='Email ID' />
                                     </Col>
                                 </Grid>
                         
@@ -719,12 +721,6 @@ useEffect( ()=>{
 
                             </Grid.Container>                            
                         </Grid.Container>
-                        
-                    <Grid.Container gap={2}
-                        css={{
-                            jc: 'center'
-                        }}>
-                    </Grid.Container>
 
 
                         {/* payment details */}

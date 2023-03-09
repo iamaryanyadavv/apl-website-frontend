@@ -118,3 +118,7 @@ iframe{
   top: 0;
   border-radius: 10px;
 }
+
+.post-form-sub{
+  height: 70vh
+}

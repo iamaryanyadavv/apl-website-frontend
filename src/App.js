@@ -1,5 +1,4 @@
 import './App.css';
-import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { createTheme, NextUIProvider } from '@nextui-org/react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
@@ -13,7 +12,6 @@ import RoadToAPL from './pages/RoadToAPL/roadtoaplpage.js';
 import SlotBookingPage from './pages/SlotBookingPage/slotbookingpage.js';
 import RegistrationPage from './pages/RegistrationPage/registration.js';
 import PlayerRegistrationPage from './pages/PlayerRegistrationPage/playerregistrationpage.js';
-import PlayerCheckoutForm from './components/registration/playercheckoutform';
 import TeamRegistrationPage from './pages/TeamRegistrationPage/teamregistrationpage.js';
 import TeamPage from './pages/TeamPage/team';
 import EventsPage from './pages/EventsPage/eventspage';
