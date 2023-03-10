@@ -53,6 +53,7 @@ export default function FifaRegForm(){
 
     const [paymentSC, setPaymentSC] = useState();
     const [paymentSCUploaded, setPaymentSCUploaded] = useState();
+    const [finalImage, setFinalImage] = useState();
 
     
 
@@ -66,7 +67,7 @@ export default function FifaRegForm(){
         if(participantonephone.length===10){
             setParticipantonephoneStatus('success')
         }
-        if(!participantonephone.length<10 || participantonephone.length>10 || !participantonephone){
+        if(participantonephone.length<10 || participantonephone.length>10 || !participantonephone){
             setParticipantonephoneStatus('error')
         }
         if(participantoneemail){
@@ -74,6 +75,7 @@ export default function FifaRegForm(){
         }
         if(!participantoneemail){
             setParticipantoneemailStatus('error')
+            console.log('ERROR EAIL')
         }
         if(participanttwo){
             setParticipanttwoStatus('success')
@@ -84,7 +86,7 @@ export default function FifaRegForm(){
         if(participanttwophone.length===10){
             setParticipanttwophoneStatus('success')
         }
-        if(!participanttwophone.length<10 || participanttwophone.length>10 || !participanttwophone){
+        if(participanttwophone.length<10 || participanttwophone.length>10 || !participanttwophone){
             setParticipanttwophoneStatus('error')
         }
         if(participanttwoemail){
@@ -167,7 +169,7 @@ export default function FifaRegForm(){
                 participanttwophone: participanttwophone,
                 participanttwoemail: participanttwoemail,
                 participanttwobatch: participanttwobatch,
-                image: paymentSC
+                image: finalImage
             })
         })
         }
@@ -202,8 +204,6 @@ export default function FifaRegForm(){
         }
     }
     
-    // functions to convert image to base64
-
     const convertImageToBase64 = async (e) => {
         const options = {
             maxSizeMB: 0.030,
@@ -218,7 +218,7 @@ export default function FifaRegForm(){
 
     const convertBlobToBase64 = async (blob) => { // blob data
         const img = await blobToBase64(blob);
-        setPaymentSC(img);
+        setFinalImage(img);
     }
       
     const blobToBase64 = blob => new Promise((resolve, reject) => {
@@ -270,6 +270,8 @@ export default function FifaRegForm(){
                 setParticipantone(userObject.given_name + " "+userObject.family_name)
                 setAlreadyRegistered(false)
                 setParticipantoneStatus('success');
+                setParticipantoneemail(userObject.email)
+                setParticipantoneemailStatus('success')
             }
             
              
@@ -596,7 +598,15 @@ export default function FifaRegForm(){
                                     
                                 }}>
                                     <Col>
-                                        <Input width="300px" status={participantoneemailStatus} readOnly disabled={!signedin} value={User.email} placeholder='Email ID' />
+                                        <Input onChange={(event)=>{
+                                        participantoneemail(event.target.value);
+                                        if(event.target.value) {
+                                            setParticipantoneemailStatus('success')
+                                        }
+                                        else if(!event.target.value){
+                                            setParticipantoneemailStatus('error')
+                                        }
+                                    }}  width="300px" status={participantoneemailStatus} readOnly disabled={!signedin} value={participantoneemail} placeholder='Email ID' />
                                     </Col>
                                 </Grid>
                         
@@ -789,6 +799,8 @@ export default function FifaRegForm(){
                                     background: '$gray900'
                                 }}
                                 onPress={()=>{
+                                    if(paymentSC)
+                                    {convertImageToBase64()}
                                     if(paymentSC){
                                         setPaymentSCUploaded(true)
                                     }
@@ -1272,13 +1284,10 @@ export default function FifaRegForm(){
                                             background: '$gray900'
                                         }}
                                         onPress={(e)=>{
-                                            sendPaymentImage(paymentSC)
-                                            convertImageToBase64();
-                                            sendPaymentImage(paymentSC)
                                             sendForm(e);
                                             setRegistrationDone(true);
                                             setModalVisibility(false);
-                                        }}>
+                                        }}>Pay
                                             {/* <Text
                                             css={{
                                                 color: 'Black',

@@ -23,7 +23,6 @@
     "framer-motion": "^8.5.2",
     "https": "^1.0.0",
     "jwt-decode": "^3.1.2",
-    "node-sass": "^7.0.3",
     "react": "^18.2.0",
     "react-calendly": "^4.1.1",
     "react-chrono": "^1.22.0",
@@ -34,6 +33,7 @@
     "react-responsive-carousel": "^3.2.23",
     "react-router-dom": "^6.7.0",
     "react-scripts": "^5.0.1",
+    "sass": "^1.58.3",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
