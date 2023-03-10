@@ -3,7 +3,8 @@ import './minievents.css';
 import { Col, Grid, Image, Text } from "@nextui-org/react";
 import {
     IoCalendarNumber,
-    IoLocation
+    IoLocation,
+    IoGameController
   } from 'react-icons/io5';
 import { AiOutlineTeam, AiOutlineClockCircle } from "react-icons/ai";
 
@@ -196,6 +197,33 @@ export default function eventsection1(props){
                                 </Text>
                             </Grid>
                         </Grid.Container>
+
+                        {props.link=='yes' && 
+                        <Grid.Container gap={1}
+                        css={{
+                            maxWidth: 'fit-content',
+                            jc: 'center',
+                            textAlign: 'center',
+                            alignItems: 'center',
+                        }}>
+                            <Grid>
+                                <IoGameController/>
+                            </Grid>
+                            <Grid>
+                                <Text 
+                                css={{
+                                    jc: 'center',
+                                    fontWeight: '$medium',
+                                    textAlign: 'left',
+                                    paddingRight: '5px'
+                                }}>
+                                    <a href={props.linkref} >Regiser here!</a>
+                                </Text>
+                            </Grid>
+                        </Grid.Container>
+                        }
+
+                        
            
                 </Col>
             </Grid>

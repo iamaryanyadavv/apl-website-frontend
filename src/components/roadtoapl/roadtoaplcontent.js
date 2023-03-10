@@ -1,7 +1,7 @@
 import { Grid, Text, Col, Image, Row } from "@nextui-org/react";
 import './roadtoapl.css';
 import React from "react";
-import {IoLocation} from 'react-icons/io5';
+import {IoLocation, IoGameController} from 'react-icons/io5';
 import { AiOutlineTeam, AiOutlineClockCircle } from "react-icons/ai";
 // Fifa
 import PS5 from '../../assets/images/PS5Controller2.JPG'; 
@@ -783,7 +783,31 @@ export default function RoadToAPLContent(){
                                                             fontWeight: '$medium',
                                                             textAlign: 'left',
                                                         }}>
-                                                            Solo or Duo 
+                                                            Duo 
+                                                        </Text>
+                                                    </Grid>
+                                                </Grid.Container>
+
+                                                {/* Registration Link */}
+                                                <Grid.Container gap={1}
+                                                css={{
+                                                    maxWidth: 'fit-content',
+                                                    jc: 'center',
+                                                    textAlign: 'center',
+                                                    alignItems: 'center',
+                                                }}>
+                                                    <IoGameController
+                                                    style={{
+                                                        color: 'rgb(221 0 147)'
+                                                    }}/>
+                                                    <Grid>
+                                                        <Text
+                                                        css={{
+                                                            jc: 'center',
+                                                            fontWeight: '$medium',
+                                                            textAlign: 'left',
+                                                        }}>
+                                                            <a href="/registration/fifa" >Register here</a> 
                                                         </Text>
                                                     </Grid>
                                                 </Grid.Container>

@@ -1,4 +1,7 @@
 .player-picture{
-    width: 200px;
-    height: 200px;
+    width: 125px !important;
+    height: 150px !important;
+    margin-left: 10px;
+    border-radius: 10px;
+    object-fit: cover;
 }

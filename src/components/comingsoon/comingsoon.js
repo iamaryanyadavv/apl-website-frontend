@@ -25,12 +25,12 @@ export default function ComingSoon(){
                 }}>
                 COMING SOON
                 </Text>
-                <Loading 
+                {/* <Loading 
                     loadingCss={{ $$loadingSize: "60px", $$loadingBorder: "3px" }}
                     color='white'
                     type="default" 
                     gradientBackground={'#141414'}
-                />
+                /> */}
             </Col>
         </div>
         

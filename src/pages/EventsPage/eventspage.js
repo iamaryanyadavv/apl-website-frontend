@@ -24,9 +24,11 @@ const EventsPage = () => {
                 time='12pm to 4pm'
                 date='18th March, 2023'
                 location='Takshila, AC02'
-                team='Solo or Duo'
+                team='Duos'
                 src={PS5}
                 backgroundcolor='rgb(20,20,20)'
+                link='yes'
+                linkref='/registration/fifa'
             />
             <EventSection2
                 heading='1v1 Challenge'

@@ -8,7 +8,8 @@ import imageCompression from 'browser-image-compression';
 export default function TRegForm() {
 
     //12:30pm on 23rd March, 2023 GMT or 6pm on 23rd March, 2023 IST
-    const endDate = "2023-03-23T13:12:30.000Z"; 
+    const endDate = "2023-03-23T12:30:00.000Z"; 
+    
     const { days, hours, minutes, seconds, isTimeUp } = useTicker(endDate);
 
     const [teamname, SetTeamname] = useState('');

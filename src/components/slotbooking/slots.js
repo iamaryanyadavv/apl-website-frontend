@@ -29,40 +29,41 @@ export default function Slots(){
                     textAlign: 'center',
                     alignItems: 'center'
                 }}>
-                    <InlineWidget
+                    {/* <InlineWidget
                     styles={{
                         width: '500px',
                         height: '725px',
                         margin: '5.5% 5%'
                     }}
-                    url="https://calendly.com/apl-4/main-field-w-goals-half-field-booking?background_color=1a1a1a&text_color=ffffff&primary_color=43cea2"
-                    />
+                    url=""
+                    /> */}
 
-                    <InlineWidget
+                    {/* <InlineWidget
                     styles={{
                         width: '500px',
                         height: '725px',
                         margin: '5.5% 5%'
                     }}
-                    url="https://calendly.com/apl-4/main-field-w-goals-half-field-booking-1?background_color=1a1a1a&text_color=ffffff&primary_color=43cea2"
-                    />
-                    <InlineWidget
-                    styles={{
-                        width: '500px',
-                        height: '725px',
-                        margin: '5.5% 5%'
-                    }}
-                    url="https://calendly.com/apl-4/side-field-w-cones-one-half-field-booking?background_color=1a1a1a&text_color=ffffff&primary_color=43cea2"
-                    />
+                    url=""
+                    /> */}
 
-                    <InlineWidget
+                    {/* <InlineWidget
                     styles={{
                         width: '500px',
                         height: '725px',
                         margin: '5.5% 5%'
                     }}
-                    url="https://calendly.com/apl-4/side-field-w-cones-other-half-field-booking?background_color=1a1a1a&text_color=ffffff&primary_color=43cea2"
-                    />
+                    url=""
+                    /> */}
+
+                    {/* <InlineWidget
+                    styles={{
+                        width: '500px',
+                        height: '725px',
+                        margin: '5.5% 5%'
+                    }}
+                    url=""
+                    /> */}
                     
                 </Grid.Container>
                 
