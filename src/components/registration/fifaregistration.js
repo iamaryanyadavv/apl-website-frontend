@@ -176,27 +176,13 @@ export default function FifaRegForm(){
         
     }
 
-    // function to send profile image to googledrive
-    async function sendProfileImage(imagedata){
-        var imageName = User.given_name+User.family_name
-        const ImageData = new FormData();
-        ImageData.append('file', imagedata, imageName);
-        if(ImageData){
-            await fetch('http://localhost:3001/registration/playerimage',{
-                method: 'POST',
-                headers:{Value: "multipart/form-data"},
-                body: ImageData
-            })
-        }
-    }
-
     // function to send payment image to googledrive
     async function sendPaymentImage(paymentdata){
         var paymentName = User.given_name+User.family_name + ' Payment'
         const PaymentData = new FormData();
         PaymentData.append('file', paymentdata, paymentName);
         if(PaymentData){
-            await fetch('http://localhost:3001/registration/playerpaymentimage',{
+            await fetch('http://localhost:3001/registration/fifaplayerpaymentimage',{
                 method: 'POST',
                 headers:{Value: "multipart/form-data"},
                 body: PaymentData
@@ -1285,6 +1271,7 @@ export default function FifaRegForm(){
                                         }}
                                         onPress={(e)=>{
                                             sendForm(e);
+                                            sendPaymentImage(paymentSC)
                                             setRegistrationDone(true);
                                             setModalVisibility(false);
                                         }}>Pay
