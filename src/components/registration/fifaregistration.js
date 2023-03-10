@@ -43,7 +43,7 @@ export default function FifaRegForm(){
     const [participanttwobatchStatus, setParticipanttwobatchStatus] = useState('');
 
     const [AlreadyRegistered, setAlreadyRegistered] = useState(false);
-    const [RegistrationDone, setRegistrationDone] = useState(false);
+    const [RegistrationDone, setRegistrationDone] = useState();
 
     const [ModalVisibility, setModalVisibility] = useState(false);
     const [LoginLoader, setLoginLoader] = useState(false);
@@ -53,7 +53,10 @@ export default function FifaRegForm(){
 
     const [paymentSC, setPaymentSC] = useState();
     const [paymentSCUploaded, setPaymentSCUploaded] = useState();
+
     const [finalImage, setFinalImage] = useState();
+
+    const [RegStatusModal, setRegStatusModal] = useState(false);
 
     
 
@@ -214,6 +217,33 @@ export default function FifaRegForm(){
         reader.onerror = error => reject(error);
     });
 
+    async function checkIfRegSuccess(emailID){
+        await fetch('http://localhost:3001/registration/fifa')
+        .then(response=>response.json())
+        .then((data)=>{
+            console.log(emailID)
+            console.log(data)
+            if(data.values){
+                for(var i = 0; i < data.values.length; i++){
+                    if(emailID===data.values[i][0]){
+                        setRegStatusModal(true)
+                        setRegistrationDone(true)
+                        console.log('FOUND')
+                    }
+                    else if(emailID!==data.values[i][0]){
+                        setRegStatusModal(false)
+                        setRegistrationDone(false)
+                        console.log('NOT FOUND')
+                    }
+                }
+            }
+            else if(!data.values){
+                console.log('DATA NO FOUND')
+                setRegStatusModal(true)
+                setRegistrationDone(true)
+            }
+        })
+    }
     
     // function to check whether player is already registered
     const getRegisteredPlayersEmailData= async (userObject) =>{
@@ -795,7 +825,7 @@ export default function FifaRegForm(){
                                     }
                         
                                     setModalVisibility(CheckForm());
-                                    console.log('Check Form Done')
+                                    
                                 }}>
                                     <Text
                                     css={{
@@ -1274,6 +1304,7 @@ export default function FifaRegForm(){
                                             sendPaymentImage(paymentSC)
                                             setRegistrationDone(true);
                                             setModalVisibility(false);
+                                            checkIfRegSuccess(participantoneemail)
                                         }}>Pay
                                             {/* <Text
                                             css={{
@@ -1288,6 +1319,99 @@ export default function FifaRegForm(){
                                     </Modal.Footer>
 
                                 </Modal>
+                                {RegistrationDone===true && 
+                                <Modal
+                                open={RegStatusModal}
+                                closeButton
+                                onClose={()=>{
+                                    setRegStatusModal(false)
+                                    window.location.pathname='./registration/fifa'
+                                }}
+                                >
+                                        <Modal.Header
+                                        css={{
+                                            paddingTop: '0px',
+                                        }}>
+                                            <Col>
+                                                <Text 
+                                                css={{
+                                                    textAlign: 'center',
+                                                    fontSize: '$3xl',
+                                                    fontWeight: '$bold',
+                                                    color: '$green600',
+                                                    borderStyle: 'solid',
+                                                    borderWidth: '0px 0px 1px 0px',
+                                                    borderColor: '$gray800'
+                                                }}>
+                                                    Success!
+                                                </Text>
+                                                
+                                            </Col>
+                                        </Modal.Header>
+                                        <Modal.Body
+                                        css={{
+                                            paddingTop: '0px'
+                                        }}>
+                                            <Text 
+                                            css={{
+                                                textAlign: 'center',
+                                                fontSize: '$xl',
+                                                fontWeight: '$semibold',
+                                                color: 'white',
+                                            }}>
+                                                You have been successfully registered as {User.name}
+                                            </Text>
+                                        </Modal.Body>
+                                        
+                                </Modal>
+                                }
+
+                                {RegistrationDone===false && 
+                                <Modal
+                                open={RegStatusModal}
+                                closeButton
+                                onClose={()=>{
+                                    setRegStatusModal(false)
+                                    window.location.pathname='./registration/fifa'
+                                }}
+                                >
+                                        <Modal.Header
+                                        css={{
+                                            paddingTop: '0px',
+                                        }}>
+                                            <Col>
+                                                <Text 
+                                                css={{
+                                                    textAlign: 'center',
+                                                    fontSize: '$3xl',
+                                                    fontWeight: '$bold',
+                                                    color: '$red600',
+                                                    borderStyle: 'solid',
+                                                    borderWidth: '0px 0px 1px 0px',
+                                                    borderColor: '$gray800'
+                                                }}>
+                                                    Error!
+                                                </Text>
+                                                
+                                            </Col>
+                                        </Modal.Header>
+                                        <Modal.Body
+                                        css={{
+                                            paddingTop: '0px'
+                                        }}>
+                                            <Text 
+                                            css={{
+                                                textAlign: 'center',
+                                                fontSize: '$xl',
+                                                fontWeight: '$semibold',
+                                                color: 'white',
+                                            }}>
+                                                You were not able to register as {User.name}. Please try again...
+                                            </Text>
+                                        </Modal.Body>
+                                        
+                                </Modal>
+                                }
                             </Grid>
                         </Grid.Container>
 
