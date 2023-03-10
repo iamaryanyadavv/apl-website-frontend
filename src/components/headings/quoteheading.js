@@ -3,7 +3,6 @@ import { Grid, Text } from "@nextui-org/react";
 
 export default function QuoteHeading(props){
     return(
-        <Grid>
             <Grid.Container
             css={{
                 jc: 'center',
@@ -104,6 +103,5 @@ export default function QuoteHeading(props){
 
                 </Grid>
             </Grid.Container>
-        </Grid>
     )
 }
