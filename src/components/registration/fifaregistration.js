@@ -217,12 +217,37 @@ export default function FifaRegForm(){
         reader.onerror = error => reject(error);
     });
 
-    async function checkIfRegSuccess(emailID){
-        await fetch('http://localhost:3001/registration/fifa')
+    async function checkIfRegSuccess1(emailID){
+        await fetch('http://localhost:3001/registration/fifa1')
         .then(response=>response.json())
         .then((data)=>{
-            console.log(emailID)
-            console.log(data)
+            console.log(data.values)
+            if(data.values){
+                for(var i = 0; i < data.values.length; i++){
+                    if(emailID===data.values[i][0]){
+                        setRegStatusModal(true)
+                        setRegistrationDone(true)
+                        console.log('FOUND')
+                    }
+                    else if(emailID!==data.values[i][0]){
+                        setRegStatusModal(false)
+                        setRegistrationDone(false)
+                        console.log('NOT FOUND')
+                    }
+                }
+            }
+            else if(!data.values){
+                console.log('DATA NO FOUND')
+                setRegStatusModal(true)
+                setRegistrationDone(true)
+            }
+        })
+    }
+    async function checkIfRegSuccess2(emailID){
+        await fetch('http://localhost:3001/registration/fifa2')
+        .then(response=>response.json())
+        .then((data)=>{
+            console.log(data.values)
             if(data.values){
                 for(var i = 0; i < data.values.length; i++){
                     if(emailID===data.values[i][0]){
@@ -1304,7 +1329,8 @@ export default function FifaRegForm(){
                                             sendPaymentImage(paymentSC)
                                             setRegistrationDone(true);
                                             setModalVisibility(false);
-                                            checkIfRegSuccess(participantoneemail)
+                                            checkIfRegSuccess1(participantoneemail)
+                                            checkIfRegSuccess1(participantoneemail)
                                         }}>Pay
                                             {/* <Text
                                             css={{
