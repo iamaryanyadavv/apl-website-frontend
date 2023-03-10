@@ -58,7 +58,6 @@ function App() {
 
                 <Route exact path="/seasons" element={<SeasonsPage/>} />
 
-
                 {/* APL 5 */}
                 <Route exact path="/seasons/apl5" element={<APL5LandingPage/>} /> 
                 <Route exact path="/seasons/apl5/players" element={<APL5PlayersPage/>} />
