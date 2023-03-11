@@ -41,7 +41,7 @@ export default function APL6LandingPage () {
                             href='/seasons/apl6/details'
                         />
                     </Grid>
-                    <Grid>
+                    {/* <Grid>
                         <AwardsCard 
                             src={Grey}
                             href='/seasons/apl6/awards'
@@ -52,7 +52,7 @@ export default function APL6LandingPage () {
                             src={Grey}
                             href='/seasons/apl6/gallery'
                         />
-                    </Grid>
+                    </Grid> */}
                 </Grid.Container>
             </div>
         </div>

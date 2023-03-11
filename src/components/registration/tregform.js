@@ -8,7 +8,7 @@ import imageCompression from 'browser-image-compression';
 export default function TRegForm() {
 
     //12:30pm on 23rd March, 2023 GMT or 6pm on 23rd March, 2023 IST
-    const endDate = "2023-03-23T12:30:00.000Z"; 
+    const endDate = "2023-03-10T12:30:00.000Z"; 
     
     const { days, hours, minutes, seconds, isTimeUp } = useTicker(endDate);
 
@@ -1633,7 +1633,7 @@ export default function TRegForm() {
                                         fontSize: '$xl',
                                         fontWeight: '$medium'
                                     }}>
-                                        Please pay the amount (5000) to Uday Srivastava, via PayTM or GPay.
+                                        Please pay the amount (6000) to Uday Srivastava, via PayTM or GPay.
                                     </Text>
                                     <Text 
                                     css={{

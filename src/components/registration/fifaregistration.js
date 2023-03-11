@@ -272,7 +272,7 @@ export default function FifaRegForm(){
     
     // function to check whether player is already registered
     const getRegisteredPlayersEmailData= async (userObject) =>{
-        await fetch('http://localhost:3001/registration/player')
+        await fetch('http://localhost:3001/registration/fifa1')
         .then(response=>response.json())
         .then((data)=>{
             var isSignedin = false
@@ -527,7 +527,7 @@ export default function FifaRegForm(){
                                     <Modal
                                     open={AlreadyRegistered}
                                     closeButton
-                                    onClose={()=>{setAlreadyRegistered(false); window.location.pathname='/registration/player'; }}
+                                    onClose={()=>{setAlreadyRegistered(false); window.location.pathname='/registration/fifa'; }}
                                     >
                                             <Modal.Header
                                             css={{
@@ -1330,15 +1330,14 @@ export default function FifaRegForm(){
                                             setRegistrationDone(true);
                                             setModalVisibility(false);
                                             checkIfRegSuccess1(participantoneemail)
-                                            checkIfRegSuccess1(participantoneemail)
-                                        }}>Pay
-                                            {/* <Text
+                                        }}>
+                                            <Text
                                             css={{
                                                 color: 'Black',
                                                 fontWeight: '$semibold'
                                             }}>
                                                 Pay
-                                            </Text> */}
+                                            </Text>
                                             {/* <a href="https://www.instamojo.com/@testingrightnowforapl/l639029eaa66b4bbbbb30744adfef7b48/" rel="im-checkout" data-text="Pay" data-css-style="color:#ffffff; background:#000000; width:180px; border-radius:30px"   data-layout="vertical">PAY</a> */}
                                             {/* <script src="https://js.instamojo.com/v1/button.js"></script> */}
                                         </Button>

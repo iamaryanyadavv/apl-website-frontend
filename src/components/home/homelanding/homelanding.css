@@ -9,7 +9,7 @@
     src: url('../../../assets/fonts/Dancing_Script/DancingScript-VariableFont_wght.ttf');
 }
 
-.homelandingpage {
+/* .homelandingpage {
     position: relative;
 }
 
@@ -37,7 +37,7 @@
 
 .hlquote{
     text-align: center;
-}
+} */
 
 .nextui-c-iWjDFM-kaRBtV-cv{
     background: black !important;
@@ -58,4 +58,63 @@
 }
 .h-btn{
     color: white !important;
+}
+
+.homelanding{
+    width: 100%;
+    height: 85vh
+}
+
+video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.text{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    color: white;
+}
+
+@media screen and (max-width: 650px) {
+    .text{
+        top: 400px
+    }
+    .text p{
+        font-size: 2rem;
+        font-weight: bold;
+    }
+}
+
+@media screen and (min-width: 650px) and (max-width: 850px) {
+    .text{
+        top: 400px
+    }
+    .text p{
+        font-size: 3.5rem;
+        font-weight: bold;
+    }
+}
+
+@media screen and (min-width: 850px) {
+    .text{
+        top: 400px
+    }
+    .text p{
+        font-size: 5rem;
+        font-weight: bold;
+    }
+}
+
+.overlay{
+    position: absolute;
+    top: 130.38px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.4);
 }

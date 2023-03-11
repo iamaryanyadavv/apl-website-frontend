@@ -68,7 +68,7 @@ function App() {
 
                 {/* APL 6 */}
                 {/* <Route exact path="/seasons/apl6" element={<APL6LandingPage/>} /> */}
-                <Route exact path="/seasons/apl6" element={<ComingSoon/>} />
+                <Route exact path="/seasons/apl6" element={<APL6LandingPage/>} />
                 <Route exact path="/seasons/apl6/players" element={<APL6PlayersPage/>} />
                 <Route exact path="/seasons/apl6/teams" element={<APL6TeamPage/>} />
                 <Route exact path="/seasons/apl6/details" element={<APL6DetailsPage/>} />
