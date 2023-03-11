@@ -12,7 +12,7 @@ import APL5TDetailsCover from '../../assets/images/APL5/WaliBackgroundAPL 3.jpg'
 import APL5AwardsCover from '../../assets/images/APL5/GeneralBackgroundAPL1 2.jpg';
 import APL5GalleryCover from '../../assets/images/APL5/VeduBackgroundAPL1.jpg';
 
-import { Grid } from "@nextui-org/react";
+import { Grid, Spacer } from "@nextui-org/react";
 
 export default function APL5LandingPage () {
     return(

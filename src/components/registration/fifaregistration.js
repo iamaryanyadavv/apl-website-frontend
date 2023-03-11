@@ -655,10 +655,10 @@ export default function FifaRegForm(){
                             css={{
                                 jc:'center',
                             }}>
-                                <Dropdown isDisabled= {!signedin}>
+                                <Dropdown isDisabled= {!signedin} >
                                     {participantonebatch === '' 
-                                    ? <Dropdown.Button className="dp-btn" color={participantonebatchStatus} default ghost>Batch</Dropdown.Button>
-                                    : <Dropdown.Button className="dp-btn" color={participantonebatchStatus} default ghost>{participantonebatch}</Dropdown.Button>
+                                    ? <Dropdown.Button className="dp-btn" color={participantonebatchStatus} default light >Batch</Dropdown.Button>
+                                    : <Dropdown.Button className="dp-btn" color={participantonebatchStatus} default light >{participantonebatch}</Dropdown.Button>
                                     }
                                     <Dropdown.Menu 
                                     onAction={(event)=>{
@@ -748,8 +748,8 @@ export default function FifaRegForm(){
                             }}>
                                 <Dropdown isDisabled= {!signedin}>
                                     {participanttwobatch === '' 
-                                    ? <Dropdown.Button className="dp-btn" color={participanttwobatchStatus} default ghost>Batch</Dropdown.Button>
-                                    : <Dropdown.Button className="dp-btn" color={participanttwobatchStatus} default ghost>{participanttwobatch}</Dropdown.Button>
+                                    ? <Dropdown.Button className="dp-btn" color={participanttwobatchStatus} default light>Batch</Dropdown.Button>
+                                    : <Dropdown.Button className="dp-btn" color={participanttwobatchStatus} default light>{participanttwobatch}</Dropdown.Button>
                                     }
                                     <Dropdown.Menu 
                                     onAction={(event)=>{
@@ -811,7 +811,7 @@ export default function FifaRegForm(){
                                     fontSize: '$xl',
                                     fontWeight: '$medium'
                                 }}>
-                                    Please pay the amount to Uday Srivastava, via PayTM or GPay.
+                                    Please pay the amount (300) to Uday Srivastava (APL Director), via PayTM or GPay.
                                 </Text>
                                 <Text 
                                 css={{

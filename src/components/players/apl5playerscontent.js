@@ -1,18 +1,15 @@
-import { Button, Input, Text, Image, Grid, Col, Avatar, Row} from "@nextui-org/react";
+import {Text, Grid, Col, Avatar, Row} from "@nextui-org/react";
 import { Loading } from '@nextui-org/react';
 import React from "react";
 import { useState, useEffect } from "react";
-import Black from '../../assets/images/Black.jpeg'
+import Black from '../../assets/images/Black.jpeg';
 import Grey from '../../assets/images/Grey.jpeg';
-import './eachplayer.css';
-import informCard from '../../assets/images/FIFACards/InFormGold.jpeg';
+import './apl5playerscontent.css';
 import { AiOutlineDollar } from 'react-icons/ai'
 
 
-export default function EachPlayerCard(){
+export default function APL5PlayersContent(){
     const [Fetching, setFetching] = useState(true);
-    const [PlayerData, setPlayerData] = useState([]);
-    const [TeamData, setTeamData] = useState([]);
     const [Tier1PlayerData, setTier1PlayerData] = useState([]);
     const [Tier2PlayerData, setTier2PlayerData] = useState([]);
     const [Tier3PlayerData, setTier3PlayerData] = useState([]);
@@ -47,15 +44,9 @@ export default function EachPlayerCard(){
         await fetch('http://localhost:3001/seasons/apl5/players/playerdata')
         .then(response => response.json())
         .then((data)=>{
-            setPlayerData(data);
-            preparePlayerTierData(data)
+            preparePlayerTierData(data);
+            setFetching(false);
         })
-        await fetch('http://localhost:3001/seasons/apl5/players/teamdata')
-        .then(response => response.json())
-        .then((data)=>{
-            setTeamData(data);
-        })
-        setFetching(false)
     }
 
     const Tier1Cards = Tier1PlayerData.map((player,index)=>(
@@ -67,7 +58,7 @@ export default function EachPlayerCard(){
                 backgroundColor: 'Black',
                 borderRadius: '20px',
                 borderStyle: 'solid',
-                borderWidth: '5px',
+                borderWidth: '2.5px',
                 borderColor: '#C4B454'
             }}>
                 {/* Card Column */}
@@ -116,7 +107,12 @@ export default function EachPlayerCard(){
                             
 
                         </Col>
+                        {player[1] && 
                         <img src={player[1]} className='player-picture' />
+                        }
+                        {!player[1] && 
+                        <img src={Grey} className="player-picture" />
+                        }
                     </Row>
 
                     {/* Name */}
@@ -210,7 +206,7 @@ export default function EachPlayerCard(){
             backgroundColor: 'Black',
             borderRadius: '20px',
             borderStyle: 'solid',
-            borderWidth: '5px',
+            borderWidth: '2.5px',
             borderColor: 'rgb(157, 171, 187)'
         }}>
             {/* Card Column */}
@@ -259,7 +255,12 @@ export default function EachPlayerCard(){
                         
 
                     </Col>
+                    {player[1] && 
                     <img src={player[1]} className='player-picture' />
+                    }
+                    {!player[1] && 
+                    <img src={Grey} className="player-picture" />
+                    }
                 </Row>
 
                 {/* Name */}
@@ -353,7 +354,7 @@ export default function EachPlayerCard(){
             backgroundColor: 'Black',
             borderRadius: '20px',
             borderStyle: 'solid',
-            borderWidth: '5px',
+            borderWidth: '2.5px',
             borderColor: 'rgb(190, 159, 103)'
         }}>
             {/* Card Column */}
@@ -402,7 +403,12 @@ export default function EachPlayerCard(){
                         
 
                     </Col>
-                    <img src={player[1]} className='player-picture' />
+                        {player[1] && 
+                        <img src={player[1]} className='player-picture' />
+                        }
+                        {!player[1] && 
+                        <img src={Grey} className="player-picture" />
+                        }
                 </Row>
 
                 {/* Name */}
@@ -497,7 +503,7 @@ export default function EachPlayerCard(){
             backgroundColor: 'Black',
             borderRadius: '20px',
             borderStyle: 'solid',
-            borderWidth: '5px',
+            borderWidth: '2.5px',
             borderColor: 'rgb(125 17 125)'
         }}>
             {/* Card Column */}
@@ -546,7 +552,12 @@ export default function EachPlayerCard(){
                         
 
                     </Col>
-                    <img src={player[1]} className='player-picture' />
+                        {player[1] && 
+                        <img src={player[1]} className='player-picture' />
+                        }
+                        {!player[1] && 
+                        <img src={Grey} className="player-picture" />
+                        }
                 </Row>
 
                 {/* Name */}
@@ -672,7 +683,7 @@ export default function EachPlayerCard(){
     }, [])
 
     return(
-        <div className='players-tab'>   
+        <div>   
             {Fetching===true && 
             <Grid.Container gap={4}
             css={{
@@ -718,7 +729,8 @@ export default function EachPlayerCard(){
                                 alignItems: 'center',
                                 fontSize: '$6xl',
                                 fontWeight: '$semibold',
-                                paddingBottom: '40px'
+                                paddingBottom: '40px',
+                                color: '#C4B454'
                             }}>
                                 TIER 1
                             </Text>
@@ -728,7 +740,8 @@ export default function EachPlayerCard(){
                                 alignItems: 'center',
                                 fontSize: '$2xl',
                                 fontWeight: '$semibold',
-                                paddingBottom: '40px'
+                                paddingBottom: '40px',
+                                color: '#C4B454'
                             }}>
                                 TIER 1
                             </Text>
@@ -756,7 +769,6 @@ export default function EachPlayerCard(){
                     textAlign: 'center',
                     alignItems: 'center',
                     margin: '30px 0px 30px 0px',
-                    backgroundColor: 'rgb(20,20,20)',
                     borderRadius: '20px'
                 }}>
                     <Grid
@@ -779,7 +791,8 @@ export default function EachPlayerCard(){
                                 alignItems: 'center',
                                 fontSize: '$6xl',
                                 fontWeight: '$semibold',
-                                paddingBottom: '40px'
+                                paddingBottom: '40px',
+                                color: 'rgb(157, 171, 187)'
                             }}>
                                 TIER 2
                             </Text>
@@ -789,7 +802,8 @@ export default function EachPlayerCard(){
                                 alignItems: 'center',
                                 fontSize: '$2xl',
                                 fontWeight: '$semibold',
-                                paddingBottom: '40px'
+                                paddingBottom: '40px',
+                                color: 'rgb(157, 171, 187)'
                             }}>
                                 TIER 2
                             </Text>
@@ -840,7 +854,8 @@ export default function EachPlayerCard(){
                                 alignItems: 'center',
                                 fontSize: '$6xl',
                                 fontWeight: '$semibold',
-                                paddingBottom: '40px'
+                                paddingBottom: '40px',
+                                color: 'rgb(190, 159, 103)'
                             }}>
                                 TIER 3
                             </Text>
@@ -850,7 +865,8 @@ export default function EachPlayerCard(){
                                 alignItems: 'center',
                                 fontSize: '$2xl',
                                 fontWeight: '$semibold',
-                                paddingBottom: '40px'
+                                paddingBottom: '40px',
+                                color: 'rgb(190, 159, 103)'
                             }}>
                                 TIER 3
                             </Text>
@@ -878,7 +894,6 @@ export default function EachPlayerCard(){
                     textAlign: 'center',
                     alignItems: 'center',
                     margin: '30px 0px 30px 0px',
-                    backgroundColor: 'rgb(20,20,20)',
                     borderRadius: '20px'
                 }}>
                     <Grid
@@ -901,7 +916,8 @@ export default function EachPlayerCard(){
                                 alignItems: 'center',
                                 fontSize: '$6xl',
                                 fontWeight: '$semibold',
-                                paddingBottom: '40px'
+                                paddingBottom: '40px',
+                                color: 'rgb(125 17 125)'
                             }}>
                                 TIER 4
                             </Text>
@@ -911,7 +927,8 @@ export default function EachPlayerCard(){
                                 alignItems: 'center',
                                 fontSize: '$2xl',
                                 fontWeight: '$semibold',
-                                paddingBottom: '40px'
+                                paddingBottom: '40px',
+                                color: 'rgb(125 17 125)'
                             }}>
                                 TIER 4
                             </Text>

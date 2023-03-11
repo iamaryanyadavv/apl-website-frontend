@@ -68,13 +68,6 @@ export default function TeamsCard(props){
                         }}>
                             &#x2022; Budget Sheet
                         </Text>
-                        <Text
-                        css={{
-                            textAlign: 'center',
-                            padding: '0% 2.5%'
-                        }}>
-                            &#x2022; Rules
-                        </Text>
 
                     </Row>
                     
