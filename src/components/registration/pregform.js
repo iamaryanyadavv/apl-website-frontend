@@ -66,6 +66,7 @@ export default function PRegForm(){
 
     const [initialImage, setInitialImage] = useState();
     const [finalImage, setFinalImage] = useState();
+    const [finalImageStatus, setFinalImageStatus] = useState();
     const [finalFile, setFinalFile] = useState();
     const [finalFileName, setFinalFileName] = useState();
 
@@ -166,7 +167,13 @@ export default function PRegForm(){
         if(!secondpos){
             setSecondposStatus('error')
         }
-        if(firstname && lastname && batch && phonenumber && gender && primarypos && secondpos && paymentSC){
+        if(initialImage){
+            setFinalImageStatus('success')
+        }
+        if(!initialImage){
+            setFinalImageStatus('error')
+        }
+        if(firstname && lastname && batch && phonenumber && gender && primarypos && secondpos && paymentSC && initialImage){
             setFirstnameStatus('warning');
             setLastnameStatus('warning');
             setEmailIDStatus('warning');
@@ -1238,6 +1245,7 @@ export default function PRegForm(){
                                 jc: 'center',
                                 textAlign: 'center'
                             }}>
+                                
                                 <Text
                                 css={{
                                     jc:'center',
@@ -1248,6 +1256,18 @@ export default function PRegForm(){
                                 }}>Photo
                                 </Text>
                                 <input disabled={!signedin} onChange={(event)=>setInitialImage(event.target.files[0])} className="photobtn" animated={'true'} type='file' accept="image/*" required/>
+                                {finalImageStatus==='error' && 
+                                <Text
+                                css={{
+                                    jc: 'center',
+                                    textAlign: 'center',
+                                    color: '$red600',
+                                    fontSize: '$xl',
+                                    fontWeight: '$semibold'
+                                }}>
+                                    Please upload a photo of yourself!
+                                </Text>
+                                }
                             </Grid>
                             
                             {/* Secondary Position */}

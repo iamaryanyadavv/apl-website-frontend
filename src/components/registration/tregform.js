@@ -35,22 +35,30 @@ export default function TRegForm() {
     const [owner2email, setOwner2email] = useState('');
     const [owner2status, SetOwner2status] = useState('');
     const [owner2emailstatus, SetOwneremail2status] = useState('');
+    const [owner2phone, setOwner2phone] = useState('')
+    const [owner2phonestatus, setOwner2phonestatus] = useState('')
     
 
     const [owner3, SetOwner3] = useState('');
     const [owner3email, setOwner3email] = useState('');
     const [owner3status, SetOwner3status] = useState('');
     const [owner3emailstatus, SetOwneremail3status] = useState('');
+    const [owner3phone, setOwner3phone] = useState('')
+    const [owner3phonestatus, setOwner3phonestatus] = useState('')
 
     const [owner4, SetOwner4] = useState('');
     const [owner4email, setOwner4email] = useState('');
     const [owner4status, SetOwner4status] = useState('');
     const [owner4emailstatus, SetOwneremail4status] = useState('');
+    const [owner4phone, setOwner4phone] = useState('')
+    const [owner4phonestatus, setOwner4phonestatus] = useState('')
 
     const [owner5, SetOwner5] = useState('');
     const [owner5email, setOwner5email] = useState('');
     const [owner5status, SetOwner5status] = useState('');
     const [owner5emailstatus, SetOwneremail5status] = useState('');
+    const [owner5phone, setOwner5phone] = useState('')
+    const [owner5phonestatus, setOwner5phonestatus] = useState('')
 
     const [signedin, setSignedIn] = useState(false);
     const [initialImage, setInitialImage] = useState('');
@@ -190,9 +198,43 @@ export default function TRegForm() {
         {
             SetOwneremail5status('error')
         }
+        if(owner2phone)
+        {
+            setOwner2phonestatus('success')
+        }
+        if(!owner2phone)
+        {
+            setOwner2phonestatus('error')
+        }
+        if(owner3phone)
+        {
+            setOwner3phonestatus('success')
+        }
+        if(!owner3phone)
+        {
+            setOwner3phonestatus('error')
+        }
+        if(owner4phone)
+        {
+            setOwner4phonestatus('success')
+        }
+        if(!owner4phone)
+        {
+            setOwner4phonestatus('error')
+        }
+        if(owner5phone)
+        {
+            setOwner5phonestatus('success')
+        }
+        if(!owner5phone)
+        {
+            setOwner5phonestatus('error')
+        }
         
 
-        if(teamname && managername && manageremail && managerphone && totalowners==='5' && owner1 && owner2 && owner3 && owner4 && owner5 && paymentSC && teamlogoUploaded){
+        if(teamname && managername && manageremail && managerphone && totalowners==='5' && owner1 && owner2 && owner3 && owner4 && owner5 && paymentSC && teamlogoUploaded
+        && owner2email && owner3email && owner4email && owner5email
+        && owner2phone && owner3phone && owner4phone && owner5phone){
             setTeamnamestatus('warning');
             SetManagernamestatus('warning');
             SetManagerphonestatus('warning');
@@ -207,9 +249,16 @@ export default function TRegForm() {
             SetOwneremail4status('warning');
             SetOwneremail3status('warning');
             SetOwneremail2status('warning');
+            setOwner2phonestatus('warning');
+            setOwner3phonestatus('warning');
+            setOwner4phonestatus('warning');
+            setOwner5phonestatus('warning');
+
             return true
         }
-        else if(teamname && managername && manageremail && managerphone && totalowners==='4' && owner1 && owner2 && owner3 && owner4 && paymentSC && teamlogoUploaded)
+        else if(teamname && managername && manageremail && managerphone && totalowners==='4' && owner1 && owner2 && owner3 && owner4 && paymentSC && teamlogoUploaded
+        && owner2email && owner3email && owner4email
+        && owner2phone && owner3phone && owner4phone)
         {
             setTeamnamestatus('warning');
             SetManagernamestatus('warning');
@@ -223,9 +272,14 @@ export default function TRegForm() {
             SetOwneremail4status('warning');
             SetOwneremail3status('warning');
             SetOwneremail2status('warning');
+            setOwner2phonestatus('warning');
+            setOwner3phonestatus('warning');
+            setOwner4phonestatus('warning');
             return true
         }
-        else if(teamname && managername && manageremail && managerphone && totalowners==='3' && owner1 && owner2 && owner3 && paymentSC && teamlogoUploaded)
+        else if(teamname && managername && manageremail && managerphone && totalowners==='3' && owner1 && owner2 && owner3 && paymentSC && teamlogoUploaded
+        && owner2email && owner3email
+        && owner2phone && owner3phone)
         {
             setTeamnamestatus('warning');
             SetManagernamestatus('warning');
@@ -237,9 +291,13 @@ export default function TRegForm() {
             SetOwner3status('warning');
             SetOwneremail3status('warning');
             SetOwneremail2status('warning');
+            setOwner2phonestatus('warning');
+            setOwner3phonestatus('warning');
             return true
         }
-        else if(teamname && managername && manageremail && managerphone && totalowners==='2' && owner1 && owner2 && paymentSC && teamlogoUploaded) 
+        else if(teamname && managername && manageremail && managerphone && totalowners==='2' && owner1 && owner2 && paymentSC && teamlogoUploaded
+        && owner2email
+        && owner2phone) 
         {
             setTeamnamestatus('warning');
             SetManagernamestatus('warning');
@@ -249,6 +307,7 @@ export default function TRegForm() {
             SetOwner1status('warning');
             SetOwner2status('warning');
             SetOwneremail2status('warning');
+            setOwner2phonestatus('warning');
             return true
         }
         else if(teamname && managername && manageremail && managerphone && totalowners==='1' && owner1 && paymentSC && teamlogoUploaded)
@@ -1276,6 +1335,15 @@ export default function TRegForm() {
                                                     SetOwneremail2status('error')
                                                 }}}   labelLeft="2nd" placeholder="Email Address" />
                                             </Grid>
+                                            <Grid>
+                                                <Input disabled={!signedin} status={owner2phonestatus} onChange={(event)=>{setOwner2phone(event.target.value)
+                                                if(event.target.value){
+                                                    setOwner2phonestatus('success')
+                                                }
+                                                else if(!event.target.value){
+                                                    setOwner2phonestatus('error')
+                                                }}}   labelLeft="2nd" placeholder="Phone Number" />
+                                            </Grid>
                                             </Grid.Container>
                                             
                                     </Grid.Container>
@@ -1285,76 +1353,9 @@ export default function TRegForm() {
                                 ?   
                                     <div>
                                     <Grid.Container gap={1}
-                                    css={{
-                                        jc: 'center'
-                                    }}>
-                                        <Grid>
-                                            <Input disabled={!signedin} status={owner1status} onChange={(event)=>{SetOwner1(event.target.value)
-                                            if(event.target.value){
-                                                SetOwner1status('success')
-                                            }
-                                            else if(!event.target.value){
-                                                SetOwner1status('error')
-                                            }}}   labelLeft="1st" labelRight='(Manager)' placeholder={managername} />
-                                        </Grid>
-                                        <Grid.Container gap={1}
-                                                css={{
-                                                    jc: 'center'
-                                                }}>
-                                            <Grid>
-                                                <Input disabled={!signedin} status={owner2status} onChange={(event)=>{SetOwner2(event.target.value)
-                                                if(event.target.value){
-                                                    SetOwner2status('success')
-                                                }
-                                                else if(!event.target.value){
-                                                    SetOwner2status('error')
-                                                }
-                                                }}   labelLeft="2nd" placeholder="Full Name" />
-                                            </Grid>
-                                            <Grid>
-                                                <Input disabled={!signedin} status={owner2emailstatus} onChange={(event)=>{setOwner2email(event.target.value)
-                                                if(event.target.value){
-                                                    SetOwneremail2status('success')
-                                                }
-                                                else if(!event.target.value){
-                                                    SetOwneremail2status('error')
-                                                }}}   labelLeft="2nd" placeholder="Email Address" />
-                                            </Grid>
-                                            </Grid.Container>
-                                            <Grid.Container gap={1}
-                                                css={{
-                                                    jc: 'center'
-                                                }}>
-                                            <Grid>
-                                                <Input disabled={!signedin} status={owner3status} onChange={(event)=>{SetOwner3(event.target.value)
-                                                if(event.target.value){
-                                                    SetOwner3status('success')
-                                                }
-                                                else if(!event.target.value){
-                                                    SetOwner3status('error')
-                                                }
-                                                
-                                                }}   labelLeft="3rd" placeholder="Full Name" />
-                                            </Grid>
-                                            <Grid>
-                                                <Input disabled={!signedin} status={owner3emailstatus} onChange={(event)=>{setOwner3email(event.target.value)
-                                                if(event.target.value){
-                                                    SetOwneremail3status('success')
-                                                }
-                                                else if(!event.target.value){
-                                                    SetOwneremail3status('error')
-                                                }}}   labelLeft="3rd" placeholder="Email Address" />
-                                            </Grid>
-                                            </Grid.Container>
-                                    </Grid.Container>
-                                    </div>
-                                    
-                                :   (totalowners==='4'
-                                    ?   
-                                        <div>
-                                        <Grid.Container gap={1}
                                         css={{
-                                            jc: 'center'
+                                            jc: 'center',
+                                            alignItems: 'center'
                                         }}>
                                             <Grid>
                                                 <Input disabled={!signedin} status={owner1status} onChange={(event)=>{SetOwner1(event.target.value)
@@ -1387,6 +1388,15 @@ export default function TRegForm() {
                                                     SetOwneremail2status('error')
                                                 }}}   labelLeft="2nd" placeholder="Email Address" />
                                             </Grid>
+                                            <Grid>
+                                                <Input disabled={!signedin} status={owner2phonestatus} onChange={(event)=>{setOwner2phone(event.target.value)
+                                                if(event.target.value){
+                                                    setOwner2phonestatus('success')
+                                                }
+                                                else if(!event.target.value){
+                                                    setOwner2phonestatus('error')
+                                                }}}   labelLeft="2nd" placeholder="Phone Number" />
+                                            </Grid>
                                             </Grid.Container>
                                             <Grid.Container gap={1}
                                                 css={{
@@ -1410,6 +1420,99 @@ export default function TRegForm() {
                                                     SetOwneremail3status('error')
                                                 }}}   labelLeft="3rd" placeholder="Email Address" />
                                             </Grid>
+                                            <Grid>
+                                                <Input disabled={!signedin} status={owner3phonestatus} onChange={(event)=>{setOwner3phone(event.target.value)
+                                                if(event.target.value){
+                                                    setOwner3phonestatus('success')
+                                                }
+                                                else if(!event.target.value){
+                                                    setOwner3phonestatus('error')
+                                                }}}   labelLeft="3rd" placeholder="Phone Number" />
+                                            </Grid>
+                                            </Grid.Container>
+                                    </Grid.Container>
+                                    </div>
+                                    
+                                :   (totalowners==='4'
+                                    ?   
+                                        <div>
+                                        <Grid.Container gap={1}
+                                        css={{
+                                            jc: 'center',
+                                            alignItems: 'center'
+                                        }}>
+                                            <Grid>
+                                                <Input disabled={!signedin} status={owner1status} onChange={(event)=>{SetOwner1(event.target.value)
+                                                if(event.target.value){
+                                                    SetOwner1status('success')
+                                                }
+                                                else if(!event.target.value){
+                                                    SetOwner1status('error')
+                                                }}}   labelLeft="1st" labelRight='(Manager)' placeholder={managername} />
+                                            </Grid>
+                                            <Grid.Container gap={1}
+                                                css={{
+                                                    jc: 'center'
+                                                }}>
+                                            <Grid>
+                                                <Input disabled={!signedin} status={owner2status} onChange={(event)=>{SetOwner2(event.target.value)
+                                                if(event.target.value){
+                                                    SetOwner2status('success')
+                                                }
+                                                else if(!event.target.value){
+                                                    SetOwner2status('error')
+                                                }}}   labelLeft="2nd" placeholder="Full Name" />
+                                            </Grid>
+                                            <Grid>
+                                                <Input disabled={!signedin} status={owner2emailstatus} onChange={(event)=>{setOwner2email(event.target.value)
+                                                if(event.target.value){
+                                                    SetOwneremail2status('success')
+                                                }
+                                                else if(!event.target.value){
+                                                    SetOwneremail2status('error')
+                                                }}}   labelLeft="2nd" placeholder="Email Address" />
+                                            </Grid>
+                                            <Grid>
+                                                <Input disabled={!signedin} status={owner2phonestatus} onChange={(event)=>{setOwner2phone(event.target.value)
+                                                if(event.target.value){
+                                                    setOwner2phonestatus('success')
+                                                }
+                                                else if(!event.target.value){
+                                                    setOwner2phonestatus('error')
+                                                }}}   labelLeft="2nd" placeholder="Phone Number" />
+                                            </Grid>
+                                            </Grid.Container>
+                                            <Grid.Container gap={1}
+                                                css={{
+                                                    jc: 'center'
+                                                }}>
+                                            <Grid>
+                                                <Input disabled={!signedin} status={owner3status} onChange={(event)=>{SetOwner3(event.target.value)
+                                                if(event.target.value){
+                                                    SetOwner3status('success')
+                                                }
+                                                else if(!event.target.value){
+                                                    SetOwner3status('error')
+                                                }}}   labelLeft="3rd" placeholder="Full Name" />
+                                            </Grid>
+                                            <Grid>
+                                                <Input disabled={!signedin} status={owner3emailstatus} onChange={(event)=>{setOwner3email(event.target.value)
+                                                if(event.target.value){
+                                                    SetOwneremail3status('success')
+                                                }
+                                                else if(!event.target.value){
+                                                    SetOwneremail3status('error')
+                                                }}}   labelLeft="3rd" placeholder="Email Address" />
+                                            </Grid>
+                                            <Grid>
+                                                <Input disabled={!signedin} status={owner3phonestatus} onChange={(event)=>{setOwner3phone(event.target.value)
+                                                if(event.target.value){
+                                                    setOwner3phonestatus('success')
+                                                }
+                                                else if(!event.target.value){
+                                                    setOwner3phonestatus('error')
+                                                }}}   labelLeft="3rd" placeholder="Phone Number" />
+                                            </Grid>
                                             </Grid.Container>
                                             <Grid.Container gap={1}
                                                 css={{
@@ -1432,6 +1535,15 @@ export default function TRegForm() {
                                                 else if(!event.target.value){
                                                     SetOwneremail4status('error')
                                                 }}}   labelLeft="4th" placeholder="Email Address" />
+                                            </Grid>
+                                            <Grid>
+                                                <Input disabled={!signedin} status={owner4phonestatus} onChange={(event)=>{setOwner4phone(event.target.value)
+                                                if(event.target.value){
+                                                    setOwner4phonestatus('success')
+                                                }
+                                                else if(!event.target.value){
+                                                    setOwner4phonestatus('error')
+                                                }}}   labelLeft="4th" placeholder="Phone Number" />
                                             </Grid>
                                             </Grid.Container>
                                         </Grid.Container>
@@ -1475,6 +1587,15 @@ export default function TRegForm() {
                                                     SetOwneremail2status('error')
                                                 }}}   labelLeft="2nd" placeholder="Email Address" />
                                             </Grid>
+                                            <Grid>
+                                                <Input disabled={!signedin} status={owner2phonestatus} onChange={(event)=>{setOwner2phone(event.target.value)
+                                                if(event.target.value){
+                                                    setOwner2phonestatus('success')
+                                                }
+                                                else if(!event.target.value){
+                                                    setOwner2phonestatus('error')
+                                                }}}   labelLeft="2nd" placeholder="Phone Number" />
+                                            </Grid>
                                             </Grid.Container>
                                             <Grid.Container gap={1}
                                                 css={{
@@ -1497,6 +1618,15 @@ export default function TRegForm() {
                                                 else if(!event.target.value){
                                                     SetOwneremail3status('error')
                                                 }}}   labelLeft="3rd" placeholder="Email Address" />
+                                            </Grid>
+                                            <Grid>
+                                                <Input disabled={!signedin} status={owner3phonestatus} onChange={(event)=>{setOwner3phone(event.target.value)
+                                                if(event.target.value){
+                                                    setOwner3phonestatus('success')
+                                                }
+                                                else if(!event.target.value){
+                                                    setOwner3phonestatus('error')
+                                                }}}   labelLeft="3rd" placeholder="Phone Number" />
                                             </Grid>
                                             </Grid.Container>
                                             <Grid.Container gap={1}
@@ -1521,6 +1651,15 @@ export default function TRegForm() {
                                                     SetOwneremail4status('error')
                                                 }}}   labelLeft="4th" placeholder="Email Address" />
                                             </Grid>
+                                            <Grid>
+                                                <Input disabled={!signedin} status={owner4phonestatus} onChange={(event)=>{setOwner4phone(event.target.value)
+                                                if(event.target.value){
+                                                    setOwner4phonestatus('success')
+                                                }
+                                                else if(!event.target.value){
+                                                    setOwner4phonestatus('error')
+                                                }}}   labelLeft="4th" placeholder="Phone Number" />
+                                            </Grid>
                                             </Grid.Container>
                                             <Grid.Container gap={1}
                                                 css={{
@@ -1543,6 +1682,15 @@ export default function TRegForm() {
                                                 else if(!event.target.value){
                                                     SetOwneremail5status('error')
                                                 }}}   labelLeft="5th" placeholder="Email Address" />
+                                            </Grid>
+                                            <Grid>
+                                                <Input disabled={!signedin} status={owner5phonestatus} onChange={(event)=>{setOwner5phone(event.target.value)
+                                                if(event.target.value){
+                                                    setOwner5phonestatus('success')
+                                                }
+                                                else if(!event.target.value){
+                                                    setOwner5phonestatus('error')
+                                                }}}   labelLeft="5th" placeholder="Phone Number" />
                                             </Grid>
                                             </Grid.Container>
                                         </Grid.Container>
