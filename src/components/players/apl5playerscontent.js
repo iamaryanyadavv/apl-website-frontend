@@ -1,33 +1,36 @@
-import {Text, Grid, Col, Avatar, Row} from "@nextui-org/react";
+import {Text, Grid, Col, Avatar, Row, Spacer} from "@nextui-org/react";
 import { Loading } from '@nextui-org/react';
 import React from "react";
 import { useState, useEffect } from "react";
 import Black from '../../assets/images/Black.jpeg';
 import Grey from '../../assets/images/Grey.jpeg';
+import User from '../../assets/images/User.png';
 import './apl5playerscontent.css';
-import { AiOutlineDollar } from 'react-icons/ai'
+import { AiOutlineDollar } from 'react-icons/ai';
+import { TbSoccerField } from "react-icons/tb";
+import {BsBook, BsGenderAmbiguous} from "react-icons/bs";
 
 
 export default function APL5PlayersContent(){
     const [Fetching, setFetching] = useState(true);
+    const [PreTierAllotmentPlayers, setPreTierAllotmentPlayers] = useState([]);
     const [Tier1PlayerData, setTier1PlayerData] = useState([]);
     const [Tier2PlayerData, setTier2PlayerData] = useState([]);
     const [Tier3PlayerData, setTier3PlayerData] = useState([]);
     const [Tier4PlayerData, setTier4PlayerData] = useState([]);
 
     // Player array - 
-    // 0: ID
-    // 1: Picture
-    // 2: Name
-    // 3: PrimaryPosition
-    // 4: SecondaryPosition
-    // 5: Comments
-    // 6: Tier
+    // 0: Picture
+    // 1: Name
+    // 2: PrimaryPosition
+    // 3: SecondaryPosition
+    // 4: Comments
+    // 5: Tier
+    // 6: Price
     // 7: Team
-    // 8: Team logo
-    // 9: Price
-    // 10: Gender
-    // 11: Batch
+    // 8: Team Logo
+    // 9: Gender
+    // 10: Batch
 
     //Team array - 
     // 0: team logo image base64
@@ -40,161 +43,392 @@ export default function APL5PlayersContent(){
     // 7: manager email
     // 8: manager phone
 
-    const getData = async () =>{
+    const getTeamData = async () =>{
+        await fetch('http://localhost:3001/seasons/apl5/teamdata')
+        .then(response => response.json())
+        .then((data)=>{
+            OnceTeamData(data)
+        })
+    }
+
+    const OnceTeamData = async (teams) => {
         await fetch('http://localhost:3001/seasons/apl5/players/playerdata')
         .then(response => response.json())
         .then((data)=>{
-            preparePlayerTierData(data);
+            preparePlayerTierData(data, teams);
             setFetching(false);
         })
     }
 
-    const Tier1Cards = Tier1PlayerData.map((player,index)=>(
-            
-            <Grid key={index}
-            css={{
-                margin: '20px',
-                padding: '12px',
-                backgroundColor: 'Black',
-                borderRadius: '20px',
-                borderStyle: 'solid',
-                borderWidth: '2.5px',
-                borderColor: '#C4B454'
-            }}>
-                {/* Card Column */}
-                <Col>
-                    {/* Top Left Info + img ROW */}
-                    <Row
-                    css={{
-                        jc: 'center',
-                        alignItems: 'center',
-                        textAlign: 'center'
-                    }}>
-                        {/* Top Left Info */}
-                        <Col>
-                            <Text 
-                            css={{
-                                color: 'White',
-                                fontSize: '$lg',
-                                fontWeight: '$medium'
-                            }}>
-                                {player[10]}
-                            </Text>
-                            <Text 
-                            css={{
-                                color: 'White',
-                                fontSize: '$lg',
-                                fontWeight: '$medium'
-                            }}>
-                                {player[11]}
-                            </Text>
-                            <Grid.Container
-                            css={{
-                                jc: 'center',
-                                alignItems: 'center',
-                                padding: '5px 0px'
-                            }}>
-                                <Avatar size={'lg'} bordered src={player[8]} />
-                            </Grid.Container>
-                            <Text 
-                            css={{
-                                color: 'White',
-                                fontSize: '$lg',
-                                fontWeight: '$medium'
-                            }}>
-                                {player[7]}
-                            </Text>
-                            
-
-                        </Col>
-                        {player[1] && 
-                        <img src={player[1]} className='player-picture' />
-                        }
-                        {!player[1] && 
-                        <img src={Grey} className="player-picture" />
-                        }
-                    </Row>
-
-                    {/* Name */}
-                    <Text 
-                    css={{
-                        textAlign: 'center',
-                        color: 'White',
-                        borderStyle: 'solid',
-                        borderWidth: '0px 0px 2px 0px',
-                        borderColor: '#C4B454',
-                        padding: '5px 5px 0px 5px',
-                        fontSize: '$2xl',
-                        fontWeight: '$medium'
-                    }}>
-                        {player[2]}
-                    </Text>
-
-                    {/* Bottom Info */}
-                    <Col 
-                    css={{
-                        textAlign: 'center'
-                    }}>
-                        {/* Tier + Price */}
-                        <Row 
-                        css={{
-                            jc: 'center',
-                            alignItems: 'center',
-                            textAlign: 'center'
-                        }}>
-                            <AiOutlineDollar size={'20px'}/> 
-                            <Text 
-                            css={{
-                                color: 'White',
-                                padding: ' 0px 5px 0px 5px',
-                                fontSize: '$lg',
-                                fontWeight: '$medium'
-                            }}>
-                                {player[9]}M
-                            </Text>
-                        </Row>
-                        {/* Positions p + s */}
+    const TierLessCards = PreTierAllotmentPlayers.map((player,index)=>(
+        
+        <Grid key={index}
+        css={{
+            margin: '20px',
+            padding: '12px',
+            backgroundColor: 'rgb(5,5,5)',
+            borderRadius: '20px',
+            boxShadow: '10px 10px 10px rgb(5,5,5)',
+            // borderStyle: 'ridge',
+            // borderWidth: '20px',
+            // borderColor: '#C4B454'
+        }}>
+            {/* Card Column */}
+            <Col>
+                {/* Top Left Info + img ROW */}
+                <Row
+                css={{
+                    jc: 'center',
+                    alignItems: 'center',
+                    textAlign: 'center'
+                }}>
+                    {/* Top Left Info */}
+                    <Col>
                         <Row 
                         css={{
                             jc: 'center',
                             alignItems: 'center',
                             textAlign: 'center',
+                            padding: '5px 0px 5px 0px'
                         }}>
-                            {player[3] && player[4] && player[3]!=player[4] &&
+                            <BsGenderAmbiguous size={'20px'} className='user' />
                             <Text 
                             css={{
                                 color: 'White',
                                 fontSize: '$lg',
-                                fontWeight: '$medium'
+                                fontWeight: '$medium',
+                                padding: '0px 0px 0px 5px'
                             }}>
-                                {player[3]}, {player[4]}
+                                {/* Gender */}
+                                {player[9]} 
+                            </Text>    
+                        </Row>
+                        <Row 
+                        css={{
+                            jc: 'center',
+                            alignItems: 'center',
+                            textAlign: 'center',
+                            padding: '5px 0px 5px 0px'
+                        }}>
+                            <BsBook size={'20px'} className='book' />
+                            <Text 
+                            css={{
+                                color: 'White',
+                                fontSize: '$lg',
+                                fontWeight: '$medium',
+                                padding: '0px 0px 0px 5px'
+                            }}>
+                                {/* Batch */}
+                                {player[10]}
+                            </Text>    
+                        </Row>
+                        
+                        {/* Tier + Price */}
+                        <Row 
+                        css={{
+                            display: 'flex',
+                            jc: 'center',
+                            alignItems: 'center',
+                            textAlign: 'center',
+                            padding: '5px 0px 5px 0px'
+                        }}>
+                            <AiOutlineDollar size={'20px'} className='dollar'/>
+                            
+                            <Text 
+                            css={{
+                                color: '$gray500',
+                                padding: ' 0px 0px 0px 2px',
+                                fontSize: '$lg',
+                                fontWeight: '$medium',
+                            }}>
+                                {/* available after auction */}
+                                -
                             </Text>
-                            }
-                            {player[3] && player[4] && player[3]==player[4] &&
+                            
+                        </Row>
+                        
+
+                    </Col>
+                    {player[0] && 
+                    <img src={player[0]} className='player-picture' />
+                    }
+                    {!player[0] && 
+                    <img src={User} className="player-picture" />
+                    }
+                </Row>
+
+                {/* Name */}
+                <Text 
+                css={{
+                    textAlign: 'center',
+                    color: '#C4B454',
+                    // borderStyle: 'solid',
+                    // borderWidth: '0px 0px 2px 0px',
+                    // borderColor: '#C4B454',
+                    padding: '5px 5px 0px 5px',
+                    fontSize: '$3xl',
+                    fontWeight: '$medium'
+                }}>
+                    {player[1]}
+                </Text>
+
+                {/* Bottom Info */}
+                <Col 
+                css={{
+                    textAlign: 'center',
+                }}>
+                        
+                        <Row 
+                        css={{
+                            jc: 'center',
+                            alignItems: 'center',
+                            textAlign: 'center',
+                            padding: '0px 0px 5px 0px'
+                        }}>
+                            {/* <GiSoccerBall size={'20px'} className='team' /> */}
+                            {/* Team Logo */}
+                            <Avatar size={'sm'} bordered src={player[8]} />
+                            <Text 
+                            css={{
+                                color: '$gray500',
+                                fontSize: '$lg',
+                                fontWeight: '$medium',
+                                padding: '0px 0px 0px 5px'
+                            }}>
+                                {/*Team Name */}
+                                -
+                            </Text>    
+                        </Row>
+                    
+                    {/* Positions p + s */}
+                    <Row 
+                    css={{
+                        jc: 'center',
+                        alignItems: 'center',
+                        textAlign: 'center',
+                    }}>
+                        <TbSoccerField size={'25px'} className='soccerball'/>
+                        {player[2] && player[3] && player[2]!=player[3] &&
+                        <Text 
+                        css={{
+                            color: 'White',
+                            fontSize: '$lg',
+                            padding: ' 0px 0px 0px 2px',
+                            fontWeight: '$medium'
+                        }}>
+                            {player[2]}, {player[3]}
+                        </Text>
+                        }
+                        {player[2] && player[3] && player[2]==player[3] &&
+                        <Text 
+                        css={{
+                            color: 'White',
+                            fontSize: '$lg',
+                            fontWeight: '$medium'
+                        }}>
+                            {player[2]}
+                        </Text>
+                        }
+                        {player[2] && !player[3] &&
+                        <Text 
+                        css={{
+                            color: 'White',
+                            fontSize: '$lg',
+                            fontWeight: '$medium'
+                        }}>
+                            {player[2]}
+                        </Text>
+                        }
+                    </Row>
+                </Col>
+
+            </Col>
+        </Grid> 
+    ))
+
+    const Tier1Cards = Tier1PlayerData.map((player,index)=>(
+        
+        <Grid key={index}
+        css={{
+            margin: '20px',
+            padding: '12px',
+            backgroundColor: 'rgb(5,5,5)',
+            borderRadius: '20px',
+            boxShadow: '10px 10px 10px rgb(5,5,5)',
+            // borderStyle: 'ridge',
+            // borderWidth: '20px',
+            // borderColor: '#C4B454'
+        }}>
+            {/* Card Column */}
+            <Col>
+                {/* Top Left Info + img ROW */}
+                <Row
+                css={{
+                    jc: 'center',
+                    alignItems: 'center',
+                    textAlign: 'center'
+                }}>
+                    {/* Top Left Info */}
+                    <Col>
+                        <Row 
+                        css={{
+                            jc: 'center',
+                            alignItems: 'center',
+                            textAlign: 'center',
+                            padding: '5px 0px 5px 0px'
+                        }}>
+                            <BsGenderAmbiguous size={'20px'} className='user' />
                             <Text 
                             css={{
                                 color: 'White',
                                 fontSize: '$lg',
-                                fontWeight: '$medium'
+                                fontWeight: '$medium',
+                                padding: '0px 0px 0px 5px'
                             }}>
-                                {player[3]}
-                            </Text>
-                            }
-                            {player[3] && !player[4] &&
+                                {/* Gender */}
+                                {player[9]} 
+                            </Text>    
+                        </Row>
+                        <Row 
+                        css={{
+                            jc: 'center',
+                            alignItems: 'center',
+                            textAlign: 'center',
+                            padding: '5px 0px 5px 0px'
+                        }}>
+                            <BsBook size={'20px'} className='book' />
                             <Text 
                             css={{
                                 color: 'White',
                                 fontSize: '$lg',
-                                fontWeight: '$medium'
+                                fontWeight: '$medium',
+                                padding: '0px 0px 0px 5px'
                             }}>
-                                {player[3]}
+                                {/* Batch */}
+                                {player[10]}
+                            </Text>    
+                        </Row>
+                        
+                        {/* Tier + Price */}
+                        <Row 
+                        css={{
+                            display: 'flex',
+                            jc: 'center',
+                            alignItems: 'center',
+                            textAlign: 'center',
+                            padding: '5px 0px 5px 0px'
+                        }}>
+                            <AiOutlineDollar size={'20px'} className='dollar'/>
+                            { player[6] && 
+                            <Text 
+                            css={{
+                                color: 'White',
+                                padding: ' 0px 0px 0px 2px',
+                                fontSize: '$lg',
+                                fontWeight: '$medium',
+                            }}>
+                                {player[6]}M
                             </Text>
                             }
                         </Row>
-                    </Col>
+                        
 
+                    </Col>
+                    {player[0] && 
+                    <img src={player[0]} className='player-picture' />
+                    }
+                    {!player[0] && 
+                    <img src={User} className="player-picture" />
+                    }
+                </Row>
+
+                {/* Name */}
+                <Text 
+                css={{
+                    textAlign: 'center',
+                    color: '#C4B454',
+                    // borderStyle: 'solid',
+                    // borderWidth: '0px 0px 2px 0px',
+                    // borderColor: '#C4B454',
+                    padding: '5px 5px 0px 5px',
+                    fontSize: '$3xl',
+                    fontWeight: '$medium'
+                }}>
+                    {player[1]}
+                </Text>
+
+                {/* Bottom Info */}
+                <Col 
+                css={{
+                    textAlign: 'center',
+                }}>
+                        
+                        <Row 
+                        css={{
+                            jc: 'center',
+                            alignItems: 'center',
+                            textAlign: 'center',
+                            padding: '0px 0px 5px 0px'
+                        }}>
+                            {/* <GiSoccerBall size={'20px'} className='team' /> */}
+                            {/* Team Logo */}
+                            <Avatar size={'sm'} bordered src={player[8]} />
+                            <Text 
+                            css={{
+                                color: 'White',
+                                fontSize: '$lg',
+                                fontWeight: '$medium',
+                                padding: '0px 0px 0px 5px'
+                            }}>
+                                {/*Team Name */}
+                                {player[7]}
+                            </Text>    
+                        </Row>
+                    
+                    {/* Positions p + s */}
+                    <Row 
+                    css={{
+                        jc: 'center',
+                        alignItems: 'center',
+                        textAlign: 'center',
+                    }}>
+                        <TbSoccerField size={'25px'} className='soccerball'/>
+                        {player[2] && player[3] && player[2]!=player[3] &&
+                        <Text 
+                        css={{
+                            color: 'White',
+                            fontSize: '$lg',
+                            padding: ' 0px 0px 0px 2px',
+                            fontWeight: '$medium'
+                        }}>
+                            {player[2]}, {player[3]}
+                        </Text>
+                        }
+                        {player[2] && player[3] && player[2]==player[3] &&
+                        <Text 
+                        css={{
+                            color: 'White',
+                            fontSize: '$lg',
+                            fontWeight: '$medium'
+                        }}>
+                            {player[2]}
+                        </Text>
+                        }
+                        {player[2] && !player[3] &&
+                        <Text 
+                        css={{
+                            color: 'White',
+                            fontSize: '$lg',
+                            fontWeight: '$medium'
+                        }}>
+                            {player[2]}
+                        </Text>
+                        }
+                    </Row>
                 </Col>
-            </Grid> 
+
+            </Col>
+        </Grid> 
     ))
 
     const Tier2Cards = Tier2PlayerData.map((player,index)=>(
@@ -205,9 +439,10 @@ export default function APL5PlayersContent(){
             padding: '12px',
             backgroundColor: 'Black',
             borderRadius: '20px',
-            borderStyle: 'solid',
-            borderWidth: '2.5px',
-            borderColor: 'rgb(157, 171, 187)'
+            boxShadow: '10px 10px 10px rgb(5,5,5)',
+            // borderStyle: 'solid',
+            // borderWidth: '2.5px',
+            // borderColor: '#C4B454'
         }}>
             {/* Card Column */}
             <Col>
@@ -220,46 +455,75 @@ export default function APL5PlayersContent(){
                 }}>
                     {/* Top Left Info */}
                     <Col>
-                        <Text 
-                        css={{
-                            color: 'White',
-                            fontSize: '$lg',
-                            fontWeight: '$medium'
-                        }}>
-                            {player[10]}
-                        </Text>
-                        <Text 
-                        css={{
-                            color: 'White',
-                            fontSize: '$lg',
-                            fontWeight: '$medium'
-                        }}>
-                            {player[11]}
-                        </Text>
-                        <Grid.Container
+                        <Row 
                         css={{
                             jc: 'center',
                             alignItems: 'center',
-                            padding: '5px 0px'
+                            textAlign: 'center',
+                            padding: '5px 0px 5px 0px'
                         }}>
-                            <Avatar size={'lg'} bordered src={player[8]} />
-                        </Grid.Container>
-                        <Text 
+                            <BsGenderAmbiguous size={'20px'} className='user' />
+                            <Text 
+                            css={{
+                                color: 'White',
+                                fontSize: '$lg',
+                                fontWeight: '$medium',
+                                padding: '0px 0px 0px 5px'
+                            }}>
+                                {/* Gender */}
+                                {player[9]} 
+                            </Text>    
+                        </Row>
+                        <Row 
                         css={{
-                            color: 'White',
-                            fontSize: '$lg',
-                            fontWeight: '$medium'
+                            jc: 'center',
+                            alignItems: 'center',
+                            textAlign: 'center',
+                            padding: '5px 0px 5px 0px'
                         }}>
-                            {player[7]}
-                        </Text>
+                            <BsBook size={'20px'} className='book' />
+                            <Text 
+                            css={{
+                                color: 'White',
+                                fontSize: '$lg',
+                                fontWeight: '$medium',
+                                padding: '0px 0px 0px 5px'
+                            }}>
+                                {/* Batch */}
+                                {player[10]}
+                            </Text>    
+                        </Row>
+                        
+                        {/* Tier + Price */}
+                        <Row 
+                        css={{
+                            display: 'flex',
+                            jc: 'center',
+                            alignItems: 'center',
+                            textAlign: 'center',
+                            padding: '5px 0px 5px 0px'
+                        }}>
+                            <AiOutlineDollar size={'20px'} className='dollar'/>
+                            { player[6] && 
+                            <Text 
+                            css={{
+                                color: 'White',
+                                padding: ' 0px 0px 0px 2px',
+                                fontSize: '$lg',
+                                fontWeight: '$medium',
+                            }}>
+                                {player[6]}M
+                            </Text>
+                            }
+                        </Row>
                         
 
                     </Col>
-                    {player[1] && 
-                    <img src={player[1]} className='player-picture' />
+                    {player[0] && 
+                    <img src={player[0]} className='player-picture' />
                     }
-                    {!player[1] && 
-                    <img src={Grey} className="player-picture" />
+                    {!player[0] && 
+                    <img src={User} className="player-picture" />
                     }
                 </Row>
 
@@ -267,40 +531,45 @@ export default function APL5PlayersContent(){
                 <Text 
                 css={{
                     textAlign: 'center',
-                    color: 'White',
-                    borderStyle: 'solid',
-                    borderWidth: '0px 0px 2px 0px',
-                    borderColor: 'rgb(157, 171, 187)',
+                    color: 'rgb(157, 171, 187)',
+                    // borderStyle: 'solid',
+                    // borderWidth: '0px 0px 2px 0px',
+                    // borderColor: '#C4B454',
                     padding: '5px 5px 0px 5px',
-                    fontSize: '$2xl',
+                    fontSize: '$3xl',
                     fontWeight: '$medium'
                 }}>
-                    {player[2]}
+                    {player[1]}
                 </Text>
 
                 {/* Bottom Info */}
                 <Col 
                 css={{
-                    textAlign: 'center'
+                    textAlign: 'center',
                 }}>
-                    {/* Tier + Price */}
-                    <Row 
-                    css={{
-                        jc: 'center',
-                        alignItems: 'center',
-                        textAlign: 'center'
-                    }}> 
-                        <AiOutlineDollar size={'20px'}/> 
-                        <Text 
+                        
+                        <Row 
                         css={{
-                            color: 'White',
-                            padding: ' 0px 5px 0px 5px',
-                            fontSize: '$lg',
-                            fontWeight: '$medium'
+                            jc: 'center',
+                            alignItems: 'center',
+                            textAlign: 'center',
+                            padding: '0px 0px 5px 0px'
                         }}>
-                            {player[9]}M
-                        </Text>
-                    </Row>
+                            {/* <GiSoccerBall size={'20px'} className='team' /> */}
+                            {/* Team Logo */}
+                            <Avatar size={'sm'} bordered src={player[8]} />
+                            <Text 
+                            css={{
+                                color: 'White',
+                                fontSize: '$lg',
+                                fontWeight: '$medium',
+                                padding: '0px 0px 0px 5px'
+                            }}>
+                                {/*Team Name */}
+                                {player[7]}
+                            </Text>    
+                        </Row>
+                    
                     {/* Positions p + s */}
                     <Row 
                     css={{
@@ -308,41 +577,43 @@ export default function APL5PlayersContent(){
                         alignItems: 'center',
                         textAlign: 'center',
                     }}>
-                        {player[3] && player[4] && player[3]!=player[4] &&
+                        <TbSoccerField size={'25px'} className='soccerball'/>
+                        {player[2] && player[3] && player[2]!=player[3] &&
                         <Text 
                         css={{
                             color: 'White',
                             fontSize: '$lg',
+                            padding: ' 0px 0px 0px 2px',
                             fontWeight: '$medium'
                         }}>
-                            {player[3]}, {player[4]}
+                            {player[2]}, {player[3]}
                         </Text>
                         }
-                        {player[3] && player[4] && player[3]==player[4] &&
+                        {player[2] && player[3] && player[2]==player[3] &&
                         <Text 
                         css={{
                             color: 'White',
                             fontSize: '$lg',
                             fontWeight: '$medium'
                         }}>
-                            {player[3]}
+                            {player[2]}
                         </Text>
                         }
-                        {player[3] && !player[4] &&
+                        {player[2] && !player[3] &&
                         <Text 
                         css={{
                             color: 'White',
                             fontSize: '$lg',
                             fontWeight: '$medium'
                         }}>
-                            {player[3]}
+                            {player[2]}
                         </Text>
                         }
                     </Row>
                 </Col>
 
             </Col>
-        </Grid> 
+        </Grid>
     ))
 
     const Tier3Cards = Tier3PlayerData.map((player,index)=>(
@@ -353,9 +624,10 @@ export default function APL5PlayersContent(){
             padding: '12px',
             backgroundColor: 'Black',
             borderRadius: '20px',
-            borderStyle: 'solid',
-            borderWidth: '2.5px',
-            borderColor: 'rgb(190, 159, 103)'
+            boxShadow: '10px 10px 10px rgb(5,5,5)',
+            // borderStyle: 'solid',
+            // borderWidth: '2.5px',
+            // borderColor: '#C4B454'
         }}>
             {/* Card Column */}
             <Col>
@@ -368,88 +640,121 @@ export default function APL5PlayersContent(){
                 }}>
                     {/* Top Left Info */}
                     <Col>
-                        <Text 
-                        css={{
-                            color: 'White',
-                            fontSize: '$lg',
-                            fontWeight: '$medium'
-                        }}>
-                            {player[10]}
-                        </Text>
-                        <Text 
-                        css={{
-                            color: 'White',
-                            fontSize: '$lg',
-                            fontWeight: '$medium'
-                        }}>
-                            {player[11]}
-                        </Text>
-                        <Grid.Container
+                        <Row 
                         css={{
                             jc: 'center',
                             alignItems: 'center',
-                            padding: '5px 0px'
+                            textAlign: 'center',
+                            padding: '5px 0px 5px 0px'
                         }}>
-                            <Avatar size={'lg'} bordered  src={player[10]} />
-                        </Grid.Container>
-                        <Text 
+                            <BsGenderAmbiguous size={'20px'} className='user' />
+                            <Text 
+                            css={{
+                                color: 'White',
+                                fontSize: '$lg',
+                                fontWeight: '$medium',
+                                padding: '0px 0px 0px 5px'
+                            }}>
+                                {/* Gender */}
+                                {player[9]} 
+                            </Text>    
+                        </Row>
+                        <Row 
                         css={{
-                            color: 'White',
-                            fontSize: '$lg',
-                            fontWeight: '$medium'
+                            jc: 'center',
+                            alignItems: 'center',
+                            textAlign: 'center',
+                            padding: '5px 0px 5px 0px'
                         }}>
-                            {player[7]}
-                        </Text>
+                            <BsBook size={'20px'} className='book' />
+                            <Text 
+                            css={{
+                                color: 'White',
+                                fontSize: '$lg',
+                                fontWeight: '$medium',
+                                padding: '0px 0px 0px 5px'
+                            }}>
+                                {/* Batch */}
+                                {player[10]}
+                            </Text>    
+                        </Row>
+                        
+                        {/* Tier + Price */}
+                        <Row 
+                        css={{
+                            display: 'flex',
+                            jc: 'center',
+                            alignItems: 'center',
+                            textAlign: 'center',
+                            padding: '5px 0px 5px 0px'
+                        }}>
+                            <AiOutlineDollar size={'20px'} className='dollar'/>
+                            { player[6] && 
+                            <Text 
+                            css={{
+                                color: 'White',
+                                padding: ' 0px 0px 0px 2px',
+                                fontSize: '$lg',
+                                fontWeight: '$medium',
+                            }}>
+                                {player[6]}M
+                            </Text>
+                            }
+                        </Row>
                         
 
                     </Col>
-                        {player[1] && 
-                        <img src={player[1]} className='player-picture' />
-                        }
-                        {!player[1] && 
-                        <img src={Grey} className="player-picture" />
-                        }
+                    {player[0] && 
+                    <img src={player[0]} className='player-picture' />
+                    }
+                    {!player[0] && 
+                    <img src={User} className="player-picture" />
+                    }
                 </Row>
 
                 {/* Name */}
                 <Text 
                 css={{
                     textAlign: 'center',
-                    color: 'White',
-                    borderStyle: 'solid',
-                    borderWidth: '0px 0px 2px 0px',
-                    borderColor: 'rgb(190, 159, 103)',
+                    color: 'rgb(190, 159, 103)',
+                    // borderStyle: 'solid',
+                    // borderWidth: '0px 0px 2px 0px',
+                    // borderColor: '#C4B454',
                     padding: '5px 5px 0px 5px',
-                    fontSize: '$2xl',
+                    fontSize: '$3xl',
                     fontWeight: '$medium'
                 }}>
-                    {player[2]}
+                    {player[1]}
                 </Text>
 
                 {/* Bottom Info */}
                 <Col 
                 css={{
-                    textAlign: 'center'
+                    textAlign: 'center',
                 }}>
-                    {/* Tier + Price */}
-                    <Row 
-                    css={{
-                        jc: 'center',
-                        alignItems: 'center',
-                        textAlign: 'center'
-                    }}>
-
-                        <AiOutlineDollar size={'20px'}/> 
-                        <Text 
+                        
+                        <Row 
                         css={{
-                            color: 'White',
-                            padding: ' 0px 5px 0px 5px',
-                            fontSize: '$lg',
-                            fontWeight: '$medium'
+                            jc: 'center',
+                            alignItems: 'center',
+                            textAlign: 'center',
+                            padding: '0px 0px 5px 0px'
                         }}>
-                            {player[9]}M
-                        </Text>
-                    </Row>
+                            {/* <GiSoccerBall size={'20px'} className='team' /> */}
+                            {/* Team Logo */}
+                            <Avatar size={'sm'} bordered src={player[8]} />
+                            <Text 
+                            css={{
+                                color: 'White',
+                                fontSize: '$lg',
+                                fontWeight: '$medium',
+                                padding: '0px 0px 0px 5px'
+                            }}>
+                                {/*Team Name */}
+                                {player[7]}
+                            </Text>    
+                        </Row>
+                    
                     {/* Positions p + s */}
                     <Row 
                     css={{
@@ -457,41 +762,43 @@ export default function APL5PlayersContent(){
                         alignItems: 'center',
                         textAlign: 'center',
                     }}>
-                        {player[3] && player[4] && player[3]!=player[4] &&
+                        <TbSoccerField size={'25px'} className='soccerball'/>
+                        {player[2] && player[3] && player[2]!=player[3] &&
                         <Text 
                         css={{
                             color: 'White',
                             fontSize: '$lg',
+                            padding: ' 0px 0px 0px 2px',
                             fontWeight: '$medium'
                         }}>
-                            {player[3]}, {player[4]}
+                            {player[2]}, {player[3]}
                         </Text>
                         }
-                        {player[3] && player[4] && player[3]==player[4] &&
+                        {player[2] && player[3] && player[2]==player[3] &&
                         <Text 
                         css={{
                             color: 'White',
                             fontSize: '$lg',
                             fontWeight: '$medium'
                         }}>
-                            {player[3]}
+                            {player[2]}
                         </Text>
                         }
-                        {player[3] && !player[4] &&
+                        {player[2] && !player[3] &&
                         <Text 
                         css={{
                             color: 'White',
                             fontSize: '$lg',
                             fontWeight: '$medium'
                         }}>
-                            {player[3]}
+                            {player[2]}
                         </Text>
                         }
                     </Row>
                 </Col>
 
             </Col>
-        </Grid> 
+        </Grid>
     ))
 
     const Tier4Cards = Tier4PlayerData.map((player,index)=>(
@@ -502,9 +809,10 @@ export default function APL5PlayersContent(){
             padding: '12px',
             backgroundColor: 'Black',
             borderRadius: '20px',
-            borderStyle: 'solid',
-            borderWidth: '2.5px',
-            borderColor: 'rgb(125 17 125)'
+            boxShadow: '10px 10px 10px rgb(5,5,5)',
+            // borderStyle: 'solid',
+            // borderWidth: '2.5px',
+            // borderColor: '#C4B454'
         }}>
             {/* Card Column */}
             <Col>
@@ -517,88 +825,122 @@ export default function APL5PlayersContent(){
                 }}>
                     {/* Top Left Info */}
                     <Col>
-                        <Text 
-                        css={{
-                            color: 'White',
-                            fontSize: '$lg',
-                            fontWeight: '$medium'
-                        }}>
-                            {player[10]}
-                        </Text>
-                        <Text 
-                        css={{
-                            color: 'White',
-                            fontSize: '$lg',
-                            fontWeight: '$medium'
-                        }}>
-                            {player[11]}
-                        </Text>
-                        <Grid.Container
+                        <Row 
                         css={{
                             jc: 'center',
                             alignItems: 'center',
-                            padding: '5px 0px'
+                            textAlign: 'center',
+                            padding: '5px 0px 5px 0px'
                         }}>
-                            <Avatar size={'lg'} bordered src={player[10]} />
-                        </Grid.Container>
-                        <Text 
+                            <BsGenderAmbiguous size={'20px'} className='user' />
+                            <Text 
+                            css={{
+                                color: 'White',
+                                fontSize: '$lg',
+                                fontWeight: '$medium',
+                                padding: '0px 0px 0px 5px'
+                            }}>
+                                {/* Gender */}
+                                {player[9]} 
+                            </Text>    
+                        </Row>
+                        <Row 
                         css={{
-                            color: 'White',
-                            fontSize: '$lg',
-                            fontWeight: '$medium'
+                            jc: 'center',
+                            alignItems: 'center',
+                            textAlign: 'center',
+                            padding: '5px 0px 5px 0px'
                         }}>
-                            {player[7]}
-                        </Text>
+                            <BsBook size={'20px'} className='book' />
+                            <Text 
+                            css={{
+                                color: 'White',
+                                fontSize: '$lg',
+                                fontWeight: '$medium',
+                                padding: '0px 0px 0px 5px'
+                            }}>
+                                {/* Batch */}
+                                {player[10]}
+                            </Text>    
+                        </Row>
+                        
+                        {/* Tier + Price */}
+                        <Row 
+                        css={{
+                            display: 'flex',
+                            jc: 'center',
+                            alignItems: 'center',
+                            textAlign: 'center',
+                            padding: '5px 0px 5px 0px'
+                        }}>
+                            <AiOutlineDollar size={'20px'} className='dollar'/>
+                            { player[6] && 
+                            <Text 
+                            css={{
+                                color: 'White',
+                                padding: ' 0px 0px 0px 2px',
+                                fontSize: '$lg',
+                                fontWeight: '$medium',
+                            }}>
+                                {player[6]}M
+                            </Text>
+                            }
+                        </Row>
                         
 
                     </Col>
-                        {player[1] && 
-                        <img src={player[1]} className='player-picture' />
-                        }
-                        {!player[1] && 
-                        <img src={Grey} className="player-picture" />
-                        }
+                    {player[0] && 
+                    <img src={player[0]} className='player-picture' />
+                    }
+                    {!player[0] && 
+                    <img src={User} className="player-picture" />
+                    }
                 </Row>
 
                 {/* Name */}
                 <Text 
                 css={{
                     textAlign: 'center',
-                    color: 'White',
-                    borderStyle: 'solid',
-                    borderWidth: '0px 0px 2px 0px',
-                    borderColor: 'rgb(125 17 125)',
+                    color: '#B76E79',
+                    // borderStyle: 'solid',
+                    // borderWidth: '0px 0px 1px 0px',
+                    // borderColor: '$gray200',
+                    // marginBottom: '10px',
                     padding: '5px 5px 0px 5px',
-                    fontSize: '$2xl',
+                    fontSize: '$3xl',
                     fontWeight: '$medium'
                 }}>
-                    {player[2]}
+                    {player[1]}
                 </Text>
 
                 {/* Bottom Info */}
                 <Col 
                 css={{
-                    textAlign: 'center'
+                    textAlign: 'center',
                 }}>
-                    {/* Tier + Price */}
-                    <Row 
-                    css={{
-                        jc: 'center',
-                        alignItems: 'center',
-                        textAlign: 'center'
-                    }}>
-
-                        <AiOutlineDollar size={'20px'}/>    
-                        <Text 
+                        
+                        <Row 
                         css={{
-                            color: 'White',
-                            padding: ' 0px 5px 0px 5px',
-                            fontSize: '$lg',
-                            fontWeight: '$medium'
+                            jc: 'center',
+                            alignItems: 'center',
+                            textAlign: 'center',
+                            padding: '0px 0px 5px 0px'
                         }}>
-                            {player[9]}M
-                        </Text>
-                    </Row>
+                            {/* <GiSoccerBall size={'20px'} className='team' /> */}
+                            {/* Team Logo */}
+                            <Avatar size={'sm'} bordered src={player[8]} />
+                            <Text 
+                            css={{
+                                color: 'White',
+                                fontSize: '$lg',
+                                fontWeight: '$medium',
+                                padding: '0px 0px 0px 5px'
+                            }}>
+                                {/*Team Name */}
+                                {player[7]}
+                            </Text>    
+                        </Row>
+                    
                     {/* Positions p + s */}
                     <Row 
                     css={{
@@ -606,80 +948,99 @@ export default function APL5PlayersContent(){
                         alignItems: 'center',
                         textAlign: 'center',
                     }}>
-                        {player[3] && player[4] && player[3]!=player[4] &&
+                        <TbSoccerField size={'25px'} className='soccerball'/>
+                        {player[2] && player[3] && player[2]!=player[3] &&
                         <Text 
                         css={{
                             color: 'White',
                             fontSize: '$lg',
+                            padding: ' 0px 0px 0px 2px',
                             fontWeight: '$medium'
                         }}>
-                            {player[3]}, {player[4]}
+                            {player[2]}, {player[3]}
                         </Text>
                         }
-                        {player[3] && player[4] && player[3]==player[4] &&
+                        {player[2] && player[3] && player[2]==player[3] &&
                         <Text 
                         css={{
                             color: 'White',
                             fontSize: '$lg',
                             fontWeight: '$medium'
                         }}>
-                            {player[3]}
+                            {player[2]}
                         </Text>
                         }
-                        {player[3] && !player[4] &&
+                        {player[2] && !player[3] &&
                         <Text 
                         css={{
                             color: 'White',
                             fontSize: '$lg',
                             fontWeight: '$medium'
                         }}>
-                            {player[3]}
+                            {player[2]}
                         </Text>
                         }
                     </Row>
                 </Col>
 
             </Col>
-        </Grid> 
+        </Grid>
     ))
 
-    const preparePlayerTierData = (players) => {
+    const preparePlayerTierData = (players, teams) => {
+        const pretierallotmentplayers = []
         const tier1players = []
-        for(var i=0; i< players.length; i++){
-            if(players[i][6]=='1'){
-                tier1players.push(players[i])
-            }
-        }
-        setTier1PlayerData(tier1players)
-
         const tier2players = []
-        for(var i=0; i< players.length; i++){
-            if(players[i][6]=='2'){
-                tier2players.push(players[i])
-            }
-        }
-        setTier2PlayerData(tier2players)
-
         const tier3players = []
-        for(var i=0; i< players.length; i++){
-            if(players[i][6]=='3'){
-                tier3players.push(players[i])
-            }
-        }
-        setTier3PlayerData(tier3players)
-
         const tier4players = []
+
         for(var i=0; i< players.length; i++){
-            if(players[i][6]=='4'){
-                tier4players.push(players[i])
+            for(var j=0; j<teams.length; j++){    
+                if(teams[j][2]==players[i][7]){
+                    players[i][8]=teams[j][0]
+                }
+            }
+            if(players[i][5]=='0'){
+                if(players[i][5]=='0'){
+                    pretierallotmentplayers.push(players[i])
+                }  
+            }
+            else if(players[i][5]!='0'){
+                if(players[i][5]=='1'){
+                    tier1players.push(players[i])
+                }
+                if(players[i][5]=='2'){
+                    tier2players.push(players[i])
+                }
+                if(players[i][5]=='3'){
+                    tier3players.push(players[i])
+                }
+                if(players[i][5]=='4'){
+                    tier4players.push(players[i])
+                }
             }
         }
+        setPreTierAllotmentPlayers(pretierallotmentplayers)
+        setTier1PlayerData(tier1players)
+        setTier2PlayerData(tier2players)
+        setTier3PlayerData(tier3players)
         setTier4PlayerData(tier4players)
+        
+        //loop at t0 update each player with their team logo
+        for (var i=0;i<players.length;i++){
+            for(var j=0; j<teams.length; j++){    
+                if(teams[j][2]==players[i][7]){
+                    players[i][8]=teams[j][0]
+                }
+            }
+        }
+
+        
         
     }
 
     useEffect( () => {
-        getData();
+        getTeamData();
     }, [])
 
     return(
@@ -700,6 +1061,7 @@ export default function APL5PlayersContent(){
             {!Fetching && 
             <div>
                 {/* Tier 1 Block*/}
+                {Tier1Cards.length != 0 &&
                 <Grid.Container 
                 css={{
                     jc: 'center',
@@ -721,7 +1083,7 @@ export default function APL5PlayersContent(){
                         css={{
                             jc: 'center',
                             textAlign: 'center',
-                            marginTop: '40px'
+                            marginTop: '20px'
                         }}>
                             <Text hideIn={'xs'}
                             css={{
@@ -729,7 +1091,7 @@ export default function APL5PlayersContent(){
                                 alignItems: 'center',
                                 fontSize: '$6xl',
                                 fontWeight: '$semibold',
-                                paddingBottom: '40px',
+                                paddingBottom: '20px',
                                 color: '#C4B454'
                             }}>
                                 TIER 1
@@ -740,7 +1102,7 @@ export default function APL5PlayersContent(){
                                 alignItems: 'center',
                                 fontSize: '$2xl',
                                 fontWeight: '$semibold',
-                                paddingBottom: '40px',
+                                paddingBottom: '20px',
                                 color: '#C4B454'
                             }}>
                                 TIER 1
@@ -761,14 +1123,17 @@ export default function APL5PlayersContent(){
                     </Grid>
 
                 </Grid.Container>
-
+                }
+                
                 {/* Tier 2 Block */}
+                {Tier2Cards.length != 0 &&     
                 <Grid.Container 
                 css={{
                     jc: 'center',
                     textAlign: 'center',
                     alignItems: 'center',
-                    margin: '30px 0px 30px 0px',
+                    margin: '60px 0px 30px 0px',
+                    backgroundColor: 'rgb(20,20,20)',
                     borderRadius: '20px'
                 }}>
                     <Grid
@@ -783,7 +1148,7 @@ export default function APL5PlayersContent(){
                         css={{
                             jc: 'center',
                             textAlign: 'center',
-                            marginTop: '40px'
+                            marginTop: '20px'
                         }}>
                             <Text hideIn={'xs'}
                             css={{
@@ -791,7 +1156,7 @@ export default function APL5PlayersContent(){
                                 alignItems: 'center',
                                 fontSize: '$6xl',
                                 fontWeight: '$semibold',
-                                paddingBottom: '40px',
+                                paddingBottom: '20px',
                                 color: 'rgb(157, 171, 187)'
                             }}>
                                 TIER 2
@@ -802,7 +1167,7 @@ export default function APL5PlayersContent(){
                                 alignItems: 'center',
                                 fontSize: '$2xl',
                                 fontWeight: '$semibold',
-                                paddingBottom: '40px',
+                                paddingBottom: '20px',
                                 color: 'rgb(157, 171, 187)'
                             }}>
                                 TIER 2
@@ -823,8 +1188,75 @@ export default function APL5PlayersContent(){
                     </Grid>
 
                 </Grid.Container>
+                }
 
                 {/* Tier 3 Block */}
+                {Tier3Cards.length != 0 &&   
+                <Grid.Container 
+                css={{
+                    jc: 'center',
+                    textAlign: 'center',
+                    alignItems: 'center',
+                    margin: '60px 0px 60px 0px',
+                    backgroundColor: 'rgb(20,20,20)',
+                    borderRadius: '20px'
+                }}>
+                    <Grid
+                    css={{
+                        jc: 'center',
+                        alignItems:'center'
+                    }}>
+
+
+                        {/* Heading */}
+                        <Grid.Container 
+                        css={{
+                            jc: 'center',
+                            textAlign: 'center',
+                            marginTop: '20px'
+                        }}>
+                            <Text hideIn={'xs'}
+                            css={{
+                                jc: 'center',
+                                alignItems: 'center',
+                                fontSize: '$6xl',
+                                fontWeight: '$semibold',
+                                paddingBottom: '20px',
+                                color: 'rgb(190, 159, 103)'
+                            }}>
+                                TIER 3
+                            </Text>
+                            <Text showIn={'xs'}
+                            css={{
+                                jc: 'center',
+                                alignItems: 'center',
+                                fontSize: '$2xl',
+                                fontWeight: '$semibold',
+                                paddingBottom: '20px',
+                                color: 'rgb(190, 159, 103)'
+                            }}>
+                                TIER 3
+                            </Text>
+                        </Grid.Container>
+
+                        {/* Content */}
+                        <Grid.Container
+                        css={{
+                            jc: 'center',
+                            textAlign: 'center',
+                        }}>
+                            
+                            {Tier3Cards}
+                            
+                        </Grid.Container>
+
+                    </Grid>
+
+                </Grid.Container>
+                }
+
+                {/* Tier 4 Block */}
+                {Tier4Cards.length != 0 &&   
                 <Grid.Container 
                 css={{
                     jc: 'center',
@@ -846,7 +1278,7 @@ export default function APL5PlayersContent(){
                         css={{
                             jc: 'center',
                             textAlign: 'center',
-                            marginTop: '40px'
+                            marginTop: '20px'
                         }}>
                             <Text hideIn={'xs'}
                             css={{
@@ -854,70 +1286,8 @@ export default function APL5PlayersContent(){
                                 alignItems: 'center',
                                 fontSize: '$6xl',
                                 fontWeight: '$semibold',
-                                paddingBottom: '40px',
-                                color: 'rgb(190, 159, 103)'
-                            }}>
-                                TIER 3
-                            </Text>
-                            <Text showIn={'xs'}
-                            css={{
-                                jc: 'center',
-                                alignItems: 'center',
-                                fontSize: '$2xl',
-                                fontWeight: '$semibold',
-                                paddingBottom: '40px',
-                                color: 'rgb(190, 159, 103)'
-                            }}>
-                                TIER 3
-                            </Text>
-                        </Grid.Container>
-
-                        {/* Content */}
-                        <Grid.Container
-                        css={{
-                            jc: 'center',
-                            textAlign: 'center',
-                        }}>
-                            
-                            {Tier3Cards}
-                            
-                        </Grid.Container>
-
-                    </Grid>
-
-                </Grid.Container>
-
-                {/* Tier 4 Block */}
-                <Grid.Container 
-                css={{
-                    jc: 'center',
-                    textAlign: 'center',
-                    alignItems: 'center',
-                    margin: '30px 0px 30px 0px',
-                    borderRadius: '20px'
-                }}>
-                    <Grid
-                    css={{
-                        jc: 'center',
-                        alignItems:'center'
-                    }}>
-
-
-                        {/* Heading */}
-                        <Grid.Container 
-                        css={{
-                            jc: 'center',
-                            textAlign: 'center',
-                            marginTop: '40px'
-                        }}>
-                            <Text hideIn={'xs'}
-                            css={{
-                                jc: 'center',
-                                alignItems: 'center',
-                                fontSize: '$6xl',
-                                fontWeight: '$semibold',
-                                paddingBottom: '40px',
-                                color: 'rgb(125 17 125)'
+                                paddingBottom: '20px',
+                                color: '#B76E79'
                             }}>
                                 TIER 4
                             </Text>
@@ -927,8 +1297,8 @@ export default function APL5PlayersContent(){
                                 alignItems: 'center',
                                 fontSize: '$2xl',
                                 fontWeight: '$semibold',
-                                paddingBottom: '40px',
-                                color: 'rgb(125 17 125)'
+                                paddingBottom: '20px',
+                                color: '#B76E79'
                             }}>
                                 TIER 4
                             </Text>
@@ -948,6 +1318,78 @@ export default function APL5PlayersContent(){
                     </Grid>
 
                 </Grid.Container>
+                }
+
+                {/* Pre Tier Allotment Block */}
+                {TierLessCards.length != 0 && 
+                <Grid.Container 
+                css={{
+                    jc: 'center',
+                    textAlign: 'center',
+                    alignItems: 'center',
+                    margin: '30px 0px 30px 0px',
+                    backgroundColor: 'rgb(20,20,20)',
+                    borderRadius: '20px'
+                }}>
+                    <Grid
+                    css={{
+                        jc: 'center',
+                        alignItems:'center'
+                    }}>
+
+
+                        {/* Heading */}
+                        <Grid.Container 
+                        css={{
+                            jc: 'center',
+                            textAlign: 'center',
+                            marginTop: '20px'
+                        }}>
+                            <Text hideIn={'xs'}
+                            css={{
+                                jc: 'center',
+                                alignItems: 'center',
+                                fontSize: '$6xl',
+                                fontWeight: '$semibold',
+                                paddingBottom: '20px',
+                                color: 'White'
+                            }}>
+                                Registered
+                            </Text>
+                            <Text showIn={'xs'}
+                            css={{
+                                jc: 'center',
+                                alignItems: 'center',
+                                fontSize: '$2xl',
+                                fontWeight: '$semibold',
+                                paddingBottom: '20px',
+                                color: 'White'
+                            }}>
+                                Registered
+                            </Text>
+                        </Grid.Container>
+
+                        {/* Content */}
+                        <Grid.Container
+                        css={{
+                            jc: 'center',
+                            textAlign: 'center',
+                        }}>
+                            
+                            {TierLessCards}
+                            
+                        </Grid.Container>
+
+                    </Grid>
+
+                </Grid.Container>
+                }
+
+                {TierLessCards.length==0 && 
+                    <Grid.Container>
+                        <Spacer y={20} />
+                    </Grid.Container>
+                }
             </div>
             }
         </div>

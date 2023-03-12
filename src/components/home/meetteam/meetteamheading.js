@@ -22,7 +22,7 @@ export default function MeetTeamHeading () {
                             textAlign: 'center',
                             alignItems: 'center',
                             fontSize: '$7xl',
-                            fontWeight: '$bold',
+                            fontWeight: '$semibold',
                             textGradient: "45deg, $red600 20%, $yellow600 100%",
                             padding:'5px 10px 0px 10px'
                         }}>
@@ -34,7 +34,7 @@ export default function MeetTeamHeading () {
                             textAlign: 'center',
                             alignItems: 'center',
                             fontSize: '$5xl',
-                            fontWeight: '$bold',
+                            fontWeight: '$semibold',
                             textGradient: "45deg, $red600 20%, $yellow600 100%",
                             padding: '20px 10px 0px 10px'
                         }}>

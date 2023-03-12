@@ -5,7 +5,7 @@ import APL5PlayersContent from "../../components/players/apl5playerscontent";
 
 export default function APL5PlayersPage(){
     return(
-        <Grid.Container
+        <Grid.Container 
         css={{
             jc: 'center',
             alignItems: 'center'

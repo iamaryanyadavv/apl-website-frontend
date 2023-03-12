@@ -79,6 +79,8 @@ export default function TRegForm() {
 
     const [User, setUser] = useState({});
 
+    const[paymentmode, setPaymentmode] = useState('Webstie - UPI');
+
     async function checkIfRegSuccess(manageremail){
         await fetch('http://localhost:3001/registration/team')
         .then(response=>response.json())
@@ -411,14 +413,15 @@ export default function TRegForm() {
             },
             body: JSON.stringify({
                 teamlogo: finalImage,
-                teamname: teamname,
-                managername: managername,
                 manageremail: manageremail,
-                managerphone: managerphone,
-                totalowners: totalowners,
+                teamname: teamname,
+                paymentmode: paymentmode,
+                managername: managername,
                 teamownersnames: owner1,
-                teamownersemailIDs: manageremail
-              }),
+                managerphone: managerphone,
+                teamownersemailIDs: manageremail,
+                teamownersphones: managerphone
+            }),
         });
         }
         if(teamname && managername && manageremail && managerphone && totalowners==2 && owner1 && owner2 && !owner3 && !owner4 && !owner5 ){
@@ -430,14 +433,15 @@ export default function TRegForm() {
             },
             body: JSON.stringify({
                 teamlogo: finalImage,
-                teamname: teamname,
-                managername: managername,
                 manageremail: manageremail,
-                managerphone: managerphone,
-                totalowners: totalowners,
+                teamname: teamname,
+                paymentmode: paymentmode,
+                managername: managername,
                 teamownersnames: owner1 + ', ' + owner2,
-                teamownersemailIDs: manageremail + ', ' + owner2email
-              }),
+                managerphone: managerphone,
+                teamownersemailIDs: manageremail + ', ' + owner2email,
+                teamownersphones: managerphone + ', ' + owner2phone
+            }),
         });
         }
         if(teamname && managername && manageremail && managerphone && totalowners==3 && owner1 && owner2 && owner3 && !owner4 && !owner5 ){
@@ -448,14 +452,15 @@ export default function TRegForm() {
             },
             body: JSON.stringify({
                 teamlogo: finalImage,
-                teamname: teamname,
-                managername: managername,
                 manageremail: manageremail,
-                managerphone: managerphone,
-                totalowners: totalowners,
+                teamname: teamname,
+                paymentmode: paymentmode,
+                managername: managername,
                 teamownersnames: owner1 + ', ' + owner2 + ', ' + owner3,
-                teamownersemailIDs: manageremail + ', ' + owner2email + ', ' + owner3email
-              }),
+                managerphone: managerphone,
+                teamownersemailIDs: manageremail + ', ' + owner2email + ', ' + owner3email,
+                teamownersphones: managerphone + ', ' + owner2phone + ', ' + owner3phone 
+            }),
         });
         }
         if(teamname && managername && manageremail && managerphone && totalowners==4 && owner1 && owner2 && owner3 && owner4 && !owner5 ){
@@ -466,14 +471,15 @@ export default function TRegForm() {
             },
             body: JSON.stringify({
                 teamlogo: finalImage,
-                teamname: teamname,
-                managername: managername,
                 manageremail: manageremail,
-                managerphone: managerphone,
-                totalowners: totalowners,
+                teamname: teamname,
+                paymentmode: paymentmode,
+                managername: managername,
                 teamownersnames: owner1 + ', ' + owner2 + ', ' + owner3 + ', ' + owner4,
-                teamownersemailIDs: manageremail + ', ' + owner2email + ', ' + owner3email + ', ' + owner4email
-              }),
+                managerphone: managerphone,
+                teamownersemailIDs: manageremail + ', ' + owner2email + ', ' + owner3email + ', ' + owner4email,
+                teamownersphones: managerphone + ', ' + owner2phone + ', ' + owner3phone + ', ' + owner4phone
+            }),
         });
         }
         if(teamname & managername & manageremail & managerphone & totalowners==5 & owner1 & owner2 & owner3 & owner4 & owner5){
@@ -484,14 +490,15 @@ export default function TRegForm() {
             },
             body: JSON.stringify({
                 teamlogo: finalImage,
-                teamname: teamname,
-                managername: managername,
                 manageremail: manageremail,
-                managerphone: managerphone,
-                totalowners: totalowners,
+                teamname: teamname,
+                paymentmode: paymentmode,
+                managername: managername,
                 teamownersnames: owner1 + ', ' + owner2 + ', ' + owner3 + ', ' + owner4 + ', ' + owner5,
-                teamownersemailIDs: manageremail + ', ' + owner2email + ', ' + owner3email + ', ' + owner4email + ', ' + owner5email
-              }),
+                managerphone: managerphone,
+                teamownersemailIDs: manageremail + ', ' + owner2email + ', ' + owner3email + ', ' + owner4email + ', ' + owner5email,
+                teamownersphones: managerphone + ', ' + owner2phone + ', ' + owner3phone + ', ' + owner4phone + ', ' + owner5phone
+            }),
         });
         }
         
@@ -1739,7 +1746,21 @@ export default function TRegForm() {
                                 </Text>
                                 </Col>
                                 
-                        <input disabled={!signedin} onChange={(event)=>{setInitialImage(event.target.files[0]);}} className="photobtn" animated={'true'} type='file' accept="image/*" required/>
+                                <input disabled={!signedin} 
+                                onChange={(event)=>{
+                                    
+                                    if(event.target.files[0].size>220000){
+                                        window.alert('Maximum file size: 2mb!')
+                                    }
+                                    else{
+                                        setInitialImage(event.target.files[0])
+                                        console.log('Thank you for correct image size')
+                                    }
+                                }} 
+                                className="photobtn" animated={'true'} type='file' accept="image/*" required/>
+                                <Text>
+                                    Max: 2mb
+                                </Text>
                         </Grid.Container>
 
                         {/* Payment details */}
@@ -2825,6 +2846,24 @@ export default function TRegForm() {
                                                 color: 'white',
                                             }}>
                                                 You have been successfully registered as {teamname}
+                                            </Text>
+                                            <Text 
+                                            css={{
+                                                textAlign: 'center',
+                                                fontSize: '$xl',
+                                                fontWeight: '$semibold',
+                                                color: 'white',
+                                            }}>
+                                                You can check out the full list of APL6.0 registered teams here
+                                            </Text>
+                                            <Text 
+                                            css={{
+                                                textAlign: 'center',
+                                                fontSize: '$lg',
+                                                fontWeight: '$medium',
+                                                color: 'white',
+                                            }}>
+                                                <a href="/seasons/apl6/teams">APL 6.0 Registered Teams</a>
                                             </Text>
                                         </Modal.Body>
                                         

@@ -33,7 +33,6 @@ function HomeLanding() {
         //     </div>
         // </div>
         <div className="homelanding">
-            <div className="overlay"></div>
             <video src={LandingVideo} autoPlay loop muted />
             <div className="text">
                 <p>Ashoka Premier League</p>

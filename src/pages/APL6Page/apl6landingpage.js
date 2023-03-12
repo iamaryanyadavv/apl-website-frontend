@@ -41,7 +41,8 @@ export default function APL6LandingPage () {
                             href='/seasons/apl6/details'
                         />
                     </Grid>
-                    {/* <Grid>
+                    {/* UNcomment all this when data available - so post APL 6.0 */}
+                    {/* <Grid> 
                         <AwardsCard 
                             src={Grey}
                             href='/seasons/apl6/awards'

@@ -36,21 +36,21 @@ export default function APL5TeamsContent() {
             } 
             key={index} 
             shadow 
-            title={team[3]} 
+            title={team[2]} 
             subtitle='Expand for details'>
                 <Text hideIn={'xs'}
                 css={{
                     fontSize: '$2xl',
                     fontWeight: '$medium'
                 }}>
-                    Manager: {team[5]}
+                    Manager: {team[4]}
                 </Text>
                 <Text showIn={'xs'}
                 css={{
                     fontSize: '$lg',
                     fontWeight: '$medium'
                 }}>
-                    Manager: {team[5]}
+                    Manager: {team[4]}
                 </Text>
                 
                 <Text hideIn={'xs'}
@@ -59,14 +59,14 @@ export default function APL5TeamsContent() {
                     fontWeight: '$medium',
                     padding: '0% 5% 2.5% 5%'
                 }}>
-                    Owners: {team[6]}
+                    Owners: {team[5]}
                 </Text>
                 <Text showIn={'xs'}
                 css={{
                     fontSize: '$md',
                     fontWeight: '$medium'
                 }}>
-                    Owners: {team[6]}
+                    Owners: {team[5]}
                 </Text>
                 {AccordionMaterial(team,teamslists)}
             </Collapse>
@@ -74,10 +74,10 @@ export default function APL5TeamsContent() {
     }
 
     function AccordionMaterial(team,teamslists){
-        console.log(teamslists)
+        
         var accMaterial = ''
         for (var i=0; i<20; i++){
-            if(team[3]===teamslists[i][0]){
+            if(team[2]===teamslists[i][0]){
                 var sum =  parseInt(teamslists[i][2]) + parseInt(teamslists[i][4]) + parseInt(teamslists[i][6]) + parseInt(teamslists[i][8]) + parseInt(teamslists[i][10]) + parseInt(teamslists[i][12]) + parseInt(teamslists[i][14]) + parseInt(teamslists[i][16]) + parseInt(teamslists[i][18]) + parseInt(teamslists[i][20]) + parseInt(teamslists[i][22]) + parseInt(teamslists[i][24])
                 var budgetBarValue = (sum/130)*100
                 accMaterial =   
@@ -181,7 +181,7 @@ export default function APL5TeamsContent() {
                         <Progress size='sm' color='error' value={budgetBarValue} />
                         </Col>
                     </Grid.Container>
-                console.log(teamslists[i][0])
+                
             }
         }
         return(accMaterial)

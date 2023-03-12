@@ -93,6 +93,11 @@ export default function PRegForm(){
     const [signedin, setSignedIn] = useState(false);
     const [User, setUser] = useState({});
 
+    const [tier, setTier] = useState('0');
+    const [price, setPrice] = useState('null');
+    const [team, setTeam] = useState('null');
+    const [teamlogo, setTeamLogo] = useState('null');
+
     //function to check if registration was successful
     async function checkIfRegSuccess(emailID){
         await fetch('http://localhost:3001/registration/player')
@@ -194,22 +199,23 @@ export default function PRegForm(){
         
         if(firstname && lastname && batch && phonenumber && gender && primarypos && secondpos)
         { 
-            // image, firstname, middlename, lastname, emailid, batch, phone, gender, primarypos, secondpos, comment
+            // image, name, ppos, spos, comments, tier, price, team, teamlogo, gender, batch, email
             await fetch('http://localhost:3001/registration/player',{
             method: 'POST',
             headers:{"Content-type":"application/json"},
             body: JSON.stringify({
                 image: finalImage,
-                firstname: firstname,
-                middlename: middlename,
-                lastname: lastname,
-                emailid: emailID,
-                batch: batch,
-                phonenumber: phonenumber,
-                gender: gender,
+                name: firstname + ' ' + middlename + ' ' + lastname,
                 primarypos: primarypos,
                 secondpos: secondpos,
-                comment: comment
+                comment: comment,
+                tier: tier,
+                price: price,
+                team: team,
+                teamlogo: teamlogo,
+                gender: gender,
+                batch: batch,
+                emailID: emailID
             })
         })
         }
@@ -232,7 +238,7 @@ export default function PRegForm(){
 
     // function to send payment image to googledrive
     async function sendPaymentImage(paymentdata){
-        var paymentName = User.given_name+User.family_name + ' Payment'
+        var paymentName = User.given_name+User.family_name + 'Payment'
         const PaymentData = new FormData();
         PaymentData.append('file', paymentdata, paymentName);
         if(PaymentData){
@@ -248,7 +254,7 @@ export default function PRegForm(){
     const convertImageToBase64 = async (e) => {
         const options = {
             maxSizeMB: 0.030,
-            maxWidthOrHeight: 720,
+            maxWidthOrHeight: 600,
             useWebWorker: true
         }
 
@@ -1255,7 +1261,21 @@ export default function PRegForm(){
                                     fontWeight: '$semibold'
                                 }}>Photo
                                 </Text>
-                                <input disabled={!signedin} onChange={(event)=>setInitialImage(event.target.files[0])} className="photobtn" animated={'true'} type='file' accept="image/*" required/>
+                                <input disabled={!signedin} 
+                                onChange={(event)=>{
+                                    
+                                    if(event.target.files[0].size>220000){
+                                        window.alert('Maximum file size: 2mb!')
+                                    }
+                                    else{
+                                        setInitialImage(event.target.files[0])
+                                        console.log('Thank you for correct image size')
+                                    }
+                                }} 
+                                className="photobtn" animated={'true'} type='file' accept="image/*" required/>
+                                <Text>
+                                    Max: 2mb
+                                </Text>
                                 {finalImageStatus==='error' && 
                                 <Text
                                 css={{
@@ -2005,6 +2025,24 @@ export default function PRegForm(){
                                                 color: 'white',
                                             }}>
                                                 You have been successfully registered as {User.name}
+                                            </Text>
+                                            <Text 
+                                            css={{
+                                                textAlign: 'center',
+                                                fontSize: '$xl',
+                                                fontWeight: '$semibold',
+                                                color: 'white',
+                                            }}>
+                                                You can check out the full list of APL6.0 registered players here
+                                            </Text>
+                                            <Text 
+                                            css={{
+                                                textAlign: 'center',
+                                                fontSize: '$lg',
+                                                fontWeight: '$medium',
+                                                color: 'white',
+                                            }}>
+                                                <a href="/seasons/apl6/players">APL 6.0 Registered Players</a>
                                             </Text>
                                         </Modal.Body>
                                         

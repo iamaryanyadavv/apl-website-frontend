@@ -22,11 +22,11 @@ export default function EventsHead () {
                             textAlign: 'center',
                             alignItems: 'center',
                             fontSize: '$7xl',
-                            fontWeight: '$bold',
+                            fontWeight: '$semibold',
                             textGradient: "45deg, $purple600 -20%, $pink600 100%",
                             padding:'2.5% 10px 0px 10px'
                         }}>
-                            Mini Events
+                            Promo Events
                         </Text>
                         <Text showIn={'xs'}
                         css={{
@@ -34,11 +34,11 @@ export default function EventsHead () {
                             textAlign: 'center',
                             alignItems: 'center',
                             fontSize: '$5xl',
-                            fontWeight: '$bold',
+                            fontWeight: '$semibold',
                             textGradient: "45deg, $purple600 -20%, $pink600 100%",
                             padding: '5% 10px 0px 10px'
                         }}>
-                            Mini Events
+                            Promo Events
                         </Text>
                     </Grid>
                     

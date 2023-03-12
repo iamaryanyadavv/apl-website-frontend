@@ -2,6 +2,25 @@
     width: 125px !important;
     height: 150px !important;
     margin-left: 10px;
-    border-radius: 10px;
+    border-radius: 20px;
     object-fit: cover;
 }
+
+.user{
+    color: #F31260
+}
+.book{
+    color: #0072F5;
+}
+.dollar{
+    color: #17C964;
+}
+.soccerball{
+    color: #7828C8;
+    transform: rotateZ(90deg);
+}
+.team{
+    color: #F5A524;
+}
+
+
