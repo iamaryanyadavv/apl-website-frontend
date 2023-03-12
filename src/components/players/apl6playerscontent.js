@@ -9,7 +9,7 @@ import { TbSoccerField } from "react-icons/tb";
 import {BsBook, BsGenderAmbiguous} from "react-icons/bs";
 
 
-export default function APL5PlayersContent(){
+export default function APL6PlayersContent(){
     const [Fetching, setFetching] = useState(true);
     const [PreTierAllotmentPlayers, setPreTierAllotmentPlayers] = useState([]);
     const [Tier1PlayerData, setTier1PlayerData] = useState([]);
@@ -42,7 +42,7 @@ export default function APL5PlayersContent(){
     // 8: manager phone
 
     const getTeamData = async () =>{
-        await fetch('http://localhost:3001/seasons/apl5/teamdata')
+        await fetch('http://localhost:3001/seasons/apl6/teamdata')
         .then(response => response.json())
         .then((data)=>{
             OnceTeamData(data)
@@ -50,7 +50,7 @@ export default function APL5PlayersContent(){
     }
 
     const OnceTeamData = async (teams) => {
-        await fetch('http://localhost:3001/seasons/apl5/playerdata')
+        await fetch('http://localhost:3001/seasons/apl6/playerdata')
         .then(response => response.json())
         .then((data)=>{
             preparePlayerTierData(data, teams);
@@ -175,46 +175,7 @@ export default function APL5PlayersContent(){
                 css={{
                     textAlign: 'center',
                 }}>
-                        {/* Positions p + s */}
-                        <Row 
-                        css={{
-                            jc: 'center',
-                            alignItems: 'center',
-                            textAlign: 'center',
-                        }}>
-                            <TbSoccerField size={'25px'} className='soccerball'/>
-                            {player[2] && player[3] && player[2]!=player[3] &&
-                            <Text 
-                            css={{
-                                color: 'White',
-                                fontSize: '$lg',
-                                padding: ' 0px 0px 0px 2px',
-                                fontWeight: '$medium'
-                            }}>
-                                {player[2]}, {player[3]}
-                            </Text>
-                            }
-                            {player[2] && player[3] && player[2]==player[3] &&
-                            <Text 
-                            css={{
-                                color: 'White',
-                                fontSize: '$lg',
-                                fontWeight: '$medium'
-                            }}>
-                                {player[2]}
-                            </Text>
-                            }
-                            {player[2] && !player[3] &&
-                            <Text 
-                            css={{
-                                color: 'White',
-                                fontSize: '$lg',
-                                fontWeight: '$medium'
-                            }}>
-                                {player[2]}
-                            </Text>
-                            }
-                        </Row>
+                        
                         <Row 
                         css={{
                             jc: 'center',
@@ -224,7 +185,7 @@ export default function APL5PlayersContent(){
                         }}>
                             {/* <GiSoccerBall size={'20px'} className='team' /> */}
                             {/* Team Logo */}
-                            <Avatar size={'md'} bordered src={player[8]} />
+                            <Avatar size={'sm'} bordered src={player[8]} />
                             <Text 
                             css={{
                                 color: '$gray500',
@@ -237,7 +198,46 @@ export default function APL5PlayersContent(){
                             </Text>    
                         </Row>
                     
-                    
+                    {/* Positions p + s */}
+                    <Row 
+                    css={{
+                        jc: 'center',
+                        alignItems: 'center',
+                        textAlign: 'center',
+                    }}>
+                        <TbSoccerField size={'25px'} className='soccerball'/>
+                        {player[2] && player[3] && player[2]!=player[3] &&
+                        <Text 
+                        css={{
+                            color: 'White',
+                            fontSize: '$lg',
+                            padding: ' 0px 0px 0px 2px',
+                            fontWeight: '$medium'
+                        }}>
+                            {player[2]}, {player[3]}
+                        </Text>
+                        }
+                        {player[2] && player[3] && player[2]==player[3] &&
+                        <Text 
+                        css={{
+                            color: 'White',
+                            fontSize: '$lg',
+                            fontWeight: '$medium'
+                        }}>
+                            {player[2]}
+                        </Text>
+                        }
+                        {player[2] && !player[3] &&
+                        <Text 
+                        css={{
+                            color: 'White',
+                            fontSize: '$lg',
+                            fontWeight: '$medium'
+                        }}>
+                            {player[2]}
+                        </Text>
+                        }
+                    </Row>
                 </Col>
 
             </Col>
@@ -360,13 +360,35 @@ export default function APL5PlayersContent(){
                 css={{
                     textAlign: 'center',
                 }}>
+                        
+                        <Row 
+                        css={{
+                            jc: 'center',
+                            alignItems: 'center',
+                            textAlign: 'center',
+                            padding: '0px 0px 5px 0px'
+                        }}>
+                            {/* <GiSoccerBall size={'20px'} className='team' /> */}
+                            {/* Team Logo */}
+                            <Avatar size={'sm'} bordered src={player[8]} />
+                            <Text 
+                            css={{
+                                color: 'White',
+                                fontSize: '$lg',
+                                fontWeight: '$medium',
+                                padding: '0px 0px 0px 5px'
+                            }}>
+                                {/*Team Name */}
+                                {player[7]}
+                            </Text>    
+                        </Row>
+                    
                     {/* Positions p + s */}
                     <Row 
                     css={{
                         jc: 'center',
                         alignItems: 'center',
                         textAlign: 'center',
-                        padding: '0px 0px 4px 0px'
                     }}>
                         <TbSoccerField size={'25px'} className='soccerball'/>
                         {player[2] && player[3] && player[2]!=player[3] &&
@@ -400,28 +422,7 @@ export default function APL5PlayersContent(){
                             {player[2]}
                         </Text>
                         }
-                    </Row>   
-                        <Row 
-                        css={{
-                            jc: 'center',
-                            alignItems: 'center',
-                            textAlign: 'center',
-                            padding: '0px 0px 5px 0px'
-                        }}>
-                            {/* <GiSoccerBall size={'20px'} className='team' /> */}
-                            {/* Team Logo */}
-                            <Avatar size={'md'} bordered src={player[8]} />
-                            <Text 
-                            css={{
-                                color: 'White',
-                                fontSize: '$lg',
-                                fontWeight: '$medium',
-                                padding: '0px 0px 0px 5px'
-                            }}>
-                                {/*Team Name */}
-                                {player[7]}
-                            </Text>    
-                        </Row>
+                    </Row>
                 </Col>
 
             </Col>
@@ -554,7 +555,7 @@ export default function APL5PlayersContent(){
                         }}>
                             {/* <GiSoccerBall size={'20px'} className='team' /> */}
                             {/* Team Logo */}
-                            <Avatar size={'md'} bordered src={player[8]} />
+                            <Avatar size={'sm'} bordered src={player[8]} />
                             <Text 
                             css={{
                                 color: 'White',
@@ -607,7 +608,6 @@ export default function APL5PlayersContent(){
                         </Text>
                         }
                     </Row>
-                    
                 </Col>
 
             </Col>
@@ -740,7 +740,7 @@ export default function APL5PlayersContent(){
                         }}>
                             {/* <GiSoccerBall size={'20px'} className='team' /> */}
                             {/* Team Logo */}
-                            <Avatar size={'md'} bordered src={player[8]} />
+                            <Avatar size={'sm'} bordered src={player[8]} />
                             <Text 
                             css={{
                                 color: 'White',
@@ -793,7 +793,6 @@ export default function APL5PlayersContent(){
                         </Text>
                         }
                     </Row>
-                    
                 </Col>
 
             </Col>
@@ -927,7 +926,7 @@ export default function APL5PlayersContent(){
                         }}>
                             {/* <GiSoccerBall size={'20px'} className='team' /> */}
                             {/* Team Logo */}
-                            <Avatar size={'md'} bordered src={player[8]} />
+                            <Avatar size={'sm'} bordered src={player[8]} />
                             <Text 
                             css={{
                                 color: 'White',
@@ -980,7 +979,6 @@ export default function APL5PlayersContent(){
                         </Text>
                         }
                     </Row>
-                    
                 </Col>
 
             </Col>
@@ -1385,7 +1383,7 @@ export default function APL5PlayersContent(){
                 </Grid.Container>
                 }
 
-                {TierLessCards.length==0 && Tier1Cards.length==0 && Tier2Cards.length==0 && Tier3Cards.length==0 && Tier4Cards.length==0 &&
+                {TierLessCards.length==0 && 
                     <Grid.Container>
                         <Spacer y={20} />
                     </Grid.Container>

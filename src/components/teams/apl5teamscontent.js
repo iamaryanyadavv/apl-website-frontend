@@ -6,25 +6,25 @@ export default function APL5TeamsContent() {
     const [Fetching, setFetching] = useState(true);
     const [TeamAccordions, setTeamAccordions] = useState();
 
-    const getData = async () =>{
+    const getTeamBudgetsData = async () =>{
         await fetch('http://localhost:3001/seasons/apl5/teamdata/budgets')
         .then(response => response.json())
         .then((data)=>{
-            temp(data);
+            OnceTeamBudgetsData(data);
         })
         
     }
 
-    const temp = async (teamslists) => {
+    const OnceTeamBudgetsData = async (teamslists) => {
         await fetch('http://localhost:3001/seasons/apl5/teamdata')
         .then(response => response.json())
         .then((data)=>{
-            createAccordions(data, teamslists);
+            createTeamAccordions(data, teamslists);
         })
         setFetching(false);
     }
 
-    function createAccordions(teams, teamslists){
+    function createTeamAccordions(teams, teamslists){
         setTeamAccordions(teams.map((team,index)=>(
             <Collapse
             css={{
@@ -76,7 +76,7 @@ export default function APL5TeamsContent() {
     function AccordionMaterial(team,teamslists){
         
         var accMaterial = ''
-        for (var i=0; i<20; i++){
+        for (var i=0; i<teamslists.length; i++){
             if(team[2]===teamslists[i][0]){
                 var sum =  parseInt(teamslists[i][2]) + parseInt(teamslists[i][4]) + parseInt(teamslists[i][6]) + parseInt(teamslists[i][8]) + parseInt(teamslists[i][10]) + parseInt(teamslists[i][12]) + parseInt(teamslists[i][14]) + parseInt(teamslists[i][16]) + parseInt(teamslists[i][18]) + parseInt(teamslists[i][20]) + parseInt(teamslists[i][22]) + parseInt(teamslists[i][24])
                 var budgetBarValue = (sum/130)*100
@@ -189,7 +189,7 @@ export default function APL5TeamsContent() {
     
 
     useEffect( () => {
-        getData();
+        getTeamBudgetsData();
         
     }, [])
 

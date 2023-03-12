@@ -1264,7 +1264,7 @@ export default function PRegForm(){
                                 <input disabled={!signedin} 
                                 onChange={(event)=>{
                                     
-                                    if(event.target.files[0].size>220000){
+                                    if(event.target.files[0].size>2200000){
                                         window.alert('Maximum file size: 2mb!')
                                     }
                                     else{

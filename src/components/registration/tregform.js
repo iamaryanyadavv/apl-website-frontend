@@ -402,6 +402,18 @@ export default function TRegForm() {
         })
     } 
 
+    async function sendTeamName(e){
+        await fetch("http://localhost:3001/registration/team/budgets",{
+            method: "POST",
+            headers:{
+                "Content-type":"application/json"
+            },
+            body: JSON.stringify({
+                teamname: teamname,
+            }),
+        });
+    }
+
     async function sendForm(e)
     {
         if(teamname && managername && manageremail && managerphone && totalowners==1 && owner1 && !owner2 && !owner3 && !owner4 && !owner5 ){
@@ -1749,7 +1761,7 @@ export default function TRegForm() {
                                 <input disabled={!signedin} 
                                 onChange={(event)=>{
                                     
-                                    if(event.target.files[0].size>220000){
+                                    if(event.target.files[0].size>2200000){
                                         window.alert('Maximum file size: 2mb!')
                                     }
                                     else{
@@ -2789,6 +2801,7 @@ export default function TRegForm() {
                                         }}
                                         onPress={(e)=>{
                                             sendForm(e);
+                                            sendTeamName(e);
                                             sendPaymentImage(paymentSC);
                                             sendTeamLogo(initialImage);
                                             setModalVisibility(false);
