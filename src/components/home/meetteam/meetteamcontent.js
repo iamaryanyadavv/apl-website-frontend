@@ -168,27 +168,9 @@ export default function MeetTeamContent () {
                 </Col>
             </Grid>
             <Grid>
-                
-                <Grid.Container gap={2}
-                css={{
-                    jc: 'center',
-                    textAlign: 'center',
-                    maxWidth:'250px',
-                     maxHeight:'250px'
-                }}>
-                    <Grid>
                         <Image css={{maxWidth:'250px', maxHeight:'250px'}} src={P3} className='team-pic' />
-                    </Grid>
-                </Grid.Container>
-                <Grid.Container gap={1}
-                css={{
-                    jc: 'center',
-                    textAlign: 'center'
-                }}>
-                    <Grid>
+                   
                         <Image css={{maxWidth:'250px', maxHeight:'250px'}} src={P4} className='team-pic' />
-                    </Grid>
-                </Grid.Container>
             </Grid>
         </Grid.Container>
     )
