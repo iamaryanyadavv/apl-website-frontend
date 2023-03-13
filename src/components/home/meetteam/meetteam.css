@@ -21,3 +21,8 @@
 .team-btn-2{
     color: white !important;
 }
+
+.team-pic{
+    width: 50%;
+    border-radius: 100px;
+}
