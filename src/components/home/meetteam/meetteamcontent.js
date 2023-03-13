@@ -186,7 +186,7 @@ export default function MeetTeamContent () {
                                 height: '200px',
                                 borderRadius: '100px'
                             },
-                        }} src={P3} className='team-pic' />
+                        }} src={P3}/>
                     </Grid>
                 </Grid.Container>
                 <Grid.Container gap={1}
@@ -206,7 +206,7 @@ export default function MeetTeamContent () {
                                 height: '200px',
                                 borderRadius: '100px'
                             },
-                        }} src={P4} className='team-pic' />
+                        }} src={P4}  />
                     </Grid>
                 </Grid.Container>
             </Grid>
