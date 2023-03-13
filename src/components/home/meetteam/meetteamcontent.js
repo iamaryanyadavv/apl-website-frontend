@@ -22,10 +22,10 @@ export default function MeetTeamContent () {
                         textAlign: 'center'
                     }}>
                         <Grid>
-                            <Image css={{maxWidth:'250px', maxHeight:'250px'}} src={P1} className='team-pic' />
+                            <Image src={P1} className='team-pic' />
                         </Grid>
                         <Grid>
-                            <Image css={{maxWidth:'250px', maxHeight:'250px'}} src={P2} className='team-pic' />
+                            <Image src={P2} className='team-pic' />
                         </Grid>
                     </Grid.Container>
                     <Grid.Container gap={0}
@@ -167,11 +167,49 @@ export default function MeetTeamContent () {
                     </Grid.Container>
                 </Col>
             </Grid>
-            
-                        <Image css={{maxWidth:'250px', maxHeight:'250px'}} src={P3} className='team-pic' />
-                   
-                        <Image css={{maxWidth:'250px', maxHeight:'250px'}} src={P4} className='team-pic' />
-            
+            <Grid>
+                
+                <Grid.Container gap={2}
+                css={{
+                    jc: 'center',
+                    textAlign: 'center'
+                }}>
+                    <Grid>
+                        <Image css={{
+                            '@xsMin':{
+                                width: '250px',
+                                height: '250px',
+                                borderRadius: '125px'
+                            },
+                            '@xsMax':{
+                                width: '200px',
+                                height: '200px',
+                                borderRadius: '100px'
+                            },
+                        }} src={P3} className='team-pic' />
+                    </Grid>
+                </Grid.Container>
+                <Grid.Container gap={1}
+                css={{
+                    jc: 'center',
+                    textAlign: 'center'
+                }}>
+                    <Grid>
+                        <Image css={{
+                            '@xsMin':{
+                                width: '250px',
+                                height: '250px',
+                                borderRadius: '125px'
+                            },
+                            '@xsMax':{
+                                width: '200px',
+                                height: '200px',
+                                borderRadius: '100px'
+                            },
+                        }} src={P4} className='team-pic' />
+                    </Grid>
+                </Grid.Container>
+            </Grid>
         </Grid.Container>
     )
 }
