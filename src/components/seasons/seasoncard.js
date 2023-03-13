@@ -4,6 +4,12 @@ import './seasons.css';
 
 export default function SeasonCard(props){
     return(
+        <Grid.Container gap={8}
+            css={{
+                jc: 'center',
+                alignItems: 'center'
+            }}>
+                <Grid>
         <Card className="season-card" css={{ w: "300px", h: "550px" }}>
             <Card.Header css={{ position: "absolute", zIndex: 1, top: 5 }}>
                 <Col css={{
@@ -83,5 +89,7 @@ export default function SeasonCard(props){
                 </Col>
             </Card.Footer>
         </Card>
+        </Grid>
+        </Grid.Container>
     )
 }
