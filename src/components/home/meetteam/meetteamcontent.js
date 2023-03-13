@@ -167,11 +167,11 @@ export default function MeetTeamContent () {
                     </Grid.Container>
                 </Col>
             </Grid>
-            <Grid>
+            
                         <Image css={{maxWidth:'250px', maxHeight:'250px'}} src={P3} className='team-pic' />
                    
                         <Image css={{maxWidth:'250px', maxHeight:'250px'}} src={P4} className='team-pic' />
-            </Grid>
+            
         </Grid.Container>
     )
 }
