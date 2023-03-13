@@ -53,6 +53,7 @@ export default function APL6PlayersContent(){
         await fetch('http://localhost:3001/seasons/apl6/playerdata')
         .then(response => response.json())
         .then((data)=>{
+            console.log(data)
             preparePlayerTierData(data, teams);
             setFetching(false);
         })
@@ -994,30 +995,32 @@ export default function APL6PlayersContent(){
         const tier2players = []
         const tier3players = []
         const tier4players = []
-
-        for(var i=0; i< players.length; i++){
-            for(var j=0; j<teams.length; j++){    
-                if(teams[j][2]==players[i][7]){
-                    players[i][8]=teams[j][0]
+        if(players.values.length>1){
+            console.log(players.values[1][5])
+            for(var i=1; i< players.values.length; i++){
+                for(var j=0; j<teams.length; j++){    
+                    if(teams[j][2]==players.values[i][7]){
+                        players.values[i][8]=teams[j][0]
+                    }
                 }
-            }
-            if(players[i][5]=='0'){
-                if(players[i][5]=='0'){
-                    pretierallotmentplayers.push(players[i])
-                }  
-            }
-            else if(players[i][5]!='0'){
-                if(players[i][5]=='1'){
-                    tier1players.push(players[i])
+                if(players.values[i][5]=='0'){
+                    if(players.values[i][5]=='0'){
+                        pretierallotmentplayers.push(players.values[i])
+                    }  
                 }
-                if(players[i][5]=='2'){
-                    tier2players.push(players[i])
-                }
-                if(players[i][5]=='3'){
-                    tier3players.push(players[i])
-                }
-                if(players[i][5]=='4'){
-                    tier4players.push(players[i])
+                else if(players.values[i][5]!='0'){
+                    if(players.values[i][5]=='1'){
+                        tier1players.push(players.values[i])
+                    }
+                    if(players.values[i][5]=='2'){
+                        tier2players.push(players.values[i])
+                    }
+                    if(players.values[i][5]=='3'){
+                        tier3players.push(players.values[i])
+                    }
+                    if(players.values[i][5]=='4'){
+                        tier4players.push(players.values[i])
+                    }
                 }
             }
         }
@@ -1028,10 +1031,10 @@ export default function APL6PlayersContent(){
         setTier4PlayerData(tier4players)
         
         //loop at t0 update each player with their team logo
-        for (var i=0;i<players.length;i++){
+        for (var i=0;i<players.values.length;i++){
             for(var j=0; j<teams.length; j++){    
-                if(teams[j][2]==players[i][7]){
-                    players[i][8]=teams[j][0]
+                if(teams[j][2]==players.values[i][7]){
+                    players.values[i][8]=teams[j][0]
                 }
             }
         }
@@ -1396,7 +1399,7 @@ export default function APL6PlayersContent(){
                             textAlign: 'center',
         
                         }}>
-                            No Teams yet... Check again after player registration starts!
+                            No Players yet... Check again after player registration starts!
                         </Text>
                         <Text showIn={'xs'}
                         css={{
@@ -1406,7 +1409,7 @@ export default function APL6PlayersContent(){
                             textAlign: 'center',
         
                         }}>
-                            No Teams yet... Check again after player registration starts!
+                            No Players yet... Check again after player registration starts!
                         </Text>
                         <Spacer y={15}/>
                     </div>

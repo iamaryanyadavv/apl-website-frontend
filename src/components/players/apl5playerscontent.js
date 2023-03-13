@@ -344,7 +344,7 @@ export default function APL5PlayersContent(){
                 <Text 
                 css={{
                     textAlign: 'center',
-                    color: '#C4B454',
+                    color: 'White',
                     // borderStyle: 'solid',
                     // borderWidth: '0px 0px 2px 0px',
                     // borderColor: '#C4B454',
@@ -528,7 +528,7 @@ export default function APL5PlayersContent(){
                 <Text 
                 css={{
                     textAlign: 'center',
-                    color: 'rgb(157, 171, 187)',
+                    color: 'White',
                     // borderStyle: 'solid',
                     // borderWidth: '0px 0px 2px 0px',
                     // borderColor: '#C4B454',
@@ -714,7 +714,7 @@ export default function APL5PlayersContent(){
                 <Text 
                 css={{
                     textAlign: 'center',
-                    color: 'rgb(190, 159, 103)',
+                    color: 'White',
                     // borderStyle: 'solid',
                     // borderWidth: '0px 0px 2px 0px',
                     // borderColor: '#C4B454',
@@ -900,7 +900,7 @@ export default function APL5PlayersContent(){
                 <Text 
                 css={{
                     textAlign: 'center',
-                    color: '#B76E79',
+                    color: 'White',
                     // borderStyle: 'solid',
                     // borderWidth: '0px 0px 1px 0px',
                     // borderColor: '$gray200',
