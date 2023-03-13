@@ -1,4 +1,4 @@
-@media only screen and (max-width: 650px) {
+@media screen and (max-width: 650px) {
     .team-pic{
         width: 200px;
         height: 200px;
@@ -6,7 +6,7 @@
     }
 }
 
-@media only screen and (min-width: 650px) {
+@media screen and (min-width: 650px) {
     .team-pic{
         width: 250px;
         height: 250px;
@@ -20,10 +20,4 @@
 
 .team-btn-2{
     color: white !important;
-}
-
-.team-pic{
-    width: 200px;
-    height: 200px;
-    border-radius: 100px;
 }
