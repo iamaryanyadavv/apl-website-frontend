@@ -1,4 +1,4 @@
-/* @media screen and (max-width: 650px) {
+@media only screen and (max-width: 650px) {
     .team-pic{
         width: 200px;
         height: 200px;
@@ -6,13 +6,13 @@
     }
 }
 
-@media screen and (min-width: 650px) {
+@media only screen and (min-width: 650px) {
     .team-pic{
         width: 250px;
         height: 250px;
         border-radius: 150px;
     }
-} */
+}
 
 .team-btn{
     background: linear-gradient(45deg, #F31260, #F5A524) !important;
@@ -20,9 +20,4 @@
 
 .team-btn-2{
     color: white !important;
-}
-.team-pic{
-    width: 250px;
-    height: 250px;
-    border-radius: 150px;
 }
