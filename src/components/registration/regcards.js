@@ -47,6 +47,7 @@ export default function RegCards(){
                                 src={JoseMourinho}
                                 width="100%"
                                 height="100%"
+                                objectFit="cover"
                                 alt="Card example background"
                             />
                         </Card.Body>
