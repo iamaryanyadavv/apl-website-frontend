@@ -93,6 +93,7 @@ export default function TRegForm() {
                         setRegistrationDone(true)
                     }
                     else if(manageremail!==data.values[i][0]){
+                        console.log('Not found')
                         setRegStatusModal(false)
                         setRegistrationDone(false)
                     }
@@ -1356,11 +1357,11 @@ export default function TRegForm() {
                                             </Grid>
                                             <Grid>
                                                 <Input disabled={!signedin} status={owner2phonestatus} onChange={(event)=>{setOwner2phone(event.target.value)
-                                                if(event.target.value){
-                                                    setOwner2phonestatus('success')
-                                                }
-                                                else if(!event.target.value){
+                                                if(event.target.value.length>10 || event.target.value.length<10){
                                                     setOwner2phonestatus('error')
+                                                }
+                                                else if(event.target.value.length===10){
+                                                    setOwner2phonestatus('success')
                                                 }}}   labelLeft="2nd" placeholder="Phone Number" />
                                             </Grid>
                                             </Grid.Container>
@@ -1409,11 +1410,11 @@ export default function TRegForm() {
                                             </Grid>
                                             <Grid>
                                                 <Input disabled={!signedin} status={owner2phonestatus} onChange={(event)=>{setOwner2phone(event.target.value)
-                                                if(event.target.value){
-                                                    setOwner2phonestatus('success')
-                                                }
-                                                else if(!event.target.value){
+                                                if(event.target.value.length>10 || event.target.value.length<10){
                                                     setOwner2phonestatus('error')
+                                                }
+                                                else if(event.target.value.length===10){
+                                                    setOwner2phonestatus('success')
                                                 }}}   labelLeft="2nd" placeholder="Phone Number" />
                                             </Grid>
                                             </Grid.Container>
@@ -1441,11 +1442,11 @@ export default function TRegForm() {
                                             </Grid>
                                             <Grid>
                                                 <Input disabled={!signedin} status={owner3phonestatus} onChange={(event)=>{setOwner3phone(event.target.value)
-                                                if(event.target.value){
-                                                    setOwner3phonestatus('success')
-                                                }
-                                                else if(!event.target.value){
+                                                if(event.target.value.length>10 || event.target.value.length<10){
                                                     setOwner3phonestatus('error')
+                                                }
+                                                else if(event.target.value.length===10){
+                                                    setOwner3phonestatus('success')
                                                 }}}   labelLeft="3rd" placeholder="Phone Number" />
                                             </Grid>
                                             </Grid.Container>
@@ -1493,11 +1494,11 @@ export default function TRegForm() {
                                             </Grid>
                                             <Grid>
                                                 <Input disabled={!signedin} status={owner2phonestatus} onChange={(event)=>{setOwner2phone(event.target.value)
-                                                if(event.target.value){
-                                                    setOwner2phonestatus('success')
-                                                }
-                                                else if(!event.target.value){
+                                                if(event.target.value.length>10 || event.target.value.length<10){
                                                     setOwner2phonestatus('error')
+                                                }
+                                                else if(event.target.value.length===10){
+                                                    setOwner2phonestatus('success')
                                                 }}}   labelLeft="2nd" placeholder="Phone Number" />
                                             </Grid>
                                             </Grid.Container>
@@ -1525,11 +1526,11 @@ export default function TRegForm() {
                                             </Grid>
                                             <Grid>
                                                 <Input disabled={!signedin} status={owner3phonestatus} onChange={(event)=>{setOwner3phone(event.target.value)
-                                                if(event.target.value){
-                                                    setOwner3phonestatus('success')
-                                                }
-                                                else if(!event.target.value){
+                                                if(event.target.value.length>10 || event.target.value.length<10){
                                                     setOwner3phonestatus('error')
+                                                }
+                                                else if(event.target.value.length===10){
+                                                    setOwner3phonestatus('success')
                                                 }}}   labelLeft="3rd" placeholder="Phone Number" />
                                             </Grid>
                                             </Grid.Container>
@@ -1557,11 +1558,11 @@ export default function TRegForm() {
                                             </Grid>
                                             <Grid>
                                                 <Input disabled={!signedin} status={owner4phonestatus} onChange={(event)=>{setOwner4phone(event.target.value)
-                                                if(event.target.value){
-                                                    setOwner4phonestatus('success')
-                                                }
-                                                else if(!event.target.value){
+                                                if(event.target.value.length>10 || event.target.value.length<10){
                                                     setOwner4phonestatus('error')
+                                                }
+                                                else if(event.target.value.length===10){
+                                                    setOwner4phonestatus('success')
                                                 }}}   labelLeft="4th" placeholder="Phone Number" />
                                             </Grid>
                                             </Grid.Container>
@@ -1608,11 +1609,11 @@ export default function TRegForm() {
                                             </Grid>
                                             <Grid>
                                                 <Input disabled={!signedin} status={owner2phonestatus} onChange={(event)=>{setOwner2phone(event.target.value)
-                                                if(event.target.value){
-                                                    setOwner2phonestatus('success')
-                                                }
-                                                else if(!event.target.value){
+                                                if(event.target.value.length>10 || event.target.value.length<10){
                                                     setOwner2phonestatus('error')
+                                                }
+                                                else if(event.target.value.length===10){
+                                                    setOwner2phonestatus('success')
                                                 }}}   labelLeft="2nd" placeholder="Phone Number" />
                                             </Grid>
                                             </Grid.Container>
@@ -1640,11 +1641,11 @@ export default function TRegForm() {
                                             </Grid>
                                             <Grid>
                                                 <Input disabled={!signedin} status={owner3phonestatus} onChange={(event)=>{setOwner3phone(event.target.value)
-                                                if(event.target.value){
-                                                    setOwner3phonestatus('success')
-                                                }
-                                                else if(!event.target.value){
+                                                if(event.target.value.length>10 || event.target.value.length<10){
                                                     setOwner3phonestatus('error')
+                                                }
+                                                else if(event.target.value.length===10){
+                                                    setOwner3phonestatus('success')
                                                 }}}   labelLeft="3rd" placeholder="Phone Number" />
                                             </Grid>
                                             </Grid.Container>
@@ -1672,11 +1673,11 @@ export default function TRegForm() {
                                             </Grid>
                                             <Grid>
                                                 <Input disabled={!signedin} status={owner4phonestatus} onChange={(event)=>{setOwner4phone(event.target.value)
-                                                if(event.target.value){
-                                                    setOwner4phonestatus('success')
-                                                }
-                                                else if(!event.target.value){
+                                                if(event.target.value.length>10 || event.target.value.length<10){
                                                     setOwner4phonestatus('error')
+                                                }
+                                                else if(event.target.value.length===10){
+                                                    setOwner4phonestatus('success')
                                                 }}}   labelLeft="4th" placeholder="Phone Number" />
                                             </Grid>
                                             </Grid.Container>
@@ -1704,11 +1705,11 @@ export default function TRegForm() {
                                             </Grid>
                                             <Grid>
                                                 <Input disabled={!signedin} status={owner5phonestatus} onChange={(event)=>{setOwner5phone(event.target.value)
-                                                if(event.target.value){
-                                                    setOwner5phonestatus('success')
-                                                }
-                                                else if(!event.target.value){
+                                                if(event.target.value.length>10 || event.target.value.length<10){
                                                     setOwner5phonestatus('error')
+                                                }
+                                                else if(event.target.value.length===10){
+                                                    setOwner5phonestatus('success')
                                                 }}}   labelLeft="5th" placeholder="Phone Number" />
                                             </Grid>
                                             </Grid.Container>
@@ -1869,8 +1870,10 @@ export default function TRegForm() {
                                 
                                 <Modal
                                 closeButton
+                                fullScreen
                                 open={ModalVisibility}
                                 onClose={()=>{
+                                    console.log(totalowners)
                                     setModalVisibility(false)
                                 }}>
 
@@ -1953,6 +1956,12 @@ export default function TRegForm() {
                                                             </Text>
                                                         </Row>
                                                     </Grid>
+                                                    <Grid.Container gap={0.5}
+                                                css={{
+                                                    jc: 'center',
+                                                    alignItems: 'center',
+                                                    textAlign: 'center'
+                                                }}>
                                                     <Grid>
                                                         {managername && 
                                                             <Row
@@ -2033,47 +2042,49 @@ export default function TRegForm() {
                                                             </Text>
                                                         </Row>
                                                     </Grid>
-                                                </Grid.Container>
+                                                    <Grid>
+                                                        <Row
+                                                        css={{
+                                                            jc: 'center',
+                                                            textAlign: 'center'
+                                                        }}>
+                                                            <Text hideIn={'xs'}
+                                                            css={{
+                                                                fontSize: '$lg',
+                                                                paddingRight: '4px',
+                                                                color: '$gray700'
+                                                            }}>
+                                                                Manager Phone Number: 
+                                                            </Text>
+                                                            <Text hideIn={'xs'}
+                                                            css={{
+                                                                fontSize: '$lg',
+                                                                fontWeight: '$semibold'
+                                                            }}>
+                                                                {managerphone}
+                                                            </Text>
 
-                                                <Grid.Container gap={0.5}
-                                                css={{
-                                                    jc: 'center',
-                                                    alignItems: 'center',
-                                                    textAlign: 'center'
-                                                }}>
-                                                        <Text hideIn={'xs'}
-                                                        css={{
-                                                            fontSize: '$lg',
-                                                            paddingRight: '4px',
-                                                            color: '$gray700'
-                                                        }}>
-                                                            Manager Phone Number:  
-                                                        </Text>
-                                                        <Text hideIn={'xs'}
-                                                        css={{
-                                                            fontSize: '$lg',
-                                                            fontWeight: '$semibold'
-                                                        }}>
-                                                            {managerphone}
-                                                        </Text>
-
-                                                        <Text showIn={'xs'}
-                                                        css={{
-                                                            fontSize: '$md',
-                                                            paddingRight: '4px',
-                                                            color: '$gray700'
-                                                        }}>
-                                                            Manager Phone Number:  
-                                                        </Text>
-                                                        <Text showIn={'xs'}
-                                                        css={{
-                                                            fontSize: '$md',
-                                                            fontWeight: '$semibold'
-                                                        }}>
-                                                            {managerphone}
-                                                        </Text>
-                                                    
+                                                            <Text showIn={'xs'}
+                                                            css={{
+                                                                fontSize: '$md',
+                                                                paddingRight: '4px',
+                                                                color: '$gray700'
+                                                            }}>
+                                                                Manager Phone Number: 
+                                                            </Text>
+                                                            <Text showIn={'xs'}
+                                                            css={{
+                                                                fontSize: '$md',
+                                                                fontWeight: '$semibold'
+                                                            }}>
+                                                                {managerphone}
+                                                            </Text>
+                                                        </Row>
+                                                    </Grid>
                                                 </Grid.Container>
+                                                </Grid.Container>                
+                                                
+                                                
                                                 <Grid.Container gap={0.5}
                                                 css={{
                                                     jc: 'center',
@@ -2122,371 +2133,16 @@ export default function TRegForm() {
 
                                                 
                                                 
-                                                    {totalowners===5 &&
+                                                    {totalowners==5 &&
                                                     <Grid.Container gap={0.5}
                                                     css={{
                                                         jc: 'center',
                                                         alignItems: 'center',
                                                         textAlign: 'center'
                                                     }}>
-                                                    <Grid>
-                                                    <Row
-                                                    css={{
-                                                        jc: 'center',
-                                                        textAlign: 'center'
-                                                    }}>
-                                                        <Text hideIn={'xs'}
-                                                        css={{
-                                                            fontSize: '$lg',
-                                                            paddingRight: '4px',
-                                                            color: '$gray700'
-                                                        }}>
-                                                            Manager Name: 
-                                                        </Text>
-                                                        <Text hideIn={'xs'}
-                                                        css={{
-                                                            fontSize: '$lg',
-                                                            fontWeight: '$semibold'
-                                                        }}>
-                                                            {managername}
-                                                        </Text>
-                                                        <Text showIn={'xs'}
-                                                        css={{
-                                                            fontSize: '$md',
-                                                            paddingRight: '4px',
-                                                            color: '$gray700'
-                                                        }}>
-                                                            Manager Name: 
-                                                        </Text>
-                                                        <Text showIn={'xs'}
-                                                        css={{
-                                                            fontSize: '$md',
-                                                            fontWeight: '$semibold'
-                                                        }}>
-                                                            {managername}
-                                                        </Text>
-                                                    </Row>
-                                                </Grid>
-                                                    <Grid>
-                                                    <Row
-                                                    css={{
-                                                        jc: 'center',
-                                                        textAlign: 'center'
-                                                    }}>
-                                                        <Text hideIn={'xs'}
-                                                        css={{
-                                                            fontSize: '$lg',
-                                                            paddingRight: '4px',
-                                                            color: '$gray700'
-                                                        }}>
-                                                        Owner 2 Name: 
-                                                        </Text>
-                                                        <Text hideIn={'xs'}
-                                                        css={{
-                                                            fontSize: '$lg',
-                                                            fontWeight: '$semibold'
-                                                        }}>
-                                                            {owner2}
-                                                        </Text>
-                                                        <Text showIn={'xs'}
-                                                        css={{
-                                                            fontSize: '$md',
-                                                            paddingRight: '4px',
-                                                            color: '$gray700'
-                                                        }}>
-                                                        Owner 2 Name: 
-                                                        </Text>
-                                                        <Text showIn={'xs'}
-                                                        css={{
-                                                            fontSize: '$md',
-                                                            fontWeight: '$semibold'
-                                                        }}>
-                                                            {owner2}
-                                                        </Text>
-                                                    </Row>
-                                                </Grid>
-                                                <Grid>
-                                                    <Row
-                                                    css={{
-                                                        jc: 'center',
-                                                        textAlign: 'center'
-                                                    }}>
-                                                        <Text hideIn={'xs'}
-                                                        css={{
-                                                            fontSize: '$lg',
-                                                            paddingRight: '4px',
-                                                            color: '$gray700'
-                                                        }}>
-                                                        Owner 3 Name: 
-                                                        </Text>
-                                                        <Text hideIn={'xs'}
-                                                        css={{
-                                                            fontSize: '$lg',
-                                                            fontWeight: '$semibold'
-                                                        }}>
-                                                            {owner3}
-                                                        </Text>
-                                                        <Text showIn={'xs'}
-                                                        css={{
-                                                            fontSize: '$md',
-                                                            paddingRight: '4px',
-                                                            color: '$gray700'
-                                                        }}>
-                                                        Owner 3 Name: 
-                                                        </Text>
-                                                        <Text showIn={'xs'}
-                                                        css={{
-                                                            fontSize: '$md',
-                                                            fontWeight: '$semibold'
-                                                        }}>
-                                                            {owner3}
-                                                        </Text>
-                                                    </Row>
-                                                </Grid>
-                                                <Grid>
-                                                    <Row
-                                                    css={{
-                                                        jc: 'center',
-                                                        textAlign: 'center'
-                                                    }}>
-                                                        <Text hideIn={'xs'}
-                                                        css={{
-                                                            fontSize: '$lg',
-                                                            paddingRight: '4px',
-                                                            color: '$gray700'
-                                                        }}>
-                                                        Owner 4 Name: 
-                                                        </Text>
-                                                        <Text hideIn={'xs'}
-                                                        css={{
-                                                            fontSize: '$lg',
-                                                            fontWeight: '$semibold'
-                                                        }}>
-                                                            {owner4}
-                                                        </Text>
-                                                        <Text showIn={'xs'}
-                                                        css={{
-                                                            fontSize: '$md',
-                                                            paddingRight: '4px',
-                                                            color: '$gray700'
-                                                        }}>
-                                                        Owner 4 Name: 
-                                                        </Text>
-                                                        <Text showIn={'xs'}
-                                                        css={{
-                                                            fontSize: '$md',
-                                                            fontWeight: '$semibold'
-                                                        }}>
-                                                            {owner4}
-                                                        </Text>
-                                                    </Row>
-                                                </Grid>
-                                                <Grid>
-                                                    <Row
-                                                    css={{
-                                                        jc: 'center',
-                                                        textAlign: 'center'
-                                                    }}>
-                                                        <Text hideIn={'xs'}
-                                                        css={{
-                                                            fontSize: '$lg',
-                                                            paddingRight: '4px',
-                                                            color: '$gray700'
-                                                        }}>
-                                                        Owner 5 Name: 
-                                                        </Text>
-                                                        <Text hideIn={'xs'}
-                                                        css={{
-                                                            fontSize: '$lg',
-                                                            fontWeight: '$semibold'
-                                                        }}>
-                                                            {owner5}
-                                                        </Text>
-                                                        <Text showIn={'xs'}
-                                                        css={{
-                                                            fontSize: '$md',
-                                                            paddingRight: '4px',
-                                                            color: '$gray700'
-                                                        }}>
-                                                        Owner 5 Name: 
-                                                        </Text>
-                                                        <Text showIn={'xs'}
-                                                        css={{
-                                                            fontSize: '$md',
-                                                            fontWeight: '$semibold'
-                                                        }}>
-                                                            {owner5}
-                                                        </Text>
-                                                    </Row>
-                                                </Grid>
-                                </Grid.Container>
-                                                }
-                                                {
-                                                    totalowners===4 &&
-                                                    <Grid.Container gap={0.5}
-                                                    css={{
-                                                        jc: 'center',
-                                                        alignItems: 'center',
-                                                        textAlign: 'center'
-                                                    }}>
-                                                    <Grid>
-                                                    <Row
-                                                    css={{
-                                                        jc: 'center',
-                                                        textAlign: 'center'
-                                                    }}>
-                                                        <Text hideIn={'xs'}
-                                                        css={{
-                                                            fontSize: '$lg',
-                                                            paddingRight: '4px',
-                                                            color: '$gray700'
-                                                        }}>
-                                                            Manager Name: 
-                                                        </Text>
-                                                        <Text hideIn={'xs'}
-                                                        css={{
-                                                            fontSize: '$lg',
-                                                            fontWeight: '$semibold'
-                                                        }}>
-                                                            {managername}
-                                                        </Text>
-                                                        <Text showIn={'xs'}
-                                                        css={{
-                                                            fontSize: '$md',
-                                                            paddingRight: '4px',
-                                                            color: '$gray700'
-                                                        }}>
-                                                            Manager Name: 
-                                                        </Text>
-                                                        <Text showIn={'xs'}
-                                                        css={{
-                                                            fontSize: '$md',
-                                                            fontWeight: '$semibold'
-                                                        }}>
-                                                            {managername}
-                                                        </Text>
-                                                    </Row>
-                                                </Grid>
-                                                    <Grid>
-                                                    <Row
-                                                    css={{
-                                                        jc: 'center',
-                                                        textAlign: 'center'
-                                                    }}>
-                                                        <Text hideIn={'xs'}
-                                                        css={{
-                                                            fontSize: '$lg',
-                                                            paddingRight: '4px',
-                                                            color: '$gray700'
-                                                        }}>
-                                                        Owner 2 Name: 
-                                                        </Text>
-                                                        <Text hideIn={'xs'}
-                                                        css={{
-                                                            fontSize: '$lg',
-                                                            fontWeight: '$semibold'
-                                                        }}>
-                                                            {owner2}
-                                                        </Text>
-                                                        <Text showIn={'xs'}
-                                                        css={{
-                                                            fontSize: '$md',
-                                                            paddingRight: '4px',
-                                                            color: '$gray700'
-                                                        }}>
-                                                        Owner 2 Name: 
-                                                        </Text>
-                                                        <Text showIn={'xs'}
-                                                        css={{
-                                                            fontSize: '$md',
-                                                            fontWeight: '$semibold'
-                                                        }}>
-                                                            {owner2}
-                                                        </Text>
-                                                    </Row>
-                                                </Grid>
-                                                <Grid>
-                                                    <Row
-                                                    css={{
-                                                        jc: 'center',
-                                                        textAlign: 'center'
-                                                    }}>
-                                                        <Text hideIn={'xs'}
-                                                        css={{
-                                                            fontSize: '$lg',
-                                                            paddingRight: '4px',
-                                                            color: '$gray700'
-                                                        }}>
-                                                        Owner 3 Name: 
-                                                        </Text>
-                                                        <Text hideIn={'xs'}
-                                                        css={{
-                                                            fontSize: '$lg',
-                                                            fontWeight: '$semibold'
-                                                        }}>
-                                                            {owner3}
-                                                        </Text>
-                                                        <Text showIn={'xs'}
-                                                        css={{
-                                                            fontSize: '$md',
-                                                            paddingRight: '4px',
-                                                            color: '$gray700'
-                                                        }}>
-                                                        Owner 3 Name: 
-                                                        </Text>
-                                                        <Text showIn={'xs'}
-                                                        css={{
-                                                            fontSize: '$md',
-                                                            fontWeight: '$semibold'
-                                                        }}>
-                                                            {owner3}
-                                                        </Text>
-                                                    </Row>
-                                                </Grid>
-                                                <Grid>
-                                                    <Row
-                                                    css={{
-                                                        jc: 'center',
-                                                        textAlign: 'center'
-                                                    }}>
-                                                        <Text hideIn={'xs'}
-                                                        css={{
-                                                            fontSize: '$lg',
-                                                            paddingRight: '4px',
-                                                            color: '$gray700'
-                                                        }}>
-                                                        Owner 4 Name: 
-                                                        </Text>
-                                                        <Text hideIn={'xs'}
-                                                        css={{
-                                                            fontSize: '$lg',
-                                                            fontWeight: '$semibold'
-                                                        }}>
-                                                            {owner4}
-                                                        </Text>
-                                                        <Text showIn={'xs'}
-                                                        css={{
-                                                            fontSize: '$md',
-                                                            paddingRight: '4px',
-                                                            color: '$gray700'
-                                                        }}>
-                                                        Owner 4 Name: 
-                                                        </Text>
-                                                        <Text showIn={'xs'}
-                                                        css={{
-                                                            fontSize: '$md',
-                                                            fontWeight: '$semibold'
-                                                        }}>
-                                                            {owner4}
-                                                        </Text>
-                                                    </Row>
-                                                </Grid>
-                                </Grid.Container>
 
-                                                }
-                                                {
-                                                    totalowners===3 &&
-                                                    <Grid.Container gap={0.5}
+                                                        
+                                                <Grid.Container gap={0.5}
                                                     css={{
                                                         jc: 'center',
                                                         alignItems: 'center',
@@ -2504,44 +2160,6 @@ export default function TRegForm() {
                                                             paddingRight: '4px',
                                                             color: '$gray700'
                                                         }}>
-                                                            Manager Name: 
-                                                        </Text>
-                                                        <Text hideIn={'xs'}
-                                                        css={{
-                                                            fontSize: '$lg',
-                                                            fontWeight: '$semibold'
-                                                        }}>
-                                                            {managername}
-                                                        </Text>
-                                                        <Text showIn={'xs'}
-                                                        css={{
-                                                            fontSize: '$md',
-                                                            paddingRight: '4px',
-                                                            color: '$gray700'
-                                                        }}>
-                                                            Manager Name: 
-                                                        </Text>
-                                                        <Text showIn={'xs'}
-                                                        css={{
-                                                            fontSize: '$md',
-                                                            fontWeight: '$semibold'
-                                                        }}>
-                                                            {managername}
-                                                        </Text>
-                                                    </Row>
-                                                </Grid>
-                                                    <Grid>
-                                                    <Row
-                                                    css={{
-                                                        jc: 'center',
-                                                        textAlign: 'center'
-                                                    }}>
-                                                        <Text hideIn={'xs'}
-                                                        css={{
-                                                            fontSize: '$lg',
-                                                            paddingRight: '4px',
-                                                            color: '$gray700'
-                                                        }}>
                                                         Owner 2 Name: 
                                                         </Text>
                                                         <Text hideIn={'xs'}
@@ -2568,183 +2186,1232 @@ export default function TRegForm() {
                                                         </Text>
                                                     </Row>
                                                 </Grid>
-                                                <Grid>
-                                                    <Row
-                                                    css={{
-                                                        jc: 'center',
-                                                        textAlign: 'center'
-                                                    }}>
-                                                        <Text hideIn={'xs'}
-                                                        css={{
-                                                            fontSize: '$lg',
-                                                            paddingRight: '4px',
-                                                            color: '$gray700'
-                                                        }}>
-                                                        Owner 3 Name: 
-                                                        </Text>
-                                                        <Text hideIn={'xs'}
-                                                        css={{
-                                                            fontSize: '$lg',
-                                                            fontWeight: '$semibold'
-                                                        }}>
-                                                            {owner3}
-                                                        </Text>
-                                                        <Text showIn={'xs'}
-                                                        css={{
-                                                            fontSize: '$md',
-                                                            paddingRight: '4px',
-                                                            color: '$gray700'
-                                                        }}>
-                                                        Owner 3 Name: 
-                                                        </Text>
-                                                        <Text showIn={'xs'}
-                                                        css={{
-                                                            fontSize: '$md',
-                                                            fontWeight: '$semibold'
-                                                        }}>
-                                                            {owner3}
-                                                        </Text>
-                                                    </Row>
-                                                </Grid>
-                                </Grid.Container>
-                                                }
-                                                {
-                                                    totalowners===2 &&
-                                                    <Grid.Container gap={0.5}
-                                                    css={{
-                                                        jc: 'center',
-                                                        alignItems: 'center',
-                                                        textAlign: 'center'
-                                                    }}>
-                                                    <Grid>
-                                                    <Row
-                                                    css={{
-                                                        jc: 'center',
-                                                        textAlign: 'center'
-                                                    }}>
-                                                        <Text hideIn={'xs'}
-                                                        css={{
-                                                            fontSize: '$lg',
-                                                            paddingRight: '4px',
-                                                            color: '$gray700'
-                                                        }}>
-                                                            Manager Name: 
-                                                        </Text>
-                                                        <Text hideIn={'xs'}
-                                                        css={{
-                                                            fontSize: '$lg',
-                                                            fontWeight: '$semibold'
-                                                        }}>
-                                                            {managername}
-                                                        </Text>
-                                                        <Text showIn={'xs'}
-                                                        css={{
-                                                            fontSize: '$md',
-                                                            paddingRight: '4px',
-                                                            color: '$gray700'
-                                                        }}>
-                                                            Manager Name: 
-                                                        </Text>
-                                                        <Text showIn={'xs'}
-                                                        css={{
-                                                            fontSize: '$md',
-                                                            fontWeight: '$semibold'
-                                                        }}>
-                                                            {managername}
-                                                        </Text>
-                                                    </Row>
-                                                </Grid>
-                                                    <Grid>
-                                                    <Row
-                                                    css={{
-                                                        jc: 'center',
-                                                        textAlign: 'center'
-                                                    }}>
-                                                        <Text hideIn={'xs'}
-                                                        css={{
-                                                            fontSize: '$lg',
-                                                            paddingRight: '4px',
-                                                            color: '$gray700'
-                                                        }}>
-                                                        Owner 2 Name: 
-                                                        </Text>
-                                                        <Text hideIn={'xs'}
-                                                        css={{
-                                                            fontSize: '$lg',
-                                                            fontWeight: '$semibold'
-                                                        }}>
-                                                            {owner2}
-                                                        </Text>
-                                                        <Text showIn={'xs'}
-                                                        css={{
-                                                            fontSize: '$md',
-                                                            paddingRight: '4px',
-                                                            color: '$gray700'
-                                                        }}>
-                                                        Owner 2 Name: 
-                                                        </Text>
-                                                        <Text showIn={'xs'}
-                                                        css={{
-                                                            fontSize: '$md',
-                                                            fontWeight: '$semibold'
-                                                        }}>
-                                                            {owner2}
-                                                        </Text>
-                                                    </Row>
-                                                </Grid>
-                                </Grid.Container>
-
-                                                }
-                                                {
-                                                        totalowners===1 &&
-                                                        <Grid.Container gap={0.5}
-                                                        css={{
-                                                            jc: 'center',
-                                                            alignItems: 'center',
-                                                            textAlign: 'center'
-                                                        }}>
-                                                        <Grid>
-                                                        <Row
-                                                        css={{
-                                                            jc: 'center',
-                                                            textAlign: 'center'
-                                                        }}>
-                                                            <Text hideIn={'xs'}
-                                                            css={{
-                                                                fontSize: '$lg',
-                                                                paddingRight: '4px',
-                                                                color: '$gray700'
-                                                            }}>
-                                                                Manager Name: 
-                                                            </Text>
-                                                            <Text hideIn={'xs'}
-                                                            css={{
-                                                                fontSize: '$lg',
-                                                                fontWeight: '$semibold'
-                                                            }}>
-                                                                {managername}
-                                                            </Text>
-                                                            <Text showIn={'xs'}
-                                                            css={{
-                                                                fontSize: '$md',
-                                                                paddingRight: '4px',
-                                                                color: '$gray700'
-                                                            }}>
-                                                                Manager Name: 
-                                                            </Text>
-                                                            <Text showIn={'xs'}
-                                                            css={{
-                                                                fontSize: '$md',
-                                                                fontWeight: '$semibold'
-                                                            }}>
-                                                                {managername}
-                                                            </Text>
-                                                        </Row>
-                                                    </Grid>
-                                                    </Grid.Container>
-                                                }
-
                                                 
+                                                <Grid>
+                                                    <Row
+                                                    css={{
+                                                        jc: 'center',
+                                                        textAlign: 'center'
+                                                    }}>
+                                                        <Text hideIn={'xs'}
+                                                        css={{
+                                                            fontSize: '$lg',
+                                                            paddingRight: '4px',
+                                                            color: '$gray700'
+                                                        }}>
+                                                        Owner 2 Email ID: 
+                                                        </Text>
+                                                        <Text hideIn={'xs'}
+                                                        css={{
+                                                            fontSize: '$lg',
+                                                            fontWeight: '$semibold'
+                                                        }}>
+                                                            {owner2email}
+                                                        </Text>
+                                                        <Text showIn={'xs'}
+                                                        css={{
+                                                            fontSize: '$md',
+                                                            paddingRight: '4px',
+                                                            color: '$gray700'
+                                                        }}>
+                                                        Owner 2 Email ID: 
+                                                        </Text>
+                                                        <Text showIn={'xs'}
+                                                        css={{
+                                                            fontSize: '$md',
+                                                            fontWeight: '$semibold'
+                                                        }}>
+                                                            {owner2email}
+                                                        </Text>
+                                                    </Row>
+                                                </Grid>
+                                                <Grid>
+                                                    <Row
+                                                    css={{
+                                                        jc: 'center',
+                                                        textAlign: 'center'
+                                                    }}>
+                                                        <Text hideIn={'xs'}
+                                                        css={{
+                                                            fontSize: '$lg',
+                                                            paddingRight: '4px',
+                                                            color: '$gray700'
+                                                        }}>
+                                                        Owner 2 Phone Number: 
+                                                        </Text>
+                                                        <Text hideIn={'xs'}
+                                                        css={{
+                                                            fontSize: '$lg',
+                                                            fontWeight: '$semibold'
+                                                        }}>
+                                                            {owner2phone}
+                                                        </Text>
+                                                        <Text showIn={'xs'}
+                                                        css={{
+                                                            fontSize: '$md',
+                                                            paddingRight: '4px',
+                                                            color: '$gray700'
+                                                        }}>
+                                                        Owner 2 Phone Number: 
+                                                        </Text>
+                                                        <Text showIn={'xs'}
+                                                        css={{
+                                                            fontSize: '$md',
+                                                            fontWeight: '$semibold'
+                                                        }}>
+                                                            {owner2phone}
+                                                        </Text>
+                                                    </Row>
+                                                </Grid>
+                                                </Grid.Container>
+                                                <Grid.Container gap={0.5}
+                                                    css={{
+                                                        jc: 'center',
+                                                        alignItems: 'center',
+                                                        textAlign: 'center'
+                                                    }}>
+                                                <Grid>
+                                                    <Row
+                                                    css={{
+                                                        jc: 'center',
+                                                        textAlign: 'center'
+                                                    }}>
+                                                        <Text hideIn={'xs'}
+                                                        css={{
+                                                            fontSize: '$lg',
+                                                            paddingRight: '4px',
+                                                            color: '$gray700'
+                                                        }}>
+                                                        Owner 3 Name: 
+                                                        </Text>
+                                                        <Text hideIn={'xs'}
+                                                        css={{
+                                                            fontSize: '$lg',
+                                                            fontWeight: '$semibold'
+                                                        }}>
+                                                            {owner3}
+                                                        </Text>
+                                                        <Text showIn={'xs'}
+                                                        css={{
+                                                            fontSize: '$md',
+                                                            paddingRight: '4px',
+                                                            color: '$gray700'
+                                                        }}>
+                                                        Owner 3 Name: 
+                                                        </Text>
+                                                        <Text showIn={'xs'}
+                                                        css={{
+                                                            fontSize: '$md',
+                                                            fontWeight: '$semibold'
+                                                        }}>
+                                                            {owner3}
+                                                        </Text>
+                                                    </Row>
+                                                </Grid>
+                                                <Grid>
+                                                    <Row
+                                                    css={{
+                                                        jc: 'center',
+                                                        textAlign: 'center'
+                                                    }}>
+                                                        <Text hideIn={'xs'}
+                                                        css={{
+                                                            fontSize: '$lg',
+                                                            paddingRight: '4px',
+                                                            color: '$gray700'
+                                                        }}>
+                                                        Owner 3 Email ID: 
+                                                        </Text>
+                                                        <Text hideIn={'xs'}
+                                                        css={{
+                                                            fontSize: '$lg',
+                                                            fontWeight: '$semibold'
+                                                        }}>
+                                                            {owner3email}
+                                                        </Text>
+                                                        <Text showIn={'xs'}
+                                                        css={{
+                                                            fontSize: '$md',
+                                                            paddingRight: '4px',
+                                                            color: '$gray700'
+                                                        }}>
+                                                        Owner 3 Email ID: 
+                                                        </Text>
+                                                        <Text showIn={'xs'}
+                                                        css={{
+                                                            fontSize: '$md',
+                                                            fontWeight: '$semibold'
+                                                        }}>
+                                                            {owner3phone}
+                                                        </Text>
+                                                    </Row>
+                                                </Grid>
+                                                
+                                                <Grid>
+                                                    <Row
+                                                    css={{
+                                                        jc: 'center',
+                                                        textAlign: 'center'
+                                                    }}>
+                                                        <Text hideIn={'xs'}
+                                                        css={{
+                                                            fontSize: '$lg',
+                                                            paddingRight: '4px',
+                                                            color: '$gray700'
+                                                        }}>
+                                                        Owner 3 Phone Number: 
+                                                        </Text>
+                                                        <Text hideIn={'xs'}
+                                                        css={{
+                                                            fontSize: '$lg',
+                                                            fontWeight: '$semibold'
+                                                        }}>
+                                                            {owner3phone}
+                                                        </Text>
+                                                        <Text showIn={'xs'}
+                                                        css={{
+                                                            fontSize: '$md',
+                                                            paddingRight: '4px',
+                                                            color: '$gray700'
+                                                        }}>
+                                                        Owner 3 Phone Number: 
+                                                        </Text>
+                                                        <Text showIn={'xs'}
+                                                        css={{
+                                                            fontSize: '$md',
+                                                            fontWeight: '$semibold'
+                                                        }}>
+                                                            {owner3phone}
+                                                        </Text>
+                                                    </Row>
+                                                </Grid>
+                                                </Grid.Container>
+                                                
+                                                <Grid.Container gap={0.5}
+                                                    css={{
+                                                        jc: 'center',
+                                                        alignItems: 'center',
+                                                        textAlign: 'center'
+                                                    }}>
+                                                <Grid>
+                                                    <Row
+                                                    css={{
+                                                        jc: 'center',
+                                                        textAlign: 'center'
+                                                    }}>
+                                                        <Text hideIn={'xs'}
+                                                        css={{
+                                                            fontSize: '$lg',
+                                                            paddingRight: '4px',
+                                                            color: '$gray700'
+                                                        }}>
+                                                        Owner 4 Name: 
+                                                        </Text>
+                                                        <Text hideIn={'xs'}
+                                                        css={{
+                                                            fontSize: '$lg',
+                                                            fontWeight: '$semibold'
+                                                        }}>
+                                                            {owner4}
+                                                        </Text>
+                                                        <Text showIn={'xs'}
+                                                        css={{
+                                                            fontSize: '$md',
+                                                            paddingRight: '4px',
+                                                            color: '$gray700'
+                                                        }}>
+                                                        Owner 4 Name: 
+                                                        </Text>
+                                                        <Text showIn={'xs'}
+                                                        css={{
+                                                            fontSize: '$md',
+                                                            fontWeight: '$semibold'
+                                                        }}>
+                                                            {owner4}
+                                                        </Text>
+                                                    </Row>
+                                                </Grid>
+                                                <Grid>
+                                                    <Row
+                                                    css={{
+                                                        jc: 'center',
+                                                        textAlign: 'center'
+                                                    }}>
+                                                        <Text hideIn={'xs'}
+                                                        css={{
+                                                            fontSize: '$lg',
+                                                            paddingRight: '4px',
+                                                            color: '$gray700'
+                                                        }}>
+                                                        Owner 4 Email ID: 
+                                                        </Text>
+                                                        <Text hideIn={'xs'}
+                                                        css={{
+                                                            fontSize: '$lg',
+                                                            fontWeight: '$semibold'
+                                                        }}>
+                                                            {owner4email}
+                                                        </Text>
+                                                        <Text showIn={'xs'}
+                                                        css={{
+                                                            fontSize: '$md',
+                                                            paddingRight: '4px',
+                                                            color: '$gray700'
+                                                        }}>
+                                                        Owner 4 Email ID: 
+                                                        </Text>
+                                                        <Text showIn={'xs'}
+                                                        css={{
+                                                            fontSize: '$md',
+                                                            fontWeight: '$semibold'
+                                                        }}>
+                                                            {owner4email}
+                                                        </Text>
+                                                    </Row>
+                                                </Grid>
+                                                <Grid>
+                                                    <Row
+                                                    css={{
+                                                        jc: 'center',
+                                                        textAlign: 'center'
+                                                    }}>
+                                                        <Text hideIn={'xs'}
+                                                        css={{
+                                                            fontSize: '$lg',
+                                                            paddingRight: '4px',
+                                                            color: '$gray700'
+                                                        }}>
+                                                        Owner 4 Phone Number: 
+                                                        </Text>
+                                                        <Text hideIn={'xs'}
+                                                        css={{
+                                                            fontSize: '$lg',
+                                                            fontWeight: '$semibold'
+                                                        }}>
+                                                            {owner4phone}
+                                                        </Text>
+                                                        <Text showIn={'xs'}
+                                                        css={{
+                                                            fontSize: '$md',
+                                                            paddingRight: '4px',
+                                                            color: '$gray700'
+                                                        }}>
+                                                        Owner 4 Phone Number: 
+                                                        </Text>
+                                                        <Text showIn={'xs'}
+                                                        css={{
+                                                            fontSize: '$md',
+                                                            fontWeight: '$semibold'
+                                                        }}>
+                                                            {owner4phone}
+                                                        </Text>
+                                                    </Row>
+                                                </Grid>
+                                                </Grid.Container>
+                                                <Grid.Container gap={0.5}
+                                                    css={{
+                                                        jc: 'center',
+                                                        alignItems: 'center',
+                                                        textAlign: 'center'
+                                                    }}>
+                                                <Grid>
+                                                    <Row
+                                                    css={{
+                                                        jc: 'center',
+                                                        textAlign: 'center'
+                                                    }}>
+                                                        <Text hideIn={'xs'}
+                                                        css={{
+                                                            fontSize: '$lg',
+                                                            paddingRight: '4px',
+                                                            color: '$gray700'
+                                                        }}>
+                                                        Owner 5 Name: 
+                                                        </Text>
+                                                        <Text hideIn={'xs'}
+                                                        css={{
+                                                            fontSize: '$lg',
+                                                            fontWeight: '$semibold'
+                                                        }}>
+                                                            {owner5}
+                                                        </Text>
+                                                        <Text showIn={'xs'}
+                                                        css={{
+                                                            fontSize: '$md',
+                                                            paddingRight: '4px',
+                                                            color: '$gray700'
+                                                        }}>
+                                                        Owner 5 Name: 
+                                                        </Text>
+                                                        <Text showIn={'xs'}
+                                                        css={{
+                                                            fontSize: '$md',
+                                                            fontWeight: '$semibold'
+                                                        }}>
+                                                            {owner5}
+                                                        </Text>
+                                                    </Row>
+                                                </Grid>
+                                                <Grid>
+                                                    <Row
+                                                    css={{
+                                                        jc: 'center',
+                                                        textAlign: 'center'
+                                                    }}>
+                                                        <Text hideIn={'xs'}
+                                                        css={{
+                                                            fontSize: '$lg',
+                                                            paddingRight: '4px',
+                                                            color: '$gray700'
+                                                        }}>
+                                                        Owner 5 Email ID: 
+                                                        </Text>
+                                                        <Text hideIn={'xs'}
+                                                        css={{
+                                                            fontSize: '$lg',
+                                                            fontWeight: '$semibold'
+                                                        }}>
+                                                            {owner4email}
+                                                        </Text>
+                                                        <Text showIn={'xs'}
+                                                        css={{
+                                                            fontSize: '$md',
+                                                            paddingRight: '4px',
+                                                            color: '$gray700'
+                                                        }}>
+                                                        Owner 5 Email ID: 
+                                                        </Text>
+                                                        <Text showIn={'xs'}
+                                                        css={{
+                                                            fontSize: '$md',
+                                                            fontWeight: '$semibold'
+                                                        }}>
+                                                            {owner5email}
+                                                        </Text>
+                                                    </Row>
+                                                </Grid>
+                                                <Grid>
+                                                    <Row
+                                                    css={{
+                                                        jc: 'center',
+                                                        textAlign: 'center'
+                                                    }}>
+                                                        <Text hideIn={'xs'}
+                                                        css={{
+                                                            fontSize: '$lg',
+                                                            paddingRight: '4px',
+                                                            color: '$gray700'
+                                                        }}>
+                                                        Owner 5 Phone Number: 
+                                                        </Text>
+                                                        <Text hideIn={'xs'}
+                                                        css={{
+                                                            fontSize: '$lg',
+                                                            fontWeight: '$semibold'
+                                                        }}>
+                                                            {owner5phone}
+                                                        </Text>
+                                                        <Text showIn={'xs'}
+                                                        css={{
+                                                            fontSize: '$md',
+                                                            paddingRight: '4px',
+                                                            color: '$gray700'
+                                                        }}>
+                                                        Owner 5 Phone Number: 
+                                                        </Text>
+                                                        <Text showIn={'xs'}
+                                                        css={{
+                                                            fontSize: '$md',
+                                                            fontWeight: '$semibold'
+                                                        }}>
+                                                            {owner5phone}
+                                                        </Text>
+                                                    </Row>
+                                                </Grid>
+                                                </Grid.Container>
+                                            
+                                </Grid.Container>
+                                                }
+                                                {
+                                                    totalowners==4 &&
+                                                    <Grid.Container gap={0.5}
+                                                    css={{
+                                                        jc: 'center',
+                                                        alignItems: 'center',
+                                                        textAlign: 'center'
+                                                    }}>
+
+                                                        
+                                                <Grid.Container gap={0.5}
+                                                    css={{
+                                                        jc: 'center',
+                                                        alignItems: 'center',
+                                                        textAlign: 'center'
+                                                    }}>
+                                                    <Grid>
+                                                    <Row
+                                                    css={{
+                                                        jc: 'center',
+                                                        textAlign: 'center'
+                                                    }}>
+                                                        <Text hideIn={'xs'}
+                                                        css={{
+                                                            fontSize: '$lg',
+                                                            paddingRight: '4px',
+                                                            color: '$gray700'
+                                                        }}>
+                                                        Owner 2 Name: 
+                                                        </Text>
+                                                        <Text hideIn={'xs'}
+                                                        css={{
+                                                            fontSize: '$lg',
+                                                            fontWeight: '$semibold'
+                                                        }}>
+                                                            {owner2}
+                                                        </Text>
+                                                        <Text showIn={'xs'}
+                                                        css={{
+                                                            fontSize: '$md',
+                                                            paddingRight: '4px',
+                                                            color: '$gray700'
+                                                        }}>
+                                                        Owner 2 Name: 
+                                                        </Text>
+                                                        <Text showIn={'xs'}
+                                                        css={{
+                                                            fontSize: '$md',
+                                                            fontWeight: '$semibold'
+                                                        }}>
+                                                            {owner2}
+                                                        </Text>
+                                                    </Row>
+                                                </Grid>
+                                                
+                                                <Grid>
+                                                    <Row
+                                                    css={{
+                                                        jc: 'center',
+                                                        textAlign: 'center'
+                                                    }}>
+                                                        <Text hideIn={'xs'}
+                                                        css={{
+                                                            fontSize: '$lg',
+                                                            paddingRight: '4px',
+                                                            color: '$gray700'
+                                                        }}>
+                                                        Owner 2 Email ID: 
+                                                        </Text>
+                                                        <Text hideIn={'xs'}
+                                                        css={{
+                                                            fontSize: '$lg',
+                                                            fontWeight: '$semibold'
+                                                        }}>
+                                                            {owner2email}
+                                                        </Text>
+                                                        <Text showIn={'xs'}
+                                                        css={{
+                                                            fontSize: '$md',
+                                                            paddingRight: '4px',
+                                                            color: '$gray700'
+                                                        }}>
+                                                        Owner 2 Email ID: 
+                                                        </Text>
+                                                        <Text showIn={'xs'}
+                                                        css={{
+                                                            fontSize: '$md',
+                                                            fontWeight: '$semibold'
+                                                        }}>
+                                                            {owner2email}
+                                                        </Text>
+                                                    </Row>
+                                                </Grid>
+                                                <Grid>
+                                                    <Row
+                                                    css={{
+                                                        jc: 'center',
+                                                        textAlign: 'center'
+                                                    }}>
+                                                        <Text hideIn={'xs'}
+                                                        css={{
+                                                            fontSize: '$lg',
+                                                            paddingRight: '4px',
+                                                            color: '$gray700'
+                                                        }}>
+                                                        Owner 2 Phone Number: 
+                                                        </Text>
+                                                        <Text hideIn={'xs'}
+                                                        css={{
+                                                            fontSize: '$lg',
+                                                            fontWeight: '$semibold'
+                                                        }}>
+                                                            {owner2phone}
+                                                        </Text>
+                                                        <Text showIn={'xs'}
+                                                        css={{
+                                                            fontSize: '$md',
+                                                            paddingRight: '4px',
+                                                            color: '$gray700'
+                                                        }}>
+                                                        Owner 2 Phone Number: 
+                                                        </Text>
+                                                        <Text showIn={'xs'}
+                                                        css={{
+                                                            fontSize: '$md',
+                                                            fontWeight: '$semibold'
+                                                        }}>
+                                                            {owner2phone}
+                                                        </Text>
+                                                    </Row>
+                                                </Grid>
+                                                </Grid.Container>
+                                                <Grid.Container gap={0.5}
+                                                    css={{
+                                                        jc: 'center',
+                                                        alignItems: 'center',
+                                                        textAlign: 'center'
+                                                    }}>
+                                                <Grid>
+                                                    <Row
+                                                    css={{
+                                                        jc: 'center',
+                                                        textAlign: 'center'
+                                                    }}>
+                                                        <Text hideIn={'xs'}
+                                                        css={{
+                                                            fontSize: '$lg',
+                                                            paddingRight: '4px',
+                                                            color: '$gray700'
+                                                        }}>
+                                                        Owner 3 Name: 
+                                                        </Text>
+                                                        <Text hideIn={'xs'}
+                                                        css={{
+                                                            fontSize: '$lg',
+                                                            fontWeight: '$semibold'
+                                                        }}>
+                                                            {owner3}
+                                                        </Text>
+                                                        <Text showIn={'xs'}
+                                                        css={{
+                                                            fontSize: '$md',
+                                                            paddingRight: '4px',
+                                                            color: '$gray700'
+                                                        }}>
+                                                        Owner 3 Name: 
+                                                        </Text>
+                                                        <Text showIn={'xs'}
+                                                        css={{
+                                                            fontSize: '$md',
+                                                            fontWeight: '$semibold'
+                                                        }}>
+                                                            {owner3}
+                                                        </Text>
+                                                    </Row>
+                                                </Grid>
+                                                <Grid>
+                                                    <Row
+                                                    css={{
+                                                        jc: 'center',
+                                                        textAlign: 'center'
+                                                    }}>
+                                                        <Text hideIn={'xs'}
+                                                        css={{
+                                                            fontSize: '$lg',
+                                                            paddingRight: '4px',
+                                                            color: '$gray700'
+                                                        }}>
+                                                        Owner 3 Email ID: 
+                                                        </Text>
+                                                        <Text hideIn={'xs'}
+                                                        css={{
+                                                            fontSize: '$lg',
+                                                            fontWeight: '$semibold'
+                                                        }}>
+                                                            {owner3email}
+                                                        </Text>
+                                                        <Text showIn={'xs'}
+                                                        css={{
+                                                            fontSize: '$md',
+                                                            paddingRight: '4px',
+                                                            color: '$gray700'
+                                                        }}>
+                                                        Owner 3 Email ID: 
+                                                        </Text>
+                                                        <Text showIn={'xs'}
+                                                        css={{
+                                                            fontSize: '$md',
+                                                            fontWeight: '$semibold'
+                                                        }}>
+                                                            {owner3phone}
+                                                        </Text>
+                                                    </Row>
+                                                </Grid>
+                                                
+                                                <Grid>
+                                                    <Row
+                                                    css={{
+                                                        jc: 'center',
+                                                        textAlign: 'center'
+                                                    }}>
+                                                        <Text hideIn={'xs'}
+                                                        css={{
+                                                            fontSize: '$lg',
+                                                            paddingRight: '4px',
+                                                            color: '$gray700'
+                                                        }}>
+                                                        Owner 3 Phone Number: 
+                                                        </Text>
+                                                        <Text hideIn={'xs'}
+                                                        css={{
+                                                            fontSize: '$lg',
+                                                            fontWeight: '$semibold'
+                                                        }}>
+                                                            {owner3phone}
+                                                        </Text>
+                                                        <Text showIn={'xs'}
+                                                        css={{
+                                                            fontSize: '$md',
+                                                            paddingRight: '4px',
+                                                            color: '$gray700'
+                                                        }}>
+                                                        Owner 3 Phone Number: 
+                                                        </Text>
+                                                        <Text showIn={'xs'}
+                                                        css={{
+                                                            fontSize: '$md',
+                                                            fontWeight: '$semibold'
+                                                        }}>
+                                                            {owner3phone}
+                                                        </Text>
+                                                    </Row>
+                                                </Grid>
+                                                </Grid.Container>
+                                                
+                                                <Grid.Container gap={0.5}
+                                                    css={{
+                                                        jc: 'center',
+                                                        alignItems: 'center',
+                                                        textAlign: 'center'
+                                                    }}>
+                                                <Grid>
+                                                    <Row
+                                                    css={{
+                                                        jc: 'center',
+                                                        textAlign: 'center'
+                                                    }}>
+                                                        <Text hideIn={'xs'}
+                                                        css={{
+                                                            fontSize: '$lg',
+                                                            paddingRight: '4px',
+                                                            color: '$gray700'
+                                                        }}>
+                                                        Owner 4 Name: 
+                                                        </Text>
+                                                        <Text hideIn={'xs'}
+                                                        css={{
+                                                            fontSize: '$lg',
+                                                            fontWeight: '$semibold'
+                                                        }}>
+                                                            {owner4}
+                                                        </Text>
+                                                        <Text showIn={'xs'}
+                                                        css={{
+                                                            fontSize: '$md',
+                                                            paddingRight: '4px',
+                                                            color: '$gray700'
+                                                        }}>
+                                                        Owner 4 Name: 
+                                                        </Text>
+                                                        <Text showIn={'xs'}
+                                                        css={{
+                                                            fontSize: '$md',
+                                                            fontWeight: '$semibold'
+                                                        }}>
+                                                            {owner4}
+                                                        </Text>
+                                                    </Row>
+                                                </Grid>
+                                                <Grid>
+                                                    <Row
+                                                    css={{
+                                                        jc: 'center',
+                                                        textAlign: 'center'
+                                                    }}>
+                                                        <Text hideIn={'xs'}
+                                                        css={{
+                                                            fontSize: '$lg',
+                                                            paddingRight: '4px',
+                                                            color: '$gray700'
+                                                        }}>
+                                                        Owner 4 Email ID: 
+                                                        </Text>
+                                                        <Text hideIn={'xs'}
+                                                        css={{
+                                                            fontSize: '$lg',
+                                                            fontWeight: '$semibold'
+                                                        }}>
+                                                            {owner4email}
+                                                        </Text>
+                                                        <Text showIn={'xs'}
+                                                        css={{
+                                                            fontSize: '$md',
+                                                            paddingRight: '4px',
+                                                            color: '$gray700'
+                                                        }}>
+                                                        Owner 4 Email ID: 
+                                                        </Text>
+                                                        <Text showIn={'xs'}
+                                                        css={{
+                                                            fontSize: '$md',
+                                                            fontWeight: '$semibold'
+                                                        }}>
+                                                            {owner4email}
+                                                        </Text>
+                                                    </Row>
+                                                </Grid>
+                                                <Grid>
+                                                    <Row
+                                                    css={{
+                                                        jc: 'center',
+                                                        textAlign: 'center'
+                                                    }}>
+                                                        <Text hideIn={'xs'}
+                                                        css={{
+                                                            fontSize: '$lg',
+                                                            paddingRight: '4px',
+                                                            color: '$gray700'
+                                                        }}>
+                                                        Owner 4 Phone Number: 
+                                                        </Text>
+                                                        <Text hideIn={'xs'}
+                                                        css={{
+                                                            fontSize: '$lg',
+                                                            fontWeight: '$semibold'
+                                                        }}>
+                                                            {owner4phone}
+                                                        </Text>
+                                                        <Text showIn={'xs'}
+                                                        css={{
+                                                            fontSize: '$md',
+                                                            paddingRight: '4px',
+                                                            color: '$gray700'
+                                                        }}>
+                                                        Owner 4 Phone Number: 
+                                                        </Text>
+                                                        <Text showIn={'xs'}
+                                                        css={{
+                                                            fontSize: '$md',
+                                                            fontWeight: '$semibold'
+                                                        }}>
+                                                            {owner4phone}
+                                                        </Text>
+                                                    </Row>
+                                                </Grid>
+                                                </Grid.Container>
+                                                
+                                            
+                                </Grid.Container>
+                                                }
+                                                {
+                                                    totalowners==3 &&
+                                                    <Grid.Container gap={0.5}
+                                                    css={{
+                                                        jc: 'center',
+                                                        alignItems: 'center',
+                                                        textAlign: 'center'
+                                                    }}>
+
+                                                        
+                                                <Grid.Container gap={0.5}
+                                                    css={{
+                                                        jc: 'center',
+                                                        alignItems: 'center',
+                                                        textAlign: 'center'
+                                                    }}>
+                                                    <Grid>
+                                                    <Row
+                                                    css={{
+                                                        jc: 'center',
+                                                        textAlign: 'center'
+                                                    }}>
+                                                        <Text hideIn={'xs'}
+                                                        css={{
+                                                            fontSize: '$lg',
+                                                            paddingRight: '4px',
+                                                            color: '$gray700'
+                                                        }}>
+                                                        Owner 2 Name: 
+                                                        </Text>
+                                                        <Text hideIn={'xs'}
+                                                        css={{
+                                                            fontSize: '$lg',
+                                                            fontWeight: '$semibold'
+                                                        }}>
+                                                            {owner2}
+                                                        </Text>
+                                                        <Text showIn={'xs'}
+                                                        css={{
+                                                            fontSize: '$md',
+                                                            paddingRight: '4px',
+                                                            color: '$gray700'
+                                                        }}>
+                                                        Owner 2 Name: 
+                                                        </Text>
+                                                        <Text showIn={'xs'}
+                                                        css={{
+                                                            fontSize: '$md',
+                                                            fontWeight: '$semibold'
+                                                        }}>
+                                                            {owner2}
+                                                        </Text>
+                                                    </Row>
+                                                </Grid>
+                                                
+                                                <Grid>
+                                                    <Row
+                                                    css={{
+                                                        jc: 'center',
+                                                        textAlign: 'center'
+                                                    }}>
+                                                        <Text hideIn={'xs'}
+                                                        css={{
+                                                            fontSize: '$lg',
+                                                            paddingRight: '4px',
+                                                            color: '$gray700'
+                                                        }}>
+                                                        Owner 2 Email ID: 
+                                                        </Text>
+                                                        <Text hideIn={'xs'}
+                                                        css={{
+                                                            fontSize: '$lg',
+                                                            fontWeight: '$semibold'
+                                                        }}>
+                                                            {owner2email}
+                                                        </Text>
+                                                        <Text showIn={'xs'}
+                                                        css={{
+                                                            fontSize: '$md',
+                                                            paddingRight: '4px',
+                                                            color: '$gray700'
+                                                        }}>
+                                                        Owner 2 Email ID: 
+                                                        </Text>
+                                                        <Text showIn={'xs'}
+                                                        css={{
+                                                            fontSize: '$md',
+                                                            fontWeight: '$semibold'
+                                                        }}>
+                                                            {owner2email}
+                                                        </Text>
+                                                    </Row>
+                                                </Grid>
+                                                <Grid>
+                                                    <Row
+                                                    css={{
+                                                        jc: 'center',
+                                                        textAlign: 'center'
+                                                    }}>
+                                                        <Text hideIn={'xs'}
+                                                        css={{
+                                                            fontSize: '$lg',
+                                                            paddingRight: '4px',
+                                                            color: '$gray700'
+                                                        }}>
+                                                        Owner 2 Phone Number: 
+                                                        </Text>
+                                                        <Text hideIn={'xs'}
+                                                        css={{
+                                                            fontSize: '$lg',
+                                                            fontWeight: '$semibold'
+                                                        }}>
+                                                            {owner2phone}
+                                                        </Text>
+                                                        <Text showIn={'xs'}
+                                                        css={{
+                                                            fontSize: '$md',
+                                                            paddingRight: '4px',
+                                                            color: '$gray700'
+                                                        }}>
+                                                        Owner 2 Phone Number: 
+                                                        </Text>
+                                                        <Text showIn={'xs'}
+                                                        css={{
+                                                            fontSize: '$md',
+                                                            fontWeight: '$semibold'
+                                                        }}>
+                                                            {owner2phone}
+                                                        </Text>
+                                                    </Row>
+                                                </Grid>
+                                                </Grid.Container>
+                                                <Grid.Container gap={0.5}
+                                                    css={{
+                                                        jc: 'center',
+                                                        alignItems: 'center',
+                                                        textAlign: 'center'
+                                                    }}>
+                                                <Grid>
+                                                    <Row
+                                                    css={{
+                                                        jc: 'center',
+                                                        textAlign: 'center'
+                                                    }}>
+                                                        <Text hideIn={'xs'}
+                                                        css={{
+                                                            fontSize: '$lg',
+                                                            paddingRight: '4px',
+                                                            color: '$gray700'
+                                                        }}>
+                                                        Owner 3 Name: 
+                                                        </Text>
+                                                        <Text hideIn={'xs'}
+                                                        css={{
+                                                            fontSize: '$lg',
+                                                            fontWeight: '$semibold'
+                                                        }}>
+                                                            {owner3}
+                                                        </Text>
+                                                        <Text showIn={'xs'}
+                                                        css={{
+                                                            fontSize: '$md',
+                                                            paddingRight: '4px',
+                                                            color: '$gray700'
+                                                        }}>
+                                                        Owner 3 Name: 
+                                                        </Text>
+                                                        <Text showIn={'xs'}
+                                                        css={{
+                                                            fontSize: '$md',
+                                                            fontWeight: '$semibold'
+                                                        }}>
+                                                            {owner3}
+                                                        </Text>
+                                                    </Row>
+                                                </Grid>
+                                                <Grid>
+                                                    <Row
+                                                    css={{
+                                                        jc: 'center',
+                                                        textAlign: 'center'
+                                                    }}>
+                                                        <Text hideIn={'xs'}
+                                                        css={{
+                                                            fontSize: '$lg',
+                                                            paddingRight: '4px',
+                                                            color: '$gray700'
+                                                        }}>
+                                                        Owner 3 Email ID: 
+                                                        </Text>
+                                                        <Text hideIn={'xs'}
+                                                        css={{
+                                                            fontSize: '$lg',
+                                                            fontWeight: '$semibold'
+                                                        }}>
+                                                            {owner3email}
+                                                        </Text>
+                                                        <Text showIn={'xs'}
+                                                        css={{
+                                                            fontSize: '$md',
+                                                            paddingRight: '4px',
+                                                            color: '$gray700'
+                                                        }}>
+                                                        Owner 3 Email ID: 
+                                                        </Text>
+                                                        <Text showIn={'xs'}
+                                                        css={{
+                                                            fontSize: '$md',
+                                                            fontWeight: '$semibold'
+                                                        }}>
+                                                            {owner3phone}
+                                                        </Text>
+                                                    </Row>
+                                                </Grid>
+                                                
+                                                <Grid>
+                                                    <Row
+                                                    css={{
+                                                        jc: 'center',
+                                                        textAlign: 'center'
+                                                    }}>
+                                                        <Text hideIn={'xs'}
+                                                        css={{
+                                                            fontSize: '$lg',
+                                                            paddingRight: '4px',
+                                                            color: '$gray700'
+                                                        }}>
+                                                        Owner 3 Phone Number: 
+                                                        </Text>
+                                                        <Text hideIn={'xs'}
+                                                        css={{
+                                                            fontSize: '$lg',
+                                                            fontWeight: '$semibold'
+                                                        }}>
+                                                            {owner3phone}
+                                                        </Text>
+                                                        <Text showIn={'xs'}
+                                                        css={{
+                                                            fontSize: '$md',
+                                                            paddingRight: '4px',
+                                                            color: '$gray700'
+                                                        }}>
+                                                        Owner 3 Phone Number: 
+                                                        </Text>
+                                                        <Text showIn={'xs'}
+                                                        css={{
+                                                            fontSize: '$md',
+                                                            fontWeight: '$semibold'
+                                                        }}>
+                                                            {owner3phone}
+                                                        </Text>
+                                                    </Row>
+                                                </Grid>
+                                                </Grid.Container>
+                                                
+                                                
+                                                
+                                            
+                                </Grid.Container>
+                                                }
+                                                {
+                                                    totalowners==2 &&
+                                                    <Grid.Container gap={0.5}
+                                                    css={{
+                                                        jc: 'center',
+                                                        alignItems: 'center',
+                                                        textAlign: 'center'
+                                                    }}>
+
+                                                        
+                                                <Grid.Container gap={0.5}
+                                                    css={{
+                                                        jc: 'center',
+                                                        alignItems: 'center',
+                                                        textAlign: 'center'
+                                                    }}>
+                                                    <Grid>
+                                                    <Row
+                                                    css={{
+                                                        jc: 'center',
+                                                        textAlign: 'center'
+                                                    }}>
+                                                        <Text hideIn={'xs'}
+                                                        css={{
+                                                            fontSize: '$lg',
+                                                            paddingRight: '4px',
+                                                            color: '$gray700'
+                                                        }}>
+                                                        Owner 2 Name: 
+                                                        </Text>
+                                                        <Text hideIn={'xs'}
+                                                        css={{
+                                                            fontSize: '$lg',
+                                                            fontWeight: '$semibold'
+                                                        }}>
+                                                            {owner2}
+                                                        </Text>
+                                                        <Text showIn={'xs'}
+                                                        css={{
+                                                            fontSize: '$md',
+                                                            paddingRight: '4px',
+                                                            color: '$gray700'
+                                                        }}>
+                                                        Owner 2 Name: 
+                                                        </Text>
+                                                        <Text showIn={'xs'}
+                                                        css={{
+                                                            fontSize: '$md',
+                                                            fontWeight: '$semibold'
+                                                        }}>
+                                                            {owner2}
+                                                        </Text>
+                                                    </Row>
+                                                </Grid>
+                                                
+                                                <Grid>
+                                                    <Row
+                                                    css={{
+                                                        jc: 'center',
+                                                        textAlign: 'center'
+                                                    }}>
+                                                        <Text hideIn={'xs'}
+                                                        css={{
+                                                            fontSize: '$lg',
+                                                            paddingRight: '4px',
+                                                            color: '$gray700'
+                                                        }}>
+                                                        Owner 2 Email ID: 
+                                                        </Text>
+                                                        <Text hideIn={'xs'}
+                                                        css={{
+                                                            fontSize: '$lg',
+                                                            fontWeight: '$semibold'
+                                                        }}>
+                                                            {owner2email}
+                                                        </Text>
+                                                        <Text showIn={'xs'}
+                                                        css={{
+                                                            fontSize: '$md',
+                                                            paddingRight: '4px',
+                                                            color: '$gray700'
+                                                        }}>
+                                                        Owner 2 Email ID: 
+                                                        </Text>
+                                                        <Text showIn={'xs'}
+                                                        css={{
+                                                            fontSize: '$md',
+                                                            fontWeight: '$semibold'
+                                                        }}>
+                                                            {owner2email}
+                                                        </Text>
+                                                    </Row>
+                                                </Grid>
+                                                <Grid>
+                                                    <Row
+                                                    css={{
+                                                        jc: 'center',
+                                                        textAlign: 'center'
+                                                    }}>
+                                                        <Text hideIn={'xs'}
+                                                        css={{
+                                                            fontSize: '$lg',
+                                                            paddingRight: '4px',
+                                                            color: '$gray700'
+                                                        }}>
+                                                        Owner 2 Phone Number: 
+                                                        </Text>
+                                                        <Text hideIn={'xs'}
+                                                        css={{
+                                                            fontSize: '$lg',
+                                                            fontWeight: '$semibold'
+                                                        }}>
+                                                            {owner2phone}
+                                                        </Text>
+                                                        <Text showIn={'xs'}
+                                                        css={{
+                                                            fontSize: '$md',
+                                                            paddingRight: '4px',
+                                                            color: '$gray700'
+                                                        }}>
+                                                        Owner 2 Phone Number: 
+                                                        </Text>
+                                                        <Text showIn={'xs'}
+                                                        css={{
+                                                            fontSize: '$md',
+                                                            fontWeight: '$semibold'
+                                                        }}>
+                                                            {owner2phone}
+                                                        </Text>
+                                                    </Row>
+                                                </Grid>
+                                                </Grid.Container>
+                                                
+                                                
+                                                
+                                                
+                                            
+                                </Grid.Container>
+
+                                                }
                                                 <Grid.Container gap={0.5}
                                                 css={{
                                                     jc: 'center',
