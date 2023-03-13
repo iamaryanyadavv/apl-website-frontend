@@ -1,4 +1,4 @@
-import { Avatar, Col, Collapse, Grid, Loading, Progress, Table, Text, Spacer } from "@nextui-org/react";
+import { Avatar, Col, Collapse, Grid, Loading, Progress, Spacer, Table, Text } from "@nextui-org/react";
 import React from "react";
 import { useState, useEffect } from "react";
 
@@ -7,7 +7,7 @@ export default function APL5TeamsContent() {
     const [TeamAccordions, setTeamAccordions] = useState();
 
     const getTeamBudgetsData = async () =>{
-        await fetch('http://localhost:3001/seasons/apl5/teamdata/budgets')
+        await fetch('http://localhost:3001/seasons/apl6/teamdata/budgets')
         .then(response => response.json())
         .then((data)=>{
             console.log(data)
@@ -17,7 +17,7 @@ export default function APL5TeamsContent() {
     }
 
     const OnceTeamBudgetsData = async (teamslists) => {
-        await fetch('http://localhost:3001/seasons/apl5/teamdata')
+        await fetch('http://localhost:3001/seasons/apl6/teamdata')
         .then(response => response.json())
         .then((data)=>{
             createTeamAccordions(data, teamslists);
@@ -245,28 +245,28 @@ export default function APL5TeamsContent() {
             }
             {!Fetching && !TeamAccordions &&
             <div>
-            <Text hideIn={'xs'}
-            css={{
-                fontSize: '$4xl',
-                fontWeight: '$semibold',
-                padding: '40px 10% 0px 10%',
-                textAlign: 'center',
+                <Text hideIn={'xs'}
+                css={{
+                    fontSize: '$4xl',
+                    fontWeight: '$semibold',
+                    padding: '40px 10% 0px 10%',
+                    textAlign: 'center',
 
-            }}>
-                No Teams yet... Check again after team registration starts!
-            </Text>
-            <Text showIn={'xs'}
-            css={{
-                fontSize: '$2xl',
-                fontWeight: '$semibold',
-                padding: '40px 10% 0px 10%',
-                textAlign: 'center',
+                }}>
+                    No Teams yet... Check again after team registration starts!
+                </Text>
+                <Text showIn={'xs'}
+                css={{
+                    fontSize: '$2xl',
+                    fontWeight: '$semibold',
+                    padding: '40px 10% 0px 10%',
+                    textAlign: 'center',
 
-            }}>
-                No Teams yet... Check again after team registration starts!
-            </Text>
-            <Spacer y={15}/>
-        </div>
+                }}>
+                    No Teams yet... Check again after team registration starts!
+                </Text>
+                <Spacer y={15}/>
+            </div>
             }
         </div>
     )

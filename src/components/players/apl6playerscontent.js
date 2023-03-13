@@ -317,7 +317,7 @@ export default function APL6PlayersContent(){
                             padding: '5px 0px 5px 0px'
                         }}>
                             <AiOutlineDollar size={'20px'} className='dollar'/>
-                            { player[6] && 
+                            { player[6]!='0' && 
                             <Text 
                             css={{
                                 color: 'White',
@@ -344,7 +344,7 @@ export default function APL6PlayersContent(){
                 <Text 
                 css={{
                     textAlign: 'center',
-                    color: '#C4B454',
+                    color: 'White',
                     // borderStyle: 'solid',
                     // borderWidth: '0px 0px 2px 0px',
                     // borderColor: '#C4B454',
@@ -370,17 +370,20 @@ export default function APL6PlayersContent(){
                         }}>
                             {/* <GiSoccerBall size={'20px'} className='team' /> */}
                             {/* Team Logo */}
+                            
                             <Avatar size={'sm'} bordered src={player[8]} />
-                            <Text 
-                            css={{
-                                color: 'White',
-                                fontSize: '$lg',
-                                fontWeight: '$medium',
-                                padding: '0px 0px 0px 5px'
-                            }}>
-                                {/*Team Name */}
-                                {player[7]}
-                            </Text>    
+                            {player[7]!='0' &&
+                                <Text 
+                                css={{
+                                    color: 'White',
+                                    fontSize: '$lg',
+                                    fontWeight: '$medium',
+                                    padding: '0px 0px 0px 5px'
+                                }}>
+                                    {/*Team Name */}
+                                    {player[7]}
+                                </Text>    
+                            }
                         </Row>
                     
                     {/* Positions p + s */}
@@ -529,7 +532,7 @@ export default function APL6PlayersContent(){
                 <Text 
                 css={{
                     textAlign: 'center',
-                    color: 'rgb(157, 171, 187)',
+                    color: 'White',
                     // borderStyle: 'solid',
                     // borderWidth: '0px 0px 2px 0px',
                     // borderColor: '#C4B454',
@@ -714,7 +717,7 @@ export default function APL6PlayersContent(){
                 <Text 
                 css={{
                     textAlign: 'center',
-                    color: 'rgb(190, 159, 103)',
+                    color: 'White',
                     // borderStyle: 'solid',
                     // borderWidth: '0px 0px 2px 0px',
                     // borderColor: '#C4B454',
@@ -899,7 +902,7 @@ export default function APL6PlayersContent(){
                 <Text 
                 css={{
                     textAlign: 'center',
-                    color: '#B76E79',
+                    color: 'White',
                     // borderStyle: 'solid',
                     // borderWidth: '0px 0px 1px 0px',
                     // borderColor: '$gray200',
@@ -1384,9 +1387,29 @@ export default function APL6PlayersContent(){
                 }
 
                 {TierLessCards.length==0 && 
-                    <Grid.Container>
-                        <Spacer y={20} />
-                    </Grid.Container>
+                    <div>
+                        <Text hideIn={'xs'}
+                        css={{
+                            fontSize: '$4xl',
+                            fontWeight: '$semibold',
+                            padding: '40px 10% 0px 10%',
+                            textAlign: 'center',
+        
+                        }}>
+                            No Teams yet... Check again after player registration starts!
+                        </Text>
+                        <Text showIn={'xs'}
+                        css={{
+                            fontSize: '$2xl',
+                            fontWeight: '$semibold',
+                            padding: '40px 10% 0px 10%',
+                            textAlign: 'center',
+        
+                        }}>
+                            No Teams yet... Check again after player registration starts!
+                        </Text>
+                        <Spacer y={15}/>
+                    </div>
                 }
             </div>
             }

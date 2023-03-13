@@ -94,9 +94,9 @@ export default function PRegForm(){
     const [User, setUser] = useState({});
 
     const [tier, setTier] = useState('0');
-    const [price, setPrice] = useState('null');
-    const [team, setTeam] = useState('null');
-    const [teamlogo, setTeamLogo] = useState('null');
+    const [price, setPrice] = useState('0');
+    const [team, setTeam] = useState('0');
+    const [teamlogo, setTeamLogo] = useState('0');
 
     //function to check if registration was successful
     async function checkIfRegSuccess(emailID){
