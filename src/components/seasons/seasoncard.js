@@ -4,7 +4,16 @@ import './seasons.css';
 
 export default function SeasonCard(props){
     return(
-        <Card className="season-card">
+        <Card className="season-card" css={{
+            '@xsMin':{
+                width: '300px',
+                height: '550px',
+            },
+            '@xsMax':{
+                width: '200px',
+                height: '200px',
+            },
+        }}>
             <Card.Header css={{ position: "absolute", zIndex: 1, top: 5 }}>
                 <Col css={{
                     alignItems: 'center',
@@ -35,6 +44,7 @@ export default function SeasonCard(props){
                     height="100%"
                     objectFit="cover"
                     alt="Card example background"
+                    
                 />
             </Card.Body>
             <Card.Footer isBlurred
