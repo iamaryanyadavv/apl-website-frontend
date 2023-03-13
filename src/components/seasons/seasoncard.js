@@ -4,16 +4,7 @@ import './seasons.css';
 
 export default function SeasonCard(props){
     return(
-        <Card className="season-card" css={{
-            '@xsMin':{
-                width: '300px',
-                height: '550px',
-            },
-            '@xsMax':{
-                width: '200px',
-                height: '200px',
-            },
-        }}>
+        <Card className="season-card" css={{ w: "300px", h: "550px" }}>
             <Card.Header css={{ position: "absolute", zIndex: 1, top: 5 }}>
                 <Col css={{
                     alignItems: 'center',
