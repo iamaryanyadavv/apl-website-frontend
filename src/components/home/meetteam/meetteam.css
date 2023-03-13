@@ -1,4 +1,4 @@
-@media only screen and (max-width: 650px) {
+/* @media only screen and (max-width: 650px) {
     .team-pic{
         width: 200px !important;
         height: 200px !important;
@@ -12,7 +12,7 @@
         height: 250px !important;
         border-radius: 150px;
     }
-}
+} */
 
 .team-btn{
     background: linear-gradient(45deg, #F31260, #F5A524) !important;
