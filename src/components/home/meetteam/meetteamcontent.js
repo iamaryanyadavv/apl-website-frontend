@@ -22,16 +22,10 @@ export default function MeetTeamContent () {
                         textAlign: 'center'
                     }}>
                         <Grid>
-                            <Image objectFit="none"
-          alt="Default Image"
-          width={200}
-          height={300}src={P1} className='team-pic' />
+                            <Image src={P1} className='team-pic' />
                         </Grid>
                         <Grid>
-                            <Image objectFit="none"
-          alt="Default Image"
-          width={200}
-          height={300}src={P2} className='team-pic' />
+                            <Image src={P2} className='team-pic' />
                         </Grid>
                     </Grid.Container>
                     <Grid.Container gap={0}
@@ -181,10 +175,7 @@ export default function MeetTeamContent () {
                     textAlign: 'center'
                 }}>
                     <Grid>
-                        <Image objectFit="none"
-          alt="Default Image"
-          width={200}
-          height={300} src={P3} className='team-pic' />
+                        <Image src={P3} className='team-pic' />
                     </Grid>
                 </Grid.Container>
                 <Grid.Container gap={1}
@@ -193,10 +184,7 @@ export default function MeetTeamContent () {
                     textAlign: 'center'
                 }}>
                     <Grid>
-                        <Image objectFit="none"
-          alt="Default Image"
-          width={200}
-          height={300} src={P4} className='team-pic' />
+                        <Image src={P4} className='team-pic' />
                     </Grid>
                 </Grid.Container>
             </Grid>

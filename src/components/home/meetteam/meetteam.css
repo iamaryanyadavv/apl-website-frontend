@@ -1,15 +1,15 @@
 @media only screen and (max-width: 650px) {
     .team-pic{
-        width: 200px;
-        height: 200px;
+        width: 200px !important;
+        height: 200px !important;
         border-radius: 100px;
     }
 }
 
 @media only screen and (min-width: 650px) {
     .team-pic{
-        width: 250px;
-        height: 250px;
+        width: 250px !important;
+        height: 250px !important;
         border-radius: 150px;
     }
 }
