@@ -100,7 +100,7 @@ export default function PRegForm(){
 
     //function to check if registration was successful
     async function checkIfRegSuccess(emailID){
-        await fetch('http://localhost:3001/registration/player')
+        await fetch('https://ashoka-premier-league-api.onrender.com/registration/player')
         .then(response=>response.json())
         .then((data)=>{
             if(data.values){
@@ -200,7 +200,7 @@ export default function PRegForm(){
         if(firstname && lastname && batch && phonenumber && gender && primarypos && secondpos)
         { 
             // image, name, ppos, spos, comments, tier, price, team, teamlogo, gender, batch, email
-            await fetch('http://localhost:3001/registration/player',{
+            await fetch('https://ashoka-premier-league-api.onrender.com/registration/player',{
             method: 'POST',
             headers:{"Content-type":"application/json"},
             body: JSON.stringify({
@@ -228,7 +228,7 @@ export default function PRegForm(){
         const ImageData = new FormData();
         ImageData.append('file', imagedata, imageName);
         if(ImageData){
-            await fetch('http://localhost:3001/registration/playerimage',{
+            await fetch('https://ashoka-premier-league-api.onrender.com/registration/playerimage',{
                 method: 'POST',
                 headers:{Value: "multipart/form-data"},
                 body: ImageData
@@ -242,7 +242,7 @@ export default function PRegForm(){
         const PaymentData = new FormData();
         PaymentData.append('file', paymentdata, paymentName);
         if(PaymentData){
-            await fetch('http://localhost:3001/registration/playerpaymentimage',{
+            await fetch('https://ashoka-premier-league-api.onrender.com/registration/playerpaymentimage',{
                 method: 'POST',
                 headers:{Value: "multipart/form-data"},
                 body: PaymentData
@@ -277,7 +277,7 @@ export default function PRegForm(){
 
     // function to check whether player is already registered
     const getRegisteredPlayersEmailData= async (userObject) =>{
-        await fetch('http://localhost:3001/registration/player')
+        await fetch('https://ashoka-premier-league-api.onrender.com/registration/player')
         .then(response=>response.json())
         .then((data)=>{
             var isSignedin = false

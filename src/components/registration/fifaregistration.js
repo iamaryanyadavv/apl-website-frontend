@@ -160,7 +160,7 @@ export default function FifaRegForm(){
         if(participantone && participanttwo && participanttwoemail && participantoneemail && participantonephone && participanttwophone && participantonebatch && participanttwobatch && paymentSC)
         { 
             console.log('Sending')
-            await fetch('http://localhost:3001/registration/fifa',{
+            await fetch('https://ashoka-premier-league-api.onrender.com/registration/fifa',{
             method: 'POST',
             headers:{"Content-type":"application/json"},
             body: JSON.stringify({
@@ -185,7 +185,7 @@ export default function FifaRegForm(){
         const PaymentData = new FormData();
         PaymentData.append('file', paymentdata, paymentName);
         if(PaymentData){
-            await fetch('http://localhost:3001/registration/fifaplayerpaymentimage',{
+            await fetch('https://ashoka-premier-league-api.onrender.com/registration/fifaplayerpaymentimage',{
                 method: 'POST',
                 headers:{Value: "multipart/form-data"},
                 body: PaymentData
@@ -218,7 +218,7 @@ export default function FifaRegForm(){
     });
 
     async function checkIfRegSuccess1(emailID){
-        await fetch('http://localhost:3001/registration/fifa1')
+        await fetch('https://ashoka-premier-league-api.onrender.com/registration/fifa1')
         .then(response=>response.json())
         .then((data)=>{
             console.log(data.values)
@@ -244,7 +244,7 @@ export default function FifaRegForm(){
         })
     }
     async function checkIfRegSuccess2(emailID){
-        await fetch('http://localhost:3001/registration/fifa2')
+        await fetch('https://ashoka-premier-league-api.onrender.com/registration/fifa2')
         .then(response=>response.json())
         .then((data)=>{
             console.log(data.values)
@@ -272,7 +272,7 @@ export default function FifaRegForm(){
     
     // function to check whether player is already registered
     const getRegisteredPlayersEmailData= async (userObject) =>{
-        await fetch('http://localhost:3001/registration/fifa1')
+        await fetch('https://ashoka-premier-league-api.onrender.com/registration/fifa1')
         .then(response=>response.json())
         .then((data)=>{
             var isSignedin = false
