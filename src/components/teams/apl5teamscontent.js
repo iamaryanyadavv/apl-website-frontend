@@ -7,7 +7,7 @@ export default function APL5TeamsContent() {
     const [TeamAccordions, setTeamAccordions] = useState();
 
     const getTeamBudgetsData = async () =>{
-        await fetch('http://localhost:3001/seasons/apl5/teamdata/budgets')
+        await fetch('https://ashoka-premier-league-api.onrender.com/seasons/apl5/teamdata/budgets')
         .then(response => response.json())
         .then((data)=>{
             console.log(data)
@@ -17,7 +17,7 @@ export default function APL5TeamsContent() {
     }
 
     const OnceTeamBudgetsData = async (teamslists) => {
-        await fetch('http://localhost:3001/seasons/apl5/teamdata')
+        await fetch('https://ashoka-premier-league-api.onrender.com/seasons/apl5/teamdata')
         .then(response => response.json())
         .then((data)=>{
             createTeamAccordions(data, teamslists);

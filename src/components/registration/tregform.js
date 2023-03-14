@@ -82,7 +82,7 @@ export default function TRegForm() {
     const[paymentmode, setPaymentmode] = useState('Webstie - UPI');
 
     async function checkIfRegSuccess(manageremail){
-        await fetch('http://localhost:3001/registration/team')
+        await fetch('https://ashoka-premier-league-api.onrender.com/registration/team')
         .then(response=>response.json())
         .then((data)=>{
             if(data.values){
@@ -330,7 +330,7 @@ export default function TRegForm() {
         const ImageData = new FormData();
         ImageData.append('file', imagedata, imageName);
         if(ImageData){
-            await fetch('http://localhost:3001/registration/teamlogo',{
+            await fetch('https://ashoka-premier-league-api.onrender.com/registration/teamlogo',{
                 method: 'POST',
                 headers:{Value: "multipart/form-data"},
                 body: ImageData
@@ -343,7 +343,7 @@ export default function TRegForm() {
         const PaymentData = new FormData();
         PaymentData.append('file', paymentdata, paymentName);
         if(PaymentData){
-            await fetch('http://localhost:3001/registration/teampaymentimages',{
+            await fetch('https://ashoka-premier-league-api.onrender.com/registration/teampaymentimages',{
                 method: 'POST',
                 headers:{Value: "multipart/form-data"},
                 body: PaymentData
@@ -352,7 +352,7 @@ export default function TRegForm() {
     }
 
     const getRegisteredTeamsEmailData= async (userObject) =>{
-        await fetch('http://localhost:3001/registration/team')
+        await fetch('https://ashoka-premier-league-api.onrender.com/registration/team')
         .then(response=>response.json())
         .then((data)=>{
             var isSignedin = false
@@ -404,7 +404,7 @@ export default function TRegForm() {
     } 
 
     async function sendTeamName(e){
-        await fetch("http://localhost:3001/registration/team/budgets",{
+        await fetch("https://ashoka-premier-league-api.onrender.com/registration/team/budgets",{
             method: "POST",
             headers:{
                 "Content-type":"application/json"
@@ -419,7 +419,7 @@ export default function TRegForm() {
     {
         if(teamname && managername && manageremail && managerphone && totalowners==1 && owner1 && !owner2 && !owner3 && !owner4 && !owner5 ){
             console.log('coming in owner1')
-            await fetch("http://localhost:3001/registration/team",{
+            await fetch("https://ashoka-premier-league-api.onrender.com/registration/team",{
             method: "POST",
             headers:{
                 "Content-type":"application/json"
@@ -439,7 +439,7 @@ export default function TRegForm() {
         }
         if(teamname && managername && manageremail && managerphone && totalowners==2 && owner1 && owner2 && !owner3 && !owner4 && !owner5 ){
             console.log('coming in owner1+2')
-            await fetch("http://localhost:3001/registration/team",{
+            await fetch("https://ashoka-premier-league-api.onrender.com/registration/team",{
             method: "POST",
             headers:{
                 "Content-type":"application/json"
@@ -458,7 +458,7 @@ export default function TRegForm() {
         });
         }
         if(teamname && managername && manageremail && managerphone && totalowners==3 && owner1 && owner2 && owner3 && !owner4 && !owner5 ){
-            await fetch("http://localhost:3001/registration/team",{
+            await fetch("https://ashoka-premier-league-api.onrender.com/registration/team",{
             method: "POST",
             headers:{
                 "Content-type":"application/json"
@@ -477,7 +477,7 @@ export default function TRegForm() {
         });
         }
         if(teamname && managername && manageremail && managerphone && totalowners==4 && owner1 && owner2 && owner3 && owner4 && !owner5 ){
-            await fetch("http://localhost:3001/registration/team",{
+            await fetch("https://ashoka-premier-league-api.onrender.com/registration/team",{
             method: "POST",
             headers:{
                 "Content-type":"application/json"
@@ -496,7 +496,7 @@ export default function TRegForm() {
         });
         }
         if(teamname & managername & manageremail & managerphone & totalowners==5 & owner1 & owner2 & owner3 & owner4 & owner5){
-            await fetch("http://localhost:3001/registration/team",{
+            await fetch("https://ashoka-premier-league-api.onrender.com/registration/team",{
             method: "POST",
             headers:{
                 "Content-type":"application/json"

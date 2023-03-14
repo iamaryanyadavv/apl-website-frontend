@@ -42,7 +42,7 @@ export default function APL6PlayersContent(){
     // 8: manager phone
 
     const getTeamData = async () =>{
-        await fetch('http://localhost:3001/seasons/apl6/teamdata')
+        await fetch('https://ashoka-premier-league-api.onrender.com/seasons/apl6/teamdata')
         .then(response => response.json())
         .then((data)=>{
             OnceTeamData(data)
@@ -50,7 +50,7 @@ export default function APL6PlayersContent(){
     }
 
     const OnceTeamData = async (teams) => {
-        await fetch('http://localhost:3001/seasons/apl6/playerdata')
+        await fetch('https://ashoka-premier-league-api.onrender.com/seasons/apl6/playerdata')
         .then(response => response.json())
         .then((data)=>{
             console.log(data)
