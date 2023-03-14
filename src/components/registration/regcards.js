@@ -20,7 +20,17 @@ export default function RegCards(){
                 alignItems: 'center'
             }}>
                 <Grid>
-                    <Card css={{ w: "300px", h: "550px" }}>
+                    <Card 
+                    css={{ 
+                        '@xsMin':{
+                            width: "350px",
+                            height: "600px"
+                        },
+                        '@xsMax':{
+                            width: '300px',
+                            height: '550px'
+                        } 
+                        }}>
                         <Card.Header css={{ position: "absolute", zIndex: 1, top: 5 }}>
                             <Col css={{
                                 alignItems: 'center',
@@ -84,7 +94,17 @@ export default function RegCards(){
                     </Card>
                 </Grid>
                 <Grid>
-                    <Card css={{ w: "300px", h: "550px" }}>
+                    <Card 
+                    css={{ 
+                        '@xsMin':{
+                            width: "350px",
+                            height: "600px"
+                        },
+                        '@xsMax':{
+                            width: '300px',
+                            height: '550px'
+                        } 
+                        }}>
                         <Card.Header css={{ position: "absolute", zIndex: 1, top: 5 }}>
                             <Col css={{
                                 alignItems: 'center',

@@ -4,7 +4,17 @@ import './seasons.css';
 
 export default function AwardsCard(props){
     return(
-        <Card className="season-item-card">
+        <Card 
+        css={{ 
+            '@xsMin':{
+                width: "350px",
+                height: "466.67px"
+            },
+            '@xsMax':{
+                width: '270px',
+                height: '360px'
+            } 
+            }}>
             <Card.Header css={{ position: "absolute", zIndex: 1, top: 5 }}>
                 <Col css={{
                     alignItems: 'center',
@@ -84,7 +94,7 @@ export default function AwardsCard(props){
                         <Grid>
                             <Button shadow rounded bordered auto ghost>
                                 <Link href={props.href}>
-                                    PLAYERS
+                                    AWARDS
                                 </Link>
                             </Button>
                         </Grid>
