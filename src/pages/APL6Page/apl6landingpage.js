@@ -6,7 +6,10 @@ import TeamsCard from '../../components/seasons/teamscard.js';
 import TDetailsCard from '../../components/seasons/tdetailscard.js';
 import AwardsCard from '../../components/seasons/awardscard.js';
 import GalleryCard from '../../components/seasons/gallerycard.js';
-import Grey from '../../assets/images/Grey.jpeg'
+import Grey from '../../assets/images/Grey.jpeg';
+import PlayersCover from '../../assets/images/PinkGirlFootall.jpg'
+import TeamsCover from '../../assets/images/Futsal.jpg'
+import DetailsCover from '../../assets/images/FloodlightRain.jpg'
 
 import { Grid } from "@nextui-org/react";
 
@@ -25,19 +28,19 @@ export default function APL6LandingPage () {
                 }}>
                     <Grid>
                         <PlayersCard 
-                            src={Grey}
+                            src={PlayersCover}
                             href='/seasons/apl6/players'
                         />
                     </Grid>
                     <Grid>
                         <TeamsCard 
-                            src={Grey}
+                            src={TeamsCover}
                             href='/seasons/apl6/teams'
                         />
                     </Grid>
                     <Grid>
                         <TDetailsCard 
-                            src={Grey}
+                            src={DetailsCover}
                             href='/seasons/apl6/details'
                         />
                     </Grid>

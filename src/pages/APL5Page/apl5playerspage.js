@@ -2,9 +2,11 @@ import React from "react";
 import { Grid, Spacer } from "@nextui-org/react";
 import GradientHeading from "../../components/headings/gradientheading";
 import APL5PlayersContent from "../../components/players/apl5playerscontent";
+import UnderDev from "../../components/underdevelopment/underdev";
 
 export default function APL5PlayersPage(){
     return(
+        <div>
         <Grid.Container 
         css={{
             jc: 'center',
@@ -18,5 +20,7 @@ export default function APL5PlayersPage(){
             />
             <APL5PlayersContent/>
         </Grid.Container>
+
+        </div>
     )
 }

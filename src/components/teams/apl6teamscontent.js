@@ -1,4 +1,4 @@
-import { Avatar, Col, Collapse, Grid, Loading, Progress, Spacer, Table, Text } from "@nextui-org/react";
+import { Avatar, Col, Collapse, Grid, Loading, Progress, Table, Text, Spacer } from "@nextui-org/react";
 import React from "react";
 import { useState, useEffect } from "react";
 
@@ -105,6 +105,30 @@ export default function APL5TeamsContent() {
                             jc:'center',
                             alignItems: 'center'
                         }}>
+                            {(teamslists.values[i][30]) && 
+                            <Col>
+                                <Text
+                                css={{
+                                    fontSize: '$xl',
+                                    fontWeight: '$medium',
+                                    paddingBottom: '5%'
+                                }}>
+                                    Record: {teamslists.values[i][30]}
+                                </Text>
+                            </Col>
+                            }
+                            {!teamslists.values[i][30] && 
+                            <Col>
+                                <Text
+                                css={{
+                                    fontSize: '$xl',
+                                    fontWeight: '$medium',
+                                    paddingBottom: '5%'
+                                }}>
+                                    Record -
+                                </Text>
+                            </Col>
+                            }
                             <Table bordered
                             css={{
                                 height: "auto",
@@ -245,28 +269,28 @@ export default function APL5TeamsContent() {
             }
             {!Fetching && !TeamAccordions &&
             <div>
-                <Text hideIn={'xs'}
-                css={{
-                    fontSize: '$4xl',
-                    fontWeight: '$semibold',
-                    padding: '40px 10% 0px 10%',
-                    textAlign: 'center',
+            <Text hideIn={'xs'}
+            css={{
+                fontSize: '$4xl',
+                fontWeight: '$semibold',
+                padding: '40px 10% 0px 10%',
+                textAlign: 'center',
 
-                }}>
-                    No Teams yet... Check again after team registration starts!
-                </Text>
-                <Text showIn={'xs'}
-                css={{
-                    fontSize: '$2xl',
-                    fontWeight: '$semibold',
-                    padding: '40px 10% 0px 10%',
-                    textAlign: 'center',
+            }}>
+                No Teams yet... Check again after team registration starts!
+            </Text>
+            <Text showIn={'xs'}
+            css={{
+                fontSize: '$2xl',
+                fontWeight: '$semibold',
+                padding: '40px 10% 0px 10%',
+                textAlign: 'center',
 
-                }}>
-                    No Teams yet... Check again after team registration starts!
-                </Text>
-                <Spacer y={15}/>
-            </div>
+            }}>
+                No Teams yet... Check again after team registration starts!
+            </Text>
+            <Spacer y={15}/>
+        </div>
             }
         </div>
     )

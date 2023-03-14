@@ -105,6 +105,30 @@ export default function APL5TeamsContent() {
                             jc:'center',
                             alignItems: 'center'
                         }}>
+                            {(teamslists.values[i][30]) && 
+                            <Col>
+                                <Text
+                                css={{
+                                    fontSize: '$xl',
+                                    fontWeight: '$medium',
+                                    paddingBottom: '5%'
+                                }}>
+                                    Record: {teamslists.values[i][30]}
+                                </Text>
+                            </Col>
+                            }
+                            {!teamslists.values[i][30] && 
+                            <Col>
+                                <Text
+                                css={{
+                                    fontSize: '$xl',
+                                    fontWeight: '$medium',
+                                    paddingBottom: '5%'
+                                }}>
+                                    Record -
+                                </Text>
+                            </Col>
+                            }
                             <Table bordered
                             css={{
                                 height: "auto",

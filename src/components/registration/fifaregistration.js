@@ -3,7 +3,7 @@ import './fifaregistration.css';
 import React, {useState, useEffect} from "react";
 import imageCompression from 'browser-image-compression';
 import jwt_decode from "jwt-decode";
-
+import { useTicker } from "../../hooks";
 
 export default function FifaRegForm(){
 
@@ -17,6 +17,11 @@ export default function FifaRegForm(){
         { key: "MA", name: "MA" },
         { key: "Faculty/Staff", name: "Faculty/Staff" },
     ];
+
+    //10:30am on 20rd March, 2023 GMT or 4pm on 20rd March, 2023 IST
+    const endDate = "2023-03-20T10:30:00.000Z"; 
+
+    const { days, hours, minutes, seconds, isTimeUp } = useTicker(endDate);
 
     const [participantone, setParticipantone] = useState('');
     const [participantoneStatus, setParticipantoneStatus] = useState('');
@@ -57,8 +62,6 @@ export default function FifaRegForm(){
     const [finalImage, setFinalImage] = useState();
 
     const [RegStatusModal, setRegStatusModal] = useState(false);
-
-    
 
     function CheckForm(){
         if(participantone){
@@ -151,7 +154,7 @@ export default function FifaRegForm(){
             setLoginLoader(false)
         }, 2000)
         
-    }, [])
+    }, [isTimeUp])
 
     async function sendForm(e)
     {
@@ -196,7 +199,7 @@ export default function FifaRegForm(){
     const convertImageToBase64 = async (e) => {
         const options = {
             maxSizeMB: 0.030,
-            maxWidthOrHeight: 720,
+            maxWidthOrHeight: 600,
             useWebWorker: true
         }
 
@@ -332,1026 +335,424 @@ export default function FifaRegForm(){
     
     return(
         <div>
-                <Grid.Container gap={2}
+            {!isTimeUp && 
+            <div>
+                <Grid.Container  gap={0}
+                css={{
+                    jc: 'center',
+                    alignItems: 'center',
+                }}>
+                
+                <Grid.Container
                 css={{
                     jc: 'center',
                     alignItems: 'center'
                 }}>
-                    <Grid
+                    <Text hideIn={'xs'}
+                    css={{
+                        textAlign: 'center',
+                        fontSize: '$7xl',
+                        fontWeight: '$semibold',
+                        paddingBottom: '1.5%'
+                    }}>
+                        FIFA TOURNAMENT REGISTRATION
+                    </Text>
+                    <Text showIn={'xs'}
+                    css={{
+                        textAlign: 'center',
+                        fontSize: '$3xl',
+                        fontWeight: '$semibold',
+                        padding: '10% 5% 0% 5%'
+                    }}>
+                        FIFA TOURNAMENT REGISTRATION
+                    </Text>
+                </Grid.Container>
+
+                <Grid.Container
+                css={{
+                    jc: 'center',
+                    alignItems: 'center',
+                    height: '70vh'
+                }}>
+                    <Grid.Container 
                     css={{
                         jc: 'center',
                         alignItems: 'center'
                     }}>
-                        <Grid.Container
+                        <Grid.Container gap={0}
                         css={{
                             jc: 'center',
-
+                            alignItems: 'center',
                         }}>
-                            
-                            <div className="GoogleButton" id='GoogleButton'></div>
-                        </Grid.Container>
-                        
-
-                        {Object.keys(User).length != 0 && //Display welcome message to user if User Object is not empty
-                        <div>
-                            <Grid.Container gap={2}
+                            <Text hideIn={'xs'}
                             css={{
                                 jc: 'center',
-                                alignItems: 'center'
+                                alignItems: 'center',
+                                fontSize: '$5xl',
+                                fontWeight: '$medium',
+                                textAlign:'center',
+                                padding:'0% 10% 0% 10%'
                             }}>
-                                <Text
+                                Registrations for the FIFA Tournament open on 20th March, 2023 at 4pm IST!
+                            </Text>
+                            <Text showIn={'xs'}
+                            css={{
+                                jc: 'center',
+                                alignItems: 'center',
+                                fontSize: '$xl',
+                                fontWeight: '$medium',
+                                textAlign:'center',
+                                padding:'0% 10% 0% 10%'
+                            }}>
+                                Registrations for the FIFA Tournament open on 20th March, 2023 at 4pm IST!
+                            </Text>
+                        </Grid.Container>
+
+                        <Row
+                        css={{
+                            jc: 'center',
+                        }}>
+                            
+
+                            <Col
+                            css={{
+                                width: 'max-content'
+                            }}>
+                                <Grid.Container 
                                 css={{
                                     jc: 'center',
-                                    alignItems: 'center',
-                                    textAlign: 'center',
-                                    fontSize: '$4xl',
-                                    fontWeight: '$semibold',
-                                    color: '$green600'
                                 }}>
-                                    Welcome {User.name}!
-                                </Text>
-                            </Grid.Container>
+                                    <Text hideIn={'xs'}
+                                    css={{
+                                        fontSize: '$9xl'
+                                    }}>
+                                        {days}
+                                    </Text>
+                                    <Text showIn={'xs'}
+                                    css={{
+                                        fontSize: '$6xl'
+                                    }}>
+                                        {days}
+                                    </Text>
+                                </Grid.Container>
+                                <Grid.Container 
+                                css={{
+                                    jc: 'center',
+                                }}>
+                                    <Text hideIn={'xs'}
+                                    css={{
+                                        fontSize: '$2xl'
+                                    }}>
+                                        Days
+                                    </Text>
+                                    <Text showIn={'xs'}
+                                    css={{
+                                        fontSize: '$lg'
+                                    }}>
+                                        Days
+                                    </Text>
+                                </Grid.Container>
+                            </Col>
 
+                            <Text hideIn={'xs'}
+                            css={{
+                                fontSize: '$9xl',
+                                padding: '0% 5%'
+                            }}>
+                                :
+                            </Text>
+                            <Text showIn={'xs'}
+                            css={{
+                                fontSize: '$6xl',
+                                padding: '0% 2.5%'
+                            }}>
+                                :
+                            </Text>
+
+                            <Col
+                            css={{
+                                width: 'max-content'
+                            }}>
+                                <Grid.Container 
+                                css={{
+                                    jc: 'center',
+                                }}>
+                                    <Text hideIn={'xs'}
+                                    css={{
+                                        fontSize: '$9xl'
+                                    }}>
+                                        {hours}
+                                    </Text>
+                                    <Text showIn={'xs'}
+                                    css={{
+                                        fontSize: '$6xl'
+                                    }}>
+                                        {hours}
+                                    </Text>
+                                </Grid.Container>
+                                <Grid.Container 
+                                css={{
+                                    jc: 'center',
+                                }}>
+                                    <Text hideIn={'xs'}
+                                    css={{
+                                        fontSize: '$2xl'
+                                    }}>
+                                        Hours
+                                    </Text>
+                                    <Text showIn={'xs'}
+                                    css={{
+                                        fontSize: '$lg'
+                                    }}>
+                                        Hours
+                                    </Text>
+                                </Grid.Container>
+                            </Col>
+
+                            <Text hideIn={'xs'}
+                            css={{
+                                fontSize: '$9xl',
+                                padding: '0% 5%'
+                            }}>
+                                :
+                            </Text>
+                            <Text showIn={'xs'}
+                            css={{
+                                fontSize: '$6xl',
+                                padding: '0% 2.5%'
+                            }}>
+                                :
+                            </Text>
+
+                            <Col
+                            css={{
+                                width: 'max-content'
+                            }}>
+                                <Grid.Container 
+                                css={{
+                                    jc: 'center',
+                                }}>
+                                    <Text hideIn={'xs'}
+                                    css={{
+                                        fontSize: '$9xl'
+                                    }}>
+                                        {minutes}
+                                    </Text>
+                                    <Text showIn={'xs'}
+                                    css={{
+                                        fontSize: '$6xl'
+                                    }}>
+                                        {minutes}
+                                    </Text>
+                                </Grid.Container>
+                                <Grid.Container 
+                                css={{
+                                    jc: 'center',
+                                }}>
+                                    <Text hideIn={'xs'}
+                                    css={{
+                                        fontSize: '$2xl'
+                                    }}>
+                                        Minutes
+                                    </Text>
+                                    <Text showIn={'xs'}
+                                    css={{
+                                        fontSize: '$lg'
+                                    }}>
+                                        Minutes
+                                    </Text>
+                                </Grid.Container>
+                            </Col>
+
+                            <Text hideIn={'xs'}
+                            css={{
+                                fontSize: '$9xl',
+                                padding: '0% 5%'
+                            }}>
+                                :
+                            </Text>
+                            <Text showIn={'xs'}
+                            css={{
+                                fontSize: '$6xl',
+                                padding: '0% 2.5%'
+                            }}>
+                                :
+                            </Text>
+
+                            <Col
+                            css={{
+                                width: 'max-content'
+                            }}>
+                                <Grid.Container 
+                                css={{
+                                    jc: 'center',
+                                }}>
+                                    <Text hideIn={'xs'}
+                                    css={{
+                                        fontSize: '$9xl'
+                                    }}>
+                                        {seconds}
+                                    </Text>
+                                    <Text showIn={'xs'}
+                                    css={{
+                                        fontSize: '$6xl'
+                                    }}>
+                                        {seconds}
+                                    </Text>
+                                </Grid.Container>
+                                <Grid.Container 
+                                css={{
+                                    jc: 'center',
+                                }}>
+                                    <Text hideIn={'xs'}
+                                    css={{
+                                        fontSize: '$2xl'
+                                    }}>
+                                        Seconds
+                                    </Text>
+                                    <Text showIn={'xs'}
+                                    css={{
+                                        fontSize: '$lg'
+                                    }}>
+                                        Seconds
+                                    </Text>
+                                </Grid.Container>
+                            </Col>
+                                
+                            
+
+                        </Row>
+                    </Grid.Container>
+                </Grid.Container>
+
+                
+
+                </Grid.Container>
+            </div>
+            }
+            {isTimeUp && 
+                <div>
+                    {/* Heading */}
+                    <Grid.Container gap={2}
+                    css={{
+                        jc: 'center',
+                        alignItems: 'center'
+                    }}>
+                        <Text hideIn={'xs'}
+                        css={{
+                            textAlign: 'center',
+                            fontSize: '$5xl',
+                            fontWeight: '$semibold',
+                            paddingBottom: '1.5%'
+                        }}>
+                            FIFA TOURNAMENT REGISTRATION
+                        </Text>
+                        <Text showIn={'xs'}
+                        css={{
+                            textAlign: 'center',
+                            fontSize: '$3xl',
+                            fontWeight: '$semibold',
+                            padding: '10% 5%'
+                        }}>
+                            FIFA TOURNAMENT REGISTRATION
+                        </Text>
+                        <Text hideIn={'xs'}
+                        css={{
+                            textAlign: 'center',
+                            fontSize:'$2xl',
+                            fontWeight: '$medium',
+                            padding: '0% 20% 2% 20%'
+                        }}>
+                            Fill out the form* below and pay the required registration fee to complete your registration!
+                        </Text>
+                        <Text showIn={'xs'}
+                        css={{
+                            textAlign: 'center',
+                            fontSize:'$xl',
+                            fontWeight: '$medium',
+                            paddingBottom: '5%'
+                        }}>
+                            Fill out the form* below and pay the required registration fee to complete your registration!
+                        </Text>
+
+                    </Grid.Container>
+
+                    <Grid.Container gap={2}
+                    css={{
+                        jc: 'center',
+                        alignItems: 'center'
+                    }}>
+                        <Grid
+                        css={{
+                            jc: 'center',
+                            alignItems: 'center'
+                        }}>
                             <Grid.Container
                             css={{
                                 jc: 'center',
-                                alignItems: 'center'
+    
                             }}>
                                 
-                                <Text hideIn={'xs'}
-                                css={{
-                                    jc: 'center',
-                                    alignItems: 'center',
-                                    fontSize: '$2xl',
-                                    fontWeight: '$semibold',
-                                    paddingBottom: '5%',
-                                    textAlign: 'center',
-                                    color: '$gray900'
-                                }}>
-                                    Signed in using: {User.email}
-                                </Text>
-                                <Text showIn={'xs'}
-                                css={{
-                                    jc: 'center',
-                                    textAlign: 'center',
-                                    alignItems: 'center',
-                                    fontSize: '$xl',
-                                    fontWeight: '$semibold',
-                                    paddingBottom: '15%',
-                                    color: '$gray900'
-                                }}>
-                                    Signed in using: {User.email}
-                                </Text>
-                                
+                                <div className="GoogleButton" id='GoogleButton'></div>
                             </Grid.Container>
-
-                            <Modal
-                            open={signedin}
-                            closeButton
-                            >
-                                    <Modal.Header
-                                    css={{
-                                        paddingTop: '0px',
-                                    }}>
-                                        <Col>
-                                            <Text 
-                                            css={{
-                                                textAlign: 'center',
-                                                fontSize: '$3xl',
-                                                fontWeight: '$bold',
-                                                color: '$green600',
-                                                borderStyle: 'solid',
-                                                borderWidth: '0px 0px 1px 0px',
-                                                borderColor: '$gray800'
-                                            }}>
-                                                Success!
-                                            </Text>
-                                            
-                                        </Col>
-                                    </Modal.Header>
-                                    <Modal.Body
-                                    css={{
-                                        paddingTop: '0px'
-                                    }}>
-                                        <Text 
-                                        css={{
-                                            textAlign: 'center',
-                                            fontSize: '$xl',
-                                            fontWeight: '$semibold',
-                                            color: 'white',
-                                        }}>
-                                            You have been successfully logged in as {User.name}
-                                        </Text>
-                                    </Modal.Body>
-                                    
-                            </Modal>
-                        
-                        </div>
-                        }
-
-                        {!signedin && !LoginLoader && //Show login buttons when not signed in and LoginLoader===false
-                        <div>
                             
-                            <Grid.Container gap={0}
-                            css={{
-                                jc: 'center',
-                                alignItems: 'center'
-                            }}>
-
-                                <Grid
-                                css={{
-                                    jc: 'center',
-                                    alignItems: 'center',
-                                    textAlign: 'center'
-                                }}>
-                                    <Text
-                                    css={{
-                                        paddingTop: '5px'
-                                    }}>
-                                        *This form is open to only those affiliated with Ashoka University.
-                                    </Text>
-                                </Grid>
-                                
-                            </Grid.Container>
-
-                            <Grid.Container gap={0}
-                            css={{
-                                jc: 'center',
-                                alignItems: 'center'
-                            }}>
-
-                                <Grid
-                                css={{
-                                    jc: 'center',
-                                    alignItems: 'center',
-                                    textAlign: 'center'
-                                }}>
-                                    <Text
-                                    css={{
-                                        paddingBottom: '15px'
-                                    }}>
-                                        Please login via your @ashoka.edu.in email ID for form access.
-                                    </Text>
-                                </Grid>
-                                
-                            </Grid.Container> 
-                            
-                        </div>
-
-                        }
-
-                        {LoginLoader && //Show loader when LoginLoader===true - for the lag between loggin in and shoing welcome message
-                        <Grid.Container
-                        css={{
-                            jc: 'center',
-                            alignItems: 'center',
-                        }}>
-                            <Grid>
-                                <Loading
-                                size="xl"
-                                color='white'
-
-                                />
-                            </Grid>
-                        </Grid.Container>
-                        }
-
-                        {AlreadyRegistered && //If user is already registered, show error message
+    
+                            {Object.keys(User).length != 0 && //Display welcome message to user if User Object is not empty
                             <div>
+                                <Grid.Container gap={2}
+                                css={{
+                                    jc: 'center',
+                                    alignItems: 'center'
+                                }}>
+                                    <Text
+                                    css={{
+                                        jc: 'center',
+                                        alignItems: 'center',
+                                        textAlign: 'center',
+                                        fontSize: '$4xl',
+                                        fontWeight: '$semibold',
+                                        color: '$green600'
+                                    }}>
+                                        Welcome {User.name}!
+                                    </Text>
+                                </Grid.Container>
+    
                                 <Grid.Container
                                 css={{
                                     jc: 'center',
-                                    alignItems: 'center',
-                                    textAlign: 'center'
+                                    alignItems: 'center'
                                 }}>
-                                    <Modal
-                                    open={AlreadyRegistered}
-                                    closeButton
-                                    onClose={()=>{setAlreadyRegistered(false); window.location.pathname='/registration/fifa'; }}
-                                    >
-                                            <Modal.Header
-                                            css={{
-                                                paddingTop: '0px',
-                                            }}>
-                                                <Col>
-                                                    <Text 
-                                                    css={{
-                                                        textAlign: 'center',
-                                                        fontSize: '$3xl',
-                                                        fontWeight: '$bold',
-                                                        color: '$red600',
-                                                        borderStyle: 'solid',
-                                                        borderWidth: '0px 0px 1px 0px',
-                                                        borderColor: '$gray800'
-                                                    }}>
-                                                        Error!
-                                                    </Text>
-                                                    
-                                                </Col>
-                                            </Modal.Header>
-                                            <Modal.Body
-                                            css={{
-                                                paddingTop: '0px'
-                                            }}>
-                                                <Text 
-                                                css={{
-                                                    textAlign: 'center',
-                                                    fontSize: '$xl',
-                                                    fontWeight: '$bold',
-                                                    color: 'white',
-                                                }}>
-                                                    It seems that you have already registered with this email address.
-                                                </Text>
-                                            </Modal.Body>
-                                            
-                                    </Modal>
-                                </Grid.Container>
-                            </div>
-                        }
-
-                        {/* Participant 1 */}
-                        <Grid.Container gap={2}
-                        css={{
-                            jc: 'center',
-                            alignItems: 'center'
-                        }}>
-                            <Text
-                            css={{
-                                jc:'center',
-                                textAlign: 'center',
-                                paddingBottom: '2%',
-                                fontSize: '$4xl',
-                                fontWeight: '$semibold'
-                            }}>Participant 1</Text>
-
-                            <Grid.Container gap={2}
-                            css={{
-                                jc: 'center',
-                            }}>
-                                {/* Participant 1 */}
-                                {participantone &&
-                                <Grid>
-                                    <Input onChange={(event)=>{
-                                        participantone(event.target.value);
-                                        if(event.target.value) {
-                                            setParticipantoneStatus('success')
-                                        }
-                                        else if(!event.target.value){
-                                            setParticipantoneStatus('error')
-                                        }
-                                    }} 
-                                    width="200px"  status={participantoneStatus} disabled={!signedin} value={participantone} />
-                                </Grid>
-                                }
-                                {!participantone && 
-                                <Grid>
-                                    <Input onChange={(event)=>{
-                                        setParticipantone(event.target.value)
-                                        if(event.target.value) {
-                                            setParticipantoneStatus('success')
-                                        }
-                                        else if(!event.target.value){
-                                            setParticipantoneStatus('error')
-                                        }
-                                        }} 
-                                        width="200px" status={participantoneStatus} disabled={!signedin} placeholder='Name' />
-                                </Grid>
-                                }
-                                {/* Participant One Phone */}
-                               
-                                <Grid> 
-                                    <Input onChange={(event)=>{
-                                        setParticipantonephone(event.target.value)
-                                        if(event.target.value.length>10 || event.target.value.length<10){
-                                            setParticipantonephoneStatus('error')
-                                        }
-                                        else if(event.target.value.length===10){
-                                            setParticipantonephoneStatus('success')
-                                        }
-                                    }}
                                     
-                                    width="200px" status={participantonephoneStatus} disabled={!signedin} animated={'true'} 
-                                    placeholder='Phone Number' type='text' clearable required  />
-                                </Grid>
-                                <Grid
-                                css={{
-                                    textAlign: 'center',
-                                    
-                                }}>
-                                    <Col>
-                                        <Input onChange={(event)=>{
-                                        participantoneemail(event.target.value);
-                                        if(event.target.value) {
-                                            setParticipantoneemailStatus('success')
-                                        }
-                                        else if(!event.target.value){
-                                            setParticipantoneemailStatus('error')
-                                        }
-                                    }}  width="300px" status={participantoneemailStatus} readOnly disabled={!signedin} value={participantoneemail} placeholder='Email ID' />
-                                    </Col>
-                                </Grid>
-                        
-                            <Grid
-                            css={{
-                                jc:'center',
-                            }}>
-                                <Dropdown isDisabled= {!signedin} >
-                                    {participantonebatch === '' 
-                                    ? <Dropdown.Button className="dp-btn" color={participantonebatchStatus} default light >Batch</Dropdown.Button>
-                                    : <Dropdown.Button className="dp-btn" color={participantonebatchStatus} default light >{participantonebatch}</Dropdown.Button>
-                                    }
-                                    <Dropdown.Menu 
-                                    onAction={(event)=>{
-                                        setParticipantonebatch(event);
-                                        if(event){
-                                            setParticipantonebatchStatus('success');
-                                        }
-                                    }} disallowEmptySelection selectionMode="single" selectedKeys={participantonebatch} aria-label="Dynamic Actions" items={batchItems}>
-                                        {(item) => (
-                                        <Dropdown.Item
-                                            key={item.key}
-                                            color={item.key === "delete" ? "error" : "default"}
-                                        >
-                                            {item.name}
-                                        </Dropdown.Item>
-                                        )}
-                                    </Dropdown.Menu>
-                                </Dropdown>
-                            </Grid>
-
-                            </Grid.Container>
-                        </Grid.Container>
-
-                        {/* Participant Two */}
-
-                        <Grid.Container gap={2}
-                        css={{
-                            jc: 'center',
-                            alignItems: 'center'
-                        }}>
-                            <Text
-                            css={{
-                                jc:'center',
-                                textAlign: 'center',
-                                paddingBottom: '2%',
-                                fontSize: '$4xl',
-                                fontWeight: '$semibold'
-                            }}>Participant 2</Text>
-
-                            <Grid.Container gap={2}
-                            css={{
-                                jc: 'center',
-                            }}>
-                                
-                                <Grid>
-                                    <Input onChange={(event)=>{
-                                        setParticipanttwo(event.target.value);
-                                        if(event.target.value) {
-                                            setParticipanttwoStatus('success')
-                                        }
-                                        else if(!event.target.value){
-                                            setParticipanttwoStatus('error')
-                                        }
-                                    }} 
-                                    width="200px"  status={participanttwoStatus} disabled={!signedin} placeholder='Full Name' />
-                                </Grid>
-                                <Grid> 
-                                    <Input onChange={(event)=>{
-                                        setParticipanttwophone(event.target.value)
-                                        if(event.target.value.length===10){
-                                            setParticipanttwophoneStatus('success')
-                                        }
-                                        else{
-                                            setParticipanttwophoneStatus('error')
-                                        }
-                                        
-                                        }} 
-                                        width="200px" status={participanttwophoneStatus} disabled={!signedin} placeholder='Phone Number' />
-                                </Grid>
-                                <Grid> 
-                                    <Input onChange={(event)=>{
-                                        setParticipanttwoemail(event.target.value)
-                                        if(event.target.value.length){
-                                            setParticipanttwoemailStatus('success')
-                                        }
-                                        else{
-                                            setParticipanttwoemailStatus('error')
-                                        }
-                                        
-                                        }} 
-                                        width="300px" status={participanttwoemailStatus} disabled={!signedin} placeholder='Email ID' />
-                                </Grid>
-                        
-                            <Grid
-                            css={{
-                                jc:'center',
-                            }}>
-                                <Dropdown isDisabled= {!signedin}>
-                                    {participanttwobatch === '' 
-                                    ? <Dropdown.Button className="dp-btn" color={participanttwobatchStatus} default light>Batch</Dropdown.Button>
-                                    : <Dropdown.Button className="dp-btn" color={participanttwobatchStatus} default light>{participanttwobatch}</Dropdown.Button>
-                                    }
-                                    <Dropdown.Menu 
-                                    onAction={(event)=>{
-                                        setParticipanttwobatch(event);
-                                        if(event){
-                                            setParticipanttwobatchStatus('success');
-                                        }
-                                    }} disallowEmptySelection selectionMode="single" selectedKeys={participanttwobatch} aria-label="Dynamic Actions" items={batchItems}>
-                                        {(item) => (
-                                        <Dropdown.Item
-                                            key={item.key}
-                                            color={item.key === "delete" ? "error" : "default"}
-                                        >
-                                            {item.name}
-                                        </Dropdown.Item>
-                                        )}
-                                    </Dropdown.Menu>
-                                </Dropdown>
-                            </Grid>
-
-                            </Grid.Container>                            
-                        </Grid.Container>
-
-
-                        {/* payment details */}
-                        <Grid.Container gap={2}
-                        css={{
-                            jc: 'center',
-                            alignItems: 'center',
-                            paddingBottom:'20px'
-                        }}>
-                            <Col>
-                                {paymentSCUploaded===false && 
-                                <Text
-                                css={{
-                                    jc: 'center',
-                                    textAlign: 'center',
-                                    color: '$red600',
-                                    fontSize: '$xl',
-                                    fontWeight: '$semibold'
-                                }}>
-                                    Please upload payment screenshot from your UPI service app!
-                                </Text>
-                                }
-                                
-                                <Text
-                                css={{
-                                    jc:'center',
-                                    textAlign: 'center',
-                                    fontSize: '$4xl',
-                                    fontWeight: '$semibold'
-                                }}>
-                                    Payment
-                                </Text>
-                                <Text 
-                                css={{
-                                    jc:'center',
-                                    textAlign: 'center',
-                                    fontSize: '$xl',
-                                    fontWeight: '$medium'
-                                }}>
-                                    Please pay the amount (300) to Uday Srivastava (APL Director), via PayTM or GPay.
-                                </Text>
-                                <Text 
-                                css={{
-                                    jc:'center',
-                                    textAlign: 'center',
-                                    fontSize: '$xl',
-                                    fontWeight: '$medium'
-                                }}>
-                                    (8447906230, UPI ID: )
-                                </Text>
-                            </Col>
-                            <Grid>
-                                <input disabled={!signedin} onChange={(event)=>{setPaymentSC(event.target.files[0]); }} className="photobtn" animated={'true'} type='file' accept="image/*" required/>
-                            </Grid>
-                            
-                        </Grid.Container>
-
-                        {/* payment button */}
-                        <Grid.Container gap={2}
-                        css={{
-                            jc: 'center',
-                        }}>
-                            <Grid>
-                                <Button auto rounded disabled={!signedin}
-                                css={{
-                                    background: '$gray900'
-                                }}
-                                onPress={()=>{
-                                    if(paymentSC)
-                                    {convertImageToBase64()}
-                                    if(paymentSC){
-                                        setPaymentSCUploaded(true)
-                                    }
-                                    if(!paymentSC){
-                                        setPaymentSCUploaded(false)
-                                    }
-                        
-                                    setModalVisibility(CheckForm());
-                                    
-                                }}>
-                                    <Text
-                                    css={{
-                                        color: 'Black',
-                                        fontWeight: '$semibold'
-                                    }}>
-                                        Register
-                                    </Text>
-                                </Button>
-
-                                <Modal
-                                closeButton
-                                open={ModalVisibility}
-                                onClose={()=>{
-                                    setModalVisibility(false)
-                                }}
-                                css={
-                                    {
-                                        display:'flex',
-                                        flexWrap:'nowrap'
-                                    }
-                                }
-                                
-                                >
-
-                                    <Modal.Header>
-                                        <Col>
-                                            <Text
-                                            css={{
-                                                fontSize: '$4xl',
-                                                fontWeight: '$semibold',
-                                                textAlign: 'center',
-                                                color: '$yellow600'
-                                            }}>
-                                                Player Details
-                                            </Text>
-                                            <Text
-                                            css={{
-                                                fontSize: '$md',
-                                                fontWeight: '$normal',
-                                                textAlign: 'center',
-                                                color: '$gray900'
-                                            }}>
-                                                Check your details one last time before paying!
-                                            </Text>
-                                        </Col>
-                                        
-                                    </Modal.Header>
-
-                                    <Modal.Body>
-
-
-                                        <Grid.Container
-                                        css={{
-                                            jc: 'center',
-                                            alignItems: 'center',
-                                            display:'flex',
-                                            flexDirection: 'column',
-                                            justifyContent:'center',
-                                            alignContent:'center',
-                                            flexWrap:'nowrap'
-                                        
-                                        }}>
-                                            <Grid> 
-                                            <Grid css={{
-                                                            jc: 'center',
-                                                            textAlign: 'center',
-                                                            marginBottom: 0
-                                                        }}>
-                                                        <Row
-                                                        css={{
-                                                            jc: 'center',
-                                                            textAlign: 'center',
-                                                            marginBottom: 0
-                                                        }}>
-                                                            <Text 
-                                                            css={{
-                                                                fontSize: '$lg',
-                                                                paddingRight: '4px',
-                                                                color: 'white',
-                                                                fontWeight:'$bold',
-                                                                
-                                                            }} h1>
-                                                                Participant 1
-                                                            </Text>
-                                                        </Row>
-                                                    </Grid>
-                                                <Grid.Container gap={0.5}
-                                                css={{
-                                                    jc: 'center',
-                                                    alignItems: 'center',
-                                                    textAlign: 'center'
-                                                }}>
-                                                    </Grid.Container> 
-                                                    <Grid>
-                                                    <Grid>
-                                                        <Row
-                                                        css={{
-                                                            jc: 'center',
-                                                            textAlign: 'center'
-                                                        }}>
-                                                            <Text hideIn={'xs'}
-                                                            css={{
-                                                                fontSize: '$lg',
-                                                                paddingRight: '4px',
-                                                                color: '$gray700'
-                                                            }}>
-                                                                Name: 
-                                                            </Text>
-                                                            <Text hideIn={'xs'}
-                                                            css={{
-                                                                fontSize: '$lg',
-                                                                fontWeight: '$semibold'
-                                                            }}>
-                                                                {participantone}
-                                                            </Text>
-
-                                                            <Text showIn={'xs'}
-                                                            css={{
-                                                                fontSize: '$md',
-                                                                paddingRight: '4px',
-                                                                color: '$gray700'
-                                                            }}>
-                                                                Name: 
-                                                            </Text>
-                                                            <Text showIn={'xs'}
-                                                            css={{
-                                                                fontSize: '$md',
-                                                                fontWeight: '$semibold'
-                                                            }}>
-                                                                {participantone}
-                                                            </Text>
-                                                        </Row>
-                                                    </Grid>
-                                                        {participantoneemail && 
-                                                            <Row
-                                                            css={{
-                                                                jc: 'center',
-                                                                textAlign: 'center'
-                                                            }}>
-                                                                <Text hideIn={'xs'}
-                                                                css={{
-                                                                    fontSize: '$lg',
-                                                                    paddingRight: '4px',
-                                                                    color: '$gray700'
-                                                                }}>
-                                                                    Email: 
-                                                                </Text>
-                                                                <Text hideIn={'xs'}
-                                                                css={{
-                                                                    fontSize: '$lg',
-                                                                    fontWeight: '$semibold'
-                                                                }}>
-                                                                    {participantoneemail}
-                                                                </Text>
-        
-                                                                <Text showIn={'xs'}
-                                                                css={{
-                                                                    fontSize: '$md',
-                                                                    paddingRight: '4px',
-                                                                    color: '$gray700'
-                                                                }}>
-                                                                   Email: 
-                                                                </Text>
-                                                                <Text showIn={'xs'}
-                                                                css={{
-                                                                    fontSize: '$md',
-                                                                    fontWeight: '$semibold'
-                                                                }}>
-                                                                    {participantoneemail}
-                                                                </Text>
-                                                            </Row>
-                                                        }
-                                                    </Grid>
-                                                    <Grid>
-                                                        <Row
-                                                        css={{
-                                                            jc: 'center',
-                                                            textAlign: 'center',
-                                                            display: 'flex',
-                                                            flexDirection: 'row'
-                                                        }}>
-                                                            <Text hideIn={'xs'}
-                                                            css={{
-                                                                fontSize: '$lg',
-                                                                paddingRight: '4px',
-                                                                color: '$gray700'
-                                                            }}>
-                                                                Phone Number: 
-                                                            </Text>
-                                                            <Text hideIn={'xs'}
-                                                            css={{
-                                                                fontSize: '$lg',
-                                                                fontWeight: '$semibold'
-                                                            }}>
-                                                                {participantonephone}
-                                                            </Text>
-
-                                                            <Text showIn={'xs'}
-                                                            css={{
-                                                                fontSize: '$md',
-                                                                paddingRight: '4px',
-                                                                color: '$gray700'
-                                                            }}>
-                                                                Phone Number: 
-                                                            </Text>
-                                                            <Text showIn={'xs'}
-                                                            css={{
-                                                                fontSize: '$md',
-                                                                fontWeight: '$semibold'
-                                                            }}>
-                                                                {participantonephone}
-                                                            </Text>
-                                                        </Row>
-                                                        <Grid/>
-                                                    <Grid>
-                                                        <Row
-                                                        css={{
-                                                            jc: 'center',
-                                                            textAlign: 'center'
-                                                        }}>
-                                                            <Text hideIn={'xs'}
-                                                            css={{
-                                                                fontSize: '$lg',
-                                                                paddingRight: '4px',
-                                                                color: '$gray700'
-                                                            }}>
-                                                                Batch: 
-                                                            </Text>
-                                                            <Text hideIn={'xs'}
-                                                            css={{
-                                                                fontSize: '$lg',
-                                                                fontWeight: '$semibold'
-                                                            }}>
-                                                                {participantonebatch}
-                                                            </Text>
-
-                                                            <Text showIn={'xs'}
-                                                            css={{
-                                                                fontSize: '$md',
-                                                                paddingRight: '4px',
-                                                                color: '$gray700'
-                                                            }}>
-                                                                Batch: 
-                                                            </Text>
-                                                            <Text showIn={'xs'}
-                                                            css={{
-                                                                fontSize: '$md',
-                                                                fontWeight: '$semibold'
-                                                            }}>
-                                                                {participantonebatch}
-                                                            </Text>
-                                                        </Row>
-                                                        </Grid>
-                                                    </Grid> 
-                                            </Grid>
-                                        </Grid.Container>
-                                        <Grid.Container
-                                        css={{
-                                            jc: 'center',
-                                            alignItems: 'center',
-                                            display:'flex',
-                                            flexDirection: 'column',
-                                            justifyContent:'center',
-                                            alignContent:'center',
-                                            flexWrap:'nowrap',
-                                            marginTop:'6%'
-                                        }}>
-                                            <Grid> 
-                                            <Grid css={{
-                                                            jc: 'center',
-                                                            textAlign: 'center',
-                                                            marginBottom: 0     
-                                                        }}>
-                                                        <Row
-                                                        css={{
-                                                            jc: 'center',
-                                                            textAlign: 'center',
-                                                            marginBottom: 0
-                                                        }}>
-                                                            <Text 
-                                                            css={{
-                                                                fontSize: '$lg',
-                                                                paddingRight: '4px',
-                                                                color: 'white',
-                                                                fontWeight:'$bold',
-                                                                
-                                                            }} h1>
-                                                                Participant 2
-                                                            </Text>
-                                                        </Row>
-                                                    </Grid>
-                                                        <Grid.Container gap={0.5}
-                                                        css={{
-                                                            jc: 'center',
-                                                            alignItems: 'center',
-                                                            textAlign: 'center'
-                                                        }}>
-                                                    </Grid.Container> 
-                                                    <Grid>
-                                                    <Grid>
-                                                        <Row
-                                                        css={{
-                                                            jc: 'center',
-                                                            textAlign: 'center'
-                                                        }}>
-                                                            <Text hideIn={'xs'}
-                                                            css={{
-                                                                fontSize: '$lg',
-                                                                paddingRight: '4px',
-                                                                color: '$gray700'
-                                                            }}>
-                                                                Name: 
-                                                            </Text>
-                                                            <Text hideIn={'xs'}
-                                                            css={{
-                                                                fontSize: '$lg',
-                                                                fontWeight: '$semibold'
-                                                            }}>
-                                                                {participanttwo}
-                                                            </Text>
-
-                                                            <Text showIn={'xs'}
-                                                            css={{
-                                                                fontSize: '$md',
-                                                                paddingRight: '4px',
-                                                                color: '$gray700'
-                                                            }}>
-                                                                Name: 
-                                                            </Text>
-                                                            <Text showIn={'xs'}
-                                                            css={{
-                                                                fontSize: '$md',
-                                                                fontWeight: '$semibold'
-                                                            }}>
-                                                                {participanttwo}
-                                                            </Text>
-                                                        </Row>
-                                                    </Grid>
-                                                        {participanttwoemail && 
-                                                            <Row
-                                                            css={{
-                                                                jc: 'center',
-                                                                textAlign: 'center'
-                                                            }}>
-                                                                <Text hideIn={'xs'}
-                                                                css={{
-                                                                    fontSize: '$lg',
-                                                                    paddingRight: '4px',
-                                                                    color: '$gray700'
-                                                                }}>
-                                                                    Email: 
-                                                                </Text>
-                                                                <Text hideIn={'xs'}
-                                                                css={{
-                                                                    fontSize: '$lg',
-                                                                    fontWeight: '$semibold'
-                                                                }}>
-                                                                    {participanttwoemail}
-                                                                </Text>
-        
-                                                                <Text showIn={'xs'}
-                                                                css={{
-                                                                    fontSize: '$md',
-                                                                    paddingRight: '4px',
-                                                                    color: '$gray700'
-                                                                }}>
-                                                                   Email: 
-                                                                </Text>
-                                                                <Text showIn={'xs'}
-                                                                css={{
-                                                                    fontSize: '$md',
-                                                                    fontWeight: '$semibold'
-                                                                }}>
-                                                                    {participanttwoemail}
-                                                                </Text>
-                                                            </Row>
-                                                        }
-                                                    </Grid>
-                                                    <Grid>
-                                                        <Row
-                                                        css={{
-                                                            jc: 'center',
-                                                            textAlign: 'center',
-                                                            display: 'flex',
-                                                            flexDirection: 'row'
-                                                        }}>
-                                                            <Text hideIn={'xs'}
-                                                            css={{
-                                                                fontSize: '$lg',
-                                                                paddingRight: '4px',
-                                                                color: '$gray700'
-                                                            }}>
-                                                                Phone Number: 
-                                                            </Text>
-                                                            <Text hideIn={'xs'}
-                                                            css={{
-                                                                fontSize: '$lg',
-                                                                fontWeight: '$semibold'
-                                                            }}>
-                                                                {participanttwophone}
-                                                            </Text>
-
-                                                            <Text showIn={'xs'}
-                                                            css={{
-                                                                fontSize: '$md',
-                                                                paddingRight: '4px',
-                                                                color: '$gray700'
-                                                            }}>
-                                                                Phone Number: 
-                                                            </Text>
-                                                            <Text showIn={'xs'}
-                                                            css={{
-                                                                fontSize: '$md',
-                                                                fontWeight: '$semibold'
-                                                            }}>
-                                                                {participanttwophone}
-                                                            </Text>
-                                                        </Row>
-                                                        <Grid/>
-                                                    <Grid>
-                                                        <Row
-                                                        css={{
-                                                            jc: 'center',
-                                                            textAlign: 'center'
-                                                        }}>
-                                                            <Text hideIn={'xs'}
-                                                            css={{
-                                                                fontSize: '$lg',
-                                                                paddingRight: '4px',
-                                                                color: '$gray700'
-                                                            }}>
-                                                                Batch: 
-                                                            </Text>
-                                                            <Text hideIn={'xs'}
-                                                            css={{
-                                                                fontSize: '$lg',
-                                                                fontWeight: '$semibold'
-                                                            }}>
-                                                                {participanttwobatch}
-                                                            </Text>
-
-                                                            <Text showIn={'xs'}
-                                                            css={{
-                                                                fontSize: '$md',
-                                                                paddingRight: '4px',
-                                                                color: '$gray700'
-                                                            }}>
-                                                                Batch: 
-                                                            </Text>
-                                                            <Text showIn={'xs'}
-                                                            css={{
-                                                                fontSize: '$md',
-                                                                fontWeight: '$semibold'
-                                                            }}>
-                                                                {participanttwobatch}
-                                                            </Text>
-                                                        </Row>
-                                                        </Grid>
-                                                    </Grid> 
-                                            </Grid>
-                                        </Grid.Container>
-                                    </Modal.Body>
-
-                                    <Modal.Footer
+                                    <Text hideIn={'xs'}
                                     css={{
                                         jc: 'center',
-                                        alignItems: 'center'
+                                        alignItems: 'center',
+                                        fontSize: '$2xl',
+                                        fontWeight: '$semibold',
+                                        paddingBottom: '5%',
+                                        textAlign: 'center',
+                                        color: '$gray900'
                                     }}>
-                                        <Button auto rounded 
-                                        css={{
-                                            background: '$gray900'
-                                        }}
-                                        onPress={(e)=>{
-                                            sendForm(e);
-                                            sendPaymentImage(paymentSC)
-                                            setRegistrationDone(true);
-                                            setModalVisibility(false);
-                                            checkIfRegSuccess1(participantoneemail)
-                                        }}>
-                                            <Text
-                                            css={{
-                                                color: 'Black',
-                                                fontWeight: '$semibold'
-                                            }}>
-                                                Pay
-                                            </Text>
-                                            {/* <a href="https://www.instamojo.com/@testingrightnowforapl/l639029eaa66b4bbbbb30744adfef7b48/" rel="im-checkout" data-text="Pay" data-css-style="color:#ffffff; background:#000000; width:180px; border-radius:30px"   data-layout="vertical">PAY</a> */}
-                                            {/* <script src="https://js.instamojo.com/v1/button.js"></script> */}
-                                        </Button>
-                                    </Modal.Footer>
-
-                                </Modal>
-                                {RegistrationDone===true && 
+                                        Signed in using: {User.email}
+                                    </Text>
+                                    <Text showIn={'xs'}
+                                    css={{
+                                        jc: 'center',
+                                        textAlign: 'center',
+                                        alignItems: 'center',
+                                        fontSize: '$xl',
+                                        fontWeight: '$semibold',
+                                        paddingBottom: '15%',
+                                        color: '$gray900'
+                                    }}>
+                                        Signed in using: {User.email}
+                                    </Text>
+                                    
+                                </Grid.Container>
+    
                                 <Modal
-                                open={RegStatusModal}
+                                open={signedin}
                                 closeButton
-                                onClose={()=>{
-                                    setRegStatusModal(false)
-                                    window.location.pathname='./registration/fifa'
-                                }}
                                 >
                                         <Modal.Header
                                         css={{
@@ -1384,64 +785,1011 @@ export default function FifaRegForm(){
                                                 fontWeight: '$semibold',
                                                 color: 'white',
                                             }}>
-                                                You have been successfully registered as {User.name}
+                                                You have been successfully logged in as {User.name}
                                             </Text>
                                         </Modal.Body>
                                         
                                 </Modal>
-                                }
-
-                                {RegistrationDone===false && 
-                                <Modal
-                                open={RegStatusModal}
-                                closeButton
-                                onClose={()=>{
-                                    setRegStatusModal(false)
-                                    window.location.pathname='./registration/fifa'
-                                }}
-                                >
-                                        <Modal.Header
+                            
+                            </div>
+                            }
+    
+                            {!signedin && !LoginLoader && //Show login buttons when not signed in and LoginLoader===false
+                            <div>
+                                
+                                <Grid.Container gap={0}
+                                css={{
+                                    jc: 'center',
+                                    alignItems: 'center'
+                                }}>
+    
+                                    <Grid
+                                    css={{
+                                        jc: 'center',
+                                        alignItems: 'center',
+                                        textAlign: 'center'
+                                    }}>
+                                        <Text
                                         css={{
-                                            paddingTop: '0px',
+                                            paddingTop: '5px'
                                         }}>
+                                            *This form is open to only those affiliated with Ashoka University.
+                                        </Text>
+                                    </Grid>
+                                    
+                                </Grid.Container>
+    
+                                <Grid.Container gap={0}
+                                css={{
+                                    jc: 'center',
+                                    alignItems: 'center'
+                                }}>
+    
+                                    <Grid
+                                    css={{
+                                        jc: 'center',
+                                        alignItems: 'center',
+                                        textAlign: 'center'
+                                    }}>
+                                        <Text
+                                        css={{
+                                            paddingBottom: '15px'
+                                        }}>
+                                            Please login via your @ashoka.edu.in email ID for form access.
+                                        </Text>
+                                    </Grid>
+                                    
+                                </Grid.Container> 
+                                
+                            </div>
+    
+                            }
+    
+                            {LoginLoader && //Show loader when LoginLoader===true - for the lag between loggin in and shoing welcome message
+                            <Grid.Container
+                            css={{
+                                jc: 'center',
+                                alignItems: 'center',
+                            }}>
+                                <Grid>
+                                    <Loading
+                                    size="xl"
+                                    color='white'
+    
+                                    />
+                                </Grid>
+                            </Grid.Container>
+                            }
+    
+                            {AlreadyRegistered && //If user is already registered, show error message
+                                <div>
+                                    <Grid.Container
+                                    css={{
+                                        jc: 'center',
+                                        alignItems: 'center',
+                                        textAlign: 'center'
+                                    }}>
+                                        <Modal
+                                        open={AlreadyRegistered}
+                                        closeButton
+                                        onClose={()=>{setAlreadyRegistered(false); window.location.pathname='/registration/fifa'; }}
+                                        >
+                                                <Modal.Header
+                                                css={{
+                                                    paddingTop: '0px',
+                                                }}>
+                                                    <Col>
+                                                        <Text 
+                                                        css={{
+                                                            textAlign: 'center',
+                                                            fontSize: '$3xl',
+                                                            fontWeight: '$bold',
+                                                            color: '$red600',
+                                                            borderStyle: 'solid',
+                                                            borderWidth: '0px 0px 1px 0px',
+                                                            borderColor: '$gray800'
+                                                        }}>
+                                                            Error!
+                                                        </Text>
+                                                        
+                                                    </Col>
+                                                </Modal.Header>
+                                                <Modal.Body
+                                                css={{
+                                                    paddingTop: '0px'
+                                                }}>
+                                                    <Text 
+                                                    css={{
+                                                        textAlign: 'center',
+                                                        fontSize: '$xl',
+                                                        fontWeight: '$bold',
+                                                        color: 'white',
+                                                    }}>
+                                                        It seems that you have already registered with this email address.
+                                                    </Text>
+                                                </Modal.Body>
+                                                
+                                        </Modal>
+                                    </Grid.Container>
+                                </div>
+                            }
+    
+                            {/* Participant 1 */}
+                            <Grid.Container gap={2}
+                            css={{
+                                jc: 'center',
+                                alignItems: 'center'
+                            }}>
+                                <Text
+                                css={{
+                                    jc:'center',
+                                    textAlign: 'center',
+                                    paddingBottom: '2%',
+                                    fontSize: '$4xl',
+                                    fontWeight: '$semibold'
+                                }}>Participant 1</Text>
+    
+                                <Grid.Container gap={2}
+                                css={{
+                                    jc: 'center',
+                                }}>
+                                    {/* Participant 1 */}
+                                    {participantone &&
+                                    <Grid>
+                                        <Input onChange={(event)=>{
+                                            participantone(event.target.value);
+                                            if(event.target.value) {
+                                                setParticipantoneStatus('success')
+                                            }
+                                            else if(!event.target.value){
+                                                setParticipantoneStatus('error')
+                                            }
+                                        }} 
+                                        width="200px"  status={participantoneStatus} disabled={!signedin} value={participantone} />
+                                    </Grid>
+                                    }
+                                    {!participantone && 
+                                    <Grid>
+                                        <Input onChange={(event)=>{
+                                            setParticipantone(event.target.value)
+                                            if(event.target.value) {
+                                                setParticipantoneStatus('success')
+                                            }
+                                            else if(!event.target.value){
+                                                setParticipantoneStatus('error')
+                                            }
+                                            }} 
+                                            width="200px" status={participantoneStatus} disabled={!signedin} placeholder='Name' />
+                                    </Grid>
+                                    }
+                                    {/* Participant One Phone */}
+                                    
+                                    <Grid> 
+                                        <Input onChange={(event)=>{
+                                            setParticipantonephone(event.target.value)
+                                            if(event.target.value.length>10 || event.target.value.length<10){
+                                                setParticipantonephoneStatus('error')
+                                            }
+                                            else if(event.target.value.length===10){
+                                                setParticipantonephoneStatus('success')
+                                            }
+                                        }}
+                                        
+                                        width="200px" status={participantonephoneStatus} disabled={!signedin} animated={'true'} 
+                                        placeholder='Phone Number' type='text' clearable required  />
+                                    </Grid>
+                                    <Grid
+                                    css={{
+                                        textAlign: 'center',
+                                        
+                                    }}>
+                                        <Col>
+                                            <Input onChange={(event)=>{
+                                            participantoneemail(event.target.value);
+                                            if(event.target.value) {
+                                                setParticipantoneemailStatus('success')
+                                            }
+                                            else if(!event.target.value){
+                                                setParticipantoneemailStatus('error')
+                                            }
+                                        }}  width="300px" status={participantoneemailStatus} readOnly disabled={!signedin} value={participantoneemail} placeholder='Email ID' />
+                                        </Col>
+                                    </Grid>
+                            
+                                <Grid
+                                css={{
+                                    jc:'center',
+                                }}>
+                                    <Dropdown isDisabled= {!signedin} >
+                                        {participantonebatch === '' 
+                                        ? <Dropdown.Button className="dp-btn" color={participantonebatchStatus} default light >Batch</Dropdown.Button>
+                                        : <Dropdown.Button className="dp-btn" color={participantonebatchStatus} default light >{participantonebatch}</Dropdown.Button>
+                                        }
+                                        <Dropdown.Menu 
+                                        onAction={(event)=>{
+                                            setParticipantonebatch(event);
+                                            if(event){
+                                                setParticipantonebatchStatus('success');
+                                            }
+                                        }} disallowEmptySelection selectionMode="single" selectedKeys={participantonebatch} aria-label="Dynamic Actions" items={batchItems}>
+                                            {(item) => (
+                                            <Dropdown.Item
+                                                key={item.key}
+                                                color={item.key === "delete" ? "error" : "default"}
+                                            >
+                                                {item.name}
+                                            </Dropdown.Item>
+                                            )}
+                                        </Dropdown.Menu>
+                                    </Dropdown>
+                                </Grid>
+    
+                                </Grid.Container>
+                            </Grid.Container>
+    
+                            {/* Participant Two */}
+    
+                            <Grid.Container gap={2}
+                            css={{
+                                jc: 'center',
+                                alignItems: 'center'
+                            }}>
+                                <Text
+                                css={{
+                                    jc:'center',
+                                    textAlign: 'center',
+                                    paddingBottom: '2%',
+                                    fontSize: '$4xl',
+                                    fontWeight: '$semibold'
+                                }}>Participant 2</Text>
+    
+                                <Grid.Container gap={2}
+                                css={{
+                                    jc: 'center',
+                                }}>
+                                    
+                                    <Grid>
+                                        <Input onChange={(event)=>{
+                                            setParticipanttwo(event.target.value);
+                                            if(event.target.value) {
+                                                setParticipanttwoStatus('success')
+                                            }
+                                            else if(!event.target.value){
+                                                setParticipanttwoStatus('error')
+                                            }
+                                        }} 
+                                        width="200px"  status={participanttwoStatus} disabled={!signedin} placeholder='Full Name' />
+                                    </Grid>
+                                    <Grid> 
+                                        <Input onChange={(event)=>{
+                                            setParticipanttwophone(event.target.value)
+                                            if(event.target.value.length===10){
+                                                setParticipanttwophoneStatus('success')
+                                            }
+                                            else{
+                                                setParticipanttwophoneStatus('error')
+                                            }
+                                            
+                                            }} 
+                                            width="200px" status={participanttwophoneStatus} disabled={!signedin} placeholder='Phone Number' />
+                                    </Grid>
+                                    <Grid> 
+                                        <Input onChange={(event)=>{
+                                            setParticipanttwoemail(event.target.value)
+                                            if(event.target.value.length){
+                                                setParticipanttwoemailStatus('success')
+                                            }
+                                            else{
+                                                setParticipanttwoemailStatus('error')
+                                            }
+                                            
+                                            }} 
+                                            width="300px" status={participanttwoemailStatus} disabled={!signedin} placeholder='Email ID' />
+                                    </Grid>
+                            
+                                <Grid
+                                css={{
+                                    jc:'center',
+                                }}>
+                                    <Dropdown isDisabled= {!signedin}>
+                                        {participanttwobatch === '' 
+                                        ? <Dropdown.Button className="dp-btn" color={participanttwobatchStatus} default light>Batch</Dropdown.Button>
+                                        : <Dropdown.Button className="dp-btn" color={participanttwobatchStatus} default light>{participanttwobatch}</Dropdown.Button>
+                                        }
+                                        <Dropdown.Menu 
+                                        onAction={(event)=>{
+                                            setParticipanttwobatch(event);
+                                            if(event){
+                                                setParticipanttwobatchStatus('success');
+                                            }
+                                        }} disallowEmptySelection selectionMode="single" selectedKeys={participanttwobatch} aria-label="Dynamic Actions" items={batchItems}>
+                                            {(item) => (
+                                            <Dropdown.Item
+                                                key={item.key}
+                                                color={item.key === "delete" ? "error" : "default"}
+                                            >
+                                                {item.name}
+                                            </Dropdown.Item>
+                                            )}
+                                        </Dropdown.Menu>
+                                    </Dropdown>
+                                </Grid>
+    
+                                </Grid.Container>                            
+                            </Grid.Container>
+    
+    
+                            {/* payment details */}
+                            <Grid.Container gap={2}
+                            css={{
+                                jc: 'center',
+                                alignItems: 'center',
+                                paddingBottom:'20px'
+                            }}>
+                                <Col>
+                                    {paymentSCUploaded===false && 
+                                    <Text
+                                    css={{
+                                        jc: 'center',
+                                        textAlign: 'center',
+                                        color: '$red600',
+                                        fontSize: '$xl',
+                                        fontWeight: '$semibold'
+                                    }}>
+                                        Please upload payment screenshot from your UPI service app!
+                                    </Text>
+                                    }
+                                    
+                                    <Text
+                                    css={{
+                                        jc:'center',
+                                        textAlign: 'center',
+                                        fontSize: '$4xl',
+                                        fontWeight: '$semibold'
+                                    }}>
+                                        Payment
+                                    </Text>
+                                    <Text 
+                                    css={{
+                                        jc:'center',
+                                        textAlign: 'center',
+                                        fontSize: '$xl',
+                                        fontWeight: '$medium'
+                                    }}>
+                                        Please pay the amount (300) to Uday Srivastava (APL Director), via PayTM or GPay.
+                                    </Text>
+                                    <Text 
+                                    css={{
+                                        jc:'center',
+                                        textAlign: 'center',
+                                        fontSize: '$xl',
+                                        fontWeight: '$medium'
+                                    }}>
+                                        (8447906230, UPI ID: )
+                                    </Text>
+                                </Col>
+                                <Grid>
+                                    <input disabled={!signedin} onChange={(event)=>{setPaymentSC(event.target.files[0]); }} className="photobtn" animated={'true'} type='file' accept="image/*" required/>
+                                </Grid>
+                                
+                            </Grid.Container>
+    
+                            {/* payment button */}
+                            <Grid.Container gap={2}
+                            css={{
+                                jc: 'center',
+                            }}>
+                                <Grid>
+                                    <Button auto rounded disabled={!signedin}
+                                    css={{
+                                        background: '$gray900'
+                                    }}
+                                    onPress={()=>{
+                                        if(paymentSC)
+                                        {convertImageToBase64()}
+                                        if(paymentSC){
+                                            setPaymentSCUploaded(true)
+                                        }
+                                        if(!paymentSC){
+                                            setPaymentSCUploaded(false)
+                                        }
+                            
+                                        setModalVisibility(CheckForm());
+                                        
+                                    }}>
+                                        <Text
+                                        css={{
+                                            color: 'Black',
+                                            fontWeight: '$semibold'
+                                        }}>
+                                            Register
+                                        </Text>
+                                    </Button>
+    
+                                    <Modal
+                                    closeButton
+                                    open={ModalVisibility}
+                                    onClose={()=>{
+                                        setModalVisibility(false)
+                                    }}
+                                    css={
+                                        {
+                                            display:'flex',
+                                            flexWrap:'nowrap'
+                                        }
+                                    }
+                                    
+                                    >
+    
+                                        <Modal.Header>
                                             <Col>
+                                                <Text
+                                                css={{
+                                                    fontSize: '$4xl',
+                                                    fontWeight: '$semibold',
+                                                    textAlign: 'center',
+                                                    color: '$yellow600'
+                                                }}>
+                                                    Player Details
+                                                </Text>
+                                                <Text
+                                                css={{
+                                                    fontSize: '$md',
+                                                    fontWeight: '$normal',
+                                                    textAlign: 'center',
+                                                    color: '$gray900'
+                                                }}>
+                                                    Check your details one last time before paying!
+                                                </Text>
+                                            </Col>
+                                            
+                                        </Modal.Header>
+    
+                                        <Modal.Body>
+    
+    
+                                            <Grid.Container
+                                            css={{
+                                                jc: 'center',
+                                                alignItems: 'center',
+                                                display:'flex',
+                                                flexDirection: 'column',
+                                                justifyContent:'center',
+                                                alignContent:'center',
+                                                flexWrap:'nowrap'
+                                            
+                                            }}>
+                                                <Grid> 
+                                                <Grid css={{
+                                                                jc: 'center',
+                                                                textAlign: 'center',
+                                                                marginBottom: 0
+                                                            }}>
+                                                            <Row
+                                                            css={{
+                                                                jc: 'center',
+                                                                textAlign: 'center',
+                                                                marginBottom: 0
+                                                            }}>
+                                                                <Text 
+                                                                css={{
+                                                                    fontSize: '$lg',
+                                                                    paddingRight: '4px',
+                                                                    color: 'white',
+                                                                    fontWeight:'$bold',
+                                                                    
+                                                                }} h1>
+                                                                    Participant 1
+                                                                </Text>
+                                                            </Row>
+                                                        </Grid>
+                                                    <Grid.Container gap={0.5}
+                                                    css={{
+                                                        jc: 'center',
+                                                        alignItems: 'center',
+                                                        textAlign: 'center'
+                                                    }}>
+                                                        </Grid.Container> 
+                                                        <Grid>
+                                                        <Grid>
+                                                            <Row
+                                                            css={{
+                                                                jc: 'center',
+                                                                textAlign: 'center'
+                                                            }}>
+                                                                <Text hideIn={'xs'}
+                                                                css={{
+                                                                    fontSize: '$lg',
+                                                                    paddingRight: '4px',
+                                                                    color: '$gray700'
+                                                                }}>
+                                                                    Name: 
+                                                                </Text>
+                                                                <Text hideIn={'xs'}
+                                                                css={{
+                                                                    fontSize: '$lg',
+                                                                    fontWeight: '$semibold'
+                                                                }}>
+                                                                    {participantone}
+                                                                </Text>
+    
+                                                                <Text showIn={'xs'}
+                                                                css={{
+                                                                    fontSize: '$md',
+                                                                    paddingRight: '4px',
+                                                                    color: '$gray700'
+                                                                }}>
+                                                                    Name: 
+                                                                </Text>
+                                                                <Text showIn={'xs'}
+                                                                css={{
+                                                                    fontSize: '$md',
+                                                                    fontWeight: '$semibold'
+                                                                }}>
+                                                                    {participantone}
+                                                                </Text>
+                                                            </Row>
+                                                        </Grid>
+                                                            {participantoneemail && 
+                                                                <Row
+                                                                css={{
+                                                                    jc: 'center',
+                                                                    textAlign: 'center'
+                                                                }}>
+                                                                    <Text hideIn={'xs'}
+                                                                    css={{
+                                                                        fontSize: '$lg',
+                                                                        paddingRight: '4px',
+                                                                        color: '$gray700'
+                                                                    }}>
+                                                                        Email: 
+                                                                    </Text>
+                                                                    <Text hideIn={'xs'}
+                                                                    css={{
+                                                                        fontSize: '$lg',
+                                                                        fontWeight: '$semibold'
+                                                                    }}>
+                                                                        {participantoneemail}
+                                                                    </Text>
+            
+                                                                    <Text showIn={'xs'}
+                                                                    css={{
+                                                                        fontSize: '$md',
+                                                                        paddingRight: '4px',
+                                                                        color: '$gray700'
+                                                                    }}>
+                                                                        Email: 
+                                                                    </Text>
+                                                                    <Text showIn={'xs'}
+                                                                    css={{
+                                                                        fontSize: '$md',
+                                                                        fontWeight: '$semibold'
+                                                                    }}>
+                                                                        {participantoneemail}
+                                                                    </Text>
+                                                                </Row>
+                                                            }
+                                                        </Grid>
+                                                        <Grid>
+                                                            <Row
+                                                            css={{
+                                                                jc: 'center',
+                                                                textAlign: 'center',
+                                                                display: 'flex',
+                                                                flexDirection: 'row'
+                                                            }}>
+                                                                <Text hideIn={'xs'}
+                                                                css={{
+                                                                    fontSize: '$lg',
+                                                                    paddingRight: '4px',
+                                                                    color: '$gray700'
+                                                                }}>
+                                                                    Phone Number: 
+                                                                </Text>
+                                                                <Text hideIn={'xs'}
+                                                                css={{
+                                                                    fontSize: '$lg',
+                                                                    fontWeight: '$semibold'
+                                                                }}>
+                                                                    {participantonephone}
+                                                                </Text>
+    
+                                                                <Text showIn={'xs'}
+                                                                css={{
+                                                                    fontSize: '$md',
+                                                                    paddingRight: '4px',
+                                                                    color: '$gray700'
+                                                                }}>
+                                                                    Phone Number: 
+                                                                </Text>
+                                                                <Text showIn={'xs'}
+                                                                css={{
+                                                                    fontSize: '$md',
+                                                                    fontWeight: '$semibold'
+                                                                }}>
+                                                                    {participantonephone}
+                                                                </Text>
+                                                            </Row>
+                                                            <Grid/>
+                                                        <Grid>
+                                                            <Row
+                                                            css={{
+                                                                jc: 'center',
+                                                                textAlign: 'center'
+                                                            }}>
+                                                                <Text hideIn={'xs'}
+                                                                css={{
+                                                                    fontSize: '$lg',
+                                                                    paddingRight: '4px',
+                                                                    color: '$gray700'
+                                                                }}>
+                                                                    Batch: 
+                                                                </Text>
+                                                                <Text hideIn={'xs'}
+                                                                css={{
+                                                                    fontSize: '$lg',
+                                                                    fontWeight: '$semibold'
+                                                                }}>
+                                                                    {participantonebatch}
+                                                                </Text>
+    
+                                                                <Text showIn={'xs'}
+                                                                css={{
+                                                                    fontSize: '$md',
+                                                                    paddingRight: '4px',
+                                                                    color: '$gray700'
+                                                                }}>
+                                                                    Batch: 
+                                                                </Text>
+                                                                <Text showIn={'xs'}
+                                                                css={{
+                                                                    fontSize: '$md',
+                                                                    fontWeight: '$semibold'
+                                                                }}>
+                                                                    {participantonebatch}
+                                                                </Text>
+                                                            </Row>
+                                                            </Grid>
+                                                        </Grid> 
+                                                </Grid>
+                                            </Grid.Container>
+                                            <Grid.Container
+                                            css={{
+                                                jc: 'center',
+                                                alignItems: 'center',
+                                                display:'flex',
+                                                flexDirection: 'column',
+                                                justifyContent:'center',
+                                                alignContent:'center',
+                                                flexWrap:'nowrap',
+                                                marginTop:'6%'
+                                            }}>
+                                                <Grid> 
+                                                <Grid css={{
+                                                                jc: 'center',
+                                                                textAlign: 'center',
+                                                                marginBottom: 0     
+                                                            }}>
+                                                            <Row
+                                                            css={{
+                                                                jc: 'center',
+                                                                textAlign: 'center',
+                                                                marginBottom: 0
+                                                            }}>
+                                                                <Text 
+                                                                css={{
+                                                                    fontSize: '$lg',
+                                                                    paddingRight: '4px',
+                                                                    color: 'white',
+                                                                    fontWeight:'$bold',
+                                                                    
+                                                                }} h1>
+                                                                    Participant 2
+                                                                </Text>
+                                                            </Row>
+                                                        </Grid>
+                                                            <Grid.Container gap={0.5}
+                                                            css={{
+                                                                jc: 'center',
+                                                                alignItems: 'center',
+                                                                textAlign: 'center'
+                                                            }}>
+                                                        </Grid.Container> 
+                                                        <Grid>
+                                                        <Grid>
+                                                            <Row
+                                                            css={{
+                                                                jc: 'center',
+                                                                textAlign: 'center'
+                                                            }}>
+                                                                <Text hideIn={'xs'}
+                                                                css={{
+                                                                    fontSize: '$lg',
+                                                                    paddingRight: '4px',
+                                                                    color: '$gray700'
+                                                                }}>
+                                                                    Name: 
+                                                                </Text>
+                                                                <Text hideIn={'xs'}
+                                                                css={{
+                                                                    fontSize: '$lg',
+                                                                    fontWeight: '$semibold'
+                                                                }}>
+                                                                    {participanttwo}
+                                                                </Text>
+    
+                                                                <Text showIn={'xs'}
+                                                                css={{
+                                                                    fontSize: '$md',
+                                                                    paddingRight: '4px',
+                                                                    color: '$gray700'
+                                                                }}>
+                                                                    Name: 
+                                                                </Text>
+                                                                <Text showIn={'xs'}
+                                                                css={{
+                                                                    fontSize: '$md',
+                                                                    fontWeight: '$semibold'
+                                                                }}>
+                                                                    {participanttwo}
+                                                                </Text>
+                                                            </Row>
+                                                        </Grid>
+                                                            {participanttwoemail && 
+                                                                <Row
+                                                                css={{
+                                                                    jc: 'center',
+                                                                    textAlign: 'center'
+                                                                }}>
+                                                                    <Text hideIn={'xs'}
+                                                                    css={{
+                                                                        fontSize: '$lg',
+                                                                        paddingRight: '4px',
+                                                                        color: '$gray700'
+                                                                    }}>
+                                                                        Email: 
+                                                                    </Text>
+                                                                    <Text hideIn={'xs'}
+                                                                    css={{
+                                                                        fontSize: '$lg',
+                                                                        fontWeight: '$semibold'
+                                                                    }}>
+                                                                        {participanttwoemail}
+                                                                    </Text>
+            
+                                                                    <Text showIn={'xs'}
+                                                                    css={{
+                                                                        fontSize: '$md',
+                                                                        paddingRight: '4px',
+                                                                        color: '$gray700'
+                                                                    }}>
+                                                                        Email: 
+                                                                    </Text>
+                                                                    <Text showIn={'xs'}
+                                                                    css={{
+                                                                        fontSize: '$md',
+                                                                        fontWeight: '$semibold'
+                                                                    }}>
+                                                                        {participanttwoemail}
+                                                                    </Text>
+                                                                </Row>
+                                                            }
+                                                        </Grid>
+                                                        <Grid>
+                                                            <Row
+                                                            css={{
+                                                                jc: 'center',
+                                                                textAlign: 'center',
+                                                                display: 'flex',
+                                                                flexDirection: 'row'
+                                                            }}>
+                                                                <Text hideIn={'xs'}
+                                                                css={{
+                                                                    fontSize: '$lg',
+                                                                    paddingRight: '4px',
+                                                                    color: '$gray700'
+                                                                }}>
+                                                                    Phone Number: 
+                                                                </Text>
+                                                                <Text hideIn={'xs'}
+                                                                css={{
+                                                                    fontSize: '$lg',
+                                                                    fontWeight: '$semibold'
+                                                                }}>
+                                                                    {participanttwophone}
+                                                                </Text>
+    
+                                                                <Text showIn={'xs'}
+                                                                css={{
+                                                                    fontSize: '$md',
+                                                                    paddingRight: '4px',
+                                                                    color: '$gray700'
+                                                                }}>
+                                                                    Phone Number: 
+                                                                </Text>
+                                                                <Text showIn={'xs'}
+                                                                css={{
+                                                                    fontSize: '$md',
+                                                                    fontWeight: '$semibold'
+                                                                }}>
+                                                                    {participanttwophone}
+                                                                </Text>
+                                                            </Row>
+                                                            <Grid/>
+                                                        <Grid>
+                                                            <Row
+                                                            css={{
+                                                                jc: 'center',
+                                                                textAlign: 'center'
+                                                            }}>
+                                                                <Text hideIn={'xs'}
+                                                                css={{
+                                                                    fontSize: '$lg',
+                                                                    paddingRight: '4px',
+                                                                    color: '$gray700'
+                                                                }}>
+                                                                    Batch: 
+                                                                </Text>
+                                                                <Text hideIn={'xs'}
+                                                                css={{
+                                                                    fontSize: '$lg',
+                                                                    fontWeight: '$semibold'
+                                                                }}>
+                                                                    {participanttwobatch}
+                                                                </Text>
+    
+                                                                <Text showIn={'xs'}
+                                                                css={{
+                                                                    fontSize: '$md',
+                                                                    paddingRight: '4px',
+                                                                    color: '$gray700'
+                                                                }}>
+                                                                    Batch: 
+                                                                </Text>
+                                                                <Text showIn={'xs'}
+                                                                css={{
+                                                                    fontSize: '$md',
+                                                                    fontWeight: '$semibold'
+                                                                }}>
+                                                                    {participanttwobatch}
+                                                                </Text>
+                                                            </Row>
+                                                            </Grid>
+                                                        </Grid> 
+                                                </Grid>
+                                            </Grid.Container>
+                                        </Modal.Body>
+    
+                                        <Modal.Footer
+                                        css={{
+                                            jc: 'center',
+                                            alignItems: 'center'
+                                        }}>
+                                            <Button auto rounded 
+                                            css={{
+                                                background: '$gray900'
+                                            }}
+                                            onPress={(e)=>{
+                                                sendForm(e);
+                                                sendPaymentImage(paymentSC)
+                                                setRegistrationDone(true);
+                                                setModalVisibility(false);
+                                                checkIfRegSuccess1(participantoneemail)
+                                            }}>
+                                                <Text
+                                                css={{
+                                                    color: 'Black',
+                                                    fontWeight: '$semibold'
+                                                }}>
+                                                    Pay
+                                                </Text>
+                                                {/* <a href="https://www.instamojo.com/@testingrightnowforapl/l639029eaa66b4bbbbb30744adfef7b48/" rel="im-checkout" data-text="Pay" data-css-style="color:#ffffff; background:#000000; width:180px; border-radius:30px"   data-layout="vertical">PAY</a> */}
+                                                {/* <script src="https://js.instamojo.com/v1/button.js"></script> */}
+                                            </Button>
+                                        </Modal.Footer>
+    
+                                    </Modal>
+                                    {RegistrationDone===true && 
+                                    <Modal
+                                    open={RegStatusModal}
+                                    closeButton
+                                    onClose={()=>{
+                                        setRegStatusModal(false)
+                                        window.location.pathname='./registration/fifa'
+                                    }}
+                                    >
+                                            <Modal.Header
+                                            css={{
+                                                paddingTop: '0px',
+                                            }}>
+                                                <Col>
+                                                    <Text 
+                                                    css={{
+                                                        textAlign: 'center',
+                                                        fontSize: '$3xl',
+                                                        fontWeight: '$bold',
+                                                        color: '$green600',
+                                                        borderStyle: 'solid',
+                                                        borderWidth: '0px 0px 1px 0px',
+                                                        borderColor: '$gray800'
+                                                    }}>
+                                                        Success!
+                                                    </Text>
+                                                    
+                                                </Col>
+                                            </Modal.Header>
+                                            <Modal.Body
+                                            css={{
+                                                paddingTop: '0px'
+                                            }}>
                                                 <Text 
                                                 css={{
                                                     textAlign: 'center',
-                                                    fontSize: '$3xl',
-                                                    fontWeight: '$bold',
-                                                    color: '$red600',
-                                                    borderStyle: 'solid',
-                                                    borderWidth: '0px 0px 1px 0px',
-                                                    borderColor: '$gray800'
+                                                    fontSize: '$xl',
+                                                    fontWeight: '$semibold',
+                                                    color: 'white',
                                                 }}>
-                                                    Error!
+                                                    You have been successfully registered as {User.name}
                                                 </Text>
-                                                
-                                            </Col>
-                                        </Modal.Header>
-                                        <Modal.Body
-                                        css={{
-                                            paddingTop: '0px'
-                                        }}>
-                                            <Text 
+                                            </Modal.Body>
+                                            
+                                    </Modal>
+                                    }
+    
+                                    {RegistrationDone===false && 
+                                    <Modal
+                                    open={RegStatusModal}
+                                    closeButton
+                                    onClose={()=>{
+                                        setRegStatusModal(false)
+                                        window.location.pathname='./registration/fifa'
+                                    }}
+                                    >
+                                            <Modal.Header
                                             css={{
-                                                textAlign: 'center',
-                                                fontSize: '$xl',
-                                                fontWeight: '$semibold',
-                                                color: 'white',
+                                                paddingTop: '0px',
                                             }}>
-                                                You were not able to register as {User.name}. Please try again...
-                                            </Text>
-                                        </Modal.Body>
-                                        
-                                </Modal>
-                                }
-                            </Grid>
-                        </Grid.Container>
-
-                    </Grid>
-                </Grid.Container>
+                                                <Col>
+                                                    <Text 
+                                                    css={{
+                                                        textAlign: 'center',
+                                                        fontSize: '$3xl',
+                                                        fontWeight: '$bold',
+                                                        color: '$red600',
+                                                        borderStyle: 'solid',
+                                                        borderWidth: '0px 0px 1px 0px',
+                                                        borderColor: '$gray800'
+                                                    }}>
+                                                        Error!
+                                                    </Text>
+                                                    
+                                                </Col>
+                                            </Modal.Header>
+                                            <Modal.Body
+                                            css={{
+                                                paddingTop: '0px'
+                                            }}>
+                                                <Text 
+                                                css={{
+                                                    textAlign: 'center',
+                                                    fontSize: '$xl',
+                                                    fontWeight: '$semibold',
+                                                    color: 'white',
+                                                }}>
+                                                    You were not able to register as {User.name}. Please try again...
+                                                </Text>
+                                            </Modal.Body>
+                                            
+                                    </Modal>
+                                    }
+                                </Grid>
+                            </Grid.Container>
+    
+                        </Grid>
+                    </Grid.Container>
+                </div>
+            }
+            
         </div>
         )
     }

@@ -87,7 +87,10 @@ export default function PRegForm(){
     const [ModalVisibility, setModalVisibility] = useState(false);
     const [LoginLoader, setLoginLoader] = useState(false);
 
-    const [RegStatusModal, setRegStatusModal] = useState(false);
+    const [RegSuccessStatus, setRegSuccessStatus] = useState(false);
+    const [RegErrorStatus, setRegErrorStatus] = useState(false);
+    const [RegProcess, setRegProcess] = useState(false);
+    const [LoadingModal, setLoadingModal] = useState(false);
     
     //variable to control if user signed in
     const [signedin, setSignedIn] = useState(false);
@@ -100,26 +103,39 @@ export default function PRegForm(){
 
     //function to check if registration was successful
     async function checkIfRegSuccess(emailID){
-        await fetch('https://ashoka-premier-league-api.onrender.com/registration/player')
-        .then(response=>response.json())
-        .then((data)=>{
-            if(data.values){
-                for(var i = 0; i < data.values.length; i++){
-                    if(emailID===data.values[i][0]){
-                        setRegStatusModal(true)
-                        setRegistrationDone(true)
+        console.log('entering function')
+        while(RegProcess===true){
+            console.log('looping 2.5 seconds')
+            window.setTimeout(()=>{
+
+                fetch('https://ashoka-premier-league-api.onrender.com/registration/player')
+                .then(response=>response.json())
+                .then((data)=>{
+                    if(data.values){
+                        for(var i = 0; i < data.values.length; i++){
+                            if(emailID===data.values[i][0]){
+                                setRegSuccessStatus(true)
+                                setRegProcess(false)
+                                break;
+                                // setRegistrationDone(true)
+                            }
+                            else if(emailID!==data.values[i][0]){
+                                setRegSuccessStatus(false)
+                                // setRegistrationDone(false)
+                            }
+                        }
+                        setRegErrorStatus(true)
                     }
-                    else if(emailID!==data.values[i][0]){
-                        setRegStatusModal(false)
-                        setRegistrationDone(false)
+                    else if(!data.values){
+                        setRegSuccessStatus(true)
+                        setRegProcess(false)
+                        // setRegistrationDone(true)
                     }
-                }
-            }
-            else if(!data.values){
-                setRegStatusModal(true)
-                setRegistrationDone(true)
-            }
-        })
+                })
+
+            },2500)
+
+        }
     }
 
     // function to check if all required fields are filled
@@ -200,12 +216,13 @@ export default function PRegForm(){
         if(firstname && lastname && batch && phonenumber && gender && primarypos && secondpos)
         { 
             // image, name, ppos, spos, comments, tier, price, team, teamlogo, gender, batch, email
-            await fetch('https://ashoka-premier-league-api.onrender.com/registration/player',{
+            // https://ashoka-premier-league-api.onrender.com/registration/player
+            const res = await fetch('http://localhost:3001/registration/player',{
             method: 'POST',
             headers:{"Content-type":"application/json"},
             body: JSON.stringify({
                 image: finalImage,
-                name: firstname + ' ' + middlename + ' ' + lastname,
+                name: firstname + middlename +' '+ lastname,
                 primarypos: primarypos,
                 secondpos: secondpos,
                 comment: comment,
@@ -216,8 +233,16 @@ export default function PRegForm(){
                 gender: gender,
                 batch: batch,
                 emailID: emailID
+                })
             })
-        })
+            if (res.status===200){
+                setRegSuccessStatus(true)
+                setLoadingModal(false)
+            }
+            else if (res.status!==200){
+                setRegErrorStatus(true)
+                setLoadingModal(false)
+            }
         }
         
     }
@@ -352,7 +377,7 @@ export default function PRegForm(){
             setLoginLoader(false)
         }, 2000)
         
-    }, [isTimeUp, RegistrationDone])
+    }, [isTimeUp])
 
     return(
         <div>
@@ -1970,26 +1995,36 @@ export default function PRegForm(){
                                             sendPaymentImage(paymentSC)
                                             sendProfileImage(initialImage);
                                             setModalVisibility(false);
-                                            checkIfRegSuccess(emailID)
+                                            setLoadingModal(true)
+                                            // setRegProcess(true);
+                                            // checkIfRegSuccess(emailID);
                                         }}>
                                             <Text
                                             css={{
                                                 color: 'Black',
                                                 fontWeight: '$semibold'
                                             }}>
-                                                Pay
+                                                Register
                                             </Text>
                                         </Button>
                                     </Modal.Footer>
 
                                 </Modal >
 
-                                {RegistrationDone===true && 
+
                                 <Modal
-                                open={RegStatusModal}
+                                open={LoadingModal}>
+                                    <Modal.Body>
+                                        <Loading color='white' size={"xl"} />
+                                    </Modal.Body>
+                                </Modal>
+
+                                {RegSuccessStatus===true && 
+                                <Modal
+                                open={RegSuccessStatus}
                                 closeButton
                                 onClose={()=>{
-                                    setRegStatusModal(false)
+                                    setRegSuccessStatus(false)
                                     window.location.pathname='./registration/player'
                                 }}
                                 >
@@ -2047,14 +2082,15 @@ export default function PRegForm(){
                                         </Modal.Body>
                                         
                                 </Modal>
+                                
                                 }
 
-                                {RegistrationDone===false && 
+                                {RegErrorStatus===true && 
                                 <Modal
-                                open={RegStatusModal}
+                                open={RegErrorStatus}
                                 closeButton
                                 onClose={()=>{
-                                    setRegStatusModal(false)
+                                    setRegErrorStatus(false)
                                     window.location.pathname='./registration/player'
                                 }}
                                 >

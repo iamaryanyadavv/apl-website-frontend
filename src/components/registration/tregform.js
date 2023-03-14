@@ -77,12 +77,17 @@ export default function TRegForm() {
 
     const [RegStatusModal, setRegStatusModal] = useState(false);
 
+    const [RegSuccessStatus, setRegSuccessStatus] = useState(false);
+    const [RegErrorStatus, setRegErrorStatus] = useState(false);
+    const [RegProcess, setRegProcess] = useState(false);
+    const [LoadingModal, setLoadingModal] = useState(false);
+
     const [User, setUser] = useState({});
 
     const[paymentmode, setPaymentmode] = useState('Webstie - UPI');
 
     async function checkIfRegSuccess(manageremail){
-        await fetch('https://ashoka-premier-league-api.onrender.com/registration/team')
+        await fetch('http://localhost:3001/registration/team')
         .then(response=>response.json())
         .then((data)=>{
             if(data.values){
@@ -375,6 +380,7 @@ export default function TRegForm() {
                     SetManagername(userObject.given_name+" "+userObject.family_name);
                     SetOwner1(userObject.given_name+" "+userObject.family_name);
                     setAlreadyRegistered(false)
+                    SetManagernamestatus('success')
                     SetManageremailstatus('success')
                     SetOwner1status('success')
                 }
@@ -395,6 +401,7 @@ export default function TRegForm() {
                 SetManagername(userObject.given_name+" "+userObject.family_name);
                 SetOwner1(userObject.given_name+" "+userObject.family_name);
                 setAlreadyRegistered(false)
+                SetManagernamestatus('success')
                 SetManageremailstatus('success')
                 SetOwner1status('success')
             }
@@ -419,7 +426,7 @@ export default function TRegForm() {
     {
         if(teamname && managername && manageremail && managerphone && totalowners==1 && owner1 && !owner2 && !owner3 && !owner4 && !owner5 ){
             console.log('coming in owner1')
-            await fetch("https://ashoka-premier-league-api.onrender.com/registration/team",{
+            const res = await fetch("https://ashoka-premier-league-api.onrender.com/registration/team",{
             method: "POST",
             headers:{
                 "Content-type":"application/json"
@@ -435,11 +442,19 @@ export default function TRegForm() {
                 teamownersemailIDs: manageremail,
                 teamownersphones: managerphone
             }),
-        });
+            })
+            if(res.status==200){
+                setRegSuccessStatus(true)
+                setLoadingModal(false);
+            }
+            else if(res.status!==200){
+                setRegErrorStatus(200)
+                setLoadingModal(false)
+            }
         }
         if(teamname && managername && manageremail && managerphone && totalowners==2 && owner1 && owner2 && !owner3 && !owner4 && !owner5 ){
             console.log('coming in owner1+2')
-            await fetch("https://ashoka-premier-league-api.onrender.com/registration/team",{
+            const res = await fetch("https://ashoka-premier-league-api.onrender.com/registration/team",{
             method: "POST",
             headers:{
                 "Content-type":"application/json"
@@ -455,10 +470,18 @@ export default function TRegForm() {
                 teamownersemailIDs: manageremail + ', ' + owner2email,
                 teamownersphones: managerphone + ', ' + owner2phone
             }),
-        });
+            })
+            if(res.status==200){
+                setRegSuccessStatus(true)
+                setLoadingModal(false);
+            }
+            else if(res.status!==200){
+                setRegErrorStatus(200)
+                setLoadingModal(false)
+            }
         }
         if(teamname && managername && manageremail && managerphone && totalowners==3 && owner1 && owner2 && owner3 && !owner4 && !owner5 ){
-            await fetch("https://ashoka-premier-league-api.onrender.com/registration/team",{
+            const res = await fetch("https://ashoka-premier-league-api.onrender.com/registration/team",{
             method: "POST",
             headers:{
                 "Content-type":"application/json"
@@ -474,10 +497,18 @@ export default function TRegForm() {
                 teamownersemailIDs: manageremail + ', ' + owner2email + ', ' + owner3email,
                 teamownersphones: managerphone + ', ' + owner2phone + ', ' + owner3phone 
             }),
-        });
+            })
+            if(res.status==200){
+                setRegSuccessStatus(true)
+                setLoadingModal(false);
+            }
+            else if(res.status!==200){
+                setRegErrorStatus(200)
+                setLoadingModal(false)
+            }
         }
         if(teamname && managername && manageremail && managerphone && totalowners==4 && owner1 && owner2 && owner3 && owner4 && !owner5 ){
-            await fetch("https://ashoka-premier-league-api.onrender.com/registration/team",{
+            const res = await fetch("https://ashoka-premier-league-api.onrender.com/registration/team",{
             method: "POST",
             headers:{
                 "Content-type":"application/json"
@@ -493,10 +524,18 @@ export default function TRegForm() {
                 teamownersemailIDs: manageremail + ', ' + owner2email + ', ' + owner3email + ', ' + owner4email,
                 teamownersphones: managerphone + ', ' + owner2phone + ', ' + owner3phone + ', ' + owner4phone
             }),
-        });
+            })
+            if(res.status==200){
+                setRegSuccessStatus(true)
+                setLoadingModal(false);
+            }
+            else if(res.status!==200){
+                setRegErrorStatus(200)
+                setLoadingModal(false)
+            }
         }
         if(teamname & managername & manageremail & managerphone & totalowners==5 & owner1 & owner2 & owner3 & owner4 & owner5){
-            await fetch("https://ashoka-premier-league-api.onrender.com/registration/team",{
+            const res = await fetch("https://ashoka-premier-league-api.onrender.com/registration/team",{
             method: "POST",
             headers:{
                 "Content-type":"application/json"
@@ -512,7 +551,15 @@ export default function TRegForm() {
                 teamownersemailIDs: manageremail + ', ' + owner2email + ', ' + owner3email + ', ' + owner4email + ', ' + owner5email,
                 teamownersphones: managerphone + ', ' + owner2phone + ', ' + owner3phone + ', ' + owner4phone + ', ' + owner5phone
             }),
-        });
+            })
+            if(res.status==200){
+                setRegSuccessStatus(true)
+                setLoadingModal(false);
+            }
+            else if(res.status!==200){
+                setRegErrorStatus(200)
+                setLoadingModal(false)
+            }
         }
         
     }
@@ -3472,7 +3519,8 @@ export default function TRegForm() {
                                             sendPaymentImage(paymentSC);
                                             sendTeamLogo(initialImage);
                                             setModalVisibility(false);
-                                            checkIfRegSuccess(manageremail)
+                                            // checkIfRegSuccess(manageremail)
+                                            setLoadingModal(true);
                                         }}>
                                             <Text
                                             css={{
@@ -3485,13 +3533,21 @@ export default function TRegForm() {
                                     </Modal.Footer>
 
                                 </Modal>
-                                {RegistrationDone===true && 
+                                
                                 <Modal
-                                open={RegStatusModal}
+                                open={LoadingModal}>
+                                    <Modal.Body>
+                                        <Loading color="white" size={"xl"} />
+                                    </Modal.Body>
+                                </Modal>
+
+                                {RegSuccessStatus===true && 
+                                <Modal
+                                open={RegSuccessStatus}
                                 closeButton
                                 onClose={()=>{
-                                    setRegStatusModal(false)
-                                    window.location.pathname='./registration/team'
+                                    setRegSuccessStatus(false)
+                                    window.location.pathname='./registration/player'
                                 }}
                                 >
                                         <Modal.Header
@@ -3543,20 +3599,21 @@ export default function TRegForm() {
                                                 fontWeight: '$medium',
                                                 color: 'white',
                                             }}>
-                                                <a href="/seasons/apl6/teams">APL 6.0 Registered Teams</a>
+                                                <a href="/seasons/apl6/teams">APL 6.0 Teams</a>
                                             </Text>
                                         </Modal.Body>
                                         
                                 </Modal>
+                                
                                 }
 
-                                {RegistrationDone===false && 
+                                {RegErrorStatus===true && 
                                 <Modal
-                                open={RegStatusModal}
+                                open={RegErrorStatus}
                                 closeButton
                                 onClose={()=>{
-                                    setRegStatusModal(false)
-                                    window.location.pathname='./registration/team'
+                                    setRegErrorStatus(false)
+                                    window.location.pathname='./registration/player'
                                 }}
                                 >
                                         <Modal.Header
@@ -3590,12 +3647,13 @@ export default function TRegForm() {
                                                 fontWeight: '$semibold',
                                                 color: 'white',
                                             }}>
-                                                You were not able to register as {teamname}. Please try again...
+                                                You were not able to register as {User.name}. Please try again...
                                             </Text>
                                         </Modal.Body>
                                         
                                 </Modal>
                                 }
+
                             </Grid>
                         </Grid.Container>
                     </Grid>

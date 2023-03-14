@@ -1,6 +1,3 @@
-.carousel.carousel-slider .control-arrow {
-    padding: 20px !important;   
-}
 
 .carousel-heading-slots{
     background: -webkit-linear-gradient(#0072b1, #359ab9, #ffffff);
@@ -26,5 +23,5 @@
 }
 
 .carousel.carousel-slider{
-    width: 90% !important;
+    width: 98% !important;
 }

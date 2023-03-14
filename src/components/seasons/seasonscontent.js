@@ -1,7 +1,7 @@
 import { Grid } from "@nextui-org/react";
 import React from "react";
 import SeasonCard from "./seasoncard";
-import APL4Cover from '../../assets/images/APL4/APL4Cover.JPG';
+import APL4Cover from '../../assets/images/APL4/APL4Cover.jpg';
 import APL5Cover from '../../assets/images/APL5/APL5Cover.jpg';
 
 export default function SeasonsContent(){

@@ -1,7 +1,8 @@
 import React from "react";
 import "./header.css";
-import { Navbar, Link, } from "@nextui-org/react";
+import { Navbar, Link, Image} from "@nextui-org/react";
 import { FaInstagram, FaYoutube } from 'react-icons/fa';
+import TransparentLogo from '../../assets/images/TransparentLogo.png'
 
 function Header() {
     const items = [
@@ -17,11 +18,14 @@ function Header() {
 
     return(
       <Navbar className="navbar" variant="static">
-        <Navbar.Toggle color="inherit" showIn="xs" />
-        <Navbar.Brand hideIn="xs">
-        APL
+        <Navbar.Toggle color="inherit" showIn="sm" />
+        <Navbar.Brand hideIn="sm">
+          <Image css={{
+            width: '40px',
+            height: '40px'
+          }} src={TransparentLogo} />
         </Navbar.Brand>
-        <Navbar.Content hideIn="xs" variant="highlight-rounded">
+        <Navbar.Content hideIn="sm" variant="highlight-rounded">
         {items.map((item, index) => (
             <Navbar.Link key={index} isActive={item.href===active.substring(0,item.href.length+1)} href={item.href}>
               {item.name}
@@ -29,15 +33,20 @@ function Header() {
           ))}
           
         </Navbar.Content>
+        <Navbar.Content showIn={'sm'}>
+          <Image css={{
+              width: '40px',
+              height: '40px'
+            }} src={TransparentLogo} />
+        </Navbar.Content>
         <Navbar.Content>
           <Link target="_blank" href="https://www.instagram.com/apl.ashoka/">
-            <FaInstagram className="instagram-logo" size={'20px'} />
-          </Link>
-          <Link target="_blank" href="https://www.youtube.com/@ashokapremierleague1964">
-            <FaYoutube className="youtube-logo" size={'20px'}/>
+            <FaInstagram className="instagram-logo" size={'25px'} />
           </Link>
         </Navbar.Content>
-        <Navbar.Collapse showIn="xs">
+        
+        
+        <Navbar.Collapse showIn={"sm"}>
         {items.map((item, index) => (
           <Navbar.CollapseItem key={index} isActive={item.href===active.substring(0,item.href.length+1)}>
             <Link href={item.href}
@@ -49,6 +58,7 @@ function Header() {
             </Link>
           </Navbar.CollapseItem>
         ))}
+          
         </Navbar.Collapse>
       </Navbar>
     )

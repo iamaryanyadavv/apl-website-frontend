@@ -9,8 +9,7 @@ export default function RegCards(){
         <div>
 
             <QuoteHeading
-                heading='REGISTRATION'
-                quote='“You miss 100% of the shots you don&apos;t take” -Wayne Getzky'
+                heading='APL 6.0 REGISTRATION'
                 description='The time has come! Who do you choose to be: Team Owner or Team Player?'
             />
             

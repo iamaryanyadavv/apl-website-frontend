@@ -2,8 +2,10 @@ import { Col, Grid, Image, Text, Link, Row } from "@nextui-org/react";
 import React from "react";
 import Grey from '../../assets/images/Grey.jpeg';
 import './teamcontent.css';
-import { FaInstagram } from "react-icons/fa";
 import AryanYadav from '../../assets/avatars/AdminTeam/webteam_aryanyadav.jpeg';
+import DhrthiBhat from '../../assets/avatars/AdminTeam/director_dhrthibhat.jpg'
+import RahulAgarwal from '../../assets/avatars/AdminTeam/oc_rahulagarwal.jpeg'
+import PrathamSingh from '../../assets/avatars/AdminTeam/oc_prathamsingh.jpg'
 
 export default function TeamContent(){
     return(
@@ -22,8 +24,27 @@ export default function TeamContent(){
                     textAlign: 'center',
                 }}>
                     <Grid>
-                        <Col>
-                            <Image src={Grey} className='directors' />
+                        <Col 
+                        css={{
+                            display: 'flex',
+                            flexDirection: 'column',
+                            jc: 'center',
+                            alignItems: 'center'
+                        }}>
+                            <Image
+                            css={{
+                                '@xsMin':{
+                                    width: '300px',
+                                    height: '300px',
+                                    borderRadius: '200px',
+                                },
+                                '@xsMax':{
+                                    width: '150px',
+                                    height: '150px',
+                                    borderRadius: '100px'
+                                },
+                                objectFit: 'cover'
+                            }}  src={DhrthiBhat}  />
                             <Text hideIn={'xs'}
                             css={{
                                 jc: 'center',
@@ -74,8 +95,27 @@ export default function TeamContent(){
                     </Grid>
 
                     <Grid>
-                        <Col>
-                            <Image src={Grey} className='directors' />
+                        <Col 
+                        css={{
+                            display: 'flex',
+                            flexDirection: 'column',
+                            jc: 'center',
+                            alignItems: 'center'
+                        }}>
+                            <Image 
+                            css={{
+                                '@xsMin':{
+                                    width: '300px',
+                                    height: '300px',
+                                    borderRadius: '200px',
+                                },
+                                '@xsMax':{
+                                    width: '150px',
+                                    height: '150px',
+                                    borderRadius: '100px'
+                                },
+                                objectFit: 'cover'
+                            }}   src={Grey}/>
                             <Text hideIn={'xs'}
                             css={{
                                 jc: 'center',
@@ -123,8 +163,6 @@ export default function TeamContent(){
 
                 </Grid.Container>
 
-
-
                 {/* Finance Team */}
                 <Grid.Container 
                 css={{
@@ -149,7 +187,7 @@ export default function TeamContent(){
                                     fontWeight: '$semibold',
                                     textGradient: "45deg, $green600 40%, $green800 100%",
                                 }}>
-                                    Finance Team
+                                    Organising Committee
                                 </Text>
                                 <Text showIn={'xs'}
                                 css={{
@@ -157,7 +195,7 @@ export default function TeamContent(){
                                     fontWeight: '$semibold',
                                     textGradient: "45deg, $green600 40%, $green800 100%",
                                 }}>
-                                    Finance Team
+                                    Organising Committee
                                 </Text>
 
                                 <Text hideIn={'xs'}
@@ -187,8 +225,27 @@ export default function TeamContent(){
                             textAlign: 'center'
                         }}>
                             <Grid>
-                                <Col>
-                                    <Image src={Grey} className='hods' />
+                                <Col 
+                                css={{
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    jc: 'center',
+                                    alignItems: 'center'
+                                }}>
+                                    <Image 
+                                    css={{
+                                        '@xsMin':{
+                                            width: '200px',
+                                            height: '200px',
+                                            borderRadius: '100px'
+                                        },
+                                        '@xsMax':{
+                                            width: '100px',
+                                            height: '100px',
+                                            borderRadius: '75px'
+                                        },
+                                        objectFit: 'cover'
+                                    }}  src={Grey} />
                                     <Text hideIn={'xs'}
                                     css={{
                                         jc: 'center',
@@ -217,7 +274,7 @@ export default function TeamContent(){
                                         fontSize: '$xl',
                                         color: '$gray800'
                                     }}>
-                                        Head of Department
+                                        OC Member
                                     </Text>
                                     <Text showIn={'xs'}
                                     css={{
@@ -226,331 +283,36 @@ export default function TeamContent(){
                                         fontSize: '$md',
                                         color: '$gray800'
                                     }}>
-                                        Head of Department
+                                        OC Member
                                     </Text>
                                     <Text>
                                         <a href="https://www.instagram.com/abeyy_hari/">@abeyy_hari</a>
                                     </Text>
                                 </Col>
                             </Grid>
-                        </Grid.Container>
-
-                        {/* Team Members */}
-                        <Grid.Container gap={2}
-                        css={{
-                            jc: 'center',
-                            textAlign: 'center',
-                            marginBottom: '10px'
-                        }}>
-                            <Grid>
-                                <Col>
-                                    <Image src={Grey} className='member' />
-                                    <Text hideIn={'xs'}
-                                    css={{
-                                        jc: 'center',
-                                        textAlign: 'center',
-                                        fontSize: '$xl',
-                                        fontWeight: '$semibold',
-                                        paddingTop: '5px'
-                                    }}> 
-                                        Random Person
-                                    </Text>
-                                    <Text showIn={'xs'}
-                                    css={{
-                                        jc: 'center',
-                                        textAlign: 'center',
-                                        fontSize: '$md',
-                                        fontWeight: '$semibold',
-                                        paddingTop: '5px'
-                                    }}> 
-                                        Random Person
-                                    </Text>
-
-                                    <Text hideIn={'xs'}
-                                    css={{
-                                        jc: 'center',
-                                        textAlign: 'center',
-                                        fontSize: '$lg',
-                                        color: '$gray800'
-                                    }}>
-                                        Finance Team
-                                    </Text>
-                                    <Text showIn={'xs'}
-                                    css={{
-                                        jc: 'center',
-                                        textAlign: 'center',
-                                        fontSize: '$sm',
-                                        color: '$gray800'
-                                    }}>
-                                        Finance Team
-                                    </Text>
-                                    <Text>
-                                        <a href="https://www.instagram.com/dhrthi.bhat/">@randomperson</a>
-                                    </Text>
-                                </Col>
-                            </Grid>
 
                             <Grid>
-                                <Col>
-                                    <Image src={Grey} className='member' />
-                                    <Text hideIn={'xs'}
-                                    css={{
-                                        jc: 'center',
-                                        textAlign: 'center',
-                                        fontSize: '$xl',
-                                        fontWeight: '$semibold',
-                                        paddingTop: '5px'
-                                    }}> 
-                                        Random Person
-                                    </Text>
-                                    <Text showIn={'xs'}
-                                    css={{
-                                        jc: 'center',
-                                        textAlign: 'center',
-                                        fontSize: '$md',
-                                        fontWeight: '$semibold',
-                                        paddingTop: '5px'
-                                    }}> 
-                                        Random Person
-                                    </Text>
-
-                                    <Text hideIn={'xs'}
-                                    css={{
-                                        jc: 'center',
-                                        textAlign: 'center',
-                                        fontSize: '$lg',
-                                        color: '$gray800'
-                                    }}>
-                                        Finance Team
-                                    </Text>
-                                    <Text showIn={'xs'}
-                                    css={{
-                                        jc: 'center',
-                                        textAlign: 'center',
-                                        fontSize: '$sm',
-                                        color: '$gray800'
-                                    }}>
-                                        Finance Team
-                                    </Text>
-                                    <Text>
-                                        <a href="https://www.instagram.com/dhrthi.bhat/">@randomperson</a>
-                                    </Text>
-                                </Col>
-                            </Grid>
-
-                            <Grid>
-                                <Col>
-                                    <Image src={Grey} className='member' />
-                                    <Text hideIn={'xs'}
-                                    css={{
-                                        jc: 'center',
-                                        textAlign: 'center',
-                                        fontSize: '$xl',
-                                        fontWeight: '$semibold',
-                                        paddingTop: '5px'
-                                    }}> 
-                                        Random Person
-                                    </Text>
-                                    <Text showIn={'xs'}
-                                    css={{
-                                        jc: 'center',
-                                        textAlign: 'center',
-                                        fontSize: '$md',
-                                        fontWeight: '$semibold',
-                                        paddingTop: '5px'
-                                    }}> 
-                                        Random Person
-                                    </Text>
-
-                                    <Text hideIn={'xs'}
-                                    css={{
-                                        jc: 'center',
-                                        textAlign: 'center',
-                                        fontSize: '$lg',
-                                        color: '$gray800'
-                                    }}>
-                                        Finance Team
-                                    </Text>
-                                    <Text showIn={'xs'}
-                                    css={{
-                                        jc: 'center',
-                                        textAlign: 'center',
-                                        fontSize: '$sm',
-                                        color: '$gray800'
-                                    }}>
-                                        Finance Team
-                                    </Text>
-                                    <Text>
-                                        <a href="https://www.instagram.com/dhrthi.bhat/">@randomperson</a>
-                                    </Text>
-                                </Col>
-                            </Grid>
-
-                            <Grid>
-                                <Col>
-                                    <Image src={Grey} className='member' />
-                                    <Text hideIn={'xs'}
-                                    css={{
-                                        jc: 'center',
-                                        textAlign: 'center',
-                                        fontSize: '$xl',
-                                        fontWeight: '$semibold',
-                                        paddingTop: '5px'
-                                    }}> 
-                                        Random Person
-                                    </Text>
-                                    <Text showIn={'xs'}
-                                    css={{
-                                        jc: 'center',
-                                        textAlign: 'center',
-                                        fontSize: '$md',
-                                        fontWeight: '$semibold',
-                                        paddingTop: '5px'
-                                    }}> 
-                                        Random Person
-                                    </Text>
-
-                                    <Text hideIn={'xs'}
-                                    css={{
-                                        jc: 'center',
-                                        textAlign: 'center',
-                                        fontSize: '$lg',
-                                        color: '$gray800'
-                                    }}>
-                                        Finance Team
-                                    </Text>
-                                    <Text showIn={'xs'}
-                                    css={{
-                                        jc: 'center',
-                                        textAlign: 'center',
-                                        fontSize: '$sm',
-                                        color: '$gray800'
-                                    }}>
-                                        Finance Team
-                                    </Text>
-                                    <Text>
-                                        <a href="https://www.instagram.com/dhrthi.bhat/">@randomperson</a>
-                                    </Text>
-                                </Col>
-                            </Grid>
-
-                            <Grid>
-                                <Col>
-                                    <Image src={Grey} className='member' />
-                                    <Text hideIn={'xs'}
-                                    css={{
-                                        jc: 'center',
-                                        textAlign: 'center',
-                                        fontSize: '$xl',
-                                        fontWeight: '$semibold',
-                                        paddingTop: '5px'
-                                    }}> 
-                                        Random Person
-                                    </Text>
-                                    <Text showIn={'xs'}
-                                    css={{
-                                        jc: 'center',
-                                        textAlign: 'center',
-                                        fontSize: '$md',
-                                        fontWeight: '$semibold',
-                                        paddingTop: '5px'
-                                    }}> 
-                                        Random Person
-                                    </Text>
-
-                                    <Text hideIn={'xs'}
-                                    css={{
-                                        jc: 'center',
-                                        textAlign: 'center',
-                                        fontSize: '$lg',
-                                        color: '$gray800'
-                                    }}>
-                                        Finance Team
-                                    </Text>
-                                    <Text showIn={'xs'}
-                                    css={{
-                                        jc: 'center',
-                                        textAlign: 'center',
-                                        fontSize: '$sm',
-                                        color: '$gray800'
-                                    }}>
-                                        Finance Team
-                                    </Text>
-                                    <Text>
-                                        <a href="https://www.instagram.com/dhrthi.bhat/">@randomperson</a>
-                                    </Text>
-                                </Col>
-                            </Grid>
-                        </Grid.Container>
-
-                    </Grid>
-
-                </Grid.Container>
-
-                {/* Marketing Team */}
-                <Grid.Container 
-                css={{
-                    jc: 'center',
-                    textAlign: 'center',
-                    margin: '30px 0px 30px 0px',
-                    backgroundColor: 'rgb(20,20,20)',
-                    borderRadius: '20px'
-                }}>
-                    <Grid>
-
-                        {/* Team Heading */}
-                        <Grid.Container 
-                        css={{
-                            jc: 'center',
-                            textAlign: 'center',
-                        }}>
-                            <Col>
-                                <Text hideIn={'xs'}
+                                <Col 
                                 css={{
-                                    fontSize: '$6xl',
-                                    fontWeight: '$semibold',
-                                    textGradient: "45deg, $cyan600 40%, $cyan800 100%",
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    jc: 'center',
+                                    alignItems: 'center'
                                 }}>
-                                    Marketing Team
-                                </Text>
-                                <Text showIn={'xs'}
-                                css={{
-                                    fontSize: '$4xl',
-                                    fontWeight: '$semibold',
-                                    textGradient: "45deg, $cyan600 40%, $cyan800 100%",
-                                }}>
-                                    Marketing Team
-                                </Text>
-
-                                <Text hideIn={'xs'}
-                                css={{
-                                    fontSize: '$2xl',
-                                    fontWeight: '$normal',
-                                    color: '$gray800'
-                                }}>
-                                    Making sure you know all about it!
-                                </Text>
-                                <Text showIn={'xs'}
-                                css={{
-                                    fontSize: '$lg',
-                                    fontWeight: '$normal',
-                                    color: '$gray800'
-                                }}>
-                                    Making sure you know all about it!
-                                </Text>
-                            </Col>
-                            
-                        </Grid.Container>
-
-                        {/* HOD */}
-                        <Grid.Container gap={3}
-                        css={{
-                            jc: 'center',
-                            textAlign: 'center'
-                        }}>
-                            <Grid>
-                                <Col>
-                                    <Image src={Grey} className='hods' />
+                                    <Image 
+                                    css={{
+                                        '@xsMin':{
+                                            width: '200px',
+                                            height: '200px',
+                                            borderRadius: '100px'
+                                        },
+                                        '@xsMax':{
+                                            width: '100px',
+                                            height: '100px',
+                                            borderRadius: '75px'
+                                        },
+                                        objectFit: 'cover'
+                                    }}  src={PrathamSingh} />
                                     <Text hideIn={'xs'}
                                     css={{
                                         jc: 'center',
@@ -579,7 +341,7 @@ export default function TeamContent(){
                                         fontSize: '$xl',
                                         color: '$gray800'
                                     }}>
-                                        Head of Department
+                                        OC Member
                                     </Text>
                                     <Text showIn={'xs'}
                                     css={{
@@ -588,340 +350,103 @@ export default function TeamContent(){
                                         fontSize: '$md',
                                         color: '$gray800'
                                     }}>
-                                        Head of Department
+                                        OC Member
                                     </Text>
                                     <Text>
                                         <a href="https://www.instagram.com/_prathamsingh/">@_prathamsingh</a>
                                     </Text>
                                 </Col>
                             </Grid>
-                        </Grid.Container>
-
-                        {/* Team Members */}
-                        <Grid.Container gap={2}
-                        css={{
-                            jc: 'center',
-                            textAlign: 'center',
-                            marginBottom: '10px'
-                        }}>
-                            <Grid>
-                                <Col>
-                                    <Image src={Grey} className='member' />
-                                    <Text hideIn={'xs'}
-                                    css={{
-                                        jc: 'center',
-                                        textAlign: 'center',
-                                        fontSize: '$xl',
-                                        fontWeight: '$semibold',
-                                        paddingTop: '5px'
-                                    }}> 
-                                        Random Person
-                                    </Text>
-                                    <Text showIn={'xs'}
-                                    css={{
-                                        jc: 'center',
-                                        textAlign: 'center',
-                                        fontSize: '$md',
-                                        fontWeight: '$semibold',
-                                        paddingTop: '5px'
-                                    }}> 
-                                        Random Person
-                                    </Text>
-
-                                    <Text hideIn={'xs'}
-                                    css={{
-                                        jc: 'center',
-                                        textAlign: 'center',
-                                        fontSize: '$lg',
-                                        color: '$gray800'
-                                    }}>
-                                        Marketing Team
-                                    </Text>
-                                    <Text showIn={'xs'}
-                                    css={{
-                                        jc: 'center',
-                                        textAlign: 'center',
-                                        fontSize: '$sm',
-                                        color: '$gray800'
-                                    }}>
-                                        Marketing Team
-                                    </Text>
-                                    <Text>
-                                        <a href="https://www.instagram.com/dhrthi.bhat/">@randomperson</a>
-                                    </Text>
-                                </Col>
-                            </Grid>
 
                             <Grid>
-                                <Col>
-                                    <Image src={Grey} className='member' />
-                                    <Text hideIn={'xs'}
-                                    css={{
-                                        jc: 'center',
-                                        textAlign: 'center',
-                                        fontSize: '$xl',
-                                        fontWeight: '$semibold',
-                                        paddingTop: '5px'
-                                    }}> 
-                                        Random Person
-                                    </Text>
-                                    <Text showIn={'xs'}
-                                    css={{
-                                        jc: 'center',
-                                        textAlign: 'center',
-                                        fontSize: '$md',
-                                        fontWeight: '$semibold',
-                                        paddingTop: '5px'
-                                    }}> 
-                                        Random Person
-                                    </Text>
-
-                                    <Text hideIn={'xs'}
-                                    css={{
-                                        jc: 'center',
-                                        textAlign: 'center',
-                                        fontSize: '$lg',
-                                        color: '$gray800'
-                                    }}>
-                                        Marketing Team
-                                    </Text>
-                                    <Text showIn={'xs'}
-                                    css={{
-                                        jc: 'center',
-                                        textAlign: 'center',
-                                        fontSize: '$sm',
-                                        color: '$gray800'
-                                    }}>
-                                        Marketing Team
-                                    </Text>
-                                    <Text>
-                                        <a href="https://www.instagram.com/dhrthi.bhat/">@randomperson</a>
-                                    </Text>
-                                </Col>
-                            </Grid>
-
-                            <Grid>
-                                <Col>
-                                    <Image src={Grey} className='member' />
-                                    <Text hideIn={'xs'}
-                                    css={{
-                                        jc: 'center',
-                                        textAlign: 'center',
-                                        fontSize: '$xl',
-                                        fontWeight: '$semibold',
-                                        paddingTop: '5px'
-                                    }}> 
-                                        Random Person
-                                    </Text>
-                                    <Text showIn={'xs'}
-                                    css={{
-                                        jc: 'center',
-                                        textAlign: 'center',
-                                        fontSize: '$md',
-                                        fontWeight: '$semibold',
-                                        paddingTop: '5px'
-                                    }}> 
-                                        Random Person
-                                    </Text>
-
-                                    <Text hideIn={'xs'}
-                                    css={{
-                                        jc: 'center',
-                                        textAlign: 'center',
-                                        fontSize: '$lg',
-                                        color: '$gray800'
-                                    }}>
-                                        Marketing Team
-                                    </Text>
-                                    <Text showIn={'xs'}
-                                    css={{
-                                        jc: 'center',
-                                        textAlign: 'center',
-                                        fontSize: '$sm',
-                                        color: '$gray800'
-                                    }}>
-                                        Marketing Team
-                                    </Text>
-                                    <Text>
-                                        <a href="https://www.instagram.com/dhrthi.bhat/">@randomperson</a>
-                                    </Text>
-                                </Col>
-                            </Grid>
-
-                            <Grid>
-                                <Col>
-                                    <Image src={Grey} className='member' />
-                                    <Text hideIn={'xs'}
-                                    css={{
-                                        jc: 'center',
-                                        textAlign: 'center',
-                                        fontSize: '$xl',
-                                        fontWeight: '$semibold',
-                                        paddingTop: '5px'
-                                    }}> 
-                                        Random Person
-                                    </Text>
-                                    <Text showIn={'xs'}
-                                    css={{
-                                        jc: 'center',
-                                        textAlign: 'center',
-                                        fontSize: '$md',
-                                        fontWeight: '$semibold',
-                                        paddingTop: '5px'
-                                    }}> 
-                                        Random Person
-                                    </Text>
-
-                                    <Text hideIn={'xs'}
-                                    css={{
-                                        jc: 'center',
-                                        textAlign: 'center',
-                                        fontSize: '$lg',
-                                        color: '$gray800'
-                                    }}>
-                                        Marketing Team
-                                    </Text>
-                                    <Text showIn={'xs'}
-                                    css={{
-                                        jc: 'center',
-                                        textAlign: 'center',
-                                        fontSize: '$sm',
-                                        color: '$gray800'
-                                    }}>
-                                        Marketing Team
-                                    </Text>
-                                    <Text>
-                                        <a href="https://www.instagram.com/dhrthi.bhat/">@randomperson</a>
-                                    </Text>
-                                </Col>
-                            </Grid>
-
-                            <Grid>
-                                <Col>
-                                    <Image src={Grey} className='member' />
-                                    <Text hideIn={'xs'}
-                                    css={{
-                                        jc: 'center',
-                                        textAlign: 'center',
-                                        fontSize: '$xl',
-                                        fontWeight: '$semibold',
-                                        paddingTop: '5px'
-                                    }}> 
-                                        Random Person
-                                    </Text>
-                                    <Text showIn={'xs'}
-                                    css={{
-                                        jc: 'center',
-                                        textAlign: 'center',
-                                        fontSize: '$md',
-                                        fontWeight: '$semibold',
-                                        paddingTop: '5px'
-                                    }}> 
-                                        Random Person
-                                    </Text>
-
-                                    <Text hideIn={'xs'}
-                                    css={{
-                                        jc: 'center',
-                                        textAlign: 'center',
-                                        fontSize: '$lg',
-                                        color: '$gray800'
-                                    }}>
-                                        Marketing Team
-                                    </Text>
-                                    <Text showIn={'xs'}
-                                    css={{
-                                        jc: 'center',
-                                        textAlign: 'center',
-                                        fontSize: '$sm',
-                                        color: '$gray800'
-                                    }}>
-                                        Marketing Team
-                                    </Text>
-                                    <Text>
-                                        <a href="https://www.instagram.com/dhrthi.bhat/">@randomperson</a>
-                                    </Text>
-                                </Col>
-                            </Grid>
-
-                        </Grid.Container>
-
-                    </Grid>
-
-                </Grid.Container>
-
-                {/* Logistics Team */}
-                <Grid.Container 
-                css={{
-                    jc: 'center',
-                    textAlign: 'center',
-                    margin: '30px 0px 30px 0px',
-                    backgroundColor: 'rgb(20,20,20)',
-                    borderRadius: '20px'
-                }}>
-                    <Grid>
-
-                        {/* Team Heading */}
-                        <Grid.Container 
-                        css={{
-                            jc: 'center',
-                            textAlign: 'center',
-                        }}>
-                            <Col>
-                                <Text hideIn={'xs'}
+                                <Col 
                                 css={{
-                                    fontSize: '$6xl',
-                                    fontWeight: '$semibold',
-                                    textGradient: "45deg, $yellow600 40%, $yellow800 100%",
-                                }}>
-                                    Logistics Team
-                                </Text>
-                                <Text showIn={'xs'}
-                                css={{
-                                    fontSize: '$4xl',
-                                    fontWeight: '$semibold',
-                                    textGradient: "45deg, $yellow600 40%, $yellow800 100%",
-                                }}>
-                                    Logistics Team
-                                </Text>
-
-                                <Text hideIn={'xs'}
-                                css={{
-                                    fontSize: '$2xl',
-                                    fontWeight: '$normal',
-                                    color: '$gray800'
-                                }}>
-                                    Making sure nothing hinders the flow!
-                                </Text>
-                                <Text showIn={'xs'}
-                                css={{
-                                    fontSize: '$lg',
-                                    fontWeight: '$normal',
-                                    color: '$gray800'
-                                }}>
-                                    Making sure nothing hinders the flow!
-                                </Text>
-                            </Col>
-                            
-                        </Grid.Container>
-
-                        {/* HOD */}
-                        <Grid.Container gap={3}
-                        css={{
-                            jc: 'center',
-                            textAlign: 'center'
-                        }}>
-                            <Grid
-                            css={{
-                                jc: 'center',
-                                textAlign: 'center'
-                            }}>
-                                <Col
-                                css={{
+                                    display: 'flex',
+                                    flexDirection: 'column',
                                     jc: 'center',
-                                    textAlign: 'center'
+                                    alignItems: 'center'
                                 }}>
-                                    <Image src={Grey} className='hods' />
+                                    <Image 
+                                    css={{
+                                        '@xsMin':{
+                                            width: '200px',
+                                            height: '200px',
+                                            borderRadius: '100px'
+                                        },
+                                        '@xsMax':{
+                                            width: '100px',
+                                            height: '100px',
+                                            borderRadius: '75px'
+                                        },
+                                        objectFit: 'cover'
+                                    }}  src={Grey}/>
+                                    <Text hideIn={'xs'}
+                                    css={{
+                                        jc: 'center',
+                                        textAlign: 'center',
+                                        fontSize: '$2xl',
+                                        fontWeight: '$semibold',
+                                        paddingTop: '5px'
+                                    }}> 
+                                        Kavya Satish
+                                    </Text>
+                                    <Text showIn={'xs'}
+                                    css={{
+                                        jc: 'center',
+                                        textAlign: 'center',
+                                        fontSize: '$lg',
+                                        fontWeight: '$semibold',
+                                        paddingTop: '5px'
+                                    }}> 
+                                        Kavya Satish
+                                    </Text>
+
+                                    <Text hideIn={'xs'}
+                                    css={{
+                                        jc: 'center',
+                                        textAlign: 'center',
+                                        fontSize: '$xl',
+                                        color: '$gray800'
+                                    }}>
+                                        OC Member
+                                    </Text>
+                                    <Text showIn={'xs'}
+                                    css={{
+                                        jc: 'center',
+                                        textAlign: 'center',
+                                        fontSize: '$md',
+                                        color: '$gray800'
+                                    }}>
+                                        OC Member
+                                    </Text>
+                                    <Text>
+                                        <a href="https://www.instagram.com/kavyaasatish/">@kavyaasatish</a>
+                                    </Text>
+                                </Col>
+                            </Grid>
+
+                            <Grid>
+                                <Col 
+                                css={{
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    jc: 'center',
+                                    alignItems: 'center'
+                                }}>
+                                    <Image 
+                                    css={{
+                                        '@xsMin':{
+                                            width: '200px',
+                                            height: '200px',
+                                            borderRadius: '100px'
+                                        },
+                                        '@xsMax':{
+                                            width: '100px',
+                                            height: '100px',
+                                            borderRadius: '75px'
+                                        },
+                                        objectFit: 'cover'
+                                    }}  src={RahulAgarwal} />
                                     <Text hideIn={'xs'}
                                     css={{
                                         jc: 'center',
@@ -950,7 +475,7 @@ export default function TeamContent(){
                                         fontSize: '$xl',
                                         color: '$gray800'
                                     }}>
-                                        Head of Department
+                                        OC Member
                                     </Text>
                                     <Text showIn={'xs'}
                                     css={{
@@ -959,270 +484,152 @@ export default function TeamContent(){
                                         fontSize: '$md',
                                         color: '$gray800'
                                     }}>
-                                        Head of Department
+                                        OC Member
                                     </Text>
                                     <Text>
                                         <a href="https://www.instagram.com/__raaahul__/">@__raaahul__</a>
                                     </Text>
                                 </Col>
                             </Grid>
-                        </Grid.Container>
-
-                        {/* Team Members */}
-                        <Grid.Container gap={2}
-                        css={{
-                            jc: 'center',
-                            textAlign: 'center',
-                            marginBottom: '10px'
-                        }}>
-                            <Grid>
-                                <Col>
-                                    <Image src={Grey} className='member' />
-                                    <Text hideIn={'xs'}
-                                    css={{
-                                        jc: 'center',
-                                        textAlign: 'center',
-                                        fontSize: '$xl',
-                                        fontWeight: '$semibold',
-                                        paddingTop: '5px'
-                                    }}> 
-                                        Random Person
-                                    </Text>
-                                    <Text showIn={'xs'}
-                                    css={{
-                                        jc: 'center',
-                                        textAlign: 'center',
-                                        fontSize: '$md',
-                                        fontWeight: '$semibold',
-                                        paddingTop: '5px'
-                                    }}> 
-                                        Random Person
-                                    </Text>
-
-                                    <Text hideIn={'xs'}
-                                    css={{
-                                        jc: 'center',
-                                        textAlign: 'center',
-                                        fontSize: '$lg',
-                                        color: '$gray800'
-                                    }}>
-                                        Logistics Team
-                                    </Text>
-                                    <Text showIn={'xs'}
-                                    css={{
-                                        jc: 'center',
-                                        textAlign: 'center',
-                                        fontSize: '$sm',
-                                        color: '$gray800'
-                                    }}>
-                                        Logistics Team
-                                    </Text>
-                                    <Text>
-                                        <a href="https://www.instagram.com/dhrthi.bhat/">@randomperson</a>
-                                    </Text>
-                                </Col>
-                            </Grid>
-
-                            <Grid>
-                                <Col>
-                                    <Image src={Grey} className='member' />
-                                    <Text hideIn={'xs'}
-                                    css={{
-                                        jc: 'center',
-                                        textAlign: 'center',
-                                        fontSize: '$xl',
-                                        fontWeight: '$semibold',
-                                        paddingTop: '5px'
-                                    }}> 
-                                        Random Person
-                                    </Text>
-                                    <Text showIn={'xs'}
-                                    css={{
-                                        jc: 'center',
-                                        textAlign: 'center',
-                                        fontSize: '$md',
-                                        fontWeight: '$semibold',
-                                        paddingTop: '5px'
-                                    }}> 
-                                        Random Person
-                                    </Text>
-
-                                    <Text hideIn={'xs'}
-                                    css={{
-                                        jc: 'center',
-                                        textAlign: 'center',
-                                        fontSize: '$lg',
-                                        color: '$gray800'
-                                    }}>
-                                        Logistics Team
-                                    </Text>
-                                    <Text showIn={'xs'}
-                                    css={{
-                                        jc: 'center',
-                                        textAlign: 'center',
-                                        fontSize: '$sm',
-                                        color: '$gray800'
-                                    }}>
-                                        Logistics Team
-                                    </Text>
-                                    <Text>
-                                        <a href="https://www.instagram.com/dhrthi.bhat/">@randomperson</a>
-                                    </Text>
-                                </Col>
-                            </Grid>
-
-                            <Grid>
-                                <Col>
-                                    <Image src={Grey} className='member' />
-                                    <Text hideIn={'xs'}
-                                    css={{
-                                        jc: 'center',
-                                        textAlign: 'center',
-                                        fontSize: '$xl',
-                                        fontWeight: '$semibold',
-                                        paddingTop: '5px'
-                                    }}> 
-                                        Random Person
-                                    </Text>
-                                    <Text showIn={'xs'}
-                                    css={{
-                                        jc: 'center',
-                                        textAlign: 'center',
-                                        fontSize: '$md',
-                                        fontWeight: '$semibold',
-                                        paddingTop: '5px'
-                                    }}> 
-                                        Random Person
-                                    </Text>
-
-                                    <Text hideIn={'xs'}
-                                    css={{
-                                        jc: 'center',
-                                        textAlign: 'center',
-                                        fontSize: '$lg',
-                                        color: '$gray800'
-                                    }}>
-                                        Logistics Team
-                                    </Text>
-                                    <Text showIn={'xs'}
-                                    css={{
-                                        jc: 'center',
-                                        textAlign: 'center',
-                                        fontSize: '$sm',
-                                        color: '$gray800'
-                                    }}>
-                                        Logistics Team
-                                    </Text>
-                                    <Text>
-                                        <a href="https://www.instagram.com/dhrthi.bhat/">@randomperson</a>
-                                    </Text>
-                                </Col>
-                            </Grid>
-
-                            <Grid>
-                                <Col>
-                                    <Image src={Grey} className='member' />
-                                    <Text hideIn={'xs'}
-                                    css={{
-                                        jc: 'center',
-                                        textAlign: 'center',
-                                        fontSize: '$xl',
-                                        fontWeight: '$semibold',
-                                        paddingTop: '5px'
-                                    }}> 
-                                        Random Person
-                                    </Text>
-                                    <Text showIn={'xs'}
-                                    css={{
-                                        jc: 'center',
-                                        textAlign: 'center',
-                                        fontSize: '$md',
-                                        fontWeight: '$semibold',
-                                        paddingTop: '5px'
-                                    }}> 
-                                        Random Person
-                                    </Text>
-
-                                    <Text hideIn={'xs'}
-                                    css={{
-                                        jc: 'center',
-                                        textAlign: 'center',
-                                        fontSize: '$lg',
-                                        color: '$gray800'
-                                    }}>
-                                        Logistics Team
-                                    </Text>
-                                    <Text showIn={'xs'}
-                                    css={{
-                                        jc: 'center',
-                                        textAlign: 'center',
-                                        fontSize: '$sm',
-                                        color: '$gray800'
-                                    }}>
-                                        Logistics Team
-                                    </Text>
-                                    <Text>
-                                        <a href="https://www.instagram.com/dhrthi.bhat/">@randomperson</a>
-                                    </Text>
-                                </Col>
-                            </Grid>
-
-                            <Grid>
-                                <Col>
-                                    <Image src={Grey} className='member' />
-                                    <Text hideIn={'xs'}
-                                    css={{
-                                        jc: 'center',
-                                        textAlign: 'center',
-                                        fontSize: '$xl',
-                                        fontWeight: '$semibold',
-                                        paddingTop: '5px'
-                                    }}> 
-                                        Random Person
-                                    </Text>
-                                    <Text showIn={'xs'}
-                                    css={{
-                                        jc: 'center',
-                                        textAlign: 'center',
-                                        fontSize: '$md',
-                                        fontWeight: '$semibold',
-                                        paddingTop: '5px'
-                                    }}> 
-                                        Random Person
-                                    </Text>
-
-                                    <Text hideIn={'xs'}
-                                    css={{
-                                        jc: 'center',
-                                        textAlign: 'center',
-                                        fontSize: '$lg',
-                                        color: '$gray800'
-                                    }}>
-                                        Logistics Team
-                                    </Text>
-                                    <Text showIn={'xs'}
-                                    css={{
-                                        jc: 'center',
-                                        textAlign: 'center',
-                                        fontSize: '$sm',
-                                        color: '$gray800'
-                                    }}>
-                                        Logistics Team
-                                    </Text>
-                                    <Text>
-                                        <a href="https://www.instagram.com/dhrthi.bhat/">@randomperson</a>
-                                    </Text>
-                                </Col>
-                            </Grid>
                             
+                            <Grid>
+                                <Col 
+                                css={{
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    jc: 'center',
+                                    alignItems: 'center'
+                                }}>
+                                    <Image 
+                                    css={{
+                                        '@xsMin':{
+                                            width: '200px',
+                                            height: '200px',
+                                            borderRadius: '100px'
+                                        },
+                                        '@xsMax':{
+                                            width: '100px',
+                                            height: '100px',
+                                            borderRadius: '75px'
+                                        },
+                                        objectFit: 'cover'
+                                    }}  src={Grey}/>
+                                    <Text hideIn={'xs'}
+                                    css={{
+                                        jc: 'center',
+                                        textAlign: 'center',
+                                        fontSize: '$2xl',
+                                        fontWeight: '$semibold',
+                                        paddingTop: '5px'
+                                    }}> 
+                                        Rohan Agarwal
+                                    </Text>
+                                    <Text showIn={'xs'}
+                                    css={{
+                                        jc: 'center',
+                                        textAlign: 'center',
+                                        fontSize: '$lg',
+                                        fontWeight: '$semibold',
+                                        paddingTop: '5px'
+                                    }}> 
+                                        Rohan Agarwal
+                                    </Text>
+
+                                    <Text hideIn={'xs'}
+                                    css={{
+                                        jc: 'center',
+                                        textAlign: 'center',
+                                        fontSize: '$xl',
+                                        color: '$gray800'
+                                    }}>
+                                        OC Member
+                                    </Text>
+                                    <Text showIn={'xs'}
+                                    css={{
+                                        jc: 'center',
+                                        textAlign: 'center',
+                                        fontSize: '$md',
+                                        color: '$gray800'
+                                    }}>
+                                        OC Member
+                                    </Text>
+                                    <Text>
+                                        <a href="https://www.instagram.com/rohan_agarwal05/">@rohan_agarwal05</a>
+                                    </Text>
+                                </Col>
+                            </Grid>
+
+                            <Grid>
+                                <Col 
+                                css={{
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    jc: 'center',
+                                    alignItems: 'center'
+                                }}>
+                                    <Image 
+                                    css={{
+                                        '@xsMin':{
+                                            width: '200px',
+                                            height: '200px',
+                                            borderRadius: '100px'
+                                        },
+                                        '@xsMax':{
+                                            width: '100px',
+                                            height: '100px',
+                                            borderRadius: '75px'
+                                        },
+                                        objectFit: 'cover'
+                                    }}  src={Grey} />
+                                    <Text hideIn={'xs'}
+                                    css={{
+                                        jc: 'center',
+                                        textAlign: 'center',
+                                        fontSize: '$2xl',
+                                        fontWeight: '$semibold',
+                                        paddingTop: '5px'
+                                    }}> 
+                                        Irya Khanna
+                                    </Text>
+                                    <Text showIn={'xs'}
+                                    css={{
+                                        jc: 'center',
+                                        textAlign: 'center',
+                                        fontSize: '$lg',
+                                        fontWeight: '$semibold',
+                                        paddingTop: '5px'
+                                    }}> 
+                                        Irya Khanna
+                                    </Text>
+
+                                    <Text hideIn={'xs'}
+                                    css={{
+                                        jc: 'center',
+                                        textAlign: 'center',
+                                        fontSize: '$xl',
+                                        color: '$gray800'
+                                    }}>
+                                        OC Member
+                                    </Text>
+                                    <Text showIn={'xs'}
+                                    css={{
+                                        jc: 'center',
+                                        textAlign: 'center',
+                                        fontSize: '$md',
+                                        color: '$gray800'
+                                    }}>
+                                        OC Member
+                                    </Text>
+                                    <Text>
+                                        <a href="https://www.instagram.com/iryakhanna/">@iryakhanna</a>
+                                    </Text>
+                                </Col>
+                            </Grid>
                         </Grid.Container>
 
                     </Grid>
 
                 </Grid.Container>
-
-
-
 
                 {/* APL Website Developer */}
                 <Grid.Container
@@ -1241,12 +648,12 @@ export default function TeamContent(){
                             jc: 'center',
                             textAlign: 'center',
                         }}>
-                            <Col>
+                            <Col >
                                 <Text hideIn={'xs'}
                                 css={{
                                     fontSize: '$6xl',
                                     fontWeight: '$semibold',
-                                    textGradient: "45deg, $red600 50%, $red800 100%",
+                                    textGradient: "45deg, $cyan600 40%, $cyan800 100%",
                                 }}>
                                     Web Team
                                 </Text>
@@ -1291,12 +698,27 @@ export default function TeamContent(){
                                 jc: 'center',
                                 textAlign: 'center'
                             }}>
-                                <Col
+                                <Col 
                                 css={{
+                                    display: 'flex',
+                                    flexDirection: 'column',
                                     jc: 'center',
-                                    textAlign: 'center'
+                                    alignItems: 'center'
                                 }}>
-                                    <Image src={AryanYadav} className='hods' />
+                                    <Image 
+                                    css={{
+                                        '@xsMin':{
+                                            width: '200px',
+                                            height: '200px',
+                                            borderRadius: '100px'
+                                        },
+                                        '@xsMax':{
+                                            width: '100px',
+                                            height: '100px',
+                                            borderRadius: '75px'
+                                        },
+                                        objectFit: 'cover'
+                                    }} src={AryanYadav}/>
                                     <Text hideIn={'xs'}
                                     css={{
                                         jc: 'center',
@@ -1350,10 +772,25 @@ export default function TeamContent(){
                             }}>
                                 <Col
                                 css={{
+                                    display: 'flex',
+                                    flexDirection: 'column',
                                     jc: 'center',
                                     textAlign: 'center'
                                 }}>
-                                    <Image src={Grey} className='hods' />
+                                    <Image 
+                                    css={{
+                                        '@xsMin':{
+                                            width: '200px',
+                                            height: '200px',
+                                            borderRadius: '100px'
+                                        },
+                                        '@xsMax':{
+                                            width: '100px',
+                                            height: '100px',
+                                            borderRadius: '75px'
+                                        },
+                                        objectFit: 'cover'
+                                    }}  src={Grey} />
                                     <Text hideIn={'xs'}
                                     css={{
                                         jc: 'center',
@@ -1404,7 +841,6 @@ export default function TeamContent(){
 
                     </Grid>
                 </Grid.Container>
-
 
 
             </Grid>

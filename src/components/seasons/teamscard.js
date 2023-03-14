@@ -4,6 +4,9 @@ import './seasons.css';
 
 export default function TeamsCard(props){
     return(
+        <div onClick={()=>{
+            window.location.pathname=props.href
+        }}>
         <Card 
         css={{ 
             '@xsMin':{
@@ -39,7 +42,7 @@ export default function TeamsCard(props){
                 </Col>
             </Card.Header>
             <Card.Body css={{ p: 0 }}>
-                <Card.Image
+                <Card.Image 
                     src={props.src}
                     width="100%"
                     height="100%"
@@ -96,5 +99,6 @@ export default function TeamsCard(props){
                 </Col>
             </Card.Footer>
         </Card>
+        </div>
     )
 }

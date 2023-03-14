@@ -4,6 +4,9 @@ import './seasons.css';
 
 export default function TournamentDetailsCard(props){
     return(
+        <div onClick={()=>{
+            window.location.pathname=props.href
+        }}>
         <Card 
         css={{ 
             '@xsMin':{
@@ -102,5 +105,6 @@ export default function TournamentDetailsCard(props){
                 </Col>
             </Card.Footer>
         </Card>
+        </div>
     )
 }

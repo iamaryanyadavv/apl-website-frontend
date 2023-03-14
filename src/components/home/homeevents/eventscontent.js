@@ -38,8 +38,8 @@ export default function EventsContent () {
                                 borderRadius: '20px'
                             },
                             '@xsMax':{
-                                width: '200px',
-                                height: '200px',
+                                width: '150px',
+                                height: '150px',
                                 borderRadius: '20px'
                             },
                         }}
@@ -86,8 +86,8 @@ export default function EventsContent () {
                                 borderRadius: '20px'
                             },
                             '@xsMax':{
-                                width: '200px',
-                                height: '200px',
+                                width: '150px',
+                                height: '150px',
                                 borderRadius: '20px'
                             },
                         }}
@@ -134,8 +134,8 @@ export default function EventsContent () {
                                 borderRadius: '20px'
                             },
                             '@xsMax':{
-                                width: '200px',
-                                height: '200px',
+                                width: '150px',
+                                height: '150px',
                                 borderRadius: '20px'
                             },
                         }}
@@ -182,8 +182,8 @@ export default function EventsContent () {
                                 borderRadius: '20px'
                             },
                             '@xsMax':{
-                                width: '200px',
-                                height: '200px',
+                                width: '150px',
+                                height: '150px',
                                 borderRadius: '20px'
                             },
                         }}

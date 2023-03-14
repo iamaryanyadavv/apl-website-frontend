@@ -30,9 +30,9 @@ export default function MeetTeamContent () {
                                     borderRadius: '125px'
                                 },
                                 '@xsMax':{
-                                    width: '200px',
-                                    height: '200px',
-                                    borderRadius: '100px'
+                                    width: '150px',
+                                    height: '150px',
+                                    borderRadius: '75px'
                                 },
                             }}  src={P1} className='team-pic' />
                         </Grid>
@@ -45,9 +45,9 @@ export default function MeetTeamContent () {
                                     borderRadius: '125px'
                                 },
                                 '@xsMax':{
-                                    width: '200px',
-                                    height: '200px',
-                                    borderRadius: '100px'
+                                    width: '150px',
+                                    height: '150px',
+                                    borderRadius: '75px'
                                 },
                             }}  src={P2} className='team-pic' />
                         </Grid>
@@ -89,7 +89,7 @@ export default function MeetTeamContent () {
                                 fontWeight: '$medium',
 
                             }}>
-                                to Head of Departments
+                                to Organising Committee
                             </Text>
                             <Text showIn={'xs'}
                             css={{
@@ -97,32 +97,7 @@ export default function MeetTeamContent () {
                                 fontWeight: '$medium',
 
                             }}>
-                                to Head of Departments
-                            </Text>
-                        </Grid>
-                    </Grid.Container>
-
-                    <Grid.Container gap={0}
-                    css={{
-                        jc: 'center',
-                        textAlign: 'center'
-                    }}>
-                        <Grid>
-                            <Text hideIn={'xs'}
-                            css={{
-                                fontSize: '$2xl',
-                                fontWeight: '$medium',
-
-                            }}>
-                                to Team Members
-                            </Text>
-                            <Text showIn={'xs'}
-                            css={{
-                                fontSize: '$lg',
-                                fontWeight: '$medium',
-
-                            }}>
-                                to Team Members
+                                to Organising Committee
                             </Text>
                         </Grid>
                     </Grid.Container>
@@ -207,9 +182,9 @@ export default function MeetTeamContent () {
                                 borderRadius: '125px'
                             },
                             '@xsMax':{
-                                width: '200px',
-                                height: '200px',
-                                borderRadius: '100px'
+                                width: '150px',
+                                height: '150px',
+                                borderRadius: '75px'
                             },
                         }}  src={P3} />
                     </Grid>
@@ -228,9 +203,9 @@ export default function MeetTeamContent () {
                                 borderRadius: '125px'
                             },
                             '@xsMax':{
-                                width: '200px',
-                                height: '200px',
-                                borderRadius: '100px'
+                                width: '150px',
+                                height: '150px',
+                                borderRadius: '75px'
                             },
                         }}  src={P4} className='team-pic' />
                     </Grid>

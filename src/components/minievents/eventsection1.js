@@ -26,7 +26,19 @@ export default function eventsection1(props){
                 textAlign: 'center',
                 alignItems: 'center'
             }}>
-                <Image src={props.src} className="eventpicfifa" />
+                <Image 
+                css={{
+                    '@xsMax':{
+                        width: '300px',
+                        height: '300px',
+                        borderRadius: '20px'
+                    },
+                    '@xsMin':{
+                        width: '400px',
+                        height: '400px',
+                        borderRadius: '20px'
+                    }
+                }} src={props.src} />
             </Grid>
 
             {/* Text side grid */}

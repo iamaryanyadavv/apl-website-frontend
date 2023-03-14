@@ -1,0 +1,23 @@
+.under-dev-bg{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+    background-color: rgb(20, 20, 20);
+}
+
+@media screen and (min-width: 1280px) {
+    .tools-icon{
+        width: 50px;
+        height: 50px;
+        margin: 20px;
+    }
+}
+
+@media screen and (max-width: 1280px) {
+    .tools-icon{
+        width: 20px;
+        height: 20px;
+        margin: 10px
+    }
+}
