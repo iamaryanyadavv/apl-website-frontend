@@ -25,7 +25,11 @@ export default function EventsContent () {
                     textAlign: 'center',
                     alignItems: 'center'
                 }}>
-                    <Col>
+                    <Col 
+                    css={{
+                        display: 'flex',
+                        flexDirection: 'column'
+                    }}>
                         <Image 
                         css={{
                             '@xsMin':{
@@ -53,8 +57,8 @@ export default function EventsContent () {
                         </Text>
                         <Text
                         css={{
-                            fontSize: '$3xl',
-                            fontWeight: '$bold',
+                            fontSize: '$2xl',
+                            fontWeight: '$semibold',
                             padding: '2%'
                         }}>
                             18/03/2023
@@ -69,7 +73,11 @@ export default function EventsContent () {
                     textAlign: 'center',
                     alignItems: 'center'
                 }}>
-                    <Col>
+                    <Col 
+                    css={{
+                        display: 'flex',
+                        flexDirection: 'column'
+                    }}>
                     <Image 
                         css={{
                             '@xsMin':{
@@ -97,8 +105,8 @@ export default function EventsContent () {
                         </Text>
                         <Text
                         css={{
-                            fontSize: '$3xl',
-                            fontWeight: '$bold',
+                            fontSize: '$2xl',
+                            fontWeight: '$semibold',
                             padding: '2%'
                         }}>
                             19/03/2023
@@ -113,7 +121,11 @@ export default function EventsContent () {
                     textAlign: 'center',
                     alignItems: 'center'
                 }}>
-                    <Col>
+                    <Col 
+                    css={{
+                        display: 'flex',
+                        flexDirection: 'column'
+                    }}>
                         <Image 
                         css={{
                             '@xsMin':{
@@ -137,12 +149,12 @@ export default function EventsContent () {
                             borderColor: '$purple600',
                             padding: '2%'
                         }}>
-                            "Bins Only" Challenge
+                            Bin Challenge
                         </Text>
                         <Text
                         css={{
-                            fontSize: '$3xl',
-                            fontWeight: '$bold',
+                            fontSize: '$2xl',
+                            fontWeight: '$semibold',
                             padding: '2%'
                         }}>
                             20/03/2023
@@ -157,7 +169,11 @@ export default function EventsContent () {
                     textAlign: 'center',
                     alignItems: 'center'
                 }}>
-                    <Col>
+                    <Col 
+                    css={{
+                        display: 'flex',
+                        flexDirection: 'column'
+                    }}>
                         <Image 
                         css={{
                             '@xsMin':{
@@ -185,8 +201,8 @@ export default function EventsContent () {
                         </Text>
                         <Text
                         css={{
-                            fontSize: '$3xl',
-                            fontWeight: '$bold',
+                            fontSize: '$2xl',
+                            fontWeight: '$semibold',
                             padding: '2%'
                         }}>
                             21/03/2023
