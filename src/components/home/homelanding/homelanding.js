@@ -1,7 +1,7 @@
 import React from "react";
 import "./homelanding.css";
 import { Text } from "@nextui-org/react";
-import LandingVideo2 from '../../../assets/images/LandingVideo2.mp4';
+import LandingVideo from '../../../assets/images/LandingVideo4.webm';
 
 function HomeLanding() {
     return(
@@ -33,7 +33,7 @@ function HomeLanding() {
         //     </div>
         // </div>
         <div className="homelanding">
-            <video src={LandingVideo2} playsinline autoPlay loop muted />
+            <video src={LandingVideo} autoPlay loop muted />
             <div className="text">
                 <p>Ashoka Premier League</p>
             </div>
