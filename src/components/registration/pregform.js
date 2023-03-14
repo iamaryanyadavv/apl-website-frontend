@@ -217,7 +217,7 @@ export default function PRegForm(){
         { 
             // image, name, ppos, spos, comments, tier, price, team, teamlogo, gender, batch, email
             // https://ashoka-premier-league-api.onrender.com/registration/player
-            const res = await fetch('http://localhost:3001/registration/player',{
+            const res = await fetch('https://ashoka-premier-league-api.onrender.com/registration/player',{
             method: 'POST',
             headers:{"Content-type":"application/json"},
             body: JSON.stringify({
