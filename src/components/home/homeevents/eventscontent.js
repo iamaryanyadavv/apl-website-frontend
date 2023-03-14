@@ -26,7 +26,20 @@ export default function EventsContent () {
                     alignItems: 'center'
                 }}>
                     <Col>
-                        <Image src={FIFA} className='homeeventspics'/>
+                        <Image 
+                        css={{
+                            '@xsMin':{
+                                width: '300px',
+                                height: '300px',
+                                borderRadius: '20px'
+                            },
+                            '@xsMax':{
+                                width: '200px',
+                                height: '200px',
+                                borderRadius: '20px'
+                            },
+                        }}
+                        src={FIFA}/>
                         <Text
                         css={{
                             fontSize: '$3xl',
@@ -37,6 +50,14 @@ export default function EventsContent () {
                             padding: '2%'
                         }}>
                             FIFA Tournament
+                        </Text>
+                        <Text
+                        css={{
+                            fontSize: '$3xl',
+                            fontWeight: '$bold',
+                            padding: '2%'
+                        }}>
+                            18/03/2023
                         </Text>
                     </Col>
                 </Grid>
@@ -49,7 +70,20 @@ export default function EventsContent () {
                     alignItems: 'center'
                 }}>
                     <Col>
-                        <Image src={Nutmeg} className='homeeventspics'/>
+                    <Image 
+                        css={{
+                            '@xsMin':{
+                                width: '300px',
+                                height: '300px',
+                                borderRadius: '20px'
+                            },
+                            '@xsMax':{
+                                width: '200px',
+                                height: '200px',
+                                borderRadius: '20px'
+                            },
+                        }}
+                        src={Nutmeg}/>
                         <Text
                         css={{
                             fontSize: '$3xl',
@@ -60,6 +94,14 @@ export default function EventsContent () {
                             padding: '2%'
                         }}>
                             1v1 Challenge
+                        </Text>
+                        <Text
+                        css={{
+                            fontSize: '$3xl',
+                            fontWeight: '$bold',
+                            padding: '2%'
+                        }}>
+                            19/03/2023
                         </Text>
                     </Col>
                 </Grid>
@@ -72,7 +114,20 @@ export default function EventsContent () {
                     alignItems: 'center'
                 }}>
                     <Col>
-                        <Image src={Bin} className='homeeventspics'/>
+                        <Image 
+                        css={{
+                            '@xsMin':{
+                                width: '300px',
+                                height: '300px',
+                                borderRadius: '20px'
+                            },
+                            '@xsMax':{
+                                width: '200px',
+                                height: '200px',
+                                borderRadius: '20px'
+                            },
+                        }}
+                        src={Bin}/>
                         <Text
                         css={{
                             fontSize: '$3xl',
@@ -83,6 +138,14 @@ export default function EventsContent () {
                             padding: '2%'
                         }}>
                             "Bins Only" Challenge
+                        </Text>
+                        <Text
+                        css={{
+                            fontSize: '$3xl',
+                            fontWeight: '$bold',
+                            padding: '2%'
+                        }}>
+                            20/03/2023
                         </Text>
                     </Col>
                 </Grid>
@@ -95,7 +158,20 @@ export default function EventsContent () {
                     alignItems: 'center'
                 }}>
                     <Col>
-                        <Image src={FBowl} className='homeeventspics'/>
+                        <Image 
+                        css={{
+                            '@xsMin':{
+                                width: '300px',
+                                height: '300px',
+                                borderRadius: '20px'
+                            },
+                            '@xsMax':{
+                                width: '200px',
+                                height: '200px',
+                                borderRadius: '20px'
+                            },
+                        }}
+                        src={FBowl}/>
                         <Text
                         css={{
                             fontSize: '$3xl',
@@ -106,6 +182,14 @@ export default function EventsContent () {
                             padding: '2%'
                         }}>
                             Foot Bowling
+                        </Text>
+                        <Text
+                        css={{
+                            fontSize: '$3xl',
+                            fontWeight: '$bold',
+                            padding: '2%'
+                        }}>
+                            21/03/2023
                         </Text>
                     </Col>
                 </Grid>
@@ -124,7 +208,7 @@ export default function EventsContent () {
                 <Grid>
                     <Button className="mini-events-btn"
                     auto shadow rounded>
-                        <a href="/events" className="mini-events-btn-2"> Mini Events </a> 
+                        <a href="/events" className="mini-events-btn-2">Promo Events </a> 
                     </Button>
                 </Grid>
             </Grid.Container>
