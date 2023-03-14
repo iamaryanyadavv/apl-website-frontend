@@ -1,7 +1,7 @@
 import React from "react";
 import "./homelanding.css";
 import { Text } from "@nextui-org/react";
-import LandingVideo2 from '../../../assets/images/LandingVideo2.mp4';
+import LandingVideo from '../../../assets/images/LandingVideo.mov';
 
 function HomeLanding() {
     return(
@@ -32,11 +32,12 @@ function HomeLanding() {
 
         //     </div>
         // </div>
-        <div className="homelanding">
-            <video src={LandingVideo2} playsinline autoPlay loop muted />
-            <div className="text">
-                <p>Ashoka Premier League</p>
-            </div>
+        <div className="homelanding" dangerouslySetInnerHTML={{
+            __html: `<video autoplay loop muted playsinline>
+      <source src=${LandingVideo} type="video/mp4" />
+      Your browser does not support the video tag.
+</video>`,
+          }}>
         </div>
     )
 }
