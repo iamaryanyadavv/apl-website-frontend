@@ -91,7 +91,18 @@ export default function RoadToAPLContent(){
                                     css={{
                                         alignItems: 'center'
                                     }}>
-                                        <Image src={PReg} className="rtAPLpics" />
+                                        <Image css={{
+                                            '@xsMin':{
+                                                width: '250px',
+                                                height: '250px',
+                                                borderRadius: '20px'
+                                            },
+                                            '@xsMax':{
+                                                width: '200px',
+                                                height: '200px',
+                                                borderRadius: '20px'
+                                            },
+                                        }}src={PReg} className="rtAPLpics" />
                                     </Grid>
 
                                     {/* Text side grid */}
@@ -347,7 +358,18 @@ export default function RoadToAPLContent(){
                                     css={{
                                         alignItems: 'center'
                                     }}>
-                                        <Image src={TReg} className="rtAPLpics" />
+                                        <Image css={{
+                                            '@xsMin':{
+                                                width: '250px',
+                                                height: '250px',
+                                                borderRadius: '20px'
+                                            },
+                                            '@xsMax':{
+                                                width: '200px',
+                                                height: '200px',
+                                                borderRadius: '20px'
+                                            },
+                                        }} src={TReg} className="rtAPLpics" />
                                     </Grid>
 
                                     {/* Text side grid */}
@@ -602,7 +624,18 @@ export default function RoadToAPLContent(){
                                     css={{
                                         alignItems: 'center'
                                     }}>
-                                        <Image src={PS5} className="rtAPLpics" />
+                                        <Image css={{
+                                            '@xsMin':{
+                                                width: '250px',
+                                                height: '250px',
+                                                borderRadius: '20px'
+                                            },
+                                            '@xsMax':{
+                                                width: '200px',
+                                                height: '200px',
+                                                borderRadius: '20px'
+                                            },
+                                        }} src={PS5} className="rtAPLpics" />
                                     </Grid>
 
                                     {/* Text side grid */}
@@ -870,7 +903,18 @@ export default function RoadToAPLContent(){
                                     css={{
                                         alignItems: 'center'
                                     }}>
-                                        <Image src={Nutmeg} className="rtAPLpics" />
+                                        <Image css={{
+                                            '@xsMin':{
+                                                width: '250px',
+                                                height: '250px',
+                                                borderRadius: '20px'
+                                            },
+                                            '@xsMax':{
+                                                width: '200px',
+                                                height: '200px',
+                                                borderRadius: '20px'
+                                            },
+                                        }} src={Nutmeg} className="rtAPLpics" />
                                     </Grid>
 
                                     {/* Text side grid */}
@@ -1114,7 +1158,18 @@ export default function RoadToAPLContent(){
                                     css={{
                                         alignItems: 'center'
                                     }}>
-                                        <Image src={SG} className="rtAPLpics" />
+                                        <Image css={{
+                                            '@xsMin':{
+                                                width: '250px',
+                                                height: '250px',
+                                                borderRadius: '20px'
+                                            },
+                                            '@xsMax':{
+                                                width: '200px',
+                                                height: '200px',
+                                                borderRadius: '20px'
+                                            },
+                                        }} src={SG} className="rtAPLpics" />
                                     </Grid>
 
                                     {/* Text side grid */}
@@ -1358,7 +1413,18 @@ export default function RoadToAPLContent(){
                                     css={{
                                         alignItems: 'center'
                                     }}>
-                                        <Image src={Bin} className="rtAPLpics" />
+                                        <Image css={{
+                                            '@xsMin':{
+                                                width: '250px',
+                                                height: '250px',
+                                                borderRadius: '20px'
+                                            },
+                                            '@xsMax':{
+                                                width: '200px',
+                                                height: '200px',
+                                                borderRadius: '20px'
+                                            },
+                                        }} src={Bin} className="rtAPLpics" />
                                     </Grid>
 
                                     {/* Text side grid */}
@@ -1602,7 +1668,18 @@ export default function RoadToAPLContent(){
                                     css={{
                                         alignItems: 'center'
                                     }}>
-                                        <Image src={FBowling} className="rtAPLpics" />
+                                        <Image css={{
+                                            '@xsMin':{
+                                                width: '250px',
+                                                height: '250px',
+                                                borderRadius: '20px'
+                                            },
+                                            '@xsMax':{
+                                                width: '200px',
+                                                height: '200px',
+                                                borderRadius: '20px'
+                                            },
+                                        }} src={FBowling} className="rtAPLpics" />
                                     </Grid>
 
                                     {/* Text side grid */}
@@ -1846,7 +1923,18 @@ export default function RoadToAPLContent(){
                                     css={{
                                         alignItems: 'center'
                                     }}>
-                                        <Image src={Auction} className="rtAPLpics" />
+                                        <Image css={{
+                                            '@xsMin':{
+                                                width: '250px',
+                                                height: '250px',
+                                                borderRadius: '20px'
+                                            },
+                                            '@xsMax':{
+                                                width: '200px',
+                                                height: '200px',
+                                                borderRadius: '20px'
+                                            },
+                                        }} src={Auction} className="rtAPLpics" />
                                     </Grid>
 
                                     {/* Text side grid */}
