@@ -1,7 +1,7 @@
 import React from "react";
 import "./homelanding.css";
 import { Text } from "@nextui-org/react";
-import LandingVideo from '../../../assets/images/LandingVideo4.webm';
+import LandingVideo from '../../../assets/images/LandingVideo2.mp4';
 
 function HomeLanding() {
     return(
