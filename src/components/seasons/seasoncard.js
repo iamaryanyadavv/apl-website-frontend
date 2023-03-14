@@ -4,13 +4,17 @@ import './seasons.css';
 
 export default function SeasonCard(props){
     return(
-        <Grid.Container gap={8}
-            css={{
-                jc: 'center',
-                alignItems: 'center'
+        <Card 
+        css={{ 
+            '@xsMin':{
+                width: "350px",
+                height: "466.67px"
+            },
+            '@xsMax':{
+                width: '270px',
+                height: '360px'
+            } 
             }}>
-                <Grid>
-        <Card className="season-card" css={{ w: "300px", h: "550px" }}>
             <Card.Header css={{ position: "absolute", zIndex: 1, top: 5 }}>
                 <Col css={{
                     alignItems: 'center',
@@ -41,7 +45,6 @@ export default function SeasonCard(props){
                     height="100%"
                     objectFit="cover"
                     alt="Card example background"
-                    
                 />
             </Card.Body>
             <Card.Footer isBlurred
@@ -89,7 +92,5 @@ export default function SeasonCard(props){
                 </Col>
             </Card.Footer>
         </Card>
-        </Grid>
-        </Grid.Container>
     )
 }
