@@ -32,12 +32,11 @@ function HomeLanding() {
 
         //     </div>
         // </div>
-        <div className="homelanding" dangerouslySetInnerHTML={{
-            __html: `<video autoplay loop muted playsinline>
-      <source src=${LandingVideo} type="video/mp4" />
-      Your browser does not support the video tag.
-</video>`,
-          }}>
+        <div className="homelanding">
+            <video src={LandingVideo} autoPlay loop muted />
+            <div className="text">
+                <p>Ashoka Premier League</p>
+            </div>
         </div>
     )
 }
