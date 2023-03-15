@@ -5,6 +5,10 @@ import P1 from '../../../assets/images/Random2 2.jpeg';
 import P2 from '../../../assets/images/Random3 2.jpeg';
 import P3 from '../../../assets/images/Random4 2.jpeg';
 import P4 from '../../../assets/images/Random5 2.jpeg';
+import AryanYadav from '../../../assets/avatars/AdminTeam/webteam_aryanyadav.jpeg';
+import DhrthiBhat from '../../../assets/avatars/AdminTeam/director_dhrthibhat.jpg';
+import Uday from '../../../assets/avatars/AdminTeam/director_uday.jpg'
+import Zahaan from '../../../assets/avatars/AdminTeam/webteam_zahaan.jpg'
 
 export default function MeetTeamContent () {
     return(
@@ -25,8 +29,8 @@ export default function MeetTeamContent () {
                         <Image 
                             css={{
                                 '@xsMin':{
-                                    width: '250px',
-                                    height: '250px',
+                                    width: '200px',
+                                    height: '200px',
                                     borderRadius: '125px'
                                 },
                                 '@xsMax':{
@@ -34,14 +38,15 @@ export default function MeetTeamContent () {
                                     height: '150px',
                                     borderRadius: '75px'
                                 },
-                            }}  src={P1} className='team-pic' />
+                                objectFit: 'cover'
+                            }}  src={DhrthiBhat} />
                         </Grid>
                         <Grid>
                         <Image 
                             css={{
                                 '@xsMin':{
-                                    width: '250px',
-                                    height: '250px',
+                                    width: '200px',
+                                    height: '200px',
                                     borderRadius: '125px'
                                 },
                                 '@xsMax':{
@@ -49,7 +54,8 @@ export default function MeetTeamContent () {
                                     height: '150px',
                                     borderRadius: '75px'
                                 },
-                            }}  src={P2} className='team-pic' />
+                                objectFit: 'cover'
+                            }}  src={Uday} />
                         </Grid>
                     </Grid.Container>
                     <Grid.Container gap={0}
@@ -177,8 +183,8 @@ export default function MeetTeamContent () {
                     <Image
                         css={{
                             '@xsMin':{
-                                width: '250px',
-                                height: '250px',
+                                width: '200px',
+                                height: '200px',
                                 borderRadius: '125px'
                             },
                             '@xsMax':{
@@ -186,7 +192,8 @@ export default function MeetTeamContent () {
                                 height: '150px',
                                 borderRadius: '75px'
                             },
-                        }}  src={P3} />
+                            objectFit: 'cover'
+                        }}  src={AryanYadav} />
                     </Grid>
                 </Grid.Container>
                 <Grid.Container gap={1}
@@ -198,8 +205,8 @@ export default function MeetTeamContent () {
                     <Image 
                         css={{
                             '@xsMin':{
-                                width: '250px',
-                                height: '250px',
+                                width: '200px',
+                                height: '200px',
                                 borderRadius: '125px'
                             },
                             '@xsMax':{
@@ -207,7 +214,8 @@ export default function MeetTeamContent () {
                                 height: '150px',
                                 borderRadius: '75px'
                             },
-                        }}  src={P4} className='team-pic' />
+                            objectFit: 'cover'
+                        }}  src={Zahaan}  />
                     </Grid>
                 </Grid.Container>
             </Grid>

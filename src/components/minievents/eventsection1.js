@@ -37,7 +37,8 @@ export default function eventsection1(props){
                         width: '400px',
                         height: '400px',
                         borderRadius: '20px'
-                    }
+                    },
+                    objectFit: 'cover'
                 }} src={props.src} />
             </Grid>
 

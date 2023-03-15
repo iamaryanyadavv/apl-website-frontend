@@ -567,7 +567,7 @@ export default function TRegForm() {
     const convertImageToBase64 = async (e) => {
         const options = {
             maxSizeMB: 0.030,
-            maxWidthOrHeight: 720,
+            maxWidthOrHeight: 600,
             useWebWorker: true
         }
 

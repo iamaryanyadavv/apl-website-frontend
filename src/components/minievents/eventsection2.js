@@ -210,7 +210,8 @@ export default function eventsection2(props){
                         width: '400px',
                         height: '400px',
                         borderRadius: '20px'
-                    }
+                    },
+                    objectFit: 'cover'
                 }} src={props.src} />
             </Grid>
 

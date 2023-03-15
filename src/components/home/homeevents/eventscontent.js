@@ -2,9 +2,9 @@ import { Grid, Col, Text, Image, Button } from "@nextui-org/react";
 import './homeevents.css';
 import React from "react";
 import FIFA from '../../../assets/images/PS5Controller2.JPG';
-import Nutmeg from '../../../assets/images/FootballFreestyle.jpeg';
-import Bin from '../../../assets/images/Bin.png';
-import FBowl from '../../../assets/images/FootballBowling 2.jpeg';
+import Foosball from '../../../assets/images/Foosball1.jpg';
+import Inclusivity from '../../../assets/images/Inclusivity.jpg';
+import AuctionPredictions from '../../../assets/images/AuctionPredictions.jpg';
 
 export default function EventsContent () {
     return(
@@ -31,6 +31,7 @@ export default function EventsContent () {
                         flexDirection: 'column'
                     }}>
                         <Image 
+                        
                         css={{
                             '@xsMin':{
                                 width: '300px',
@@ -42,8 +43,9 @@ export default function EventsContent () {
                                 height: '150px',
                                 borderRadius: '20px'
                             },
+                            objectFit: 'cover'
                         }}
-                        src={FIFA}/>
+                        src={Foosball}/>
                         <Text
                         css={{
                             fontSize: '$3xl',
@@ -53,7 +55,7 @@ export default function EventsContent () {
                             borderColor: '$purple600',
                             padding: '2%'
                         }}>
-                            FIFA Tournament
+                            Foosball
                         </Text>
                         <Text
                         css={{
@@ -61,7 +63,7 @@ export default function EventsContent () {
                             fontWeight: '$semibold',
                             padding: '2%'
                         }}>
-                            18/03/2023
+                            16th March, 2023
                         </Text>
                     </Col>
                 </Grid>
@@ -90,8 +92,9 @@ export default function EventsContent () {
                                 height: '150px',
                                 borderRadius: '20px'
                             },
+                            objectFit: 'cover'
                         }}
-                        src={Nutmeg}/>
+                        src={FIFA}/>
                         <Text
                         css={{
                             fontSize: '$3xl',
@@ -101,7 +104,7 @@ export default function EventsContent () {
                             borderColor: '$purple600',
                             padding: '2%'
                         }}>
-                            1v1 Challenge
+                            FIFA 2v2s
                         </Text>
                         <Text
                         css={{
@@ -109,7 +112,7 @@ export default function EventsContent () {
                             fontWeight: '$semibold',
                             padding: '2%'
                         }}>
-                            19/03/2023
+                            22nd March, 2023
                         </Text>
                     </Col>
                 </Grid>
@@ -138,8 +141,9 @@ export default function EventsContent () {
                                 height: '150px',
                                 borderRadius: '20px'
                             },
+                            objectFit: 'cover'
                         }}
-                        src={Bin}/>
+                        src={Inclusivity}/>
                         <Text
                         css={{
                             fontSize: '$3xl',
@@ -149,7 +153,7 @@ export default function EventsContent () {
                             borderColor: '$purple600',
                             padding: '2%'
                         }}>
-                            Bin Challenge
+                            Inclusivity
                         </Text>
                         <Text
                         css={{
@@ -157,7 +161,7 @@ export default function EventsContent () {
                             fontWeight: '$semibold',
                             padding: '2%'
                         }}>
-                            20/03/2023
+                            30th March, 2023
                         </Text>
                     </Col>
                 </Grid>
@@ -186,8 +190,9 @@ export default function EventsContent () {
                                 height: '150px',
                                 borderRadius: '20px'
                             },
+                            objectFit: 'cover'
                         }}
-                        src={FBowl}/>
+                        src={AuctionPredictions}/>
                         <Text
                         css={{
                             fontSize: '$3xl',
@@ -197,7 +202,7 @@ export default function EventsContent () {
                             borderColor: '$purple600',
                             padding: '2%'
                         }}>
-                            Foot Bowling
+                            Predictions
                         </Text>
                         <Text
                         css={{
@@ -205,7 +210,7 @@ export default function EventsContent () {
                             fontWeight: '$semibold',
                             padding: '2%'
                         }}>
-                            21/03/2023
+                            5th April, 2023
                         </Text>
                     </Col>
                 </Grid>

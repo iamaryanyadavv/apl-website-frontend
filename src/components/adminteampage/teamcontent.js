@@ -6,6 +6,10 @@ import AryanYadav from '../../assets/avatars/AdminTeam/webteam_aryanyadav.jpeg';
 import DhrthiBhat from '../../assets/avatars/AdminTeam/director_dhrthibhat.jpg'
 import RahulAgarwal from '../../assets/avatars/AdminTeam/oc_rahulagarwal.jpeg'
 import PrathamSingh from '../../assets/avatars/AdminTeam/oc_prathamsingh.jpg'
+import RohanAgarwal from '../../assets/avatars/AdminTeam/oc_rohanagarwal.jpg'
+import KavyaSatish from '../../assets/avatars/AdminTeam/oc_kavyasatish.jpg'
+import Uday from '../../assets/avatars/AdminTeam/director_uday.jpg'
+import Zahaan from '../../assets/avatars/AdminTeam/webteam_zahaan.jpg'
 
 export default function TeamContent(){
     return(
@@ -115,7 +119,7 @@ export default function TeamContent(){
                                     borderRadius: '100px'
                                 },
                                 objectFit: 'cover'
-                            }}   src={Grey}/>
+                            }}   src={Uday}/>
                             <Text hideIn={'xs'}
                             css={{
                                 jc: 'center',
@@ -379,7 +383,7 @@ export default function TeamContent(){
                                             borderRadius: '75px'
                                         },
                                         objectFit: 'cover'
-                                    }}  src={Grey}/>
+                                    }}  src={KavyaSatish}/>
                                     <Text hideIn={'xs'}
                                     css={{
                                         jc: 'center',
@@ -513,7 +517,7 @@ export default function TeamContent(){
                                             borderRadius: '75px'
                                         },
                                         objectFit: 'cover'
-                                    }}  src={Grey}/>
+                                    }}  src={RohanAgarwal}/>
                                     <Text hideIn={'xs'}
                                     css={{
                                         jc: 'center',
@@ -790,7 +794,7 @@ export default function TeamContent(){
                                             borderRadius: '75px'
                                         },
                                         objectFit: 'cover'
-                                    }}  src={Grey} />
+                                    }}  src={Zahaan} />
                                     <Text hideIn={'xs'}
                                     css={{
                                         jc: 'center',
