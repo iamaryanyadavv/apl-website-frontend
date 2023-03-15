@@ -9,7 +9,6 @@ export default function RoadToAPL(){
             <div className="RTAPLbackg">
                 <QuoteHeading
                     heading='ROAD TO APL'
-                    quote='"The journey of a thousand miles begins with one step" - Lao Tzu'
                     description='Take a look at all events leading upto the coveted APL tournament. You do not want to miss out on any of these, trust us!'
                 />
                 <RoadToAPLContent/>

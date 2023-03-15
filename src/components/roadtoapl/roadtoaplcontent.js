@@ -20,9 +20,11 @@ import Inclusivity from '../../assets/images/Inclusivity.jpg'
 //Preedictions Event
 import AuctionPredictions from '../../assets/images/AuctionPredictions.jpg'
 //Practice Games
-import PracticeGames from '../../assets/images/PracticeGames.jpg'
+import PracticeGames from '../../assets/images/PracticeGames2.jpg'
 //Groups Draw
 import GroupsDraw from '../../assets/images/GroupsDraw.jpeg'
+//APL
+import APL from '../../assets/images/AshokaFieldSunset.jpg'
 
 import Grey from '../../assets/images/Grey.jpeg';
 
@@ -888,7 +890,7 @@ export default function RoadToAPLContent(){
                                                             fontWeight: '$medium',
                                                             textAlign: 'left',
                                                         }}>
-                                                            TBA
+                                                            Outside Mess
                                                         </Text>
                                                     </Grid>
                                                 </Grid.Container>
@@ -1561,7 +1563,7 @@ export default function RoadToAPLContent(){
                                     alignItems: 'baseline',
                                     width: '180px'
                                 }}>
-                                    3rd & 4th March 2023 
+                                    3rd & 4th April 2023 
                                     
                                 </Text>
                             </Grid>
@@ -1599,7 +1601,7 @@ export default function RoadToAPLContent(){
                                         fontWeight: '$semibold',
                                         textAlign: 'center',
                                     }}>
-                                        March
+                                        April
                                         
                                     </Text>
                                     <Text showIn={'sm'}
@@ -3108,7 +3110,7 @@ export default function RoadToAPLContent(){
                                                 borderRadius: '20px'
                                             },
                                             objectFit: 'cover'
-                                        }} src={Auction} />
+                                        }} src={APL} />
                                     </Grid>
 
                                     {/* Text side grid */}
@@ -3138,7 +3140,7 @@ export default function RoadToAPLContent(){
                                                             borderWidth: '0px 0px 2px 0px',
                                                             borderColor: '#3300CC'
                                                         }}>
-                                                            Auction
+                                                            APL 6.0
                                                         </Text>
                                                         <Text showIn={'sm'}
                                                         css={{
@@ -3150,7 +3152,7 @@ export default function RoadToAPLContent(){
                                                             borderWidth: '0px 0px 2px 0px',
                                                             borderColor: '#3300CC'
                                                         }}>
-                                                            Auction
+                                                            APL 6.0
                                                         </Text>
                                                     </Grid>
                                                 </Grid.Container>
@@ -3172,7 +3174,7 @@ export default function RoadToAPLContent(){
                                                             textAlign: 'left',
                                                             width: '500px'
                                                         }}>
-                                                            Ready? Time to make your team!
+                                                            Weeks of prep, for what? This.
                                                         </Text>
                                                         <Text showIn={'sm'}
                                                         css={{
@@ -3182,7 +3184,7 @@ export default function RoadToAPLContent(){
                                                             textAlign: 'left',
                                                             width: '250px'
                                                         }}>
-                                                            Ready? Time to make your team!
+                                                            Weeks of prep, for what? This.
                                                         </Text>
                                                     </Grid>
                                                 </Grid.Container>
@@ -3205,7 +3207,7 @@ export default function RoadToAPLContent(){
                                                             fontSize: '$xl',
                                                             width: '500px'
                                                         }}>
-                                                            Hope you've done your research because no time to second guess.
+                                                            Blood, toil, tears and sweat.
                                                         </Text>
                                                         <Text showIn={'sm'}
                                                         css={{
@@ -3215,7 +3217,7 @@ export default function RoadToAPLContent(){
                                                             fontSize: '$md',
                                                             width: '250px'
                                                         }}>
-                                                            Hope you've done your research because no time to second guess.
+                                                            Blood, toil, tears and sweat.
                                                         </Text>
                                                     </Grid>
                                                 </Grid.Container>

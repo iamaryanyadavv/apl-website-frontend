@@ -10,6 +10,7 @@ import RohanAgarwal from '../../assets/avatars/AdminTeam/oc_rohanagarwal.jpg'
 import KavyaSatish from '../../assets/avatars/AdminTeam/oc_kavyasatish.jpg'
 import Uday from '../../assets/avatars/AdminTeam/director_uday.jpg'
 import Zahaan from '../../assets/avatars/AdminTeam/webteam_zahaan.jpg'
+import IryaKhanna from '../../assets/avatars/AdminTeam/oc_iryakhanna.jpg'
 
 export default function TeamContent(){
     return(
@@ -584,7 +585,7 @@ export default function TeamContent(){
                                             borderRadius: '75px'
                                         },
                                         objectFit: 'cover'
-                                    }}  src={Grey} />
+                                    }}  src={IryaKhanna} />
                                     <Text hideIn={'xs'}
                                     css={{
                                         jc: 'center',
