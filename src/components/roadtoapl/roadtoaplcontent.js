@@ -865,7 +865,7 @@ export default function RoadToAPLContent(){
                                                             fontWeight: '$medium',
                                                             textAlign: 'left',
                                                         }}>
-                                                            TBA
+                                                            1:30pm
                                                         </Text>
                                                     </Grid>
                                                 </Grid.Container>
@@ -1098,7 +1098,7 @@ export default function RoadToAPLContent(){
                                                             textAlign: 'left',
                                                             width: '500px'
                                                         }}>
-                                                            Chance for you to showcase your FIFA skills? Pounce on it!
+                                                            Participate in this FIFA tournament and show everybody who's really no.1 at Ashoka
                                                         </Text>
                                                         <Text showIn={'sm'}
                                                         css={{
@@ -1108,7 +1108,7 @@ export default function RoadToAPLContent(){
                                                             textAlign: 'left',
                                                             width: '250px'
                                                         }}>
-                                                            Chance for you to showcase your FIFA skills? Pounce on it!
+                                                            Participate in this FIFA tournament and show everybody who's really no.1 at Ashoka
                                                         </Text>
                                                     </Grid>
                                                 </Grid.Container>
@@ -1190,7 +1190,7 @@ export default function RoadToAPLContent(){
                                                             fontWeight: '$medium',
                                                             textAlign: 'left',
                                                         }}>
-                                                            Mini Amphitheatre
+                                                            TBA
                                                         </Text>
                                                     </Grid>
                                                 </Grid.Container>
@@ -1240,297 +1240,6 @@ export default function RoadToAPLContent(){
                                                             textAlign: 'left',
                                                         }}>
                                                             <a href="/registration/fifa" >Register me!</a> 
-                                                        </Text>
-                                                    </Grid>
-                                                </Grid.Container>
-                                
-                                        </Col>
-                                    </Grid>
-
-                                </Grid.Container>
-                            </Grid>
-                        </Row>
-                        
-                        {/* Inclusivity Event */}
-                        <Row
-                        css={{
-                            jc: 'center',
-                            textAlign: 'center',
-                            alignItems: 'center'
-                        }}>
-                            {/* Date-Timeline */}
-                            <Grid hideIn={'sm'}
-                            css={{
-                                jc: 'center',
-                                textAlign: 'center',
-                                alignItems: 'center',
-                            }}>
-                                <Text hideIn={'sm'}
-                                css={{
-                                    fontSize: '$2xl',
-                                    fontWeight: '$semibold',
-                                    alignItems: 'baseline',
-                                    width: '180px'
-                                }}>
-                                    30th March 2023 
-                                    
-                                </Text>
-                            </Grid>
-                            <Grid showIn={'sm'}>
-                                <Col 
-                                css={{
-                                    display: 'flex',
-                                    flexDirection: 'column',
-                                    jc: 'center',
-                                    alignItems: 'center',
-                                    textAlign: 'center',
-                                    width: '70px'
-                                }}> 
-                                    <Text showIn={'sm'}
-                                    css={{
-                                        fontSize: '$lg',
-                                        fontWeight: '$semibold',
-                                        textAlign: 'center',
-                                    }}>
-                                        30th
-                                        
-                                    </Text>
-                                    <Text showIn={'sm'}
-                                    css={{
-                                        fontSize: '$lg',
-                                        fontWeight: '$semibold',
-                                        textAlign: 'center',
-                                    }}>
-                                        March
-                                        
-                                    </Text>
-                                    <Text showIn={'sm'}
-                                    css={{
-                                        fontSize: '$lg',
-                                        fontWeight: '$semibold',
-                                        textAlign: 'center',
-                                    }}>
-                                        2023 
-            
-                                    </Text>
-                                    
-                                </Col>
-
-                            </Grid>
-
-                            {/* Content Card */}
-                            <Grid
-                            css={{
-                                borderStyle: 'solid',
-                                borderWidth: '0px 0px 0px 2px',
-                                borderColor: '#a90069'
-                            }}>
-                                <Grid.Container gap={0}
-                                css={{
-                                    jc: 'flex-start',
-                                    textAlign: 'center',
-                                    alignItems: 'center',
-                                }}>
-                                    {/* Image side grid */}
-                                    <Grid
-                                    css={{
-                                        alignItems: 'center',
-                                        margin: '0px 10px 0px 10px'
-                                    }}>
-                                        <Image css={{
-                                            '@xsMin':{
-                                                width: '250px',
-                                                height: '250px',
-                                                borderRadius: '20px'
-                                            },
-                                            '@xsMax':{
-                                                width: '200px',
-                                                height: '200px',
-                                                borderRadius: '20px'
-                                            },
-                                            objectFit: 'cover'
-                                        }} src={Inclusivity}  />
-                                    </Grid>
-
-                                    {/* Text side grid */}
-                                    <Grid
-                                    css={{
-                                        jc: 'center',
-                                        textAlign: 'center',
-                                        alignItems: 'center',
-                                    }}>
-                                        <Col>
-                                                {/* Title */}
-                                                <Grid.Container gap={0.5}
-                                                css={{
-                                                    jc: 'center',
-                                                    maxWidth: 'fit-content',
-                                                    textAlign: 'center',
-                                                    alignItems: 'center',
-                                                }}>
-                                                    <Grid>
-                                                        <Text hideIn={'sm'}
-                                                        css={{
-                                                            jc: 'center',
-                                                            textAlign: 'center',
-                                                            fontSize: '$4xl',
-                                                            fontWeight: '$bold',
-                                                            borderStyle: 'solid',
-                                                            borderWidth: '0px 0px 2px 0px',
-                                                            borderColor: '#ed0293'
-                                                        }}>
-                                                            Inclusivity Event
-                                                        </Text>
-                                                        <Text showIn={'sm'}
-                                                        css={{
-                                                            jc: 'center',
-                                                            textAlign: 'center',
-                                                            fontSize: '$2xl',
-                                                            fontWeight: '$bold',
-                                                            borderStyle: 'solid',
-                                                            borderWidth: '0px 0px 2px 0px',
-                                                            borderColor: '#ed0293'
-                                                        }}>
-                                                            Inclusivity Event
-                                                        </Text>
-                                                    </Grid>
-                                                </Grid.Container>
-                                                
-                                                {/* Description */}
-                                                <Grid.Container gap={0.5}
-                                                css={{
-                                                    maxWidth: 'fit-content',
-                                                    jc: 'center',
-                                                    textAlign: 'center',
-                                                    alignItems: 'center',
-                                                }}>
-                                                    <Grid>
-                                                        <Text hideIn={'sm'}
-                                                        css={{
-                                                            jc: 'center',
-                                                            fontSize: '$xl',
-                                                            fontWeight: '$medium',
-                                                            textAlign: 'left',
-                                                            width: '500px'
-                                                        }}>
-                                                            TBA
-                                                        </Text>
-                                                        <Text showIn={'sm'}
-                                                        css={{
-                                                            jc: 'center',
-                                                            fontSize: '$md',
-                                                            fontWeight: '$medium',
-                                                            textAlign: 'left',
-                                                            width: '250px'
-                                                        }}>
-                                                            TBA
-                                                        </Text>
-                                                    </Grid>
-                                                </Grid.Container>
-
-
-                                                {/* Description 2 */}
-                                                <Grid.Container gap={0.5}
-                                                css={{
-                                                    maxWidth: 'fit-content',
-                                                    jc: 'center',
-                                                    textAlign: 'center',
-                                                    alignItems: 'center',
-                                                }}>
-                                                    <Grid>
-                                                        <Text hideIn={'sm'}
-                                                        css={{
-                                                            jc: 'center',
-                                                            fontWeight: '$medium',
-                                                            textAlign: 'left',
-                                                            fontSize: '$xl',
-                                                            width: '500px'
-                                                        }}>
-                                                            TBA
-                                                        </Text>
-                                                        <Text showIn={'sm'}
-                                                        css={{
-                                                            jc: 'center',
-                                                            fontWeight: '$medium',
-                                                            textAlign: 'left',
-                                                            fontSize: '$md',
-                                                            width: '250px'
-                                                        }}>
-                                                            TBA
-                                                        </Text>
-                                                    </Grid>
-                                                </Grid.Container>
-
-                                                {/* Time */}
-                                                <Grid.Container gap={1}
-                                                css={{
-                                                    maxWidth: 'fit-content',
-                                                    jc: 'center',
-                                                    textAlign: 'center',
-                                                    alignItems: 'center',
-                                                }}>
-                                                    <AiOutlineClockCircle
-                                                    style={{
-                                                        color: '#ed0293'
-                                                    }}/>
-                                                    <Grid>
-                                                        <Text
-                                                        css={{
-                                                            jc: 'center',
-                                                            fontWeight: '$medium',
-                                                            textAlign: 'left',
-                                                        }}>
-                                                            TBA
-                                                        </Text>
-                                                    </Grid>
-                                                </Grid.Container>
-                                                
-
-                                                {/* Location */}
-                                                <Grid.Container gap={1}
-                                                css={{
-                                                    maxWidth: 'fit-content',
-                                                    jc: 'center',
-                                                    textAlign: 'center',
-                                                    alignItems: 'center',
-                                                }}>
-                                                    <IoLocation
-                                                    style={{
-                                                        color: '#ed0293'
-                                                    }}/>
-                                                    <Grid>
-                                                        <Text
-                                                        css={{
-                                                            jc: 'center',
-                                                            fontWeight: '$medium',
-                                                            textAlign: 'left',
-                                                        }}>
-                                                            Outside Mess
-                                                        </Text>
-                                                    </Grid>
-                                                </Grid.Container>
-
-
-                                                {/* Teams */}
-                                                <Grid.Container gap={1}
-                                                css={{
-                                                    maxWidth: 'fit-content',
-                                                    jc: 'center',
-                                                    textAlign: 'center',
-                                                    alignItems: 'center',
-                                                }}>
-                                                    <AiOutlineTeam
-                                                    style={{
-                                                        color: '#ed0293'
-                                                    }}/>
-                                                    <Grid>
-                                                        <Text
-                                                        css={{
-                                                            jc: 'center',
-                                                            fontWeight: '$medium',
-                                                            textAlign: 'left',
-                                                        }}>
-                                                            Solo
                                                         </Text>
                                                     </Grid>
                                                 </Grid.Container>
