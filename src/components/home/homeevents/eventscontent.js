@@ -120,7 +120,7 @@ export default function EventsContent () {
                 </Grid>
 
                 
-                <Grid
+                {/* <Grid
                 css={{
                     jc: 'center',
                     textAlign: 'center',
@@ -167,7 +167,7 @@ export default function EventsContent () {
                             30th March, 2023
                         </Text>
                     </Col>
-                </Grid>
+                </Grid> */}
 
                         
                 <Grid
@@ -214,7 +214,7 @@ export default function EventsContent () {
                             fontWeight: '$semibold',
                             padding: '2%'
                         }}>
-                            5th April, 2023
+                            2nd April, 2023
                         </Text>
                     </Col>
                 </Grid>

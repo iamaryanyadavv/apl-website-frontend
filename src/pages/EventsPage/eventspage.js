@@ -20,49 +20,38 @@ const EventsPage = () => {
             />
             <EventSection1
                 heading='Foosball'
-                desc1='TBA'
-                desc2='TBA'
-                time='TBA'
+                desc1='Foosball? Foosball.'
+                desc2='Get your friends for a fun evening filled with foosball, music and more!'
+                time='1:30 PM'
                 date='16th March, 2023'
-                location='TBA'
+                location='Outside Mess'
                 team='Solo or Duos'
                 src={Foosball}
                 backgroundcolor='rgb(20,20,20)'
             />
             <EventSection2
                 heading='FIFA 2v2s'
-                desc1='Participate in this FIFA tournament to show you are better than your comptetitors virtually.'
-                desc2='Stand a chance to win a ₹2000 cash prize!'
+                desc1='Registration 150rs/player. 32 teams. Winner gets 4k & runner-up 2.5k.'
+                desc2='You think you got what it takes?'
                 time='TBA'
                 date='22nd & 23rd March, 2023'
-                location='Mini Amphitheatre'
-                team='Duos'
+                location='SH3 Commons'
+                team='2v2'
                 src={PS5}
                 backgroundcolor='rgb(0,0,0)'
                 link='yes'
                 linkref='/registration/fifa'
             />
             <EventSection1
-                heading='Inclusivity Event'
-                desc1='TBA'
-                desc2='TBA'
-                time='TBA'
-                date='30th March, 2023'
-                location='Mess Lawns'
-                team='Solo'
-                src={Inclusivity}
-                backgroundcolor='rgb(20,20,20)'
-            />
-            <EventSection2
                 heading='Predicitions'
                 desc1='Most expensive player? Team w highest bid? Come and give your auction predictions.'
                 desc2='Correct predictions get &#x20B9;50 after the auction!'
-                time='TBA'
-                date='5th April, 2023'
+                time='1:30 - 3:00 PM'
+                date='2nd April, 2023'
                 location='Outside Mess'
                 team='Solo'
                 src={AuctionPredictions}
-                backgroundcolor='rgb(0,0,0)'
+                backgroundcolor='rgb(20,20,20)'
             />
         </div>
     )
