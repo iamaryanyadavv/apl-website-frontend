@@ -84,7 +84,7 @@ export default function QuoteHeading(props){
                                 fontSize:'$2xl',
                                 fontWeight: '$medium',
                                 textAlign: 'center',
-                                padding: '0% 20%'
+                                width: '60vw'
                             }}>
                                 {props.description}
                             </Text>
@@ -94,7 +94,7 @@ export default function QuoteHeading(props){
                                 fontSize:'$lg',
                                 fontWeight: '$medium',
                                 textAlign: 'center',
-                                padding: '0% 10%'
+                                width: '60vw'
                             }}>
                                 {props.description}
                             </Text>

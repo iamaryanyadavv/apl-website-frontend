@@ -12,14 +12,17 @@ export default function FootNavbar () {
             alignItems: 'center',
         }}>
 
-            <Grid.Container gap={1}
+            <Grid.Container gap={0}
             css={{
                 jc: 'center',
                 textAlign: 'center',
                 alignItems: 'center',
                 marginTop: '15px',
             }}>
-                <Grid>
+                <Grid
+                css={{
+                    padding: '12px'
+                }}>
                     <Image 
                     css={{
                         borderRadius: '10px'
@@ -27,7 +30,7 @@ export default function FootNavbar () {
                 </Grid>
             </Grid.Container>
 
-            <Grid.Container gap={4}
+            <Grid.Container gap={0}
             css={{
                 jc: 'center',
                 textAlign: 'center',
@@ -40,23 +43,32 @@ export default function FootNavbar () {
                     textAlign: 'center',
                     alignItems: 'center'
                 }}>
-                    <Grid.Container gap={2}
+                    <Grid.Container gap={0}
                     css={{
                         jc: 'center',
                         textAlign: 'center',
                         alignItems: 'center'
                     }}>
-                        <Grid>
+                        <Grid 
+                        css={{
+                            padding: '12px'
+                        }}>
                             <Link className="footnavbar-item" href="/">
                                 Home
                             </Link>
                         </Grid>
-                        <Grid>
+                        <Grid 
+                        css={{
+                            padding: '12px'
+                        }}>
                             <Link className="footnavbar-item" href="/registration" >
                                 Registration
                             </Link>
                         </Grid>
-                        <Grid>
+                        <Grid 
+                        css={{
+                            padding: '12px'
+                        }}>
                             <Link className="footnavbar-item" href="/events" >
                                 Events
                             </Link>
@@ -69,23 +81,32 @@ export default function FootNavbar () {
                     textAlign: 'center',
                     alignItems: 'center'
                 }}>
-                    <Grid.Container gap={2}
+                    <Grid.Container gap={0}
                     css={{
                         jc: 'center',
                         textAlign: 'center',
                         alignItems: 'center'
                     }}>
-                        <Grid>
+                        <Grid 
+                        css={{
+                            padding: '12px'
+                        }}>
                             <Link className="footnavbar-item" href="/slots" >
                                 Slots
                             </Link>
                         </Grid>
-                        <Grid>
+                        <Grid 
+                        css={{
+                            padding: '12px'
+                        }}>
                             <Link className="footnavbar-item" href="/seasons">
                                 Seasons
                             </Link>
                         </Grid>
-                        <Grid>
+                        <Grid 
+                        css={{
+                            padding: '12px'
+                        }}>
                             <Link className="footnavbar-item" href="/team">
                                 Team
                             </Link>

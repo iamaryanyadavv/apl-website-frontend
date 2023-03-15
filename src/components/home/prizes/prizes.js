@@ -69,14 +69,17 @@ export default function Prizes () {
 
             {/* Medals */}
 
-                <Grid.Container gap={3}
+                <Grid.Container 
                 css={{
                     jc: 'center',
                     textAlign: 'center',
                     alignItems: 'center',
-                    paddingBottom: '50px'
+                    paddingBottom: '50px',
                 }}>
-                    <Grid>
+                    <Grid
+                    css={{
+                        padding: '24px'
+                    }}>
                         <Col>
                             <Text
                             css={{
@@ -126,7 +129,10 @@ export default function Prizes () {
                     </Grid>
 
 
-                    <Grid>
+                    <Grid 
+                    css={{
+                        padding: '24px'
+                    }}>
                         <Col>
                             <Spacer y={2.25} />
                             <Col
@@ -168,7 +174,10 @@ export default function Prizes () {
                     </Grid>
                                 
 
-                    <Grid>
+                    <Grid 
+                    css={{
+                        padding: '24px'
+                    }}>
                         <Col>
                             <Text
                             css={{

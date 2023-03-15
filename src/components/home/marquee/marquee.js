@@ -9,7 +9,7 @@ const NewsTicker = () => {
         background: 'white',
         color: 'black',
         paddingTop: '7px',
-        paddingBottom: '8px'
+        paddingBottom: '8px',
       }}
       gradientColor={[255, 255, 255]}
       gradientWidth={'15%'}
@@ -18,10 +18,8 @@ const NewsTicker = () => {
         style={{
           fontSize: '15px',
           fontWeight: "500",
-          textAlign: 'center',
-          justifyContent: 'center',
           paddingRight: '2px',
-          paddingLeft: '2px'
+          paddingLeft: '2px',
         }}
       >
         APL 6.0 owner and player registrations open on 16th of march, 2023! 

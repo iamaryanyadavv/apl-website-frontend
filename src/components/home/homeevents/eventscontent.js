@@ -14,7 +14,7 @@ export default function EventsContent () {
             textAlign: 'center',
             alignItems: 'center'
         }}>
-            <Grid.Container gap={4}
+            <Grid.Container 
             css={{
                 jc: 'center',
                 textAlign: 'center'
@@ -23,7 +23,8 @@ export default function EventsContent () {
                 css={{
                     jc: 'center',
                     textAlign: 'center',
-                    alignItems: 'center'
+                    alignItems: 'center',
+                    padding: '24px'
                 }}>
                     <Col 
                     css={{
@@ -73,7 +74,8 @@ export default function EventsContent () {
                 css={{
                     jc: 'center',
                     textAlign: 'center',
-                    alignItems: 'center'
+                    alignItems: 'center',
+                    padding: '24px'
                 }}>
                     <Col 
                     css={{
@@ -122,7 +124,8 @@ export default function EventsContent () {
                 css={{
                     jc: 'center',
                     textAlign: 'center',
-                    alignItems: 'center'
+                    alignItems: 'center',
+                    padding: '24px'
                 }}>
                     <Col 
                     css={{
@@ -171,7 +174,8 @@ export default function EventsContent () {
                 css={{
                     jc: 'center',
                     textAlign: 'center',
-                    alignItems: 'center'
+                    alignItems: 'center',
+                    padding: '24px'
                 }}>
                     <Col 
                     css={{
@@ -219,12 +223,12 @@ export default function EventsContent () {
             </Grid.Container>
 
 
-            <Grid.Container gap={4}
+            <Grid.Container gap={0}
             css={{
                 jc: 'center',
                 textAlign: 'center',
                 alignItems: 'center',
-                paddingTop: '40px'
+                padding: '20px 0px 40px 0px'
             }}>
                 <Grid>
                     <Button className="mini-events-btn"
