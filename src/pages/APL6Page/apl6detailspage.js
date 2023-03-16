@@ -14,8 +14,8 @@ export default function APL6DetailsPage(){
         }}>
             <Spacer y={2} />
             <GradientHeading
-                heading='APL 5.0 DETAILS'
-                description='You can find all of the tournament details of APL Season 5.0!'
+                heading='APL 6.0 DETAILS'
+                description='You can find all of the tournament details of APL Season 6.0!'
                 gradient='45deg, $purple600 -20%, $pink600 100%'
             />
             <APL6DetailsContent/>

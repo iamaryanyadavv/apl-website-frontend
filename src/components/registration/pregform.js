@@ -1423,7 +1423,7 @@ export default function PRegForm(){
                                     fontSize: '$xl',
                                     fontWeight: '$medium'
                                 }}>
-                                    (8447906230, UPI ID: )
+                                    (8447906230, UPI ID: 8447906230@paytm)
                                 </Text>
                             </Col>
                             <Grid>

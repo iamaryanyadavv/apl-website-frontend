@@ -452,8 +452,8 @@ export default function TRegForm() {
                 setLoadingModal(false)
             }
         }
-        if(teamname && managername && manageremail && managerphone && totalowners==2 && owner1 && owner2 && !owner3 && !owner4 && !owner5 ){
-            console.log('coming in owner1+2')
+        else if(teamname && managername && manageremail && managerphone && totalowners==2 && owner1 && owner2 && !owner3 && !owner4 && !owner5 ){
+            console.log('coming in owner2')
             const res = await fetch("https://ashoka-premier-league-api.onrender.com/registration/team",{
             method: "POST",
             headers:{
@@ -480,7 +480,8 @@ export default function TRegForm() {
                 setLoadingModal(false)
             }
         }
-        if(teamname && managername && manageremail && managerphone && totalowners==3 && owner1 && owner2 && owner3 && !owner4 && !owner5 ){
+        else if(teamname && managername && manageremail && managerphone && totalowners==3 && owner1 && owner2 && owner3 && !owner4 && !owner5 ){
+            console.log('3 OWNERS!')
             const res = await fetch("https://ashoka-premier-league-api.onrender.com/registration/team",{
             method: "POST",
             headers:{
@@ -504,10 +505,11 @@ export default function TRegForm() {
             }
             else if(res.status!==200){
                 setRegErrorStatus(200)
+                console.log(res.status)
                 setLoadingModal(false)
             }
         }
-        if(teamname && managername && manageremail && managerphone && totalowners==4 && owner1 && owner2 && owner3 && owner4 && !owner5 ){
+        else if(teamname && managername && manageremail && managerphone && totalowners==4 && owner1 && owner2 && owner3 && owner4 && !owner5 ){
             const res = await fetch("https://ashoka-premier-league-api.onrender.com/registration/team",{
             method: "POST",
             headers:{
@@ -534,7 +536,8 @@ export default function TRegForm() {
                 setLoadingModal(false)
             }
         }
-        if(teamname & managername & manageremail & managerphone & totalowners==5 & owner1 & owner2 & owner3 & owner4 & owner5){
+        else {
+            
             const res = await fetch("https://ashoka-premier-league-api.onrender.com/registration/team",{
             method: "POST",
             headers:{
@@ -554,7 +557,7 @@ export default function TRegForm() {
             })
             if(res.status==200){
                 setRegSuccessStatus(true)
-                setLoadingModal(false);
+                setLoadingModal(true);
             }
             else if(res.status!==200){
                 setRegErrorStatus(200)
@@ -1871,7 +1874,7 @@ export default function TRegForm() {
                                         fontSize: '$xl',
                                         fontWeight: '$medium'
                                     }}>
-                                        (8447906230, UPI ID: )
+                                        (8447906230, UPI ID: 8447906230@paytm)
                                     </Text>
                                 </Col>
                                 <Grid>
@@ -1920,7 +1923,6 @@ export default function TRegForm() {
                                 fullScreen
                                 open={ModalVisibility}
                                 onClose={()=>{
-                                    console.log(totalowners)
                                     setModalVisibility(false)
                                 }}>
 
@@ -2618,7 +2620,7 @@ export default function TRegForm() {
                                                             fontSize: '$lg',
                                                             fontWeight: '$semibold'
                                                         }}>
-                                                            {owner4email}
+                                                            {owner5email}
                                                         </Text>
                                                         <Text showIn={'xs'}
                                                         css={{
@@ -2889,7 +2891,7 @@ export default function TRegForm() {
                                                             fontSize: '$md',
                                                             fontWeight: '$semibold'
                                                         }}>
-                                                            {owner3phone}
+                                                            {owner3email}
                                                         </Text>
                                                     </Row>
                                                 </Grid>
