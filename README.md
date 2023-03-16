@@ -6,6 +6,6 @@ Website created for APL Tournament. Using reactjs, nodejs and expressjs. Store f
 
 1. git clone repo
 2. run "npm install"
-3. npm start
+3. run "npm start"
 
 It should start on port 3000.
