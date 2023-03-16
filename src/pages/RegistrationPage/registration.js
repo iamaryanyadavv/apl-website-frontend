@@ -8,7 +8,7 @@ function Registration() {
         <div className="registrationlanding">
             <div className="regbackg">
                 <RegCards/>
-                <RegRules/>
+                {/* <RegRules/> */}
             </div>
         </div>
     )

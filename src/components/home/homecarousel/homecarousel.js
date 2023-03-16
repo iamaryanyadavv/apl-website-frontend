@@ -108,7 +108,7 @@ export default function HomeCarousel () {
                                             fontWeight: '$medium',
                                             paddingBottom: '1%',
                                             textAlign: 'center',
-                                            fontSize: '$3xl',
+                                            fontSize: '$5xl',
                                             width: '80vw',
                                             paddingTop: '15%'
                                         }}>
@@ -347,7 +347,7 @@ export default function HomeCarousel () {
                                             fontWeight: '$medium',
                                             paddingBottom: '1%',
                                             textAlign: 'center',
-                                            fontSize: '$3xl',
+                                            fontSize: '$5xl',
                                             width: '80vw',
                                             paddingTop: '15%'
                                         }}>
@@ -495,7 +495,7 @@ export default function HomeCarousel () {
                                             fontWeight: '$medium',
                                             paddingBottom: '1%',
                                             textAlign: 'center',
-                                            fontSize: '$3xl',
+                                            fontSize: '$5xl',
                                             width: '80vw',
                                             paddingTop: '15%'
                                         }}>
