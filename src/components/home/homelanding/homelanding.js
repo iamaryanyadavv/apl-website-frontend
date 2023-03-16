@@ -19,7 +19,7 @@ function HomeLanding() {
                     fontSize: '$7xl',
                     fontWeight: '$semibold',
                     textAlign: 'center',
-                    padding: '250px 5px 400px 05px'
+                    padding: '25vh 5px 33vh 5px'
 
                 }}>
                     Ashoka Premier League
@@ -29,7 +29,7 @@ function HomeLanding() {
                     fontSize: '$3xl',
                     fontWeight: '$semibold',
                     textAlign: 'center',
-                    padding: '300px 5px 350px 05px'
+                    padding: '35vh 5px 43vh 5px'
                 }}>
                     Ashoka Premier League
                 </Text>
