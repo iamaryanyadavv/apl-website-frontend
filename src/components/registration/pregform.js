@@ -22,6 +22,11 @@ export default function PRegForm(){
         { key: "Man", name: "Man" },
         { key: "Non-Cis Man", name: "Non-Cis Man" },
     ];
+
+    const genderItemsFULL = [
+        { key: "Non-Cis Man", name: "Non-Cis Man" }
+    ];
+
     const GeneralPosItems=[
         { key: "Goalkeeper", name: 'Goalkeeper'},
         { key: 'Defender', name: 'Defender'},
@@ -91,6 +96,7 @@ export default function PRegForm(){
     const [RegErrorStatus, setRegErrorStatus] = useState(false);
     const [RegProcess, setRegProcess] = useState(false);
     const [LoadingModal, setLoadingModal] = useState(false);
+    const [maleRegFull, setmaleRegFull] = useState(false);
     
     //variable to control if user signed in
     const [signedin, setSignedIn] = useState(false);
@@ -349,6 +355,28 @@ export default function PRegForm(){
             }
             
              
+        })
+        await fetch('https://ashoka-premier-league-api.onrender.com/registration/checkreg')
+        .then(response=>response.json())
+        .then((data)=>{
+            if(data.values)
+            {
+                var count = 0;
+                for(var i = 0; i < data.values.length; i++)
+                {
+                    if(data.values[i][0]==='Man')
+                    {
+                        count++;
+                    }
+                    
+                };
+                console.log(count);
+                if(count==160)
+                {
+                    setmaleRegFull(true);
+                    alert('Male Player Registrations are full!')
+                }
+            }
         })
     } 
 
@@ -1210,7 +1238,7 @@ export default function PRegForm(){
                                             setGenderStatus('success')
                                         }
                                     }} 
-                                    disallowEmptySelection selectionMode="single" selectedKeys={gender} aria-label="Dynamic Actions" items={genderItems}>
+                                    disallowEmptySelection selectionMode="single" selectedKeys={gender} aria-label="Dynamic Actions" items={maleRegFull?genderItemsFULL:genderItems}>
                                         {(item) => (
                                         <Dropdown.Item
                                             key={item.key}
