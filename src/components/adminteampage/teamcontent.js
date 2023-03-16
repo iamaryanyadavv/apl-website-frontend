@@ -11,6 +11,7 @@ import KavyaSatish from '../../assets/avatars/AdminTeam/oc_kavyasatish.jpg'
 import Uday from '../../assets/avatars/AdminTeam/director_uday.jpg'
 import Zahaan from '../../assets/avatars/AdminTeam/webteam_zahaan.jpg'
 import IryaKhanna from '../../assets/avatars/AdminTeam/oc_iryakhanna.jpg'
+import Abhay from '../../assets/avatars/AdminTeam/oc_abhay.jpeg'
 
 export default function TeamContent(){
     return(
@@ -250,7 +251,7 @@ export default function TeamContent(){
                                             borderRadius: '75px'
                                         },
                                         objectFit: 'cover'
-                                    }}  src={Grey} />
+                                    }}  src={Abhay} />
                                     <Text hideIn={'xs'}
                                     css={{
                                         jc: 'center',

@@ -9,7 +9,7 @@
     src: url('../../../assets/fonts/Dancing_Script/DancingScript-VariableFont_wght.ttf');
 }
 
-/* .homelandingpage {
+.homelandingpage {
     position: relative;
 }
 
@@ -37,7 +37,7 @@
 
 .hlquote{
     text-align: center;
-} */
+}
 
 .nextui-c-iWjDFM-kaRBtV-cv{
     background: black !important;
