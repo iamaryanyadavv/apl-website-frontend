@@ -23,7 +23,8 @@ const NewsTicker = () => {
         }}
       >
         APL 6.0 owner and player registrations open on 16th of march, 2023! 
-        Head on to the registrations page!
+        Head on to the registrations page! 
+        FIFA Registrations start on 20th of march, 2023!
       </p>
     </Marquee>
   );
