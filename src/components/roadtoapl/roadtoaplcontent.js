@@ -1098,7 +1098,7 @@ export default function RoadToAPLContent(){
                                                             textAlign: 'left',
                                                             width: '500px'
                                                         }}>
-                                                            Registration 150rs/player. 32 teams. Winner gets 4k & runner-up 2.5k.
+                                                            Registration &#x20B9;150/player. 32 teams. Winner gets 4k & runner-up 2.5k.
                                                         </Text>
                                                         <Text showIn={'sm'}
                                                         css={{
@@ -1108,7 +1108,7 @@ export default function RoadToAPLContent(){
                                                             textAlign: 'left',
                                                             width: '250px'
                                                         }}>
-                                                            Registration 150rs/player. 32 teams. Winner gets 4k & runner-up 2.5k.
+                                                            Registration &#x20B9;150/player. 32 teams. Winner gets 4k & runner-up 2.5k.
                                                         </Text>
                                                     </Grid>
                                                 </Grid.Container>

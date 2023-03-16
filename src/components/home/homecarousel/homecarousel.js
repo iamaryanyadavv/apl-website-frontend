@@ -65,7 +65,7 @@ export default function HomeCarousel () {
                             <div className="habackg">
 
 
-                            <Grid.Container
+                                {/* <Grid.Container
                                 css={{
                                     jc: 'center',
                                     textAlign: 'center'
@@ -94,7 +94,7 @@ export default function HomeCarousel () {
                                             "Attack wins you games but defence wins you championships” - Sir Alex Ferguson
                                         </Text>
                                     </Grid>
-                                </Grid.Container>
+                                </Grid.Container> */}
 
                                 <Grid.Container
                                 css={{
@@ -108,7 +108,9 @@ export default function HomeCarousel () {
                                             fontWeight: '$medium',
                                             paddingBottom: '1%',
                                             textAlign: 'center',
-                                            fontSize: '$3xl'
+                                            fontSize: '$3xl',
+                                            width: '80vw',
+                                            paddingTop: '15%'
                                         }}>
                                             Check out each and every season* below!
                                         </Text>
@@ -118,7 +120,9 @@ export default function HomeCarousel () {
                                             fontWeight: '$medium',
                                             paddingBottom: '1%',
                                             textAlign: 'center',
-                                            fontSize: '$2xl'
+                                            fontSize: '$2xl',
+                                            width: '80vw',
+                                            paddingTop: '30%'
                                         }}>
                                             Check out each and every season* below!
                                         </Text>
@@ -128,7 +132,7 @@ export default function HomeCarousel () {
                                 <Grid.Container gap={1}
                                 css={{
                                     jc: 'center',
-                                    paddingBottom: '15%'
+                                    paddingBottom: '25%'
                                 }}>
                                     <Grid>
                                         <Button  shadow rounded bordered auto ghost>
@@ -300,7 +304,7 @@ export default function HomeCarousel () {
                             <div className="hssbackg">
                                 
 
-                                <Grid.Container
+                                {/* <Grid.Container
                                 css={{
                                     jc: 'center',
                                     textAlign: 'center'
@@ -329,7 +333,7 @@ export default function HomeCarousel () {
                                             "There's something greater than the result in football, more lasting: a legacy” - Xavi
                                         </Text>
                                     </Grid>
-                                </Grid.Container>
+                                </Grid.Container> */}
 
                                 <Grid.Container
                                 css={{
@@ -343,7 +347,9 @@ export default function HomeCarousel () {
                                             fontWeight: '$medium',
                                             paddingBottom: '1%',
                                             textAlign: 'center',
-                                            fontSize: '$3xl'
+                                            fontSize: '$3xl',
+                                            width: '80vw',
+                                            paddingTop: '15%'
                                         }}>
                                             Navigate to the training slot booking* features below!
                                         </Text>
@@ -353,7 +359,9 @@ export default function HomeCarousel () {
                                             fontWeight: '$medium',
                                             paddingBottom: '1%',
                                             textAlign: 'center',
-                                            fontSize: '$2xl'
+                                            fontSize: '$2xl',
+                                            width: '80vw',
+                                            paddingTop: '30%'
                                         }}>
                                             Navigate to the training slot booking* features below!
                                         </Text>
@@ -363,7 +371,7 @@ export default function HomeCarousel () {
                                 <Grid.Container gap={1}
                                 css={{
                                     jc: 'center',
-                                    paddingBottom: '15%'
+                                    paddingBottom: '25%'
                                 }}>
                                     <Grid>
                                         <Button  shadow rounded bordered auto ghost>
@@ -452,7 +460,7 @@ export default function HomeCarousel () {
                             
                             <div className="hsbackg">
                                 
-                                <Text hideIn={'xs'} className="hsquote"
+                                {/* <Text hideIn={'xs'} className="hsquote"
                                 css={{
                                     jc: 'center',
                                     alignItems: 'center',
@@ -473,37 +481,45 @@ export default function HomeCarousel () {
                                     fontSize: '$2xl'
                                 }}>
                                     “Worst blindness a footballer can have is seeing only the ball” - Nelson Rodriguez
-                                </Text>
+                                </Text> */}
     
-                                <Text hideIn={'xs'}
+                                <Grid.Container
                                 css={{
                                     jc: 'center',
-                                    fontWeight: '$medium',
-                                    paddingBottom: '1%',
-                                    textAlign: 'center',
-                                    paddingRight: '0%',
-                                    paddingLeft: '0%',
-                                    fontSize: '$3xl'
+                                    textAlign: 'center'
                                 }}>
-                                    Check out the award* winners from last season!
-                                </Text>
-                                <Text showIn={'xs'}
-                                css={{
-                                    jc: 'center',
-                                    fontWeight: '$medium',
-                                    paddingBottom: '5%',
-                                    textAlign: 'center',
-                                    paddingRight: '0%',
-                                    paddingLeft: '0%',
-                                    fontSize: '$2xl'
-                                }}>
-                                    Check out the award* winners from last season!
-                                </Text>
+                                    <Grid>
+                                        <Text hideIn={'xs'}
+                                        css={{
+                                            jc: 'center',
+                                            fontWeight: '$medium',
+                                            paddingBottom: '1%',
+                                            textAlign: 'center',
+                                            fontSize: '$3xl',
+                                            width: '80vw',
+                                            paddingTop: '15%'
+                                        }}>
+                                            Check out the award* winners from last season!
+                                        </Text>
+                                        <Text showIn={'xs'}
+                                        css={{
+                                            jc: 'center',
+                                            fontWeight: '$medium',
+                                            paddingBottom: '1%',
+                                            textAlign: 'center',
+                                            fontSize: '$2xl',
+                                            width: '80vw',
+                                            paddingTop: '30%'
+                                        }}>
+                                            Check out the award* winners from last season!
+                                        </Text>
+                                    </Grid>
+                                </Grid.Container>
     
                                 <Grid.Container gap={1}
                                 css={{
                                     jc: 'center',
-                                    paddingBottom: '15%'
+                                    paddingBottom: '25%'
                                 }}>
                                     <Grid>
                                         <Button  shadow rounded bordered auto ghost>
