@@ -5,7 +5,7 @@ Website created for APL Tournament. Using reactjs, nodejs and expressjs. Store f
 # How to run locally
 
 1. git clone repo
-2. run "npm install"
-3. run "npm start"
+2. run "npm install" to install dependencies
+3. run "npm start" to run using react-script "start"
 
 It should start on port 3000.
