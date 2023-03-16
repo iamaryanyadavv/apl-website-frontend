@@ -19,16 +19,17 @@ function HomeLanding() {
                     fontSize: '$7xl',
                     fontWeight: '$semibold',
                     textAlign: 'center',
-                    padding: '15% 5% 20% 5%'
+                    padding: '250px 5px 400px 05px'
 
                 }}>
                     Ashoka Premier League
                 </Text>
                 <Text showIn={'xs'}
                 css={{
-                    fontSize: '$2xl',
+                    fontSize: '$3xl',
                     fontWeight: '$semibold',
-
+                    textAlign: 'center',
+                    padding: '300px 5px 350px 05px'
                 }}>
                     Ashoka Premier League
                 </Text>
