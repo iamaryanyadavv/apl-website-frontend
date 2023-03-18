@@ -15,7 +15,7 @@ export default function TeamRegClosed(){
                 }}>
                 <Text hideIn={'md'}
                 css={{
-                    fontSize: '$8xl',
+                    fontSize: '$6xl',
                     fontWeight: '$semibold',
                     alignContent: 'center',
                     justifyContent: 'center'
@@ -33,7 +33,7 @@ export default function TeamRegClosed(){
                 </Text>
                 <Text hideIn={'md'}
                 css={{
-                    fontSize: '$8xl',
+                    fontSize: '$6xl',
                     fontWeight: '$semibold',
                     alignContent: 'center',
                     justifyContent: 'center'
