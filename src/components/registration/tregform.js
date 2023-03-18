@@ -1865,7 +1865,7 @@ export default function TRegForm() {
                                         fontSize: '$xl',
                                         fontWeight: '$medium'
                                     }}>
-                                        Please pay the amount (6000) to Uday Srivastava, via PayTM or GPay.
+                                        Please pay the amount (&#x20B9;6000) to Uday Srivastava, via PayTM or GPay.
                                     </Text>
                                     <Text 
                                     css={{
