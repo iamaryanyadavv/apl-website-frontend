@@ -242,7 +242,7 @@ export default function RoadToAPLContent(){
                                                             fontSize: '$xl',
                                                             width: '500px'
                                                         }}>
-                                                            It is on a first-come-first-serve basis, so watch out!
+                                                            It is on a first-come-first-serve basis, so watch out! Max. "Man" = 160
                                                         </Text>
                                                         <Text showIn={'sm'}
                                                         css={{
@@ -252,7 +252,7 @@ export default function RoadToAPLContent(){
                                                             fontSize: '$md',
                                                             width: '250px'
                                                         }}>
-                                                            It is on a first-come-first-serve basis, so watch out!
+                                                            It is on a first-come-first-serve basis, so watch out!  Max. "Man" = 160
                                                         </Text>
                                                     </Grid>
                                                 </Grid.Container>
@@ -276,7 +276,7 @@ export default function RoadToAPLContent(){
                                                             fontWeight: '$medium',
                                                             textAlign: 'left',
                                                         }}>
-                                                            Until 02/04/2023
+                                                            02/04/2023 or Max. 200
                                                         </Text>
                                                     </Grid>
                                                 </Grid.Container>
@@ -571,7 +571,7 @@ export default function RoadToAPLContent(){
                                                             fontWeight: '$medium',
                                                             textAlign: 'left',
                                                         }}>
-                                                            Until 31/03/2023
+                                                            31/03/2023 or Max. 20
                                                         </Text>
                                                     </Grid>
                                                 </Grid.Container>
@@ -1098,7 +1098,7 @@ export default function RoadToAPLContent(){
                                                             textAlign: 'left',
                                                             width: '500px'
                                                         }}>
-                                                            Registration &#x20B9;150/player. 32 teams. Winner gets 4k & runner-up 2.5k.
+                                                            Registration &#x20B9;150/player. 32 teams. Winner gets &#x20B9;4k & runner-up &#x20B9;2.5k.
                                                         </Text>
                                                         <Text showIn={'sm'}
                                                         css={{
@@ -1108,7 +1108,7 @@ export default function RoadToAPLContent(){
                                                             textAlign: 'left',
                                                             width: '250px'
                                                         }}>
-                                                            Registration &#x20B9;150/player. 32 teams. Winner gets 4k & runner-up 2.5k.
+                                                            Registration &#x20B9;150/player. 32 teams. Winner gets &#x20B9;4k & runner-up &#x20B9;2.5k.
                                                         </Text>
                                                     </Grid>
                                                 </Grid.Container>
