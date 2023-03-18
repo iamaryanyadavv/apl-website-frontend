@@ -7,33 +7,46 @@ export default function TeamRegClosed(){
     return(
         <div className="team-reg-closed-bg">
             
-                <Grid.Container justify="center">
+                <Grid.Container justify="center" alignItems="center" css={{
+                    display:'flex',
+                    alignItems:'center',
+                    justifyContent: 'center',
+                    margin:'6%'
+                }}>
                 <Text hideIn={'md'}
                 css={{
-                    fontSize: '$6xl',
+                    fontSize: '$8xl',
                     fontWeight: '$semibold',
+                    alignContent: 'center',
+                    justifyContent: 'center'
                 }}>
                 Team Registration is closed. See you next season!
                 </Text>
                 <Text showIn={'md'}
                 css={{
-                    fontSize: '$2xl',
+                    fontSize: '$3xl',
                     fontWeight: '$semibold',
-                }}>.
+                    alignContent: 'center',
+                    justifyContent: 'center'
+                }}>
                 Team Registration is closed. See you next season!
                 </Text>
                 <Text hideIn={'md'}
                 css={{
-                    fontSize: '$6xl',
+                    fontSize: '$8xl',
                     fontWeight: '$semibold',
+                    alignContent: 'center',
+                    justifyContent: 'center'
                 }}>
                 You can check out the list of registered teams <a href="/seasons/apl6/teams">here</a>.
                 </Text>
                 <Text showIn={'md'}
                 css={{
-                    fontSize: '$2xl',
+                    fontSize: '$3xl',
                     fontWeight: '$semibold',
-                }}>.
+                    alignContent: 'center',
+                    justifyContent: 'center'
+                }}>
                 You can check out the list of registered teams <a href="/seasons/apl6/teams">here</a>.
                 </Text>
                 </Grid.Container>
