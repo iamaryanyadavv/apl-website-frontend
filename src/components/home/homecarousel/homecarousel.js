@@ -108,8 +108,8 @@ export default function HomeCarousel () {
                                             fontWeight: '$medium',
                                             paddingBottom: '1%',
                                             textAlign: 'center',
-                                            fontSize: '$5xl',
-                                            width: '80vw',
+                                            fontSize: '$4xl',
+                                            width: '70vw',
                                             paddingTop: '15%'
                                         }}>
                                             Check out each and every season* below!
@@ -347,8 +347,8 @@ export default function HomeCarousel () {
                                             fontWeight: '$medium',
                                             paddingBottom: '1%',
                                             textAlign: 'center',
-                                            fontSize: '$5xl',
-                                            width: '80vw',
+                                            fontSize: '$4xl',
+                                            width: '70vw',
                                             paddingTop: '15%'
                                         }}>
                                             Navigate to the training slot booking* features below!
@@ -495,8 +495,8 @@ export default function HomeCarousel () {
                                             fontWeight: '$medium',
                                             paddingBottom: '1%',
                                             textAlign: 'center',
-                                            fontSize: '$5xl',
-                                            width: '80vw',
+                                            fontSize: '$4xl',
+                                            width: '70vw',
                                             paddingTop: '15%'
                                         }}>
                                             Check out the award* winners from last season!
