@@ -8,14 +8,14 @@ export default function TeamRegClosed(){
         <div className="team-reg-closed-bg">
             
                 <Grid.Container justify="center">
-                <Text hideIn={'md'}
+                <Text hideIn={'md'} justify="center"
                 css={{
                     fontSize: '$8xl',
                     fontWeight: '$semibold',
                 }}>
                 Team Registration is closed. See you next season!
                 </Text>
-                <Text showIn={'md'}
+                <Text showIn={'md'} justify="center"
                 css={{
                     fontSize: '$3xl',
                     fontWeight: '$semibold',
