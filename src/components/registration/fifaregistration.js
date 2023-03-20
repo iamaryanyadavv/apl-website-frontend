@@ -19,7 +19,7 @@ export default function FifaRegForm(){
     ];
 
     //10:30am on 20rd March, 2023 GMT or 4pm on 20rd March, 2023 IST
-    const endDate = "2023-03-20T10:30:00.000Z"; 
+    const endDate = "2023-03-20T04:30:00.000Z"; 
 
     const { days, hours, minutes, seconds, isTimeUp } = useTicker(endDate);
 
@@ -27,7 +27,7 @@ export default function FifaRegForm(){
     const [participantone, setParticipantone] = useState('');
     const [participantoneStatus, setParticipantoneStatus] = useState('');
 
-    const [participantonephone, setParticipantonephone] = useState('');
+    const [participantonephone, setParticipantonephone] = useState('')
     const [participantonephoneStatus, setParticipantonephoneStatus] = useState('');
     
     const [participantoneemail, setParticipantoneemail] = useState('');
@@ -51,6 +51,8 @@ export default function FifaRegForm(){
     const [AlreadyRegistered, setAlreadyRegistered] = useState(false);
     const [RegistrationDone, setRegistrationDone] = useState();
 
+    const [LoadingModal, setLoadingModal] = useState(false);
+
     const [ModalVisibility, setModalVisibility] = useState(false);
     const [LoginLoader, setLoginLoader] = useState(false);
     
@@ -63,6 +65,11 @@ export default function FifaRegForm(){
     const [finalImage, setFinalImage] = useState();
 
     const [RegStatusModal, setRegStatusModal] = useState(false);
+
+    const [RegSuccessStatus, setRegSuccessStatus] = useState(false);
+    const [RegErrorStatus, setRegErrorStatus] = useState(false);
+
+    const [isRegFull, setIsRegFull] = useState(false);
 
     function CheckForm(){
         if(participantone){
@@ -164,7 +171,7 @@ export default function FifaRegForm(){
         if(participantone && participanttwo && participanttwoemail && participantoneemail && participantonephone && participanttwophone && participantonebatch && participanttwobatch && paymentSC)
         { 
             console.log('Sending')
-            await fetch('https://ashoka-premier-league-api.onrender.com/registration/fifa',{
+            const res = await fetch('https://ashoka-premier-league-api.onrender.com/registration/fifa',{
             method: 'POST',
             headers:{"Content-type":"application/json"},
             body: JSON.stringify({
@@ -179,8 +186,16 @@ export default function FifaRegForm(){
                 image: finalImage
             })
         })
+        if (res.status===200){
+            setLoadingModal(false)
+            setRegSuccessStatus(true)
         }
-        
+        else{
+            setLoadingModal(false)
+            setRegErrorStatus(true)
+            
+        }
+        }
     }
 
     // function to send payment image to googledrive
@@ -221,58 +236,58 @@ export default function FifaRegForm(){
         reader.onerror = error => reject(error);
     });
 
-    async function checkIfRegSuccess1(emailID){
-        await fetch('https://ashoka-premier-league-api.onrender.com/registration/fifa1')
-        .then(response=>response.json())
-        .then((data)=>{
-            console.log(data.values)
-            if(data.values){
-                for(var i = 0; i < data.values.length; i++){
-                    if(emailID===data.values[i][0]){
-                        setRegStatusModal(true)
-                        setRegistrationDone(true)
-                        console.log('FOUND')
-                    }
-                    else if(emailID!==data.values[i][0]){
-                        setRegStatusModal(false)
-                        setRegistrationDone(false)
-                        console.log('NOT FOUND')
-                    }
-                }
-            }
-            else if(!data.values){
-                console.log('DATA NO FOUND')
-                setRegStatusModal(true)
-                setRegistrationDone(true)
-            }
-        })
-    }
-    async function checkIfRegSuccess2(emailID){
-        await fetch('https://ashoka-premier-league-api.onrender.com/registration/fifa2')
-        .then(response=>response.json())
-        .then((data)=>{
-            console.log(data.values)
-            if(data.values){
-                for(var i = 0; i < data.values.length; i++){
-                    if(emailID===data.values[i][0]){
-                        setRegStatusModal(true)
-                        setRegistrationDone(true)
-                        console.log('FOUND')
-                    }
-                    else if(emailID!==data.values[i][0]){
-                        setRegStatusModal(false)
-                        setRegistrationDone(false)
-                        console.log('NOT FOUND')
-                    }
-                }
-            }
-            else if(!data.values){
-                console.log('DATA NO FOUND')
-                setRegStatusModal(true)
-                setRegistrationDone(true)
-            }
-        })
-    }
+    // async function checkIfRegSuccess1(emailID){
+    //     await fetch('https://ashoka-premier-league-api.onrender.com/registration/fifa1')
+    //     .then(response=>response.json())
+    //     .then((data)=>{
+    //         console.log(data.values)
+    //         if(data.values){
+    //             for(var i = 0; i < data.values.length; i++){
+    //                 if(emailID===data.values[i][0]){
+    //                     setRegStatusModal(true)
+    //                     setRegistrationDone(true)
+    //                     console.log('FOUND')
+    //                 }
+    //                 else if(emailID!==data.values[i][0]){
+    //                     setRegStatusModal(false)
+    //                     setRegistrationDone(false)
+    //                     console.log('NOT FOUND')
+    //                 }
+    //             }
+    //         }
+    //         else if(!data.values){
+    //             console.log('DATA NO FOUND')
+    //             setRegStatusModal(true)
+    //             setRegistrationDone(true)
+    //         }
+    //     })
+    // }
+    // async function checkIfRegSuccess2(emailID){
+    //     await fetch('https://ashoka-premier-league-api.onrender.com/registration/fifa2')
+    //     .then(response=>response.json())
+    //     .then((data)=>{
+    //         console.log(data.values)
+    //         if(data.values){
+    //             for(var i = 0; i < data.values.length; i++){
+    //                 if(emailID===data.values[i][0]){
+    //                     setRegStatusModal(true)
+    //                     setRegistrationDone(true)
+    //                     console.log('FOUND')
+    //                 }
+    //                 else if(emailID!==data.values[i][0]){
+    //                     setRegStatusModal(false)
+    //                     setRegistrationDone(false)
+    //                     console.log('NOT FOUND')
+    //                 }
+    //             }
+    //         }
+    //         else if(!data.values){
+    //             console.log('DATA NO FOUND')
+    //             setRegStatusModal(true)
+    //             setRegistrationDone(true)
+    //         }
+    //     })
+    // }
     
     // function to check whether player is already registered
     const getRegisteredPlayersEmailData= async (userObject) =>{
@@ -1206,6 +1221,12 @@ export default function FifaRegForm(){
                                             Register
                                         </Text>
                                     </Button>
+                                    <Modal
+                                open={LoadingModal}>
+                                    <Modal.Body>
+                                        <Loading color='white' size={"xl"} />
+                                    </Modal.Body>
+                                </Modal>
     
                                     <Modal
                                     closeButton
@@ -1673,9 +1694,10 @@ export default function FifaRegForm(){
                                             onPress={(e)=>{
                                                 sendForm(e);
                                                 sendPaymentImage(paymentSC)
-                                                setRegistrationDone(true);
+                                                // setRegistrationDone(true);
                                                 setModalVisibility(false);
-                                                checkIfRegSuccess1(participantoneemail)
+                                                setLoadingModal(true)
+                                                // checkIfRegSuccess1(participantoneemail)
                                             }}>
                                                 <Text
                                                 css={{
@@ -1690,12 +1712,12 @@ export default function FifaRegForm(){
                                         </Modal.Footer>
     
                                     </Modal>
-                                    {RegistrationDone===true && 
+                                    {RegSuccessStatus===true && 
                                     <Modal
-                                    open={RegStatusModal}
+                                    open={RegSuccessStatus}
                                     closeButton
                                     onClose={()=>{
-                                        setRegStatusModal(false)
+                                        setRegSuccessStatus(false)
                                         window.location.pathname='./registration/fifa'
                                     }}
                                     >
@@ -1737,12 +1759,12 @@ export default function FifaRegForm(){
                                     </Modal>
                                     }
     
-                                    {RegistrationDone===false && 
+                                    {RegErrorStatus===true && 
                                     <Modal
-                                    open={RegStatusModal}
+                                    open={RegErrorStatus}
                                     closeButton
                                     onClose={()=>{
-                                        setRegStatusModal(false)
+                                        setRegErrorStatus(false)
                                         window.location.pathname='./registration/fifa'
                                     }}
                                     >
