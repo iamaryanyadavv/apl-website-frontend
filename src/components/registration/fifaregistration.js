@@ -19,7 +19,7 @@ export default function FifaRegForm(){
     ];
 
     //10:30am on 20rd March, 2023 GMT or 4pm on 20rd March, 2023 IST
-    const endDate = "2023-03-20T05:30:00.000Z"; 
+    const endDate = "2023-03-20T10:30:00.000Z"; 
 
     const { days, hours, minutes, seconds, isTimeUp } = useTicker(endDate);
 
