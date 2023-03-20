@@ -332,9 +332,19 @@ export default function FifaRegForm(){
                 setParticipantoneStatus('success');
                 setParticipantoneemail(userObject.email)
                 setParticipantoneemailStatus('success')
+            }     
+        })
+        await fetch('https://ashoka-premier-league-api.onrender.com/registration/fifa1')
+        .then(response=>response.json())
+        .then((data)=>{
+            if(data.values)
+            {
+                console.log(data.values.length)
+                if(data.values.length>=33)
+                {
+                    setIsRegFull(true)
+                }
             }
-            
-             
         })
     } 
 
@@ -929,7 +939,7 @@ export default function FifaRegForm(){
                                     </Grid.Container>
                                 </div>
                             }
-    
+                        
                             {/* Participant 1 */}
                             <Grid.Container gap={2}
                             css={{
@@ -1196,7 +1206,7 @@ export default function FifaRegForm(){
                                 jc: 'center',
                             }}>
                                 <Grid>
-                                    <Button auto rounded disabled={!signedin}
+                                    <Button auto rounded disabled={!signedin || isRegFull}
                                     css={{
                                         background: '$gray900'
                                     }}

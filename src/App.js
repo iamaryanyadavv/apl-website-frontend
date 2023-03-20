@@ -29,6 +29,7 @@ import APL5AwardsPage from './pages/APL5Page/apl5awardspage';
 import APL5GalleryPage from './pages/APL5Page/apl5gallerypage';
 import FifaRegistrationPage from './pages/FifaRegistrationPage/fifaregistrationpage';
 import TeamRegClosed from './components/teamregistrationclosed/teamregclosed';
+import RegFailed from './components/registration/regfail';
 
 const theme = createTheme({
   type: 'dark',
@@ -66,7 +67,7 @@ function App() {
                 <Route exact path="/seasons/apl5/details" element={<APL5DetailsPage/>} />
                 <Route exact path="/seasons/apl5/awards" element={<APL5AwardsPage/>} />
                 <Route exact path="/seasons/apl5/gallery" element={<APL5GalleryPage/>} />
-
+                
                 {/* APL 6 */}
                 {/* <Route exact path="/seasons/apl6" element={<APL6LandingPage/>} /> */}
                 <Route exact path="/seasons/apl6" element={<APL6LandingPage/>} />
@@ -85,6 +86,7 @@ function App() {
                 {/* <Route exact path="/registration/player/payment" element={<PlayerCheckoutForm/>} /> */}
                 <Route exact path="/registration/team" element={<TeamRegClosed/>} />
                 <Route exact path="/registration/fifa" element={<FifaRegistrationPage/>} />
+                <Route exact path="/registration/registrationfailed" element={<RegFailed/>} />
 
                 {/* Meet The Team */}
                 <Route exact path='/team' element={<TeamPage/>} />
