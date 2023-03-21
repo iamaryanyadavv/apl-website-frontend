@@ -38,8 +38,12 @@ export default function APL5TeamsContent() {
                     backgroundColor: 'rgb(0,0,0)',
                     jc: 'center',
                     alignItems: 'center',
-                    maxWidth: '500px',
-                    minWidth: '320px'
+                    '@xsMax':{
+                        width: '330px'                        
+                    },
+                    '@xsMin':{
+                        width: '500px'
+                    }
                 }} 
                 contentLeft={
                     <Avatar bordered size={'xl'} src={team[0]} />

@@ -242,7 +242,7 @@ export default function RoadToAPLContent(){
                                                             fontSize: '$xl',
                                                             width: '500px'
                                                         }}>
-                                                            It is on a first-come-first-serve basis, so watch out! Max. "Man" = 160
+                                                            It is on a first-come-first-serve basis, so watch out! Max. "Man" allowed is 160
                                                         </Text>
                                                         <Text showIn={'sm'}
                                                         css={{
@@ -252,7 +252,7 @@ export default function RoadToAPLContent(){
                                                             fontSize: '$md',
                                                             width: '250px'
                                                         }}>
-                                                            It is on a first-come-first-serve basis, so watch out!  Max. "Man" = 160
+                                                            It is on a first-come-first-serve basis, so watch out!  Max. "Man" allowed is 160
                                                         </Text>
                                                     </Grid>
                                                 </Grid.Container>
