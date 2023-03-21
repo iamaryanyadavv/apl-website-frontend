@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import Rules from './rules.js'
+import Rules from './auctionrules.js'
 
 export default function APL6DetailsContent() {
     return(
