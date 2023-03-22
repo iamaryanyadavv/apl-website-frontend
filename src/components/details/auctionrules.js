@@ -76,7 +76,7 @@ export default function AuctionRules() {
                                 fontSize: '$xl',
                                 padding: '10px'
                             }}>
-                                1. Every team will have a budget of 200 million
+                                1. Every team will have a budget of 130 million
                             </Text>
                             <Text
                             css={{
