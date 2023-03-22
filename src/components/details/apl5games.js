@@ -35,7 +35,7 @@ export default function Games(){
     }
 
     async function getTeams(){
-        await fetch('http://localhost:3001/seasons/apl5/teamdata')
+        await fetch('https://ashoka-premier-league-api.onrender.com/seasons/apl5/teamdata')
         .then(response=>response.json())
         .then(data=>{
             console.log(data)
