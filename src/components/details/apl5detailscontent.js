@@ -170,7 +170,7 @@ export default function APL5DetailsContent() {
                     </Text>
                     <Col>
                         <AuctionRules/>
-                        {/* <TournamentRules/> */}
+                        <TournamentRules/>
                         {/* Uncomment this component when done with it^ */}
                     </Col>
                 </>
