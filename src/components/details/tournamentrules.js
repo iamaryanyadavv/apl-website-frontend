@@ -2,7 +2,6 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { Grid, Text, Col, Table, Image } from "@nextui-org/react";
 import APL from '../../assets/images/AshokaFieldSunset.jpg'
-import Event from '../../assets/images/TrainingFootball3.jpg'
 
 export default function TournamentRules() {
     return(
@@ -41,7 +40,7 @@ export default function TournamentRules() {
                                 marginTop: '40px'
                             },
                             objectFit: 'cover'
-                        }} src={Event} />
+                        }} src={APL} />
 
                         <Text hideIn={'xs'}
                         css={{
@@ -50,7 +49,7 @@ export default function TournamentRules() {
                             paddingTop: '20px',
                             paddingBottom: '20px'
                         }}>
-                            Event
+                            APL Event
                         </Text>
 
                         <Text showIn={'xs'}
