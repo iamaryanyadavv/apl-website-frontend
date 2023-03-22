@@ -7,6 +7,7 @@ import Pool3 from "./apl5pool3";
 import Pool4 from "./apl5pool4";
 import AuctionRules from "./auctionrules";
 import TournamentRules from "./tournamentrules";
+import APL5Games from "./apl5games";
 import UnderDev from "../underdevelopment/underdev";
 
 export default function APL5DetailsContent() {
@@ -111,7 +112,7 @@ export default function APL5DetailsContent() {
                     }}>
                         Games
                     </Text>
-                    <UnderDev/>
+                    <APL5Games/>
                 </>
                 }
 

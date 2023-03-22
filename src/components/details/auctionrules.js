@@ -1,5 +1,4 @@
 import React from "react";
-import { useState, useEffect } from "react";
 import { Grid, Text, Col, Table, Image } from "@nextui-org/react";
 import Auction from '../../assets/images/Auction.jpeg'
 
@@ -76,7 +75,7 @@ export default function AuctionRules() {
                                 fontSize: '$xl',
                                 padding: '10px'
                             }}>
-                                1. Every team will have a budget of 200 million
+                                1. Every team will have a budget of 130 million
                             </Text>
                             <Text
                             css={{
