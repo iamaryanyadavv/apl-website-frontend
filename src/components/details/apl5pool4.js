@@ -104,8 +104,7 @@ export default function Pool1(){
                     <Table.Header columns={columns}>
                         {(column) => (
                         <Table.Column css={{
-                            padding: '0px 5px',
-                            maxWidth: '250px'
+                            padding: '0px 5px 0px 0px'
                         }} key={column.key}>{column.label}</Table.Column>
                         )}
                     </Table.Header>
