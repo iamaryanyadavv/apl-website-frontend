@@ -9,7 +9,7 @@ export default function Games(){
     const [Day3Games, setDay3Games] = useState([]);
 
     async function getGames(){
-        await fetch('http://localhost:3001/seasons/apl5/games')
+        await fetch('https://ashoka-premier-league-api.onrender.com/seasons/apl5/games')
         .then(response=>response.json())
         .then(data=>{
             const day1games=[]
