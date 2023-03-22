@@ -54,12 +54,7 @@ export default function APL5DetailsContent() {
                     css={{
                         padding: '10px'
                     }}>
-                        <Button rounded light auto
-                        css={{
-                            borderStyle: 'solid',
-                            borderWidth: '2px',
-                            borderColor: 'White'
-                        }}
+                        <Button auto color="secondary" rounded flat
                         onClick={()=>{
                             setGames(true)
                             setStandings(false)
@@ -72,12 +67,7 @@ export default function APL5DetailsContent() {
                     css={{
                         padding: '10px'
                     }}>
-                        <Button rounded light auto 
-                        css={{
-                            borderStyle: 'solid',
-                            borderWidth: '2px',
-                            borderColor: 'White'
-                        }}
+                        <Button auto color="secondary" rounded flat
                         onClick={()=>{
                             setGames(false)
                             setStandings(true)
@@ -90,12 +80,7 @@ export default function APL5DetailsContent() {
                     css={{
                         padding: '10px'
                     }}>
-                        <Button rounded light auto 
-                        css={{
-                            borderStyle: 'solid',
-                            borderWidth: '2px',
-                            borderColor: 'White'
-                        }}
+                        <Button auto color="secondary" rounded flat
                         onClick={()=>{
                             setGames(false)
                             setStandings(false)
@@ -114,7 +99,6 @@ export default function APL5DetailsContent() {
                         padding: '20px 0px 0px 0px',
                         fontSize: '$6xl',
                         fontWeight: '$semibold',
-                        color: '$purple700'
                     }}>
                         Games
                     </Text>
@@ -124,7 +108,6 @@ export default function APL5DetailsContent() {
                         padding: '20px 0px 0px 0px',
                         fontSize: '$3xl',
                         fontWeight: '$semibold',
-                        color: '$purple700'
                     }}>
                         Games
                     </Text>
@@ -140,7 +123,6 @@ export default function APL5DetailsContent() {
                         padding: '20px 0px 0px 0px',
                         fontSize: '$6xl',
                         fontWeight: '$semibold',
-                        color: '#C86BDC'
                     }}>
                         Standings
                     </Text>
@@ -150,7 +132,6 @@ export default function APL5DetailsContent() {
                         padding: '20px 0px 0px 0px',
                         fontSize: '$3xl',
                         fontWeight: '$semibold',
-                        color: '#C86BDC'
                     }}>
                         Standings
                     </Text>
@@ -174,7 +155,6 @@ export default function APL5DetailsContent() {
                         padding: '20px 0px 0px 0px',
                         fontSize: '$6xl',
                         fontWeight: '$semibold',
-                        color: '#ec51c0'
                     }}>
                         Rules
                     </Text>
@@ -184,7 +164,6 @@ export default function APL5DetailsContent() {
                         padding: '20px 0px 0px 0px',
                         fontSize: '$3xl',
                         fontWeight: '$semibold',
-                        color: '#ec51c0'
                     }}>
                         Rules
                     </Text>
