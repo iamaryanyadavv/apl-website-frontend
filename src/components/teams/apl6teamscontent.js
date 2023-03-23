@@ -58,37 +58,39 @@ export default function APL5TeamsContent() {
                         alignItems: 'center',
                         textAlign: 'center',
                     }}>
+                        <Col>
+                            <Text hideIn={'xs'}
+                            css={{
+                                fontSize: '$2xl',
+                                fontWeight: '$medium'
+                            }}>
+                                Manager: {team[4]}
+                            </Text>
+                            <Text showIn={'xs'}
+                            css={{
+                                fontSize: '$lg',
+                                fontWeight: '$medium'
+                            }}>
+                                Manager: {team[4]}
+                            </Text>
+                            
+                            <Text hideIn={'xs'}
+                            css={{
+                                fontSize: '$xl',
+                                fontWeight: '$medium',
+                                padding: '0% 5% 2.5% 5%',
+                            }}>
+                                Owners: {team[5]}
+                            </Text>
+                            <Text showIn={'xs'}
+                            css={{
+                                fontSize: '$md',
+                                fontWeight: '$medium'
+                            }}>
+                                Owners: {team[5]}
+                            </Text>
+                        </Col>
     
-                        <Text hideIn={'xs'}
-                        css={{
-                            fontSize: '$2xl',
-                            fontWeight: '$medium'
-                        }}>
-                            Manager: {team[4]}
-                        </Text>
-                        <Text showIn={'xs'}
-                        css={{
-                            fontSize: '$lg',
-                            fontWeight: '$medium'
-                        }}>
-                            Manager: {team[4]}
-                        </Text>
-                        
-                        <Text hideIn={'xs'}
-                        css={{
-                            fontSize: '$xl',
-                            fontWeight: '$medium',
-                            padding: '0% 5% 2.5% 5%',
-                        }}>
-                            Owners: {team[5]}
-                        </Text>
-                        <Text showIn={'xs'}
-                        css={{
-                            fontSize: '$md',
-                            fontWeight: '$medium'
-                        }}>
-                            Owners: {team[5]}
-                        </Text>
 
                     </Grid.Container>
                     {AccordionMaterial(team,teamslists)}
