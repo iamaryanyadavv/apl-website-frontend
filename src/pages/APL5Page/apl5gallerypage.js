@@ -19,8 +19,7 @@ export default function APL5GalleryPage(){
                 description='Collection of pictures and memories from APL 5.0'
                 gradient='45deg, $yellow600 40%, $yellow800 100%'
             />
-            {/* <APL5GalleryContent/> */}
-            
+            <APL5GalleryContent/>
         </Grid.Container>
         <UnderDev/>
         </div>
