@@ -11,12 +11,12 @@ import Image6 from '../../assets/images/APL5/SuiiicideSquad.jpg';
 import Image7 from '../../assets/images/APL5/VeduBackgroundAPL1.jpg';
 import Image8 from '../../assets/images/APL5/VeduBackgroundAPL2.jpg';
 import Image9 from '../../assets/images/APL5/WaliBackgroundAPL.jpg';
-
+import './apl5gallerycontent.css'
 
 export default function APL5GalleryContent() {
 
     // vertical pic
-    const width1=300
+    const width1=500
     const height1=500
 
     // hroizontal pic
@@ -25,56 +25,57 @@ export default function APL5GalleryContent() {
 
     const images = [
         {
-            src: 'https://c2.staticflickr.com/9/8817/28973449265_07e3aa5d2e_b.jpg',
-            width: 400,
-            height: 300,
+            src: Image1,
+            width: width1,
+            height: height1,
         },
-        // {
-        //     src: {Image2},
-        //     width: width2,
-        //     height: height2,
-        // },
-        // {
-        //     src: {Image3},
-        //     width: width2,
-        //     height: height2,
-        // },
-        // {
-        //     src: {Image4},
-        //     width: width1,
-        //     height: height1,
-        // },
-        // {
-        //     src: {Image5},
-        //     width: width2,
-        //     height: height2,
-        // },
-        // {
-        //     src: {Image6},
-        //     width: width2,
-        //     height: height2,
-        // },
-        // {
-        //     src: {Image7},
-        //     width: width1,
-        //     height: height1,
-        // },
-        // {
-        //     src: {Image8},
-        //     width: width1,
-        //     height: height1,
-        // },
-        // {
-        //     src: {Image9},
-        //     width: width1,
-        //     height: height1,
-        // },
+        {
+            src: Image2,
+            width: width2,
+            height: height2,
+        },
+        {
+            src: Image3,
+            width: width2,
+            height: height2,
+        },
+        {
+            src: Image4,
+            width: width1,
+            height: height1,
+        },
+        {
+            src: Image5,
+            width: width2,
+            height: height2,
+        },
+        {
+            src: Image6,
+            width: width2,
+            height: height2,
+        },
+        {
+            src: Image7,
+            width: width1,
+            height: height1,
+        },
+        {
+            src: Image8,
+            width: width1,
+            height: height1,
+        },
+        {
+            src: Image9,
+            width: width1,
+            height: height1,
+        }
     ]
 
+    
+
     return(
-        <>
-            {console.log(images)}
+        <div className="gallery-wrapper">
             <Gallery images={images} />
-        </>
+        </div>
     )
 }

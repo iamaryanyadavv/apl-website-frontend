@@ -21,7 +21,7 @@ export default function APL5GalleryPage(){
             />
             <APL5GalleryContent/>
         </Grid.Container>
-        <UnderDev/>
+        <APL5GalleryContent/>
         </div>
 
     )
