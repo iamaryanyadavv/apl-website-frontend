@@ -58,11 +58,11 @@ export default function APL5AwardsContent() {
                         border: '2px solid #FFD700',
                         '@xsMin':{
                             width: "350px",
-                            height: "530px"
+                            height: "540px"
                         },
                         '@xsMax':{
                             width: '300px',
-                            height: '530px'
+                            height: '540px'
                         } 
                         
                         }}>
@@ -93,7 +93,8 @@ export default function APL5AwardsContent() {
                                 css={{
                                     textAlign: 'center',
                                     fontSize: '$xl',
-                                    textShadow:'0px 0px 20px #fff, 0px 0px 20px #FF3, 0px 0px 20px         #F90, 0px 0px 20px #FFD700'
+                                    textShadow:'0px 0px 20px #fff, 0px 0px 20px #FF3, 0px 0px 20px         #F90, 0px 0px 20px #FFD700',
+                                    marginTop:'1%'
                                 }}>
                                     1. Radha Gupta 
                                 </Text>
@@ -182,11 +183,11 @@ export default function APL5AwardsContent() {
                         border: '2px solid #C0C0C0',
                         '@xsMin':{
                             width: "350px",
-                            height: "530px"
+                            height: "540px"
                         },
                         '@xsMax':{
                             width: '300px',
-                            height: '530px'
+                            height: '540px'
                         } 
                         
                         }}>
@@ -217,7 +218,9 @@ export default function APL5AwardsContent() {
                                 css={{
                                     textAlign: 'center',
                                     fontSize: '$xl',
-                                    textShadow:'0px 0px 20px #fff, 0px 0px 20px #C0C0C0, 0px 0px 20px         #F90, 0px 0px 20px #C0C0C0'
+                                    textShadow:'0px 0px 20px #fff, 0px 0px 20px #C0C0C0, 0px 0px 20px         #F90, 0px 0px 20px #C0C0C0',
+                                    marginTop:'1%'
+
                                 }}>
                                     1. Ganeev Chadha
                                 </Text>
@@ -298,11 +301,11 @@ export default function APL5AwardsContent() {
                         border: '2px solid #CD7F32',
                         '@xsMin':{
                             width: "350px",
-                            height: "530px"
+                            height: "540px"
                         },
                         '@xsMax':{
                             width: '300px',
-                            height: '530px'
+                            height: '540px'
                         } 
                         
                         }}>
@@ -323,7 +326,7 @@ export default function APL5AwardsContent() {
                                 <Text
                                 css={{
                                     textAlign: 'center',
-                                    fontSize: '$xl',
+                                    fontSize: '$2xl',
                                     color: '#CD7F32',
                                     fontWeight:'bold'
                                 }}>
@@ -333,7 +336,8 @@ export default function APL5AwardsContent() {
                                 css={{
                                     textAlign: 'center',
                                     fontSize: '$xl',
-                                    textShadow:'0px 0px 20px #fff, 0px 0px 20px #CD7F32, 0px 0px 20px         #F90, 0px 0px 40px #CD7F32'
+                                    textShadow:'0px 0px 20px #fff, 0px 0px 20px #CD7F32, 0px 0px 20px         #F90, 0px 0px 40px #CD7F32',
+                                    marginTop:'1%'
                                 }}>
                                     1. Dhrhi Bhat
                                 </Text>
