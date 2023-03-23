@@ -118,12 +118,16 @@ export default function Games(){
                                                             css={{
                                                                 '@xsMax':{
                                                                     width: '100%'
+                                                                },
+                                                                '@xsMin':{
+                                                                    width: '300px',
                                                                 }
                                                             }}>
                                                                 <Row 
                                                                 css={{
                                                                     jc: 'center',
-                                                                    textAlign: 'center'
+                                                                    textAlign: 'center',
+                                                                    alignItems: 'center'
                                                                 }}>
                                                                     {Teams.map((team,index)=>(
                                                                         team[2]==game[1]? <Avatar src={team[0]}/> : <></>
@@ -143,6 +147,10 @@ export default function Games(){
                                                             css={{
                                                                 '@xsMax':{
                                                                     width: '100%'
+                                                                },
+                                                                '@xsMin':{
+                                                                    width: '100px',
+                                                                    alignItems: 'center'
                                                                 }
                                                             }}>
                                                                 <Text 
@@ -160,12 +168,16 @@ export default function Games(){
                                                             css={{
                                                                 '@xsMax':{
                                                                     width: '100%'
+                                                                },
+                                                                '@xsMin':{
+                                                                    width: '300px',
                                                                 }
                                                             }}>
                                                                 <Row 
                                                                 css={{
                                                                     jc: 'center',
-                                                                    textAlign: 'center'
+                                                                    textAlign: 'center',
+                                                                    alignItems: 'center'
                                                                 }}>
                                                                     <Text 
                                                                     css={{

@@ -16,8 +16,8 @@ export default function APL5AwardsPage(){
             <Spacer y={2} />
             <GradientHeading
                 heading='APL 5.0 AWARDS'
-                description='You can find all of the tournament details of APL Season 5.0!'
-                gradient='45deg, $red600 40%, $yellow800 100%'
+                description='You can find all of the awards from APL Season 5.0!'
+                gradient='45deg, $green600 40%, $green800 100%'
             />
             <APL5AwardsContent/>
         </Grid.Container>

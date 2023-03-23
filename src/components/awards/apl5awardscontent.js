@@ -1,593 +1,563 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { Card, Col, Grid, Text, Button, keyframes, styled } from "@nextui-org/react";
+import { Grid, Text, Loading, Col, Image, Avatar } from "@nextui-org/react";
+import AZ from '../../assets/images/APL5/A-Z.jpg'
+import Chakravyuh from '../../assets/images/APL5/Chakravyuh.jpeg'
+import SSquad from '../../assets/images/APL5/SuiiicideSquad.jpg'
+import Radha from '../../assets/images/APL5/RadhaLathGupta.png'
+import PranavWali from '../../assets/images/APL5/PranavWali2.jpeg'
+import Grey from '../../assets/images/Grey.jpeg'
+
+
 export default function APL5AwardsContent() {
+    const [Fetching, setFetching] = useState();
+    const [Awards, setAwards] = useState();
 
-    const burn = keyframes({
-        '0%': {
-            textShadow: '0 0 20px #f9d71c, 0 0 30px #f9d71c, 0 0 40px #f9d71c, 0 0 50px #f9d71c, 0 0 60px #f9d71c, 0 0 70px #f9d71c, 0 0 80px #f9d71c'
-          },
-          '100%' : {
-            textShadow: '0 0 20px #f9d71c, 0 0 30px #f9d71c, 0 0 40px #f9d71c, 0 0 50px #e5c10f,0 0 60px #e5c10f, 0 0 70px #e5c10f, 0 0 80px #e5c10f'
-          },
-    })
+    async function getAwards(){
+        await fetch('https://ashoka-premier-league-api.onrender.com/seasons/apl5/awards')
+        .then(response=>response.json())
+        .then(data=>{
+            setAwards(data.values)
+            setFetching(false)
+        })
+    }
 
-    const Button = styled('button', {
-        // base styles
-      
-        '&:hover': {
-          animation: {burn},
-        },
-      });
+    useEffect(()=>{
+        setFetching(true)
+        getAwards()
+    }, [])
 
     return (
-        <div>
-            <Grid.Container css={{
-                jc:'center',
-                alignItems:'center'
-            }}>
-            <Text hideIn={'xs'}
-                    css={{
-                        textAlign: 'center',
-                        fontSize: '$6xl',
-                        fontWeight: '$semibold',
-                        paddingBottom: '1.5%',
-                        textGradient: "45deg, $red600 -20%, $yellow600 100%"
-                    }}>
-                       Team Awards
-                    </Text>
-                    <Text showIn={'xs'}
-                    css={{
-                        textAlign: 'center',
-                        fontSize: '$6xl',
-                        fontWeight: '$semibold',
-                        padding: '10% 5% 0% 5%',
-                        textGradient: "45deg, $red600 -20%, $yellow600 100%"
-                    }}>
-                        Team Awards
-                    </Text>
-            <Grid.Container
-            css={{
-                jc: 'center',
-                alignItems: 'center',
-                marginBottom:'3%'
-            }} gap={2}>
-                <Grid>
-                        <Card 
-                    css={{ 
-                        border: '2px solid #FFD700',
-                        '@xsMin':{
-                            width: "350px",
-                            height: "540px"
-                        },
-                        '@xsMax':{
-                            width: '300px',
-                            height: '540px'
-                        } 
-                        
-                        }}>
-                        <Card.Header css={{ position: "absolute", zIndex: 1, top: 5 }}>
-                            <Col css={{
-                                alignItems: 'center',
-                                jc: 'center'
-                            }}>
-                                <Text 
-                                css={{
-                                    textAlign: 'center',
-                                    fontSize: '$4xl',
-                                    color: '#FFD700',
-                                    fontWeight: '$semibold',
-                                    textDecoration:'underline'
-                                }}>Winner
-                                </Text>
-                                <Text
-                                css={{
-                                    textAlign: 'center',
-                                    color: '#FFD700',
-                                    fontSize: '$2xl',
-                                    fontWeight:'bold',
-                                }}>
-                                    A-Z
-                                </Text>
-                                <Text
-                                css={{
-                                    textAlign: 'center',
-                                    fontSize: '$xl',
-                                    textShadow:'0px 0px 20px #fff, 0px 0px 20px #FF3, 0px 0px 20px         #F90, 0px 0px 20px #FFD700',
-                                    marginTop:'1%'
-                                }}>
-                                    1. Radha Gupta 
-                                </Text>
-                                <Text
-                                css={{
-                                    textAlign: 'center',
-                                    fontSize: '$xl',
-                                    textShadow:'0px 0px 20px #fff, 0px 0px 20px #FF3, 0px 0px 20px         #F90, 0px 0px 20px #FFD700'
-                                }}>
-                                    2. Aryan Rama
-                                </Text>
-                                <Text
-                                css={{
-                                    textAlign: 'center',
-                                    fontSize: '$xl',
-                                    textShadow:'0px 0px 20px #fff, 0px 0px 20px #FF3, 0px 0px 20px         #F90, 0px 0px 20px #FFD700'
-                                }}>
-                                    3. San Win
-                                </Text>
-                                <Text
-                                css={{
-                                    textAlign: 'center',
-                                    fontSize: '$xl',
-                                    textShadow:'0px 0px 20px #fff, 0px 0px 20px #FF3, 0px 0px 20px         #F90, 0px 0px 20px #FFD700'
-                                }}>
-                                    4. Ayushman Roy
-                                </Text>
-                                <Text
-                                css={{
-                                    textAlign: 'center',
-                                    fontSize: '$xl',
-                                    textShadow:'0px 0px 20px #fff, 0px 0px 20px #FF3, 0px 0px 20px         #F90, 0px 0px 20px #FFD700'
-                                }}>
-                                    5. Aritro Sarkar
-                                </Text>
-                              
-                                <Text
-                                css={{
-                                    textAlign: 'center',
-                                    fontSize: '$xl',
-                                    textShadow:'0px 0px 20px #fff, 0px 0px 20px #FF3, 0px 0px 20px         #F90, 0px 0px 20px #FFD700'
-                                }}>
-                                    6. Karishni Puri
-                                </Text>
-                                <Text
-                                css={{
-                                    textAlign: 'center',
-                                    fontSize: '$xl',
-                                    textShadow:'0px 0px 20px #fff, 0px 0px 20px #FF3, 0px 0px 20px         #F90, 0px 0px 20px #FFD700'
-                                }}>
-                                    7. Sankalp Dasmohaptra
-                                </Text>
-                                <Text
-                                css={{
-                                    textAlign: 'center',
-                                    fontSize: '$xl',
-                                    textShadow:'0px 0px 20px #fff, 0px 0px 20px #FF3, 0px 0px 20px         #F90, 0px 0px 20px #FFD700'
-                                }}>
-                                    8. Vansh Jogani
-                                </Text>
-                                <Text
-                                css={{
-                                    textAlign: 'center',
-                                    fontSize: '$xl',
-                                    textShadow:'0px 0px 20px #fff, 0px 0px 20px #FF3, 0px 0px 20px         #F90, 0px 0px 20px #FFD700'
-                                }}>
-                                    9. Purujit B
-                                </Text>
-                                <Text
-                                css={{
-                                    textAlign: 'center',
-                                    fontSize: '$xl',
-                                    textShadow:'0px 0px 20px #fff, 0px 0px 20px #FF3, 0px 0px 20px         #F90, 0px 0px 20px #FFD700'
-                                }}>
-                                    10. Krish Shah
-                                </Text>
-                            </Col>
-                        </Card.Header>
-                        <Card.Body css={{ p: 0 }}>
-                        </Card.Body>
-                        </Card>
-                        </Grid>
-                <Grid>
-            <Card 
-                    css={{ 
-                        border: '2px solid #C0C0C0',
-                        '@xsMin':{
-                            width: "350px",
-                            height: "540px"
-                        },
-                        '@xsMax':{
-                            width: '300px',
-                            height: '540px'
-                        } 
-                        
-                        }}>
-                        <Card.Header css={{ position: "absolute", zIndex: 1, top: 5 }}>
-                            <Col css={{
-                                alignItems: 'center',
-                                jc: 'center'
-                            }}>
-                                <Text 
-                                css={{
-                                    textAlign: 'center',
-                                    fontSize: '$4xl',
-                                    color: '#C0C0C0',
-                                    fontWeight: '$semibold',
-                                    textDecoration:'underline'
-                                }}>2nd Place
-                                </Text>
-                                <Text
-                                css={{
-                                    textAlign: 'center',
-                                    fontSize: '$2xl',
-                                    color: '#C0C0C0',
-                                    fontWeight:'bold'
-                                }}>
-                                    Chakravyuh
-                                </Text>
-                                <Text
-                                css={{
-                                    textAlign: 'center',
-                                    fontSize: '$xl',
-                                    textShadow:'0px 0px 20px #fff, 0px 0px 20px #C0C0C0, 0px 0px 20px         #F90, 0px 0px 20px #C0C0C0',
-                                    marginTop:'1%'
+        <>
+            {Fetching &&
+                <Grid.Container gap={4}
+                css={{
+                    jc: 'center',
+                    alignItems: 'center',
+                    height: '60vh',
+                }}>
+                    <Loading
+                    size="xl"
+                    color={'white'}
+                    />
+                </Grid.Container>
+            }
 
-                                }}>
-                                    1. Ganeev Chadha
-                                </Text>
-                                <Text
-                                css={{
-                                    textAlign: 'center',
-                                    fontSize: '$xl',
-                                    textShadow:'0px 0px 20px #fff, 0px 0px 20px #C0C0C0, 0px 0px 20px         #F90, 0px 0px 20px #C0C0C0'
-                                }}>
-                                    2. Sameer Rana
-                                </Text>
-                                <Text
-                                css={{
-                                    textAlign: 'center',
-                                    fontSize: '$xl',
-                                    textShadow:'0px 0px 20px #fff, 0px 0px 20px #C0C0C0, 0px 0px 20px         #F90, 0px 0px 20px #C0C0C0'
-                                }}>
-                                    3. Sonam
-                                </Text>
-                                <Text
-                                css={{
-                                    textAlign: 'center',
-                                    fontSize: '$xl',
-                                    textShadow:'0px 0px 20px #fff, 0px 0px 20px #C0C0C0, 0px 0px 20px         #F90, 0px 0px 20px #C0C0C0'
-                                }}>
-                                    4. Ritvik
-                                </Text>
-                                <Text
-                                css={{
-                                    textAlign: 'center',
-                                    fontSize: '$xl',
-                                    textShadow:'0px 0px 20px #fff, 0px 0px 20px #C0C0C0, 0px 0px 20px         #F90, 0px 0px 20px #C0C0C0'
-                                }}>
-                                    5. Biplob Das
-                                </Text>
-                              
-                                <Text
-                                css={{
-                                    textAlign: 'center',
-                                    fontSize: '$xl',
-                                    textShadow:'0px 0px 20px #fff, 0px 0px 20px #C0C0C0, 0px 0px 20px         #F90, 0px 0px 20px #C0C0C0'
-                                }}>
-                                    6. Atharv Bokil
-                                </Text>
-                                <Text
-                                css={{
-                                    textAlign: 'center',
-                                    fontSize: '$xl',
-                                    textShadow:'0px 0px 20px #fff, 0px 0px 20px #C0C0C0, 0px 0px 20px         #F90, 0px 0px 20px #C0C0C0'
-                                }}>
-                                    7. Hemasimha
-                                </Text>
-                                <Text
-                                css={{
-                                    textAlign: 'center',
-                                    fontSize: '$xl',
-                                    textShadow:'0px 0px 20px #fff, 0px 0px 20px #C0C0C0, 0px 0px 20px         #F90, 0px 0px 20px #C0C0C0'
-                                }}>
-                                    8. Rutupurna Debalina Naik
-                                </Text>
-                                <Text
-                                css={{
-                                    textAlign: 'center',
-                                    fontSize: '$xl',
-                                    textShadow:'0px 0px 20px #fff, 0px 0px 20px #C0C0C0, 0px 0px 20px         #F90, 0px 0px 20px #C0C0C0'
-                                }}>
-                                    9. Kriti
-                                </Text>
-                            </Col>
-                        </Card.Header>
-                        <Card.Body css={{ p: 0 }}>
-                        </Card.Body>
-                        </Card>
-                        </Grid>
-                        <Grid>
-                        <Card 
-                    css={{ 
-                        border: '2px solid #CD7F32',
-                        '@xsMin':{
-                            width: "350px",
-                            height: "540px"
-                        },
-                        '@xsMax':{
-                            width: '300px',
-                            height: '540px'
-                        } 
-                        
+            {!Fetching && Awards &&
+                <Grid.Container 
+                css={{
+                    jc: 'center',
+                    textAlign: 'center'
+                }}>
+                    <Grid>
+                        <Grid.Container 
+                        css={{
+                            jc: 'center',
+                            textAlign: 'center',
+                            margin: '30px 0px 30px 0px',
+                            backgroundColor: 'rgb(20,20,20)',
+                            borderRadius: '20px'
                         }}>
-                        <Card.Header css={{ position: "absolute", zIndex: 1, top: 5 }}>
-                            <Col css={{
-                                alignItems: 'center',
-                                jc: 'center'
+                            {/* Winners */}
+                            <Grid
+                            css={{
+                                padding: '40px 0px'
                             }}>
-                                <Text 
+                                <Grid.Container
                                 css={{
-                                    textAlign: 'center',
-                                    fontSize: '$4xl',
-                                    color: '#CD7F32',
-                                    fontWeight: '$semibold',
-                                    textDecoration:'underline'
-                                }}>3rd Place
-                                </Text>
-                                <Text
-                                css={{
-                                    textAlign: 'center',
-                                    fontSize: '$2xl',
-                                    color: '#CD7F32',
-                                    fontWeight:'bold'
+                                    jc: 'center',
                                 }}>
-                                    Suiiicide Squad
-                                </Text>
-                                <Text
+                                    <Text 
+                                    css={{
+                                        fontSize: '$4xl',
+                                        fontWeight: '$semibold',
+                                        color: '#FAE481'
+                                    }}>
+                                        {Awards[0][0]}
+                                    </Text>
+                                </Grid.Container>
+                                <Grid.Container
                                 css={{
-                                    textAlign: 'center',
-                                    fontSize: '$xl',
-                                    textShadow:'0px 0px 20px #fff, 0px 0px 20px #CD7F32, 0px 0px 20px         #F90, 0px 0px 40px #CD7F32',
-                                    marginTop:'1%'
+                                    jc: 'center',
                                 }}>
-                                    1. Dhrhi Bhat
-                                </Text>
-                                <Text
+                                    <Text 
+                                    css={{
+                                        '@xsMin':{
+                                            fontSize: '$6xl'
+                                        },
+                                        '@xsMax':{
+                                            fontSize: '$4xl'
+                                        },
+                                        fontWeight: '$semibold',
+                                        color: 'White'
+                                    }}>
+                                        {Awards[0][1]}
+                                    </Text>
+                                </Grid.Container>
+                                <Grid.Container
                                 css={{
-                                    textAlign: 'center',
-                                    fontSize: '$xl',
-                                    textShadow:'0px 0px 20px #fff, 0px 0px 20px #CD7F32, 0px 0px 20px         #F90, 0px 0px 40px #CD7F32'
+                                    jc: 'center',
+                                    '@xsMin':{
+                                        width: '1000px'
+                                    }
                                 }}>
-                                    2. Siddh Veer Bakshi
-                                </Text>
-                                <Text
+                                    <Text 
+                                    css={{
+                                        color: '$gray600',
+                                        '@xsMin':{
+                                            padding: '0px 200px'
+                                        },
+                                    }}>
+                                        Team Owners - {Awards[0][2]}
+                                    </Text>
+                                </Grid.Container>
+                                <Grid.Container
                                 css={{
-                                    textAlign: 'center',
-                                    fontSize: '$xl',
-                                    textShadow:'0px 0px 20px #fff, 0px 0px 20px #CD7F32, 0px 0px 20px         #F90, 0px 0px 40px #CD7F32'
+                                    jc: 'center',
+                                    '@xsMin':{
+                                        width: '1000px'
+                                    }
                                 }}>
-                                    3. Aryan Yadav
-                                </Text>
-                                <Text
-                                css={{
-                                    textAlign: 'center',
-                                    fontSize: '$xl',
-                                    textShadow:'0px 0px 20px #fff, 0px 0px 20px #CD7F32, 0px 0px 20px         #F90, 0px 0px 40px #CD7F32'
-                                }}>
-                                    4. Arnav Kundra
-                                </Text>
-                                <Text
-                                css={{
-                                    textAlign: 'center',
-                                    fontSize: '$xl',
-                                    textShadow:'0px 0px 20px #fff, 0px 0px 20px #CD7F32, 0px 0px 20px         #F90, 0px 0px 40px #CD7F32'
-                                }}>
-                                    5. Ayush Soni
-                                </Text>
-                              
-                                <Text
-                                css={{
-                                    textAlign: 'center',
-                                    fontSize: '$xl',
-                                    textShadow:'0px 0px 20px #fff, 0px 0px 20px #CD7F32, 0px 0px 20px         #F90, 0px 0px 40px #CD7F32'
-                                }}>
-                                    6. Krishna Rengraj
-                                </Text>
-                                <Text
-                                css={{
-                                    textAlign: 'center',
-                                    fontSize: '$xl',
-                                    textShadow:'0px 0px 20px #fff, 0px 0px 20px #CD7F32, 0px 0px 20px         #F90, 0px 0px 40px #CD7F32'
-                                }}>
-                                    7. Aryan Mehta
-                                </Text>
-                                <Text
-                                css={{
-                                    textAlign: 'center',
-                                    fontSize: '$xl',
-                                    textShadow:'0px 0px 20px #fff, 0px 0px 20px #CD7F32, 0px 0px 20px         #F90, 0px 0px 40px #CD7F32'
-                                }}>
-                                    8. Vanshika Patel
-                                </Text>
-                                <Text
-                                css={{
-                                    textAlign: 'center',
-                                    fontSize: '$xl',
-                                    textShadow:'0px 0px 20px #fff, 0px 0px 20px #CD7F32, 0px 0px 20px         #F90, 0px 0px 40px #CD7F32'
-                                }}>
-                                    9. Wako Liban
-                                </Text>
-                                <Text
-                                css={{
-                                    textAlign: 'center',
-                                    fontSize: '$xl',
-                                    textShadow:'0px 0px 20px #fff, 0px 0px 20px #CD7F32, 0px 0px 20px         #F90, 0px 0px 40px #CD7F32'
-                                }}>
-                                    10. Nishant Mahesh
-                                </Text>
-                                <Text
-                                css={{
-                                    textAlign: 'center',
-                                    fontSize: '$xl',
-                                    textShadow:'0px 0px 20px #fff, 0px 0px 20px #CD7F32, 0px 0px 20px         #F90, 0px 0px 40px #CD7F32'
-                                }}>
-                                    11. Arjun Khanna
-                                </Text>
-                            </Col>
-                        </Card.Header>
-                        <Card.Body css={{ p: 0 }}>
-                        </Card.Body>
-                        </Card>
-                        </Grid>
-                        </Grid.Container>
-                
-                        <Text hideIn={'xs'}
-                    css={{
-                        textAlign: 'center',
-                        fontSize: '$6xl',
-                        fontWeight: '$semibold',
-                        paddingBottom: '1.5%',
-                        textGradient: "45deg, $yellow600 -20%, $red600 100%"
-                    }}>
-                       Individual Awards
-                    </Text>
-                    <Text showIn={'xs'}
-                    css={{
-                        textAlign: 'center',
-                        fontSize: '$6xl',
-                        fontWeight: '$semibold',
-                        padding: '10% 5% 0% 5%',
-                        textGradient: "45deg, $yellow600 -20%, $red600 100%"
-                    }}>
-                        Individual Awards
-                    </Text>
-                    <Grid.Container
-            css={{
-                jc: 'center',
-                alignItems: 'center'
-            }} gap={2}>
-                
-                
-                        <Grid>
-                        <Card 
-                    css={{ 
-                        border: '2px solid #FFD700',
-                        '@xsMin':{
-                            width: "350px",
-                            height: "320px"
-                        },
-                        '@xsMax':{
-                            width: '300px',
-                            height: '320px'
-                        } 
-                        
-                        }}>
-                        <Card.Header css={{ position: "absolute", zIndex: 1, top: 5 }}>
-                            <Col css={{
-                                alignItems: 'center',
-                                jc: 'center'
-                            }}>
-                                <Text 
-                                css={{
-                                    textAlign: 'center',
-                                    fontSize: '$4xl',
-                                    color: '#FFD700',
-                                    fontWeight: '$semibold'
-                                }}>Top Scorers:
-                                </Text>
-                                <Text
-                                css={{
-                                    textAlign: 'center',
-                                    fontSize: '$xl',
-                                    textShadow:'0px 0px 20px #735A21, 0px 0px 20px #735A21, 0px 0px 20px         #F90, 0px 0px 20px #735A21'
-                                }}>
-                                    Vansh Jogani 
-                                </Text>
-                                <Text
-                                css={{
-                                    textAlign: 'center',
-                                    fontSize: '$xl',
-                                    textShadow:'0px 0px 20px #735A21, 0px 0px 20px #735A21, 0px 0px 20px         #F90, 0px 0px 20px #735A21'
-                                }}>
-                                    Sankalp Dasmohaptra
-                                </Text>
-                                <Text
-                                css={{
-                                    textAlign: 'center',
-                                    fontSize: '$xl',
-                                    textShadow:'0px 0px 20px #735A21, 0px 0px 20px #735A21, 0px 0px 20px         #F90, 0px 0px 20px #735A21'
-                                }}>
-                                    Sonam
-                                </Text>
-                                <Text
-                                css={{
-                                    textAlign: 'center',
-                                    fontSize: '$xl',
-                                    textShadow:'0px 0px 20px #735A21, 0px 0px 20px #735A21, 0px 0px 20px         #F90, 0px 0px 20px #735A21'
-                                }}>
-                                    Ahmed Mohamoud
-                                </Text>
-                                <Text
-                                css={{
-                                    textAlign: 'center',
-                                    fontSize: '$xl',
-                                    textShadow:'0px 0px 20px #735A21, 0px 0px 20px #735A21, 0px 0px 20px         #F90, 0px 0px 20px #735A21'
-                                }}>
-                                    Siddh Veer Bakshi
-                                </Text>
-                              
-                                <Text
-                                css={{
-                                    textAlign: 'center',
-                                    fontSize: '$xl',
-                                    textShadow:'0px 0px 20px #735A21, 0px 0px 20px #735A21, 0px 0px 20px         #F90, 0px 0px 20px #735A21'
-                                }}>
-                                    Abhay Hari
-                                </Text>
-                            </Col>
-                        </Card.Header>
-                        <Card.Body css={{ p: 0 }}>
-                        </Card.Body>
-                        </Card>
-                        </Grid>
-                        <Grid>
-                        <Card 
-                    css={{ 
-                        border: '2px solid #FFD700',
-                        '@xsMin':{
-                            width: "350px",
-                            height: "320px"
-                        },
-                        '@xsMax':{
-                            width: '300px',
-                            height: '320px'
-                        } 
-                        
-                        }}>
-                        <Card.Header css={{ position: "absolute", zIndex: 1, top: 5 }}>
-                            <Col css={{
-                                alignItems: 'center',
-                                jc: 'center'
-                            }}>
-                                <Text 
-                                css={{
-                                    textAlign: 'center',
-                                    fontSize: '$4xl',
-                                    color: '#FFD700',
-                                    fontWeight: '$semibold',
-                                    jc:'center'
-                                }}>Most Valuable Player
-                                </Text>
-                                <Text
-                                css={{
-                                    textAlign: 'center',
-                                    fontSize: '$3xl',
-                                    jc:'center',
-                                    textShadow:'0px 0px 20px #fff, 0px 0px 20px #FF3, 0px -10px 20px         #F90, 0px 0px 20px #FFD700'
-                                }}>
-                                    Pranav Wali
-                                </Text>
-                            </Col>
-                        </Card.Header>
-                        <Card.Body css={{ p: 0 }}>
-                        </Card.Body>
-                        </Card>
-                        </Grid>
-                        
-                        </Grid.Container>
-                    
+                                    <Text
+                                    css={{
+                                        color: '$gray600',
+                                        '@xsMin':{
+                                            padding: '0px 200px'
+                                        },
+                                    }}>
+                                        Team Players - {Awards[0][3]}
+                                    </Text>
+                                </Grid.Container>
+                                <Grid.Container>
+                                    <Image
+                                    css={{
+                                        '@xsMin':{
+                                            width: '500px',
+                                            height: '300px',
+                                            borderRadius: '20px',
+                                            objectFit: 'cover'
+                                        },
+                                        '@xsMax':{
+                                            width: '300px',
+                                            height: '180px',
+                                            borderRadius: '20px',
+                                            objectFit: 'cover'
+                                        },
+                                        marginTop: '20px'
+                                    }} src={AZ} />
+                                </Grid.Container>
 
-                    </Grid.Container>
-        </div>
+                            </Grid>
+                            
+                            {/* 2nd Place */}
+                            <Grid 
+                            css={{
+                                padding: '40px 05%'
+                            }}>
+                                <Col
+                                css={{
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    jc: 'center'
+                                }}>
+                                    <Grid.Container
+                                    css={{
+                                        jc: 'center',
+                                    }}>
+                                        <Text 
+                                        css={{
+                                            fontSize: '$4xl',
+                                            fontWeight: '$semibold',
+                                            color: 'rgb(157 171 187)'
+                                        }}>
+                                            {Awards[1][0]}
+                                        </Text>
+                                    </Grid.Container>
+                                    <Grid.Container
+                                    css={{
+                                        jc: 'center',
+                                    }}>
+                                        <Text 
+                                        css={{
+                                            '@xsMin':{
+                                                fontSize: '$6xl'
+                                            },
+                                            '@xsMax':{
+                                                fontSize: '$4xl'
+                                            },
+                                            fontWeight: '$semibold',
+                                            color: 'White'
+                                        }}>
+                                            {Awards[1][1]}
+                                        </Text>
+                                    </Grid.Container>
+                                    <Grid.Container
+                                    css={{
+                                        jc: 'center',
+                                        '@xsMin':{
+                                            width: '500px'
+                                        }
+                                    }}>
+                                        <Text 
+                                        css={{
+                                            color: '$gray600',
+                                            height: '30px'
+                                        }}>
+                                            Team Owners - {Awards[1][2]}
+                                        </Text>
+                                    </Grid.Container>
+                                    <Grid.Container
+                                    css={{
+                                        jc: 'center',
+                                        '@xsMin':{
+                                            width: '500px'
+                                        }
+                                    }}>
+                                        <Text
+                                        css={{
+                                            color: '$gray600',
+                                            height: '90px'
+                                        }}>
+                                            Team Players - {Awards[1][3]}
+                                        </Text>
+                                    </Grid.Container>
+                                    <Image
+                                    css={{
+                                        '@xsMin':{
+                                            width: '500px',
+                                            height: '300px',
+                                            borderRadius: '20px',
+                                            objectFit: 'cover'
+                                        },
+                                        '@xsMax':{
+                                            width: '300px',
+                                            height: '180px',
+                                            borderRadius: '20px',
+                                            objectFit: 'cover'
+                                        },
+                                        marginTop: '20px'
+                                    }} src={Chakravyuh} />
+                                </Col>
+                            </Grid>
+
+                            {/* 3rd Place */}
+                            <Grid 
+                            css={{
+                                padding: '40px 5%'
+                            }}>
+                                <Col
+                                css={{
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    jc: 'center'
+                                }}>
+                                    <Grid.Container
+                                    css={{
+                                        jc: 'center',
+                                    }}>
+                                        <Text 
+                                        css={{
+                                            fontSize: '$4xl',
+                                            fontWeight: '$semibold',
+                                            color: 'rgb(190 159 103)'
+                                        }}>
+                                            {Awards[2][0]}
+                                        </Text>
+                                    </Grid.Container>
+                                    <Grid.Container
+                                    css={{
+                                        jc: 'center',
+                                    }}>
+                                        <Text 
+                                        css={{
+                                            '@xsMin':{
+                                                fontSize: '$6xl'
+                                            },
+                                            '@xsMax':{
+                                                fontSize: '$4xl'
+                                            },
+                                            fontWeight: '$semibold',
+                                            color: 'White'
+                                        }}>
+                                            {Awards[2][1]}
+                                        </Text>
+                                    </Grid.Container>
+                                    <Grid.Container
+                                    css={{
+                                        jc: 'center',
+                                        '@xsMin':{
+                                            width: '500px'
+                                        }
+                                    }}>
+                                        <Text 
+                                        css={{
+                                            color: '$gray600',
+                                            height: '30px'
+                                        }}>
+                                            Team Owners - {Awards[2][2]}
+                                        </Text>
+                                    </Grid.Container>
+                                    <Grid.Container
+                                    css={{
+                                        jc: 'center',
+                                        '@xsMin':{
+                                            width: '500px'
+                                        }
+                                    }}>
+                                        <Text
+                                        css={{
+                                            color: '$gray600',
+                                            height: '90px'
+                                        }}>
+                                            Team Players - {Awards[2][3]}
+                                        </Text>
+                                    </Grid.Container>
+                                    <Image
+                                    css={{
+                                        '@xsMin':{
+                                            width: '500px',
+                                            height: '300px',
+                                            borderRadius: '20px',
+                                            objectFit: 'cover'
+                                        },
+                                        '@xsMax':{
+                                            width: '300px',
+                                            height: '180px',
+                                            borderRadius: '20px',
+                                            objectFit: 'cover'
+                                        },
+                                        marginTop: '20px'
+                                    }} src={SSquad} />
+                                </Col>
+                            </Grid>
+
+                            {/* Female MVP */}
+                            <Grid 
+                            css={{
+                                padding: '40px 05%'
+                            }}>
+                                <Col
+                                css={{
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    jc: 'center'
+                                }}>
+                                    <Grid.Container
+                                    css={{
+                                        jc: 'center',
+                                    }}>
+                                        <Text 
+                                        css={{
+                                            fontSize: '$4xl',
+                                            fontWeight: '$semibold',
+                                            color: '#FAE481'
+                                        }}>
+                                            {Awards[3][0]}
+                                        </Text>
+                                    </Grid.Container>
+                                    <Grid.Container
+                                    css={{
+                                        jc: 'center',
+                                    }}>
+                                        <Text 
+                                        css={{
+                                            '@xsMin':{
+                                                fontSize: '$6xl'
+                                            },
+                                            '@xsMax':{
+                                                fontSize: '$4xl'
+                                            },
+                                            fontWeight: '$semibold',
+                                            color: 'White'
+                                        }}>
+                                            {Awards[3][1]}
+                                        </Text>
+                                    </Grid.Container>
+                                    <Grid.Container
+                                    css={{
+                                        jc: 'center',
+                                        '@xsMin':{
+                                            width: '500px'
+                                        },
+                                        alignItems: 'center'
+                                    }}>
+                                        <Avatar bordered src={Awards[3][3]} />
+                                        <Text 
+                                        css={{
+                                            display: 'flex',
+                                            color: '$gray800',
+                                            fontSize: '$2xl',
+                                            height: '30px',
+                                            alignItems: 'center',
+                                            jc: 'center',
+                                            paddingLeft: '10px'
+                                        }}>
+                                            {Awards[3][2]}
+                                        </Text>
+                                    </Grid.Container>
+                                    <Image
+                                    css={{
+                                        '@xsMin':{
+                                            width: '500px',
+                                            height: '300px',
+                                            borderRadius: '20px',
+                                            objectFit: 'cover'
+                                        },
+                                        '@xsMax':{
+                                            width: '300px',
+                                            height: '180px',
+                                            borderRadius: '20px',
+                                            objectFit: 'cover'
+                                        },
+                                        marginTop: '20px'
+                                    }} src={Radha} />
+                                </Col>
+                            </Grid>
+
+                            {/* Male MVP */}
+                            <Grid 
+                            css={{
+                                padding: '40px 05%'
+                            }}>
+                                <Col
+                                css={{
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    jc: 'center'
+                                }}>
+                                    <Grid.Container
+                                    css={{
+                                        jc: 'center',
+                                    }}>
+                                        <Text 
+                                        css={{
+                                            fontSize: '$4xl',
+                                            fontWeight: '$semibold',
+                                            color: '#FAE481'
+                                        }}>
+                                            {Awards[4][0]}
+                                        </Text>
+                                    </Grid.Container>
+                                    <Grid.Container
+                                    css={{
+                                        jc: 'center',
+                                    }}>
+                                        <Text 
+                                        css={{
+                                            '@xsMin':{
+                                                fontSize: '$6xl'
+                                            },
+                                            '@xsMax':{
+                                                fontSize: '$4xl'
+                                            },
+                                            fontWeight: '$semibold',
+                                            color: 'White'
+                                        }}>
+                                            {Awards[4][1]}
+                                        </Text>
+                                    </Grid.Container>
+                                    <Grid.Container
+                                    css={{
+                                        jc: 'center',
+                                        '@xsMin':{
+                                            width: '500px'
+                                        },
+                                        alignItems: 'center'
+                                    }}>
+                                        <Avatar bordered src={Awards[4][3]} />
+                                        <Text 
+                                        css={{
+                                            display: 'flex',
+                                            color: '$gray800',
+                                            fontSize: '$2xl',
+                                            height: '30px',
+                                            alignItems: 'center',
+                                            jc: 'center',
+                                            paddingLeft: '10px'
+                                        }}>
+                                            {Awards[4][2]}
+                                        </Text>
+                                    </Grid.Container>
+                                    <Image
+                                    css={{
+                                        '@xsMin':{
+                                            width: '500px',
+                                            height: '300px',
+                                            borderRadius: '20px',
+                                            objectFit: 'cover'
+                                        },
+                                        '@xsMax':{
+                                            width: '300px',
+                                            height: '180px',
+                                            borderRadius: '20px',
+                                            objectFit: 'cover'
+                                        },
+                                        marginTop: '20px'
+                                    }} src={PranavWali} />
+                                </Col>
+                            </Grid>
+
+                            {/* Top Scorers */}
+                            <Grid
+                            css={{
+                                padding: '40px 0px'
+                            }}>
+                                <Grid.Container
+                                css={{
+                                    jc: 'center',
+                                }}>
+                                    <Text 
+                                    css={{
+                                        fontSize: '$4xl',
+                                        fontWeight: '$semibold',
+                                        color: '#FAE481'
+                                    }}>
+                                        {Awards[5][0]}
+                                    </Text>
+                                </Grid.Container>
+                                <Grid.Container
+                                css={{
+                                    jc: 'center',
+                                }}>
+                                    <Text 
+                                    css={{
+                                        '@xsMin':{
+                                            fontSize: '$4xl'
+                                        },
+                                        '@xsMax':{
+                                            fontSize: '$2xl'
+                                        },
+                                        fontWeight: '$semibold',
+                                        color: 'White'
+                                    }}>
+                                        {Awards[5][1]}
+                                    </Text>
+                                </Grid.Container>
+                                <Grid.Container>
+                                    <Image
+                                    css={{
+                                        '@xsMin':{
+                                            width: '500px',
+                                            height: '300px',
+                                            borderRadius: '20px',
+                                            objectFit: 'cover'
+                                        },
+                                        '@xsMax':{
+                                            width: '300px',
+                                            height: '180px',
+                                            borderRadius: '20px',
+                                            objectFit: 'cover'
+                                        },
+                                        marginTop: '20px'
+                                    }} src={Grey} />
+                                </Grid.Container>
+
+                            </Grid>
+                        </Grid.Container>
+                    </Grid>
+                </Grid.Container>
+            }
+        </>
     )
     
 }
