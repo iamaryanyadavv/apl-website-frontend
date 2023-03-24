@@ -15,8 +15,6 @@ import SG from '../../assets/images/ScoutingGamesSprinkler.jpg';
 import Auction from '../../assets/images/Auction.jpeg';
 //Foosball Event
 import Foosball from '../../assets/images/Foosball1.jpg'
-//Inclusivity Event
-import Inclusivity from '../../assets/images/Inclusivity.jpg'
 //Preedictions Event
 import AuctionPredictions from '../../assets/images/AuctionPredictions.jpg'
 //Practice Games

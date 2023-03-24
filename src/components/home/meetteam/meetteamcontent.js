@@ -1,10 +1,6 @@
 import { Grid, Col,Image, Text, Button } from "@nextui-org/react";
 import React from "react";
 import'./meetteam.css';
-import P1 from '../../../assets/images/Random2 2.jpeg';
-import P2 from '../../../assets/images/Random3 2.jpeg';
-import P3 from '../../../assets/images/Random4 2.jpeg';
-import P4 from '../../../assets/images/Random5 2.jpeg';
 import AryanYadav from '../../../assets/avatars/AdminTeam/webteam_aryanyadav.jpeg';
 import DhrthiBhat from '../../../assets/avatars/AdminTeam/director_dhrthibhat.jpg';
 import Uday from '../../../assets/avatars/AdminTeam/director_uday.jpg'

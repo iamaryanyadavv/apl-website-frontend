@@ -3,7 +3,6 @@ import './homeevents.css';
 import React from "react";
 import FIFA from '../../../assets/images/PS5Controller2.JPG';
 import Foosball from '../../../assets/images/Foosball1.jpg';
-import Inclusivity from '../../../assets/images/Inclusivity.jpg';
 import AuctionPredictions from '../../../assets/images/AuctionPredictions.jpg';
 
 export default function EventsContent () {

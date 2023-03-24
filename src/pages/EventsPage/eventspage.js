@@ -5,7 +5,6 @@ import EventSection1 from "../../components/minievents/eventsection1";
 import EventSection2 from "../../components/minievents/eventsection2";
 import PS5 from '../../assets/images/PS5Controller2.JPG';
 import Foosball from '../../assets/images/Foosball1.jpg'
-import Inclusivity from '../../assets/images/Inclusivity.jpg'
 import AuctionPredictions from '../../assets/images/AuctionPredictions.jpg'
 
 
