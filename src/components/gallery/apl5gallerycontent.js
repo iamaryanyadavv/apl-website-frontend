@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { Gallery } from "react-grid-gallery";
-import { Text } from "@nextui-org/react";
+import { Text, Grid, Image } from "@nextui-org/react";
 import Image1 from '../../assets/images/APL5/APL5A2ZTeam.jpg';
 import Image2 from '../../assets/images/APL5/APL5Cover.jpg';
 import Image3 from '../../assets/images/APL5/Chakravyuh.jpeg';
@@ -16,66 +16,81 @@ import './apl5gallerycontent.css'
 export default function APL5GalleryContent() {
 
     // vertical pic
-    const width1=500
-    const height1=500
+    const widthV=108
+    const heightV=180
 
     // hroizontal pic
-    const width2=400
-    const height2=300
+    const widthH=300
+    const heightH=180
 
     const images = [
         {
             src: Image1,
-            width: width1,
-            height: height1,
+            width: widthH,
+            height: heightH,
         },
         {
             src: Image2,
-            width: width2,
-            height: height2,
+            width: widthH,
+            height: heightH,
         },
         {
             src: Image3,
-            width: width2,
-            height: height2,
+            width: widthH,
+            height: heightH,
         },
         {
             src: Image4,
-            width: width1,
-            height: height1,
+            width: widthV,
+            height: heightV,
         },
         {
             src: Image5,
-            width: width2,
-            height: height2,
+            width: widthH,
+            height: heightH,
         },
         {
             src: Image6,
-            width: width2,
-            height: height2,
+            width: widthH,
+            height: heightH,
         },
         {
             src: Image7,
-            width: width1,
-            height: height1,
+            width: widthV,
+            height: heightV,
         },
         {
             src: Image8,
-            width: width1,
-            height: height1,
+            width: widthV,
+            height: heightV,
         },
         {
             src: Image9,
-            width: width1,
-            height: height1,
+            width: widthV,
+            height: heightV,
         }
     ]
 
-    
-
     return(
-        <div className="gallery-wrapper">
-            <Gallery images={images} />
-        </div>
+        <Grid.Container 
+        css={{
+            jc: 'center',
+            alignItems: 'center'
+        }}>
+            {images.map((image)=>(
+                <Grid
+                css={{
+                    margin: '2.5px'
+                }}>
+                    <Image css={{
+                    width: toString(image.width),
+                    height: toString(image.height),
+                    alignItems: 'center',
+                    borderRadius: '05px'
+                    }}  src={image.src} width={image.width} height={image.height} />
+                </Grid>
+            ))}
+        </Grid.Container>
+        
     )
 }
