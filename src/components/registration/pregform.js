@@ -114,7 +114,7 @@ export default function PRegForm(){
             console.log('looping 2.5 seconds')
             window.setTimeout(()=>{
 
-                fetch('https://ashoka-premier-league-api.onrender.com/registration/player')
+                fetch('https://aplapi.onrender.com/registration/player')
                 .then(response=>response.json())
                 .then((data)=>{
                     if(data.values){
@@ -222,8 +222,8 @@ export default function PRegForm(){
         if(firstname && lastname && batch && phonenumber && gender && primarypos && secondpos)
         { 
             // image, name, ppos, spos, comments, tier, price, team, teamlogo, gender, batch, email
-            // https://ashoka-premier-league-api.onrender.com/registration/player
-            const res = await fetch('https://ashoka-premier-league-api.onrender.com/registration/player',{
+            // https://aplapi.onrender.com/registration/player
+            const res = await fetch('https://aplapi.onrender.com/registration/player',{
             method: 'POST',
             headers:{"Content-type":"application/json"},
             body: JSON.stringify({
@@ -259,7 +259,7 @@ export default function PRegForm(){
         const ImageData = new FormData();
         ImageData.append('file', imagedata, imageName);
         if(ImageData){
-            await fetch('https://ashoka-premier-league-api.onrender.com/registration/playerimage',{
+            await fetch('https://aplapi.onrender.com/registration/playerimage',{
                 method: 'POST',
                 headers:{Value: "multipart/form-data"},
                 body: ImageData
@@ -273,7 +273,7 @@ export default function PRegForm(){
         const PaymentData = new FormData();
         PaymentData.append('file', paymentdata, paymentName);
         if(PaymentData){
-            await fetch('https://ashoka-premier-league-api.onrender.com/registration/playerpaymentimage',{
+            await fetch('https://aplapi.onrender.com/registration/playerpaymentimage',{
                 method: 'POST',
                 headers:{Value: "multipart/form-data"},
                 body: PaymentData
@@ -308,7 +308,7 @@ export default function PRegForm(){
 
     // function to check whether player is already registered
     const getRegisteredPlayersEmailData= async (userObject) =>{
-        await fetch('https://ashoka-premier-league-api.onrender.com/registration/player')
+        await fetch('https://aplapi.onrender.com/registration/player')
         .then(response=>response.json())
         .then((data)=>{
             var isSignedin = false
@@ -356,7 +356,7 @@ export default function PRegForm(){
             
              
         })
-        await fetch('https://ashoka-premier-league-api.onrender.com/registration/checkreg')
+        await fetch('https://aplapi.onrender.com/registration/checkreg')
         .then(response=>response.json())
         .then((data)=>{
             if(data.values)
@@ -394,7 +394,7 @@ export default function PRegForm(){
         setLoginLoader(true)
         window.setTimeout(()=>{
             window.google.accounts.id.initialize({
-                client_id: "307601456989-5ii0dp5jhqah6snpkuf9ff1jajp67ku6.apps.googleusercontent.com",
+                client_id: "307601456989-3visvqebfkepaqi9b86e95pgn6bd8qfb.apps.googleusercontent.com",
                 callback: handleCallbackresponse
             });
             

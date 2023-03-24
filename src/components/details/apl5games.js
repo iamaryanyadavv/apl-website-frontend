@@ -9,7 +9,7 @@ export default function Games(){
     const [Day3Games, setDay3Games] = useState([]);
 
     async function getGames(){
-        await fetch('https://ashoka-premier-league-api.onrender.com/seasons/apl5/games')
+        await fetch('https://aplapi.onrender.com/seasons/apl5/games')
         .then(response=>response.json())
         .then(data=>{
             const day1games=[]
@@ -35,7 +35,7 @@ export default function Games(){
     }
 
     async function getTeams(){
-        await fetch('https://ashoka-premier-league-api.onrender.com/seasons/apl5/teamdata')
+        await fetch('https://aplapi.onrender.com/seasons/apl5/teamdata')
         .then(response=>response.json())
         .then(data=>{
             console.log(data)

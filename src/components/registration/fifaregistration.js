@@ -151,7 +151,7 @@ export default function FifaRegForm(){
         setLoginLoader(true)
         window.setTimeout(()=>{
             window.google.accounts.id.initialize({
-                client_id: "307601456989-5ii0dp5jhqah6snpkuf9ff1jajp67ku6.apps.googleusercontent.com",
+                client_id: "307601456989-3visvqebfkepaqi9b86e95pgn6bd8qfb.apps.googleusercontent.com",
                 callback: handleCallbackresponse
             });
             
@@ -171,7 +171,7 @@ export default function FifaRegForm(){
         if(participantone && participanttwo && participanttwoemail && participantoneemail && participantonephone && participanttwophone && participantonebatch && participanttwobatch && paymentSC)
         { 
             console.log('Sending')
-            const res = await fetch('https://ashoka-premier-league-api.onrender.com/registration/fifa',{
+            const res = await fetch('https://aplapi.onrender.com/registration/fifa',{
             method: 'POST',
             headers:{"Content-type":"application/json"},
             body: JSON.stringify({
@@ -204,7 +204,7 @@ export default function FifaRegForm(){
         const PaymentData = new FormData();
         PaymentData.append('file', paymentdata, paymentName);
         if(PaymentData){
-            await fetch('https://ashoka-premier-league-api.onrender.com/registration/fifaplayerpaymentimage',{
+            await fetch('https://aplapi.onrender.com/registration/fifaplayerpaymentimage',{
                 method: 'POST',
                 headers:{Value: "multipart/form-data"},
                 body: PaymentData
@@ -237,7 +237,7 @@ export default function FifaRegForm(){
     });
 
     // async function checkIfRegSuccess1(emailID){
-    //     await fetch('https://ashoka-premier-league-api.onrender.com/registration/fifa1')
+    //     await fetch('https://aplapi.onrender.com/registration/fifa1')
     //     .then(response=>response.json())
     //     .then((data)=>{
     //         console.log(data.values)
@@ -263,7 +263,7 @@ export default function FifaRegForm(){
     //     })
     // }
     // async function checkIfRegSuccess2(emailID){
-    //     await fetch('https://ashoka-premier-league-api.onrender.com/registration/fifa2')
+    //     await fetch('https://aplapi.onrender.com/registration/fifa2')
     //     .then(response=>response.json())
     //     .then((data)=>{
     //         console.log(data.values)
@@ -291,7 +291,7 @@ export default function FifaRegForm(){
     
     // function to check whether player is already registered
     const getRegisteredPlayersEmailData= async (userObject) =>{
-        await fetch('https://ashoka-premier-league-api.onrender.com/registration/fifa1')
+        await fetch('https://aplapi.onrender.com/registration/fifa1')
         .then(response=>response.json())
         .then((data)=>{
             var isSignedin = false
@@ -334,7 +334,7 @@ export default function FifaRegForm(){
                 setParticipantoneemailStatus('success')
             }     
         })
-        await fetch('https://ashoka-premier-league-api.onrender.com/registration/fifa1')
+        await fetch('https://aplapi.onrender.com/registration/fifa1')
         .then(response=>response.json())
         .then((data)=>{
             if(data.values)

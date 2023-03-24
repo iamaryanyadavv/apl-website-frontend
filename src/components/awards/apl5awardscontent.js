@@ -14,7 +14,7 @@ export default function APL5AwardsContent() {
     const [Awards, setAwards] = useState();
 
     async function getAwards(){
-        await fetch('https://ashoka-premier-league-api.onrender.com/seasons/apl5/awards')
+        await fetch('https://aplapi.onrender.com/seasons/apl5/awards')
         .then(response=>response.json())
         .then(data=>{
             setAwards(data.values)

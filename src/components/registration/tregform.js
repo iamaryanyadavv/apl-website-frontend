@@ -335,7 +335,7 @@ export default function TRegForm() {
         const ImageData = new FormData();
         ImageData.append('file', imagedata, imageName);
         if(ImageData){
-            await fetch('https://ashoka-premier-league-api.onrender.com/registration/teamlogo',{
+            await fetch('https://aplapi.onrender.com/registration/teamlogo',{
                 method: 'POST',
                 headers:{Value: "multipart/form-data"},
                 body: ImageData
@@ -348,7 +348,7 @@ export default function TRegForm() {
         const PaymentData = new FormData();
         PaymentData.append('file', paymentdata, paymentName);
         if(PaymentData){
-            await fetch('https://ashoka-premier-league-api.onrender.com/registration/teampaymentimages',{
+            await fetch('https://aplapi.onrender.com/registration/teampaymentimages',{
                 method: 'POST',
                 headers:{Value: "multipart/form-data"},
                 body: PaymentData
@@ -357,7 +357,7 @@ export default function TRegForm() {
     }
 
     const getRegisteredTeamsEmailData= async (userObject) =>{
-        await fetch('https://ashoka-premier-league-api.onrender.com/registration/team')
+        await fetch('https://aplapi.onrender.com/registration/team')
         .then(response=>response.json())
         .then((data)=>{
             var isSignedin = false
@@ -411,7 +411,7 @@ export default function TRegForm() {
     } 
 
     async function sendTeamName(e){
-        await fetch("https://ashoka-premier-league-api.onrender.com/registration/team/budgets",{
+        await fetch("https://aplapi.onrender.com/registration/team/budgets",{
             method: "POST",
             headers:{
                 "Content-type":"application/json"
@@ -426,7 +426,7 @@ export default function TRegForm() {
     {
         if(teamname && managername && manageremail && managerphone && totalowners==1 && owner1 && !owner2 && !owner3 && !owner4 && !owner5 ){
             console.log('coming in owner1')
-            const res = await fetch("https://ashoka-premier-league-api.onrender.com/registration/team",{
+            const res = await fetch("https://aplapi.onrender.com/registration/team",{
             method: "POST",
             headers:{
                 "Content-type":"application/json"
@@ -454,7 +454,7 @@ export default function TRegForm() {
         }
         else if(teamname && managername && manageremail && managerphone && totalowners==2 && owner1 && owner2 && !owner3 && !owner4 && !owner5 ){
             console.log('coming in owner2')
-            const res = await fetch("https://ashoka-premier-league-api.onrender.com/registration/team",{
+            const res = await fetch("https://aplapi.onrender.com/registration/team",{
             method: "POST",
             headers:{
                 "Content-type":"application/json"
@@ -482,7 +482,7 @@ export default function TRegForm() {
         }
         else if(teamname && managername && manageremail && managerphone && totalowners==3 && owner1 && owner2 && owner3 && !owner4 && !owner5 ){
             console.log('3 OWNERS!')
-            const res = await fetch("https://ashoka-premier-league-api.onrender.com/registration/team",{
+            const res = await fetch("https://aplapi.onrender.com/registration/team",{
             method: "POST",
             headers:{
                 "Content-type":"application/json"
@@ -510,7 +510,7 @@ export default function TRegForm() {
             }
         }
         else if(teamname && managername && manageremail && managerphone && totalowners==4 && owner1 && owner2 && owner3 && owner4 && !owner5 ){
-            const res = await fetch("https://ashoka-premier-league-api.onrender.com/registration/team",{
+            const res = await fetch("https://aplapi.onrender.com/registration/team",{
             method: "POST",
             headers:{
                 "Content-type":"application/json"
@@ -538,7 +538,7 @@ export default function TRegForm() {
         }
         else {
             
-            const res = await fetch("https://ashoka-premier-league-api.onrender.com/registration/team",{
+            const res = await fetch("https://aplapi.onrender.com/registration/team",{
             method: "POST",
             headers:{
                 "Content-type":"application/json"
@@ -601,7 +601,7 @@ export default function TRegForm() {
         setLoginLoader(true)
         window.setTimeout(()=>{
             window.google.accounts.id.initialize({
-                client_id: "307601456989-5ii0dp5jhqah6snpkuf9ff1jajp67ku6.apps.googleusercontent.com",
+                client_id: "307601456989-3visvqebfkepaqi9b86e95pgn6bd8qfb.apps.googleusercontent.com",
                 callback: handleCallbackresponse
             });
             

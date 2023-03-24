@@ -55,7 +55,7 @@ export default function Pool1(){
     ];
 
     async function getStandings(){
-        await fetch('https://ashoka-premier-league-api.onrender.com/seasons/apl5/standings/c')
+        await fetch('https://aplapi.onrender.com/seasons/apl5/standings/c')
         .then(response=>response.json())
         .then(data=>{
             // console.log(data.values[0][0])

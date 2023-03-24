@@ -16,7 +16,7 @@ export default function APL5DetailsContent() {
     const [Standings, setStandings] = useState(false)
     const [Rules, setRules] = useState(false)
     async function getStandings(){
-        await fetch('https://ashoka-premier-league-api.onrender.com/seasons/apl5/standings')
+        await fetch('https://aplapi.onrender.com/seasons/apl5/standings')
         .then(response=>response.json())
         .then(data=>{
             setFetching(false)
