@@ -169,7 +169,7 @@ export default function TeamContent(){
 
                 </Grid.Container>
 
-                {/* Finance Team */}
+                {/* Core Team */}
                 <Grid.Container 
                 css={{
                     jc: 'center',

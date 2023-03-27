@@ -290,6 +290,7 @@ export default function FifaRegForm(){
     // }
     
     // function to check whether player is already registered
+    
     const getRegisteredPlayersEmailData= async (userObject) =>{
         await fetch('https://aplapi.onrender.com/registration/fifa1')
         .then(response=>response.json())
