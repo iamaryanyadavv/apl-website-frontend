@@ -20,7 +20,7 @@ export default function RegFailed(){
                     alignContent: 'center',
                     justifyContent: 'center'
                 }}>
-                Fifa Registration is closed. See you next season!
+                Registration is closed. See you next season!
                 </Text>
                 <Text showIn={'md'}
                 css={{
@@ -29,7 +29,7 @@ export default function RegFailed(){
                     alignContent: 'center',
                     justifyContent: 'center'
                 }}>
-                Fifa Registration is closed. See you next season!
+                Registration is closed. See you next season!
                 </Text>
                 </Grid.Container>
         </div>

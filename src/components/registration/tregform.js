@@ -4,11 +4,12 @@ import { Grid, Input, Loading, Modal, Text, Dropdown, Button, Row, Col, Avatar, 
 import { useTicker } from "../../hooks";
 import jwt_decode from "jwt-decode";
 import imageCompression from 'browser-image-compression';
+import { set } from "date-fns";
 
 export default function TRegForm() {
 
     //12:30pm on 23rd March, 2023 GMT or 6pm on 23rd March, 2023 IST
-    const endDate = "2023-03-27T10:30:00.000Z"; 
+    const endDate = "2023-03-28T08:30:00.000Z"; 
     
     const { days, hours, minutes, seconds, isTimeUp } = useTicker(endDate);
     
@@ -88,6 +89,8 @@ export default function TRegForm() {
     const[paymentmode, setPaymentmode] = useState('Webstie - UPI');
 
     const [isRegFull, setIsRegFull] = useState(false);
+    const [isRegFull2, setIsRegFull2] = useState(false);
+    const [regFullModal, setRegFullModal] = useState(false);
 
 
     async function checkIfRegSuccess(manageremail){
@@ -421,11 +424,13 @@ export default function TRegForm() {
                 console.log(data.values.length)
                 if(data.values.length>=24)
                 {
+                    console.log('reg is full...')
                     setIsRegFull(true)
                 }
             }
         })
     } 
+
 
     async function sendTeamName(e){
         await fetch("https://aplapi.onrender.com/registration/team/budgets",{
@@ -449,11 +454,20 @@ export default function TRegForm() {
                 console.log(data.values.length)
                 if(data.values.length>=24)
                 {
-                    setIsRegFull(true)
+                    setLoadingModal(false)
+                    setIsRegFull2(true)
+                    
+                }
+                else{
+                    setIsRegFull2(false)
+                    sendform2()
                 }
             }
         })
-
+    }
+    
+    async function sendform2()
+    {
         if(teamname && managername && manageremail && managerphone && totalowners==1 && owner1 && !owner2 && !owner3 && !owner4 && !owner5 ){
             console.log('coming in owner1')
             const res = await fetch("https://aplapi.onrender.com/registration/team",{
@@ -594,7 +608,6 @@ export default function TRegForm() {
                 setLoadingModal(false)
             }
         }
-        
     }
 
     const convertImageToBase64 = async (e) => {
@@ -3680,6 +3693,97 @@ export default function TRegForm() {
                                                 color: 'white',
                                             }}>
                                                 You were not able to register as {User.name}. Please try again...
+                                            </Text>
+                                        </Modal.Body>
+                                        
+                                </Modal>
+                                }
+
+                                {isRegFull2===true && 
+                                <Modal
+                                open={isRegFull2}
+                                closeButton
+                                onClose={()=>{
+                                    window.location.pathname="./registration/registrationfailed"
+                                }}
+                                >
+                                        <Modal.Header
+                                        css={{
+                                            paddingTop: '0px',
+                                        }}>
+                                            <Col>
+                                                <Text 
+                                                css={{
+                                                    textAlign: 'center',
+                                                    fontSize: '$3xl',
+                                                    fontWeight: '$bold',
+                                                    color: '$red600',
+                                                    borderStyle: 'solid',
+                                                    borderWidth: '0px 0px 1px 0px',
+                                                    borderColor: '$gray800'
+                                                }}>
+                                                    Sorry!
+                                                </Text>
+                                                
+                                            </Col>
+                                        </Modal.Header>
+                                        <Modal.Body
+                                        css={{
+                                            paddingTop: '0px'
+                                        }}>
+                                            <Text 
+                                            css={{
+                                                textAlign: 'center',
+                                                fontSize: '$xl',
+                                                fontWeight: '$semibold',
+                                                color: 'white',
+                                            }}>
+                                                Team Registration is Full, in case you have paid, you will be refunded shortly. See you next season!
+                                            </Text>
+                                        </Modal.Body>
+                                        
+                                </Modal>
+                                }
+                                {isRegFull===true && 
+                                <Modal
+                                open={isRegFull}
+                                closeButton
+                                onClose={()=>{
+                                    window.location.pathname="./registration/registrationfailed"
+                                }}
+                                >
+                                        <Modal.Header
+                                        css={{
+                                            paddingTop: '0px',
+                                        }}>
+                                            <Col>
+                                                <Text 
+                                                css={{
+                                                    textAlign: 'center',
+                                                    fontSize: '$3xl',
+                                                    fontWeight: '$bold',
+                                                    color: '$red600',
+                                                    borderStyle: 'solid',
+                                                    borderWidth: '0px 0px 1px 0px',
+                                                    borderColor: '$gray800'
+                                                }}>
+                                                    Sorry!
+                                                </Text>
+                                                
+                                            </Col>
+                                        </Modal.Header>
+                                        <Modal.Body
+                                        css={{
+                                            paddingTop: '0px'
+                                        }}>
+                                            <Text 
+                                            css={{
+                                                textAlign: 'center',
+                                                fontSize: '$xl',
+                                                fontWeight: '$semibold',
+                                                color: 'white',
+                                            }}>
+                                                Team Registration is Full. See you next season!
                                             </Text>
                                         </Modal.Body>
                                         
