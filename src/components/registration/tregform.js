@@ -8,9 +8,10 @@ import imageCompression from 'browser-image-compression';
 export default function TRegForm() {
 
     //12:30pm on 23rd March, 2023 GMT or 6pm on 23rd March, 2023 IST
-    const endDate = "2023-03-27T15:30:00.000Z"; 
+    const endDate = "2023-03-27T10:30:00.000Z"; 
     
     const { days, hours, minutes, seconds, isTimeUp } = useTicker(endDate);
+    
 
     const [teamname, SetTeamname] = useState('');
     const [Teamnamestatus, setTeamnamestatus] = useState('')
@@ -85,6 +86,9 @@ export default function TRegForm() {
     const [User, setUser] = useState({});
 
     const[paymentmode, setPaymentmode] = useState('Webstie - UPI');
+
+    const [isRegFull, setIsRegFull] = useState(false);
+
 
     async function checkIfRegSuccess(manageremail){
         await fetch('http://localhost:3001/registration/team')
@@ -408,6 +412,19 @@ export default function TRegForm() {
             
              
         })
+
+        await fetch('https://aplapi.onrender.com/registration/checkteamreg')
+        .then(response=>response.json())
+        .then((data)=>{
+            if(data.values)
+            {
+                console.log(data.values.length)
+                if(data.values.length>=24)
+                {
+                    setIsRegFull(true)
+                }
+            }
+        })
     } 
 
     async function sendTeamName(e){
@@ -424,6 +441,19 @@ export default function TRegForm() {
 
     async function sendForm(e)
     {
+        await fetch('https://aplapi.onrender.com/registration/checkteamreg')
+        .then(response=>response.json())
+        .then((data)=>{
+            if(data.values)
+            {
+                console.log(data.values.length)
+                if(data.values.length>=24)
+                {
+                    setIsRegFull(true)
+                }
+            }
+        })
+
         if(teamname && managername && manageremail && managerphone && totalowners==1 && owner1 && !owner2 && !owner3 && !owner4 && !owner5 ){
             console.log('coming in owner1')
             const res = await fetch("https://aplapi.onrender.com/registration/team",{

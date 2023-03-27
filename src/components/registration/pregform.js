@@ -371,7 +371,7 @@ export default function PRegForm(){
                     
                 };
                 console.log(count);
-                if(count==192)
+                if(count>=192)
                 {
                     setmaleRegFull(true);
                     alert('Male Player Registrations are full!')
