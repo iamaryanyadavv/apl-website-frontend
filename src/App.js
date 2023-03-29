@@ -85,6 +85,7 @@ function App() {
                 <Route exact path="/registration/player" element={<PlayerRegistrationPage/>} />
                 <Route exact path="/registration/team" element={<RegFailed/>} />
                 <Route exact path="/registration/fifa" element={<FifaRegistrationPage/>} />
+                
                 <Route exact path="/registration/registrationfailed" element={<RegFailed/>} />
 
                 {/* Meet The Team */}
