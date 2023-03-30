@@ -1863,7 +1863,7 @@ export default function RoadToAPLContent(){
                                     alignItems: 'baseline',
                                     width: '180px'
                                 }}>
-                                    5th April 2023*
+                                    5th April 2023
                                     
                                 </Text>
                             </Grid>
