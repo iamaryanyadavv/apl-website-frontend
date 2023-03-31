@@ -1,4 +1,4 @@
-import {Text, Grid, Col, Avatar, Row, Spacer} from "@nextui-org/react";
+import {Text, Grid, Col, Avatar, Row, Spacer, Button} from "@nextui-org/react";
 import { Loading } from '@nextui-org/react';
 import React from "react";
 import { useState, useEffect } from "react";
@@ -16,6 +16,10 @@ export default function APL5PlayersContent(){
     const [Tier2PlayerData, setTier2PlayerData] = useState([]);
     const [Tier3PlayerData, setTier3PlayerData] = useState([]);
     const [Tier4PlayerData, setTier4PlayerData] = useState([]);
+    const [OneReady, setOneReady] = useState(true);
+    const [TwoReady, setTwoReady] = useState(false);
+    const [ThreeReady, setThreeReady] = useState(false);
+    const [FourReady, setFourReady] = useState(false);
 
     // Player array - 
     // 0: Picture
@@ -1060,8 +1064,148 @@ export default function APL5PlayersContent(){
             }
             {!Fetching && 
             <div>
+
+                {/* Navigation Buttons */}
+                <Grid.Container
+                css={{
+                    jc: 'center',
+                    alignItems: 'center',
+                }}>
+                    <Grid 
+                    css={{
+                        '@xsMin':{
+                            padding: '16px'
+                        },
+                        '@xsMax':{
+                            padding: '16px 48px'
+                        }
+                    }}>
+                        <Text
+                        css={{
+                            fontSize: '$lg',
+                            color: '#C4B454',
+                            fontWeight: '$semibold',
+                            borderRadius: '20px',
+                            backgroundColor: 'rgba(196, 180, 84, 0.2)',
+                            textAlign: 'center',
+                            padding: '2px 16px',
+                            '&:hover':{
+                                cursor: 'pointer'
+                            }
+                        }}
+                        onClick={()=>{
+                            setOneReady(true)
+                            setTwoReady(false)
+                            setThreeReady(false)
+                            setFourReady(false)
+                        }}
+                        >
+                            Tier 1
+                        </Text>
+                    </Grid>
+
+                    <Grid 
+                    css={{
+                        '@xsMin':{
+                            padding: '16px'
+                        },
+                        '@xsMax':{
+                            padding: '16px 48px'
+                        }
+                    }}>
+                        <Text
+                        css={{
+                            fontSize: '$lg',
+                            color: 'rgb(157, 171, 187)',
+                            fontWeight: '$semibold',
+                            borderRadius: '20px',
+                            backgroundColor: 'rgba(157, 171, 187, 0.2)',
+                            textAlign: 'center',
+                            padding: '2px 16px',
+                            '&:hover':{
+                                cursor: 'pointer'
+                            }
+                        }}
+                        onClick={()=>{
+                            setOneReady(false)
+                            setTwoReady(true)
+                            setThreeReady(false)
+                            setFourReady(false)
+                        }}
+                        >
+                            Tier 2
+                        </Text>
+                    </Grid>
+
+                    <Grid 
+                    css={{
+                        '@xsMin':{
+                            padding: '16px'
+                        },
+                        '@xsMax':{
+                            padding: '16px 48px'
+                        }
+                    }}>
+                        <Text
+                        css={{
+                            fontSize: '$lg',
+                            color: 'rgba(190, 159, 103, 1)',
+                            fontWeight: '$semibold',
+                            borderRadius: '20px',
+                            backgroundColor: 'rgba(190, 159, 103, 0.2)',
+                            textAlign: 'center',
+                            padding: '2px 16px',
+                            '&:hover':{
+                                cursor: 'pointer'
+                            }
+                        }}
+                        onClick={()=>{
+                            setOneReady(false)
+                            setTwoReady(false)
+                            setThreeReady(true)
+                            setFourReady(false)
+                        }}
+                        >
+                            Tier 3
+                        </Text>
+                    </Grid>
+
+                    <Grid 
+                    css={{
+                        '@xsMin':{
+                            padding: '16px'
+                        },
+                        '@xsMax':{
+                            padding: '16px 48px'
+                        }
+                    }}>
+                        <Text
+                        css={{
+                            fontSize: '$lg',
+                            color: 'rgb(183, 110, 121)',
+                            fontWeight: '$semibold',
+                            borderRadius: '20px',
+                            backgroundColor: 'rgba(183, 110, 121, 0.2)',
+                            textAlign: 'center',
+                            padding: '2px 16px',
+                            '&:hover':{
+                                cursor: 'pointer'
+                            }
+                        }}
+                        onClick={()=>{
+                            setOneReady(false)
+                            setTwoReady(false)
+                            setThreeReady(false)
+                            setFourReady(true)
+                        }}
+                        >
+                            Tier 4
+                        </Text>
+                    </Grid>
+                </Grid.Container>
+
                 {/* Tier 1 Block*/}
-                {Tier1Cards.length != 0 &&
+                {Tier1Cards.length != 0 && OneReady && !TwoReady && !ThreeReady && !FourReady &&
                 <Grid.Container 
                 css={{
                     jc: 'center',
@@ -1126,13 +1270,13 @@ export default function APL5PlayersContent(){
                 }
                 
                 {/* Tier 2 Block */}
-                {Tier2Cards.length != 0 &&     
+                {Tier2Cards.length != 0 && !OneReady && TwoReady && !ThreeReady && !FourReady &&
                 <Grid.Container 
                 css={{
                     jc: 'center',
                     textAlign: 'center',
                     alignItems: 'center',
-                    margin: '60px 0px 30px 0px',
+                    margin: '30px 0px 30px 0px',
                     backgroundColor: 'rgb(20,20,20)',
                     borderRadius: '20px'
                 }}>
@@ -1191,13 +1335,13 @@ export default function APL5PlayersContent(){
                 }
 
                 {/* Tier 3 Block */}
-                {Tier3Cards.length != 0 &&   
+                {Tier3Cards.length != 0 &&  !OneReady && !TwoReady && ThreeReady && !FourReady &&
                 <Grid.Container 
                 css={{
                     jc: 'center',
                     textAlign: 'center',
                     alignItems: 'center',
-                    margin: '60px 0px 60px 0px',
+                    margin: '30px 0px 30px 0px',
                     backgroundColor: 'rgb(20,20,20)',
                     borderRadius: '20px'
                 }}>
@@ -1256,7 +1400,7 @@ export default function APL5PlayersContent(){
                 }
 
                 {/* Tier 4 Block */}
-                {Tier4Cards.length != 0 &&   
+                {Tier4Cards.length != 0 && !OneReady && !TwoReady && !ThreeReady && FourReady &&
                 <Grid.Container 
                 css={{
                     jc: 'center',
