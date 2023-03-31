@@ -19,7 +19,7 @@ export default function APL6LandingPage () {
             <div className="apl6backg">
                 <QuoteHeading
                     heading='Season 6.0'
-                    description='Organised by Dhrthi Bhat and Uday Srivastava, this season will be taking place from the 21st to 23rd April, 2023. With increased team budgets of 200 million (yes, 200), we are expecting more action, drama and competition from the get-go.'
+                    description='Organised by Dhrthi Bhat and Uday Srivastava, this season will be taking place from the 21st to 23rd April, 2023. With increased team budgets of 150 million (yes, 150), we are expecting more action, drama and competition from the get-go.'
                 />
                 <Grid.Container gap={0}
                 css={{

@@ -111,7 +111,7 @@ export default function Prizes () {
                                         fontSize: '$6xl',
                                         fontWeight: '$bold'
                                     }}>
-                                        50,000
+                                        60,000
                                     </Text>
                                 </Row>
                                 <Text
@@ -156,7 +156,7 @@ export default function Prizes () {
                                         fontSize: '$5xl',
                                         fontWeight: '$bold'
                                     }}>
-                                        20,000
+                                        25,000
                                     </Text>
                                 </Row>
                                 <Text
