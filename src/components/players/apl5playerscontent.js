@@ -3,7 +3,7 @@ import { Loading } from '@nextui-org/react';
 import React from "react";
 import { useState, useEffect } from "react";
 import User from '../../assets/images/User.png';
-import './apl5playerscontent.css';
+import './playerscontent.css';
 import { AiOutlineDollar } from 'react-icons/ai';
 import { TbSoccerField } from "react-icons/tb";
 import {BsBook, BsGenderAmbiguous} from "react-icons/bs";
@@ -1089,8 +1089,11 @@ export default function APL5PlayersContent(){
                             backgroundColor: 'rgba(196, 180, 84, 0.2)',
                             textAlign: 'center',
                             padding: '2px 16px',
+                            transition: 'padding 0.5s',
                             '&:hover':{
-                                cursor: 'pointer'
+                                cursor: 'pointer',
+                                backgroundColor: 'rgba(196, 180, 84, 0.25)',
+                                padding: '2px 24px',
                             }
                         }}
                         onClick={()=>{
@@ -1122,8 +1125,11 @@ export default function APL5PlayersContent(){
                             backgroundColor: 'rgba(157, 171, 187, 0.2)',
                             textAlign: 'center',
                             padding: '2px 16px',
+                            transition: 'padding 0.5s',
                             '&:hover':{
-                                cursor: 'pointer'
+                                cursor: 'pointer',
+                                backgroundColor: 'rgba(157, 171, 187, 0.25)',
+                                padding: '2px 24px',
                             }
                         }}
                         onClick={()=>{
@@ -1155,8 +1161,11 @@ export default function APL5PlayersContent(){
                             backgroundColor: 'rgba(190, 159, 103, 0.2)',
                             textAlign: 'center',
                             padding: '2px 16px',
+                            transition: 'padding 0.5s',
                             '&:hover':{
-                                cursor: 'pointer'
+                                cursor: 'pointer',
+                                backgroundColor: 'rgba(190, 159, 103, 0.25)',
+                                padding: '2px 24px',
                             }
                         }}
                         onClick={()=>{
@@ -1188,8 +1197,11 @@ export default function APL5PlayersContent(){
                             backgroundColor: 'rgba(183, 110, 121, 0.2)',
                             textAlign: 'center',
                             padding: '2px 16px',
+                            transition: 'padding 0.5s',
                             '&:hover':{
-                                cursor: 'pointer'
+                                cursor: 'pointer',
+                                backgroundColor: 'rgba(183, 110, 121, 0.25)',
+                                padding: '2px 24px',
                             }
                         }}
                         onClick={()=>{

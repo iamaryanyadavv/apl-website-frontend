@@ -13,7 +13,7 @@ export default function APL6PlayersPage(){
             <Spacer y={2} />
             <GradientHeading
                 heading='APL 6.0 PLAYERS'
-                description='You can find all players that take part in APL Season 6.0! They will be segregated into tiers soon!'
+                description='You can find all players that take part in APL Season 6.0 segregated into their tiers.'
                 gradient='45deg, #388EE9 20%, #09EBEE 100%'
             />
             <APL6PlayersContent/>

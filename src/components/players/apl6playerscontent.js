@@ -3,7 +3,7 @@ import { Loading } from '@nextui-org/react';
 import React from "react";
 import { useState, useEffect } from "react";
 import User from '../../assets/images/User.png';
-import './apl5playerscontent.css';
+import './playerscontent.css';
 import { AiOutlineDollar } from 'react-icons/ai';
 import { TbSoccerField } from "react-icons/tb";
 import {BsBook, BsGenderAmbiguous} from "react-icons/bs";
@@ -510,7 +510,7 @@ export default function APL6PlayersContent(){
                             padding: '5px 0px 5px 0px'
                         }}>
                             <AiOutlineDollar size={'20px'} className='dollar'/>
-                            { player[6] && 
+                            { player[6]!='0' && 
                             <Text 
                             css={{
                                 color: 'White',
@@ -564,16 +564,18 @@ export default function APL6PlayersContent(){
                             {/* <GiSoccerBall size={'20px'} className='team' /> */}
                             {/* Team Logo */}
                             <Avatar size={'sm'} bordered src={player[8]} />
-                            <Text 
-                            css={{
-                                color: 'White',
-                                fontSize: '$lg',
-                                fontWeight: '$medium',
-                                padding: '0px 0px 0px 5px'
-                            }}>
-                                {/*Team Name */}
-                                {player[7]}
-                            </Text>    
+                            {player[7]!='0' &&
+                                <Text 
+                                css={{
+                                    color: 'White',
+                                    fontSize: '$lg',
+                                    fontWeight: '$medium',
+                                    padding: '0px 0px 0px 5px'
+                                }}>
+                                    {/*Team Name */}
+                                    {player[7]}
+                                </Text>    
+                            } 
                         </Row>
                     
                     {/* Positions p + s */}
@@ -695,7 +697,7 @@ export default function APL6PlayersContent(){
                             padding: '5px 0px 5px 0px'
                         }}>
                             <AiOutlineDollar size={'20px'} className='dollar'/>
-                            { player[6] && 
+                            { player[6]!="0" && 
                             <Text 
                             css={{
                                 color: 'White',
@@ -749,16 +751,18 @@ export default function APL6PlayersContent(){
                             {/* <GiSoccerBall size={'20px'} className='team' /> */}
                             {/* Team Logo */}
                             <Avatar size={'sm'} bordered src={player[8]} />
-                            <Text 
-                            css={{
-                                color: 'White',
-                                fontSize: '$lg',
-                                fontWeight: '$medium',
-                                padding: '0px 0px 0px 5px'
-                            }}>
-                                {/*Team Name */}
-                                {player[7]}
-                            </Text>    
+                            {player[7]!='0' &&
+                                <Text 
+                                css={{
+                                    color: 'White',
+                                    fontSize: '$lg',
+                                    fontWeight: '$medium',
+                                    padding: '0px 0px 0px 5px'
+                                }}>
+                                    {/*Team Name */}
+                                    {player[7]}
+                                </Text>    
+                            }  
                         </Row>
                     
                     {/* Positions p + s */}
@@ -880,7 +884,7 @@ export default function APL6PlayersContent(){
                             padding: '5px 0px 5px 0px'
                         }}>
                             <AiOutlineDollar size={'20px'} className='dollar'/>
-                            { player[6] && 
+                            { player[6]!='0' && 
                             <Text 
                             css={{
                                 color: 'White',
@@ -935,16 +939,18 @@ export default function APL6PlayersContent(){
                             {/* <GiSoccerBall size={'20px'} className='team' /> */}
                             {/* Team Logo */}
                             <Avatar size={'sm'} bordered src={player[8]} />
-                            <Text 
-                            css={{
-                                color: 'White',
-                                fontSize: '$lg',
-                                fontWeight: '$medium',
-                                padding: '0px 0px 0px 5px'
-                            }}>
-                                {/*Team Name */}
-                                {player[7]}
-                            </Text>    
+                            {player[7]!='0' &&
+                                <Text 
+                                css={{
+                                    color: 'White',
+                                    fontSize: '$lg',
+                                    fontWeight: '$medium',
+                                    padding: '0px 0px 0px 5px'
+                                }}>
+                                    {/*Team Name */}
+                                    {player[7]}
+                                </Text>    
+                            }  
                         </Row>
                     
                     {/* Positions p + s */}
@@ -1084,7 +1090,7 @@ export default function APL6PlayersContent(){
                             padding: '16px 48px'
                         }
                     }}>
-                        <Text
+                        <Text id='tier1btn'
                         css={{
                             fontSize: '$lg',
                             color: '#C4B454',
@@ -1092,9 +1098,12 @@ export default function APL6PlayersContent(){
                             borderRadius: '20px',
                             backgroundColor: 'rgba(196, 180, 84, 0.2)',
                             textAlign: 'center',
-                            padding: '2px 16px',
+                            padding: '2px 24px',
+                            transition: 'padding 0.5s',
                             '&:hover':{
-                                cursor: 'pointer'
+                                cursor: 'pointer',
+                                backgroundColor: 'rgba(196, 180, 84, 0.25)',
+                                padding: '2px 24px',
                             }
                         }}
                         onClick={()=>{
@@ -1102,6 +1111,10 @@ export default function APL6PlayersContent(){
                             setTwoReady(false)
                             setThreeReady(false)
                             setFourReady(false)
+                            document.getElementById('tier1btn').style.transform='scale(0.95)'
+                            window.setTimeout(()=>{
+                                document.getElementById('tier1btn').style.transform='scale(1)'
+                            }, 150)
                         }}
                         >
                             Tier 1
@@ -1117,7 +1130,7 @@ export default function APL6PlayersContent(){
                             padding: '16px 48px'
                         }
                     }}>
-                        <Text
+                        <Text id='tier2btn'
                         css={{
                             fontSize: '$lg',
                             color: 'rgb(157, 171, 187)',
@@ -1125,9 +1138,12 @@ export default function APL6PlayersContent(){
                             borderRadius: '20px',
                             backgroundColor: 'rgba(157, 171, 187, 0.2)',
                             textAlign: 'center',
-                            padding: '2px 16px',
+                            padding: '2px 24px',
+                            transition: 'padding 0.5s',
                             '&:hover':{
-                                cursor: 'pointer'
+                                cursor: 'pointer',
+                                backgroundColor: 'rgba(157, 171, 187, 0.25)',
+                                padding: '2px 24px',
                             }
                         }}
                         onClick={()=>{
@@ -1135,6 +1151,10 @@ export default function APL6PlayersContent(){
                             setTwoReady(true)
                             setThreeReady(false)
                             setFourReady(false)
+                            document.getElementById('tier2btn').style.transform='scale(0.95)'
+                            window.setTimeout(()=>{
+                                document.getElementById('tier2btn').style.transform='scale(1)'
+                            }, 150)
                         }}
                         >
                             Tier 2
@@ -1150,7 +1170,7 @@ export default function APL6PlayersContent(){
                             padding: '16px 48px'
                         }
                     }}>
-                        <Text
+                        <Text id='tier3btn'
                         css={{
                             fontSize: '$lg',
                             color: 'rgba(190, 159, 103, 1)',
@@ -1158,9 +1178,12 @@ export default function APL6PlayersContent(){
                             borderRadius: '20px',
                             backgroundColor: 'rgba(190, 159, 103, 0.2)',
                             textAlign: 'center',
-                            padding: '2px 16px',
+                            padding: '2px 24px',
+                            transition: 'padding 0.5s',
                             '&:hover':{
-                                cursor: 'pointer'
+                                cursor: 'pointer',
+                                backgroundColor: 'rgba(190, 159, 103, 0.25)',
+                                padding: '2px 24px',
                             }
                         }}
                         onClick={()=>{
@@ -1168,6 +1191,10 @@ export default function APL6PlayersContent(){
                             setTwoReady(false)
                             setThreeReady(true)
                             setFourReady(false)
+                            document.getElementById('tier3btn').style.transform='scale(0.95)'
+                            window.setTimeout(()=>{
+                                document.getElementById('tier3btn').style.transform='scale(1)'
+                            }, 150)
                         }}
                         >
                             Tier 3
@@ -1183,7 +1210,7 @@ export default function APL6PlayersContent(){
                             padding: '16px 48px'
                         }
                     }}>
-                        <Text
+                        <Text id='tier4btn'
                         css={{
                             fontSize: '$lg',
                             color: 'rgb(183, 110, 121)',
@@ -1191,9 +1218,12 @@ export default function APL6PlayersContent(){
                             borderRadius: '20px',
                             backgroundColor: 'rgba(183, 110, 121, 0.2)',
                             textAlign: 'center',
-                            padding: '2px 16px',
+                            padding: '2px 24px',
+                            transition: 'padding 0.5s',
                             '&:hover':{
-                                cursor: 'pointer'
+                                cursor: 'pointer',
+                                backgroundColor: 'rgba(183, 110, 121, 0.25)',
+                                padding: '2px 24px',
                             }
                         }}
                         onClick={()=>{
@@ -1201,6 +1231,10 @@ export default function APL6PlayersContent(){
                             setTwoReady(false)
                             setThreeReady(false)
                             setFourReady(true)
+                            document.getElementById('tier4btn').style.transform='scale(0.95)'
+                            window.setTimeout(()=>{
+                                document.getElementById('tier4btn').style.transform='scale(1)'
+                            }, 150)
                         }}
                         >
                             Tier 4
@@ -1280,7 +1314,7 @@ export default function APL6PlayersContent(){
                     jc: 'center',
                     textAlign: 'center',
                     alignItems: 'center',
-                    margin: '60px 0px 30px 0px',
+                    margin: '30px 0px 30px 0px',
                     backgroundColor: 'rgb(20,20,20)',
                     borderRadius: '20px'
                 }}>
@@ -1345,7 +1379,7 @@ export default function APL6PlayersContent(){
                     jc: 'center',
                     textAlign: 'center',
                     alignItems: 'center',
-                    margin: '60px 0px 60px 0px',
+                    margin: '30px 0px 60px 0px',
                     backgroundColor: 'rgb(20,20,20)',
                     borderRadius: '20px'
                 }}>
@@ -1533,7 +1567,7 @@ export default function APL6PlayersContent(){
                 </Grid.Container>
                 }
 
-                {TierLessCards.length==0 && 
+                {TierLessCards.length==0 && Tier1Cards.length==0 && Tier2Cards.length==0 && Tier3Cards.length==0 && Tier4Cards.length==0 &&
                     <div>
                         <Text hideIn={'xs'}
                         css={{
