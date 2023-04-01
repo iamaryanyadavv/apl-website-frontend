@@ -1,4 +1,4 @@
-import {Text, Grid, Col, Avatar, Row, Spacer} from "@nextui-org/react";
+import {Text, Grid, Col, Avatar, Row, Spacer, Link, Input, Image} from "@nextui-org/react";
 import { Loading } from '@nextui-org/react';
 import React from "react";
 import { useState, useEffect } from "react";
@@ -7,6 +7,7 @@ import './playerscontent.css';
 import { AiOutlineDollar } from 'react-icons/ai';
 import { TbSoccerField } from "react-icons/tb";
 import {BsBook, BsGenderAmbiguous} from "react-icons/bs";
+import Search from '../../assets/images/search.png'
 
 
 export default function APL6PlayersContent(){
@@ -20,6 +21,7 @@ export default function APL6PlayersContent(){
     const [TwoReady, setTwoReady] = useState(false);
     const [ThreeReady, setThreeReady] = useState(false);
     const [FourReady, setFourReady] = useState(false);
+    const [Search, setSearch] = useState('');
 
     // Player array - 
     // 0: Picture
@@ -1006,7 +1008,6 @@ export default function APL6PlayersContent(){
         const tier3players = []
         const tier4players = []
         if(players.values.length>1){
-            console.log(players.values[1][5])
             for(var i=1; i< players.values.length; i++){
                 for(var j=0; j<teams.length; j++){    
                     if(teams[j][2]==players.values[i][7]){
@@ -1087,7 +1088,7 @@ export default function APL6PlayersContent(){
                             padding: '16px'
                         },
                         '@xsMax':{
-                            padding: '16px 48px'
+                            padding: '16px 42px'
                         }
                     }}>
                         <Text id='tier1btn'
@@ -1127,7 +1128,7 @@ export default function APL6PlayersContent(){
                             padding: '16px'
                         },
                         '@xsMax':{
-                            padding: '16px 48px'
+                            padding: '16px 42px'
                         }
                     }}>
                         <Text id='tier2btn'
@@ -1167,7 +1168,7 @@ export default function APL6PlayersContent(){
                             padding: '16px'
                         },
                         '@xsMax':{
-                            padding: '16px 48px'
+                            padding: '16px 42px'
                         }
                     }}>
                         <Text id='tier3btn'
@@ -1207,7 +1208,7 @@ export default function APL6PlayersContent(){
                             padding: '16px'
                         },
                         '@xsMax':{
-                            padding: '16px 48px'
+                            padding: '16px 42px'
                         }
                     }}>
                         <Text id='tier4btn'
@@ -1239,6 +1240,45 @@ export default function APL6PlayersContent(){
                         >
                             Tier 4
                         </Text>
+                    </Grid>
+
+                    <Grid 
+                    css={{
+                        '@xsMin':{
+                            padding: '16px'
+                        },
+                        '@xsMax':{
+                            padding: '16px 42px'
+                        }
+                    }}>
+                        <Link id='sheetsbtn'
+                        css={{
+                            fontSize: '$lg',
+                            color: 'White',
+                            fontWeight: '$semibold',
+                            borderRadius: '20px',
+                            backgroundColor: 'rgba(15, 157, 88, 0.6)',
+                            textAlign: 'center',
+                            padding: '2px 24px',
+                            transition: 'padding 0.5s',
+                            '&:hover':{
+                                cursor: 'pointer',
+                                backgroundColor: 'rgba(15, 157, 88, 0.7)',
+                                padding: '2px 24px',
+                            }
+                        }}
+                        onClick={()=>{
+                            document.getElementById('sheetsbtn').style.transform='scale(0.95)'
+                            window.setTimeout(()=>{
+                                document.getElementById('sheetsbtn').style.transform='scale(1)'
+                            }, 150)
+                        }}
+                        href='https://docs.google.com/spreadsheets/d/1Jl4oSC0BPjafsaBesmxV_vpcAvjiYrVxFiOhlk6_dZo/edit#gid=0'
+                        target='_blank'
+                        rel='noreferrer'
+                        >
+                            View in Sheets
+                        </Link>
                     </Grid>
                 </Grid.Container>
 
