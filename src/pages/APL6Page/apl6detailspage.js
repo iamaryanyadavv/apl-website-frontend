@@ -18,9 +18,8 @@ export default function APL6DetailsPage(){
                 description='You can find all of the tournament details of APL Season 6.0!'
                 gradient='45deg, $purple600 -20%, $pink600 100%'
             />
-            <APL6DetailsContent/>
         </Grid.Container>
-        <UnderDev/>
+        <APL6DetailsContent/>
         </div>
     )
 }

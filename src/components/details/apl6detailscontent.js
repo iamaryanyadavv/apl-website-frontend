@@ -1,18 +1,157 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import Rules from './auctionrules.js'
+import { Table, Grid, Loading, Avatar, Text, Col, Button, Spacer } from "@nextui-org/react";
+import APL6AuctionRules from "./apl6auctionrules";
+import APL6TournamentRules from "./apl6tournamentrules";
+import ComingSoon from '../comingsoon/comingsoon'
 
-export default function APL6DetailsContent() {
+export default function APL5DetailsContent() {
+    const [Fetching, setFetching] = useState(false);
+    const [Games, setGames] = useState(false);
+    const [Standings, setStandings] = useState(false)
+    const [Rules, setRules] = useState(true)
+
     return(
-        <>
-            {/* Bracket */}
+        <div>
+            {Fetching===true && 
+            <Grid.Container gap={4}
+            css={{
+                jc: 'center',
+                alignItems: 'center',
+                height: '60vh',
+            }}>
+                <Loading
+                size="xl"
+                color={'white'}
+                />
+            </Grid.Container>
+            }
+            {!Fetching &&
+            <div>
+                <Grid.Container
+                css={{
+                    jc: 'center',
+                    alignItems: 'center',
+                }}>
+                    <Grid 
+                    css={{
+                        padding: '10px'
+                    }}>
+                        <Button auto color="secondary" rounded flat
+                        onClick={()=>{
+                            setGames(true)
+                            setStandings(false)
+                            setRules(false)
+                        }}>
+                            Games
+                        </Button>
+                    </Grid>
+                    <Grid 
+                    css={{
+                        padding: '10px'
+                    }}>
+                        <Button auto color="secondary" rounded flat
+                        onClick={()=>{
+                            setGames(false)
+                            setStandings(true)
+                            setRules(false)
+                        }}>
+                            Standings
+                        </Button>
+                    </Grid>
+                    <Grid 
+                    css={{
+                        padding: '10px'
+                    }}>
+                        <Button auto color="secondary" rounded flat
+                        onClick={()=>{
+                            setGames(false)
+                            setStandings(false)
+                            setRules(true)
+                        }}>
+                            Rules
+                        </Button>
+                    </Grid>
+                </Grid.Container>
 
-            {/* Standings */}
+                {Games && !Standings && !Rules &&
+                <>
+                    <Text hideIn={'xs'}
+                    css={{
+                        textAlign: 'center',
+                        padding: '20px 0px 0px 0px',
+                        fontSize: '$6xl',
+                        fontWeight: '$semibold',
+                    }}>
+                        Games
+                    </Text>
+                    <Text showIn={'xs'}
+                    css={{
+                        textAlign: 'center',
+                        padding: '20px 0px 0px 0px',
+                        fontSize: '$3xl',
+                        fontWeight: '$semibold',
+                    }}>
+                        Games
+                    </Text>
+                    <ComingSoon/>
+                </>
+                }
 
-            {/* Group Stage Games */}
+                {!Games && Standings && !Rules &&
+                <>
+                    <Text hideIn={'xs'}
+                    css={{
+                        textAlign: 'center',
+                        padding: '20px 0px 0px 0px',
+                        fontSize: '$6xl',
+                        fontWeight: '$semibold',
+                    }}>
+                        Standings
+                    </Text>
+                    <Text showIn={'xs'}
+                    css={{
+                        textAlign: 'center',
+                        padding: '20px 0px 0px 0px',
+                        fontSize: '$3xl',
+                        fontWeight: '$semibold',
+                    }}>
+                        Standings
+                    </Text>
+                    <ComingSoon/>
+                </>
+                }
 
-            {/* Rules */}
-            {/* <Rules/> */}
-        </>
+                {!Games && !Standings && Rules &&
+                <>
+                    <Text hideIn={'xs'}
+                    css={{
+                        textAlign: 'center',
+                        padding: '20px 0px 0px 0px',
+                        fontSize: '$6xl',
+                        fontWeight: '$semibold',
+                    }}>
+                        Rules
+                    </Text>
+                    <Text showIn={'xs'}
+                    css={{
+                        textAlign: 'center',
+                        padding: '20px 0px 0px 0px',
+                        fontSize: '$3xl',
+                        fontWeight: '$semibold',
+                    }}>
+                        Rules
+                    </Text>
+                    <Col>
+                        <APL6AuctionRules/>
+                        <APL6TournamentRules/>
+                        {/* Uncomment this component when done with it^ */}
+                    </Col>
+                </>
+                }
+
+            </div>}
+
+        </div>
     )
 }

@@ -7,7 +7,7 @@ import TDetailsCard from '../../components/seasons/tdetailscard.js';
 import AwardsCard from '../../components/seasons/awardscard.js';
 import GalleryCard from '../../components/seasons/gallerycard.js';
 import Grey from '../../assets/images/Grey.jpeg';
-import PlayersCover from '../../assets/images/PinkGirlFootall.jpg'
+import PlayersCover from '../../assets/images/APL6PlayersCover.jpg'
 import TeamsCover from '../../assets/images/Futsal.jpg'
 import DetailsCover from '../../assets/images/FloodlightRain.jpg'
 

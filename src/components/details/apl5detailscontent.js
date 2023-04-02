@@ -5,8 +5,8 @@ import Pool1 from "./apl5pool1";
 import Pool2 from "./apl5pool2";
 import Pool3 from "./apl5pool3";
 import Pool4 from "./apl5pool4";
-import AuctionRules from "./auctionrules";
-import TournamentRules from "./tournamentrules";
+import APL5AuctionRules from "./apl5auctionrules";
+import APL5TournamentRules from "./apl5tournamentrules";
 import APL5Games from "./apl5games";
 import UnderDev from "../underdevelopment/underdev";
 
@@ -169,8 +169,8 @@ export default function APL5DetailsContent() {
                         Rules
                     </Text>
                     <Col>
-                        <AuctionRules/>
-                        <TournamentRules/>
+                        <APL5AuctionRules/>
+                        <APL5TournamentRules/>
                         {/* Uncomment this component when done with it^ */}
                     </Col>
                 </>
