@@ -72,21 +72,21 @@ export default function AwardsCard(props){
                             textAlign: 'center',
                             padding: '0% 2.5%'
                         }}>
-                            &#x2022; Ranking
+                            &#x2022; Rank
                         </Text>
                         <Text
                         css={{
                             textAlign: 'center',
                             padding: '0% 2.5%'
                         }}>
-                            &#x2022; MVPs
+                            &#x2022; MVP
                         </Text>
                         <Text
                         css={{
                             textAlign: 'center',
                             padding: '0% 2.5%'
                         }}>
-                            &#x2022; Top Scorer(s)
+                            &#x2022; Top Scorer
                         </Text>
 
                     </Row>

@@ -523,7 +523,7 @@ export default function HomeCarousel () {
                                 }}>
                                     <Grid>
                                         <Button  shadow rounded bordered auto ghost>
-                                            <a className="h-btn" href="/seasons/apl6/awards">Awards</a>
+                                            <a className="h-btn" href="/seasons/apl5/awards">Awards</a>
                                         </Button>
                                     </Grid>
                                 </Grid.Container>
