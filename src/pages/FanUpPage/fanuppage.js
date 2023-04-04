@@ -32,7 +32,12 @@ export default function FanUpPage() {
                         <Text
                             css={{
                                 fontSize: '$4xl',
-                                fontWeight: '$bold',
+                                '@xsMin':{
+                                    fontWeight: '$bold'
+                                },
+                                '@xsMax':{
+                                    fontWeight: '$semibold'
+                                },
                                 padding: '0px 8px 0px 0px'
                             }}>
                             APL x
