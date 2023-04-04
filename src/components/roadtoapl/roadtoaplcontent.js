@@ -2071,7 +2071,7 @@ export default function RoadToAPLContent(){
                                                             fontWeight: '$medium',
                                                             textAlign: 'left',
                                                         }}>
-                                                           TBA
+                                                           8pm onwards
                                                         </Text>
                                                     </Grid>
                                                 </Grid.Container>

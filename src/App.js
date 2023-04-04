@@ -30,6 +30,7 @@ import APL5GalleryPage from './pages/APL5Page/apl5gallerypage';
 import FifaRegistrationPage from './pages/FifaRegistrationPage/fifaregistrationpage';
 import TeamRegClosed from './components/teamregistrationclosed/teamregclosed';
 import RegFailed from './components/registration/regfail';
+import FanUpPage from './pages/FanUpPage/fanuppage';
 
 const theme = createTheme({
   type: 'dark',
@@ -57,6 +58,8 @@ function App() {
                 <Route exact path="/comingsoon" element={<ComingSoon/>} />
 
                 <Route exact path="/" element={<Home/>} />
+
+                <Route exact path="/fanup" element={<FanUpPage/>} />
 
                 <Route exact path="/seasons" element={<SeasonsPage/>} />
 

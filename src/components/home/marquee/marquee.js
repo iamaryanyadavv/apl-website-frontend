@@ -22,9 +22,8 @@ const NewsTicker = () => {
           paddingLeft: '2px',
         }}
       >
-        APL 6.0 owner and player registrations re-open at 9PM IST on 28th of march, 2023! 
-        Head on to the registrations page! 
-        FIFA Registrations start on 20th of march, 2023!
+        Auction happening at the MPH at 8pm on Wednesday, April 5th.
+        Pull up!
       </p>
     </Marquee>
   );
