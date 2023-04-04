@@ -54,7 +54,7 @@ export default function Slots(){
                 css={{
                     jc: 'center',
                     alignItems: 'center',
-                    height: '70vh'
+                    margin: '20vh 0vh 30vh 0vh'
                 }}>
                     <Grid.Container 
                     css={{
