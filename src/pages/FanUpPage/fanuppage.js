@@ -71,7 +71,7 @@ export default function FanUpPage() {
                             width: '160px'
                         },
                         '@xsMax':{
-                            width: '150px',
+                            width: '160px',
                         },
                         padding: '6px 12px',
                         backgroundColor: 'White',
