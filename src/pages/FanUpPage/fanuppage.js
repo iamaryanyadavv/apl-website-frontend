@@ -2,7 +2,8 @@ import React from "react";
 import FanUpLogo from '../../assets/images/FanUpLogo.png';
 import Jersey from '../../assets/images/APLTee_Blue.png';
 import { Container, Grid, Row, Text, Image, Col, Button } from "@nextui-org/react";
-import {FaApple,FaFacebookF,FaInstagram,FaTwitter} from 'react-icons/fa';
+import {FaApple,FaFacebookF,FaInstagram,FaTwitter,} from 'react-icons/fa';
+import { AiOutlineForm } from "react-icons/ai";
 import './fanuppage.css'
 
 export default function FanUpPage() {
@@ -12,14 +13,14 @@ export default function FanUpPage() {
                 jc: 'center',
                 alignItems: 'center',
                 '@xsMin':{
-                    margin: '100px 0px'
+                    margin: '100px 0px',
                 },
                 '@xsMax':{
-                    padding: '40px 0px'
+                    padding: '40px 0px',
                 }
             }}>
-            <Grid>
-                <Container
+            <Grid >
+                <Container 
                     css={{
                         display: 'flex',
                         flexDirection: 'column',
@@ -73,13 +74,13 @@ export default function FanUpPage() {
                     <Row
                     css={{
                         '@xsMin':{
-                            width: '160px'
+                            width: '200px'
                         },
                         '@xsMax':{
-                            width: '160px',
+                            width: '200px',
                         },
                         padding: '6px 12px',
-                        backgroundColor: 'White',
+                        backgroundColor: '#4DFFA8',
                         borderRadius: '10px',
                         alignItems: 'center',
                         marginTop: '16px',
@@ -88,28 +89,19 @@ export default function FanUpPage() {
                         }
                     }}
                     onClick={()=>{
-                        window.location='https://apps.apple.com/in/app/fanup-daily-fantasy-sports/id1523689182'
+                        window.location='https://docs.google.com/forms/d/e/1FAIpQLSdjFlqwnkJ6sNRR810OXpQgo5Q-3AQyjQ-5djFy4V4JWfQXvQ/viewform'
                     }}
                     >
-                        <FaApple color="#000000" size={'45px'}/>
+                        <AiOutlineForm color="#000000" size={'30px'}/>
                         <Col>
                             <Text
                             css={{
-                                fontWeight: '$normal',
+                                fontWeight: '$semibold',
                                 color: 'Black',
-                                paddingLeft: '12px',
-                                lineHeight: '0.95'
+                                paddingLeft: '6px',
+                                fontSize: '$md'
                             }}>
-                                Get it on the
-                            </Text>
-                            <Text
-                            css={{
-                                fontWeight: '$bold',
-                                color: 'Black',
-                                paddingLeft: '12px',
-                                lineHeight: '0.95'
-                            }}>
-                                App Store
+                                Join The VIP Waitlist
                             </Text>
                         </Col>
                     </Row>
@@ -128,11 +120,13 @@ export default function FanUpPage() {
                     css={{
                         '@xsMax': {
                             width: '275px',
+                            margin: '48px 48px 48px 48px'
                         },
                         '@xsMin': {
-                            width: '500px'
+                            width: '500px',
+                            margin: '48px 48px 48px 96px'
                         },
-                        margin: '48px'
+                        
                     }} src={Jersey} />
             </Grid>
         </Grid.Container>

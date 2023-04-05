@@ -10,7 +10,6 @@ export default function APL5TeamsContent() {
         await fetch('https://aplapi.onrender.com/seasons/apl6/teamdata/budgets')
         .then(response => response.json())
         .then((data)=>{
-            console.log(data)
             OnceTeamBudgetsData(data);
         })
         
@@ -241,7 +240,11 @@ export default function APL5TeamsContent() {
 
     useEffect( () => {
         getTeamBudgetsData();
+        const interval = setInterval(() => {
+            getTeamBudgetsData();
+          }, 30000);
         
+        return () => clearInterval(interval);
     }, [])
 
     return(

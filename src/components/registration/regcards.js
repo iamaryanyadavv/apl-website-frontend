@@ -1,4 +1,4 @@
-import { Card, Col, Grid, Text, Button } from "@nextui-org/react";
+import { Card, Col, Grid, Text, Button, Popover } from "@nextui-org/react";
 import React from "react";
 import JoseMourinho from './JoseMourinho.jpeg';
 import Cristiano2 from './Cristiano2.jpeg';
@@ -83,9 +83,19 @@ export default function RegCards(){
                                     paddingBottom: '5%'
                                 }}>
                                     <Grid>
-                                        <Button  shadow rounded bordered auto ghost>
-                                            <a className="h-btn" href="/registration/team">REGISTER</a>
-                                        </Button>
+                                        <Popover>
+                                            <Popover.Trigger>
+                                                <Button css={{color: 'White'}} shadow rounded bordered auto ghost>
+                                                    REGISTER
+                                                </Button>
+                                            </Popover.Trigger>
+                                            <Popover.Content>
+                                                <Text
+                                                css={{
+                                                    padding: '12px'
+                                                }}>Registrations have been closed. See you next year!</Text>
+                                            </Popover.Content>
+                                        </Popover>
                                     </Grid>
                                 </Grid.Container>
                             </Col>
@@ -157,9 +167,19 @@ export default function RegCards(){
                                     paddingBottom: '5%'
                                 }}>
                                     <Grid>
-                                        <Button  shadow rounded bordered auto ghost>
-                                            <a className="h-btn" href="/registration/player">REGISTER</a>
-                                        </Button>
+                                        <Popover>
+                                            <Popover.Trigger>
+                                                <Button css={{color: 'White'}} shadow rounded bordered auto ghost>
+                                                    REGISTER
+                                                </Button>
+                                            </Popover.Trigger>
+                                            <Popover.Content>
+                                                <Text
+                                                css={{
+                                                    padding: '12px'
+                                                }}>Registrations have been closed. See you next year!</Text>
+                                            </Popover.Content>
+                                        </Popover>
                                     </Grid>
                                 </Grid.Container>
                             </Col>
