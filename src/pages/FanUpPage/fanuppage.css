@@ -28,3 +28,14 @@
 .t-icon:hover{
     cursor: pointer;
 }
+
+@media screen and (max-width: 650px) {
+    .desktop {
+        display: none;
+    }
+}
+@media screen and (min-width: 650px) {
+    .mobile {
+        display: none;
+    }
+}
