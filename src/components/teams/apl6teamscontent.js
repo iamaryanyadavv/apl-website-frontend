@@ -225,7 +225,7 @@ export default function APL5TeamsContent() {
                                     fontSize: '$xl',
                                     fontWeight: '$medium'
                                 }}>
-                                    {teamslists.values[i][26]} M Spent (Max. 130)
+                                    {teamslists.values[i][26]} M Spent (Max. 150)
                                 </Text>
                                 <Progress size='sm' color='error' value={budgetBarValue} />
                             </Col>
