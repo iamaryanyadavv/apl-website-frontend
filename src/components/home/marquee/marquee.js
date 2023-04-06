@@ -22,9 +22,9 @@ const NewsTicker = () => {
           paddingLeft: '2px',
         }}
       >
-        Auction happening at the MPH at 8pm on Wednesday, April 5th.
-        Pull up!
-        Also, do check out our sponsors on the APLxFanUp page accessible from the navbar!
+        Groups Draw scheduled to take place at the mess on 10th of April.
+        Look out for that email!
+        Also, do check out our sponsors on the APL x FanUp page accessible from the navbar!
       </p>
     </Marquee>
   );

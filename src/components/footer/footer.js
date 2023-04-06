@@ -1,58 +1,72 @@
 import React from "react";
-import { Container, Row, Text, Link } from "@nextui-org/react";
+import { Container, Row, Text, Link, Col } from "@nextui-org/react";
 
 function Footer(){
     return(
         <Container fluid >
-            <Row      
-            css={{
-                jc: 'center',
-                textAlign: 'center',
-                alignItems: 'center',
-                borderStyle: 'solid',
-                borderColor: '$gray600',
-                borderWidth: '1px 0px 0px 0px'
-            }}>
-                <Text hideIn={'xs'}
+            <Col>
+                <Row      
                 css={{
-                    padding: '1% 0.35%',
-                    fontSize: '$normal'
+                    jc: 'center',
+                    textAlign: 'center',
+                    alignItems: 'center',
+                    borderStyle: 'solid',
+                    borderColor: '$gray600',
+                    borderWidth: '0px 0px 0px 0px'
                 }}>
-                    Made with 🤍 by
-                </Text>
-                <Text showIn={'xs'}
+                    <Text hideIn={'xs'}
+                    css={{
+                        padding: '1% 0.35%',
+                        fontSize: '$normal'
+                    }}>
+                        Made with 🤍 by
+                    </Text>
+                    <Text showIn={'xs'}
+                    css={{
+                        padding: '1%',
+                    }}>
+                        By
+                    </Text>
+                    <Link
+                    css={{
+                        color: '#3694ff'
+                    }} target='_blank' href="https://aryanyadav.com/"
+                    >
+                        Aryan Yadav
+                    </Link>
+                    <Text hideIn={'xs'}
+                    css={{
+                        padding: '1% 0.35%'
+                    }}>
+                        and 
+                    </Text>
+                    <Text showIn={'xs'}
+                    css={{
+                        padding: '1%'
+                    }}>
+                        and 
+                    </Text>
+                    <Link 
+                    css={{
+                        color: '#3694ff'
+                    }} target='_blank' href="https://zahaanshapoorjee.netlify.app/"
+                    >
+                        Zahaan Shapoorjee
+                    </Link>
+                </Row>
+                <Text
                 css={{
-                    padding: '1%',
+                    color: '$gray700',
+                    jc: 'center',
+                    textAlign: 'center',
+                    padding: '10px 0px',
+                    borderStyle: 'solid',
+                    borderColor: '$gray700',
+                    borderWidth: '1px 0px 0px 0px',
                 }}>
-                    By
+                    © 2023 Ashoka Premier League. All Rights Reserved.
                 </Text>
-                <Link
-                css={{
-                    color: '#3694ff'
-                }} target='_blank' href="https://aryanyadav.com/"
-                >
-                    Aryan Yadav
-                </Link>
-                <Text hideIn={'xs'}
-                css={{
-                    padding: '1% 0.35%'
-                }}>
-                    and 
-                </Text>
-                <Text showIn={'xs'}
-                css={{
-                    padding: '1%'
-                }}>
-                    and 
-                </Text>
-                <Link 
-                css={{
-                    color: '#3694ff'
-                }} target='_blank' href="https://zahaanshapoorjee.netlify.app/"
-                >
-                    Zahaan Shapoorjee
-                </Link>
-            </Row>
+            </Col>
         </Container>
     )
 }

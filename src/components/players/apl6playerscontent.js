@@ -192,7 +192,7 @@ export default function APL6PlayersContent(){
                         }}>
                             {/* <GiSoccerBall size={'20px'} className='team' /> */}
                             {/* Team Logo */}
-                            <Avatar size={'sm'} bordered src={player[8]} />
+                            <Avatar size={'lg'} bordered src={player[8]} />
                             <Text 
                             css={{
                                 color: '$gray500',
@@ -378,7 +378,7 @@ export default function APL6PlayersContent(){
                             {/* <GiSoccerBall size={'20px'} className='team' /> */}
                             {/* Team Logo */}
                             
-                            <Avatar size={'sm'} bordered src={player[8]} />
+                            <Avatar size={'lg'} bordered src={player[8]} />
                             {player[7]!='0' &&
                                 <Text 
                                 css={{
@@ -565,7 +565,7 @@ export default function APL6PlayersContent(){
                         }}>
                             {/* <GiSoccerBall size={'20px'} className='team' /> */}
                             {/* Team Logo */}
-                            <Avatar size={'sm'} bordered src={player[8]} />
+                            <Avatar size={'lg'} bordered src={player[8]} />
                             {player[7]!='0' &&
                                 <Text 
                                 css={{
@@ -752,7 +752,7 @@ export default function APL6PlayersContent(){
                         }}>
                             {/* <GiSoccerBall size={'20px'} className='team' /> */}
                             {/* Team Logo */}
-                            <Avatar size={'sm'} bordered src={player[8]} />
+                            <Avatar size={'lg'} bordered src={player[8]} />
                             {player[7]!='0' &&
                                 <Text 
                                 css={{
@@ -940,7 +940,7 @@ export default function APL6PlayersContent(){
                         }}>
                             {/* <GiSoccerBall size={'20px'} className='team' /> */}
                             {/* Team Logo */}
-                            <Avatar size={'sm'} bordered src={player[8]} />
+                            <Avatar size={'lg'} bordered src={player[8]} />
                             {player[7]!='0' &&
                                 <Text 
                                 css={{
