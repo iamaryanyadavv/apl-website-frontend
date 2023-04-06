@@ -266,7 +266,7 @@ export default function TeamContent(){
                                     css={{
                                         jc: 'center',
                                         textAlign: 'center',
-                                        fontSize: '$lg',
+                                        fontSize: '$sm',
                                         fontWeight: '$semibold',
                                         paddingTop: '5px'
                                     }}> 
@@ -286,7 +286,7 @@ export default function TeamContent(){
                                     css={{
                                         jc: 'center',
                                         textAlign: 'center',
-                                        fontSize: '$md',
+                                        fontSize: '$sm',
                                         color: '$gray800'
                                     }}>
                                         OC Member
@@ -333,7 +333,7 @@ export default function TeamContent(){
                                     css={{
                                         jc: 'center',
                                         textAlign: 'center',
-                                        fontSize: '$lg',
+                                        fontSize: '$sm',
                                         fontWeight: '$semibold',
                                         paddingTop: '5px'
                                     }}> 
@@ -353,7 +353,7 @@ export default function TeamContent(){
                                     css={{
                                         jc: 'center',
                                         textAlign: 'center',
-                                        fontSize: '$md',
+                                        fontSize: '$sm',
                                         color: '$gray800'
                                     }}>
                                         OC Member
@@ -400,7 +400,7 @@ export default function TeamContent(){
                                     css={{
                                         jc: 'center',
                                         textAlign: 'center',
-                                        fontSize: '$lg',
+                                        fontSize: '$sm',
                                         fontWeight: '$semibold',
                                         paddingTop: '5px'
                                     }}> 
@@ -420,7 +420,7 @@ export default function TeamContent(){
                                     css={{
                                         jc: 'center',
                                         textAlign: 'center',
-                                        fontSize: '$md',
+                                        fontSize: '$sm',
                                         color: '$gray800'
                                     }}>
                                         OC Member
@@ -467,7 +467,7 @@ export default function TeamContent(){
                                     css={{
                                         jc: 'center',
                                         textAlign: 'center',
-                                        fontSize: '$lg',
+                                        fontSize: '$sm',
                                         fontWeight: '$semibold',
                                         paddingTop: '5px'
                                     }}> 
@@ -487,7 +487,7 @@ export default function TeamContent(){
                                     css={{
                                         jc: 'center',
                                         textAlign: 'center',
-                                        fontSize: '$md',
+                                        fontSize: '$sm',
                                         color: '$gray800'
                                     }}>
                                         OC Member
@@ -534,7 +534,7 @@ export default function TeamContent(){
                                     css={{
                                         jc: 'center',
                                         textAlign: 'center',
-                                        fontSize: '$lg',
+                                        fontSize: '$sm',
                                         fontWeight: '$semibold',
                                         paddingTop: '5px'
                                     }}> 
@@ -554,7 +554,7 @@ export default function TeamContent(){
                                     css={{
                                         jc: 'center',
                                         textAlign: 'center',
-                                        fontSize: '$md',
+                                        fontSize: '$sm',
                                         color: '$gray800'
                                     }}>
                                         OC Member
@@ -601,7 +601,7 @@ export default function TeamContent(){
                                     css={{
                                         jc: 'center',
                                         textAlign: 'center',
-                                        fontSize: '$lg',
+                                        fontSize: '$sm',
                                         fontWeight: '$semibold',
                                         paddingTop: '5px'
                                     }}> 
@@ -621,7 +621,7 @@ export default function TeamContent(){
                                     css={{
                                         jc: 'center',
                                         textAlign: 'center',
-                                        fontSize: '$md',
+                                        fontSize: '$sm',
                                         color: '$gray800'
                                     }}>
                                         OC Member
@@ -739,7 +739,7 @@ export default function TeamContent(){
                                     css={{
                                         jc: 'center',
                                         textAlign: 'center',
-                                        fontSize: '$lg',
+                                        fontSize: '$md',
                                         fontWeight: '$semibold',
                                         paddingTop: '5px'
                                     }}> 
@@ -811,7 +811,7 @@ export default function TeamContent(){
                                     css={{
                                         jc: 'center',
                                         textAlign: 'center',
-                                        fontSize: '$lg',
+                                        fontSize: '$md',
                                         fontWeight: '$semibold',
                                         paddingTop: '5px'
                                     }}> 
