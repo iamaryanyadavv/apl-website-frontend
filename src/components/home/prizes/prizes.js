@@ -7,15 +7,32 @@ import bronzemedal from "./bronze-medal.png";
 import { FaRupeeSign } from 'react-icons/fa';
 
 export default function Prizes () {
+
+    const observer = new IntersectionObserver((entries)=>{
+        // console.log(entries)
+        entries.forEach((entry)=>{
+            if (entry.isIntersecting){
+                entry.target.classList.add('show')
+                entry.target.classList.remove('hidden')
+            } else {
+                entry.target.classList.remove('show')
+                entry.target.classList.add('hidden')
+            }
+        })
+    })
+
+    const hiddenElements = document.querySelectorAll('.hidden');
+    hiddenElements.forEach((el)=> observer.observe(el))
+
     return(
-        <Col
+        <Col 
         css={{
             jc: 'center',
             textAlign: 'center'
         }}>
 
             {/* Heading */}
-            <Row 
+            <Row className="hidden"
             css={{
                 jc: 'center',
                 textAlign: 'center'
@@ -43,7 +60,7 @@ export default function Prizes () {
             </Row>
             
             {/* Heading Description */}
-            <Row
+            <Row className="hidden"
             css={{
                 jc: 'center',
                 textAlign: 'center',
@@ -68,165 +85,164 @@ export default function Prizes () {
             </Row>
 
             {/* Medals */}
-
-                <Grid.Container 
+            <Grid.Container 
+            css={{
+                jc: 'center',
+                textAlign: 'center',
+                alignItems: 'center',
+                paddingBottom: '50px',
+            }}>
+                <Grid 
                 css={{
-                    jc: 'center',
-                    textAlign: 'center',
-                    alignItems: 'center',
-                    paddingBottom: '50px',
+                    padding: '24px'
                 }}>
-                    <Grid
-                    css={{
-                        padding: '24px'
-                    }}>
-                        <Col>
-                            <Text
+                    <Col className="hidden">
+                        <Text
+                        css={{
+                            fontSize: '$2xl',
+                            color: 'White',
+                            fontWeight: '$medium',
+                            paddingBottom: '10px'
+                        }}>
+                            The Big One
+                        </Text>
+                        <Col
+                        css={{
+                            padding: '30px',
+                            borderStyle: 'solid',
+                            borderRadius: '20px',
+                            borderColor: '#FAE481',
+                            borderWidth: '5px'
+                        }}>
+                            <Row
                             css={{
-                                fontSize: '$2xl',
-                                color: 'White',
-                                fontWeight: '$medium',
-                                paddingBottom: '10px'
+                                jc: 'center',
+                                textAlign: 'center'
                             }}>
-                                The Big One
-                            </Text>
-                            <Col
-                            css={{
-                                padding: '30px',
-                                borderStyle: 'solid',
-                                borderRadius: '20px',
-                                borderColor: '#FAE481',
-                                borderWidth: '5px'
-                            }}>
-                                <Row
-                                css={{
-                                    jc: 'center',
-                                    textAlign: 'center'
-                                }}>
-                                    <div className="rupee-icon">
-                                        <FaRupeeSign color="white" size={'20px'}/>
-                                    </div>
-                                    <Text
-                                    css={{
-                                        fontSize: '$6xl',
-                                        fontWeight: '$bold'
-                                    }}>
-                                        60,000
-                                    </Text>
-                                </Row>
+                                <div className="rupee-icon">
+                                    <FaRupeeSign color="white" size={'20px'}/>
+                                </div>
                                 <Text
                                 css={{
-                                    fontSize: '$md',
-                                    fontWeight: '$medium',
-                                    color: '#FAE481',
-                                    paddingBottom: '10%',
+                                    fontSize: '$6xl',
+                                    fontWeight: '$bold'
                                 }}>
-                                    & Bragging Rights
+                                    60,000
                                 </Text>
-                                <Image src={goldmedal} width={'60px'} height={'60px'}/>
-                            </Col>
-                        </Col>
-                    </Grid>
-
-
-                    <Grid 
-                    css={{
-                        padding: '24px'
-                    }}>
-                        <Col>
-                            <Spacer y={2.25} />
-                            <Col
-                            css={{
-                                padding: '25px',
-                                borderStyle: 'solid',
-                                borderRadius: '20px',
-                                borderColor: 'rgb(157 171 187)',
-                                borderWidth: '5px'
-                            }}>
-                                <Row
-                                css={{
-                                    jc: 'center',
-                                    textAlign: 'center'
-                                }}>
-                                    <div className="rupee-icon">
-                                        <FaRupeeSign color="white" size={'17.50px'}/>
-                                    </div>
-                                    <Text
-                                    css={{
-                                        fontSize: '$5xl',
-                                        fontWeight: '$bold'
-                                    }}>
-                                        25,000
-                                    </Text>
-                                </Row>
-                                <Text
-                                css={{
-                                    fontSize: '$md',
-                                    fontWeight: '$medium',
-                                    color: 'rgb(157 171 187)',
-                                    paddingBottom: '10%',
-                                }}>
-                                    & Social Media Followers
-                                </Text>
-                                <Image src={silvermedal} width={'50px'} height={'50px'}/>
-                            </Col>
-                        </Col>
-                    </Grid>
-                                
-
-                    <Grid 
-                    css={{
-                        padding: '24px'
-                    }}>
-                        <Col>
+                            </Row>
                             <Text
                             css={{
                                 fontSize: '$md',
-                                color: 'White',
                                 fontWeight: '$medium',
-                                paddingBottom: '10px'
+                                color: '#FAE481',
+                                paddingBottom: '10%',
                             }}>
-                                Rager Worthy
+                                & Bragging Rights
                             </Text>
-                            <Col
+                            <Image src={goldmedal} width={'60px'} height={'60px'}/>
+                        </Col>
+                    </Col>
+                </Grid>
+
+
+                <Grid 
+                css={{
+                    padding: '24px'
+                }}>
+                    <Col className="hidden">
+                        <Spacer y={2.25} />
+                        <Col
+                        css={{
+                            padding: '25px',
+                            borderStyle: 'solid',
+                            borderRadius: '20px',
+                            borderColor: 'rgb(157 171 187)',
+                            borderWidth: '5px'
+                        }}>
+                            <Row
                             css={{
-                                padding: '15px 25px 15px 25px',
-                                borderStyle: 'solid',
-                                borderRadius: '20px',
-                                borderColor: 'rgb(190 159 103)',
-                                borderWidth: '5px'
+                                jc: 'center',
+                                textAlign: 'center'
                             }}>
-                                <Row
-                                css={{
-                                    jc: 'center',
-                                    textAlign: 'center'
-                                }}>
-                                    <div className="rupee-icon">
-                                        <FaRupeeSign color="white" size={'15px'}/>
-                                    </div>
-                                    <Text
-                                    css={{
-                                        fontSize: '$4xl',
-                                        fontWeight: '$bold'
-                                    }}>
-                                        10,000
-                                    </Text>
-                                </Row>
+                                <div className="rupee-icon">
+                                    <FaRupeeSign color="white" size={'17.50px'}/>
+                                </div>
                                 <Text
                                 css={{
-                                    fontSize: '$md',
-                                    fontWeight: '$medium',
-                                    color: 'rgb(190 159 103)',
-                                    paddingBottom: '10%',
+                                    fontSize: '$5xl',
+                                    fontWeight: '$bold'
                                 }}>
-                                    & Respect
+                                    25,000
                                 </Text>
-                                <Image src={bronzemedal} width={'40px'} height={'40px'}/>
-                            </Col>
+                            </Row>
+                            <Text
+                            css={{
+                                fontSize: '$md',
+                                fontWeight: '$medium',
+                                color: 'rgb(157 171 187)',
+                                paddingBottom: '10%',
+                            }}>
+                                & Social Media Followers
+                            </Text>
+                            <Image src={silvermedal} width={'50px'} height={'50px'}/>
                         </Col>
-                    </Grid>
+                    </Col>
+                </Grid>
+                            
 
-                </Grid.Container>
+                <Grid 
+                css={{
+                    padding: '24px'
+                }}>
+                    <Col className="hidden">
+                        <Text
+                        css={{
+                            fontSize: '$md',
+                            color: 'White',
+                            fontWeight: '$medium',
+                            paddingBottom: '10px'
+                        }}>
+                            Rager Worthy
+                        </Text>
+                        <Col
+                        css={{
+                            padding: '15px 25px 15px 25px',
+                            borderStyle: 'solid',
+                            borderRadius: '20px',
+                            borderColor: 'rgb(190 159 103)',
+                            borderWidth: '5px'
+                        }}>
+                            <Row
+                            css={{
+                                jc: 'center',
+                                textAlign: 'center'
+                            }}>
+                                <div className="rupee-icon">
+                                    <FaRupeeSign color="white" size={'15px'}/>
+                                </div>
+                                <Text
+                                css={{
+                                    fontSize: '$4xl',
+                                    fontWeight: '$bold'
+                                }}>
+                                    10,000
+                                </Text>
+                            </Row>
+                            <Text
+                            css={{
+                                fontSize: '$md',
+                                fontWeight: '$medium',
+                                color: 'rgb(190 159 103)',
+                                paddingBottom: '10%',
+                            }}>
+                                & Respect
+                            </Text>
+                            <Image src={bronzemedal} width={'40px'} height={'40px'}/>
+                        </Col>
+                    </Col>
+                </Grid>
+
+            </Grid.Container>
 
             
         </Col>

@@ -7,15 +7,64 @@ import Uday from '../../../assets/avatars/AdminTeam/director_uday.jpg'
 import Zahaan from '../../../assets/avatars/AdminTeam/webteam_zahaan.jpg'
 
 export default function MeetTeamContent () {
+
+    const observer = new IntersectionObserver((entries)=>{
+        console.log(entries)
+        entries.forEach((entry)=>{
+            if (entry.isIntersecting){
+                entry.target.classList.add('show')
+                entry.target.classList.remove('hidden')
+            } else {
+                entry.target.classList.remove('show')
+                entry.target.classList.add('hidden')
+            }
+        })
+    })
+
+    const observerLeft = new IntersectionObserver((entries)=>{
+        console.log(entries)
+        entries.forEach((entry)=>{
+            if (entry.isIntersecting){
+                entry.target.classList.add('show')
+                entry.target.classList.remove('hidden-left')
+            } else {
+                entry.target.classList.remove('show')
+                entry.target.classList.add('hidden-left')
+            }
+        })
+    })
+
+    const observerRight = new IntersectionObserver((entries)=>{
+        console.log(entries)
+        entries.forEach((entry)=>{
+            if (entry.isIntersecting){
+                entry.target.classList.add('show')
+                entry.target.classList.remove('hidden-right')
+            } else {
+                entry.target.classList.remove('show')
+                entry.target.classList.add('hidden-right')
+            }
+        })
+    })
+
+    const hiddenElements = document.querySelectorAll('.hidden');
+    hiddenElements.forEach((el)=> observer.observe(el))
+
+    const hiddenLeftElements = document.querySelectorAll('.hidden-left');
+    hiddenLeftElements.forEach((el)=> observerLeft.observe(el))
+
+    const hiddenRightElements = document.querySelectorAll('.hidden-right');
+    hiddenRightElements.forEach((el)=> observerRight.observe(el))
+
     return(
-        <Grid.Container
+        <Grid.Container className="hidden"
         css={{
             jc: 'center',
             textAlign: 'center',
             paddingBottom: '30px'
         }}>
             <Grid>
-                <Col>
+                <Col className="hidden-left" >
                     <Grid.Container gap={2}
                     css={{
                         jc: 'center',
@@ -168,9 +217,10 @@ export default function MeetTeamContent () {
                     </Grid.Container>
                 </Col>
             </Grid>
-            <Grid>
+
+            <Grid className="hidden-right">
                 
-                <Grid.Container gap={2}
+                <Grid.Container gap={2} 
                 css={{
                     jc: 'center',
                     textAlign: 'center'
@@ -192,7 +242,7 @@ export default function MeetTeamContent () {
                         }}  src={AryanYadav} />
                     </Grid>
                 </Grid.Container>
-                <Grid.Container gap={1}
+                <Grid.Container gap={1} 
                 css={{
                     jc: 'center',
                     textAlign: 'center'

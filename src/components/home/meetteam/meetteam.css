@@ -21,3 +21,44 @@
 .team-btn-2{
     color: white !important;
 }
+
+.hidden{
+    opacity: 0;
+    filter: blur(10px);
+    transform: translateY(25%);
+    transition: all 1s;
+}
+
+.hidden-left{
+    opacity: 0;
+    filter: blur(10px);
+    transform: translateX(-200%);
+    transition: all 1s;
+}
+
+.hidden-right{
+    opacity: 0;
+    filter: blur(10px);
+    transform: translateX(200%);
+    transition: all 1s;
+}
+
+.hidden-bottom{
+    opacity: 0;
+    filter: blur(10px);
+    transform: translateY(50%);
+    transition: all 1s;
+}
+
+.show{
+    opacity: 1;
+    filter: blur(0px);
+    transform: translateY(0);
+    transition: all 1s;
+}
+
+@media (prefers-reduced-motion: no-preference){
+    .hidden{
+        transition: none;
+    }
+}

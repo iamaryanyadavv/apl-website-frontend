@@ -667,7 +667,7 @@ export default function TeamContent(){
                                 css={{
                                     fontSize: '$4xl',
                                     fontWeight: '$semibold',
-                                    textGradient: "45deg, $red600 50%, $red800 100%",
+                                    textGradient: "45deg, $cyan600 40%, $cyan800 100%",
                                 }}>
                                     Web Team
                                 </Text>
@@ -686,7 +686,7 @@ export default function TeamContent(){
                                     fontWeight: '$normal',
                                     color: '$gray800'
                                 }}>
-                                    Making sure APl is on the Web!
+                                    Making sure APL is on the Web!
                                 </Text>
                             </Col>
                             

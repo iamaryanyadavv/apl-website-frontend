@@ -15,7 +15,19 @@
     background-repeat: no-repeat;
     background-position: 50% 0;
     background-size: cover;
-    border-radius: 40px;
+    border-radius: 10px;
+}
+
+@media screen and (min-width:650px) {
+    .homeseasonspage:before{
+        border-radius: 20px;
+    }
+}
+
+@media screen and (max-width:650px) {
+    .homeseasonspage:before{
+        border-radius: 10px;
+    }
 }
 
 .hsbackg {

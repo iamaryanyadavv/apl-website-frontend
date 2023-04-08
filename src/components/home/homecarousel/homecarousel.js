@@ -10,6 +10,21 @@ import { Button, Text, Grid } from "@nextui-org/react";
 
 export default function HomeCarousel () {
 
+    const observer = new IntersectionObserver((entries)=>{
+        entries.forEach((entry)=>{
+            if (entry.isIntersecting){
+                entry.target.classList.add('show')
+                entry.target.classList.remove('hidden')
+            } else {
+                entry.target.classList.remove('show')
+                entry.target.classList.add('hidden')
+            }
+        })
+    })
+
+    const hiddenElements = document.querySelectorAll('.hidden');
+    hiddenElements.forEach((el)=> observer.observe(el))
+
     return(
         <Carousel
         showDots={true}
@@ -112,7 +127,7 @@ export default function HomeCarousel () {
                                             width: '70vw',
                                             paddingTop: '15%'
                                         }}>
-                                            Check out each and every season* below!
+                                            Check out features from each and every season* below!
                                         </Text>
                                         <Text showIn={'xs'}
                                         css={{
@@ -124,7 +139,7 @@ export default function HomeCarousel () {
                                             width: '80vw',
                                             paddingTop: '30%'
                                         }}>
-                                            Check out each and every season* below!
+                                            Check out features from each and every season* below!
                                         </Text>
                                     </Grid>
                                 </Grid.Container>
@@ -155,18 +170,18 @@ export default function HomeCarousel () {
                                             textAlign: 'center',
                                             fontSize: "$sm"
                                         }}>
-                                            *features include season schedule with bracket, Teams, Player Lists, Awards and more!
+                                            *features include season schedule, Teams, Player Lists, Awards and more!
                                         </Text>
                                         <Text showIn={'xs'}
                                         css={{
                                             jc: 'center',
                                             fontWeight: '$medium',
                                             paddingTop: '20%',
-                                            paddingBottom: '1%',
+                                            paddingBottom: '5%',
                                             textAlign: 'center',
                                             fontSize: "$xs"
                                         }}>
-                                            *features include season schedule with bracket, Teams, Player Lists, Awards and more!
+                                            *features include season schedule, Teams, Player Lists, Awards and more!
                                         </Text>
                                     </Grid>
                                 </Grid.Container>
@@ -401,7 +416,7 @@ export default function HomeCarousel () {
                                             jc: 'center',
                                             fontWeight: '$medium',
                                             paddingTop: '20%',
-                                            paddingBottom: '1%',
+                                            paddingBottom: '5%',
                                             textAlign: 'center',
                                             fontSize: "$xs"
                                         }}>
@@ -543,7 +558,7 @@ export default function HomeCarousel () {
                                     jc: 'center',
                                     fontWeight: '$medium',
                                     paddingTop: '20%',
-                                    paddingBottom: '1%',
+                                    paddingBottom: '5%',
                                     textAlign: 'center',
                                     fontSize: "$xs"
                                 }}>

@@ -6,6 +6,54 @@ import Foosball from '../../../assets/images/Foosball1.jpg';
 import AuctionPredictions from '../../../assets/images/AuctionPredictions.jpg';
 
 export default function EventsContent () {
+
+    const observer = new IntersectionObserver((entries)=>{
+        entries.forEach((entry)=>{
+            if (entry.isIntersecting){
+                entry.target.classList.add('show')
+                entry.target.classList.remove('hidden')
+            } else {
+                entry.target.classList.remove('show')
+                entry.target.classList.add('hidden')
+            }
+        })
+    })
+
+    const observerLeft = new IntersectionObserver((entries)=>{
+        // console.log(entries)
+        entries.forEach((entry)=>{
+            if (entry.isIntersecting){
+                entry.target.classList.add('show')
+                entry.target.classList.remove('hidden-left')
+            } else {
+                entry.target.classList.remove('show')
+                entry.target.classList.add('hidden-left')
+            }
+        })
+    })
+
+    const observerRight = new IntersectionObserver((entries)=>{
+        // console.log(entries)
+        entries.forEach((entry)=>{
+            if (entry.isIntersecting){
+                entry.target.classList.add('show')
+                entry.target.classList.remove('hidden-right')
+            } else {
+                entry.target.classList.remove('show')
+                entry.target.classList.add('hidden-right')
+            }
+        })
+    })
+
+    const hiddenElements = document.querySelectorAll('.hidden');
+    hiddenElements.forEach((el)=> observer.observe(el))
+
+    const hiddenLeftElements = document.querySelectorAll('.hidden-left');
+    hiddenLeftElements.forEach((el)=> observerLeft.observe(el))
+
+    const hiddenRightElements = document.querySelectorAll('.hidden-right');
+    hiddenRightElements.forEach((el)=> observerRight.observe(el))
+
     return(
         <Grid.Container gap={4}
         css={{
@@ -18,7 +66,7 @@ export default function EventsContent () {
                 jc: 'center',
                 textAlign: 'center'
             }}>
-                <Grid
+                <Grid className="hidden"
                 css={{
                     jc: 'center',
                     textAlign: 'center',
@@ -69,7 +117,7 @@ export default function EventsContent () {
                 </Grid>
 
 
-                <Grid
+                <Grid className="hidden"
                 css={{
                     jc: 'center',
                     textAlign: 'center',
@@ -169,7 +217,7 @@ export default function EventsContent () {
                 </Grid> */}
 
                         
-                <Grid
+                <Grid className="hidden"
                 css={{
                     jc: 'center',
                     textAlign: 'center',
@@ -222,14 +270,14 @@ export default function EventsContent () {
             </Grid.Container>
 
 
-            <Grid.Container gap={0}
+            <Grid.Container gap={0} 
             css={{
                 jc: 'center',
                 textAlign: 'center',
                 alignItems: 'center',
                 padding: '20px 0px 40px 0px'
             }}>
-                <Grid>
+                <Grid className="hidden">
                     <Button className="mini-events-btn"
                     auto shadow rounded>
                         <a href="/events" className="mini-events-btn-2">Promo Events </a> 

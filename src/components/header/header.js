@@ -23,8 +23,14 @@ function Header() {
         <Navbar.Brand hideIn="sm">
           <Image css={{
             width: '40px',
-            height: '40px'
-          }} src={TransparentLogo} />
+            height: '40px',
+            '&:hover':{
+              cursor: 'pointer'
+            }
+          }} src={TransparentLogo} 
+          onClick={()=>{
+            window.location.pathname=''
+          }}/>
         </Navbar.Brand>
         <Navbar.Content hideIn="sm" variant="highlight-rounded">
         {items.map((item, index) => (

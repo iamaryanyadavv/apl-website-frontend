@@ -2,8 +2,25 @@ import React from "react";
 import { Grid, Text } from "@nextui-org/react";
 
 export default function MeetTeamHeading () {
+
+    const observer = new IntersectionObserver((entries)=>{
+        // console.log(entries)
+        entries.forEach((entry)=>{
+            if (entry.isIntersecting){
+                entry.target.classList.add('show')
+                entry.target.classList.remove('hidden')
+            } else {
+                entry.target.classList.remove('show')
+                entry.target.classList.add('hidden')
+            }
+        })
+    })
+
+    const hiddenElements = document.querySelectorAll('.hidden');
+    hiddenElements.forEach((el)=> observer.observe(el))
+
     return(
-        <Grid.Container
+        <Grid.Container className="hidden"
         css={{
             jc: 'center',
             textAlign: 'center',

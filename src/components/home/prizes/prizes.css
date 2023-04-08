@@ -1,3 +1,23 @@
 .rupee-icon{
     padding: 5% 0% 5% 0%;
 }
+
+.hidden{
+    opacity: 0;
+    filter: blur(100px);
+    transform: translateY(25%);
+    transition: all 1s;
+}
+
+.show{
+    opacity: 1;
+    filter: blur(0px);
+    transform: translateY(0);
+    transition: all 1s;
+}
+
+@media (prefers-reduced-motion: no-preference){
+    .hidden{
+        transition: none;
+    }
+}

@@ -13,7 +13,7 @@ const Home = () => {
 
             <HomeLanding/>
             <HomeCarousel/>
-            <Prizes/>
+            <Prizes />
             <HomeEvents/>
             <HomeTeam/>
 
