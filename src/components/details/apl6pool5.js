@@ -90,7 +90,7 @@ export default function Pool5(){
                 css={{
                     fontSize: '$4xl',
                     fontWeight: '$semibold',
-                    paddingTop: '20px',
+                    paddingTop: '60px',
                     paddingLeft: '20px'
                 }}> Pool E </Text>
                 <Table 
@@ -121,7 +121,7 @@ export default function Pool5(){
                             <Table.Cell>{Group[0][7]}</Table.Cell>
                             <Table.Cell>{Group[0][8]}</Table.Cell>
                             <Table.Cell>{Group[0][9]}</Table.Cell>
-                            <Table.Cell><StyledBadge type='paused'>{Group[0][10]}</StyledBadge></Table.Cell>
+                            <Table.Cell><StyledBadge type='active'>{Group[0][10]}</StyledBadge></Table.Cell>
                         </Table.Row>
                         <Table.Row key='2'>
                             <Table.Cell><Avatar bordered src={Group[1][0]} /></Table.Cell>
@@ -134,7 +134,7 @@ export default function Pool5(){
                             <Table.Cell>{Group[1][7]}</Table.Cell>
                             <Table.Cell>{Group[1][8]}</Table.Cell>
                             <Table.Cell>{Group[1][9]}</Table.Cell>
-                            <Table.Cell><StyledBadge type='paused'>{Group[1][10]}</StyledBadge></Table.Cell>
+                            <Table.Cell><StyledBadge type='active'>{Group[1][10]}</StyledBadge></Table.Cell>
                         </Table.Row>
                         <Table.Row key='3'>
                             <Table.Cell><Avatar bordered src={Group[2][0]} /></Table.Cell>
