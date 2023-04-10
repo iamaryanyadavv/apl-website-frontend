@@ -104,14 +104,25 @@ export default function Pool5(){
                     <Table.Header columns={columns}>
                         {(column) => (
                         <Table.Column css={{
-                            padding: '0px 5px 0px 0px'
+                            '@xsMin':{
+                                padding: '0px 20px 0px 0px',
+                            },
+                            '@xsMax':{
+                                padding: '0px 15px 0px 15px',
+                                textAlign: 'center'
+                            }
                         }} key={column.key}>{column.label}</Table.Column>
                         )}
                     </Table.Header>
-                    <Table.Body>
+                    <Table.Body
+                    css={{
+                        '@xsMax':{
+                            textAlign: 'center'
+                        }
+                    }}>
                         {console.log(Group)}
-                        <Table.Row key='1'>
-                            <Table.Cell><Avatar bordered src={Group[0][0]} /></Table.Cell>
+                        <Table.Row key='1' >
+                            <Table.Cell><Avatar bordered src={Group[0][0]} size="lg"/></Table.Cell>
                             <Table.Cell>{Group[0][1]}</Table.Cell>
                             <Table.Cell>{Group[0][2]}</Table.Cell>
                             <Table.Cell>{Group[0][3]}</Table.Cell>
@@ -124,7 +135,7 @@ export default function Pool5(){
                             <Table.Cell><StyledBadge type='active'>{Group[0][10]}</StyledBadge></Table.Cell>
                         </Table.Row>
                         <Table.Row key='2'>
-                            <Table.Cell><Avatar bordered src={Group[1][0]} /></Table.Cell>
+                            <Table.Cell><Avatar bordered src={Group[1][0]} size="lg"/></Table.Cell>
                             <Table.Cell>{Group[1][1]}</Table.Cell>
                             <Table.Cell>{Group[1][2]}</Table.Cell>
                             <Table.Cell>{Group[1][3]}</Table.Cell>
@@ -137,7 +148,7 @@ export default function Pool5(){
                             <Table.Cell><StyledBadge type='active'>{Group[1][10]}</StyledBadge></Table.Cell>
                         </Table.Row>
                         <Table.Row key='3'>
-                            <Table.Cell><Avatar bordered src={Group[2][0]} /></Table.Cell>
+                            <Table.Cell><Avatar bordered src={Group[2][0]} size="lg"/></Table.Cell>
                             <Table.Cell>{Group[2][1]}</Table.Cell>
                             <Table.Cell>{Group[2][2]}</Table.Cell>
                             <Table.Cell>{Group[2][3]}</Table.Cell>
@@ -150,7 +161,7 @@ export default function Pool5(){
                             <Table.Cell><StyledBadge type='paused'>{Group[2][10]}</StyledBadge></Table.Cell>
                         </Table.Row>
                         <Table.Row key='4'>
-                            <Table.Cell><Avatar bordered src={Group[3][0]} /></Table.Cell>
+                            <Table.Cell><Avatar bordered src={Group[3][0]} size="lg"/></Table.Cell>
                             <Table.Cell>{Group[3][1]}</Table.Cell>
                             <Table.Cell>{Group[3][2]}</Table.Cell>
                             <Table.Cell>{Group[3][3]}</Table.Cell>
