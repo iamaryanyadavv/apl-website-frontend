@@ -10,6 +10,8 @@ import Pool3 from "./apl6pool3";
 import Pool4 from "./apl6pool4";
 import Pool5 from "./apl6pool5";
 import Pool6 from "./apl6pool6";
+import BOT from "./apl6BOT";
+import APL6StandingsFAQs from "./apl6StandingsFAQs";
 
 export default function APL6DetailsContent() {
     const [Fetching, setFetching] = useState(false);
@@ -138,12 +140,14 @@ export default function APL6DetailsContent() {
                     }}>
                         Standings
                     </Text>
+                    <APL6StandingsFAQs/>
                     <Pool1/>
                     <Pool2/>
                     <Pool3/>
                     <Pool4/>
                     <Pool5/>
                     <Pool6/>
+                    <BOT/>
                 </>
                 }
 

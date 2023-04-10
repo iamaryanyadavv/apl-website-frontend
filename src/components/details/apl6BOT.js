@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { Table, Avatar, Text, Grid, Loading } from "@nextui-org/react";
 import { StyledBadge } from "./StyledBadge";
 
-export default function Pool1(){
+export default function BOT(){
     const [Fetching, setFetching] = useState();
     const [Group, setGroup] = useState([]);
 
@@ -55,7 +55,7 @@ export default function Pool1(){
     ];
 
     async function getStandings(){
-        await fetch('https://aplapi.onrender.com/seasons/apl6/standings/a')
+        await fetch('https://aplapi.onrender.com/seasons/apl6/standings/bot')
         .then(response=>response.json())
         .then(data=>{
             // console.log(data.values[0][0])
@@ -90,12 +90,12 @@ export default function Pool1(){
                 css={{
                     fontSize: '$4xl',
                     fontWeight: '$semibold',
-                    paddingTop: '20px',
+                    paddingTop: '60px',
                     paddingLeft: '20px'
-                }}> Pool A </Text>
+                }}> Battle of The 3rds </Text>
                 <Table 
                 bordered
-                aria-label="Group A"
+                aria-label="Group BOT"
                 css={{
                 height: "auto",
                 minWidth: "100%",
@@ -158,7 +158,7 @@ export default function Pool1(){
                             <Table.Cell>{Group[2][7]}</Table.Cell>
                             <Table.Cell>{Group[2][8]}</Table.Cell>
                             <Table.Cell>{Group[2][9]}</Table.Cell>
-                            <Table.Cell><StyledBadge type='vacation'>{Group[2][10]}</StyledBadge></Table.Cell>
+                            <Table.Cell><StyledBadge type='active'>{Group[2][10]}</StyledBadge></Table.Cell>
                         </Table.Row>
                         <Table.Row key='4'>
                             <Table.Cell><Avatar bordered src={Group[3][0]} size="lg"/></Table.Cell>
@@ -171,7 +171,33 @@ export default function Pool1(){
                             <Table.Cell>{Group[3][7]}</Table.Cell>
                             <Table.Cell>{Group[3][8]}</Table.Cell>
                             <Table.Cell>{Group[3][9]}</Table.Cell>
-                            <Table.Cell><StyledBadge type='paused'>{Group[3][10]}</StyledBadge></Table.Cell>
+                            <Table.Cell><StyledBadge type='active'>{Group[3][10]}</StyledBadge></Table.Cell>
+                        </Table.Row>
+                        <Table.Row key='5'>
+                            <Table.Cell><Avatar bordered src={Group[4][0]} size="lg"/></Table.Cell>
+                            <Table.Cell>{Group[4][1]}</Table.Cell>
+                            <Table.Cell>{Group[4][2]}</Table.Cell>
+                            <Table.Cell>{Group[4][3]}</Table.Cell>
+                            <Table.Cell>{Group[4][4]}</Table.Cell>
+                            <Table.Cell>{Group[4][5]}</Table.Cell>
+                            <Table.Cell>{Group[4][6]}</Table.Cell>
+                            <Table.Cell>{Group[4][7]}</Table.Cell>
+                            <Table.Cell>{Group[4][8]}</Table.Cell>
+                            <Table.Cell>{Group[4][9]}</Table.Cell>
+                            <Table.Cell><StyledBadge type='paused'>{Group[4][10]}</StyledBadge></Table.Cell>
+                        </Table.Row>
+                        <Table.Row key='6'>
+                            <Table.Cell><Avatar bordered src={Group[5][0]} size="lg"/></Table.Cell>
+                            <Table.Cell>{Group[5][1]}</Table.Cell>
+                            <Table.Cell>{Group[5][2]}</Table.Cell>
+                            <Table.Cell>{Group[5][3]}</Table.Cell>
+                            <Table.Cell>{Group[5][4]}</Table.Cell>
+                            <Table.Cell>{Group[5][5]}</Table.Cell>
+                            <Table.Cell>{Group[5][6]}</Table.Cell>
+                            <Table.Cell>{Group[5][7]}</Table.Cell>
+                            <Table.Cell>{Group[5][8]}</Table.Cell>
+                            <Table.Cell>{Group[5][9]}</Table.Cell>
+                            <Table.Cell><StyledBadge type='paused'>{Group[5][10]}</StyledBadge></Table.Cell>
                         </Table.Row>
                     </Table.Body>
                 </Table>
