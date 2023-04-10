@@ -104,7 +104,7 @@ export default function APL5TeamsContent() {
         for (var i=0; i<teamslists.values.length; i++){
             if(teamslists.values[i].length>1){
                 if(team[2]===teamslists.values[i][0]){
-                    var budgetBarValue = (parseInt(teamslists.values[i][26])/130)*100
+                    var budgetBarValue = (parseInt(teamslists.values[i][26])/150)*100
                     accMaterial =   
                         <Grid.Container
                         css={{
@@ -219,11 +219,15 @@ export default function APL5TeamsContent() {
                                     }
                                 </Table.Body>
                             </Table>
-                            <Col>
+                            <Col
+                            css={{
+                                marginTop: '20px'
+                            }}>
                                 <Text
                                 css={{
                                     fontSize: '$xl',
-                                    fontWeight: '$medium'
+                                    fontWeight: '$medium',
+                                    margin:'10px'
                                 }}>
                                     {teamslists.values[i][26]} M Spent (Max. 150)
                                 </Text>
