@@ -72,7 +72,7 @@ export default function TournamentDetailsCard(props){
                             textAlign: 'center',
                             padding: '0% 2.5%'
                         }}>
-                            &#x2022; Fixtures
+                            &#x2022; Games
                         </Text>
                         <Text
                         css={{
