@@ -134,7 +134,7 @@ export default function Pool1(){
                             <Table.Cell>{Group[1][7]}</Table.Cell>
                             <Table.Cell>{Group[1][8]}</Table.Cell>
                             <Table.Cell>{Group[1][9]}</Table.Cell>
-                            <Table.Cell><StyledBadge type='active'>{Group[1][10]}</StyledBadge></Table.Cell>
+                            <Table.Cell><StyledBadge type='vacation'>{Group[1][10]}</StyledBadge></Table.Cell>
                         </Table.Row>
                         <Table.Row key='3'>
                             <Table.Cell><Avatar bordered src={Group[2][0]} /></Table.Cell>
