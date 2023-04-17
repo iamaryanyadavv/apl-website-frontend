@@ -102,7 +102,7 @@ export default function APL6DetailsContent() {
                     <Text hideIn={'xs'}
                     css={{
                         textAlign: 'center',
-                        padding: '20px 0px 0px 0px',
+                        padding: '20px 0px 5px 0px',
                         fontSize: '$6xl',
                         fontWeight: '$semibold',
                     }}>
@@ -111,8 +111,8 @@ export default function APL6DetailsContent() {
                     <Text showIn={'xs'}
                     css={{
                         textAlign: 'center',
-                        padding: '20px 0px 0px 0px',
-                        fontSize: '$3xl',
+                        padding: '20px 0px 10px 0px',
+                        fontSize: '$4xl',
                         fontWeight: '$semibold',
                     }}>
                         Games
@@ -126,7 +126,7 @@ export default function APL6DetailsContent() {
                     <Text hideIn={'xs'}
                     css={{
                         textAlign: 'center',
-                        padding: '20px 0px 0px 0px',
+                        padding: '20px 0px 10px 0px',
                         fontSize: '$6xl',
                         fontWeight: '$semibold',
                     }}>
@@ -135,8 +135,8 @@ export default function APL6DetailsContent() {
                     <Text showIn={'xs'}
                     css={{
                         textAlign: 'center',
-                        padding: '20px 0px 0px 0px',
-                        fontSize: '$3xl',
+                        padding: '20px 0px 10px 0px',
+                        fontSize: '$4xl',
                         fontWeight: '$semibold',
                     }}>
                         Standings
@@ -157,7 +157,7 @@ export default function APL6DetailsContent() {
                     <Text hideIn={'xs'}
                     css={{
                         textAlign: 'center',
-                        padding: '20px 0px 0px 0px',
+                        padding: '20px 0px 10px 0px',
                         fontSize: '$6xl',
                         fontWeight: '$semibold',
                     }}>
@@ -166,8 +166,8 @@ export default function APL6DetailsContent() {
                     <Text showIn={'xs'}
                     css={{
                         textAlign: 'center',
-                        padding: '20px 0px 0px 0px',
-                        fontSize: '$3xl',
+                        padding: '20px 0px 10px 0px',
+                        fontSize: '$4xl',
                         fontWeight: '$semibold',
                     }}>
                         Rules

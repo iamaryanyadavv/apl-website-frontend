@@ -63,6 +63,9 @@ function Footer(){
                     borderStyle: 'solid',
                     borderColor: '$gray700',
                     borderWidth: '1px 0px 0px 0px',
+                    '@xsMax':{
+                        fontSize: '$xs'
+                    }
                 }}>
                     © 2023 Ashoka Premier League. All Rights Reserved.
                 </Text>

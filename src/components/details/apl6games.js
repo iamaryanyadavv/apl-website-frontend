@@ -147,7 +147,10 @@ export default function Games(){
                                         css={{
                                             fontSize: '$4xl',
                                             fontWeight: '$semibold',
-                                            padding: '20px'
+                                            padding: '20px',
+                                            '@xsMax':{
+                                                fontSize: '$2xl'
+                                            }
                                         }}>
                                             Day 3 (Sunday)
                                         </Text>
@@ -155,7 +158,7 @@ export default function Games(){
                                         {Day3Games.map((game,index)=>(
                                             <Grid key={index}
                                             css={{
-                                                padding: '10px'
+                                                padding: '12px'
                                             }}>
                                                 <Card css={{ mw: "max-content" }}>
                                                     <Card.Header>
@@ -304,7 +307,10 @@ export default function Games(){
                                         css={{
                                             fontSize: '$4xl',
                                             fontWeight: '$semibold',
-                                            padding: '20px'
+                                            padding: '20px',
+                                            '@xsMax':{
+                                                fontSize: '$2xl'
+                                            }
                                         }}>
                                             Day 2 (Saturday)
                                         </Text>
@@ -312,7 +318,7 @@ export default function Games(){
                                         {Day2Games.map((game,index)=>(
                                             <Grid key={index}
                                             css={{
-                                                padding: '10px'
+                                                padding: '12px'
                                             }}>
                                                 <Card isHoverable css={{ mw: "max-content" }}>
                                                     <Card.Header>
@@ -331,6 +337,9 @@ export default function Games(){
                                                             css={{
                                                                 '@xsMax':{
                                                                     width: '100%'
+                                                                },
+                                                                '@xsMin':{
+                                                                    width: '300px',
                                                                 }
                                                             }}>
                                                                 <Row 
@@ -373,6 +382,9 @@ export default function Games(){
                                                             css={{
                                                                 '@xsMax':{
                                                                     width: '100%'
+                                                                },
+                                                                '@xsMin':{
+                                                                    width: '300px',
                                                                 }
                                                             }}>
                                                                 <Row 
@@ -417,7 +429,7 @@ export default function Games(){
                                         {Day2KOGames.map((game,index)=>(
                                             <Grid key={index}
                                             css={{
-                                                padding: '10px'
+                                                padding: '12px'
                                             }}>
                                                 <Card css={{ mw: "max-content" }}>
                                                     <Card.Header>
@@ -566,7 +578,10 @@ export default function Games(){
                                         css={{
                                             fontSize: '$4xl',
                                             fontWeight: '$semibold',
-                                            padding: '20px'
+                                            padding: '20px',
+                                            '@xsMax':{
+                                                fontSize: '$2xl'
+                                            }
                                         }}>
                                             Day 1 (Friday)
                                         </Text>
@@ -574,7 +589,7 @@ export default function Games(){
                                         {Day1Games.map((game,index)=>(
                                             <Grid key={index}
                                             css={{
-                                                padding: '10px'
+                                                padding: '12px'
                                             }}>
                                                 <Card isHoverable css={{ mw: "max-content" }}>
                                                     <Card.Header>
@@ -593,6 +608,9 @@ export default function Games(){
                                                             css={{
                                                                 '@xsMax':{
                                                                     width: '100%'
+                                                                },
+                                                                '@xsMin':{
+                                                                    width: '300px',
                                                                 }
                                                             }}>
                                                                 <Row 
@@ -635,6 +653,9 @@ export default function Games(){
                                                             css={{
                                                                 '@xsMax':{
                                                                     width: '100%'
+                                                                },
+                                                                '@xsMin':{
+                                                                    width: '300px',
                                                                 }
                                                             }}>
                                                                 <Row 
