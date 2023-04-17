@@ -4,6 +4,7 @@ import { Table, Grid, Loading, Avatar, Text, Col, Button, Spacer } from "@nextui
 import APL6AuctionRules from "./apl6auctionrules";
 import APL6TournamentRules from "./apl6tournamentrules";
 import ComingSoon from '../comingsoon/comingsoon'
+import APL6Games from './apl6games'
 import Pool1 from "./apl6pool1";
 import Pool2 from "./apl6pool2";
 import Pool3 from "./apl6pool3";
@@ -116,7 +117,7 @@ export default function APL6DetailsContent() {
                     }}>
                         Games
                     </Text>
-                    <ComingSoon/>
+                    <APL6Games/>
                 </>
                 }
 
