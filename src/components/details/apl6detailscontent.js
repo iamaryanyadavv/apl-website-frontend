@@ -16,8 +16,8 @@ import APL6StandingsFAQs from "./apl6StandingsFAQs";
 
 export default function APL6DetailsContent() {
     const [Fetching, setFetching] = useState(false);
-    const [Games, setGames] = useState(false);
-    const [Standings, setStandings] = useState(true)
+    const [Games, setGames] = useState(true);
+    const [Standings, setStandings] = useState(false)
     const [Rules, setRules] = useState(false)
 
     async function getStandings(){
