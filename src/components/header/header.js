@@ -20,12 +20,15 @@ function Header() {
     return(
       <Navbar className="navbar" variant="static">
         <Navbar.Toggle color="inherit" showIn="sm" />
-        <Navbar.Brand hideIn="sm">
+        <Navbar.Brand hideIn="sm" css={{'&:hover':{transform: 'scale(1.25)'}}}>
           <Image css={{
             width: '40px',
             height: '40px',
+            transitionDuration: '0.5s',
+            transitionProperty: 'transform',
             '&:hover':{
-              cursor: 'pointer'
+              cursor: 'pointer',
+              transform: 'rotate(360deg)',
             }
           }} src={TransparentLogo} 
           onClick={()=>{
