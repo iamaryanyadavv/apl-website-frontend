@@ -11,6 +11,7 @@ export default function Games(){
     const [Day1, setDay1] = useState(true);
     const [Day2, setDay2] = useState(false);
     const [Day3, setDay3] = useState(false);
+    const [i, seti] = useState(25);
 
     async function getGames(){
         await fetch('https://aplapi.onrender.com/seasons/apl6/games')
@@ -322,7 +323,7 @@ export default function Games(){
                                             }}>
                                                 <Card isHoverable css={{ mw: "max-content" }}>
                                                     <Card.Header>
-                                                        <Text b>Game {index+1}</Text>
+                                                        <Text b>Game {i+index}</Text>
                                                     </Card.Header>
 
                                                     <Card.Divider />
