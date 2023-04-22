@@ -8,9 +8,9 @@ export default function Games(){
     const [Day2Games, setDay2Games] = useState([]);
     const [Day2KOGames, setDay2KOGames] = useState([]);
     const [Day3Games, setDay3Games] = useState([]);
-    const [Day1, setDay1] = useState(true);
+    const [Day1, setDay1] = useState(false);
     const [Day2, setDay2] = useState(false);
-    const [Day3, setDay3] = useState(false);
+    const [Day3, setDay3] = useState(true);
     const [i, seti] = useState(25);
 
     async function getGames(){
@@ -480,7 +480,7 @@ export default function Games(){
                                                                     width: '100%'
                                                                 },
                                                                 '@xsMin':{
-                                                                    width: '100px',
+                                                                    width: '150px',
                                                                     alignItems: 'center'
                                                                 }
                                                             }}>
