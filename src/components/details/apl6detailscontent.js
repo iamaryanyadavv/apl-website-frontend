@@ -41,7 +41,7 @@ export default function APL6DetailsContent() {
             css={{
                 jc: 'center',
                 alignItems: 'center',
-                height: '60vh',
+                height: '70vh',
             }}>
                 <Loading
                 size="xl"
@@ -118,6 +118,15 @@ export default function APL6DetailsContent() {
                         Games
                     </Text>
                     <APL6Games/>
+                    <Spacer 
+                    css={{
+                        '@xsMax':{
+                            height: '45vh'
+                        },
+                        '@xsMin':{
+                            height: '15vh'
+                        }
+                    }} />
                 </>
                 }
 

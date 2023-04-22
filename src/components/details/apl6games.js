@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Grid, Loading, Card, Text, Row, Button, Avatar } from "@nextui-org/react";
+import { Grid, Loading, Card, Text, Row, Button, Avatar, Spacer } from "@nextui-org/react";
 
 export default function Games(){
     const [Fetching, setFetching] = useState();
