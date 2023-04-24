@@ -8,7 +8,7 @@ export default function RoadToAPL(){
         <div className="roadtoAPLpage">
             <div className="RTAPLbackg">
                 <QuoteHeading
-                    heading='ROAD TO APL'
+                    heading='ROAD TO APL 6.0'
                     description='Take a look at all events leading upto the coveted APL tournament. You do not want to miss out on any of these, trust us!'
                 />
                 <RoadToAPLContent/>

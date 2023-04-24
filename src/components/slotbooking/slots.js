@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { InlineWidget } from "react-calendly";
-import { Grid, Text, Row, Col } from "@nextui-org/react";
+import { Grid, Text, Row, Col, Spacer } from "@nextui-org/react";
 import QuoteHeading from "../headings/quoteheading";
 import './slotbooking.css';
 import { useTicker } from "../../hooks";
@@ -17,7 +17,7 @@ export default function Slots(){
 
     return(
         <>
-            {!isTimeUp && 
+            {isTimeUp && 
             <div>
                 <Grid.Container  gap={0}
                 css={{
@@ -75,7 +75,7 @@ export default function Slots(){
                                 textAlign:'center',
                                 padding:'0% 10% 0% 10%'
                             }}>
-                                Slot Booking feature opens on 11th April, 2023 at 4pm IST!
+                                Slot Booking feature opens next season!
                             </Text>
                             <Text showIn={'xs'}
                             css={{
@@ -86,11 +86,11 @@ export default function Slots(){
                                 textAlign:'center',
                                 padding:'0% 10% 0% 10%'
                             }}>
-                                Slot Booking feature opens on 11th April, 2023 at 4pm IST!
+                                Slot Booking feature opens next season!
                             </Text>
                         </Grid.Container>
 
-                        <Row
+                        {/* <Row
                         css={{
                             jc: 'center',
                         }}>
@@ -303,7 +303,8 @@ export default function Slots(){
                                 
                             
 
-                        </Row>
+                        </Row> */}
+
                     </Grid.Container>
                 </Grid.Container>
 
@@ -312,68 +313,68 @@ export default function Slots(){
                 </Grid.Container>
             </div>
             }
-            {isTimeUp && 
-            <Grid.Container gap={0}
-            css={{
-                jc: 'center',
-                textAlign: 'center',
-                alignItems: 'center'
-            }}>
-                {/* Heading */}
+            {isTimeUp 
+            // <Grid.Container gap={0}
+            // css={{
+            //     jc: 'center',
+            //     textAlign: 'center',
+            //     alignItems: 'center'
+            // }}>
+            //     {/* Heading */}
 
-                <QuoteHeading
-                    heading='SLOT BOOKING'
-                    description='Using the feature below book your times training slots before your competitors and show them what you&apos;re made of!'
-                />
+            //     <QuoteHeading
+            //         heading='SLOT BOOKING'
+            //         description='Using the feature below book your times training slots before your competitors and show them what you&apos;re made of!'
+            //     />
                 
-                {/* Content */}
+            //     {/* Content */}
 
-                <Grid.Container
-                css={{
-                    jc: 'center',
-                    textAlign: 'center',
-                    alignItems: 'center'
-                }}>
-                    <InlineWidget
-                    styles={{
-                        width: '500px',
-                        height: '725px',
-                        margin: '5.5% 5%'
-                    }}
-                    url="https://calendly.com/aplcalendly01/main-field-w-goals-one-half-field-booking?background_color=1a1a1a&text_color=ffffff&primary_color=00ff91" style="min-width:320px;height:630px;"
-                    />
+            //     <Grid.Container
+            //     css={{
+            //         jc: 'center',
+            //         textAlign: 'center',
+            //         alignItems: 'center'
+            //     }}>
+            //         <InlineWidget
+            //         styles={{
+            //             width: '500px',
+            //             height: '725px',
+            //             margin: '5.5% 5%'
+            //         }}
+            //         url="https://calendly.com/aplcalendly01/main-field-w-goals-one-half-field-booking?background_color=1a1a1a&text_color=ffffff&primary_color=00ff91" style="min-width:320px;height:630px;"
+            //         />
 
-                    <InlineWidget
-                    styles={{
-                        width: '500px',
-                        height: '725px',
-                        margin: '5.5% 5%'
-                    }}
-                    url="https://calendly.com/aplcalendly02/main-field-w-goals-other-half-field-booking?background_color=1a1a1a&text_color=ffffff&primary_color=00ff91" style="min-width:320px;height:630px;"
-                    />
+            //         <InlineWidget
+            //         styles={{
+            //             width: '500px',
+            //             height: '725px',
+            //             margin: '5.5% 5%'
+            //         }}
+            //         url="https://calendly.com/aplcalendly02/main-field-w-goals-other-half-field-booking?background_color=1a1a1a&text_color=ffffff&primary_color=00ff91" style="min-width:320px;height:630px;"
+            //         />
 
-                    <InlineWidget
-                    styles={{
-                        width: '500px',
-                        height: '725px',
-                        margin: '5.5% 5%'
-                    }}
-                    url="https://calendly.com/aplcalendly03/side-field-w-cones-one-half-field-booking?background_color=1a1a1a&text_color=ffffff&primary_color=00ff91" style="min-width:320px;height:630px;"
-                    />
+            //         <InlineWidget
+            //         styles={{
+            //             width: '500px',
+            //             height: '725px',
+            //             margin: '5.5% 5%'
+            //         }}
+            //         url="https://calendly.com/aplcalendly03/side-field-w-cones-one-half-field-booking?background_color=1a1a1a&text_color=ffffff&primary_color=00ff91" style="min-width:320px;height:630px;"
+            //         />
 
-                    <InlineWidget
-                    styles={{
-                        width: '500px',
-                        height: '725px',
-                        margin: '5.5% 5%'
-                    }}
-                    url="https://calendly.com/aplcalendly04/side-field-w-cones-other-half-field-booking-4?background_color=1a1a1a&text_color=ffffff&primary_color=00ff91" style="min-width:320px;height:630px;"
-                    />
+            //         <InlineWidget
+            //         styles={{
+            //             width: '500px',
+            //             height: '725px',
+            //             margin: '5.5% 5%'
+            //         }}
+            //         url="https://calendly.com/aplcalendly04/side-field-w-cones-other-half-field-booking-4?background_color=1a1a1a&text_color=ffffff&primary_color=00ff91" style="min-width:320px;height:630px;"
+            //         />
                     
-                </Grid.Container>
+            //     </Grid.Container>
                 
 
-            </Grid.Container>
+            // </Grid.Container>
             }
         </>
     )

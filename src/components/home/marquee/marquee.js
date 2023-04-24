@@ -22,9 +22,8 @@ const NewsTicker = () => {
           paddingLeft: '2px',
         }}
       >
-        Groups Draw scheduled to take place at the mess on 10th of April.
-        Look out for that email!
-        Also, do check out our sponsors on the APL x FanUp page accessible from the navbar!
+        The Red Challengers are APL 6.0 Winners!
+        APL 7.0 coming next year, stay tuned!
       </p>
     </Marquee>
   );

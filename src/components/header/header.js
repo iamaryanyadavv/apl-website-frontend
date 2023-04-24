@@ -8,7 +8,7 @@ function Header() {
     const items = [
       {name: 'Home', href:'/'},
       {name: 'APL x FanUp', href:'/fanup'},
-      {name: 'APL 6.0', href: '/seasons/apl6'},
+      {name: 'APL 7.0', href: '/seasons/apl7'},
       {name: 'RoadToAPL', href:'/roadtoapl'},
       {name: 'Registration', href:'/registration'},
       {name: 'Slots', href:'/slots'},

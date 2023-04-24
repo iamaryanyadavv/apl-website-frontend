@@ -15,6 +15,7 @@ import PlayerRegistrationPage from './pages/PlayerRegistrationPage/playerregistr
 import TeamRegistrationPage from './pages/TeamRegistrationPage/teamregistrationpage.js';
 import TeamPage from './pages/TeamPage/team';
 import EventsPage from './pages/EventsPage/eventspage';
+import APL7LandingPage from './pages/APL7Page/apl7landingpage';
 import APL6LandingPage from './pages/APL6Page/apl6landingpage';
 import APL6PlayersPage from './pages/APL6Page/apl6playerspage';
 import APL6TeamPage from './pages/APL6Page/apl6teamspage';
@@ -72,13 +73,15 @@ function App() {
                 <Route exact path="/seasons/apl5/gallery" element={<APL5GalleryPage/>} />
                 
                 {/* APL 6 */}
-                {/* <Route exact path="/seasons/apl6" element={<APL6LandingPage/>} /> */}
                 <Route exact path="/seasons/apl6" element={<APL6LandingPage/>} />
                 <Route exact path="/seasons/apl6/players" element={<APL6PlayersPage/>} />
                 <Route exact path="/seasons/apl6/teams" element={<APL6TeamPage/>} />
                 <Route exact path="/seasons/apl6/details" element={<APL6DetailsPage/>} />
                 <Route exact path="/seasons/apl6/awards" element={<APL6AwardsPage/>} />
                 <Route exact path="/seasons/apl6/gallery" element={<APL6GalleryPage/>} />
+
+                {/* APL 7 */}
+                <Route exact path="/seasons/apl7" element={<APL7LandingPage/>} />
 
                 <Route exact path="/roadtoapl" element={<RoadToAPL/>} />
                 <Route exact path="/slots" element={<SlotBookingPage/>} />

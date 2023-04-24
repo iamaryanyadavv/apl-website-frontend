@@ -9,7 +9,7 @@ export default function RegCards(){
         <div>
 
             <QuoteHeading
-                heading='APL 6.0 REGISTRATION'
+                heading='APL 7.0 REGISTRATION'
                 description='The time has come! Who do you choose to be: Team Owner or Team Player?'
             />
             
@@ -93,7 +93,7 @@ export default function RegCards(){
                                                 <Text
                                                 css={{
                                                     padding: '12px'
-                                                }}>Registrations have been closed. See you next year!</Text>
+                                                }}>Registrations will open next year!</Text>
                                             </Popover.Content>
                                         </Popover>
                                     </Grid>
@@ -177,7 +177,7 @@ export default function RegCards(){
                                                 <Text
                                                 css={{
                                                     padding: '12px'
-                                                }}>Registrations have been closed. See you next year!</Text>
+                                                }}>Registrations will open next year!</Text>
                                             </Popover.Content>
                                         </Popover>
                                     </Grid>

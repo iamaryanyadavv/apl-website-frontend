@@ -3,6 +3,7 @@ import React from "react";
 import SeasonCard from "./seasoncard";
 import APL4Cover from '../../assets/images/APL4/APL4Cover.JPG';
 import APL5Cover from '../../assets/images/APL5/APL5Cover 2.jpg';
+import APL6Cover from '../../assets/images/APL6/APL6Cover.jpg';
 
 export default function SeasonsContent(){
     return(
@@ -11,6 +12,9 @@ export default function SeasonsContent(){
             jc: 'center',
             alignItems: 'center'
         }}>
+            <Grid> 
+                <SeasonCard season='6.0' semester='SPRING 2023' src={APL6Cover} href='/seasons/apl6' />
+            </Grid>
             <Grid> 
                 <SeasonCard season='5.0' semester='SPRING 2022' src={APL5Cover} href='/seasons/apl5' />
             </Grid>
