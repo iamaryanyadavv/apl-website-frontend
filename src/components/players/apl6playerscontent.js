@@ -1,4 +1,4 @@
-import {Text, Grid, Col, Avatar, Row, Spacer, Link, Input, Image} from "@nextui-org/react";
+import {Text, Grid, Col, Avatar, Row, Spacer, Link, Input, Image, Modal, Table} from "@nextui-org/react";
 import { Loading } from '@nextui-org/react';
 import React from "react";
 import { useState, useEffect } from "react";
@@ -21,7 +21,9 @@ export default function APL6PlayersContent(){
     const [TwoReady, setTwoReady] = useState(false);
     const [ThreeReady, setThreeReady] = useState(false);
     const [FourReady, setFourReady] = useState(false);
+    const [Top10Ready, setTop10Ready] = useState(false)
     const [Search, setSearch] = useState('');
+    const [Top10, setTop10] = useState([]);
 
     // Player array - 
     // 0: Picture
@@ -1007,6 +1009,8 @@ export default function APL6PlayersContent(){
         const tier2players = []
         const tier3players = []
         const tier4players = []
+        var playerssorted = []
+        var top10 = []
         if(players.values.length>1){
             for(var i=1; i< players.values.length; i++){
                 for(var j=0; j<teams.length; j++){    
@@ -1034,12 +1038,21 @@ export default function APL6PlayersContent(){
                     }
                 }
             }
+            playerssorted = players.values.sort(function(a,b){
+                return b[6] - a[6]
+            })
         }
         setPreTierAllotmentPlayers(pretierallotmentplayers)
         setTier1PlayerData(tier1players)
         setTier2PlayerData(tier2players)
         setTier3PlayerData(tier3players)
         setTier4PlayerData(tier4players)
+
+        // loop to set the top 10 most expensive players
+        for(var i=1; i<11; i++){
+            top10.push(playerssorted[i])
+        }
+        setTop10(top10)
         
         //loop at t0 update each player with their team logo
         for (var i=0;i<players.values.length;i++){
@@ -1280,7 +1293,111 @@ export default function APL6PlayersContent(){
                             View in Sheets
                         </Link>
                     </Grid>
+
+                    <Grid 
+                    css={{
+                        '@xsMin':{
+                            padding: '16px'
+                        },
+                        '@xsMax':{
+                            padding: '16px 42px'
+                        }
+                    }}>
+                        <Text id='top10'
+                        css={{
+                            fontSize: '$lg',
+                            color: 'White',
+                            fontWeight: '$semibold',
+                            borderRadius: '20px',
+                            backgroundColor: 'rgba(220, 220, 220, 0.2)',
+                            textAlign: 'center',
+                            padding: '2px 24px',
+                            transition: 'padding 0.5s',
+                            '&:hover':{
+                                cursor: 'pointer',
+                                backgroundColor: 'rgba(220, 220, 220, 0.25)',
+                                padding: '2px 24px',
+                            }
+                        }}
+                        onClick={()=>{
+                            setTop10Ready(true)
+                            document.getElementById('top10').style.transform='scale(0.95)'
+                            window.setTimeout(()=>{
+                                document.getElementById('top10').style.transform='scale(1)'
+                            }, 150)
+                        }}
+                        >
+                            Top 10 Most Expensive
+                        </Text>
+                    </Grid>
                 </Grid.Container>
+
+                {/* Top 10 Modal */}
+                {Top10 && 
+                    <Modal
+                    closeButton
+                    open={Top10Ready}
+                    onClose={()=>{
+                        setTop10Ready(false)
+                    }}>
+                        <Modal.Header>
+                            <Text 
+                            css={{
+                                '@xsMax':{
+                                    fontSize: '$md',
+                                    fontWeight: '$medium'
+                                },
+                                '@xsMin':{
+                                    fontSize: '$xl',
+                                    fontWeight: '$medium'
+                                },
+                                border: 'solid',
+                                borderColor: '#C4B454',
+                                borderWidth: '0px 0px 2px 0px'
+                            }}>
+                                Top 10 Most Expensive Players
+                            </Text>
+                        </Modal.Header>
+                        <Modal.Body>
+                            {Top10.map((player,index)=>(
+                                <Row
+                                css={{
+                                    alignItems: 'center',
+                                    width: '100%'
+                                }}>
+                                    <Avatar size={'lg'} src={player[0]} css={{jc: 'start'}}/>
+                                    <Text
+                                    css={{
+                                        padding: '0px 6px 0px 12px',
+                                        '@xsMax':{
+                                            fontSize: '$md',
+                                            fontWeight: '$medium'
+                                        },
+                                        '@xsMin':{
+                                            fontSize: '$xl',
+                                            fontWeight: '$medium'
+                                        },
+                                    }}>
+                                        {player[1]} 
+                                    </Text>
+                                    <Text
+                                    css={{
+                                        '@xsMax':{
+                                            fontSize: '$md',
+                                            fontWeight: '$medium'
+                                        },
+                                        '@xsMin':{
+                                            fontSize: '$xl',
+                                            fontWeight: '$medium'
+                                        },
+                                    }}>
+                                        - {player[6]}M
+                                    </Text>
+                                </Row>
+                            ))}
+                        </Modal.Body>
+                    </Modal>
+                }
 
                 {/* Tier 1 Block*/}
                 {Tier1Cards.length != 0 && OneReady && !TwoReady && !ThreeReady && !FourReady &&
