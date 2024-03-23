@@ -83,19 +83,19 @@ export default function RegCards(){
                                     paddingBottom: '5%'
                                 }}>
                                     <Grid>
-                                        <Popover>
-                                            <Popover.Trigger>
+                                        {/* <Popover>
+                                            <Popover.Trigger> */}
                                                 <Button css={{color: 'White'}} shadow rounded bordered auto ghost>
                                                     REGISTER
                                                 </Button>
-                                            </Popover.Trigger>
-                                            <Popover.Content>
-                                                <Text
+                                            {/* </Popover.Trigger>
+                                            <Popover.Content> */}
+                                                {/* <Text
                                                 css={{
                                                     padding: '12px'
                                                 }}>Registrations will open next year!</Text>
                                             </Popover.Content>
-                                        </Popover>
+                                        </Popover> */}
                                     </Grid>
                                 </Grid.Container>
                             </Col>
@@ -167,19 +167,19 @@ export default function RegCards(){
                                     paddingBottom: '5%'
                                 }}>
                                     <Grid>
-                                        <Popover>
-                                            <Popover.Trigger>
+                                        {/* <Popover> */}
+                                            {/* <Popover.Trigger> */}
                                                 <Button css={{color: 'White'}} shadow rounded bordered auto ghost>
                                                     REGISTER
                                                 </Button>
-                                            </Popover.Trigger>
-                                            <Popover.Content>
+                                            {/* </Popover.Trigger> */}
+                                            {/* <Popover.Content>
                                                 <Text
                                                 css={{
                                                     padding: '12px'
                                                 }}>Registrations will open next year!</Text>
-                                            </Popover.Content>
-                                        </Popover>
+                                            </Popover.Content> */}
+                                        {/* </Popover> */}
                                     </Grid>
                                 </Grid.Container>
                             </Col>
