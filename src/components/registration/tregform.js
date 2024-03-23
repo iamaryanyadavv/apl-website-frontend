@@ -679,7 +679,7 @@ export default function TRegForm() {
                         fontWeight: '$semibold',
                         paddingBottom: '1.5%'
                     }}>
-                        APL 6.0 TEAM REGISTRATION
+                        APL 7.0 TEAM REGISTRATION
                     </Text>
                     <Text showIn={'xs'}
                     css={{
@@ -688,7 +688,7 @@ export default function TRegForm() {
                         fontWeight: '$semibold',
                         padding: '10% 5% 0% 5%'
                     }}>
-                        APL 6.0 TEAM REGISTRATION
+                        APL 7.0 TEAM REGISTRATION
                     </Text>
                 </Grid.Container>
 
@@ -966,7 +966,7 @@ export default function TRegForm() {
                         fontWeight: '$semibold',
                         paddingBottom: '1.5%'
                     }}>
-                        APL 6.0 TEAM REGISTRATION
+                        APL 7.0 TEAM REGISTRATION
                     </Text>
                     <Text showIn={'xs'}
                     css={{
@@ -975,7 +975,7 @@ export default function TRegForm() {
                         fontWeight: '$semibold',
                         padding: '10% 5%'
                     }}>
-                        APL 6.0 TEAM REGISTRATION
+                        APL 7.0 TEAM REGISTRATION
                     </Text>
                     <Text hideIn={'xs'}
                     css={{
@@ -3635,7 +3635,7 @@ export default function TRegForm() {
                                                 fontWeight: '$semibold',
                                                 color: 'white',
                                             }}>
-                                                You can check out the full list of APL6.0 registered teams here
+                                                You can check out the full list of APL7.0 registered teams here
                                             </Text>
                                             <Text 
                                             css={{
@@ -3644,7 +3644,7 @@ export default function TRegForm() {
                                                 fontWeight: '$medium',
                                                 color: 'white',
                                             }}>
-                                                <a href="/seasons/apl6/teams">APL 6.0 Teams</a>
+                                                <a href="/seasons/apl6/teams">APL 7.0 Teams</a>
                                             </Text>
                                         </Modal.Body>
                                         

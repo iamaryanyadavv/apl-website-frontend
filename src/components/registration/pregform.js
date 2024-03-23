@@ -430,7 +430,7 @@ export default function PRegForm(){
                         fontWeight: '$semibold',
                         paddingBottom: '1.5%'
                     }}>
-                        APL 6.0 PLAYER REGISTRATION
+                        APL 7.0 PLAYER REGISTRATION
                     </Text>
                     <Text showIn={'xs'}
                     css={{
@@ -439,7 +439,7 @@ export default function PRegForm(){
                         fontWeight: '$semibold',
                         padding: '10% 5% 0% 5%'
                     }}>
-                        APL 6.0 PLAYER REGISTRATION
+                        APL 7.0 PLAYER REGISTRATION
                     </Text>
                 </Grid.Container>
 
@@ -717,7 +717,7 @@ export default function PRegForm(){
                         fontWeight: '$semibold',
                         paddingBottom: '1.5%'
                     }}>
-                        APL 6.0 PLAYER REGISTRATION
+                        APL 7.0 PLAYER REGISTRATION
                     </Text>
                     <Text showIn={'xs'}
                     css={{
@@ -726,7 +726,7 @@ export default function PRegForm(){
                         fontWeight: '$semibold',
                         padding: '10% 5%'
                     }}>
-                        APL 6.0 PLAYER REGISTRATION
+                        APL 7.0 PLAYER REGISTRATION
                     </Text>
                     <Text hideIn={'xs'}
                     css={{
@@ -2096,7 +2096,7 @@ export default function PRegForm(){
                                                 fontWeight: '$semibold',
                                                 color: 'white',
                                             }}>
-                                                You can check out the full list of APL6.0 registered players here
+                                                You can check out the full list of APL7.0 registered players here
                                             </Text>
                                             <Text 
                                             css={{
@@ -2105,7 +2105,7 @@ export default function PRegForm(){
                                                 fontWeight: '$medium',
                                                 color: 'white',
                                             }}>
-                                                <a href="/seasons/apl6/players">APL 6.0 Registered Players</a>
+                                                <a href="/seasons/apl6/players">APL 7.0 Registered Players</a>
                                             </Text>
                                         </Modal.Body>
                                         
