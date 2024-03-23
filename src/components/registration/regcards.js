@@ -1,4 +1,4 @@
-import { Card, Col, Grid, Text, Button, Popover } from "@nextui-org/react";
+import { Card, Col, Grid, Text, Button, Popover , Link} from "@nextui-org/react";
 import React from "react";
 import JoseMourinho from './JoseMourinho.jpeg';
 import Cristiano2 from './Cristiano2.jpeg';
@@ -85,8 +85,10 @@ export default function RegCards(){
                                     <Grid>
                                         {/* <Popover>
                                             <Popover.Trigger> */}
-                                                <Button css={{color: 'White'}} shadow rounded bordered auto ghost>
-                                                    REGISTER
+                                                <Button href="/registration/team" css={{color: 'White'}} shadow rounded bordered auto ghost>
+                                                <Link href={"/registration/team"}>
+                                    REGISTER
+                                </Link>
                                                 </Button>
                                             {/* </Popover.Trigger>
                                             <Popover.Content> */}
@@ -170,7 +172,7 @@ export default function RegCards(){
                                         {/* <Popover> */}
                                             {/* <Popover.Trigger> */}
                                                 <Button css={{color: 'White'}} shadow rounded bordered auto ghost>
-                                                    REGISTER
+                                                <Link href={"/registration/player"}>REGISTER</Link>
                                                 </Button>
                                             {/* </Popover.Trigger> */}
                                             {/* <Popover.Content>
