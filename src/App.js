@@ -88,8 +88,8 @@ function App() {
 
                 {/* Registration */}
                 <Route exact path="/registration" element={<RegistrationPage/>} />
-                <Route exact path="/registration/player" element={<PlayerRegClosed/>} />
-                <Route exact path="/registration/team" element={<TeamRegClosed/>} />
+                <Route exact path="/registration/player" element={<PlayerRegistrationPage/>} />
+                <Route exact path="/registration/team" element={<TeamRegistrationPage/>} />
                 <Route exact path="/registration/fifa" element={<FifaRegistrationPage/>} />
 
                 {/* Meet The Team */}
