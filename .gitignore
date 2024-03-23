@@ -5,6 +5,7 @@
 /.pnp
 .pnp.js
 
+/credentials.json
 # testing
 /coverage
 /localhost-key.pem
