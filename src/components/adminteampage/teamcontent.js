@@ -765,7 +765,7 @@ export default function TeamContent(){
                                         Developer
                                     </Text>
                                     <Text>
-                                        <a target="_blank" href="https://aryanyadav.com/">aryanyadav.com</a>
+                                        <a target="_blank" href="https://iamaryanyadavv.github.io/personal-website/">iamaryanyadavv.github.io</a>
                                     </Text>
                                 </Col>
                             </Grid>

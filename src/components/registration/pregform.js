@@ -2105,7 +2105,7 @@ export default function PRegForm(){
                                                 fontWeight: '$medium',
                                                 color: 'white',
                                             }}>
-                                                <a href="/seasons/apl6/players">APL 7.0 Registered Players</a>
+                                                <a href="/seasons/apl7/players">APL 7.0 Registered Players</a>
                                             </Text>
                                         </Modal.Body>
                                         

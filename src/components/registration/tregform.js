@@ -3645,7 +3645,7 @@ export default function TRegForm() {
                                                 fontWeight: '$medium',
                                                 color: 'white',
                                             }}>
-                                                <a href="/seasons/apl6/teams">APL 7.0 Teams</a>
+                                                <a href="/seasons/apl7/teams">APL 7.0 Teams</a>
                                             </Text>
                                         </Modal.Body>
                                         

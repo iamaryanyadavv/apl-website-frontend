@@ -16,6 +16,8 @@ import TeamRegistrationPage from './pages/TeamRegistrationPage/teamregistrationp
 import TeamPage from './pages/TeamPage/team';
 import EventsPage from './pages/EventsPage/eventspage';
 import APL7LandingPage from './pages/APL7Page/apl7landingpage';
+import APL7PlayersPage from './pages/APL7Page/apl7playerspage.js';
+import APL7TeamPage from './pages/APL7Page/apl7teamspage.js';
 import APL6LandingPage from './pages/APL6Page/apl6landingpage';
 import APL6PlayersPage from './pages/APL6Page/apl6playerspage';
 import APL6TeamPage from './pages/APL6Page/apl6teamspage';
@@ -82,6 +84,8 @@ function App() {
 
                 {/* APL 7 */}
                 <Route exact path="/seasons/apl7" element={<APL7LandingPage/>} />
+                <Route exact path="/seasons/apl7/players" element={<APL7PlayersPage/>} />
+                <Route exact path="/seasons/apl7/teams" element={<APL7TeamPage/>} />
 
                 <Route exact path="/roadtoapl" element={<RoadToAPL/>} />
                 <Route exact path="/slots" element={<SlotBookingPage/>} />

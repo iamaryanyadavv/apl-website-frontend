@@ -4,12 +4,13 @@ import React from "react";
 import FIFA from '../../../assets/images/PS5Controller2.JPG';
 import Foosball from '../../../assets/images/Foosball1.jpg';
 import AuctionPredictions from '../../../assets/images/AuctionPredictions.jpg';
+import Grey from '../../../assets/images/Grey.jpeg'
 
-export default function EventsContent () {
+export default function EventsContent() {
 
-    const observer = new IntersectionObserver((entries)=>{
-        entries.forEach((entry)=>{
-            if (entry.isIntersecting){
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
                 entry.target.classList.add('show')
                 entry.target.classList.remove('hidden')
             } else {
@@ -19,10 +20,10 @@ export default function EventsContent () {
         })
     })
 
-    const observerLeft = new IntersectionObserver((entries)=>{
+    const observerLeft = new IntersectionObserver((entries) => {
         // console.log(entries)
-        entries.forEach((entry)=>{
-            if (entry.isIntersecting){
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
                 entry.target.classList.add('show')
                 entry.target.classList.remove('hidden-left')
             } else {
@@ -32,10 +33,10 @@ export default function EventsContent () {
         })
     })
 
-    const observerRight = new IntersectionObserver((entries)=>{
+    const observerRight = new IntersectionObserver((entries) => {
         // console.log(entries)
-        entries.forEach((entry)=>{
-            if (entry.isIntersecting){
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
                 entry.target.classList.add('show')
                 entry.target.classList.remove('hidden-right')
             } else {
@@ -46,241 +47,189 @@ export default function EventsContent () {
     })
 
     const hiddenElements = document.querySelectorAll('.hidden');
-    hiddenElements.forEach((el)=> observer.observe(el))
+    hiddenElements.forEach((el) => observer.observe(el))
 
     const hiddenLeftElements = document.querySelectorAll('.hidden-left');
-    hiddenLeftElements.forEach((el)=> observerLeft.observe(el))
+    hiddenLeftElements.forEach((el) => observerLeft.observe(el))
 
     const hiddenRightElements = document.querySelectorAll('.hidden-right');
-    hiddenRightElements.forEach((el)=> observerRight.observe(el))
+    hiddenRightElements.forEach((el) => observerRight.observe(el))
 
-    return(
+    return (
         <Grid.Container gap={4}
-        css={{
-            jc: 'center',
-            textAlign: 'center',
-            alignItems: 'center'
-        }}>
-            <Grid.Container 
             css={{
                 jc: 'center',
-                textAlign: 'center'
+                textAlign: 'center',
+                alignItems: 'center'
             }}>
-                <Grid className="hidden"
+            <Grid.Container
                 css={{
                     jc: 'center',
-                    textAlign: 'center',
-                    alignItems: 'center',
-                    padding: '24px'
+                    textAlign: 'center'
                 }}>
-                    <Col 
+
+                <Grid className="hidden"
                     css={{
-                        display: 'flex',
-                        flexDirection: 'column'
+                        jc: 'center',
+                        textAlign: 'center',
+                        alignItems: 'center',
+                        padding: '24px'
                     }}>
-                        <Image 
-                        
+                    <Col
                         css={{
-                            '@xsMin':{
-                                width: '300px',
-                                height: '300px',
-                                borderRadius: '20px'
-                            },
-                            '@xsMax':{
-                                width: '150px',
-                                height: '150px',
-                                borderRadius: '20px'
-                            },
-                            objectFit: 'cover'
-                        }}
-                        src={Foosball}/>
-                        <Text
-                        css={{
-                            fontSize: '$3xl',
-                            fontWeight: '$bold',
-                            borderStyle: 'solid',
-                            borderWidth: '0px 0px 2px 0px',
-                            borderColor: '$purple600',
-                            padding: '2%'
+                            display: 'flex',
+                            flexDirection: 'column'
                         }}>
-                            Foosball
+                        <Image
+                            css={{
+                                '@xsMin': {
+                                    width: '300px',
+                                    height: '300px',
+                                    borderRadius: '20px'
+                                },
+                                '@xsMax': {
+                                    width: '150px',
+                                    height: '150px',
+                                    borderRadius: '20px'
+                                },
+                                objectFit: 'cover'
+                            }}
+                            src={Grey} />
+                        <Text
+                            css={{
+                                fontSize: '$3xl',
+                                fontWeight: '$bold',
+                                borderStyle: 'solid',
+                                borderWidth: '0px 0px 2px 0px',
+                                borderColor: '$purple600',
+                                padding: '2%'
+                            }}>
+                            Scavenger Hunt
                         </Text>
                         <Text
-                        css={{
-                            fontSize: '$2xl',
-                            fontWeight: '$semibold',
-                            padding: '2%'
-                        }}>
-                            16th March, 2023
+                            css={{
+                                fontSize: '$2xl',
+                                fontWeight: '$semibold',
+                                padding: '2%'
+                            }}>
+                            8th April, 2023
                         </Text>
                     </Col>
                 </Grid>
 
-
                 <Grid className="hidden"
-                css={{
-                    jc: 'center',
-                    textAlign: 'center',
-                    alignItems: 'center',
-                    padding: '24px'
-                }}>
-                    <Col 
                     css={{
-                        display: 'flex',
-                        flexDirection: 'column'
+                        jc: 'center',
+                        textAlign: 'center',
+                        alignItems: 'center',
+                        padding: '24px'
                     }}>
-                    <Image 
+                    <Col
                         css={{
-                            '@xsMin':{
-                                width: '300px',
-                                height: '300px',
-                                borderRadius: '20px'
-                            },
-                            '@xsMax':{
-                                width: '150px',
-                                height: '150px',
-                                borderRadius: '20px'
-                            },
-                            objectFit: 'cover'
-                        }}
-                        src={FIFA}/>
-                        <Text
-                        css={{
-                            fontSize: '$3xl',
-                            fontWeight: '$bold',
-                            borderStyle: 'solid',
-                            borderWidth: '0px 0px 2px 0px',
-                            borderColor: '$purple600',
-                            padding: '2%'
+                            display: 'flex',
+                            flexDirection: 'column'
                         }}>
-                            FIFA 2v2s
+                        <Image
+                            css={{
+                                '@xsMin': {
+                                    width: '300px',
+                                    height: '300px',
+                                    borderRadius: '20px'
+                                },
+                                '@xsMax': {
+                                    width: '150px',
+                                    height: '150px',
+                                    borderRadius: '20px'
+                                },
+                                objectFit: 'cover'
+                            }}
+                            src={Grey} />
+                        <Text
+                            css={{
+                                fontSize: '$3xl',
+                                fontWeight: '$bold',
+                                borderStyle: 'solid',
+                                borderWidth: '0px 0px 2px 0px',
+                                borderColor: '$purple600',
+                                padding: '2%'
+                            }}>
+                            Sepaktakraw
                         </Text>
                         <Text
-                        css={{
-                            fontSize: '$2xl',
-                            fontWeight: '$semibold',
-                            padding: '2%'
-                        }}>
-                            22nd March, 2023
+                            css={{
+                                fontSize: '$2xl',
+                                fontWeight: '$semibold',
+                                padding: '2%'
+                            }}>
+                            10th April, 2023
                         </Text>
                     </Col>
                 </Grid>
 
-                
-                {/* <Grid
-                css={{
-                    jc: 'center',
-                    textAlign: 'center',
-                    alignItems: 'center',
-                    padding: '24px'
-                }}>
-                    <Col 
-                    css={{
-                        display: 'flex',
-                        flexDirection: 'column'
-                    }}>
-                        <Image 
-                        css={{
-                            '@xsMin':{
-                                width: '300px',
-                                height: '300px',
-                                borderRadius: '20px'
-                            },
-                            '@xsMax':{
-                                width: '150px',
-                                height: '150px',
-                                borderRadius: '20px'
-                            },
-                            objectFit: 'cover'
-                        }}
-                        src={Inclusivity}/>
-                        <Text
-                        css={{
-                            fontSize: '$3xl',
-                            fontWeight: '$bold',
-                            borderStyle: 'solid',
-                            borderWidth: '0px 0px 2px 0px',
-                            borderColor: '$purple600',
-                            padding: '2%'
-                        }}>
-                            Inclusivity
-                        </Text>
-                        <Text
-                        css={{
-                            fontSize: '$2xl',
-                            fontWeight: '$semibold',
-                            padding: '2%'
-                        }}>
-                            30th March, 2023
-                        </Text>
-                    </Col>
-                </Grid> */}
-
-                        
                 <Grid className="hidden"
-                css={{
-                    jc: 'center',
-                    textAlign: 'center',
-                    alignItems: 'center',
-                    padding: '24px'
-                }}>
-                    <Col 
                     css={{
-                        display: 'flex',
-                        flexDirection: 'column'
+                        jc: 'center',
+                        textAlign: 'center',
+                        alignItems: 'center',
+                        padding: '24px'
                     }}>
-                        <Image 
+                    <Col
                         css={{
-                            '@xsMin':{
-                                width: '300px',
-                                height: '300px',
-                                borderRadius: '20px'
-                            },
-                            '@xsMax':{
-                                width: '150px',
-                                height: '150px',
-                                borderRadius: '20px'
-                            },
-                            objectFit: 'cover'
-                        }}
-                        src={AuctionPredictions}/>
-                        <Text
-                        css={{
-                            fontSize: '$3xl',
-                            fontWeight: '$bold',
-                            borderStyle: 'solid',
-                            borderWidth: '0px 0px 2px 0px',
-                            borderColor: '$purple600',
-                            padding: '2%'
+                            display: 'flex',
+                            flexDirection: 'column'
                         }}>
-                            Predictions
+                        <Image
+
+                            css={{
+                                '@xsMin': {
+                                    width: '300px',
+                                    height: '300px',
+                                    borderRadius: '20px'
+                                },
+                                '@xsMax': {
+                                    width: '150px',
+                                    height: '150px',
+                                    borderRadius: '20px'
+                                },
+                                objectFit: 'cover'
+                            }}
+                            src={Grey} />
+                        <Text
+                            css={{
+                                fontSize: '$3xl',
+                                fontWeight: '$bold',
+                                borderStyle: 'solid',
+                                borderWidth: '0px 0px 2px 0px',
+                                borderColor: '$purple600',
+                                padding: '2%'
+                            }}>
+                            Football Relay
                         </Text>
                         <Text
-                        css={{
-                            fontSize: '$2xl',
-                            fontWeight: '$semibold',
-                            padding: '2%'
-                        }}>
-                            2nd April, 2023
+                            css={{
+                                fontSize: '$2xl',
+                                fontWeight: '$semibold',
+                                padding: '2%'
+                            }}>
+                            15th April, 2023
                         </Text>
                     </Col>
                 </Grid>
-
 
             </Grid.Container>
 
 
-            <Grid.Container gap={0} 
-            css={{
-                jc: 'center',
-                textAlign: 'center',
-                alignItems: 'center',
-                padding: '20px 0px 40px 0px'
-            }}>
+            <Grid.Container gap={0}
+                css={{
+                    jc: 'center',
+                    textAlign: 'center',
+                    alignItems: 'center',
+                    padding: '20px 0px 40px 0px'
+                }}>
                 <Grid className="hidden">
                     <Button className="mini-events-btn"
-                    auto shadow rounded>
-                        <a href="/events" className="mini-events-btn-2">Promo Events </a> 
+                        auto shadow rounded>
+                        <a href="/events" className="mini-events-btn-2">Promo Events </a>
                     </Button>
                 </Grid>
             </Grid.Container>
