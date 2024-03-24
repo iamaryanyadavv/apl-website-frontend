@@ -342,6 +342,7 @@ export default function TRegForm() {
         const ImageData = new FormData();
         ImageData.append('file', imagedata, imageName);
         if(ImageData){
+            console.log('team logo sending')
             await fetch('https://aplapi.onrender.com/registration/teamlogo',{
                 method: 'POST',
                 headers:{Value: "multipart/form-data"},
