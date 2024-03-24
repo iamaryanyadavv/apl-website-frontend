@@ -9,11 +9,11 @@ import { useTicker } from "../../hooks";
 export default function PRegForm(){
 
     const batchItems = [
+        { key: "UG2023", name: "UG 2023" },
         { key: "UG25", name: "UG 2025" },
         { key: "UG24", name: "UG 2024" },
         { key: "UG23", name: "UG 2023" },
-        { key: "UG22", name: "UG 2022" },
-        { key: "ASP23", name: "ASP 2023" },
+        { key: "ASP24", name: "ASP 2024" },
         { key: "YIF", name: "YIF" },
         { key: "MA", name: "MA" },
         { key: "Faculty/Staff", name: "Faculty/Staff" },
