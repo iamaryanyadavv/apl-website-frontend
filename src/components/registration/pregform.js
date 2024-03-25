@@ -1254,6 +1254,17 @@ export default function PRegForm(){
                                         )}
                                     </Dropdown.Menu>
                                 </Dropdown>
+                                {gender!=="Male" && gender!=="" && <Text
+                                css={{
+                                    jc:'center',
+                                    textAlign: 'center',
+                                    paddingBottom: '2%',
+                                    fontSize: '$sm',
+                                    color:"White",
+
+                                }}><a href="https://chat.whatsapp.com/L1NkbNm0h9M2OPjuX9u65Z">NC Men WhatsApp Group</a>
+                                </Text>}
+                                
                             </Grid>
                         </Grid.Container>
 
