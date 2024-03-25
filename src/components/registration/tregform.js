@@ -3629,7 +3629,7 @@ export default function TRegForm() {
                                             }}>
                                                 You have been successfully registered as {teamname}
                                             </Text>
-                                            <Text 
+                                            {/* <Text 
                                             css={{
                                                 textAlign: 'center',
                                                 fontSize: '$xl',
@@ -3646,6 +3646,15 @@ export default function TRegForm() {
                                                 color: 'white',
                                             }}>
                                                 <a href="/seasons/apl7/teams">APL 7.0 Teams</a>
+                                            </Text> */}
+                                            <Text 
+                                            css={{
+                                                textAlign: 'center',
+                                                fontSize: '$xl',
+                                                fontWeight: '$semibold',
+                                                color: 'white',
+                                            }}>
+                                                You can join the APL Players WhatsApp Group here: <a href="https://chat.whatsapp.com/HR76kTG23OcF1JPBZw7OUD">APL 7.0 Team Owners</a>
                                             </Text>
                                         </Modal.Body>
                                         
