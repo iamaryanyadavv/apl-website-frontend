@@ -1909,7 +1909,7 @@ export default function TRegForm() {
                                         fontSize: '$xl',
                                         fontWeight: '$medium'
                                     }}>
-                                        Please pay the amount (&#x20B9;6500) to Uday Srivastava, via PayTM or GPay.
+                                        Please pay the amount (&#x20B9;250) to Irya Khanna, via PayTM or GPay.
                                     </Text>
                                     <Text 
                                     css={{
@@ -1918,7 +1918,7 @@ export default function TRegForm() {
                                         fontSize: '$xl',
                                         fontWeight: '$medium'
                                     }}>
-                                        (8447906230, UPI ID: 8447906230@paytm)
+                                        (9930189038, UPI ID: irya.khanna@okhdfcbank)
                                     </Text>
                                 </Col>
                                 <Grid>
