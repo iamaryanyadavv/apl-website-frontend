@@ -1262,7 +1262,7 @@ export default function PRegForm(){
                                     fontSize: '$sm',
                                     color:"White",
 
-                                }}><a href="https://chat.whatsapp.com/L1NkbNm0h9M2OPjuX9u65Z">NC Men WhatsApp Group</a>
+                                }}><a className="ncmen" href="https://chat.whatsapp.com/L1NkbNm0h9M2OPjuX9u65Z">Link for NC Men's Group</a>
                                 </Text>}
                                 
                             </Grid>

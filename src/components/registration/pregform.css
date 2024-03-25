@@ -4,6 +4,11 @@
     opacity: 1;
 }
 
+.ncmen{
+  color: white;
+  text-decoration: underline;
+}
+
 .photobtn{
     width: 210px;
 }
