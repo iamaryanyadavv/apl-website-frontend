@@ -423,7 +423,7 @@ export default function TRegForm() {
             if(data.values)
             {
                 console.log(data.values.length)
-                if(data.values.length>=24)
+                if(data.values.length>=19)
                 {
                     console.log('reg is full...')
                     setIsRegFull(true)
