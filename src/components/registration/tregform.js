@@ -381,7 +381,8 @@ export default function TRegForm() {
                 }
                 if(isSignedin===true){
                     setLoginLoader(false)
-                    setSignedIn(true)
+                    // setSignedIn(true) REGISTRATION CLOSED
+                    setSignedIn(false)
                     document.getElementById("GoogleButton").hidden = true;
                     setUser(userObject);
                     SetManageremail(userObject.email);
@@ -401,7 +402,8 @@ export default function TRegForm() {
             }
             else if(!data.values){
                 setLoginLoader(false);
-                setSignedIn(true)
+                // setSignedIn(true) REGISTRATION CLOSED
+                setSignedIn(false)       
                 setAlreadyRegistered(false)
                 document.getElementById("GoogleButton").hidden = true;
                 setUser(userObject);
@@ -967,7 +969,6 @@ export default function TRegForm() {
                         fontWeight: '$semibold',
                         paddingBottom: '1.5%'
                     }}>
-                        APL 7.0 TEAM REGISTRATION
                     </Text>
                     <Text showIn={'xs'}
                     css={{
@@ -976,7 +977,6 @@ export default function TRegForm() {
                         fontWeight: '$semibold',
                         padding: '10% 5%'
                     }}>
-                        APL 7.0 TEAM REGISTRATION
                     </Text>
                     <Text hideIn={'xs'}
                     css={{
@@ -985,7 +985,7 @@ export default function TRegForm() {
                         fontWeight: '$medium',
                         padding: '0% 20% 2% 20%'
                     }}>
-                        Fill out the form* below and pay the required registration fee to complete your registration!
+                        Team Registration is Over... See you next year!
                     </Text>
                     <Text showIn={'xs'}
                     css={{
@@ -994,7 +994,7 @@ export default function TRegForm() {
                         fontWeight: '$medium',
                         paddingBottom: '5%'
                     }}>
-                        Fill out the form* below and pay the required registration fee to complete your registration!
+                        Team Registration is Over... See you next year!
                     </Text>
 
                 </Grid.Container>
