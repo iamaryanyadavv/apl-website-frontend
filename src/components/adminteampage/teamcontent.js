@@ -19,6 +19,8 @@ import Adviti from '../../assets/avatars/AdminTeam/Adviti.png'
 import Aman from '../../assets/avatars/AdminTeam/Aman.jpeg'
 import Athu from '../../assets/avatars/AdminTeam/Athu.jpg'
 import Naddy from '../../assets/avatars/AdminTeam/Nandini.jpg'
+import Riya from '../../assets/avatars/AdminTeam/riyagupta.png'
+
 
 
 
@@ -773,6 +775,73 @@ export default function TeamContent(){
                                     </Text>
                                     <Text>
                                         <a href="https://www.instagram.com/angirakanwar/">@angirakanwar</a>
+                                    </Text>
+                                </Col>
+                            </Grid>
+
+                            <Grid>
+                                <Col 
+                                css={{
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    jc: 'center',
+                                    alignItems: 'center'
+                                }}>
+                                    <Image 
+                                    css={{
+                                        '@xsMin':{
+                                            width: '200px',
+                                            height: '200px',
+                                            borderRadius: '100px'
+                                        },
+                                        '@xsMax':{
+                                            width: '100px',
+                                            height: '100px',
+                                            borderRadius: '75px'
+                                        },
+                                        objectFit: 'cover'
+                                    }}  src={Riya} />
+                                    <Text hideIn={'xs'}
+                                    css={{
+                                        jc: 'center',
+                                        textAlign: 'center',
+                                        fontSize: '$2xl',
+                                        fontWeight: '$semibold',
+                                        paddingTop: '5px'
+                                    }}> 
+                                        Riya Gupta
+                                    </Text>
+                                    <Text showIn={'xs'}
+                                    css={{
+                                        jc: 'center',
+                                        textAlign: 'center',
+                                        fontSize: '$sm',
+                                        fontWeight: '$semibold',
+                                        paddingTop: '5px'
+                                    }}> 
+                                        Riya Gupta
+                                    </Text>
+
+                                    <Text hideIn={'xs'}
+                                    css={{
+                                        jc: 'center',
+                                        textAlign: 'center',
+                                        fontSize: '$xl',
+                                        color: '$gray800'
+                                    }}>
+                                        OC Member
+                                    </Text>
+                                    <Text showIn={'xs'}
+                                    css={{
+                                        jc: 'center',
+                                        textAlign: 'center',
+                                        fontSize: '$sm',
+                                        color: '$gray800'
+                                    }}>
+                                        OC Member
+                                    </Text>
+                                    <Text>
+                                        <a target="_blank" href="https://www.instagram.com/riyaguptax/">@riyaguptax</a>
                                     </Text>
                                 </Col>
                             </Grid>
