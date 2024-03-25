@@ -1909,7 +1909,7 @@ export default function TRegForm() {
                                         fontSize: '$xl',
                                         fontWeight: '$medium'
                                     }}>
-                                        Please pay the amount (&#x20B9;250) to Irya Khanna, via PayTM or GPay.
+                                        Please pay the amount (&#x20B9;6500) to Irya Khanna, via PayTM or GPay.
                                     </Text>
                                     <Text 
                                     css={{
