@@ -12,6 +12,8 @@ import Uday from '../../assets/avatars/AdminTeam/director_uday.jpg'
 import Zahaan from '../../assets/avatars/AdminTeam/webteam_zahaan.jpg'
 import IryaKhanna from '../../assets/avatars/AdminTeam/oc_iryakhanna.jpg'
 import Abhay from '../../assets/avatars/AdminTeam/oc_abhay.jpeg'
+import Manya from '../../assets/avatars/AdminTeam/manya.jpg'
+
 
 export default function TeamContent(){
     return(
@@ -50,7 +52,7 @@ export default function TeamContent(){
                                     borderRadius: '100px'
                                 },
                                 objectFit: 'cover'
-                            }}  src={DhrthiBhat}  />
+                            }}  src={IryaKhanna}  />
                             <Text hideIn={'xs'}
                             css={{
                                 jc: 'center',
@@ -59,7 +61,7 @@ export default function TeamContent(){
                                 fontWeight: '$semibold',
                                 paddingTop: '5px'
                             }}> 
-                                Dhrthi Bhat
+                                Irya Khanna
                             </Text>
                             <Text showIn={'xs'}
                             css={{
@@ -69,7 +71,7 @@ export default function TeamContent(){
                                 fontWeight: '$semibold',
                                 paddingTop: '5px'
                             }}> 
-                                Dhrthi Bhat
+                                Irya Khanna 
                             </Text>
 
                             <Text hideIn={'xs'}
@@ -121,7 +123,7 @@ export default function TeamContent(){
                                     borderRadius: '100px'
                                 },
                                 objectFit: 'cover'
-                            }}   src={Uday}/>
+                            }}   src={Manya}/>
                             <Text hideIn={'xs'}
                             css={{
                                 jc: 'center',
@@ -130,7 +132,7 @@ export default function TeamContent(){
                                 fontWeight: '$semibold',
                                 paddingTop: '5px'
                             }}> 
-                                Uday Srivastava
+                                Manya Malhotra
                             </Text>
                             <Text showIn={'xs'}
                             css={{
@@ -140,7 +142,7 @@ export default function TeamContent(){
                                 fontWeight: '$semibold',
                                 paddingTop: '5px'
                             }}> 
-                                Uday Srivastava
+                                Malhotra
                             </Text>
 
                             <Text hideIn={'xs'}
