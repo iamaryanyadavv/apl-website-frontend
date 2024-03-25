@@ -63,6 +63,7 @@ export default function TRegForm() {
     const [owner5phonestatus, setOwner5phonestatus] = useState('')
 
     const [signedin, setSignedIn] = useState(false);
+
     const [initialImage, setInitialImage] = useState('');
     const [finalImage, setFinalImage] = useState('');
 
@@ -956,8 +957,8 @@ export default function TRegForm() {
 
         {isTimeUp && 
             <div>
-                {/* Heading */}
-                <Grid.Container gap={2}
+                 {/* Heading */}
+                 <Grid.Container gap={2}
                 css={{
                     jc: 'center',
                     alignItems: 'center'
@@ -969,6 +970,7 @@ export default function TRegForm() {
                         fontWeight: '$semibold',
                         paddingBottom: '1.5%'
                     }}>
+                        APL 7.0 TEAM REGISTRATION
                     </Text>
                     <Text showIn={'xs'}
                     css={{
@@ -977,6 +979,7 @@ export default function TRegForm() {
                         fontWeight: '$semibold',
                         padding: '10% 5%'
                     }}>
+                        APL 7.0 TEAM REGISTRATION
                     </Text>
                     <Text hideIn={'xs'}
                     css={{
@@ -985,7 +988,7 @@ export default function TRegForm() {
                         fontWeight: '$medium',
                         padding: '0% 20% 2% 20%'
                     }}>
-                        Team Registration is Over... See you next year!
+                        Fill out the form* below and pay the required registration fee to complete your registration!
                     </Text>
                     <Text showIn={'xs'}
                     css={{
@@ -994,7 +997,7 @@ export default function TRegForm() {
                         fontWeight: '$medium',
                         paddingBottom: '5%'
                     }}>
-                        Team Registration is Over... See you next year!
+                        Fill out the form* below and pay the required registration fee to complete your registration!
                     </Text>
 
                 </Grid.Container>
@@ -1124,7 +1127,7 @@ export default function TRegForm() {
                                         css={{
                                             paddingTop: '5px'
                                         }}>
-                                            *This form is open to only those affiliated with Ashoka University.
+                                            {/* *This form is open to only those affiliated with Ashoka University. */}
                                         </Text>
                                     </Grid>
                                     
@@ -1146,7 +1149,7 @@ export default function TRegForm() {
                                         css={{
                                             paddingBottom: '15px'
                                         }}>
-                                            Please login via your @ashoka.edu.in email ID for form access.
+                                            {/* Please login via your @ashoka.edu.in email ID for form access. */}
                                         </Text>
                                     </Grid>
                                     
