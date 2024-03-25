@@ -3654,7 +3654,7 @@ export default function TRegForm() {
                                                 fontWeight: '$semibold',
                                                 color: 'white',
                                             }}>
-                                                You can join the APL Players WhatsApp Group here: <a href="https://chat.whatsapp.com/HR76kTG23OcF1JPBZw7OUD">APL 7.0 Team Owners</a>
+                                                You can join the APL Players WhatsApp Group here: <a target="_blank" href="https://chat.whatsapp.com/HR76kTG23OcF1JPBZw7OUD">APL 7.0 Team Owners</a>
                                             </Text>
                                         </Modal.Body>
                                         

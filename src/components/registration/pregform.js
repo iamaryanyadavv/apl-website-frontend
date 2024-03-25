@@ -2122,7 +2122,7 @@ export default function PRegForm(){
                                                 fontWeight: '$semibold',
                                                 color: 'white',
                                             }}>
-                                                You can join the APL Players WhatsApp Group here: <a href="https://chat.whatsapp.com/DGcLtNxXOcjKJ1eoiahlcu">APL 7.0 Players</a>
+                                                You can join the APL Players WhatsApp Group here: <a target="_blank" href="https://chat.whatsapp.com/DGcLtNxXOcjKJ1eoiahlcu">APL 7.0 Players</a>
                                             </Text>
                                             {/* <Text 
                                             css={{
