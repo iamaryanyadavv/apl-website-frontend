@@ -62,7 +62,10 @@ function App() {
 
                 <Route exact path="/" element={<Home/>} />
 
-                <Route exact path="/fanup" element={<FanUpPage/>} />
+                {/* <Route exact path="/fanup" element={<FanUpPage/>} /> */}
+                <Route exact path="/fanup" element={<ComingSoon/>} />
+
+                
 
                 <Route exact path="/seasons" element={<SeasonsPage/>} />
 
@@ -83,12 +86,18 @@ function App() {
                 <Route exact path="/seasons/apl6/gallery" element={<APL6GalleryPage/>} />
 
                 {/* APL 7 */}
-                <Route exact path="/seasons/apl7" element={<APL7LandingPage/>} />
+                {/* <Route exact path="/seasons/apl7" element={<APL7LandingPage/>} /> */}
+                <Route exact path="/seasons/apl7" element={<ComingSoon/>} />
+
                 <Route exact path="/seasons/apl7/players" element={<APL7PlayersPage/>} />
                 <Route exact path="/seasons/apl7/teams" element={<APL7TeamPage/>} />
 
-                <Route exact path="/roadtoapl" element={<RoadToAPL/>} />
-                <Route exact path="/slots" element={<SlotBookingPage/>} />
+                {/* <Route exact path="/roadtoapl" element={<RoadToAPL/>} /> */}
+                <Route exact path="/roadtoapl" element={<ComingSoon/>} />
+
+                {/* <Route exact path="/slots" element={<SlotBookingPage/>} /> */}
+                <Route exact path="/slots" element={<ComingSoon/>} />
+
 
                 {/* Registration */}
                 <Route exact path="/registration" element={<RegistrationPage/>} />
