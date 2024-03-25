@@ -2106,7 +2106,7 @@ export default function PRegForm(){
                                             }}>
                                                 You have been successfully registered as {User.name}
                                             </Text>
-                                            <Text 
+                                            {/* <Text 
                                             css={{
                                                 textAlign: 'center',
                                                 fontSize: '$xl',
@@ -2114,8 +2114,17 @@ export default function PRegForm(){
                                                 color: 'white',
                                             }}>
                                                 You can check out the full list of APL7.0 registered players here
-                                            </Text>
+                                            </Text> */}
                                             <Text 
+                                            css={{
+                                                textAlign: 'center',
+                                                fontSize: '$xl',
+                                                fontWeight: '$semibold',
+                                                color: 'white',
+                                            }}>
+                                                You can join the APL Players WhatsApp Group here: <a href="https://chat.whatsapp.com/DGcLtNxXOcjKJ1eoiahlcu">APL 7.0 Players</a>
+                                            </Text>
+                                            {/* <Text 
                                             css={{
                                                 textAlign: 'center',
                                                 fontSize: '$lg',
@@ -2123,7 +2132,7 @@ export default function PRegForm(){
                                                 color: 'white',
                                             }}>
                                                 <a href="/seasons/apl7/players">APL 7.0 Registered Players</a>
-                                            </Text>
+                                            </Text> */}
                                         </Modal.Body>
                                         
                                 </Modal>
