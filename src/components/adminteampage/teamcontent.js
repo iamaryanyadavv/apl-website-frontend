@@ -1052,7 +1052,7 @@ export default function TeamContent(){
                                         Developer
                                     </Text>
                                     <Text>
-                                        <a target="_blank" href="https://zahaanshapoorjee.netlify.app/">zahaanshaporjee.netlify.app</a>
+                                        <a target="_blank" href="https://main--zahaan.netlify.app/">https://main--zahaan.netlify.app/</a>
                                     </Text>
                                 </Col>
                             </Grid>
