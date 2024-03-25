@@ -43,7 +43,8 @@ export default function Prizes () {
                                 textAlign: 'center',
                                 fontWeight: '$semibold',
                                 padding: '4% 10px 0px 10px',
-                                color: "$yellow600"
+                                color: "$yellow600",
+                                fontFamily:"Maven Pro ExtraBold"
                             }}>
                                     Prizes
                             </Text>
@@ -53,7 +54,8 @@ export default function Prizes () {
                                 textAlign: 'center',
                                 fontWeight: '$semibold',
                                 padding: '15% 10px 0px 10px',
-                                color: "$yellow600"
+                                color: "$yellow600",
+                                fontFamily:"Maven Pro ExtraBold"
                             }}>
                                     Prizes
                             </Text>
@@ -70,7 +72,8 @@ export default function Prizes () {
                 css={{
                     fontSize: '$lg',
                     color: '$gray800',
-                    paddingBottom: '50px'
+                    paddingBottom: '50px',
+                    fontFamily:"Maven Pro"
                 }}>
                     Win these cash prizes at APL 6.0!
                 </Text>
@@ -78,7 +81,8 @@ export default function Prizes () {
                 css={{
                     fontSize: '$lg',
                     color: '$gray800',
-                    paddingBottom: '40px'
+                    paddingBottom: '40px',
+                    fontFamily:"Maven Pro"
                 }}>
                     Win these cash prizes at APL 6.0!
                 </Text>
@@ -102,7 +106,8 @@ export default function Prizes () {
                             fontSize: '$2xl',
                             color: 'White',
                             fontWeight: '$medium',
-                            paddingBottom: '10px'
+                            paddingBottom: '10px',
+                            fontFamily:"Maven Pro"
                         }}>
                             The Big One
                         </Text>
@@ -125,7 +130,8 @@ export default function Prizes () {
                                 <Text
                                 css={{
                                     fontSize: '$6xl',
-                                    fontWeight: '$bold'
+                                    fontWeight: '$bold',
+                                    fontFamily:"Maven Pro"
                                 }}>
                                     70,000
                                 </Text>
@@ -136,6 +142,7 @@ export default function Prizes () {
                                 fontWeight: '$medium',
                                 color: '#FAE481',
                                 paddingBottom: '10%',
+                                fontFamily:"Maven Pro"
                             }}>
                                 & Bragging Rights
                             </Text>
@@ -170,7 +177,8 @@ export default function Prizes () {
                                 <Text
                                 css={{
                                     fontSize: '$5xl',
-                                    fontWeight: '$bold'
+                                    fontWeight: '$bold',
+                                    fontFamily:"Maven Pro"
                                 }}>
                                     35,000
                                 </Text>
@@ -181,6 +189,7 @@ export default function Prizes () {
                                 fontWeight: '$medium',
                                 color: 'rgb(157 171 187)',
                                 paddingBottom: '10%',
+                                fontFamily:"Maven Pro"
                             }}>
                                 & Social Media Followers
                             </Text>
@@ -200,7 +209,8 @@ export default function Prizes () {
                             fontSize: '$md',
                             color: 'White',
                             fontWeight: '$medium',
-                            paddingBottom: '10px'
+                            paddingBottom: '10px',
+                            fontFamily:"Maven Pro"
                         }}>
                             Rager Worthy
                         </Text>
@@ -223,7 +233,8 @@ export default function Prizes () {
                                 <Text
                                 css={{
                                     fontSize: '$4xl',
-                                    fontWeight: '$bold'
+                                    fontWeight: '$bold',
+                                    fontFamily:"Maven Pro"
                                 }}>
                                     15,000
                                 </Text>

@@ -116,6 +116,7 @@ export default function MeetTeamContent () {
                             css={{
                                 fontSize: '$2xl',
                                 fontWeight: '$medium',
+                                fontFamily:"Maven Pro"
 
                             }}>
                                 From APL Directors
@@ -124,6 +125,7 @@ export default function MeetTeamContent () {
                             css={{
                                 fontSize: '$lg',
                                 fontWeight: '$medium',
+                                fontFamily:"Maven Pro"
 
                             }}>
                                 From APL Directors
@@ -141,6 +143,7 @@ export default function MeetTeamContent () {
                             css={{
                                 fontSize: '$2xl',
                                 fontWeight: '$medium',
+                                fontFamily:"Maven Pro"
 
                             }}>
                                 to Organising Committee
@@ -149,6 +152,7 @@ export default function MeetTeamContent () {
                             css={{
                                 fontSize: '$lg',
                                 fontWeight: '$medium',
+                                fontFamily:"Maven Pro"
 
                             }}>
                                 to Organising Committee
@@ -166,6 +170,7 @@ export default function MeetTeamContent () {
                             css={{
                                 fontSize: '$2xl',
                                 fontWeight: '$medium',
+                                fontFamily:"Maven Pro"
 
                             }}>
                                 to Website Develepors.
@@ -174,6 +179,7 @@ export default function MeetTeamContent () {
                             css={{
                                 fontSize: '$lg',
                                 fontWeight: '$medium',
+                                fontFamily:"Maven Pro"
 
                             }}>
                                 to Website Develepors.
@@ -191,6 +197,7 @@ export default function MeetTeamContent () {
                             css={{
                                 fontSize: '$2xl',
                                 fontWeight: '$medium',
+                                fontFamily:"Maven Pro"
 
                             }}>
                                 We have everyone here!
@@ -199,6 +206,7 @@ export default function MeetTeamContent () {
                             css={{
                                 fontSize: '$lg',
                                 fontWeight: '$medium',
+                                fontFamily:"Maven Pro"
 
                             }}>
                                 We have everyone here!

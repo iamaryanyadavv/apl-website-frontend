@@ -103,7 +103,8 @@ export default function EventsContent() {
                                 borderStyle: 'solid',
                                 borderWidth: '0px 0px 2px 0px',
                                 borderColor: '$purple600',
-                                padding: '2%'
+                                padding: '2%',
+                                fontFamily:"Maven Pro ExtraBold"
                             }}>
                             Scavenger Hunt
                         </Text>
@@ -111,7 +112,8 @@ export default function EventsContent() {
                             css={{
                                 fontSize: '$2xl',
                                 fontWeight: '$semibold',
-                                padding: '2%'
+                                padding: '2%',
+                                fontFamily:"Maven Pro"
                             }}>
                             8th April, 2023
                         </Text>
@@ -152,7 +154,8 @@ export default function EventsContent() {
                                 borderStyle: 'solid',
                                 borderWidth: '0px 0px 2px 0px',
                                 borderColor: '$purple600',
-                                padding: '2%'
+                                padding: '2%',
+                                fontFamily:"Maven Pro ExtraBold"
                             }}>
                             Sepaktakraw
                         </Text>
@@ -160,7 +163,8 @@ export default function EventsContent() {
                             css={{
                                 fontSize: '$2xl',
                                 fontWeight: '$semibold',
-                                padding: '2%'
+                                padding: '2%',
+                                fontFamily:"Maven Pro"
                             }}>
                             10th April, 2023
                         </Text>
@@ -202,7 +206,8 @@ export default function EventsContent() {
                                 borderStyle: 'solid',
                                 borderWidth: '0px 0px 2px 0px',
                                 borderColor: '$purple600',
-                                padding: '2%'
+                                padding: '2%',
+                                fontFamily:"Maven Pro ExtraBold"
                             }}>
                             Football Relay
                         </Text>
@@ -210,7 +215,8 @@ export default function EventsContent() {
                             css={{
                                 fontSize: '$2xl',
                                 fontWeight: '$semibold',
-                                padding: '2%'
+                                padding: '2%',
+                                fontFamily:"Maven Pro"
                             }}>
                             15th April, 2023
                         </Text>

@@ -39,13 +39,15 @@ export default function RegCards() {
                                     css={{
                                         textAlign: 'center',
                                         fontSize: '$4xl',
-                                        fontWeight: '$semibold'
+                                        fontWeight: '$semibold',
+                                        fontFamily:"Maven Pro"
                                     }}>Team Owner
                                 </Text>
                                 <Text
                                     css={{
                                         color: '#9E9E9E',
                                         textAlign: 'center',
+                                        fontFamily:"Maven Pro"
                                     }}>
                                     I'm the next Jose Mourinho.
                                 </Text>
@@ -73,7 +75,8 @@ export default function RegCards() {
                             <Col>
                                 <Text
                                     css={{
-                                        textAlign: 'center'
+                                        textAlign: 'center',
+                                        fontFamily:"Maven Pro"
                                     }}>
                                     Register as a team owner and implement those modern tactics!
                                 </Text>
@@ -125,13 +128,15 @@ export default function RegCards() {
                                     css={{
                                         textAlign: 'center',
                                         fontSize: '$4xl',
-                                        fontWeight: '$semibold'
+                                        fontWeight: '$semibold',
+                                        fontFamily:"Maven Pro"
                                     }}>Team Player
                                 </Text>
                                 <Text
                                     css={{
                                         color: '#9E9E9E',
                                         textAlign: 'center',
+                                        fontFamily:"Maven Pro"
                                     }}>
                                     I'm the next Cristiano.
                                 </Text>
@@ -159,7 +164,8 @@ export default function RegCards() {
                             <Col>
                                 <Text
                                     css={{
-                                        textAlign: 'center'
+                                        textAlign: 'center',
+                                        fontFamily:"Maven Pro"
                                     }}>
                                     Register as a team player and lead your team to victory!
                                 </Text>
