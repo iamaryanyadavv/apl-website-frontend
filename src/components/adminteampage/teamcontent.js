@@ -15,9 +15,13 @@ import Abhay from '../../assets/avatars/AdminTeam/oc_abhay.jpeg'
 import Manya from '../../assets/avatars/AdminTeam/manya.jpg'
 import Vansh from '../../assets/avatars/AdminTeam/Vansh.jpg'
 import Angira from '../../assets/avatars/AdminTeam/Angira.jpg'
-import Adviti from '../../assets/avatars/AdminTeam/Adviti.jpg'
+import Adviti from '../../assets/avatars/AdminTeam/Adviti.png'
 import Aman from '../../assets/avatars/AdminTeam/Aman.jpeg'
 import Athu from '../../assets/avatars/AdminTeam/Athu.jpg'
+import Naddy from '../../assets/avatars/AdminTeam/Nandini.jpg'
+
+
+
 
 
 export default function TeamContent(){
@@ -237,6 +241,73 @@ export default function TeamContent(){
                             jc: 'center',
                             textAlign: 'center'
                         }}>
+
+<Grid>
+                                <Col 
+                                css={{
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    jc: 'center',
+                                    alignItems: 'center'
+                                }}>
+                                    <Image 
+                                    css={{
+                                        '@xsMin':{
+                                            width: '200px',
+                                            height: '200px',
+                                            borderRadius: '100px'
+                                        },
+                                        '@xsMax':{
+                                            width: '100px',
+                                            height: '100px',
+                                            borderRadius: '75px'
+                                        },
+                                        objectFit: 'cover'
+                                    }}  src={Naddy} />
+                                    <Text hideIn={'xs'}
+                                    css={{
+                                        jc: 'center',
+                                        textAlign: 'center',
+                                        fontSize: '$2xl',
+                                        fontWeight: '$semibold',
+                                        paddingTop: '5px'
+                                    }}> 
+                                        Nandini Chhabra
+                                    </Text>
+                                    <Text showIn={'xs'}
+                                    css={{
+                                        jc: 'center',
+                                        textAlign: 'center',
+                                        fontSize: '$sm',
+                                        fontWeight: '$semibold',
+                                        paddingTop: '5px'
+                                    }}> 
+                                        Nandini Chhabra
+                                    </Text>
+
+                                    <Text hideIn={'xs'}
+                                    css={{
+                                        jc: 'center',
+                                        textAlign: 'center',
+                                        fontSize: '$xl',
+                                        color: '$gray800'
+                                    }}>
+                                        OC Member
+                                    </Text>
+                                    <Text showIn={'xs'}
+                                    css={{
+                                        jc: 'center',
+                                        textAlign: 'center',
+                                        fontSize: '$sm',
+                                        color: '$gray800'
+                                    }}>
+                                        OC Member
+                                    </Text>
+                                    <Text>
+                                        <a href="https://www.instagram.com/zahaanxspj/">@nandinichhabra_</a>
+                                    </Text>
+                                </Col>
+                            </Grid>
                             <Grid>
                                 <Col 
                                 css={{
@@ -638,6 +709,74 @@ export default function TeamContent(){
                                     </Text>
                                 </Col>
                             </Grid>
+
+                            <Grid>
+                                <Col 
+                                css={{
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    jc: 'center',
+                                    alignItems: 'center'
+                                }}>
+                                    <Image 
+                                    css={{
+                                        '@xsMin':{
+                                            width: '200px',
+                                            height: '200px',
+                                            borderRadius: '100px'
+                                        },
+                                        '@xsMax':{
+                                            width: '100px',
+                                            height: '100px',
+                                            borderRadius: '75px'
+                                        },
+                                        objectFit: 'cover'
+                                    }}  src={Angira} />
+                                    <Text hideIn={'xs'}
+                                    css={{
+                                        jc: 'center',
+                                        textAlign: 'center',
+                                        fontSize: '$2xl',
+                                        fontWeight: '$semibold',
+                                        paddingTop: '5px'
+                                    }}> 
+                                        Angira Kanwar
+                                    </Text>
+                                    <Text showIn={'xs'}
+                                    css={{
+                                        jc: 'center',
+                                        textAlign: 'center',
+                                        fontSize: '$sm',
+                                        fontWeight: '$semibold',
+                                        paddingTop: '5px'
+                                    }}> 
+                                        Angira Kanwar
+                                    </Text>
+
+                                    <Text hideIn={'xs'}
+                                    css={{
+                                        jc: 'center',
+                                        textAlign: 'center',
+                                        fontSize: '$xl',
+                                        color: '$gray800'
+                                    }}>
+                                        OC Member
+                                    </Text>
+                                    <Text showIn={'xs'}
+                                    css={{
+                                        jc: 'center',
+                                        textAlign: 'center',
+                                        fontSize: '$sm',
+                                        color: '$gray800'
+                                    }}>
+                                        OC Member
+                                    </Text>
+                                    <Text>
+                                        <a href="https://www.instagram.com/angirakanwar/">@angirakanwar</a>
+                                    </Text>
+                                </Col>
+                            </Grid>
+                            
                         </Grid.Container>
 
                     </Grid>
