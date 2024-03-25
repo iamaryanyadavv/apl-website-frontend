@@ -19,13 +19,13 @@ export default function PRegForm(){
         { key: "Faculty/Staff", name: "Faculty/Staff" },
     ];
     const genderItems = [
-        { key: "Man", name: "Man" },
-        { key: "Non-Cis Man", name: "Non-Cis Man" },
+        { key: "Male", name: "Male" },
+        { key: "Female", name: "Female" },
+        { key: "Non Binary", name: "Non Binary" },
+        { key: "Trans Man", name: "Trans Man" },
+        { key: "Trans Woman", name: "Trans Woman" },
     ];
 
-    const genderItemsFULL = [
-        { key: "Non-Cis Man", name: "Non-Cis Man" }
-    ];
 
     const GeneralPosItems=[
         { key: "Goalkeeper", name: 'Goalkeeper'},
@@ -38,6 +38,10 @@ export default function PRegForm(){
         { key: 'Defender', name: 'Defender'},
         { key: 'Midfielder', name: 'Midfielder'},
         { key: 'Attacker', name: 'Attacker'}
+    ];
+
+    const genderItemsFULL = [
+        { key: "Non-Cis Man", name: "Non-Cis Man" }
     ];
     
     //12:30pm on 23rd March, 2023 GMT or 6pm on 23rd March, 2023 IST
@@ -364,7 +368,7 @@ export default function PRegForm(){
                 var count = 0;
                 for(var i = 0; i < data.values.length; i++)
                 {
-                    if(data.values[i][0]==='Man')
+                    if(data.values[i][0]==='Male')
                     {
                         count++;
                     }
