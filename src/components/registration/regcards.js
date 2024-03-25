@@ -89,7 +89,7 @@ export default function RegCards() {
                                         {/* <Popover>
                                             <Popover.Trigger> */}
                                         <Button href="/registration/team" css={{ color: 'White' }} shadow rounded bordered auto ghost>
-                                            <Link href={"/registration/team"}>
+                                            <Link css={{fontFamily:"Maven Pro"}} href={"/registration/team"}>
                                                 REGISTER
                                             </Link>
                                         </Button>
@@ -178,7 +178,7 @@ export default function RegCards() {
                                         {/* <Popover> */}
                                         {/* <Popover.Trigger> */}
                                         <Button css={{ color: 'White' }} shadow rounded bordered auto ghost>
-                                            <Link href={"/registration/player"}>REGISTER</Link>
+                                            <Link  css={{fontFamily:"Maven Pro"}} href={"/registration/player"}>REGISTER</Link>
                                         </Button>
                                         {/* </Popover.Trigger> */}
                                         {/* <Popover.Content>
