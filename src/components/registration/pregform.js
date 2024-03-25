@@ -1,9 +1,10 @@
-import { Grid, Input, Modal, Text, Dropdown, Button, Row, Col, Avatar, Loading} from "@nextui-org/react";
+import { Grid, Input, Modal, Text, Dropdown, Button, Row, Col, Avatar, Loading, Image} from "@nextui-org/react";
 import './pregform.css';
 import React, {useState, useEffect} from "react";
 import imageCompression from 'browser-image-compression';
 import jwt_decode from "jwt-decode";
 import { useTicker } from "../../hooks";
+import payment from "./paymentinfo.jpg"
 
 
 export default function PRegForm(){
@@ -1446,7 +1447,7 @@ export default function PRegForm(){
                                     fontSize: '$xl',
                                     fontWeight: '$medium'
                                 }}>
-                                    Please pay the amount (&#x20B9;250) to Uday Srivastava, via PayTM or GPay.
+                                    Please pay the amount (&#x20B9;250) to Irya Khanna, via PayTM or GPay.
                                 </Text>
                                 <Text 
                                 css={{
@@ -1455,8 +1456,9 @@ export default function PRegForm(){
                                     fontSize: '$xl',
                                     fontWeight: '$medium'
                                 }}>
-                                    (8447906230, UPI ID: 8447906230@paytm)
+                                    (9930189038, UPI ID: irya.khanna@okhdfcbank)
                                 </Text>
+                                {/* <Image src={payment} width={250} height={350} css={{marginTop:"$10", marginBottom:"$1", objectFit:"contain"}}></Image> */}
                             </Col>
                             <Grid>
                                 <input disabled={!signedin} onChange={(event)=>{setPaymentSC(event.target.files[0]); }} className="photobtn" animated={'true'} type='file' accept="image/*" required/>
