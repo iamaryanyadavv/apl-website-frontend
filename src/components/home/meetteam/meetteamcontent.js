@@ -5,6 +5,9 @@ import AryanYadav from '../../../assets/avatars/AdminTeam/webteam_aryanyadav.jpe
 import DhrthiBhat from '../../../assets/avatars/AdminTeam/director_dhrthibhat.jpg';
 import Uday from '../../../assets/avatars/AdminTeam/director_uday.jpg'
 import Zahaan from '../../../assets/avatars/AdminTeam/webteam_zahaan.jpg'
+import Irya from '../../../assets/avatars/AdminTeam/oc_iryakhanna.jpg'
+import Manya from '../../../assets/avatars/AdminTeam/manya.jpg'
+
 
 export default function MeetTeamContent () {
 
@@ -84,7 +87,7 @@ export default function MeetTeamContent () {
                                     borderRadius: '75px'
                                 },
                                 objectFit: 'cover'
-                            }}  src={DhrthiBhat} />
+                            }}  src={Irya} />
                         </Grid>
                         <Grid>
                         <Image 
@@ -100,7 +103,7 @@ export default function MeetTeamContent () {
                                     borderRadius: '75px'
                                 },
                                 objectFit: 'cover'
-                            }}  src={Uday} />
+                            }}  src={Manya} />
                         </Grid>
                     </Grid.Container>
                     <Grid.Container gap={0}
