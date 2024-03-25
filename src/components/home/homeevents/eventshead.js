@@ -42,7 +42,8 @@ export default function EventsHead () {
                             fontSize: '$7xl',
                             fontWeight: '$semibold',
                             textGradient: "45deg, $purple600 -20%, $pink600 100%",
-                            padding:'2.5% 10px 0px 10px'
+                            padding:'2.5% 10px 0px 10px',
+                            fontFamily:"MavenPro ExtraBold"
                         }}>
                             Promo Events
                         </Text>
@@ -54,7 +55,9 @@ export default function EventsHead () {
                             fontSize: '$5xl',
                             fontWeight: '$semibold',
                             textGradient: "45deg, $purple600 -20%, $pink600 100%",
-                            padding: '5% 10px 0px 10px'
+                            padding: '5% 10px 0px 10px',
+                            fontFamily:"MavenPro ExtraBold"
+
                         }}>
                             Promo Events
                         </Text>
@@ -71,7 +74,9 @@ export default function EventsHead () {
                         css={{
                             fontSize: '$lg',
                             color: '$gray800',
-                            paddingBottom: '50px'
+                            paddingBottom: '50px',
+                            fontFamily:"MavenPro"
+
                         }}>
                             Participate in these promo events and win exciting prizes!
                         </Text>

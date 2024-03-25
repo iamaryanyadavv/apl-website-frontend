@@ -20,10 +20,11 @@ const NewsTicker = () => {
           fontWeight: "500",
           paddingRight: '2px',
           paddingLeft: '2px',
+          fontFamily:"MavenPro"
         }}
       >
-        The Red Challengers are APL 6.0 Winners!
-        APL 7.0 coming next year, stay tuned!
+        Ashoka Premiere League 7.0 is here!
+        Head over to the registration page to join the fun!
       </p>
     </Marquee>
   );
