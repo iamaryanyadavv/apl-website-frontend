@@ -1458,7 +1458,7 @@ export default function PRegForm(){
                                     fontSize: '$xl',
                                     fontWeight: '$medium'
                                 }}>
-                                    Please pay the amount (&#x20B9;250) to Irya Khanna, via PayTM or GPay.
+                                    Please pay the amount (&#x20B9;250) to Irya Khanna or Uday Srivastava, via PayTM or GPay.
                                 </Text>
                                 <Text 
                                 css={{
@@ -1467,7 +1467,7 @@ export default function PRegForm(){
                                     fontSize: '$xl',
                                     fontWeight: '$medium'
                                 }}>
-                                    (9930189038, UPI ID: irya.khanna@okhdfcbank)
+                                    (9930189038, UPI ID: irya.khanna@okhdfcbank, 8447906230 UPI ID: 8447906230@paytm)
                                 </Text>
                                 {/* <Image src={payment} width={250} height={350} css={{marginTop:"$10", marginBottom:"$1", objectFit:"contain"}}></Image> */}
                             </Col>
