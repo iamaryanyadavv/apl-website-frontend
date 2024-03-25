@@ -96,7 +96,7 @@ export default function TeamContent(){
                             css={{
                                 padding: '0% 2.5%'
                             }}>
-                                <a target="_blank" href="https://www.instagram.com/dhrthi.bhat/">@dhrthi.bhat</a>
+                                <a href="https://www.instagram.com/iryakhanna/">@iryakhanna</a>
                             </Text>
                             
                         </Col>
@@ -262,7 +262,7 @@ export default function TeamContent(){
                                         fontWeight: '$semibold',
                                         paddingTop: '5px'
                                     }}> 
-                                        Abhay Hari
+                                        Uday M Srivastava
                                     </Text>
                                     <Text showIn={'xs'}
                                     css={{
@@ -272,7 +272,7 @@ export default function TeamContent(){
                                         fontWeight: '$semibold',
                                         paddingTop: '5px'
                                     }}> 
-                                        Abhay Hari
+                                        Uday M Srivastava
                                     </Text>
 
                                     <Text hideIn={'xs'}
@@ -294,7 +294,7 @@ export default function TeamContent(){
                                         OC Member
                                     </Text>
                                     <Text>
-                                        <a href="https://www.instagram.com/abeyy_hari/">@abeyy_hari</a>
+                                        <a target="_blank" href="https://www.instagram.com/uday_0901/">@uday_0901</a>
                                     </Text>
                                 </Col>
                             </Grid>
