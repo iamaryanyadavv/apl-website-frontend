@@ -142,7 +142,7 @@ export default function TeamContent(){
                                 fontWeight: '$semibold',
                                 paddingTop: '5px'
                             }}> 
-                                Malhotra
+                                Manya Malhotra
                             </Text>
 
                             <Text hideIn={'xs'}
