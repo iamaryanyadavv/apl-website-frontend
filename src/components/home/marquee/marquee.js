@@ -20,7 +20,7 @@ const NewsTicker = () => {
           fontWeight: "500",
           paddingRight: '2px',
           paddingLeft: '2px',
-          fontFamily:"MavenPro"
+          // fontFamily:"MavenPro ExtraBold"
         }}
       >
         Ashoka Premiere League 7.0 is here!
