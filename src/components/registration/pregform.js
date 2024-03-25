@@ -1446,7 +1446,7 @@ export default function PRegForm(){
                                     fontSize: '$xl',
                                     fontWeight: '$medium'
                                 }}>
-                                    Please pay the amount (&#x20B9;200) to Uday Srivastava, via PayTM or GPay.
+                                    Please pay the amount (&#x20B9;250) to Uday Srivastava, via PayTM or GPay.
                                 </Text>
                                 <Text 
                                 css={{
