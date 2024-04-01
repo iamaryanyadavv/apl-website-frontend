@@ -2666,7 +2666,7 @@ export default function APL7PlayersContent() {
                                         document.getElementById('sheetsbtn').style.transform = 'scale(1)'
                                     }, 150)
                                 }}
-                                href='https://docs.google.com/spreadsheets/d/1Jl4oSC0BPjafsaBesmxV_vpcAvjiYrVxFiOhlk6_dZo/edit#gid=0'
+                                href='https://docs.google.com/spreadsheets/d/18roaYnsbAcvaUCVua_gQ6-NhVCsWFJ2A-LuyTrzKzA8/edit#gid=0'
                                 target='_blank'
                                 rel='noreferrer'
                             >
@@ -2674,7 +2674,7 @@ export default function APL7PlayersContent() {
                             </Link>
                         </Grid>
 
-                        <Grid
+                        {/* <Grid
                             css={{
                                 '@xsMin': {
                                     padding: '16px'
@@ -2709,7 +2709,7 @@ export default function APL7PlayersContent() {
                             >
                                 Top 10 Most Expensive
                             </Text>
-                        </Grid>
+                        </Grid> */}
                     </Grid.Container>
 
                     {/* Top 10 Modal */}
