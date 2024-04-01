@@ -83,7 +83,7 @@ function App() {
                 <Route exact path="/seasons/apl6/gallery" element={<APL6GalleryPage/>} />
 
                 {/* APL 7 */}
-                <Route exact path="/seasons/apl7" element={<APL7LandingPage/>} />
+                <Route exact path="/seasons/apl7" element={<ComingSoon/>} />
                 <Route exact path="/seasons/apl7/players" element={<APL7PlayersPage/>} />
                 <Route exact path="/seasons/apl7/teams" element={<APL7TeamPage/>} />
 

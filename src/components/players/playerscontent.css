@@ -1,8 +1,7 @@
 .player-picture{
-    width: 125px !important;
-    height: 150px !important;
-    margin-left: 10px;
-    border-radius: 20px;
+    width: 175px !important;
+    height: 200px !important;
+    border-radius: 8px;
     object-fit: cover;
 }
 
@@ -25,6 +24,12 @@
 .chat{
     margin-top: 5px;
     color: #F5A524;
+}
+
+.team-avatar{
+    position: absolute;
+    top: -70%;
+    left: 70%
 }
 
 

@@ -30,7 +30,7 @@ function Footer(){
                     <Link
                     css={{
                         color: '#3694ff'
-                    }} target='_blank' href="https://aryanyadav.com/"
+                    }} target='_blank' href="https://iamaryanyadavv.github.io/personal-website/"
                     >
                         Aryan Yadav
                     </Link>

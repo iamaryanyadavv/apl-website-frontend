@@ -112,7 +112,7 @@ export default function TournamentDetailsCard(props) {
                                             <Text
                                                 css={{
                                                     padding: '12px'
-                                                }}>Registrations will open next year!</Text>
+                                                }}>Coming Soon</Text>
                                         </Popover.Content>
                                     </Popover>
                                     :
