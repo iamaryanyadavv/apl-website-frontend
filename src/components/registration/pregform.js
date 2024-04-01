@@ -1,9 +1,10 @@
-import { Grid, Input, Modal, Text, Dropdown, Button, Row, Col, Avatar, Loading} from "@nextui-org/react";
+import { Grid, Input, Modal, Text, Dropdown, Button, Row, Col, Avatar, Loading, Image} from "@nextui-org/react";
 import './pregform.css';
 import React, {useState, useEffect} from "react";
 import imageCompression from 'browser-image-compression';
 import jwt_decode from "jwt-decode";
 import { useTicker } from "../../hooks";
+import payment from "./paymentinfo.jpg"
 
 
 export default function PRegForm(){
@@ -19,13 +20,13 @@ export default function PRegForm(){
         { key: "Faculty/Staff", name: "Faculty/Staff" },
     ];
     const genderItems = [
-        { key: "Man", name: "Man" },
-        { key: "Non-Cis Man", name: "Non-Cis Man" },
+        { key: "Male", name: "Male" },
+        // { key: "Female", name: "Female" },
+        // { key: "Non Binary", name: "Non Binary" },
+        // { key: "Trans Man", name: "Trans Man" },
+        // { key: "Trans Woman", name: "Trans Woman" },
     ];
 
-    const genderItemsFULL = [
-        { key: "Non-Cis Man", name: "Non-Cis Man" }
-    ];
 
     const GeneralPosItems=[
         { key: "Goalkeeper", name: 'Goalkeeper'},
@@ -38,6 +39,10 @@ export default function PRegForm(){
         { key: 'Defender', name: 'Defender'},
         { key: 'Midfielder', name: 'Midfielder'},
         { key: 'Attacker', name: 'Attacker'}
+    ];
+
+    const genderItemsFULL = [
+        { key: "Non-Cis Man", name: "Non-Cis Man" }
     ];
     
     //12:30pm on 23rd March, 2023 GMT or 6pm on 23rd March, 2023 IST
@@ -364,7 +369,7 @@ export default function PRegForm(){
                 var count = 0;
                 for(var i = 0; i < data.values.length; i++)
                 {
-                    if(data.values[i][0]==='Man')
+                    if(data.values[i][0]==='Male')
                     {
                         count++;
                     }
@@ -1249,6 +1254,17 @@ export default function PRegForm(){
                                         )}
                                     </Dropdown.Menu>
                                 </Dropdown>
+                                {gender!=="Male" && gender!=="" && <Text
+                                css={{
+                                    jc:'center',
+                                    textAlign: 'center',
+                                    paddingBottom: '2%',
+                                    fontSize: '$sm',
+                                    color:"White",
+
+                                }}><a className="ncmen" href="https://chat.whatsapp.com/L1NkbNm0h9M2OPjuX9u65Z">Link for NC Men's Group</a>
+                                </Text>}
+                                
                             </Grid>
                         </Grid.Container>
 
@@ -1442,7 +1458,7 @@ export default function PRegForm(){
                                     fontSize: '$xl',
                                     fontWeight: '$medium'
                                 }}>
-                                    Please pay the amount (&#x20B9;200) to Uday Srivastava, via PayTM or GPay.
+                                    Please pay the amount (&#x20B9;250) to Irya Khanna or Uday Srivastava, via PayTM or GPay.
                                 </Text>
                                 <Text 
                                 css={{
@@ -1451,8 +1467,9 @@ export default function PRegForm(){
                                     fontSize: '$xl',
                                     fontWeight: '$medium'
                                 }}>
-                                    (8447906230, UPI ID: 8447906230@paytm)
+                                    (9930189038, UPI ID: irya.khanna@okhdfcbank, 8447906230 UPI ID: 8447906230@paytm)
                                 </Text>
+                                {/* <Image src={payment} width={250} height={350} css={{marginTop:"$10", marginBottom:"$1", objectFit:"contain"}}></Image> */}
                             </Col>
                             <Grid>
                                 <input disabled={!signedin} onChange={(event)=>{setPaymentSC(event.target.files[0]); }} className="photobtn" animated={'true'} type='file' accept="image/*" required/>
@@ -2089,7 +2106,7 @@ export default function PRegForm(){
                                             }}>
                                                 You have been successfully registered as {User.name}
                                             </Text>
-                                            <Text 
+                                            {/* <Text 
                                             css={{
                                                 textAlign: 'center',
                                                 fontSize: '$xl',
@@ -2097,8 +2114,17 @@ export default function PRegForm(){
                                                 color: 'white',
                                             }}>
                                                 You can check out the full list of APL7.0 registered players here
-                                            </Text>
+                                            </Text> */}
                                             <Text 
+                                            css={{
+                                                textAlign: 'center',
+                                                fontSize: '$xl',
+                                                fontWeight: '$semibold',
+                                                color: 'white',
+                                            }}>
+                                                You can join the APL Players WhatsApp Group here: <a target="_blank" href="https://chat.whatsapp.com/DGcLtNxXOcjKJ1eoiahlcu">APL 7.0 Players</a>
+                                            </Text>
+                                            {/* <Text 
                                             css={{
                                                 textAlign: 'center',
                                                 fontSize: '$lg',
@@ -2106,7 +2132,7 @@ export default function PRegForm(){
                                                 color: 'white',
                                             }}>
                                                 <a href="/seasons/apl7/players">APL 7.0 Registered Players</a>
-                                            </Text>
+                                            </Text> */}
                                         </Modal.Body>
                                         
                                 </Modal>

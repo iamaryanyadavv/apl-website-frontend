@@ -12,6 +12,19 @@ import Uday from '../../assets/avatars/AdminTeam/director_uday.jpg'
 import Zahaan from '../../assets/avatars/AdminTeam/webteam_zahaan.jpg'
 import IryaKhanna from '../../assets/avatars/AdminTeam/oc_iryakhanna.jpg'
 import Abhay from '../../assets/avatars/AdminTeam/oc_abhay.jpeg'
+import Manya from '../../assets/avatars/AdminTeam/manya.jpg'
+import Vansh from '../../assets/avatars/AdminTeam/Vansh.jpg'
+import Angira from '../../assets/avatars/AdminTeam/Angira.jpg'
+import Adviti from '../../assets/avatars/AdminTeam/Adviti.png'
+import Aman from '../../assets/avatars/AdminTeam/Aman.jpeg'
+import Athu from '../../assets/avatars/AdminTeam/Athu.jpg'
+import Naddy from '../../assets/avatars/AdminTeam/Nandini.jpg'
+import Riya from '../../assets/avatars/AdminTeam/riyagupta.png'
+
+
+
+
+
 
 export default function TeamContent(){
     return(
@@ -50,7 +63,7 @@ export default function TeamContent(){
                                     borderRadius: '100px'
                                 },
                                 objectFit: 'cover'
-                            }}  src={DhrthiBhat}  />
+                            }}  src={IryaKhanna}  />
                             <Text hideIn={'xs'}
                             css={{
                                 jc: 'center',
@@ -59,7 +72,7 @@ export default function TeamContent(){
                                 fontWeight: '$semibold',
                                 paddingTop: '5px'
                             }}> 
-                                Dhrthi Bhat
+                                Irya Khanna
                             </Text>
                             <Text showIn={'xs'}
                             css={{
@@ -69,7 +82,7 @@ export default function TeamContent(){
                                 fontWeight: '$semibold',
                                 paddingTop: '5px'
                             }}> 
-                                Dhrthi Bhat
+                                Irya Khanna 
                             </Text>
 
                             <Text hideIn={'xs'}
@@ -94,7 +107,7 @@ export default function TeamContent(){
                             css={{
                                 padding: '0% 2.5%'
                             }}>
-                                <a target="_blank" href="https://www.instagram.com/dhrthi.bhat/">@dhrthi.bhat</a>
+                                <a href="https://www.instagram.com/iryakhanna/">@iryakhanna</a>
                             </Text>
                             
                         </Col>
@@ -121,7 +134,7 @@ export default function TeamContent(){
                                     borderRadius: '100px'
                                 },
                                 objectFit: 'cover'
-                            }}   src={Uday}/>
+                            }}   src={Manya}/>
                             <Text hideIn={'xs'}
                             css={{
                                 jc: 'center',
@@ -130,7 +143,7 @@ export default function TeamContent(){
                                 fontWeight: '$semibold',
                                 paddingTop: '5px'
                             }}> 
-                                Uday Srivastava
+                                Manya Malhotra
                             </Text>
                             <Text showIn={'xs'}
                             css={{
@@ -140,7 +153,7 @@ export default function TeamContent(){
                                 fontWeight: '$semibold',
                                 paddingTop: '5px'
                             }}> 
-                                Uday Srivastava
+                                Manya Malhotra
                             </Text>
 
                             <Text hideIn={'xs'}
@@ -162,7 +175,7 @@ export default function TeamContent(){
                                 Director
                             </Text>
                             <Text>
-                                <a target="_blank" href="https://www.instagram.com/uday_0901/">@uday_0901</a>
+                                <a target="_blank" href="https://www.instagram.com/malhotra._.manya/">@malhotra._.manya</a>
                             </Text>
                         </Col>
                     </Grid>
@@ -230,7 +243,8 @@ export default function TeamContent(){
                             jc: 'center',
                             textAlign: 'center'
                         }}>
-                            <Grid>
+
+<Grid>
                                 <Col 
                                 css={{
                                     display: 'flex',
@@ -251,7 +265,7 @@ export default function TeamContent(){
                                             borderRadius: '75px'
                                         },
                                         objectFit: 'cover'
-                                    }}  src={Abhay} />
+                                    }}  src={Naddy} />
                                     <Text hideIn={'xs'}
                                     css={{
                                         jc: 'center',
@@ -260,7 +274,7 @@ export default function TeamContent(){
                                         fontWeight: '$semibold',
                                         paddingTop: '5px'
                                     }}> 
-                                        Abhay Hari
+                                        Nandini Chhabra
                                     </Text>
                                     <Text showIn={'xs'}
                                     css={{
@@ -270,7 +284,7 @@ export default function TeamContent(){
                                         fontWeight: '$semibold',
                                         paddingTop: '5px'
                                     }}> 
-                                        Abhay Hari
+                                        Nandini Chhabra
                                     </Text>
 
                                     <Text hideIn={'xs'}
@@ -292,7 +306,73 @@ export default function TeamContent(){
                                         OC Member
                                     </Text>
                                     <Text>
-                                        <a href="https://www.instagram.com/abeyy_hari/">@abeyy_hari</a>
+                                        <a href="https://www.instagram.com/zahaanxspj/">@nandinichhabra_</a>
+                                    </Text>
+                                </Col>
+                            </Grid>
+                            <Grid>
+                                <Col 
+                                css={{
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    jc: 'center',
+                                    alignItems: 'center'
+                                }}>
+                                    <Image 
+                                    css={{
+                                        '@xsMin':{
+                                            width: '200px',
+                                            height: '200px',
+                                            borderRadius: '100px'
+                                        },
+                                        '@xsMax':{
+                                            width: '100px',
+                                            height: '100px',
+                                            borderRadius: '75px'
+                                        },
+                                        objectFit: 'cover'
+                                    }}  src={Uday} />
+                                    <Text hideIn={'xs'}
+                                    css={{
+                                        jc: 'center',
+                                        textAlign: 'center',
+                                        fontSize: '$2xl',
+                                        fontWeight: '$semibold',
+                                        paddingTop: '5px'
+                                    }}> 
+                                        Uday M Srivastava
+                                    </Text>
+                                    <Text showIn={'xs'}
+                                    css={{
+                                        jc: 'center',
+                                        textAlign: 'center',
+                                        fontSize: '$sm',
+                                        fontWeight: '$semibold',
+                                        paddingTop: '5px'
+                                    }}> 
+                                        Uday M Srivastava
+                                    </Text>
+
+                                    <Text hideIn={'xs'}
+                                    css={{
+                                        jc: 'center',
+                                        textAlign: 'center',
+                                        fontSize: '$xl',
+                                        color: '$gray800'
+                                    }}>
+                                        OC Member
+                                    </Text>
+                                    <Text showIn={'xs'}
+                                    css={{
+                                        jc: 'center',
+                                        textAlign: 'center',
+                                        fontSize: '$sm',
+                                        color: '$gray800'
+                                    }}>
+                                        OC Member
+                                    </Text>
+                                    <Text>
+                                        <a target="_blank" href="https://www.instagram.com/uday_0901/">@uday_0901</a>
                                     </Text>
                                 </Col>
                             </Grid>
@@ -318,7 +398,7 @@ export default function TeamContent(){
                                             borderRadius: '75px'
                                         },
                                         objectFit: 'cover'
-                                    }}  src={PrathamSingh} />
+                                    }}  src={DhrthiBhat} />
                                     <Text hideIn={'xs'}
                                     css={{
                                         jc: 'center',
@@ -327,7 +407,7 @@ export default function TeamContent(){
                                         fontWeight: '$semibold',
                                         paddingTop: '5px'
                                     }}> 
-                                        Pratham Singh
+                                        Dhrthi Bhat
                                     </Text>
                                     <Text showIn={'xs'}
                                     css={{
@@ -337,7 +417,7 @@ export default function TeamContent(){
                                         fontWeight: '$semibold',
                                         paddingTop: '5px'
                                     }}> 
-                                        Pratham Singh
+                                        Dhrthi Bhat
                                     </Text>
 
                                     <Text hideIn={'xs'}
@@ -359,7 +439,7 @@ export default function TeamContent(){
                                         OC Member
                                     </Text>
                                     <Text>
-                                        <a href="https://www.instagram.com/_prathamsingh/">@_prathamsingh</a>
+                                        <a href="https://www.instagram.com/dhrthi.bhat/">@dhrthi.bhat</a>
                                     </Text>
                                 </Col>
                             </Grid>
@@ -385,7 +465,7 @@ export default function TeamContent(){
                                             borderRadius: '75px'
                                         },
                                         objectFit: 'cover'
-                                    }}  src={KavyaSatish}/>
+                                    }}  src={Adviti}/>
                                     <Text hideIn={'xs'}
                                     css={{
                                         jc: 'center',
@@ -394,7 +474,7 @@ export default function TeamContent(){
                                         fontWeight: '$semibold',
                                         paddingTop: '5px'
                                     }}> 
-                                        Kavya Satish
+                                        Adviti Gautam
                                     </Text>
                                     <Text showIn={'xs'}
                                     css={{
@@ -404,7 +484,7 @@ export default function TeamContent(){
                                         fontWeight: '$semibold',
                                         paddingTop: '5px'
                                     }}> 
-                                        Kavya Satish
+                                        Adviti Gautam
                                     </Text>
 
                                     <Text hideIn={'xs'}
@@ -426,7 +506,7 @@ export default function TeamContent(){
                                         OC Member
                                     </Text>
                                     <Text>
-                                        <a href="https://www.instagram.com/kavyaasatish/">@kavyaasatish</a>
+                                        <a href="https://www.instagram.com/itivda/">@itivda</a>
                                     </Text>
                                 </Col>
                             </Grid>
@@ -452,7 +532,7 @@ export default function TeamContent(){
                                             borderRadius: '75px'
                                         },
                                         objectFit: 'cover'
-                                    }}  src={RahulAgarwal} />
+                                    }}  src={Vansh} />
                                     <Text hideIn={'xs'}
                                     css={{
                                         jc: 'center',
@@ -461,7 +541,7 @@ export default function TeamContent(){
                                         fontWeight: '$semibold',
                                         paddingTop: '5px'
                                     }}> 
-                                        Rahul Agarwal
+                                        Vansh Jogani
                                     </Text>
                                     <Text showIn={'xs'}
                                     css={{
@@ -471,7 +551,7 @@ export default function TeamContent(){
                                         fontWeight: '$semibold',
                                         paddingTop: '5px'
                                     }}> 
-                                        Rahul Agarwal
+                                        Vansh Jogani
                                     </Text>
 
                                     <Text hideIn={'xs'}
@@ -493,7 +573,7 @@ export default function TeamContent(){
                                         OC Member
                                     </Text>
                                     <Text>
-                                        <a href="https://www.instagram.com/__raaahul__/">@__raaahul__</a>
+                                        <a href="https://www.instagram.com/vanshjogani/">@vanshjogani</a>
                                     </Text>
                                 </Col>
                             </Grid>
@@ -519,7 +599,7 @@ export default function TeamContent(){
                                             borderRadius: '75px'
                                         },
                                         objectFit: 'cover'
-                                    }}  src={RohanAgarwal}/>
+                                    }}  src={Aman}/>
                                     <Text hideIn={'xs'}
                                     css={{
                                         jc: 'center',
@@ -528,7 +608,7 @@ export default function TeamContent(){
                                         fontWeight: '$semibold',
                                         paddingTop: '5px'
                                     }}> 
-                                        Rohan Agarwal
+                                        Aman Sharma
                                     </Text>
                                     <Text showIn={'xs'}
                                     css={{
@@ -538,7 +618,7 @@ export default function TeamContent(){
                                         fontWeight: '$semibold',
                                         paddingTop: '5px'
                                     }}> 
-                                        Rohan Agarwal
+                                        Aman Sharma
                                     </Text>
 
                                     <Text hideIn={'xs'}
@@ -560,7 +640,7 @@ export default function TeamContent(){
                                         OC Member
                                     </Text>
                                     <Text>
-                                        <a href="https://www.instagram.com/rohan_agarwal05/">@rohan_agarwal05</a>
+                                        <a href="https://www.instagram.com/aman_sharma_2349/">@aman_sharma_2349</a>
                                     </Text>
                                 </Col>
                             </Grid>
@@ -586,7 +666,7 @@ export default function TeamContent(){
                                             borderRadius: '75px'
                                         },
                                         objectFit: 'cover'
-                                    }}  src={IryaKhanna} />
+                                    }}  src={Athu} />
                                     <Text hideIn={'xs'}
                                     css={{
                                         jc: 'center',
@@ -595,7 +675,7 @@ export default function TeamContent(){
                                         fontWeight: '$semibold',
                                         paddingTop: '5px'
                                     }}> 
-                                        Irya Khanna
+                                        Atharva Dawar
                                     </Text>
                                     <Text showIn={'xs'}
                                     css={{
@@ -605,7 +685,7 @@ export default function TeamContent(){
                                         fontWeight: '$semibold',
                                         paddingTop: '5px'
                                     }}> 
-                                        Irya Khanna
+                                        Atharva Dawar
                                     </Text>
 
                                     <Text hideIn={'xs'}
@@ -627,10 +707,145 @@ export default function TeamContent(){
                                         OC Member
                                     </Text>
                                     <Text>
-                                        <a href="https://www.instagram.com/iryakhanna/">@iryakhanna</a>
+                                        <a href="https://www.instagram.com/atharvadawar/">@atharvadawar</a>
                                     </Text>
                                 </Col>
                             </Grid>
+
+                            <Grid>
+                                <Col 
+                                css={{
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    jc: 'center',
+                                    alignItems: 'center'
+                                }}>
+                                    <Image 
+                                    css={{
+                                        '@xsMin':{
+                                            width: '200px',
+                                            height: '200px',
+                                            borderRadius: '100px'
+                                        },
+                                        '@xsMax':{
+                                            width: '100px',
+                                            height: '100px',
+                                            borderRadius: '75px'
+                                        },
+                                        objectFit: 'cover'
+                                    }}  src={Angira} />
+                                    <Text hideIn={'xs'}
+                                    css={{
+                                        jc: 'center',
+                                        textAlign: 'center',
+                                        fontSize: '$2xl',
+                                        fontWeight: '$semibold',
+                                        paddingTop: '5px'
+                                    }}> 
+                                        Angira Kanwar
+                                    </Text>
+                                    <Text showIn={'xs'}
+                                    css={{
+                                        jc: 'center',
+                                        textAlign: 'center',
+                                        fontSize: '$sm',
+                                        fontWeight: '$semibold',
+                                        paddingTop: '5px'
+                                    }}> 
+                                        Angira Kanwar
+                                    </Text>
+
+                                    <Text hideIn={'xs'}
+                                    css={{
+                                        jc: 'center',
+                                        textAlign: 'center',
+                                        fontSize: '$xl',
+                                        color: '$gray800'
+                                    }}>
+                                        OC Member
+                                    </Text>
+                                    <Text showIn={'xs'}
+                                    css={{
+                                        jc: 'center',
+                                        textAlign: 'center',
+                                        fontSize: '$sm',
+                                        color: '$gray800'
+                                    }}>
+                                        OC Member
+                                    </Text>
+                                    <Text>
+                                        <a href="https://www.instagram.com/angirakanwar/">@angirakanwar</a>
+                                    </Text>
+                                </Col>
+                            </Grid>
+
+                            <Grid>
+                                <Col 
+                                css={{
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    jc: 'center',
+                                    alignItems: 'center'
+                                }}>
+                                    <Image 
+                                    css={{
+                                        '@xsMin':{
+                                            width: '200px',
+                                            height: '200px',
+                                            borderRadius: '100px'
+                                        },
+                                        '@xsMax':{
+                                            width: '100px',
+                                            height: '100px',
+                                            borderRadius: '75px'
+                                        },
+                                        objectFit: 'cover'
+                                    }}  src={Riya} />
+                                    <Text hideIn={'xs'}
+                                    css={{
+                                        jc: 'center',
+                                        textAlign: 'center',
+                                        fontSize: '$2xl',
+                                        fontWeight: '$semibold',
+                                        paddingTop: '5px'
+                                    }}> 
+                                        Riya Gupta
+                                    </Text>
+                                    <Text showIn={'xs'}
+                                    css={{
+                                        jc: 'center',
+                                        textAlign: 'center',
+                                        fontSize: '$sm',
+                                        fontWeight: '$semibold',
+                                        paddingTop: '5px'
+                                    }}> 
+                                        Riya Gupta
+                                    </Text>
+
+                                    <Text hideIn={'xs'}
+                                    css={{
+                                        jc: 'center',
+                                        textAlign: 'center',
+                                        fontSize: '$xl',
+                                        color: '$gray800'
+                                    }}>
+                                        OC Member
+                                    </Text>
+                                    <Text showIn={'xs'}
+                                    css={{
+                                        jc: 'center',
+                                        textAlign: 'center',
+                                        fontSize: '$sm',
+                                        color: '$gray800'
+                                    }}>
+                                        OC Member
+                                    </Text>
+                                    <Text>
+                                        <a target="_blank" href="https://www.instagram.com/riyaguptax/">@riyaguptax</a>
+                                    </Text>
+                                </Col>
+                            </Grid>
+                            
                         </Grid.Container>
 
                     </Grid>
@@ -837,7 +1052,7 @@ export default function TeamContent(){
                                         Developer
                                     </Text>
                                     <Text>
-                                        <a target="_blank" href="https://zahaanshapoorjee.netlify.app/">zahaanshaporjee.netlify.app</a>
+                                        <a target="_blank" href="https://main--zahaan.netlify.app/">https://main--zahaan.netlify.app/</a>
                                     </Text>
                                 </Col>
                             </Grid>

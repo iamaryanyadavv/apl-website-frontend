@@ -63,6 +63,7 @@ export default function TRegForm() {
     const [owner5phonestatus, setOwner5phonestatus] = useState('')
 
     const [signedin, setSignedIn] = useState(false);
+
     const [initialImage, setInitialImage] = useState('');
     const [finalImage, setFinalImage] = useState('');
 
@@ -381,7 +382,8 @@ export default function TRegForm() {
                 }
                 if(isSignedin===true){
                     setLoginLoader(false)
-                    setSignedIn(true)
+                    // setSignedIn(true) REGISTRATION CLOSED
+                    setSignedIn(false)
                     document.getElementById("GoogleButton").hidden = true;
                     setUser(userObject);
                     SetManageremail(userObject.email);
@@ -401,7 +403,8 @@ export default function TRegForm() {
             }
             else if(!data.values){
                 setLoginLoader(false);
-                setSignedIn(true)
+                // setSignedIn(true) REGISTRATION CLOSED
+                setSignedIn(false)       
                 setAlreadyRegistered(false)
                 document.getElementById("GoogleButton").hidden = true;
                 setUser(userObject);
@@ -423,7 +426,7 @@ export default function TRegForm() {
             if(data.values)
             {
                 console.log(data.values.length)
-                if(data.values.length>=24)
+                if(data.values.length>=19)
                 {
                     console.log('reg is full...')
                     setIsRegFull(true)
@@ -954,8 +957,8 @@ export default function TRegForm() {
 
         {isTimeUp && 
             <div>
-                {/* Heading */}
-                <Grid.Container gap={2}
+                 {/* Heading */}
+                 <Grid.Container gap={2}
                 css={{
                     jc: 'center',
                     alignItems: 'center'
@@ -1124,7 +1127,7 @@ export default function TRegForm() {
                                         css={{
                                             paddingTop: '5px'
                                         }}>
-                                            *This form is open to only those affiliated with Ashoka University.
+                                            {/* *This form is open to only those affiliated with Ashoka University. */}
                                         </Text>
                                     </Grid>
                                     
@@ -1146,7 +1149,7 @@ export default function TRegForm() {
                                         css={{
                                             paddingBottom: '15px'
                                         }}>
-                                            Please login via your @ashoka.edu.in email ID for form access.
+                                            {/* Please login via your @ashoka.edu.in email ID for form access. */}
                                         </Text>
                                     </Grid>
                                     
@@ -1909,7 +1912,7 @@ export default function TRegForm() {
                                         fontSize: '$xl',
                                         fontWeight: '$medium'
                                     }}>
-                                        Please pay the amount (&#x20B9;6000) to Uday Srivastava, via PayTM or GPay.
+                                        Please pay the amount (&#x20B9;6500) to Irya Khanna or Uday Srivastava, via PayTM or GPay.
                                     </Text>
                                     <Text 
                                     css={{
@@ -1918,7 +1921,7 @@ export default function TRegForm() {
                                         fontSize: '$xl',
                                         fontWeight: '$medium'
                                     }}>
-                                        (8447906230, UPI ID: 8447906230@paytm)
+                                        (9930189038, UPI ID: irya.khanna@okhdfcbank / 8447906230, UPI ID: 8447906230@paytm)
                                     </Text>
                                 </Col>
                                 <Grid>
@@ -3629,7 +3632,7 @@ export default function TRegForm() {
                                             }}>
                                                 You have been successfully registered as {teamname}
                                             </Text>
-                                            <Text 
+                                            {/* <Text 
                                             css={{
                                                 textAlign: 'center',
                                                 fontSize: '$xl',
@@ -3646,6 +3649,15 @@ export default function TRegForm() {
                                                 color: 'white',
                                             }}>
                                                 <a href="/seasons/apl7/teams">APL 7.0 Teams</a>
+                                            </Text> */}
+                                            <Text 
+                                            css={{
+                                                textAlign: 'center',
+                                                fontSize: '$xl',
+                                                fontWeight: '$semibold',
+                                                color: 'white',
+                                            }}>
+                                                You can join the APL Players WhatsApp Group here: <a target="_blank" href="https://chat.whatsapp.com/HR76kTG23OcF1JPBZw7OUD">APL 7.0 Team Owners</a>
                                             </Text>
                                         </Modal.Body>
                                         

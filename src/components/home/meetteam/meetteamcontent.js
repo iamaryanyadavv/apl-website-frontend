@@ -5,6 +5,9 @@ import AryanYadav from '../../../assets/avatars/AdminTeam/webteam_aryanyadav.jpe
 import DhrthiBhat from '../../../assets/avatars/AdminTeam/director_dhrthibhat.jpg';
 import Uday from '../../../assets/avatars/AdminTeam/director_uday.jpg'
 import Zahaan from '../../../assets/avatars/AdminTeam/webteam_zahaan.jpg'
+import Irya from '../../../assets/avatars/AdminTeam/oc_iryakhanna.jpg'
+import Manya from '../../../assets/avatars/AdminTeam/manya.jpg'
+
 
 export default function MeetTeamContent () {
 
@@ -84,7 +87,7 @@ export default function MeetTeamContent () {
                                     borderRadius: '75px'
                                 },
                                 objectFit: 'cover'
-                            }}  src={DhrthiBhat} />
+                            }}  src={Irya} />
                         </Grid>
                         <Grid>
                         <Image 
@@ -100,7 +103,7 @@ export default function MeetTeamContent () {
                                     borderRadius: '75px'
                                 },
                                 objectFit: 'cover'
-                            }}  src={Uday} />
+                            }}  src={Manya} />
                         </Grid>
                     </Grid.Container>
                     <Grid.Container gap={0}
@@ -113,6 +116,7 @@ export default function MeetTeamContent () {
                             css={{
                                 fontSize: '$2xl',
                                 fontWeight: '$medium',
+                                fontFamily:"Maven Pro"
 
                             }}>
                                 From APL Directors
@@ -121,6 +125,7 @@ export default function MeetTeamContent () {
                             css={{
                                 fontSize: '$lg',
                                 fontWeight: '$medium',
+                                fontFamily:"Maven Pro"
 
                             }}>
                                 From APL Directors
@@ -138,6 +143,7 @@ export default function MeetTeamContent () {
                             css={{
                                 fontSize: '$2xl',
                                 fontWeight: '$medium',
+                                fontFamily:"Maven Pro"
 
                             }}>
                                 to Organising Committee
@@ -146,6 +152,7 @@ export default function MeetTeamContent () {
                             css={{
                                 fontSize: '$lg',
                                 fontWeight: '$medium',
+                                fontFamily:"Maven Pro"
 
                             }}>
                                 to Organising Committee
@@ -163,6 +170,7 @@ export default function MeetTeamContent () {
                             css={{
                                 fontSize: '$2xl',
                                 fontWeight: '$medium',
+                                fontFamily:"Maven Pro"
 
                             }}>
                                 to Website Develepors.
@@ -171,6 +179,7 @@ export default function MeetTeamContent () {
                             css={{
                                 fontSize: '$lg',
                                 fontWeight: '$medium',
+                                fontFamily:"Maven Pro"
 
                             }}>
                                 to Website Develepors.
@@ -188,6 +197,7 @@ export default function MeetTeamContent () {
                             css={{
                                 fontSize: '$2xl',
                                 fontWeight: '$medium',
+                                fontFamily:"Maven Pro"
 
                             }}>
                                 We have everyone here!
@@ -196,6 +206,7 @@ export default function MeetTeamContent () {
                             css={{
                                 fontSize: '$lg',
                                 fontWeight: '$medium',
+                                fontFamily:"Maven Pro"
 
                             }}>
                                 We have everyone here!

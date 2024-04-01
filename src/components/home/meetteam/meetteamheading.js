@@ -41,7 +41,8 @@ export default function MeetTeamHeading () {
                             fontSize: '$7xl',
                             fontWeight: '$semibold',
                             textGradient: "45deg, $red600 20%, $yellow600 100%",
-                            padding:'5px 10px 0px 10px'
+                            padding:'5px 10px 0px 10px',
+                            fontFamily:"Maven Pro ExtraBold"
                         }}>
                             Meet The Team
                         </Text>
@@ -53,7 +54,8 @@ export default function MeetTeamHeading () {
                             fontSize: '$5xl',
                             fontWeight: '$semibold',
                             textGradient: "45deg, $red600 20%, $yellow600 100%",
-                            padding: '20px 10px 0px 10px'
+                            padding: '20px 10px 0px 10px',
+                            fontFamily:"Maven Pro ExtraBold"
                         }}>
                             Meet The Team
                         </Text>
@@ -70,9 +72,10 @@ export default function MeetTeamHeading () {
                         css={{
                             fontSize: '$lg',
                             color: '$gray800',
-                            paddingBottom: '50px'
+                            paddingBottom: '50px',
+                            fontFamily:"Maven Pro"
                         }}>
-                            People who have made APL 6.0 possible!
+                            People who have made APL 7.0 possible!
                         </Text>
                     </Grid>
                 </Grid.Container>

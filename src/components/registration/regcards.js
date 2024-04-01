@@ -39,13 +39,15 @@ export default function RegCards() {
                                     css={{
                                         textAlign: 'center',
                                         fontSize: '$4xl',
-                                        fontWeight: '$semibold'
+                                        fontWeight: '$semibold',
+                                        fontFamily:"Maven Pro"
                                     }}>Team Owner
                                 </Text>
                                 <Text
                                     css={{
                                         color: '#9E9E9E',
                                         textAlign: 'center',
+                                        fontFamily:"Maven Pro"
                                     }}>
                                     I'm the next Jose Mourinho.
                                 </Text>
@@ -73,7 +75,8 @@ export default function RegCards() {
                             <Col>
                                 <Text
                                     css={{
-                                        textAlign: 'center'
+                                        textAlign: 'center',
+                                        fontFamily:"Maven Pro"
                                     }}>
                                     Register as a team owner and implement those modern tactics!
                                 </Text>
@@ -86,7 +89,7 @@ export default function RegCards() {
                                         {/* <Popover>
                                             <Popover.Trigger> */}
                                         <Button href="/registration/team" css={{ color: 'White' }} shadow rounded bordered auto ghost>
-                                            <Link href={"/registration/team"}>
+                                            <Link css={{fontFamily:"Maven Pro"}} href={"/registration/team"}>
                                                 REGISTER
                                             </Link>
                                         </Button>
@@ -125,13 +128,15 @@ export default function RegCards() {
                                     css={{
                                         textAlign: 'center',
                                         fontSize: '$4xl',
-                                        fontWeight: '$semibold'
+                                        fontWeight: '$semibold',
+                                        fontFamily:"Maven Pro"
                                     }}>Team Player
                                 </Text>
                                 <Text
                                     css={{
                                         color: '#9E9E9E',
                                         textAlign: 'center',
+                                        fontFamily:"Maven Pro"
                                     }}>
                                     I'm the next Cristiano.
                                 </Text>
@@ -159,7 +164,8 @@ export default function RegCards() {
                             <Col>
                                 <Text
                                     css={{
-                                        textAlign: 'center'
+                                        textAlign: 'center',
+                                        fontFamily:"Maven Pro"
                                     }}>
                                     Register as a team player and lead your team to victory!
                                 </Text>
@@ -172,7 +178,7 @@ export default function RegCards() {
                                         {/* <Popover> */}
                                         {/* <Popover.Trigger> */}
                                         <Button css={{ color: 'White' }} shadow rounded bordered auto ghost>
-                                            <Link href={"/registration/player"}>REGISTER</Link>
+                                            <Link  css={{fontFamily:"Maven Pro"}} href={"/registration/player"}>REGISTER</Link>
                                         </Button>
                                         {/* </Popover.Trigger> */}
                                         {/* <Popover.Content>

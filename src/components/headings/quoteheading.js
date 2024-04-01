@@ -21,6 +21,7 @@ export default function QuoteHeading(props){
                                 textAlign: 'center',
                                 fontWeight: '$semibold',
                                 paddingBottom: '1.5%',
+                                fontFamily:"Maven Pro Black"
                             }}>
                                     {props.heading}
                             </Text>
@@ -30,6 +31,7 @@ export default function QuoteHeading(props){
                                 textAlign: 'center',
                                 fontWeight: '$semibold',
                                 paddingTop: '10%',
+                                fontFamily:"Maven Pro Black"
                             }}>
                                     {props.heading}
                             </Text>
@@ -53,7 +55,8 @@ export default function QuoteHeading(props){
                                 paddingBottom: '1.5%',
                                 fontFamily: 'DS',
                                 fontWeight: 'normal',
-                                textAlign: 'center'
+                                textAlign: 'center',
+                                fontFamily:"Maven Pro"
                             }}>
                                 {props.quote}
                             </Text>
@@ -65,7 +68,8 @@ export default function QuoteHeading(props){
                                 padding: '10%',
                                 fontFamily: 'DS',
                                 fontWeight: 'normal',
-                                textAlign: 'center'
+                                textAlign: 'center',
+                                fontFamily:"Maven Pro"
                             }}>
                                 {props.quote}
                             </Text>
@@ -84,7 +88,8 @@ export default function QuoteHeading(props){
                                 fontSize:'$2xl',
                                 fontWeight: '$medium',
                                 textAlign: 'center',
-                                width: '60vw'
+                                width: '60vw',
+                                fontFamily:"Maven Pro"
                             }}>
                                 {props.description}
                             </Text>
@@ -94,7 +99,8 @@ export default function QuoteHeading(props){
                                 fontSize:'$lg',
                                 fontWeight: '$medium',
                                 textAlign: 'center',
-                                width: '60vw'
+                                width: '60vw',
+                                fontFamily:"Maven Pro"
                             }}>
                                 {props.description}
                             </Text>

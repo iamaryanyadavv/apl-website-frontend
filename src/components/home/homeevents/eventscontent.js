@@ -1,10 +1,11 @@
 import { Grid, Col, Text, Image, Button } from "@nextui-org/react";
 import './homeevents.css';
 import React from "react";
-import FIFA from '../../../assets/images/PS5Controller2.JPG';
-import Foosball from '../../../assets/images/Foosball1.jpg';
-import AuctionPredictions from '../../../assets/images/AuctionPredictions.jpg';
+import Scavenger from '../../../assets/images/Prevents/scavenger.jpeg';
+import Relay from '../../../assets/images/Prevents/relay.jpeg';
+import Sepaktakraw from '../../../assets/images/Prevents/sepak takraw.jpg';
 import Grey from '../../../assets/images/Grey.jpeg'
+
 
 export default function EventsContent() {
 
@@ -94,7 +95,7 @@ export default function EventsContent() {
                                 },
                                 objectFit: 'cover'
                             }}
-                            src={Grey} />
+                            src={Scavenger} />
                         <Text
                             css={{
                                 fontSize: '$3xl',
@@ -102,7 +103,8 @@ export default function EventsContent() {
                                 borderStyle: 'solid',
                                 borderWidth: '0px 0px 2px 0px',
                                 borderColor: '$purple600',
-                                padding: '2%'
+                                padding: '2%',
+                                fontFamily:"Maven Pro ExtraBold"
                             }}>
                             Scavenger Hunt
                         </Text>
@@ -110,7 +112,8 @@ export default function EventsContent() {
                             css={{
                                 fontSize: '$2xl',
                                 fontWeight: '$semibold',
-                                padding: '2%'
+                                padding: '2%',
+                                fontFamily:"Maven Pro"
                             }}>
                             8th April, 2023
                         </Text>
@@ -143,7 +146,7 @@ export default function EventsContent() {
                                 },
                                 objectFit: 'cover'
                             }}
-                            src={Grey} />
+                            src={Sepaktakraw} />
                         <Text
                             css={{
                                 fontSize: '$3xl',
@@ -151,7 +154,8 @@ export default function EventsContent() {
                                 borderStyle: 'solid',
                                 borderWidth: '0px 0px 2px 0px',
                                 borderColor: '$purple600',
-                                padding: '2%'
+                                padding: '2%',
+                                fontFamily:"Maven Pro ExtraBold"
                             }}>
                             Sepaktakraw
                         </Text>
@@ -159,7 +163,8 @@ export default function EventsContent() {
                             css={{
                                 fontSize: '$2xl',
                                 fontWeight: '$semibold',
-                                padding: '2%'
+                                padding: '2%',
+                                fontFamily:"Maven Pro"
                             }}>
                             10th April, 2023
                         </Text>
@@ -193,7 +198,7 @@ export default function EventsContent() {
                                 },
                                 objectFit: 'cover'
                             }}
-                            src={Grey} />
+                            src={Relay} />
                         <Text
                             css={{
                                 fontSize: '$3xl',
@@ -201,7 +206,8 @@ export default function EventsContent() {
                                 borderStyle: 'solid',
                                 borderWidth: '0px 0px 2px 0px',
                                 borderColor: '$purple600',
-                                padding: '2%'
+                                padding: '2%',
+                                fontFamily:"Maven Pro ExtraBold"
                             }}>
                             Football Relay
                         </Text>
@@ -209,7 +215,8 @@ export default function EventsContent() {
                             css={{
                                 fontSize: '$2xl',
                                 fontWeight: '$semibold',
-                                padding: '2%'
+                                padding: '2%',
+                                fontFamily:"Maven Pro"
                             }}>
                             15th April, 2023
                         </Text>

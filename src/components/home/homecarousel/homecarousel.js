@@ -51,6 +51,7 @@ export default function HomeCarousel () {
                                 paddingTop: '5%',
                                 marginBottom: '2.5%',
                                 color: '$red700',
+                                fontFamily:"Maven Pro ExtraBold"
                             }}>
                                     Seasons
                             </Text>
@@ -63,6 +64,7 @@ export default function HomeCarousel () {
                                 paddingTop: '5%',
                                 marginBottom: '2.5%',
                                 color: '$red700',
+                                fontFamily:"Maven Pro ExtraBold"
                             }}>
                                     Seasons
                             </Text>
@@ -125,7 +127,8 @@ export default function HomeCarousel () {
                                             textAlign: 'center',
                                             fontSize: '$4xl',
                                             width: '70vw',
-                                            paddingTop: '15%'
+                                            paddingTop: '15%',
+                                            fontFamily:"Maven Pro"
                                         }}>
                                             Check out features from each and every season* below!
                                         </Text>
@@ -137,7 +140,8 @@ export default function HomeCarousel () {
                                             textAlign: 'center',
                                             fontSize: '$2xl',
                                             width: '80vw',
-                                            paddingTop: '30%'
+                                            paddingTop: '30%',
+                                            fontFamily:"Maven Pro"
                                         }}>
                                             Check out features from each and every season* below!
                                         </Text>
@@ -291,6 +295,7 @@ export default function HomeCarousel () {
                         paddingBottom: '5%',
                         paddingTop: '5%',
                         color: '#5fbdd3',
+                        fontFamily:"Maven Pro ExtraBold"
                     }}>
                             Slot Booking
                     </Text>
@@ -302,6 +307,7 @@ export default function HomeCarousel () {
                         paddingBottom: '5%',
                         paddingTop: '5%',
                         color: '#5fbdd3',
+                        fontFamily:"Maven Pro ExtraBold"
                     }}>
                             Slot Booking
                     </Text>
@@ -364,7 +370,9 @@ export default function HomeCarousel () {
                                             textAlign: 'center',
                                             fontSize: '$4xl',
                                             width: '70vw',
-                                            paddingTop: '15%'
+                                            paddingTop: '15%',
+                                            fontFamily:"Maven Pro"
+
                                         }}>
                                             Navigate to the training slot booking* features below!
                                         </Text>
@@ -376,7 +384,8 @@ export default function HomeCarousel () {
                                             textAlign: 'center',
                                             fontSize: '$2xl',
                                             width: '80vw',
-                                            paddingTop: '30%'
+                                            paddingTop: '30%',
+                                            fontFamily:"Maven Pro"
                                         }}>
                                             Navigate to the training slot booking* features below!
                                         </Text>
@@ -447,7 +456,8 @@ export default function HomeCarousel () {
                         fontWeight: '$semibold',
                         paddingBottom: '5%',
                         paddingTop: '5%',
-                        color: "rgb(93 212 131)"
+                        color: "rgb(93 212 131)",
+                        fontFamily:"Maven Pro ExtraBold"
                     }}>
                             Awards
                     </Text>
@@ -458,7 +468,8 @@ export default function HomeCarousel () {
                         fontWeight: '$semibold',
                         paddingBottom: '5%',
                         paddingTop: '5%',
-                        color: "rgb(93 212 131)"
+                        color: "rgb(93 212 131)",
+                        fontFamily:"Maven Pro ExtraBold"
                     }}>
                             Awards
                     </Text>
@@ -512,7 +523,8 @@ export default function HomeCarousel () {
                                             textAlign: 'center',
                                             fontSize: '$4xl',
                                             width: '70vw',
-                                            paddingTop: '15%'
+                                            paddingTop: '15%',
+                                            fontFamily:"Maven Pro"
                                         }}>
                                             Check out the award* winners from last season!
                                         </Text>
@@ -524,7 +536,8 @@ export default function HomeCarousel () {
                                             textAlign: 'center',
                                             fontSize: '$2xl',
                                             width: '80vw',
-                                            paddingTop: '30%'
+                                            paddingTop: '30%',
+                                            fontFamily:"Maven Pro"
                                         }}>
                                             Check out the award* winners from last season!
                                         </Text>
