@@ -34,6 +34,8 @@ import Sepak from '../../assets/images/sepaktakraw.jpg'
 import PracticeGames from '../../assets/images/PracticeGames2.jpg'
 import Footballrelay from '../../assets/images/footballrelay.jpg'
 import draw from "../../assets/images/draw.jpg"
+import Scavenger from "../../assets/images/scavenge.jpeg"
+
 
 
 export default function RoadToAPLContent(){
@@ -1355,7 +1357,7 @@ Spots for APL teams are gone in the blink of an eye but THIS is your chance to s
                                                 borderRadius: '20px'
                                             },
                                             objectFit: 'cover'
-                                        }} src={AuctionPredictions} />
+                                        }} src={Scavenger} />
                                     </Grid>
 
                                     {/* Text side grid */}
