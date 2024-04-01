@@ -21,10 +21,10 @@ export default function PRegForm(){
     ];
     const genderItems = [
         { key: "Male", name: "Male" },
-        { key: "Female", name: "Female" },
-        { key: "Non Binary", name: "Non Binary" },
-        { key: "Trans Man", name: "Trans Man" },
-        { key: "Trans Woman", name: "Trans Woman" },
+        // { key: "Female", name: "Female" },
+        // { key: "Non Binary", name: "Non Binary" },
+        // { key: "Trans Man", name: "Trans Man" },
+        // { key: "Trans Woman", name: "Trans Woman" },
     ];
 
 
