@@ -93,7 +93,7 @@ function App() {
                 <Route exact path="/seasons/apl7/teams" element={<ComingSoon/>} />
 
                 {/* <Route exact path="/roadtoapl" element={<RoadToAPL/>} /> */}
-                <Route exact path="/roadtoapl" element={<ComingSoon/>} />
+                <Route exact path="/roadtoapl" element={<RoadToAPL/>} />
 
                 {/* <Route exact path="/slots" element={<SlotBookingPage/>} /> */}
                 <Route exact path="/slots" element={<ComingSoon/>} />
