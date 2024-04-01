@@ -12,19 +12,29 @@ import TReg from '../../assets/images/TeamReg.jpeg';
 // Scouting Games
 import SG from '../../assets/images/ScoutingGamesSprinkler.jpg';
 // Auction 
-import Auction from '../../assets/images/Auction.jpeg';
+// import Auction from '../../assets/images/Auction.jpeg';
 //Foosball Event
 import Foosball from '../../assets/images/Foosball1.jpg'
 //Preedictions Event
 import AuctionPredictions from '../../assets/images/AuctionPredictions.jpg'
 //Practice Games
-import PracticeGames from '../../assets/images/PracticeGames2.jpg'
 //Groups Draw
 import GroupsDraw from '../../assets/images/GroupsDraw.jpeg'
 //APL
 import APL from '../../assets/images/AshokaFieldSunset.jpg'
 
 import Grey from '../../assets/images/Grey.jpeg';
+
+
+import FootballQuiz from '../../assets/images/Football Quiz.jpg'
+import Scouting from '../../assets/images/ScoutingGame1.jpeg'
+import Auction from '../../assets/images/auction.jpg'
+import HeaderChallenge from '../../assets/images/headerchallenge.jpg'
+import Sepak from '../../assets/images/sepaktakraw.jpg'
+import PracticeGames from '../../assets/images/PracticeGames2.jpg'
+import Footballrelay from '../../assets/images/footballrelay.jpg'
+import draw from "../../assets/images/draw.jpg"
+
 
 export default function RoadToAPLContent(){
     return(
@@ -143,7 +153,7 @@ export default function RoadToAPLContent(){
                                                 borderRadius: '20px'
                                             },
                                             objectFit: 'cover',
-                                        }}src={PReg} />
+                                        }}src={FootballQuiz} />
                                     </Grid>
 
                                     {/* Text side grid */}
@@ -436,7 +446,7 @@ Spots for APL teams are gone in the blink of an eye but THIS is your chance to s
                                                 borderRadius: '20px'
                                             },
                                             objectFit: 'cover'
-                                        }} src={TReg} />
+                                        }} src={Scouting} />
                                     </Grid>
 
                                     {/* Text side grid */}
@@ -730,7 +740,7 @@ Spots for APL teams are gone in the blink of an eye but THIS is your chance to s
                                                 borderRadius: '20px'
                                             },
                                             objectFit: 'cover'
-                                        }} src={Foosball} />
+                                        }} src={Auction} />
                                     </Grid>
 
                                     {/* Text side grid */}
@@ -1030,7 +1040,7 @@ Spots for APL teams are gone in the blink of an eye but THIS is your chance to s
                                                 borderRadius: '20px'
                                             },
                                             objectFit: 'cover'
-                                        }} src={PS5} />
+                                        }} src={HeaderChallenge} />
                                     </Grid>
 
                                     {/* Text side grid */}
@@ -1645,7 +1655,7 @@ Spots for APL teams are gone in the blink of an eye but THIS is your chance to s
                                                 borderRadius: '20px'
                                             },
                                             objectFit: 'cover'
-                                        }} src={SG}  />
+                                        }} src={Sepak}  />
                                     </Grid>
 
                                     {/* Text side grid */}
@@ -1935,7 +1945,7 @@ Want to recreate the iconic topgun scene? Come watch teams play a twist on beach
                                                 borderRadius: '20px'
                                             },
                                             objectFit: 'cover'
-                                        }} src={Auction} />
+                                        }} src={PracticeGames} />
                                     </Grid>
 
                                     {/* Text side grid */}
@@ -2239,7 +2249,7 @@ Want to recreate the iconic topgun scene? Come watch teams play a twist on beach
                                                 borderRadius: '20px'
                                             },
                                             objectFit: 'cover'
-                                        }} src={GroupsDraw} />
+                                        }} src={Footballrelay} />
                                     </Grid>
 
                                     {/* Text side grid */}
@@ -2539,7 +2549,7 @@ Want to recreate the iconic topgun scene? Come watch teams play a twist on beach
                                                 borderRadius: '20px'
                                             },
                                             objectFit: 'cover'
-                                        }} src={PracticeGames} />
+                                        }} src={draw} />
                                     </Grid>
 
                                     {/* Text side grid */}
