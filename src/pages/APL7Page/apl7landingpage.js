@@ -8,6 +8,9 @@ import GalleryCard from '../../components/seasons/gallerycard.js';
 import ComingSoon from "../../components/comingsoon/comingsoon";
 import Cover from '../../assets/images/APL7/APL7Cover.jpeg';
 import Grey from '../../assets/images/Grey.jpeg';
+import APL7Players from '../../assets/images/APL7Players.jpeg';
+import APL7Teams from '../../assets/images/APL7Teams.jpeg';
+import APL7Details from '../../assets/images/APL7Details.jpeg';
 import { Grid } from "@nextui-org/react";
 import './apl7landing.css';
 
@@ -29,7 +32,7 @@ export default function APL7LandingPage() {
                             padding: '36px'
                         }}>
                         <PlayersCard
-                            src={Grey}
+                            src={APL7Players}
                             href='/seasons/apl7/players'
                         />
                     </Grid>
@@ -38,7 +41,7 @@ export default function APL7LandingPage() {
                             padding: '36px'
                         }}>
                         <TeamsCard
-                            src={Grey}
+                            src={APL7Teams}
                             href='/seasons/apl7/teams'
                         />
                     </Grid>
@@ -47,7 +50,7 @@ export default function APL7LandingPage() {
                             padding: '36px'
                         }}>
                         <TDetailsCard
-                            src={Grey}
+                            src={APL7Details}
                             href='/seasons/apl7/details'
                         />
                     </Grid>
