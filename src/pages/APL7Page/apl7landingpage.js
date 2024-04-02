@@ -20,7 +20,7 @@ export default function APL7LandingPage() {
             <div className="apl7backg">
                 <QuoteHeading
                     heading='Season 7.0'
-                    description='Organised by Irya Khanna and Manya Malhotra, this season will be taking place from the 19th to 21st April, 2024. With increased team budgets of 150 million (yes, 150), we are expecting more action, drama and competition from the get-go.'
+                    description='Organised by Irya Khanna and Manya Malhotra, this season will be taking place from the 18th to 21st April, 2024. With increased team budgets of 150 million (yes, 150), we are expecting more action, drama and competition from the get-go.'
                 />
                 <Grid.Container gap={0}
                     css={{
