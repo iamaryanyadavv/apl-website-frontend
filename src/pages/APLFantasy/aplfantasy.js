@@ -74,6 +74,44 @@ const handleSelectPlayer = (playerName) => {
     }
 };
 
+const renderPlayers = () => {
+    // Define the desired layout for players
+    const formationLayout = [1, 2, 1, 2]; // The pattern of players per row
+  
+    let playerElements = [];
+    let playerIndex = 0;
+    let rowIndex = 0;
+  
+    while (playerIndex < selectedPlayers.length) {
+      // Determine the number of players in the current row
+      const numPlayersInRow = formationLayout[rowIndex % formationLayout.length];
+      let rowPlayers = [];
+  
+      for (let i = 0; i < numPlayersInRow && playerIndex < selectedPlayers.length; i++) {
+        const player = selectedPlayers[playerIndex++];
+        rowPlayers.push(
+          <div key={player} className="player-jersey">
+            <img src={JerseyImage} alt="Jersey" />
+            <Text h4 css={{ position: 'absolute', bottom: '0' }}>{player}</Text>
+          </div>
+        );
+      }
+  
+      // Add the row of players to the overall player elements
+      playerElements.push(
+        <div key={`row-${rowIndex}`} className={`player-row row-${rowIndex % formationLayout.length}`}>
+          {rowPlayers}
+        </div>
+      );
+  
+      rowIndex++; // Move to the next row
+    }
+  
+    return playerElements;
+  };
+  
+  
+
 const renderDropdown = () => {
     return (
         <Dropdown>
@@ -102,20 +140,176 @@ return (
                 gap: '20px'  // Adjust gap size here to control the spacing between columns
             }}>
             <Row>
-                <Grid xs={12} md={8} css={{ padding: '0 10px' }}>
-                    <Col className="leftcol">
-                        <Text className="fantasytitle">APL FANTASY GAME</Text>
-                        <div className="football-field">
-                            {selectedPlayers.map((playerName, index) => (
-                                <div key={index} className="player-jersey">
-                                    <img src={JerseyImage} alt="Jersey" />
-                                    <Text h4 css={{ position: 'absolute', bottom: 0 }}>{playerName}</Text>
-                                </div>
-                            ))}
-                        </div>
-                    </Col>
-                </Grid>
-                <Grid xs={12} md={4} css={{ marginTop: '2%' }}>
+            <Grid xs={12} md={8} css={{ padding: '0 10px' }}>
+  <Col className="leftcol">
+    <Text className="fantasytitle">APL FANTASY GAME</Text>
+    <div className="football-field">
+      {
+        selectedPlayers.length === 1 && 
+        <div className="player-jersey">
+          <img src={JerseyImage} alt="Jersey" />
+          <Text h4 css={{ position: 'absolute', bottom: '0' }}>{selectedPlayers[0]}</Text>
+        </div>
+      }
+      {
+        selectedPlayers.length === 2 && 
+        <>
+          <div className="player-jersey">
+            <img src={JerseyImage} alt="Jersey" />
+            <Text h4 css={{ position: 'absolute', bottom: '0' }}>{selectedPlayers[0]}</Text>
+          </div>
+          <div className="player-jersey">
+            <img src={JerseyImage} alt="Jersey" />
+            <Text h4 css={{ position: 'absolute', bottom: '0' }}>{selectedPlayers[1]}</Text>
+          </div>
+        </>
+      }
+      {
+        selectedPlayers.length === 3 && 
+        <>
+          <Grid.Container
+            css={{
+              display: "flex",
+              justifyContent: 'center',
+              alignItems: 'center',
+              gap: '10vw'  // Adjust gap size here to control the spacing between columns
+            }}>
+            <div className="player-jersey">
+              <img src={JerseyImage} alt="Jersey" />
+              <Text h4 css={{ position: 'absolute', bottom: '0' }}>{selectedPlayers[1]}</Text>
+            </div>
+            <div className="player-jersey">
+              <img src={JerseyImage} alt="Jersey" />
+              <Text h4 css={{ position: 'absolute', bottom: '0' }}>{selectedPlayers[2]}</Text>
+            </div>
+          </Grid.Container>
+          <div className="player-jersey">
+            <img src={JerseyImage} alt="Jersey" />
+            <Text h4 css={{ position: 'absolute', bottom: '0' }}>{selectedPlayers[0]}</Text>
+          </div>
+        </>
+      }
+      {
+        selectedPlayers.length === 4 && 
+        <>
+          <Grid.Container
+            css={{
+              display: "flex",
+              justifyContent: 'center',
+              alignItems: 'center',
+              gap: '10vw'  // Adjust gap size here to control the spacing between columns
+            }}>
+            <div className="player-jersey">
+              <img src={JerseyImage} alt="Jersey" />
+              <Text h4 css={{ position: 'absolute', bottom: '0' }}>{selectedPlayers[2]}</Text>
+            </div>
+            <div className="player-jersey">
+              <img src={JerseyImage} alt="Jersey" />
+              <Text h4 css={{ position: 'absolute', bottom: '0' }}>{selectedPlayers[3]}</Text>
+            </div>
+          </Grid.Container>
+          <div className="player-jersey">
+            <img src={JerseyImage} alt="Jersey" />
+            <Text h4 css={{ position: 'absolute', bottom: '0' }}>{selectedPlayers[0]}</Text>
+          </div>
+          <div className="player-jersey">
+            <img src={JerseyImage} alt="Jersey" />
+            <Text h4 css={{ position: 'absolute', bottom: '0' }}>{selectedPlayers[1]}</Text>
+          </div>
+        </>
+      }
+      {
+  selectedPlayers.length === 5 && 
+  <>
+    <Grid.Container
+      css={{
+        display: "flex",
+        justifyContent: 'center',
+        alignItems: 'center',
+        gap: '10vw'  // Adjust gap size here to control the spacing between columns
+      }}>
+      <div className="player-jersey">
+        <img src={JerseyImage} alt="Jersey" />
+        <Text h4 css={{ position: 'absolute', bottom: '0' }}>{selectedPlayers[3]}</Text>
+      </div>
+      <div className="player-jersey">
+        <img src={JerseyImage} alt="Jersey" />
+        <Text h4 css={{ position: 'absolute', bottom: '0' }}>{selectedPlayers[4]}</Text>
+      </div>
+    </Grid.Container>
+    <Grid.Container
+      css={{
+        display: "flex",
+        justifyContent: 'center',
+        alignItems: 'center',
+        gap: '10vw'  // Adjust gap size here to control the spacing between columns
+      }}>
+      <div className="player-jersey">
+        <img src={JerseyImage} alt="Jersey" />
+        <Text h4 css={{ position: 'absolute', bottom: '0' }}>{selectedPlayers[1]}</Text>
+      </div>
+      <div className="player-jersey">
+        <img src={JerseyImage} alt="Jersey" />
+        <Text h4 css={{ position: 'absolute', bottom: '0' }}>{selectedPlayers[2]}</Text>
+      </div>
+    </Grid.Container>
+    <div className="player-jersey">
+      <img src={JerseyImage} alt="Jersey" />
+      <Text h4 css={{ position: 'absolute', bottom: '0' }}>{selectedPlayers[0]}</Text>
+    </div>
+  </>
+}
+{
+  selectedPlayers.length === 6 && 
+  <>
+    <Grid.Container
+      css={{
+        display: "flex",
+        justifyContent: 'center',
+        alignItems: 'center',
+        gap: '10vw'  // Adjust gap size here to control the spacing between columns
+      }}>
+      <div className="player-jersey">
+        <img src={JerseyImage} alt="Jersey" />
+        <Text h4 css={{ position: 'absolute', bottom: '0' }}>{selectedPlayers[4]}</Text>
+      </div>
+      <div className="player-jersey">
+        <img src={JerseyImage} alt="Jersey" />
+        <Text h4 css={{ position: 'absolute', bottom: '0' }}>{selectedPlayers[5]}</Text>
+      </div>
+    </Grid.Container>
+    <div className="player-jersey">
+      <img src={JerseyImage} alt="Jersey" />
+      <Text h4 css={{ position: 'absolute', bottom: '0' }}>{selectedPlayers[2]}</Text>
+    </div>
+    <Grid.Container
+      css={{
+        display: "flex",
+        justifyContent: 'center',
+        alignItems: 'center',
+        gap: '10vw'  // Adjust gap size here to control the spacing between columns
+      }}>
+      <div className="player-jersey">
+        <img src={JerseyImage} alt="Jersey" />
+        <Text h4 css={{ position: 'absolute', bottom: '0' }}>{selectedPlayers[0]}</Text>
+      </div>
+      <div className="player-jersey">
+        <img src={JerseyImage} alt="Jersey" />
+        <Text h4 css={{ position: 'absolute', bottom: '0' }}>{selectedPlayers[1]}</Text>
+      </div>
+    </Grid.Container>
+    <div className="player-jersey">
+      <img src={JerseyImage} alt="Jersey" />
+      <Text h4 css={{ position: 'absolute', bottom: '0' }}>{selectedPlayers[3]}</Text>
+    </div>
+  </>
+}
+
+    </div>
+  </Col>
+</Grid>
+
+                <Grid xs={12} md={4} css={{ marginTop: '1%' }}>
                     <Col className="rightcol">
                         <div className="sponsor-section">
                             <Text className="sponsortext" center>{'Sponsored by'}</Text>

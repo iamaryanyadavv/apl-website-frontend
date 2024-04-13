@@ -4,22 +4,24 @@
 
 .fantasytitle
 {
-  font-family: 'Montserrat';
-  font-style: italic;
-  font-weight: 900;
-  font-size: 59px;
-  line-height: 72px;
-  display: flex;
-  align-items: center;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
+font-family: 'Montserrat';
+font-style: italic;
+font-weight: 900;
+font-size: 59px;
+line-height: 72px;
+display: flex;
+align-items: center;
+letter-spacing: 0.15em;
+text-transform: uppercase;
+
+color: #FFFFFF;
+
+
     align-items: center;
     justify-content: center;
     color: #FFFFFF;
     text-align: center;
     margin-bottom: 30px;
-    
-
 }
 
 .fantasy-game-container {
@@ -98,15 +100,11 @@
   }
   
   .player-jersey img {
-    width: 50px; /* Adjust according to your design */
+    width: 125px; /* Adjust according to your design */
   }
   
   .player-jersey Text {
-    position: absolute;
-    width: 100%;
-    left: 0;
-    bottom: -20px; /* Adjust according to your jersey image */
-    font-size: 0.8rem;
+
   }
   
   .sidebar {
