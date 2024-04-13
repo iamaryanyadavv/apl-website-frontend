@@ -15,12 +15,12 @@ export default function APLFantasy() {
     {
         name: "Zahaan Shapoorjee",
         price: "150 MIL",
-        position: "Defender"
+        position: "Attacker"
     },
     {
         name: "Aryan Yadav",
         price: "150 MIL",
-        position: "Defender"
+        position: "Midfielder"
     },
     {
         name: "Dhruv Achappa",
