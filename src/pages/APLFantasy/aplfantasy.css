@@ -6,7 +6,7 @@
 {
     font-family: 'Montserrat';
     font-style: italic;
-    font-weight: 900;
+    font-weight: 1000;
     font-size: 4em;
     align-items: center;
     justify-content: center;
@@ -20,6 +20,7 @@
     color: #fff;
     background-color: #1a1a1a;
     padding: 20px;
+    padding-bottom: 50px;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -30,11 +31,9 @@
   .fanup-logo {
     width: 266px;
     height: 77px;
+    margin-bottom: 5vh;
+
 }
-
-  
-
-
   .sponsortext
   {
     font-family: 'Montserrat';
@@ -48,12 +47,16 @@
     letter-spacing: 0.21em;
     text-transform: uppercase;
     color: #FFFFFF;
+    margin-bottom: 20px;
   }
 
 
   
   .leftcol {
-    width: 60vw; /* You may adjust this value to find the best fit for your layout */
+    width: 70vw; /* You may adjust this value to find the best fit for your layout */
+    align-items: center;
+    align-self: center;
+    justify-content: center;
   }
   
   .football-field {
@@ -71,7 +74,16 @@
   }
   .rightcol
   {
-    width: 30vw;
+    width: 25vw;
+    align-items: center;
+    align-self: center;
+    justify-content: center;
+ }
+
+ .rightcolcontainer{
+  display: flex;
+  align-items: center;
+  justify-content: center;
  }
   
   .player-jersey {
@@ -93,13 +105,13 @@
   
   .sidebar {
     background-color: #333;
-    padding: 20px;
+    /* padding: 20px;
     border-radius: 8px;
-    width: 15vw;
-    height: 50vh;
+    width: 15vw; */
+    height: 50vh; 
+    /* margin: 0vw 2vw 0 2vw ; */
+    
   }
-
-  
   .sidebar h3 {
     margin-bottom: 10px;
   }
@@ -118,7 +130,7 @@
   
   /* NextUI Dropdown styles if needed */
   .dropdown-button {
-    background-color: #555;
+    background-color: black;
     border: none;
     color: white;
     padding: 10px 20px;
