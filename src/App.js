@@ -34,6 +34,7 @@ import FifaRegistrationPage from './pages/FifaRegistrationPage/fifaregistrationp
 import TeamRegClosed from './components/teamregistrationclosed/teamregclosed';
 import PlayerRegClosed from './components/playerregistrationclosed/playerregclosed';
 import FanUpPage from './pages/FanUpPage/fanuppage';
+import APLFantasy from './pages/APLFantasy/aplfantasy.js';
 
 const theme = createTheme({
   type: 'dark',
@@ -88,6 +89,8 @@ function App() {
                 {/* APL 7 */}
                 {/* <Route exact path="/seasons/apl7" element={<APL7LandingPage/>} /> */}
                 <Route exact path="/seasons/apl7" element={<APL7LandingPage/>} />
+                <Route exact path="/fantasy" element={<APLFantasy/>} />
+
 
                 <Route exact path="/seasons/apl7/players" element={<APL7PlayersPage/>} />
                 <Route exact path="/seasons/apl7/teams" element={<APL7TeamPage/>} />

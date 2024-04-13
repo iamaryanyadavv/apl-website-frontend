@@ -1,0 +1,97 @@
+/* aplfantasy.css */
+
+.fantasy-game-container {
+    font-family: 'Arial', sans-serif;
+    color: #fff;
+    background-color: #1a1a1a;
+    padding: 20px;
+  }
+  
+  .fanup-logo {
+    max-width: 150px;
+    margin-bottom: 20px;
+  }
+  
+  .football-field {
+    /* background: url('path-to-your-field-image.png') no-repeat center center; */
+    background-size: contain;
+    position: relative;
+    width: 100%;
+    /* Adjust height according to your design */
+    height: 500px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-content: space-around;
+  }
+  
+  .player-jersey {
+    position: relative;
+    text-align: center;
+  }
+  
+  .player-jersey img {
+    width: 50px; /* Adjust according to your design */
+  }
+  
+  .player-jersey Text {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    bottom: -20px; /* Adjust according to your jersey image */
+    font-size: 0.8rem;
+  }
+  
+  .sidebar {
+    background-color: #333;
+    padding: 20px;
+    border-radius: 8px;
+  }
+  
+  .sidebar h3 {
+    margin-bottom: 10px;
+  }
+  
+  .sidebar ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .sidebar li {
+    background-color: #444;
+    margin-bottom: 5px;
+    padding: 10px;
+    border-radius: 5px;
+  }
+  
+  /* NextUI Dropdown styles if needed */
+  .dropdown-button {
+    background-color: #555;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 8px;
+    width: 100%;
+  }
+  
+  .dropdown-menu {
+    background-color: #555;
+    border-radius: 8px;
+  }
+  
+  .dropdown-item {
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  .dropdown-item:hover {
+    background-color: #666;
+  }
+  
