@@ -147,9 +147,14 @@ return (
       {
         selectedPlayers.length === 1 && 
         <div className="player-jersey">
-          <img src={JerseyImage} alt="Jersey" />
-          <Text h4 css={{ position: 'absolute', bottom: '0' }}>{selectedPlayers[0]}</Text>
+        <img src={JerseyImage} alt="Jersey" />
+        <div className="player-name-bg">
+          <Text h4>{selectedPlayers[0]}</Text>
         </div>
+        <div className="player-price-bg">
+          <Text color="black">{playersData.find(p => p.name === selectedPlayers[0])?.price}</Text>
+        </div>
+      </div>
       }
       {
         selectedPlayers.length === 2 && 

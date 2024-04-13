@@ -185,6 +185,19 @@ color: #FFFFFF;
     font-weight: 300; /* Lighter font weight for the position */
     margin-top: 5px; /* Space between name and position */
   }
+
+  .player-name-bg {
+    background-color: #1F335B; /* The blue background */
+    padding: 5px; /* Or as per your design */
+    color: #FFFFFF; /* Assuming you want white text */
+  }
+  
+  .player-price-bg {
+    background-color: #F4F4F4; /* The grey background */
+    padding: 5px; /* Or as per your design */
+    color: #000000; /* Assuming you want black text */
+  }
+  
   
   /* NextUI Dropdown styles if needed */
 /* Make the dropdown button full width and background white */
