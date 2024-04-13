@@ -24,6 +24,31 @@ color: #FFFFFF;
     margin-bottom: 30px;
 }
 
+.player-row {
+  display: flex;
+  justify-content: center; /* Center the players in the row */
+  margin-bottom: 10px; /* Adjust as needed for spacing */
+}
+.sponsor-section
+{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Money Left Section */
+.money-left {
+  background-color: #282828; /* The green background color */
+  color: white; /* Black color for the text */
+  font-weight: bold; /* Bold font weight */
+  font-size: 24px; /* Large font size for visibility */
+  text-align: center; /* Center the text */
+  padding: 15px 20px; /* Padding around the text */
+  border-radius: 4px; /* Rounded corners */
+  margin-bottom: 20px; /* Margin at the bottom */
+  width: 100%; /* Full width to match the design */
+}
+
 .fantasy-game-container {
     color: #fff;
     background-color: #1a1a1a;
@@ -103,10 +128,6 @@ color: #FFFFFF;
     width: 125px; /* Adjust according to your design */
   }
   
-  .player-jersey Text {
-
-  }
-  
   .sidebar {
     background-color: #333;
     padding: 20px;
@@ -166,24 +187,31 @@ color: #FFFFFF;
   }
   
   /* NextUI Dropdown styles if needed */
-  .dropdown-button {
-    background-color: black;
-    border: none;
-    color: white;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    margin: 4px 2px;
-    cursor: pointer;
-    border-radius: 8px;
-    width: 100%;
-  }
-  
-  .dropdown-menu {
-    background-color: #555;
-    border-radius: 8px;
-  }
+/* Make the dropdown button full width and background white */
+.dropdown-button {
+  width: 100%; /* Full width to match the 'Money Left' section */
+  background-color: #FFFFFF; /* White background color */
+  border: 1px solid #CCCCCC; /* Add border to match the design */
+  color: black; /* Black color for the text to ensure visibility on a white background */
+  padding: 10px 20px; /* Add some padding */
+  border-radius: 4px; /* Match border-radius of the 'Money Left' section */
+  text-align: center; /* Center the text */
+  margin-bottom: 20px; /* Add some margin at the bottom */
+  cursor: pointer; /* Change the cursor to indicate it's clickable */
+  /* Add any other styling you need to match your design */
+}
+
+/* White background for the dropdown menu items */
+.dropdown-menu {
+  background-color: #FFFFFF; /* White background color */
+  /* Style the dropdown menu further as needed */
+}
+
+/* Style for the dropdown item on hover to match the overall design */
+.dropdown-item:hover {
+  background-color: #E8E8E8; /* Light grey background on hover */
+}
+
   
   .dropdown-item {
     color: white;

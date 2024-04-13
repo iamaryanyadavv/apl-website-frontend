@@ -115,7 +115,7 @@ const renderPlayers = () => {
 const renderDropdown = () => {
     return (
         <Dropdown>
-            <Dropdown.Button flat>{'Select Player'}</Dropdown.Button>
+            <Dropdown.Button color={"white"} className="dropdown-button" flat>{'Select Player'}</Dropdown.Button>
             <Dropdown.Menu
                 aria-label="Single selection actions"
                 disallowEmptySelection
@@ -316,7 +316,7 @@ return (
                             <img src={FanUpLogo} alt="FanUp Logo" className="fanup-logo"/>
                         </div>
                         <div className="sidebar">
-                        <Text h3>{'Money Left: $140M'}</Text>
+                        <Text className="money-left">{'Money Left: $140M'}</Text>
                         {renderDropdown()}
                         <Text h6>{'Selected Players:'}</Text>
                         <ul>
