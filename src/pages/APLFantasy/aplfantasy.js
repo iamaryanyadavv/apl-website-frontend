@@ -115,21 +115,28 @@ return (
                         </div>
                     </Col>
                 </Grid>
-                <Grid xs={12} md={4} css={{ marginTop: '5%' }}>
+                <Grid xs={12} md={4} css={{ marginTop: '2%' }}>
                     <Col className="rightcol">
                         <div className="sponsor-section">
-                            <Text className="sponsortext">{'Sponsored by'}</Text>
+                            <Text className="sponsortext" center>{'Sponsored by'}</Text>
                             <img src={FanUpLogo} alt="FanUp Logo" className="fanup-logo"/>
                         </div>
                         <div className="sidebar">
-                            <Text h3>{'Money Left: $140M'}</Text>
-                            {renderDropdown()}
-                            <Text h6>{'Selected Players:'}</Text>
-                            <ul>
-                                {selectedPlayers.map((playerName, index) => (
-                                    <li key={index}>{playerName}</li>
-                                ))}
-                            </ul>
+                        <Text h3>{'Money Left: $140M'}</Text>
+                        {renderDropdown()}
+                        <Text h6>{'Selected Players:'}</Text>
+                        <ul>
+                            {selectedPlayers.map((player, index) => {
+                            // Find the player data to get their position
+                            const playerData = playersData.find(p => p.name === player);
+                            return (
+                                <li key={index} className="player-list-item">
+                                <span className="player-name">{player}</span>
+                                {playerData && <span className="player-position">{playerData.position}</span>}
+                                </li>
+                            );
+                            })}
+                        </ul>
                         </div>
                     </Col>
                 </Grid>

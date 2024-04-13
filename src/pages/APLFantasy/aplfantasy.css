@@ -4,16 +4,22 @@
 
 .fantasytitle
 {
-    font-family: 'Montserrat';
-    font-style: italic;
-    font-weight: 1000;
-    font-size: 4em;
+  font-family: 'Montserrat';
+  font-style: italic;
+  font-weight: 900;
+  font-size: 59px;
+  line-height: 72px;
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
     align-items: center;
     justify-content: center;
-    letter-spacing: 0.015em;
-    text-transform: uppercase;
     color: #FFFFFF;
-    margin-left: 15px;
+    text-align: center;
+    margin-bottom: 30px;
+    
+
 }
 
 .fantasy-game-container {
@@ -25,7 +31,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    margin: 1% 10% 0 10% ;
+    margin: 0% 10% 0 10% ;
   }
   
   .fanup-logo {
@@ -43,7 +49,7 @@
     line-height: 24px;
     display: flex;
     align-items: center;
-    text-align: right;
+    text-align: center;
     letter-spacing: 0.21em;
     text-transform: uppercase;
     color: #FFFFFF;
@@ -60,7 +66,7 @@
   }
   
   .football-field {
-    background: url('footballfield.png') no-repeat left center; /* This will align your background to the left */
+    background: url('footballfield.png') no-repeat center; /* This will align your background to the left */
     background-size: contain;
     position: relative;
     width: 100%; /* Make this 100% of the parent container's width */
@@ -105,27 +111,60 @@
   
   .sidebar {
     background-color: #333;
-    /* padding: 20px;
-    border-radius: 8px;
-    width: 15vw; */
-    height: 50vh; 
-    /* margin: 0vw 2vw 0 2vw ; */
-    
+    padding: 20px;
+    border-radius: 8px; /* Adjust if needed to match the corner radius */
+    height: auto; /* Set to auto so it grows with content */
+    margin: 0 0 20px 0; /* Adjust the margin as needed */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center; /* Center the items on cross-axis */
   }
+  
   .sidebar h3 {
-    margin-bottom: 10px;
+    font-size: 24px; /* Adjust the font size as needed */
+    color: #fff;
+    margin-bottom: 40px; /* Space between 'Money Left' and dropdown */
+    font-weight: 700; /* Bold font weight */
+    text-align: center;
+    width: 100%; /* Full width */
+  }
+  
+  .sidebar .dropdown-button {
+    font-size: 18px; /* Adjust the font size as needed */
+    text-transform: uppercase; /* Uppercase text */
+    margin-bottom: 30px; /* Space between dropdown and 'Selected Players' */
+    font-weight: 500; /* Medium font weight */
   }
   
   .sidebar ul {
     list-style: none;
     padding: 0;
+    width: 100%; /* Full width */
   }
   
+
   .sidebar li {
-    background-color: #444;
-    margin-bottom: 5px;
-    padding: 10px;
-    border-radius: 5px;
+    background-color: #4DFFA8; /* Background color for list items */
+    color: black; /* Text color for player name */
+    margin-bottom: 10px;
+    padding: 15px 20px;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column; /* Stack name and position on top of each other */
+    align-items: flex-start; /* Align items to the left */
+  }
+  
+  .sidebar li .player-name {
+    font-size: 18px; /* Adjust the font size as needed for the name */
+    font-weight: 500; /* Medium font weight for the name */
+  }
+  
+  .sidebar li .player-position {
+    font-size: 14px; /* Smaller font size for the position */
+    color: black; /* Text color for the position */
+    font-weight: 300; /* Lighter font weight for the position */
+    margin-top: 5px; /* Space between name and position */
   }
   
   /* NextUI Dropdown styles if needed */
