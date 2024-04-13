@@ -1,29 +1,78 @@
 /* aplfantasy.css */
 
+/* Fantasy Game */
+
+.fantasytitle
+{
+    font-family: 'Montserrat';
+    font-style: italic;
+    font-weight: 900;
+    font-size: 4em;
+    align-items: center;
+    justify-content: center;
+    letter-spacing: 0.015em;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    margin-left: 15px;
+}
+
 .fantasy-game-container {
-    font-family: 'Arial', sans-serif;
     color: #fff;
     background-color: #1a1a1a;
     padding: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin: 1% 10% 0 10% ;
   }
   
   .fanup-logo {
-    max-width: 150px;
-    margin-bottom: 20px;
+    width: 266px;
+    height: 77px;
+}
+
+  
+
+
+  .sponsortext
+  {
+    font-family: 'Montserrat';
+    font-style: italic;
+    font-weight: 200;
+    font-size: 20px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    text-align: right;
+    letter-spacing: 0.21em;
+    text-transform: uppercase;
+    color: #FFFFFF;
+  }
+
+
+  
+  .leftcol {
+    width: 60vw; /* You may adjust this value to find the best fit for your layout */
   }
   
   .football-field {
-    /* background: url('path-to-your-field-image.png') no-repeat center center; */
+    background: url('footballfield.png') no-repeat left center; /* This will align your background to the left */
     background-size: contain;
     position: relative;
-    width: 100%;
-    /* Adjust height according to your design */
-    height: 500px;
+    width: 100%; /* Make this 100% of the parent container's width */
+    height: 75vh;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
     align-content: space-around;
+    margin-left: 0; /* Adjust or remove any left margin if needed */
+    margin-right: auto; /* This will keep the field aligned to the left */
   }
+  .rightcol
+  {
+    width: 30vw;
+ }
   
   .player-jersey {
     position: relative;
@@ -46,7 +95,10 @@
     background-color: #333;
     padding: 20px;
     border-radius: 8px;
+    width: 15vw;
+    height: 50vh;
   }
+
   
   .sidebar h3 {
     margin-bottom: 10px;
@@ -94,4 +146,3 @@
   .dropdown-item:hover {
     background-color: #666;
   }
-  

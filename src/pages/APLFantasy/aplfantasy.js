@@ -1,4 +1,4 @@
-import { Grid, Input, Text, Dropdown } from "@nextui-org/react";
+import { Grid, Input, Text, Dropdown, Col, Row } from "@nextui-org/react";
 import React, { useState } from "react";
 import './aplfantasy.css';
 import JerseyImage from "./jersey template 1.png"
@@ -97,11 +97,23 @@ export default function APLFantasy() {
 
     return (
         <div className="fantasy-game-container">
-            <img src={FanUpLogo} alt="FanUp Logo" className="fanup-logo"/>
-            <Grid.Container gap={2}>
-                {/* Your football field with player jerseys */}
-                <Grid xs={12} sm={8}>
+            <Grid.Container
+                css={{
+                    jc: 'center',
+                    alignItems: 'center',
+                    
+                }}>
+                    <Row>
+                {/* Left column for APL FANTASY GAME text and the football field */}
+                <Col className="leftcol">
+                <Grid css={{
+                    jc: 'center',
+                    alignItems: 'center',
+                    marginLeft:"5%"
+                }} xs={12} md={8}>
+                    <Text className="fantasytitle">APL FANTASY GAME</Text>
                     <div className="football-field">
+                        {/* The football field and player jerseys would go here */}
                         {selectedPlayers.map((playerName, index) => (
                             <div key={index} className="player-jersey">
                                 <img src={JerseyImage} alt="Jersey" />
@@ -110,9 +122,15 @@ export default function APLFantasy() {
                         ))}
                     </div>
                 </Grid>
-                
-                {/* The sidebar for selecting players */}
-                <Grid xs={12} sm={4}>
+                </Col>
+
+                {/* Right column for sponsored by and dropdowns */}
+                <Col className="rightcol">
+                <Grid xs={12} md={4}>
+                    <div className="sponsor-section">
+                    <Text className="sponsortext">{'Sponsored by'}</Text>
+                        <img src={FanUpLogo} alt="FanUp Logo" className="fanup-logo"/>
+                    </div>
                     <div className="sidebar">
                         <Text h3>{'Money Left: $140M'}</Text>
                         {renderDropdown()}
@@ -124,6 +142,8 @@ export default function APLFantasy() {
                         </ul>
                     </div>
                 </Grid>
+                </Col>
+                </Row>
             </Grid.Container>
         </div>
     );
