@@ -5,8 +5,46 @@ import JerseyImage from "./jersey template 1.png"
 import FanUpLogo from "./fanup_logo-white 1.png"
 import APLTEXT from "./apl.png"
 import FANTASYTEXT from "./Fantasy Game.png"
+import { Collapse, Checkbox } from "@nextui-org/react";
+import { color } from "@chakra-ui/react";
 
 export default function APLFantasy() {
+  const genderOptions = ['Cis Man', 'Non Cis Man'];
+  const positionOptions = ['Defender', 'Midfielder', 'Attacker'];
+  const [currentPage, setCurrentPage] = useState(1);
+  const playersPerPage = 10;
+  const addPlayer = (player) => {
+    // Implement logic to add player to selectedPlayers
+    // For example:
+    if (!selectedPlayers.includes(player)) {
+        setSelectedPlayers([...selectedPlayers, player]);
+    } else {
+        alert('Player already selected!');
+    }
+};
+  const [filters, setFilters] = useState({
+    gender: {
+      cisMan: false,
+      nonCisMan: false,
+    },
+    position: {
+      defender: false,
+      midfielder: false,
+      attacker: false,
+    },
+  });
+
+  const handleFilterChange = (filterType, filterName) => {
+    const keyName = filterName.toLowerCase();
+    setFilters(prevFilters => ({
+        ...prevFilters,
+        [filterType]: {
+            ...prevFilters[filterType],
+            [keyName]: !prevFilters[filterType][keyName]
+        }
+    }));
+};
+
     const playersData =  [{
         name: "Rivan Sengupta",
         price: "15 MIL",
@@ -65,6 +103,7 @@ export default function APLFantasy() {
 ]
     
 const [selectedPlayers, setSelectedPlayers] = useState([]);
+const [formation, setFormation] = useState(1)
 
 const handleSelectPlayer = (playerName) => {
     if (selectedPlayers.length < 6) {
@@ -72,6 +111,91 @@ const handleSelectPlayer = (playerName) => {
     } else {
         alert('You can only select 6 players');
     }
+};
+
+const handlePageChange = (newPage) => {
+  if (newPage > 0 && newPage <= Math.ceil(playersData.length / playersPerPage)) {
+      setCurrentPage(newPage);
+  }
+};
+
+const indexOfLastPlayer = currentPage * playersPerPage;
+const indexOfFirstPlayer = indexOfLastPlayer - playersPerPage;
+const currentPlayers = playersData.slice(indexOfFirstPlayer, indexOfLastPlayer);
+
+
+const renderPlayersList = () => {
+  const playerCardStyle = {
+    backgroundColor: '#4DFFA8', // or any dark color you prefer
+    color: 'white',
+    marginBottom: '20px',
+    padding: '20px',
+    borderRadius: '10px',
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    fontFamily: 'Montserrat',
+    fontWeight:"800"
+
+  };
+
+
+
+  const playerNameStyle = {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'flex-start', // Align text to the left
+    flex: '1', // Take up the full width of the card minus the button
+    color: "#484848",
+    fontFamily: 'Montserrat',
+    fontWeight: "800",
+    marginBottom: '5px' // Adds space between the name and the position
+  };
+  
+  const playerPositionStyle = {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'flex-start', // Align text to the left
+    flex: '1', // Take up the full width of the card minus the button
+    color: "#484848",
+    fontFamily: 'Montserrat',
+    fontWeight: "500"
+  };
+
+  const addButtonStyle = {
+    backgroundColor: '#21ba45', // Green background
+    color: 'white',
+    border: 'none',
+    borderRadius: '4px',
+    padding: '10px 20px',
+    cursor: 'pointer',
+    marginLeft: '10px' // Add some space between the button and the player info
+  };
+
+
+
+  return (
+    <div className="players-list">
+    {currentPlayers.map((player, index) => (
+      <div key={index} style={playerCardStyle}>
+        <div style={playerNameStyle}>{player.name}</div>
+        <div style={playerPositionStyle}>{player.position}</div>
+        <div style={playerNameStyle}>{player.price}</div>
+        <button style={addButtonStyle} onClick={() => addPlayer(player.name)}>
+          Add Player
+        </button>
+      </div>
+    ))}
+    <div className="pagination">
+      {currentPage > 1 && (
+        <button onClick={() => handlePageChange(currentPage - 1)}>Previous Page</button>
+      )}
+      {currentPage < Math.ceil(playersData.length / playersPerPage) && (
+        <button onClick={() => handlePageChange(currentPage + 1)}>Next Page</button>
+      )}
+    </div>
+  </div>
+  );
 };
 
 const renderPlayers = () => {
@@ -144,44 +268,7 @@ return (
   <Col className="leftcol">
     <Text className="fantasytitle">APL FANTASY GAME</Text>
     <div className="football-field">
-    {
-        selectedPlayers.length === 1 && 
-        <div className="player-jersey">
-        <img src={JerseyImage} alt="Jersey" />
-        <div className="player-name-bg">
-          <Text h5>{selectedPlayers[0]}</Text>
-        </div>
-        <div className="player-price-bg">
-          <Text color="black">{playersData.find(p => p.name === selectedPlayers[0])?.price}</Text>
-        </div>
-      </div>
-      }
-      {
-        selectedPlayers.length === 2 && 
-        <>
-           <div className="player-jersey">
-            <img src={JerseyImage} alt="Jersey" />
-            <div className="player-name-bg">
-              <Text h5>{selectedPlayers[0]}</Text>
-            </div>
-            <div className="player-price-bg">
-              <Text color="black">{playersData.find(p => p.name === selectedPlayers[0])?.price}</Text>
-            </div>
-          </div>
-          <div className="player-jersey">
-        <img src={JerseyImage} alt="Jersey" />
-        <div className="player-name-bg">
-          <Text h5>{selectedPlayers[1]}</Text>
-        </div>
-        <div className="player-price-bg">
-          <Text color="black">{playersData.find(p => p.name === selectedPlayers[1])?.price}</Text>
-        </div>
-      </div>
-        </>
-      }
-      {
-        selectedPlayers.length === 3 && 
-        <>
+        {formation==1 && <>
           <Grid.Container
             css={{
               display: "flex",
@@ -189,39 +276,34 @@ return (
               alignItems: 'center',
               gap: '10vw'  // Adjust gap size here to control the spacing between columns
             }}>
-             <div className="player-jersey">
-        <img src={JerseyImage} alt="Jersey" />
-        <div className="player-name-bg">
-          <Text h5>{selectedPlayers[1]}</Text>
-        </div>
-        <div className="player-price-bg">
-          <Text color="black">{playersData.find(p => p.name === selectedPlayers[1])?.price}</Text>
-        </div>
-      </div>
-      <div className="player-jersey">
-        <img src={JerseyImage} alt="Jersey" />
-        <div className="player-name-bg">
-          <Text h5>{selectedPlayers[2]}</Text>
-        </div>
-        <div className="player-price-bg">
-          <Text color="black">{playersData.find(p => p.name === selectedPlayers[2])?.price}</Text>
-        </div>
-      </div>
+            <div className="player-jersey">
+              <img src={JerseyImage} alt="Jersey" />
+              <div className="player-name-bg">
+                <Text h5>{selectedPlayers[4]}</Text>
+              </div>
+              <div className="player-price-bg">
+                <Text color="black">{playersData.find(p => p.name === selectedPlayers[4])?.price}</Text>
+              </div>
+            </div>
+            <div className="player-jersey">
+              <img src={JerseyImage} alt="Jersey" />
+              <div className="player-name-bg">
+                <Text h5>{selectedPlayers[5]}</Text>
+              </div>
+              <div className="player-price-bg">
+                <Text color="black">{playersData.find(p => p.name === selectedPlayers[5])?.price}</Text>
+              </div>
+            </div>
           </Grid.Container>
           <div className="player-jersey">
-        <img src={JerseyImage} alt="Jersey" />
-        <div className="player-name-bg">
-          <Text h5>{selectedPlayers[0]}</Text>
-        </div>
-        <div className="player-price-bg">
-          <Text color="black">{playersData.find(p => p.name === selectedPlayers[0])?.price}</Text>
-        </div>
-      </div>
-        </>
-      }
-      {
-        selectedPlayers.length === 4 && 
-        <>
+              <img src={JerseyImage} alt="Jersey" />
+              <div className="player-name-bg">
+                <Text h5>{selectedPlayers[2]}</Text>
+              </div>
+              <div className="player-price-bg">
+                <Text color="black">{playersData.find(p => p.name === selectedPlayers[2])?.price}</Text>
+              </div>
+            </div>
           <Grid.Container
             css={{
               display: "flex",
@@ -229,186 +311,36 @@ return (
               alignItems: 'center',
               gap: '10vw'  // Adjust gap size here to control the spacing between columns
             }}>
-             <div className="player-jersey">
-        <img src={JerseyImage} alt="Jersey" />
-        <div className="player-name-bg">
-          <Text h5>{selectedPlayers[2]}</Text>
-        </div>
-        <div className="player-price-bg">
-          <Text color="black">{playersData.find(p => p.name === selectedPlayers[2])?.price}</Text>
-        </div>
-      </div>
-      <div className="player-jersey">
-        <img src={JerseyImage} alt="Jersey" />
-        <div className="player-name-bg">
-          <Text h5>{selectedPlayers[3]}</Text>
-        </div>
-        <div className="player-price-bg">
-          <Text color="black">{playersData.find(p => p.name === selectedPlayers[3])?.price}</Text>
-        </div>
-      </div>
+            <div className="player-jersey">
+              <img src={JerseyImage} alt="Jersey" />
+              <div className="player-name-bg">
+                <Text h5>{selectedPlayers[0]}</Text>
+              </div>
+              <div className="player-price-bg">
+                <Text color="black">{playersData.find(p => p.name === selectedPlayers[0])?.price}</Text>
+              </div>
+            </div>
+            <div className="player-jersey">
+              <img src={JerseyImage} alt="Jersey" />
+              <div className="player-name-bg">
+                <Text h5>{selectedPlayers[1]}</Text>
+              </div>
+              <div className="player-price-bg">
+                <Text color="black">{playersData.find(p => p.name === selectedPlayers[1])?.price}</Text>
+              </div>
+            </div>
           </Grid.Container>
           <div className="player-jersey">
-        <img src={JerseyImage} alt="Jersey" />
-        <div className="player-name-bg">
-          <Text h5>{selectedPlayers[0]}</Text>
-        </div>
-        <div className="player-price-bg">
-          <Text color="black">{playersData.find(p => p.name === selectedPlayers[0])?.price}</Text>
-        </div>
-      </div>
-      <div className="player-jersey">
-        <img src={JerseyImage} alt="Jersey" />
-        <div className="player-name-bg">
-          <Text h5>{selectedPlayers[1]}</Text>
-        </div>
-        <div className="player-price-bg">
-          <Text color="black">{playersData.find(p => p.name === selectedPlayers[1])?.price}</Text>
-        </div>
-      </div>
-        </>
-      }
-      {
-  selectedPlayers.length === 5 && 
-  <>
-    <Grid.Container
-      css={{
-        display: "flex",
-        justifyContent: 'center',
-        alignItems: 'center',
-        gap: '10vw'  // Adjust gap size here to control the spacing between columns
-      }}>
-       <div className="player-jersey">
-        <img src={JerseyImage} alt="Jersey" />
-        <div className="player-name-bg">
-          <Text h5>{selectedPlayers[3]}</Text>
-        </div>
-        <div className="player-price-bg">
-          <Text color="black">{playersData.find(p => p.name === selectedPlayers[3])?.price}</Text>
-        </div>
-      </div>
-      <div className="player-jersey">
-        <img src={JerseyImage} alt="Jersey" />
-        <div className="player-name-bg">
-          <Text h5>{selectedPlayers[4]}</Text>
-        </div>
-        <div className="player-price-bg">
-          <Text color="black">{playersData.find(p => p.name === selectedPlayers[4])?.price}</Text>
-        </div>
-      </div>
-    </Grid.Container>
-    <Grid.Container
-      css={{
-        display: "flex",
-        justifyContent: 'center',
-        alignItems: 'center',
-        gap: '10vw'  // Adjust gap size here to control the spacing between columns
-      }}>
-       <div className="player-jersey">
-        <img src={JerseyImage} alt="Jersey" />
-        <div className="player-name-bg">
-          <Text h5>{selectedPlayers[1]}</Text>
-        </div>
-        <div className="player-price-bg">
-          <Text color="black">{playersData.find(p => p.name === selectedPlayers[1])?.price}</Text>
-        </div>
-      </div>
-      <div className="player-jersey">
-        <img src={JerseyImage} alt="Jersey" />
-        <div className="player-name-bg">
-          <Text h5>{selectedPlayers[2]}</Text>
-        </div>
-        <div className="player-price-bg">
-          <Text color="black">{playersData.find(p => p.name === selectedPlayers[2])?.price}</Text>
-        </div>
-      </div>
-    </Grid.Container>
-    <div className="player-jersey">
-        <img src={JerseyImage} alt="Jersey" />
-        <div className="player-name-bg">
-          <Text h5>{selectedPlayers[0]}</Text>
-        </div>
-        <div className="player-price-bg">
-          <Text color="black">{playersData.find(p => p.name === selectedPlayers[0])?.price}</Text>
-        </div>
-      </div>
-  </>
-}
-{
-  selectedPlayers.length === 6 && 
-  <>
-    <Grid.Container
-      css={{
-        display: "flex",
-        justifyContent: 'center',
-        alignItems: 'center',
-        gap: '10vw'  // Adjust gap size here to control the spacing between columns
-      }}>
-       <div className="player-jersey">
-        <img src={JerseyImage} alt="Jersey" />
-        <div className="player-name-bg">
-          <Text h5>{selectedPlayers[4]}</Text>
-        </div>
-        <div className="player-price-bg">
-          <Text color="black">{playersData.find(p => p.name === selectedPlayers[4])?.price}</Text>
-        </div>
-      </div>
-      <div className="player-jersey">
-        <img src={JerseyImage} alt="Jersey" />
-        <div className="player-name-bg">
-          <Text h5>{selectedPlayers[5]}</Text>
-        </div>
-        <div className="player-price-bg">
-          <Text color="black">{playersData.find(p => p.name === selectedPlayers[5])?.price}</Text>
-        </div>
-      </div>
-    </Grid.Container>
-    <div className="player-jersey">
-        <img src={JerseyImage} alt="Jersey" />
-        <div className="player-name-bg">
-          <Text h5>{selectedPlayers[2]}</Text>
-        </div>
-        <div className="player-price-bg">
-          <Text color="black">{playersData.find(p => p.name === selectedPlayers[2])?.price}</Text>
-        </div>
-      </div>
-    <Grid.Container
-      css={{
-        display: "flex",
-        justifyContent: 'center',
-        alignItems: 'center',
-        gap: '10vw'  // Adjust gap size here to control the spacing between columns
-      }}>
-      <div className="player-jersey">
-        <img src={JerseyImage} alt="Jersey" />
-        <div className="player-name-bg">
-          <Text h5>{selectedPlayers[0]}</Text>
-        </div>
-        <div className="player-price-bg">
-          <Text color="black">{playersData.find(p => p.name === selectedPlayers[0])?.price}</Text>
-        </div>
-      </div>
-      <div className="player-jersey">
-        <img src={JerseyImage} alt="Jersey" />
-        <div className="player-name-bg">
-          <Text h5>{selectedPlayers[1]}</Text>
-        </div>
-        <div className="player-price-bg">
-          <Text color="black">{playersData.find(p => p.name === selectedPlayers[1])?.price}</Text>
-        </div>
-      </div>
-    </Grid.Container>
-    <div className="player-jersey">
-        <img src={JerseyImage} alt="Jersey" />
-        <div className="player-name-bg">
-          <Text h5>{selectedPlayers[3]}</Text>
-        </div>
-        <div className="player-price-bg">
-          <Text color="black">{playersData.find(p => p.name === selectedPlayers[3])?.price}</Text>
-        </div>
-      </div>
-  </>
-}
+              <img src={JerseyImage} alt="Jersey" />
+              <div className="player-name-bg">
+                <Text h5>{selectedPlayers[3]}</Text>
+              </div>
+              <div className="player-price-bg">
+                <Text color="black">{playersData.find(p => p.name === selectedPlayers[3])?.price}</Text>
+              </div>
+            </div>
+        </>}
+
 
     </div>
   </Col>
@@ -422,20 +354,33 @@ return (
                         </div>
                         <div className="sidebar">
                         <Text className="money-left">{'Money Left: $140M'}</Text>
-                        {renderDropdown()}
-                        <Text h6>{'Selected Players:'}</Text>
-                        <ul>
-                            {selectedPlayers.map((player, index) => {
-                            // Find the player data to get their position
-                            const playerData = playersData.find(p => p.name === player);
-                            return (
-                                <li key={index} className="player-list-item">
-                                <span className="player-name">{player}</span>
-                                {playerData && <span className="player-position">{playerData.position}</span>}
-                                </li>
-                            );
-                            })}
-                        </ul>
+
+                        <Collapse.Group color={"black"}  css={{width:"100%", gap:"2"}}>
+                        <Collapse title="Gender"  css={{width:"100%"}}>
+                          {genderOptions.map((option) => (
+                            <Checkbox
+                              key={option}
+                              isSelected={filters.gender[option.toLowerCase().replace(' ', '')]}
+                              onChange={() => handleFilterChange('gender', option)}
+                            >
+                              {option}
+                            </Checkbox>
+                          ))}
+                        </Collapse>
+                        <Collapse title="Position">
+                          {positionOptions.map((option) => (
+                           <Checkbox
+                           key={option}
+                           isSelected={filters.position[option.toLowerCase()]}
+                           onChange={() => handleFilterChange('position', option)}
+                       >
+                           {option}
+                       </Checkbox>
+                          ))}
+                        </Collapse>
+                      </Collapse.Group>
+                        {renderPlayersList()}
+                      
                         </div>
                     </Col>
                 </Grid>
