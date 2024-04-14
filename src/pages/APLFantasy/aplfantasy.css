@@ -93,7 +93,7 @@ color: #FFFFFF;
   }
   
   .football-field {
-    background: url('footballfield.png') no-repeat center; /* This will align your background to the left */
+    background: url('footballfield2.png') no-repeat center; /* This will align your background to the left */
     background-size: contain;
     position: relative;
     width: 100%; /* Make this 100% of the parent container's width */
@@ -122,10 +122,25 @@ color: #FFFFFF;
   .player-jersey {
     position: relative;
     text-align: center;
+    height: 125px;
+    width: 125px;
+
+  }
+
+  .player-name-bg {
+    background-color: #1F335B; /* The blue background */
+    padding: 4px; /* Or as per your design */
+    color: #FFFFFF; /* Assuming you want white text */
+  }
+  
+  .player-price-bg {
+    background-color: #F4F4F4; /* The grey background */
+    padding: 4px; /* Or as per your design */
+    color: #000000; /* Assuming you want black text */
   }
   
   .player-jersey img {
-    width: 125  px; /* Adjust according to your design */
+    width: 115  px; /* Adjust according to your design */
   }
   
   .sidebar {
@@ -186,17 +201,7 @@ color: #FFFFFF;
     margin-top: 5px; /* Space between name and position */
   }
 
-  .player-name-bg {
-    background-color: #1F335B; /* The blue background */
-    padding: 5px; /* Or as per your design */
-    color: #FFFFFF; /* Assuming you want white text */
-  }
-  
-  .player-price-bg {
-    background-color: #F4F4F4; /* The grey background */
-    padding: 5px; /* Or as per your design */
-    color: #000000; /* Assuming you want black text */
-  }
+
   
   
   /* NextUI Dropdown styles if needed */
