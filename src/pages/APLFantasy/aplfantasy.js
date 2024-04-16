@@ -11,6 +11,9 @@ import { color } from "@chakra-ui/react";
 export default function APLFantasy() {
   const genderOptions = ['Cis Man', 'Non Cis Man'];
   const positionOptions = ['Defender', 'Midfielder', 'Attacker'];
+  const formationOptions = ['1-3-1', '2-1-2', '3-11'];
+  const priceOptions = ['0M-9M', '10M-25M', '25M-50M', '50M+'];
+
   const [currentPage, setCurrentPage] = useState(1);
   const playersPerPage = 10;
   const addPlayer = (player) => {
@@ -22,28 +25,21 @@ export default function APLFantasy() {
         alert('Player already selected!');
     }
 };
-  const [filters, setFilters] = useState({
-    gender: {
-      cisMan: false,
-      nonCisMan: false,
-    },
-    position: {
-      defender: false,
-      midfielder: false,
-      attacker: false,
-    },
+ const [filters, setFilters] = useState({
+    gender: {},
+    position: {},
+    formation: '1-3-1', // default formation
+    price: '0M-9M' // default price range
   });
 
-  const handleFilterChange = (filterType, filterName) => {
-    const keyName = filterName.toLowerCase();
+  
+
+  const handleFilterChange = (filterType, value) => {
     setFilters(prevFilters => ({
-        ...prevFilters,
-        [filterType]: {
-            ...prevFilters[filterType],
-            [keyName]: !prevFilters[filterType][keyName]
-        }
+      ...prevFilters,
+      [filterType]: value
     }));
-};
+  };
 
     const playersData =  [{
         name: "Rivan Sengupta",
@@ -401,31 +397,59 @@ return (
                           <Text className="money-left-text">{'Money'}<br/>{'Left'}</Text>
                           <Text className="money-left-text">$140M</Text>
                           </div>
+                          <div className="coll-group">
+           
 
-                        <Collapse.Group className="coll-group" color={"black"}  css={{width:"100%", gap:"2"}}>
-                        <Collapse color="black" className="coll-dropdown" title="Gender">
-                          {genderOptions.map((option) => (
-                            <Checkbox
-                              key={option}
-                              isSelected={filters.gender[option.toLowerCase().replace(' ', '')]}
-                              onChange={() => handleFilterChange('gender', option)}
-                            >
-                              {option}
-                            </Checkbox>
-                          ))}
-                        </Collapse>
-                        <Collapse className="coll-dropdown"  title="Position">
-                          {positionOptions.map((option) => (
-                           <Checkbox
-                           key={option}
-                           isSelected={filters.position[option.toLowerCase()]}
-                           onChange={() => handleFilterChange('position', option)}
-                       >
-                           {option}
-                       </Checkbox>
-                          ))}
-                        </Collapse>
-                      </Collapse.Group>
+          {/* Price Collapse */}
+          <Collapse title="Formation" className="coll-dropdown">
+          {formationOptions.map((formation) => (
+            <Checkbox
+              key={formation}
+              checked={filters.formation === formation}
+              onChange={() => handleFilterChange('formation', formation)}
+            >
+              {formation}
+            </Checkbox>
+          ))}
+        </Collapse>
+
+
+          {/* Position Collapse */}
+          <Collapse title="Position" className="coll-dropdown">
+            {positionOptions.map((option) => (
+              <Checkbox
+                key={option}
+                checked={filters.position[option]}
+                onChange={() => handleFilterChange('position', option)}
+              >
+                {option}
+              </Checkbox>
+            ))}
+          </Collapse>
+          <Collapse title="Gender" className="coll-dropdown">
+          {genderOptions.map((gender) => (
+            <Checkbox
+              key={gender}
+              checked={filters.gender[gender]}
+              onChange={() => handleFilterChange('gender', gender)}
+            >
+              {gender}
+            </Checkbox>
+          ))}
+        </Collapse>
+                {/* Price Collapse with Checkbox Options */}
+                <Collapse title="Price" className="coll-dropdown">
+          {priceOptions.map((price) => (
+            <Checkbox
+              key={price}
+              checked={filters.price === price}
+              onChange={() => handleFilterChange('price', price)}
+            >
+              {price}
+            </Checkbox>
+          ))}
+        </Collapse>
+                      </div>
                         {renderPlayersList()}
                       
                         </div>
