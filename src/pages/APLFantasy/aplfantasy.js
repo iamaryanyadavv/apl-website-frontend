@@ -1,5 +1,5 @@
 import { Grid, Input, Text, Dropdown, Col, Row } from "@nextui-org/react";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import './aplfantasy.css';
 import JerseyImage from "./jersey template 1.png"
 import FanUpLogo from "./fanup_logo-white 1.png"
@@ -11,7 +11,7 @@ import { color } from "@chakra-ui/react";
 export default function APLFantasy() {
   const genderOptions = ['Cis Man', 'Non Cis Man'];
   const positionOptions = ['Defender', 'Midfielder', 'Attacker'];
-  const formationOptions = ['1-3-1', '2-1-2', '3-11'];
+  const formationOptions = ['1-3-1', '2-1-2', '3-1-1'];
   const priceOptions = ['0M-9M', '10M-25M', '25M-50M', '50M+'];
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -25,21 +25,34 @@ export default function APLFantasy() {
         alert('Player already selected!');
     }
 };
- const [filters, setFilters] = useState({
-    gender: {},
-    position: {},
-    formation: '1-3-1', // default formation
-    price: '0M-9M' // default price range
-  });
+const [filters, setFilters] = useState({
+  gender: {},
+  position: {},
+  formation: '2-1-2', // set default formation to '2-1-2'
+  price: '0M-9M'
+});
+
 
   
 
-  const handleFilterChange = (filterType, value) => {
+const handleFilterChange = (filterType, value) => {
     setFilters(prevFilters => ({
       ...prevFilters,
       [filterType]: value
     }));
   };
+
+  const handleFormationChange = (formationOption) => {
+    setFilters(prevFilters => ({
+      ...prevFilters,
+      formation: prevFilters.formation === formationOption ? '' : formationOption
+    }));
+  };
+
+  // This useEffect ensures that the default formation '2-1-2' is set on component mount
+  useEffect(() => {
+    handleFormationChange('2-1-2');
+  }, []);
 
     const playersData =  [{
         name: "Rivan Sengupta",
@@ -99,7 +112,7 @@ export default function APLFantasy() {
 ]
     
 const [selectedPlayers, setSelectedPlayers] = useState([]);
-const [formation, setFormation] = useState(1)
+const [formationState, setFormationState] = useState(1);
 
 const handleSelectPlayer = (playerName) => {
     if (selectedPlayers.length < 6) {
@@ -108,6 +121,22 @@ const handleSelectPlayer = (playerName) => {
         alert('You can only select 6 players');
     }
 };
+
+useEffect(() => {
+  switch (filters.formation) {
+    case '1-3-1':
+      setFormationState(2);
+      break;
+    case '2-1-2':
+      setFormationState(1);
+      break;
+    case '3-1-1':
+      setFormationState(3);
+      break;
+    default:
+      setFormationState(1); // Default case can be set to any valid value
+  }
+}, [filters.formation]);
 
 const handlePageChange = (newPage) => {
   if (newPage > 0 && newPage <= Math.ceil(playersData.length / playersPerPage)) {
@@ -210,6 +239,7 @@ const renderPlayersList = () => {
 
 
 
+
   return (
     <div className="players-list">
     {currentPlayers.map((player, index) => (
@@ -306,7 +336,7 @@ return (
   <Col className="leftcol">
     <Text className="fantasytitle">APL FANTASY GAME</Text>
     <div className="football-field">
-        {formation==1 && <>
+        {formationState==1 && <>
           <Grid.Container
             css={{
               display: "flex",
@@ -400,32 +430,19 @@ return (
                           <div className="coll-group">
            
 
-          {/* Price Collapse */}
-          <Collapse title="Formation" className="coll-dropdown">
-          {formationOptions.map((formation) => (
-            <Checkbox
-              key={formation}
-              checked={filters.formation === formation}
-              onChange={() => handleFilterChange('formation', formation)}
-            >
-              {formation}
-            </Checkbox>
-          ))}
-        </Collapse>
 
-
-          {/* Position Collapse */}
-          <Collapse title="Position" className="coll-dropdown">
-            {positionOptions.map((option) => (
-              <Checkbox
-                key={option}
-                checked={filters.position[option]}
-                onChange={() => handleFilterChange('position', option)}
-              >
-                {option}
-              </Checkbox>
-            ))}
-          </Collapse>
+      <Collapse title="Formation" className="coll-dropdown">
+              {formationOptions.map((formationOption) => (
+                <Checkbox
+                  key={formationOption}
+                  checked={filters.formation == formationOption?true:false}
+                  onChange={() => handleFormationChange(formationOption)}
+                
+                >
+                  {formationOption}
+                </Checkbox>
+              ))}
+            </Collapse>
           <Collapse title="Gender" className="coll-dropdown">
           {genderOptions.map((gender) => (
             <Checkbox
