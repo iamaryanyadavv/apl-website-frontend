@@ -23,6 +23,10 @@ color: #FFFFFF;
     text-align: center;
     margin-bottom: 30px;
 }
+.nextui-collapse-title
+{
+  color: black;
+}
 
 .player-row {
   display: flex;
@@ -93,7 +97,7 @@ color: #FFFFFF;
   }
   
   .football-field {
-    background: url('footballfield2.png') no-repeat center; /* This will align your background to the left */
+    background: url('footballfield.png') no-repeat center; /* This will align your background to the left */
     background-size: contain;
     position: relative;
     width: 100%; /* Make this 100% of the parent container's width */
@@ -122,25 +126,50 @@ color: #FFFFFF;
   .player-jersey {
     position: relative;
     text-align: center;
-    height: 125px;
-    width: 125px;
-
+    justify-content: center;
+    width: 150px; /* Reduce the width to the size that matches your second image */
+  }
+  .midfielder-1
+  {
+    height: 20%;
   }
 
-  .player-name-bg {
-    background-color: #1F335B; /* The blue background */
-    padding: 4px; /* Or as per your design */
-    color: #FFFFFF; /* Assuming you want white text */
+  .player-name-bg, .player-price-bg {
+    padding: 0px 4px; /* Reduce padding to decrease the height */
+    width: auto; /* This will only be as wide as the content, plus padding */
+    font-size: 8px; /* Reduce the font size to match your second image */
   }
+
+  .player-name-bg
+  {
+    display: flex;  
+    align-items: center;
+    justify-content: center; 
+    background-color: #1F335B;
+    height: 20px;
+  }
+
+  .player-price-bg 
+  {
+    background-color: #F4F4F4;
+    height: 20px;
+  }
+
   
-  .player-price-bg {
-    background-color: #F4F4F4; /* The grey background */
-    padding: 4px; /* Or as per your design */
-    color: #000000; /* Assuming you want black text */
+
+  .player-name-text
+ {
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    justify-self: center;
+    text-align: center;
+    margin-bottom: 0;
+    font-size: 14px;
   }
   
   .player-jersey img {
-    width: 115  px; /* Adjust according to your design */
+    width: 120px; /* Reduce the width as needed */
   }
   
   .sidebar {
@@ -177,8 +206,41 @@ color: #FFFFFF;
     width: 100%; /* Full width */
   }
   
+  /* aplfantasy.css */
 
-  .sidebar li {
+/* Styles for the player card */
+.player-card {
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  margin-bottom: 20px;
+  padding: 20px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.player-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex: 1;
+}
+
+.add-player-btn {
+  background-color: #21ba45; /* Green background */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  cursor: pointer;
+  margin-left: 10px; /* Space between the button and the player info */
+}
+
+/* Add any other styles as needed */
+
+
+  .players-list {
     background-color: #4DFFA8; /* Background color for list items */
     color: black; /* Text color for player name */
     margin-bottom: 10px;
@@ -188,6 +250,18 @@ color: #FFFFFF;
     flex-direction: column; /* Stack name and position on top of each other */
     align-items: flex-start; /* Align items to the left */
   }
+
+  .players-card{
+    background-color: #4DFFA8; /* Background color for list items */
+    color: black; /* Text color for player name */
+    margin-bottom: 10px;
+    padding: 15px 20px;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column; /* Stack name and position on top of each other */
+    align-items: flex-start; /* Align items to the left */
+  }
+  
   
   .sidebar li .player-name {
     font-size: 18px; /* Adjust the font size as needed for the name */
@@ -202,7 +276,112 @@ color: #FFFFFF;
   }
 
 
-  
+.player-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.add-player-btn {
+    padding: 10px;
+    cursor: pointer;
+    background-color: white; /* Assuming a white button, but change as needed */
+    border: none;
+    border-radius: 4px;
+}
+
+.pagination {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+/* Existing sidebar li styles */
+.sidebar li {
+  background-color: #4DFFA8; /* Background color for list items */
+  color: black; /* Text color for player name */
+  margin-bottom: 10px;
+  padding: 15px 20px;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column; /* Stack name and position on top of each other */
+  align-items: flex-start; /* Align items to the left */
+}
+
+/* Styles for the player cards */
+.player-card {
+  background-color: #4DFFA8; /* Same background color as sidebar li */
+  color: black; /* Same text color as sidebar li */
+  margin-bottom: 10px;
+  padding: 15px 20px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center; /* Align items in a row */
+  justify-content: space-between; /* Space between content and button */
+}
+
+.player-name,
+.player-position,
+.player-price {
+  margin-bottom: 4px; /* Space between name, position, and price */
+}
+
+.add-player-btn {
+  padding: 8px 16px;
+  background-color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Styles for pagination */
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.pagination button {
+  padding: 8px 16px;
+  margin: 0 10px;
+  background-color: #4DFFA8; /* Same background color as player card */
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Add hover effect for buttons */
+.add-player-btn:hover,
+.pagination button:hover {
+  background-color: #3cb371; /* Darker shade for hover effect */
+}
+
+/* Optional: Disabled state for buttons */
+.pagination button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+
+/* Pagination button styles if not already defined */
+.pagination button {
+    padding: 5px 10px;
+    margin: 0 5px;
+    background-color: #4DFFA8; /* Same as the player card for consistency */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Hover effect for buttons */
+.pagination button:hover {
+    background-color: #3cb371; /* Darker shade for hover effect */
+}
+
+/* Disable button style */
+.pagination button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
   
   /* NextUI Dropdown styles if needed */
 /* Make the dropdown button full width and background white */
