@@ -211,7 +211,7 @@ color: #282828;
   {
     display: flex;  
     align-items: center;
-    justify-content: center; 
+    justify-content: center;
     background-color: #1F335B;
     height: 20px;
   }
@@ -220,6 +220,9 @@ color: #282828;
   {
     background-color: #F4F4F4;
     height: 20px;
+    display: flex;  
+    align-items: center;
+    justify-content: center; 
   }
 
   
@@ -253,6 +256,35 @@ color: #282828;
     text-align: center;
     margin-bottom: 0;
     font-size: 14px;
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 500;
+font-size: 12px;
+line-height: 15px;
+/* identical to box height */
+display: flex;
+align-items: center;
+text-align: center;
+text-transform: uppercase;
+
+color: #FFFFFF;
+
+
+  }
+
+  .player-price-text
+  {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 18px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: #000000;
   }
   
   .player-jersey img {

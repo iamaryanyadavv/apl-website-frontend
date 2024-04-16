@@ -7,12 +7,15 @@ import APLTEXT from "./apl.png"
 import FANTASYTEXT from "./Fantasy Game.png"
 import { Collapse, Checkbox } from "@nextui-org/react";
 import { color } from "@chakra-ui/react";
+import addPlayerButton from "./addplayericon.png"
 
 export default function APLFantasy() {
   const genderOptions = ['Cis Man', 'Non Cis Man'];
   const positionOptions = ['Defender', 'Midfielder', 'Attacker'];
   const formationOptions = ['1-3-1', '2-1-2', '3-1-1'];
   const priceOptions = ['0M-9M', '10M-25M', '25M-50M', '50M+'];
+  const [selectedJersey, setSelectedJersey] = useState(null);
+
 
   const [currentPage, setCurrentPage] = useState(1);
   const playersPerPage = 10;
@@ -42,6 +45,18 @@ const handleFilterChange = (filterType, value) => {
     }));
   };
 
+  const renderJerseys = () => {
+    return selectedPlayers.map((player, index) => (
+      <div key={index} className="player-jersey" style={{ position: 'relative' }}>
+        <img src={JerseyImage} alt="Jersey" />
+        <Text h4 css={{ position: 'absolute', bottom: '0' }}>{player}</Text>
+        <img src={addPlayerButton} alt="Add Player"
+          style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', cursor: 'pointer' }}
+          onClick={() => setSelectedJersey(index)} />
+      </div>
+    ));
+  };
+  
   const handleFormationChange = (newFormation) => {
     if (filters.formation !== newFormation) {
       setFilters({
@@ -119,11 +134,14 @@ const [selectedPlayers, setSelectedPlayers] = useState([]);
 const [formationState, setFormationState] = useState(1);
 
 const handleSelectPlayer = (playerName) => {
-    if (selectedPlayers.length < 6) {
-        setSelectedPlayers([...selectedPlayers, playerName]);
-    } else {
-        alert('You can only select 6 players');
-    }
+  if (selectedJersey !== null) {
+    let newSelectedPlayers = [...selectedPlayers];
+    newSelectedPlayers[selectedJersey] = playerName; // Update the player in the specific jersey
+    setSelectedPlayers(newSelectedPlayers);
+    setSelectedJersey(null); // Reset selected jersey
+  } else {
+    alert('Please select a jersey first by clicking on the add icon.');
+  }
 };
 
 useEffect(() => {
@@ -313,15 +331,16 @@ const renderDropdown = () => {
         <Dropdown>
             <Dropdown.Button color={"white"} className="dropdown-button" flat>{'Select Player'}</Dropdown.Button>
             <Dropdown.Menu
-                aria-label="Single selection actions"
-                disallowEmptySelection
-                selectionMode="single"
-                onAction={(key) => handleSelectPlayer(key)}
+              aria-label="Select a player"
+              disallowEmptySelection
+              selectionMode="single"
+              onAction={(key) => handleSelectPlayer(key)}
             >
-                {playersData.map(player => (
-                    <Dropdown.Item key={player.name}>{player.name}</Dropdown.Item>
-                ))}
+              {playersData.map(player => (
+                <Dropdown.Item key={player.name}>{player.name}</Dropdown.Item>
+              ))}
             </Dropdown.Menu>
+
         </Dropdown>
     );
 };
@@ -351,30 +370,58 @@ return (
             }}>
             <div className="player-jersey">
               <img src={JerseyImage} alt="Jersey" />
+              <img src={addPlayerButton} alt="Add Player" style={{
+          position: 'absolute',
+          top: '40%',
+          left: '49%',
+          transform: 'translate(-50%, -50%)',
+          cursor: 'pointer',
+          width:"25px",
+          height:"25px"
+        }} onClick={() => setSelectedJersey(4)} />
               <div className="player-name-bg">
                 <Text className="player-name-text">{selectedPlayers[4]}</Text>
               </div>
               <div className="player-price-bg">
-                <Text className="player-name-text" color="black">{playersData.find(p => p.name === selectedPlayers[4])?.price}</Text>
+                <Text className="player-price-text" color="black">{playersData.find(p => p.name === selectedPlayers[4])?.price}</Text>
               </div>
+         
             </div>
             <div className="player-jersey">
               <img src={JerseyImage} alt="Jersey" />
+              <img src={addPlayerButton} alt="Add Player" style={{
+          position: 'absolute',
+          top: '40%',
+          left: '48%',
+          transform: 'translate(-50%, -50%)',
+          cursor: 'pointer',
+          width:"25px",
+          height:"25px"
+        }} onClick={() => setSelectedJersey(5)} />
               <div className="player-name-bg">
                 <Text className="player-name-text">{selectedPlayers[5]}</Text>
               </div>
               <div className="player-price-bg">
-                <Text className="player-name-text" color="black">{playersData.find(p => p.name === selectedPlayers[5])?.price}</Text>
+                <Text className="player-price-text" color="black">{playersData.find(p => p.name === selectedPlayers[5])?.price}</Text>
               </div>
             </div>
           </Grid.Container>
           <div className="player-jersey midfielder-1">
               <img src={JerseyImage} alt="Jersey" />
+              <img src={addPlayerButton} alt="Add Player" style={{
+          position: 'absolute',
+          top: '50%',
+          left: '49%',
+          transform: 'translate(-50%, -50%)',
+          cursor: 'pointer',
+          width:"25px",
+          height:"25px"
+        }} onClick={() => setSelectedJersey(2)} />
               <div className="player-name-bg">
                 <Text className="player-name-text">{selectedPlayers[2]}</Text>
               </div>
               <div className="player-price-bg">
-                <Text className="player-name-text" color="black">{playersData.find(p => p.name === selectedPlayers[2])?.price}</Text>
+                <Text className="player-price-text" color="black">{playersData.find(p => p.name === selectedPlayers[2])?.price}</Text>
               </div>
             </div>
           <Grid.Container
@@ -387,30 +434,57 @@ return (
             }}>
             <div className="player-jersey">
               <img src={JerseyImage} alt="Jersey" />
+              <img src={addPlayerButton} alt="Add Player" style={{
+          position: 'absolute',
+          top: '40%',
+          left: '48%',
+          transform: 'translate(-50%, -50%)',
+          cursor: 'pointer',
+          width:"25px",
+          height:"25px"
+        }} onClick={() => setSelectedJersey(0)} />
               <div className="player-name-bg">
                 <Text className="player-name-text">{selectedPlayers[0]}</Text>
               </div>
               <div className="player-price-bg">
-                <Text className="player-name-text" color="black">{playersData.find(p => p.name === selectedPlayers[0])?.price}</Text>
+                <Text className="player-price-text" color="black">{playersData.find(p => p.name === selectedPlayers[0])?.price}</Text>
               </div>
             </div>
             <div className="player-jersey">
               <img src={JerseyImage} alt="Jersey" />
+              <img src={addPlayerButton} alt="Add Player" style={{
+          position: 'absolute',
+          top: '40%',
+          left: '49%',
+          transform: 'translate(-50%, -50%)',
+          cursor: 'pointer',
+          width:"25px",
+          height:"25px"
+        }} onClick={() => setSelectedJersey(1)} />
               <div className="player-name-bg">
                 <Text className="player-name-text">{selectedPlayers[1]}</Text>
               </div>
               <div className="player-price-bg">
-                <Text className="player-name-text" color="black">{playersData.find(p => p.name === selectedPlayers[1])?.price}</Text>
+                <Text className="player-price-text" color="black">{playersData.find(p => p.name === selectedPlayers[1])?.price}</Text>
               </div>
             </div>
           </Grid.Container>
           <div className="player-jersey">
               <img src={JerseyImage} alt="Jersey" />
+              <img src={addPlayerButton} alt="Add Player" style={{
+          position: 'absolute',
+          top: '40%',
+          left: '48%',
+          transform: 'translate(-50%, -50%)',
+          cursor: 'pointer',
+          width:"25px",
+          height:"25px"
+        }} onClick={() => setSelectedJersey(3)} />
               <div className="player-name-bg">
                 <Text className="player-name-text">{selectedPlayers[3]}</Text>
               </div>
               <div className="player-price-bg">
-                <Text className="player-name-text" color="black">{playersData.find(p => p.name === selectedPlayers[3])?.price}</Text>
+                <Text className="player-price-text" color="black">{playersData.find(p => p.name === selectedPlayers[3])?.price}</Text>
               </div>
             </div>
         </>}
@@ -418,11 +492,20 @@ return (
         {formationState==2 && <>
           <div className="player-jersey midfielder-1">
               <img src={JerseyImage} alt="Jersey" />
+              <img src={addPlayerButton} alt="Add Player" style={{
+          position: 'absolute',
+          top: '50%',
+          left: '48%',
+          transform: 'translate(-50%, -50%)',
+          cursor: 'pointer',
+          width:"25px",
+          height:"25px"
+        }} onClick={() => setSelectedJersey(2)} />
               <div className="player-name-bg">
                 <Text className="player-name-text">{selectedPlayers[2]}</Text>
               </div>
               <div className="player-price-bg">
-                <Text className="player-name-text" color="black">{playersData.find(p => p.name === selectedPlayers[2])?.price}</Text>
+                <Text className="player-price-text" color="black">{playersData.find(p => p.name === selectedPlayers[2])?.price}</Text>
               </div>
             </div>
           <Grid.Container
@@ -435,29 +518,56 @@ return (
             }}>
             <div className="player-jersey">
               <img src={JerseyImage} alt="Jersey" />
+              <img src={addPlayerButton} alt="Add Player" style={{
+          position: 'absolute',
+          top: '40%',
+          left: '49%',
+          transform: 'translate(-50%, -50%)',
+          cursor: 'pointer',
+          width:"25px",
+          height:"25px"
+        }} onClick={() => setSelectedJersey(4)} />
               <div className="player-name-bg">
                 <Text className="player-name-text">{selectedPlayers[4]}</Text>
               </div>
               <div className="player-price-bg">
-                <Text className="player-name-text" color="black">{playersData.find(p => p.name === selectedPlayers[4])?.price}</Text>
+                <Text className="player-price-text" color="black">{playersData.find(p => p.name === selectedPlayers[4])?.price}</Text>
               </div>
             </div>
             <div className="player-jersey">
               <img src={JerseyImage} alt="Jersey" />
+              <img src={addPlayerButton} alt="Add Player" style={{
+          position: 'absolute',
+          top: '40%',
+          left: '49%',
+          transform: 'translate(-50%, -50%)',
+          cursor: 'pointer',
+          width:"25px",
+          height:"25px"
+        }} onClick={() => setSelectedJersey(5)} />
               <div className="player-name-bg">
                 <Text className="player-name-text">{selectedPlayers[5]}</Text>
               </div>
               <div className="player-price-bg">
-                <Text className="player-name-text" color="black">{playersData.find(p => p.name === selectedPlayers[5])?.price}</Text>
+                <Text className="player-price-text" color="black">{playersData.find(p => p.name === selectedPlayers[5])?.price}</Text>
               </div>
             </div>
             <div className="player-jersey">
               <img src={JerseyImage} alt="Jersey" />
+              <img src={addPlayerButton} alt="Add Player" style={{
+          position: 'absolute',
+          top: '40%',
+          left: '49%',
+          transform: 'translate(-50%, -50%)',
+          cursor: 'pointer',
+          width:"25px",
+          height:"25px"
+        }} onClick={() => setSelectedJersey(0)} />
               <div className="player-name-bg">
                 <Text className="player-name-text">{selectedPlayers[0]}</Text>
               </div>
               <div className="player-price-bg">
-                <Text className="player-name-text" color="black">{playersData.find(p => p.name === selectedPlayers[0])?.price}</Text>
+                <Text className="player-price-text" color="black">{playersData.find(p => p.name === selectedPlayers[0])?.price}</Text>
               </div>
             </div>
           </Grid.Container>
@@ -473,21 +583,39 @@ return (
             
             <div className="player-jersey">
               <img src={JerseyImage} alt="Jersey" />
+              <img src={addPlayerButton} alt="Add Player" style={{
+          position: 'absolute',
+          top: '40%',
+          left: '49%',
+          transform: 'translate(-50%, -50%)',
+          cursor: 'pointer',
+          width:"25px",
+          height:"25px"
+        }} onClick={() => setSelectedJersey(1)} />
               <div className="player-name-bg">
                 <Text className="player-name-text">{selectedPlayers[1]}</Text>
               </div>
               <div className="player-price-bg">
-                <Text className="player-name-text" color="black">{playersData.find(p => p.name === selectedPlayers[1])?.price}</Text>
+                <Text className="player-price-text" color="black">{playersData.find(p => p.name === selectedPlayers[1])?.price}</Text>
               </div>
             </div>
           </Grid.Container>
           <div className="player-jersey">
               <img src={JerseyImage} alt="Jersey" />
+              <img src={addPlayerButton} alt="Add Player" style={{
+          position: 'absolute',
+          top: '40%',
+          left: '49%',
+          transform: 'translate(-50%, -50%)',
+          cursor: 'pointer',
+          width:"25px",
+          height:"25px"
+        }} onClick={() => setSelectedJersey(3)} />
               <div className="player-name-bg">
                 <Text className="player-name-text">{selectedPlayers[3]}</Text>
               </div>
               <div className="player-price-bg">
-                <Text className="player-name-text" color="black">{playersData.find(p => p.name === selectedPlayers[3])?.price}</Text>
+                <Text className="player-price-text" color="black">{playersData.find(p => p.name === selectedPlayers[3])?.price}</Text>
               </div>
             </div>
         </>}
@@ -506,20 +634,38 @@ return (
             }}>
           <div className="player-jersey">
               <img src={JerseyImage} alt="Jersey" />
+              <img src={addPlayerButton} alt="Add Player" style={{
+          position: 'absolute',
+          top: '40%',
+          left: '49%',
+          transform: 'translate(-50%, -50%)',
+          cursor: 'pointer',
+          width:"25px",
+          height:"25px"
+        }} onClick={() => setSelectedJersey(3)} />
               <div className="player-name-bg">
                 <Text className="player-name-text">{selectedPlayers[3]}</Text>
               </div>
               <div className="player-price-bg">
-                <Text className="player-name-text" color="black">{playersData.find(p => p.name === selectedPlayers[3])?.price}</Text>
+                <Text className="player-price-text" color="black">{playersData.find(p => p.name === selectedPlayers[3])?.price}</Text>
               </div>
             </div>
           <div className="player-jersey">
               <img src={JerseyImage} alt="Jersey" />
+              <img src={addPlayerButton} alt="Add Player" style={{
+          position: 'absolute',
+          top: '40%',
+          left: '49%',
+          transform: 'translate(-50%, -50%)',
+          cursor: 'pointer',
+          width:"25px",
+          height:"25px"
+        }} onClick={() => setSelectedJersey(2)} />
               <div className="player-name-bg">
                 <Text className="player-name-text">{selectedPlayers[2]}</Text>
               </div>
               <div className="player-price-bg">
-                <Text className="player-name-text" color="black">{playersData.find(p => p.name === selectedPlayers[2])?.price}</Text>
+                <Text className="player-price-text" color="black">{playersData.find(p => p.name === selectedPlayers[2])?.price}</Text>
               </div>
             </div>
             </Grid.Container>
@@ -534,29 +680,55 @@ return (
             }}>
             <div className="player-jersey">
               <img src={JerseyImage} alt="Jersey" />
+              <img src={addPlayerButton} alt="Add Player" style={{
+          position: 'absolute',
+          top: '40%',
+          left: '49%',
+          transform: 'translate(-50%, -50%)',
+          cursor: 'pointer',
+          width:"25px",
+          height:"25px"
+        }} onClick={() => setSelectedJersey(4)} />
               <div className="player-name-bg">
                 <Text className="player-name-text">{selectedPlayers[4]}</Text>
               </div>
               <div className="player-price-bg">
-                <Text className="player-name-text" color="black">{playersData.find(p => p.name === selectedPlayers[4])?.price}</Text>
+                <Text className="player-price-text" color="black">{playersData.find(p => p.name === selectedPlayers[4])?.price}</Text>
               </div>
             </div>
             <div className="player-jersey">
-              <img src={JerseyImage} alt="Jersey" />
-              <div className="player-name-bg">
+            <img src={JerseyImage} alt="Jersey" />
+            <img src={addPlayerButton} alt="Add Player" style={{
+          position: 'absolute',
+          top: '40%',
+          left: '49%',
+          transform: 'translate(-50%, -50%)',
+          cursor: 'pointer',
+          width:"25px",
+          height:"25px"
+        }} onClick={() => setSelectedJersey(5)} />              <div className="player-name-bg">
                 <Text className="player-name-text">{selectedPlayers[5]}</Text>
               </div>
               <div className="player-price-bg">
-                <Text className="player-name-text" color="black">{playersData.find(p => p.name === selectedPlayers[5])?.price}</Text>
+                <Text className="player-price-text" color="black">{playersData.find(p => p.name === selectedPlayers[5])?.price}</Text>
               </div>
             </div>
             <div className="player-jersey">
               <img src={JerseyImage} alt="Jersey" />
+              <img src={addPlayerButton} alt="Add Player" style={{
+          position: 'absolute',
+          top: '40%',
+          left: '49%',
+          transform: 'translate(-50%, -50%)',
+          cursor: 'pointer',
+          width:"25px",
+          height:"25px"
+        }} onClick={() => setSelectedJersey(0)} />
               <div className="player-name-bg">
                 <Text className="player-name-text">{selectedPlayers[0]}</Text>
               </div>
               <div className="player-price-bg">
-                <Text className="player-name-text" color="black">{playersData.find(p => p.name === selectedPlayers[0])?.price}</Text>
+                <Text className="player-price-text" color="black">{playersData.find(p => p.name === selectedPlayers[0])?.price}</Text>
               </div>
             </div>
           </Grid.Container>
@@ -572,11 +744,20 @@ return (
             
             <div className="player-jersey">
               <img src={JerseyImage} alt="Jersey" />
+              <img src={addPlayerButton} alt="Add Player" style={{
+          position: 'absolute',
+          top: '40%',
+          left: '49%',
+          transform: 'translate(-50%, -50%)',
+          cursor: 'pointer',
+          width:"25px",
+          height:"25px"
+        }} onClick={() => setSelectedJersey(1)} />
               <div className="player-name-bg">
                 <Text className="player-name-text">{selectedPlayers[1]}</Text>
               </div>
               <div className="player-price-bg">
-                <Text className="player-name-text" color="black">{playersData.find(p => p.name === selectedPlayers[1])?.price}</Text>
+                <Text className="player-price-text" color="black">{playersData.find(p => p.name === selectedPlayers[1])?.price}</Text>
               </div>
             </div>
           </Grid.Container>
@@ -609,7 +790,6 @@ return (
                   key={formationOption}
                   isSelected={formationOption==filters.formation}
                   onChange={() => handleFormationChange(formationOption)}
-      
                 >
                   {formationOption}
                 </Checkbox>
