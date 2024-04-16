@@ -383,6 +383,14 @@ color: #FFFFFF;
   margin-left: 10px; /* Space between the button and the player info */
 }
 
+.info-modal{
+
+
+background: #1F335B;
+border-radius: 5px;
+
+}
+
 /* Add any other styles as needed */
 
 
@@ -396,7 +404,7 @@ color: #FFFFFF;
     flex-direction: column; /* Stack name and position on top of each other */
     align-items: flex-start; /* Align items to the left */
     width: 100%;
-    height: 90%;
+    height: 72%;
   }
 
   .players-card{
@@ -537,12 +545,58 @@ color: #FFFFFF;
 }
 
 .pagination button {
-  padding: 8px 16px;
-  margin: 0 10px;
-  background-color: #4DFFA8; /* Same background color as player card */
+  background-color: #FFFFFF; /* Primary Green */
+  color: black; /* White text */
   border: none;
+  padding: 10px 20px;
   border-radius: 4px;
   cursor: pointer;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-top: 20px; /* Provide some top margin */
+
+background: #FDFDFD;
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+border-radius: 5px;
+
+}
+
+.next-page-button {
+  background-color: #FFFFFF; /* Primary Green */
+  color: black; /* White text */
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-top: 20px; /* Provide some top margin */
+
+background: #FDFDFD;
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+border-radius: 5px;
+
+}
+
+.pagination button:hover {
+  background-color: #1b8a3a; /* A darker green on hover */
+}
+
+/* Add styles for your Submit Button */
+.submit-button {
+  background-color: #4DFFA8; /* Primary Green */
+  color: black; /* White text */
+  border: none;
+  padding: 15px 30px; /* Bigger padding for larger button */
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-top: 20px; /* Provide some top margin */
+}
+
+.submit-button:hover {
+  background-color: #4DFFA8; /* A darker green on hover */
 }
 
 /* Add hover effect for buttons */
