@@ -15,19 +15,40 @@ export default function APLFantasy() {
   const formationOptions = ['1-3-1', '2-1-2', '3-1-1'];
   const priceOptions = ['0M-9M', '10M-25M', '25M-50M', '50M+'];
   const [selectedJersey, setSelectedJersey] = useState(null);
-
+  const formationStructures = {
+    "1-3-1": [0, 1, 2, 3, 4, 5], 
+    "2-1-2": [0, 1, 2, 3, 4, 5],
+    "3-1-1": [0, 1, 2, 3, 4, 5]
+  };
+  
+  const playerRoles = {
+    "1-3-1": ['Gk', 'Def', 'Mid', 'Mid', 'Mid', 'Att'],
+    "2-1-2": ['Gk', 'Def', 'Def', 'Mid', 'Att', 'Att'],
+    "3-1-1": ['Gk', 'Def', 'Def', 'Def', 'Mid', 'Att']
+  };
+  
 
   const [currentPage, setCurrentPage] = useState(1);
   const playersPerPage = 10;
-  const addPlayer = (player) => {
-    // Implement logic to add player to selectedPlayers
-    // For example:
-    if (!selectedPlayers.includes(player)) {
-        setSelectedPlayers([...selectedPlayers, player]);
+
+  const addPlayer = (playerName) => {
+    if (selectedJersey != null) {
+      const newSelectedPlayers = [...selectedPlayers];
+      // Check if the position allows adding this player
+      const playerData = playersData.find(p => p.name === playerName);
+      const requiredPosition = playerRoles[filters.formation][selectedJersey];
+      console.log(playerData.position)
+      if (playerData.position.startsWith(requiredPosition) || requiredPosition === 'All') {
+        newSelectedPlayers[selectedJersey] = playerName; // Add the player to the selected jersey position
+        setSelectedPlayers(newSelectedPlayers);
+        setSelectedJersey(null); // Clear the selected jersey after updating
+      } else {
+        alert(`Selected player must be a ${requiredPosition}.`);
+      }
     } else {
-        alert('Player already selected!');
+      alert('Please select a position by clicking on a jersey icon.');
     }
-};
+  };
 const [filters, setFilters] = useState({
   gender: {},
   position: {},
@@ -133,12 +154,17 @@ const handleFilterChange = (filterType, value) => {
 const [selectedPlayers, setSelectedPlayers] = useState([]);
 const [formationState, setFormationState] = useState(1);
 
-const handleSelectPlayer = (playerName) => {
+const handleSelectPlayer = (playerName, playerPosition) => {
   if (selectedJersey !== null) {
-    let newSelectedPlayers = [...selectedPlayers];
-    newSelectedPlayers[selectedJersey] = playerName; // Update the player in the specific jersey
-    setSelectedPlayers(newSelectedPlayers);
-    setSelectedJersey(null); // Reset selected jersey
+    // Check if the player's position matches the slot's required position
+    if (playersData.find(p => p.name === playerName).position === playerRoles[filters.formation][selectedJersey]) {
+      let newSelectedPlayers = [...selectedPlayers];
+      newSelectedPlayers[selectedJersey] = playerName;
+      setSelectedPlayers(newSelectedPlayers);
+      setSelectedJersey(null);
+    } else {
+      alert('This player does not match the position requirements!');
+    }
   } else {
     alert('Please select a jersey first by clicking on the add icon.');
   }
@@ -378,12 +404,12 @@ return (
           cursor: 'pointer',
           width:"25px",
           height:"25px"
-        }} onClick={() => setSelectedJersey(4)} />
+        }} onClick={() => setSelectedJersey(5)} />
               <div className="player-name-bg">
-                <Text className="player-name-text">{selectedPlayers[4]}</Text>
+                <Text className="player-name-text">{selectedPlayers[5]}</Text>
               </div>
               <div className="player-price-bg">
-                <Text className="player-price-text" color="black">{playersData.find(p => p.name === selectedPlayers[4])?.price}</Text>
+                <Text className="player-price-text" color="black">{playersData.find(p => p.name === selectedPlayers[5])?.price}</Text>
               </div>
          
             </div>
@@ -397,12 +423,12 @@ return (
           cursor: 'pointer',
           width:"25px",
           height:"25px"
-        }} onClick={() => setSelectedJersey(5)} />
+        }} onClick={() => setSelectedJersey(4)} />
               <div className="player-name-bg">
-                <Text className="player-name-text">{selectedPlayers[5]}</Text>
+                <Text className="player-name-text">{selectedPlayers[4]}</Text>
               </div>
               <div className="player-price-bg">
-                <Text className="player-price-text" color="black">{playersData.find(p => p.name === selectedPlayers[5])?.price}</Text>
+                <Text className="player-price-text" color="black">{playersData.find(p => p.name === selectedPlayers[4])?.price}</Text>
               </div>
             </div>
           </Grid.Container>
@@ -416,12 +442,12 @@ return (
           cursor: 'pointer',
           width:"25px",
           height:"25px"
-        }} onClick={() => setSelectedJersey(2)} />
+        }} onClick={() => setSelectedJersey(3)} />
               <div className="player-name-bg">
-                <Text className="player-name-text">{selectedPlayers[2]}</Text>
+                <Text className="player-name-text">{selectedPlayers[3]}</Text>
               </div>
               <div className="player-price-bg">
-                <Text className="player-price-text" color="black">{playersData.find(p => p.name === selectedPlayers[2])?.price}</Text>
+                <Text className="player-price-text" color="black">{playersData.find(p => p.name === selectedPlayers[3])?.price}</Text>
               </div>
             </div>
           <Grid.Container
@@ -442,12 +468,12 @@ return (
           cursor: 'pointer',
           width:"25px",
           height:"25px"
-        }} onClick={() => setSelectedJersey(0)} />
+        }} onClick={() => setSelectedJersey(2)} />
               <div className="player-name-bg">
-                <Text className="player-name-text">{selectedPlayers[0]}</Text>
+                <Text className="player-name-text">{selectedPlayers[2]}</Text>
               </div>
               <div className="player-price-bg">
-                <Text className="player-price-text" color="black">{playersData.find(p => p.name === selectedPlayers[0])?.price}</Text>
+                <Text className="player-price-text" color="black">{playersData.find(p => p.name === selectedPlayers[2])?.price}</Text>
               </div>
             </div>
             <div className="player-jersey">
@@ -479,12 +505,12 @@ return (
           cursor: 'pointer',
           width:"25px",
           height:"25px"
-        }} onClick={() => setSelectedJersey(3)} />
+        }} onClick={() => setSelectedJersey(0)} />
               <div className="player-name-bg">
-                <Text className="player-name-text">{selectedPlayers[3]}</Text>
+                <Text className="player-name-text">{selectedPlayers[0]}</Text>
               </div>
               <div className="player-price-bg">
-                <Text className="player-price-text" color="black">{playersData.find(p => p.name === selectedPlayers[3])?.price}</Text>
+                <Text className="player-price-text" color="black">{playersData.find(p => p.name === selectedPlayers[0])?.price}</Text>
               </div>
             </div>
         </>}
