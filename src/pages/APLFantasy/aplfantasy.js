@@ -42,16 +42,20 @@ const handleFilterChange = (filterType, value) => {
     }));
   };
 
-  const handleFormationChange = (formationOption) => {
-    setFilters(prevFilters => ({
-      ...prevFilters,
-      formation: prevFilters.formation === formationOption ? '' : formationOption
-    }));
+  const handleFormationChange = (newFormation) => {
+    if (filters.formation !== newFormation) {
+      setFilters({
+        ...filters,
+        formation: newFormation
+      });
+      // Reset selected players when formation changes
+      setSelectedPlayers([]);
+    }
   };
 
   // This useEffect ensures that the default formation '2-1-2' is set on component mount
   useEffect(() => {
-    handleFormationChange('2-1-2');
+    setFilters(f => ({ ...f, formation: '2-1-2' }));
   }, []);
 
     const playersData =  [{
@@ -579,10 +583,6 @@ return (
 
         </>}
 
-
-       
-
-
     </div>
   </Col>
 </Grid>
@@ -603,16 +603,17 @@ return (
 
 
       <Collapse title="Formation" className="coll-dropdown">
-              {formationOptions.map((formationOption) => (
+              {formationOptions.map((formationOption) => {
+                return (
                 <Checkbox
                   key={formationOption}
-                  checked={filters.formation == formationOption?true:false}
+                  isSelected={formationOption==filters.formation}
                   onChange={() => handleFormationChange(formationOption)}
-                
+      
                 >
                   {formationOption}
                 </Checkbox>
-              ))}
+              )})}
             </Collapse>
           <Collapse title="Gender" className="coll-dropdown">
           {genderOptions.map((gender) => (
