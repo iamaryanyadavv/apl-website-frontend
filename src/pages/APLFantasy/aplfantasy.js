@@ -396,7 +396,7 @@ return (
             }}>
             <div className="player-jersey">
               <img src={JerseyImage} alt="Jersey" />
-              <img src={addPlayerButton} alt="Add Player" style={{
+              {!selectedPlayers[5] && <img src={addPlayerButton} alt="Add Player" style={{
           position: 'absolute',
           top: '40%',
           left: '49%',
@@ -404,7 +404,7 @@ return (
           cursor: 'pointer',
           width:"25px",
           height:"25px"
-        }} onClick={() => setSelectedJersey(5)} />
+        }} onClick={() => setSelectedJersey(5)} />}
               <div className="player-name-bg">
                 <Text className="player-name-text">{selectedPlayers[5]}</Text>
               </div>
@@ -415,7 +415,7 @@ return (
             </div>
             <div className="player-jersey">
               <img src={JerseyImage} alt="Jersey" />
-              <img src={addPlayerButton} alt="Add Player" style={{
+              {!selectedPlayers[4] && <img src={addPlayerButton} alt="Add Player" style={{
           position: 'absolute',
           top: '40%',
           left: '48%',
@@ -423,7 +423,7 @@ return (
           cursor: 'pointer',
           width:"25px",
           height:"25px"
-        }} onClick={() => setSelectedJersey(4)} />
+        }} onClick={() => setSelectedJersey(4)} />}
               <div className="player-name-bg">
                 <Text className="player-name-text">{selectedPlayers[4]}</Text>
               </div>
@@ -434,7 +434,7 @@ return (
           </Grid.Container>
           <div className="player-jersey midfielder-1">
               <img src={JerseyImage} alt="Jersey" />
-              <img src={addPlayerButton} alt="Add Player" style={{
+              {!selectedPlayers[3] &&<img src={addPlayerButton} alt="Add Player" style={{
           position: 'absolute',
           top: '50%',
           left: '49%',
@@ -442,7 +442,7 @@ return (
           cursor: 'pointer',
           width:"25px",
           height:"25px"
-        }} onClick={() => setSelectedJersey(3)} />
+        }} onClick={() => setSelectedJersey(3)} />}
               <div className="player-name-bg">
                 <Text className="player-name-text">{selectedPlayers[3]}</Text>
               </div>
@@ -460,7 +460,7 @@ return (
             }}>
             <div className="player-jersey">
               <img src={JerseyImage} alt="Jersey" />
-              <img src={addPlayerButton} alt="Add Player" style={{
+              {!selectedPlayers[2] &&<img src={addPlayerButton} alt="Add Player" style={{
           position: 'absolute',
           top: '40%',
           left: '48%',
@@ -468,7 +468,7 @@ return (
           cursor: 'pointer',
           width:"25px",
           height:"25px"
-        }} onClick={() => setSelectedJersey(2)} />
+        }} onClick={() => setSelectedJersey(2)} />}
               <div className="player-name-bg">
                 <Text className="player-name-text">{selectedPlayers[2]}</Text>
               </div>
@@ -478,7 +478,7 @@ return (
             </div>
             <div className="player-jersey">
               <img src={JerseyImage} alt="Jersey" />
-              <img src={addPlayerButton} alt="Add Player" style={{
+              {!selectedPlayers[1] &&<img src={addPlayerButton} alt="Add Player" style={{
           position: 'absolute',
           top: '40%',
           left: '49%',
@@ -486,7 +486,7 @@ return (
           cursor: 'pointer',
           width:"25px",
           height:"25px"
-        }} onClick={() => setSelectedJersey(1)} />
+        }} onClick={() => setSelectedJersey(1)} />}
               <div className="player-name-bg">
                 <Text className="player-name-text">{selectedPlayers[1]}</Text>
               </div>
@@ -497,7 +497,7 @@ return (
           </Grid.Container>
           <div className="player-jersey">
               <img src={JerseyImage} alt="Jersey" />
-              <img src={addPlayerButton} alt="Add Player" style={{
+              {!selectedPlayers[0] &&<img src={addPlayerButton} alt="Add Player" style={{
           position: 'absolute',
           top: '40%',
           left: '48%',
@@ -505,7 +505,7 @@ return (
           cursor: 'pointer',
           width:"25px",
           height:"25px"
-        }} onClick={() => setSelectedJersey(0)} />
+        }} onClick={() => setSelectedJersey(0)} />}
               <div className="player-name-bg">
                 <Text className="player-name-text">{selectedPlayers[0]}</Text>
               </div>
@@ -518,7 +518,7 @@ return (
         {formationState==2 && <>
           <div className="player-jersey midfielder-1">
               <img src={JerseyImage} alt="Jersey" />
-              <img src={addPlayerButton} alt="Add Player" style={{
+              {!selectedPlayers[5] &&<img src={addPlayerButton} alt="Add Player" style={{
           position: 'absolute',
           top: '50%',
           left: '48%',
@@ -526,12 +526,12 @@ return (
           cursor: 'pointer',
           width:"25px",
           height:"25px"
-        }} onClick={() => setSelectedJersey(2)} />
+        }} onClick={() => setSelectedJersey(5)} />}
               <div className="player-name-bg">
-                <Text className="player-name-text">{selectedPlayers[2]}</Text>
+                <Text className="player-name-text">{selectedPlayers[5]}</Text>
               </div>
               <div className="player-price-bg">
-                <Text className="player-price-text" color="black">{playersData.find(p => p.name === selectedPlayers[2])?.price}</Text>
+                <Text className="player-price-text" color="black">{playersData.find(p => p.name === selectedPlayers[5])?.price}</Text>
               </div>
             </div>
           <Grid.Container
@@ -544,7 +544,7 @@ return (
             }}>
             <div className="player-jersey">
               <img src={JerseyImage} alt="Jersey" />
-              <img src={addPlayerButton} alt="Add Player" style={{
+              {!selectedPlayers[4] && <img src={addPlayerButton} alt="Add Player" style={{
           position: 'absolute',
           top: '40%',
           left: '49%',
@@ -552,7 +552,7 @@ return (
           cursor: 'pointer',
           width:"25px",
           height:"25px"
-        }} onClick={() => setSelectedJersey(4)} />
+        }} onClick={() => setSelectedJersey(4)} />}
               <div className="player-name-bg">
                 <Text className="player-name-text">{selectedPlayers[4]}</Text>
               </div>
@@ -562,7 +562,7 @@ return (
             </div>
             <div className="player-jersey">
               <img src={JerseyImage} alt="Jersey" />
-              <img src={addPlayerButton} alt="Add Player" style={{
+              {!selectedPlayers[3] &&<img src={addPlayerButton} alt="Add Player" style={{
           position: 'absolute',
           top: '40%',
           left: '49%',
@@ -570,17 +570,17 @@ return (
           cursor: 'pointer',
           width:"25px",
           height:"25px"
-        }} onClick={() => setSelectedJersey(5)} />
+        }} onClick={() => setSelectedJersey(3)} />}
               <div className="player-name-bg">
-                <Text className="player-name-text">{selectedPlayers[5]}</Text>
+                <Text className="player-name-text">{selectedPlayers[3]}</Text>
               </div>
               <div className="player-price-bg">
-                <Text className="player-price-text" color="black">{playersData.find(p => p.name === selectedPlayers[5])?.price}</Text>
+                <Text className="player-price-text" color="black">{playersData.find(p => p.name === selectedPlayers[3])?.price}</Text>
               </div>
             </div>
             <div className="player-jersey">
               <img src={JerseyImage} alt="Jersey" />
-              <img src={addPlayerButton} alt="Add Player" style={{
+              {!selectedPlayers[2] &&<img src={addPlayerButton} alt="Add Player" style={{
           position: 'absolute',
           top: '40%',
           left: '49%',
@@ -588,12 +588,12 @@ return (
           cursor: 'pointer',
           width:"25px",
           height:"25px"
-        }} onClick={() => setSelectedJersey(0)} />
+        }} onClick={() => setSelectedJersey(2)} />}
               <div className="player-name-bg">
-                <Text className="player-name-text">{selectedPlayers[0]}</Text>
+                <Text className="player-name-text">{selectedPlayers[2]}</Text>
               </div>
               <div className="player-price-bg">
-                <Text className="player-price-text" color="black">{playersData.find(p => p.name === selectedPlayers[0])?.price}</Text>
+                <Text className="player-price-text" color="black">{playersData.find(p => p.name === selectedPlayers[2])?.price}</Text>
               </div>
             </div>
           </Grid.Container>
@@ -609,7 +609,7 @@ return (
             
             <div className="player-jersey">
               <img src={JerseyImage} alt="Jersey" />
-              <img src={addPlayerButton} alt="Add Player" style={{
+              {!selectedPlayers[1] &&<img src={addPlayerButton} alt="Add Player" style={{
           position: 'absolute',
           top: '40%',
           left: '49%',
@@ -617,7 +617,7 @@ return (
           cursor: 'pointer',
           width:"25px",
           height:"25px"
-        }} onClick={() => setSelectedJersey(1)} />
+        }} onClick={() => setSelectedJersey(1)} />}
               <div className="player-name-bg">
                 <Text className="player-name-text">{selectedPlayers[1]}</Text>
               </div>
@@ -628,7 +628,7 @@ return (
           </Grid.Container>
           <div className="player-jersey">
               <img src={JerseyImage} alt="Jersey" />
-              <img src={addPlayerButton} alt="Add Player" style={{
+              {!selectedPlayers[0] &&<img src={addPlayerButton} alt="Add Player" style={{
           position: 'absolute',
           top: '40%',
           left: '49%',
@@ -636,12 +636,12 @@ return (
           cursor: 'pointer',
           width:"25px",
           height:"25px"
-        }} onClick={() => setSelectedJersey(3)} />
+        }} onClick={() => setSelectedJersey(0)} />}
               <div className="player-name-bg">
-                <Text className="player-name-text">{selectedPlayers[3]}</Text>
+                <Text className="player-name-text">{selectedPlayers[0]}</Text>
               </div>
               <div className="player-price-bg">
-                <Text className="player-price-text" color="black">{playersData.find(p => p.name === selectedPlayers[3])?.price}</Text>
+                <Text className="player-price-text" color="black">{playersData.find(p => p.name === selectedPlayers[0])?.price}</Text>
               </div>
             </div>
         </>}
@@ -660,7 +660,7 @@ return (
             }}>
           <div className="player-jersey">
               <img src={JerseyImage} alt="Jersey" />
-              <img src={addPlayerButton} alt="Add Player" style={{
+              {!selectedPlayers[5] &&<img src={addPlayerButton} alt="Add Player" style={{
           position: 'absolute',
           top: '40%',
           left: '49%',
@@ -668,17 +668,17 @@ return (
           cursor: 'pointer',
           width:"25px",
           height:"25px"
-        }} onClick={() => setSelectedJersey(3)} />
+        }} onClick={() => setSelectedJersey(5)} />}
               <div className="player-name-bg">
-                <Text className="player-name-text">{selectedPlayers[3]}</Text>
+                <Text className="player-name-text">{selectedPlayers[5]}</Text>
               </div>
               <div className="player-price-bg">
-                <Text className="player-price-text" color="black">{playersData.find(p => p.name === selectedPlayers[3])?.price}</Text>
+                <Text className="player-price-text" color="black">{playersData.find(p => p.name === selectedPlayers[5])?.price}</Text>
               </div>
             </div>
           <div className="player-jersey">
               <img src={JerseyImage} alt="Jersey" />
-              <img src={addPlayerButton} alt="Add Player" style={{
+              {!selectedPlayers[4] &&<img src={addPlayerButton} alt="Add Player" style={{
           position: 'absolute',
           top: '40%',
           left: '49%',
@@ -686,12 +686,12 @@ return (
           cursor: 'pointer',
           width:"25px",
           height:"25px"
-        }} onClick={() => setSelectedJersey(2)} />
+        }} onClick={() => setSelectedJersey(4)} />}
               <div className="player-name-bg">
-                <Text className="player-name-text">{selectedPlayers[2]}</Text>
+                <Text className="player-name-text">{selectedPlayers[4]}</Text>
               </div>
               <div className="player-price-bg">
-                <Text className="player-price-text" color="black">{playersData.find(p => p.name === selectedPlayers[2])?.price}</Text>
+                <Text className="player-price-text" color="black">{playersData.find(p => p.name === selectedPlayers[4])?.price}</Text>
               </div>
             </div>
             </Grid.Container>
@@ -706,7 +706,7 @@ return (
             }}>
             <div className="player-jersey">
               <img src={JerseyImage} alt="Jersey" />
-              <img src={addPlayerButton} alt="Add Player" style={{
+              {!selectedPlayers[3] &&<img src={addPlayerButton} alt="Add Player" style={{
           position: 'absolute',
           top: '40%',
           left: '49%',
@@ -714,17 +714,17 @@ return (
           cursor: 'pointer',
           width:"25px",
           height:"25px"
-        }} onClick={() => setSelectedJersey(4)} />
+        }} onClick={() => setSelectedJersey(3)} />}
               <div className="player-name-bg">
-                <Text className="player-name-text">{selectedPlayers[4]}</Text>
+                <Text className="player-name-text">{selectedPlayers[3]}</Text>
               </div>
               <div className="player-price-bg">
-                <Text className="player-price-text" color="black">{playersData.find(p => p.name === selectedPlayers[4])?.price}</Text>
+                <Text className="player-price-text" color="black">{playersData.find(p => p.name === selectedPlayers[3])?.price}</Text>
               </div>
             </div>
             <div className="player-jersey">
             <img src={JerseyImage} alt="Jersey" />
-            <img src={addPlayerButton} alt="Add Player" style={{
+            {!selectedPlayers[2] && <img src={addPlayerButton} alt="Add Player" style={{
           position: 'absolute',
           top: '40%',
           left: '49%',
@@ -732,16 +732,16 @@ return (
           cursor: 'pointer',
           width:"25px",
           height:"25px"
-        }} onClick={() => setSelectedJersey(5)} />              <div className="player-name-bg">
-                <Text className="player-name-text">{selectedPlayers[5]}</Text>
+        }} onClick={() => setSelectedJersey(2)} /> }             <div className="player-name-bg">
+                <Text className="player-name-text">{selectedPlayers[2]}</Text>
               </div>
               <div className="player-price-bg">
-                <Text className="player-price-text" color="black">{playersData.find(p => p.name === selectedPlayers[5])?.price}</Text>
+                <Text className="player-price-text" color="black">{playersData.find(p => p.name === selectedPlayers[2])?.price}</Text>
               </div>
             </div>
             <div className="player-jersey">
               <img src={JerseyImage} alt="Jersey" />
-              <img src={addPlayerButton} alt="Add Player" style={{
+              {!selectedPlayers[1] &&<img src={addPlayerButton} alt="Add Player" style={{
           position: 'absolute',
           top: '40%',
           left: '49%',
@@ -749,12 +749,12 @@ return (
           cursor: 'pointer',
           width:"25px",
           height:"25px"
-        }} onClick={() => setSelectedJersey(0)} />
+        }} onClick={() => setSelectedJersey(1)} />}
               <div className="player-name-bg">
-                <Text className="player-name-text">{selectedPlayers[0]}</Text>
+                <Text className="player-name-text">{selectedPlayers[1]}</Text>
               </div>
               <div className="player-price-bg">
-                <Text className="player-price-text" color="black">{playersData.find(p => p.name === selectedPlayers[0])?.price}</Text>
+                <Text className="player-price-text" color="black">{playersData.find(p => p.name === selectedPlayers[1])?.price}</Text>
               </div>
             </div>
           </Grid.Container>
@@ -770,7 +770,7 @@ return (
             
             <div className="player-jersey">
               <img src={JerseyImage} alt="Jersey" />
-              <img src={addPlayerButton} alt="Add Player" style={{
+              {!selectedPlayers[0] &&<img src={addPlayerButton} alt="Add Player" style={{
           position: 'absolute',
           top: '40%',
           left: '49%',
@@ -778,12 +778,12 @@ return (
           cursor: 'pointer',
           width:"25px",
           height:"25px"
-        }} onClick={() => setSelectedJersey(1)} />
+        }} onClick={() => setSelectedJersey(0)} />}
               <div className="player-name-bg">
-                <Text className="player-name-text">{selectedPlayers[1]}</Text>
+                <Text className="player-name-text">{selectedPlayers[0]}</Text>
               </div>
               <div className="player-price-bg">
-                <Text className="player-price-text" color="black">{playersData.find(p => p.name === selectedPlayers[1])?.price}</Text>
+                <Text className="player-price-text" color="black">{playersData.find(p => p.name === selectedPlayers[0])?.price}</Text>
               </div>
             </div>
           </Grid.Container>
