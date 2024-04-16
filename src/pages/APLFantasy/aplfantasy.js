@@ -411,6 +411,177 @@ return (
             </div>
         </>}
 
+        {formationState==2 && <>
+          <div className="player-jersey midfielder-1">
+              <img src={JerseyImage} alt="Jersey" />
+              <div className="player-name-bg">
+                <Text className="player-name-text">{selectedPlayers[2]}</Text>
+              </div>
+              <div className="player-price-bg">
+                <Text className="player-name-text" color="black">{playersData.find(p => p.name === selectedPlayers[2])?.price}</Text>
+              </div>
+            </div>
+          <Grid.Container
+            css={{
+              display: "flex",
+              justifyContent: 'center',
+              alignItems: 'center',
+              gap: '10vw',
+              height:"20%"
+            }}>
+            <div className="player-jersey">
+              <img src={JerseyImage} alt="Jersey" />
+              <div className="player-name-bg">
+                <Text className="player-name-text">{selectedPlayers[4]}</Text>
+              </div>
+              <div className="player-price-bg">
+                <Text className="player-name-text" color="black">{playersData.find(p => p.name === selectedPlayers[4])?.price}</Text>
+              </div>
+            </div>
+            <div className="player-jersey">
+              <img src={JerseyImage} alt="Jersey" />
+              <div className="player-name-bg">
+                <Text className="player-name-text">{selectedPlayers[5]}</Text>
+              </div>
+              <div className="player-price-bg">
+                <Text className="player-name-text" color="black">{playersData.find(p => p.name === selectedPlayers[5])?.price}</Text>
+              </div>
+            </div>
+            <div className="player-jersey">
+              <img src={JerseyImage} alt="Jersey" />
+              <div className="player-name-bg">
+                <Text className="player-name-text">{selectedPlayers[0]}</Text>
+              </div>
+              <div className="player-price-bg">
+                <Text className="player-name-text" color="black">{playersData.find(p => p.name === selectedPlayers[0])?.price}</Text>
+              </div>
+            </div>
+          </Grid.Container>
+        
+          <Grid.Container
+            css={{
+              display: "flex",
+              justifyContent: 'center',
+              alignItems: 'center',
+              gap: '10vw'  ,// Adjust gap size here to control the spacing between columns
+              height:"20%"
+            }}>
+            
+            <div className="player-jersey">
+              <img src={JerseyImage} alt="Jersey" />
+              <div className="player-name-bg">
+                <Text className="player-name-text">{selectedPlayers[1]}</Text>
+              </div>
+              <div className="player-price-bg">
+                <Text className="player-name-text" color="black">{playersData.find(p => p.name === selectedPlayers[1])?.price}</Text>
+              </div>
+            </div>
+          </Grid.Container>
+          <div className="player-jersey">
+              <img src={JerseyImage} alt="Jersey" />
+              <div className="player-name-bg">
+                <Text className="player-name-text">{selectedPlayers[3]}</Text>
+              </div>
+              <div className="player-price-bg">
+                <Text className="player-name-text" color="black">{playersData.find(p => p.name === selectedPlayers[3])?.price}</Text>
+              </div>
+            </div>
+        </>}
+
+
+        {formationState==3 && <>
+          <Grid.Container
+            css={{
+              display: "flex",
+              flexDirection:"column",
+              // justifyContent: 'center',
+              alignItems: 'center',
+              // gap: '10vw',
+              // height:"20%",
+              flexWrap:"nowrap"
+            }}>
+          <div className="player-jersey">
+              <img src={JerseyImage} alt="Jersey" />
+              <div className="player-name-bg">
+                <Text className="player-name-text">{selectedPlayers[3]}</Text>
+              </div>
+              <div className="player-price-bg">
+                <Text className="player-name-text" color="black">{playersData.find(p => p.name === selectedPlayers[3])?.price}</Text>
+              </div>
+            </div>
+          <div className="player-jersey">
+              <img src={JerseyImage} alt="Jersey" />
+              <div className="player-name-bg">
+                <Text className="player-name-text">{selectedPlayers[2]}</Text>
+              </div>
+              <div className="player-price-bg">
+                <Text className="player-name-text" color="black">{playersData.find(p => p.name === selectedPlayers[2])?.price}</Text>
+              </div>
+            </div>
+            </Grid.Container>
+
+          <Grid.Container
+            css={{
+              display: "flex",
+              justifyContent: 'center',
+              alignItems: 'center',
+              gap: '10vw',
+              height:"20%"
+            }}>
+            <div className="player-jersey">
+              <img src={JerseyImage} alt="Jersey" />
+              <div className="player-name-bg">
+                <Text className="player-name-text">{selectedPlayers[4]}</Text>
+              </div>
+              <div className="player-price-bg">
+                <Text className="player-name-text" color="black">{playersData.find(p => p.name === selectedPlayers[4])?.price}</Text>
+              </div>
+            </div>
+            <div className="player-jersey">
+              <img src={JerseyImage} alt="Jersey" />
+              <div className="player-name-bg">
+                <Text className="player-name-text">{selectedPlayers[5]}</Text>
+              </div>
+              <div className="player-price-bg">
+                <Text className="player-name-text" color="black">{playersData.find(p => p.name === selectedPlayers[5])?.price}</Text>
+              </div>
+            </div>
+            <div className="player-jersey">
+              <img src={JerseyImage} alt="Jersey" />
+              <div className="player-name-bg">
+                <Text className="player-name-text">{selectedPlayers[0]}</Text>
+              </div>
+              <div className="player-price-bg">
+                <Text className="player-name-text" color="black">{playersData.find(p => p.name === selectedPlayers[0])?.price}</Text>
+              </div>
+            </div>
+          </Grid.Container>
+        
+          <Grid.Container
+            css={{
+              display: "flex",
+              justifyContent: 'center',
+              alignItems: 'center',
+              gap: '10vw'  ,// Adjust gap size here to control the spacing between columns
+              height:"20%"
+            }}>
+            
+            <div className="player-jersey">
+              <img src={JerseyImage} alt="Jersey" />
+              <div className="player-name-bg">
+                <Text className="player-name-text">{selectedPlayers[1]}</Text>
+              </div>
+              <div className="player-price-bg">
+                <Text className="player-name-text" color="black">{playersData.find(p => p.name === selectedPlayers[1])?.price}</Text>
+              </div>
+            </div>
+          </Grid.Container>
+
+        </>}
+
+
+       
+
 
     </div>
   </Col>
