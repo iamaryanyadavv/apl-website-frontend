@@ -27,9 +27,9 @@ export default function APLFantasy() {
   };
   
   const playerRoles = {
-    "1-3-1": ['Gk', 'Def', 'Mid', 'Mid', 'Mid', 'Att'],
-    "2-1-2": ['Gk', 'Def', 'Def', 'Mid', 'Att', 'Att'],
-    "3-1-1": ['Gk', 'Def', 'Def', 'Def', 'Mid', 'Att']
+    "1-3-1": ['Goalkeeper', 'Def', 'Mid', 'Mid', 'Mid', 'Att'],
+    "2-1-2": ['Goalkeeper', 'Def', 'Def', 'Mid', 'Att', 'Att'],
+    "3-1-1": ['Goalkeeper', 'Def', 'Def', 'Def', 'Mid', 'Att']
   };
   
 
@@ -45,7 +45,7 @@ export default function APLFantasy() {
       const playerData = playersData.find(p => p[0] === playerName);
       const requiredPosition = playerRoles[filters.formation][selectedJersey];
       console.log(playerData.position)
-      if (playerData.position.startsWith(requiredPosition) || requiredPosition === 'All') {
+      if (playerData[2].startsWith(requiredPosition) || requiredPosition === 'All') {
         newSelectedPlayers[selectedJersey] = playerName; // Add the player to the selected jersey position
         setSelectedPlayers(newSelectedPlayers);
         setSelectedJersey(null); // Clear the selected jersey after updating
@@ -73,17 +73,6 @@ const handleFilterChange = (filterType, value) => {
     }));
   };
 
-  const renderJerseys = () => {
-    return selectedPlayers.map((player, index) => (
-      <div key={index} className="player-jersey" style={{ position: 'relative' }}>
-        <img src={JerseyImage} alt="Jersey" />
-        <Text h4 css={{ position: 'absolute', bottom: '0' }}>{player}</Text>
-        <img src={addPlayerButton} alt="Add Player"
-          style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', cursor: 'pointer' }}
-          onClick={() => setSelectedJersey(index)} />
-      </div>
-    ));
-  };
   
   const handleFormationChange = (newFormation) => {
     if (filters.formation !== newFormation) {
@@ -108,7 +97,7 @@ const [formationState, setFormationState] = useState(1);
 const handleSelectPlayer = (playerName, playerPosition) => {
   if (selectedJersey !== null) {
     // Check if the player's position matches the slot's required position
-    if (playersData.find(p => p[0] === playerName).position === playerRoles[filters.formation][selectedJersey]) {
+    if (playersData.find(p => p[0] === playerName)[2] === playerRoles[filters.formation][selectedJersey]) {
       let newSelectedPlayers = [...selectedPlayers];
       newSelectedPlayers[selectedJersey] = playerName;
       setSelectedPlayers(newSelectedPlayers);
@@ -332,7 +321,7 @@ const fetchPlayersData = async (teams) => {
       .then(response => response.json())
       .then((data) => {
           console.log(data.values)
-          setPlayerData(data.values)
+          setPlayerData(data.values.slice(1))
       })
 }
 
@@ -439,7 +428,7 @@ return (
                 <Text className="player-name-text">{selectedPlayers[5]}</Text>
               </div>
               <div className="player-price-bg">
-                <Text className="player-price-text" color="black">{playersData.find(p => p[0] === selectedPlayers[5])?.price}</Text>
+                <Text className="player-price-text" color="black">{playersData.find(p => p[0] === selectedPlayers[5])?playersData.find(p => p[0] === selectedPlayers[5])[3]:"ATTACKER"}</Text>
               </div>
          
             </div>
@@ -458,7 +447,7 @@ return (
                 <Text className="player-name-text">{selectedPlayers[4]}</Text>
               </div>
               <div className="player-price-bg">
-                <Text className="player-price-text" color="black">{playersData.find(p => p[0] === selectedPlayers[4])?.price}</Text>
+                <Text className="player-price-text" color="black">{playersData.find(p => p[0] === selectedPlayers[4])?playersData.find(p => p[0] === selectedPlayers[4])[3]:"ATTACKER"}</Text>
               </div>
             </div>
           </Grid.Container>
@@ -477,7 +466,7 @@ return (
                 <Text className="player-name-text">{selectedPlayers[3]}</Text>
               </div>
               <div className="player-price-bg">
-                <Text className="player-price-text" color="black">{playersData.find(p => p[0] === selectedPlayers[3])?.price}</Text>
+                <Text className="player-price-text" color="black">{playersData.find(p => p[0] === selectedPlayers[3])?playersData.find(p => p[0] === selectedPlayers[3])[3]:"MIDFIELDER"}</Text>
               </div>
             </div>
           <Grid.Container
@@ -503,7 +492,7 @@ return (
                 <Text className="player-name-text">{selectedPlayers[2]}</Text>
               </div>
               <div className="player-price-bg">
-                <Text className="player-price-text" color="black">{playersData.find(p => p[0] === selectedPlayers[2])?.price}</Text>
+                <Text className="player-price-text" color="black">{playersData.find(p => p[0] === selectedPlayers[2])?playersData.find(p => p[0] === selectedPlayers[2])[3]:"DEFENDER"}</Text>
               </div>
             </div>
             <div className="player-jersey">
@@ -521,7 +510,7 @@ return (
                 <Text className="player-name-text">{selectedPlayers[1]}</Text>
               </div>
               <div className="player-price-bg">
-                <Text className="player-price-text" color="black">{playersData.find(p => p[0] === selectedPlayers[1])?.price}</Text>
+                <Text className="player-price-text" color="black">{playersData.find(p => p[0] === selectedPlayers[1])?playersData.find(p => p[0] === selectedPlayers[1])[3]:"DEFENDER"}</Text>
               </div>
             </div>
           </Grid.Container>
@@ -540,7 +529,7 @@ return (
                 <Text className="player-name-text">{selectedPlayers[0]}</Text>
               </div>
               <div className="player-price-bg">
-                <Text className="player-price-text" color="black">{playersData.find(p => p[0] === selectedPlayers[0])?.price}</Text>
+                <Text className="player-price-text" color="black">{playersData.find(p => p[0] === selectedPlayers[0])?playersData.find(p => p[0] === selectedPlayers[0])[3]:"GOALKEEPER"}</Text>
               </div>
             </div>
         </>}
@@ -561,7 +550,7 @@ return (
                 <Text className="player-name-text">{selectedPlayers[5]}</Text>
               </div>
               <div className="player-price-bg">
-                <Text className="player-price-text" color="black">{playersData.find(p => p[0] === selectedPlayers[5])?.price}</Text>
+                <Text className="player-price-text" color="black">{playersData.find(p => p[0] === selectedPlayers[5])?playersData.find(p => p[0] === selectedPlayers[5])[3]:"ATTACKER"}</Text>
               </div>
             </div>
           <Grid.Container
@@ -587,7 +576,7 @@ return (
                 <Text className="player-name-text">{selectedPlayers[4]}</Text>
               </div>
               <div className="player-price-bg">
-                <Text className="player-price-text" color="black">{playersData.find(p => p[0] === selectedPlayers[4])?.price}</Text>
+                <Text className="player-price-text" color="black">{playersData.find(p => p[0] === selectedPlayers[4])?playersData.find(p => p[0] === selectedPlayers[4])[3]:"MIDFIELDER"}</Text>
               </div>
             </div>
             <div className="player-jersey">
@@ -605,7 +594,7 @@ return (
                 <Text className="player-name-text">{selectedPlayers[3]}</Text>
               </div>
               <div className="player-price-bg">
-                <Text className="player-price-text" color="black">{playersData.find(p => p[0] === selectedPlayers[3])?.price}</Text>
+                <Text className="player-price-text" color="black">{playersData.find(p => p[0] === selectedPlayers[3])?playersData.find(p => p[0] === selectedPlayers[3])[3]:"MIDFIELDER"}</Text>
               </div>
             </div>
             <div className="player-jersey">
@@ -623,7 +612,7 @@ return (
                 <Text className="player-name-text">{selectedPlayers[2]}</Text>
               </div>
               <div className="player-price-bg">
-                <Text className="player-price-text" color="black">{playersData.find(p => p[0] === selectedPlayers[2])?.price}</Text>
+                <Text className="player-price-text" color="black">{playersData.find(p => p[0] === selectedPlayers[2])?playersData.find(p => p[0] === selectedPlayers[2])[3]:"MIDFIELDER"}</Text>
               </div>
             </div>
           </Grid.Container>
@@ -652,7 +641,7 @@ return (
                 <Text className="player-name-text">{selectedPlayers[1]}</Text>
               </div>
               <div className="player-price-bg">
-                <Text className="player-price-text" color="black">{playersData.find(p => p[0] === selectedPlayers[1])?.price}</Text>
+                <Text className="player-price-text" color="black">{playersData.find(p => p[0] === selectedPlayers[1])?playersData.find(p => p[0] === selectedPlayers[1])[3]:"DEFENDER"}</Text>
               </div>
             </div>
           </Grid.Container>
@@ -671,7 +660,7 @@ return (
                 <Text className="player-name-text">{selectedPlayers[0]}</Text>
               </div>
               <div className="player-price-bg">
-                <Text className="player-price-text" color="black">{playersData.find(p => p[0] === selectedPlayers[0])?.price}</Text>
+                <Text className="player-price-text" color="black">{playersData.find(p => p[0] === selectedPlayers[0])?playersData.find(p => p[0] === selectedPlayers[0])[3]:"GOALKEEPER"}</Text>
               </div>
             </div>
         </>}
@@ -703,7 +692,7 @@ return (
                 <Text className="player-name-text">{selectedPlayers[5]}</Text>
               </div>
               <div className="player-price-bg">
-                <Text className="player-price-text" color="black">{playersData.find(p => p[0] === selectedPlayers[5])?.price}</Text>
+                <Text className="player-price-text" color="black">{playersData.find(p => p[0] === selectedPlayers[5])?playersData.find(p => p[0] === selectedPlayers[5])[3]:"ATTACKER"}</Text>
               </div>
             </div>
           <div className="player-jersey">
@@ -721,7 +710,7 @@ return (
                 <Text className="player-name-text">{selectedPlayers[4]}</Text>
               </div>
               <div className="player-price-bg">
-                <Text className="player-price-text" color="black">{playersData.find(p => p[0] === selectedPlayers[4])?.price}</Text>
+                <Text className="player-price-text" color="black">{playersData.find(p => p[0] === selectedPlayers[4])?playersData.find(p => p[0] === selectedPlayers[4])[3]:"MIDFIELDER"}</Text>
               </div>
             </div>
             </Grid.Container>
@@ -749,7 +738,7 @@ return (
                 <Text className="player-name-text">{selectedPlayers[3]}</Text>
               </div>
               <div className="player-price-bg">
-                <Text className="player-price-text" color="black">{playersData.find(p => p[0] === selectedPlayers[3])?.price}</Text>
+                <Text className="player-price-text" color="black">{playersData.find(p => p[0] === selectedPlayers[3])?playersData.find(p => p[0] === selectedPlayers[3])[3]:"DEFENDER"}</Text>
               </div>
             </div>
             <div className="player-jersey">
@@ -766,7 +755,7 @@ return (
                 <Text className="player-name-text">{selectedPlayers[2]}</Text>
               </div>
               <div className="player-price-bg">
-                <Text className="player-price-text" color="black">{playersData.find(p => p[0] === selectedPlayers[2])?.price}</Text>
+                <Text className="player-price-text" color="black">{playersData.find(p => p[0] === selectedPlayers[2])?playersData.find(p => p[0] === selectedPlayers[2])[3]:"DEFENDER"}</Text>
               </div>
             </div>
             <div className="player-jersey">
@@ -784,7 +773,7 @@ return (
                 <Text className="player-name-text">{selectedPlayers[1]}</Text>
               </div>
               <div className="player-price-bg">
-                <Text className="player-price-text" color="black">{playersData.find(p => p[0] === selectedPlayers[1])?.price}</Text>
+                <Text className="player-price-text" color="black">{playersData.find(p => p[0] === selectedPlayers[1])?playersData.find(p => p[0] === selectedPlayers[1])[3]:"DEFENDER"}</Text>
               </div>
             </div>
           </Grid.Container>
@@ -813,7 +802,7 @@ return (
                 <Text className="player-name-text">{selectedPlayers[0]}</Text>
               </div>
               <div className="player-price-bg">
-                <Text className="player-price-text" color="black">{playersData.find(p => p[0] === selectedPlayers[0])?.price}</Text>
+                <Text className="player-price-text" color="black">{playersData.find(p => p[0] === selectedPlayers[0])?playersData.find(p => p[0] === selectedPlayers[0])[3]:"GOALKEEPER"}</Text>
               </div>
             </div>
           </Grid.Container>
@@ -873,12 +862,12 @@ return (
         </Collapse>
                       </div>
                         {renderPlayersList()}
-                        {currentPage < Math.ceil(playersData.length / playersPerPage) && (
+                        {/* {currentPage < Math.ceil(playersData.length / playersPerPage) && (
         <button className="next-page-button" onClick={() => handlePageChange(currentPage + 1)}>Next Page</button>
       )}
       {currentPage > 1 && (
         <button className="next-page-button" onClick={() => handlePageChange(currentPage - 1)}>Previous Page</button>
-      )}
+      )} */}
                         </div>
                         <button className="submit-button" onClick={handleSubmit}>Submit Team</button>
                     </Col>
