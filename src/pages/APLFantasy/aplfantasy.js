@@ -129,14 +129,15 @@ const renderPlayersList = () => {
     backgroundColor: '#4DFFA8', // or any dark color you prefer
     color: 'white',
     marginBottom: '20px',
-    padding: '20px',
     borderRadius: '10px',
     display: 'flex',
-    justifyContent: 'space-between',
+    justifyContent: 'space-around',
     alignItems: 'center',
     fontFamily: 'Montserrat',
-    fontWeight:"800"
-
+    fontWeight:"800",
+    height:"10%",
+    width:"100%",
+    fontSize:"14px"
   };
 
 
@@ -146,10 +147,37 @@ const renderPlayersList = () => {
     flexDirection: 'column',
     alignItems: 'flex-start', // Align text to the left
     flex: '1', // Take up the full width of the card minus the button
+    color: "#000000",
+    fontFamily: 'Montserrat',
+    fontWeight: "800",
+    marginBottom: '5px', // Adds space between the name and the position
+    fontSize: "12px",
+    lineHeight: "15px",
+    display: "flex",
+    alignItems: "center",
+    letterSpacing:"0.13em",
+    textTransform: "uppercase",
+  };
+
+
+  
+  const playerPriceStyle = {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'flex-end', // Align text to the left
+    flex: '1', // Take up the full width of the card minus the button
     color: "#484848",
     fontFamily: 'Montserrat',
     fontWeight: "800",
-    marginBottom: '5px' // Adds space between the name and the position
+    marginBottom: '5px' ,// Adds space between the name and the position
+    fontStyle: "normal",
+    fontWeight: "600",
+    fontSize: "11px",
+    lineHeight: "13px",
+    display: "flex",
+    alignitems: "center",
+    letterSpacing: "0.01em",
+    textTransform: "uppercase",
   };
   
   const playerPositionStyle = {
@@ -159,7 +187,16 @@ const renderPlayersList = () => {
     flex: '1', // Take up the full width of the card minus the button
     color: "#484848",
     fontFamily: 'Montserrat',
-    fontWeight: "500"
+    fontWeight: "500",
+    fontFamily: 'Montserrat',
+    fontStyle: "italic",
+    fontWeight: "500",
+    fontSize: "10px",
+    lineHeight: "12px",
+    display: "flex",
+    alignitems: "center",
+    letterSpacing: "0.05em",
+    textTransform: "uppercase"
   };
 
   const addButtonStyle = {
@@ -174,16 +211,21 @@ const renderPlayersList = () => {
 
 
 
+
+
+
   return (
     <div className="players-list">
     {currentPlayers.map((player, index) => (
-      <div key={index} style={playerCardStyle}>
+      <div key={index} style={playerCardStyle} onClick={() => addPlayer(player.name)}>
+        <div style={{display:"flex", flexDirection:"column", columnGap:"0px"}}>
         <div style={playerNameStyle}>{player.name}</div>
         <div style={playerPositionStyle}>{player.position}</div>
-        <div style={playerNameStyle}>{player.price}</div>
-        <button style={addButtonStyle} onClick={() => addPlayer(player.name)}>
+        </div>
+        <div style={playerPriceStyle}>{player.price}</div>
+        {/* <button style={addButtonStyle} onClick={() => addPlayer(player.name)}>
           Add Player
-        </button>
+        </button> */}
       </div>
     ))}
     <div className="pagination">
@@ -348,17 +390,20 @@ return (
   </Col>
 </Grid>
 
-                <Grid xs={12} md={4} css={{ marginTop: '1%' }}>
+                <Grid xs={12} md={4} css={{ marginTop: '1%', width:"60%"}}>
                     <Col className="rightcol">
-                        <div className="sponsor-section">
+                        <div className="sponsor-section" >
                             <Text className="sponsortext" center>{'Sponsored by'}</Text>
                             <img src={FanUpLogo} alt="FanUp Logo" className="fanup-logo"/>
                         </div>
                         <div className="sidebar">
-                        <Text className="money-left">{'Money Left: $140M'}</Text>
+                          <div className="money-left">
+                          <Text className="money-left-text">{'Money'}<br/>{'Left'}</Text>
+                          <Text className="money-left-text">$140M</Text>
+                          </div>
 
-                        <Collapse.Group color={"black"}  css={{width:"100%", gap:"2"}}>
-                        <Collapse title="Gender"  css={{width:"100%"}}>
+                        <Collapse.Group className="coll-group" color={"black"}  css={{width:"100%", gap:"2"}}>
+                        <Collapse color="black" className="coll-dropdown" title="Gender">
                           {genderOptions.map((option) => (
                             <Checkbox
                               key={option}
@@ -369,7 +414,7 @@ return (
                             </Checkbox>
                           ))}
                         </Collapse>
-                        <Collapse title="Position">
+                        <Collapse className="coll-dropdown"  title="Position">
                           {positionOptions.map((option) => (
                            <Checkbox
                            key={option}
