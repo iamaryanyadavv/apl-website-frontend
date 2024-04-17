@@ -9,6 +9,13 @@ import { Collapse, Checkbox } from "@nextui-org/react";
 import { color } from "@chakra-ui/react";
 import addPlayerButton from "./addplayericon.png"
 import infoIcon from "./infoicon.png"
+import matchesPlayerImage from "./MP.png"
+import cleanSheets from "./CLEANSHEETS.png"
+import goals from "./GOALS.png"
+import assists from "./ASSISTS.png"
+import redCards from "./REDCARDS.png"
+import yellowCards from "./YELLOWCARDS.png"
+
 
 
 
@@ -258,6 +265,46 @@ const renderPlayersList = () => {
 const handleSubmit = ()=>{
 }
 
+// StatCard component
+const StatCard = ({ title, value, image }) => (
+  <Grid css={{
+    textAlign: "center", 
+    flexDirection: "column",
+    height: "150px", // Set the total height of the StatCard
+    flex: "1", // Ensure that all stat cards take up equal width
+    padding: "10px", // Add some padding
+  }}>
+    <div css={{
+      height: "60%", // Image takes up 60% of the card's height
+      display: "flex",
+      alignItems: "center", // Center the image vertically
+      justifyContent: "center", // Center the image horizontally
+    }}>
+      <img src={image} alt={title} css={{
+        height: "100%", // The image will fill the div's height
+      }} />
+    </div>
+    <div css={{
+      height: "20%", // Value takes up 20% of the card's height
+      display: "flex",
+      alignItems: "center", // Center the text vertically
+      justifyContent: "center", // Center the text horizontally
+    }}>
+      <Text css={{ fontSize: "1.25em", fontWeight: "bold" }}>{value}</Text>
+    </div>
+    <div css={{
+      height: "20%", // Title takes up 20% of the card's height
+      display: "flex",
+      alignItems: "center", // Center the text vertically
+      justifyContent: "center", // Center the text horizontally
+    }}>
+      <Text css={{ fontSize: "1em" }}>{title}</Text>
+    </div>
+  </Grid>
+);
+
+
+
 const renderPlayers = () => {
     // Define the desired layout for players
     const formationLayout = [1, 2, 1, 2]; // The pattern of players per row
@@ -332,65 +379,7 @@ useEffect(() => {
 
 return (
     <div className="fantasy-game-container">
-                            <Modal 
-                                closeButton
-                                open={showInfoModal}
-                                onClose={()=>{
-                                    setShowInfoModal(false)
-                                }} className="info-modal">
-
-                                    <Modal.Header>
-                                        <Col>
-                                            <Text
-                                            css={{
-                                                fontSize: '$4xl',
-                                                fontWeight: '$semibold',
-                                                textAlign: 'center',
-                                                color: '$yellow600'
-                                            }}>
-                                                Player Details
-                                            </Text>
-                                            <Text
-                                            css={{
-                                                fontSize: '$md',
-                                                fontWeight: '$normal',
-                                                textAlign: 'center',
-                                                color: '$gray900'
-                                            }}>
-                                                Check your details one last time before paying!
-                                            </Text>
-                                        </Col>
-                                        
-                                    </Modal.Header>
-
-                                    <Modal.Body>
-
-
-                                    
-
-                                    </Modal.Body>
-
-                                    <Modal.Footer
-                                    css={{
-                                        jc: 'center',
-                                        alignItems: 'center'
-                                    }}>
-                                        <Button auto rounded 
-                                        css={{
-                                            background: '$gray900'
-                                        }}
-                                        >
-                                            <Text
-                                            css={{
-                                                color: 'Black',
-                                                fontWeight: '$semibold'
-                                            }}>
-                                                Register
-                                            </Text>
-                                        </Button>
-                                    </Modal.Footer>
-
-                                </Modal >
+                            
         {playersData && <Grid.Container
             css={{
                 display: "flex",
@@ -404,6 +393,106 @@ return (
   <Col className="leftcol">
     <Text className="fantasytitle">APL FANTASY GAME</Text>
     <div className="football-field">
+
+
+
+    <Modal 
+    closeButton
+    open={showInfoModal}
+    onClose={() => setShowInfoModal(false)}
+    className="info-modal"
+    width="80%"
+    height="100%"
+>
+    <Modal.Header className="modal-header">
+        {/* Close button is provided by the Modal itself */}
+    </Modal.Header>
+
+    <Modal.Body className="player-info-modal">
+        <Grid.Container
+            css={{
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: 'space-between',
+                alignItems: 'center',
+                width: "100%",
+                height: "100%", // Assuming you want to use the entire height
+                gap: '20px', // Adjust gap size here to control the spacing between elements
+                position: "relative", // For absolute positioning inside
+            }}
+        >
+            {/* Player Info Row */}
+            <Grid.Container 
+                css={{
+                    width: "100%",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    marginBottom: "20px", // Space between the info row and stats
+                }}
+            >
+                <Grid 
+                    css={{
+                        display: "flex",
+                        justifyContent: "center", // Adjust to match design
+                        alignItems: "center",
+                    }}
+                >
+                    <img src={JerseyImage} alt="Player" className="player-modal-image" />
+                    <Grid.Container css={{ flexDirection: "column", alignItems: "center" }}>
+
+                    <Grid.Container css={{ flexDirection: "row", alignItems: "center", justifyContent:"center"}}>
+
+                        <img src={JerseyImage} alt="Player" className="player-modal-team-logo" />
+                        <Text className="player-modal-team-name">Player Team Name</Text>
+
+
+                        </Grid.Container>
+
+                        <Text className="player-modal-name">Dhruv Achappa</Text>
+                        <Text className="player-modal-position">Defender</Text>
+                        <Text className="player-modal-price">96 M</Text>
+                    </Grid.Container>
+                </Grid>
+            </Grid.Container>
+
+            {/* Player Stats */}
+            <Grid.Container 
+                css={{
+                    width: "100%",
+                    justifyContent: "space-evenly", // Adjust to match design
+                    marginBottom: "20px", // Space between the stats and matches
+                    alignitems:"center"
+                }} className="player-stats"
+            >
+                {/* You would map over your stats data and create these dynamically */}
+                <StatCard title="Matches Played" value={3} image={matchesPlayerImage} />
+                <StatCard title="Clean Sheets" value={0} image={cleanSheets} />
+                <StatCard title="Goals" value={5} image={goals} />
+                <StatCard title="Assists" value={1} image={assists} />
+                <StatCard title="Red Cards" value={2} image={redCards} />
+                <StatCard title="Yellow Cards" value={3} image={yellowCards} />
+                {/* ...more stats */}
+            </Grid.Container>
+
+            {/* Player Team Matches */}
+            <Grid.Container 
+                css={{
+                    width: "100%",
+                    justifyContent: "center",
+                }}
+                className="player-matches"
+            >
+                {/* Group and Match Icons */}
+                <Text>Group A</Text>
+                {/* You would map over your match data and create these dynamically */}
+                {/* <MatchIcon matchNumber={1} active={true} />
+                <MatchIcon matchNumber={2} active={false} />
+                <MatchIcon matchNumber={3} active={false} /> */}
+            </Grid.Container>
+        </Grid.Container>
+    </Modal.Body>
+</Modal>
+
         {formationState==1 && <>
           <Grid.Container
             css={{

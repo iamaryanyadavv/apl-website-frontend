@@ -1,0 +1,136 @@
+.player-info-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.player-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.player-info-modal
+{
+  text-align: center;
+}
+
+.player-stats
+{
+background: rgba(175, 198, 219, 0.69);
+border-radius: 5px;
+
+}
+
+.player-matches
+{
+background: rgba(175, 198, 219, 0.69);
+border-radius: 5px;
+}
+
+.player-modal-image
+{
+
+width: 200px;
+height: 175.26px;
+margin-bottom: 20px; /* Adjust spacing as needed */
+
+}
+
+.player-modal-team-name
+{
+  /* dolla $ign */
+
+width: 145px;
+height: 24px;
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 400;
+font-size: 20px;
+line-height: 24px;
+display: flex;
+align-items: center;
+letter-spacing: 0.1em;
+text-transform: uppercase;
+
+color: #FFFFFF;
+
+
+}
+
+.player-modal-team-logo
+{
+width: 40px;
+height: 40px;
+border-radius: 90px;
+}
+.player-modal-name
+{
+    /* Dhruv achappa */
+
+width: 482px;
+height: 49px;
+font-family: 'Montserrat';
+font-style: italic;
+font-weight: 800;
+font-size: 40px;
+/* line-height: 49px; */
+/* identical to box height */
+display: flex;
+align-items: center;
+/* letter-spacing: 0.21em; */
+text-transform: uppercase;
+
+color: #FFFFFF;
+
+
+}
+
+.player-modal-price
+{
+/* 96 M */
+
+width: 96px;
+height: 43px;
+
+
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 400;
+font-size: 35px;
+/* line-height: 43px; */
+/* identical to box height */
+display: flex;
+align-items: center;
+/* letter-spacing: 0.1em; */
+text-transform: uppercase;
+
+color: #FFFFFF;
+
+
+}
+
+.player-modal-position
+{
+  /* Defender */
+
+width: 256px;
+height: 43px;
+
+font-family: 'Montserrat';
+font-style: italic;
+font-weight: 300;
+font-size: 35px;
+line-height: 43px;
+/* identical to box height */
+display: flex;
+align-items: center;
+letter-spacing: 0.21em;
+text-transform: uppercase;
+
+color: #FFFFFF;
+
+
+
+}

@@ -436,13 +436,84 @@ border-radius: 5px;
   }
   
 
-.player-info {
+  .player-info-container {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px; /* Add padding to match the design's spacing */
+}
+
+.player-modal-image {
+    /* Style adjustments for better centering */
+    width: 150px; /* Adjust the width as needed */
+    height: auto; /* Keep the aspect ratio of the image */
+    margin-bottom: 10px; /* Space between image and team logo */
+}
+
+.player-team-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 5px; /* Adjust spacing between team info and player name */
+}
+
+.player-modal-team-logo {
+    width: 30px; /* Adjust size to match the design */
+    height: 30px;
+    margin-right: 10px; /* Space between logo and team name */
+    border-radius: 50%; /* Full roundness */
+}
+
+.player-modal-team-name {
+    /* Adjust to more closely resemble the design */
+    font-size: 16px; /* Smaller font size */
+    letter-spacing: normal; /* Adjust letter spacing */
+    margin-bottom: 0; /* Remove bottom margin */
+    text-transform: none; /* Remove uppercase */
+    color: #FFFFFF;
+    /* Add other styles if necessary */
+}
+
+.player-modal-name {
+    /* Style adjustments for the player's name */
+    font-size: 24px; /* Larger font size for emphasis */
+    font-weight: bold; /* Make the name bold */
+    margin-bottom: 5px; /* Space between name and position */
+    text-transform: uppercase;
+    color: #FFFFFF;
+}
+
+.player-modal-position {
+    /* Style adjustments for the position */
+    font-size: 20px; /* Adjust font size to be smaller than the name */
+    margin-bottom: 5px; /* Space between position and price */
+    color: #FFFFFF;
+}
+
+.player-stats
+{
+background: rgba(175, 198, 219, 0.69);
+border-radius: 5px;
+align-items: center;
+}
+
+.player-matches
+{
+background: rgba(175, 198, 219, 0.69);
+border-radius: 5px;
+}
+
+.player-modal-price {
+    /* Style adjustments for the price */
+    font-size: 20px; /* Adjust font size to be consistent with the position */
+    color: #FFFFFF;
+    /* Add other styles if necessary */
 }
 
 /* Additional custom styles to clean up the collapse appearance */
-.coll-dropdown .nextui-collapse-title {
+.coll-dropdown .ui-collapse-title {
   background-color: white; /* Dark background for the collapse title */
   color: white; /* White text for the title */
   padding: 0.75rem 1rem; /* Padding around the title text */
