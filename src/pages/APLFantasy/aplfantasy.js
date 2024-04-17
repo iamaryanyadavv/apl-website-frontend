@@ -1355,7 +1355,7 @@ export default function APLFantasy() {
                                                         width: "25px",
                                                         height: "25px",
                                                         filter: selectedJersey === 5 ? 'invert(100%)' : 'none'  // Inverts the colors to make black white
-                                                    }} onClick={() => setSelectedJersey(5)} />}
+                                                    }} onClick={() => {setSelectedJersey(5); handlePositionChange("Attacker")} }  />}
                                                     <div className="player-name-bg">
                                                         <Text className="player-name-text">{selectedPlayers[5]}</Text>
                                                     </div>
@@ -1387,7 +1387,7 @@ export default function APLFantasy() {
                                                                 width: "25px",
                                                                 height: "25px",
                                                                 filter: selectedJersey === 4? 'invert(100%)' : 'none'  // Inverts the colors to make black white
-                                                            }} onClick={() => setSelectedJersey(4)} />}
+                                                            }} onClick={() =>{setSelectedJersey(4); handlePositionChange("Midfielder")} }  />}
                                                             <div className="player-name-bg">
                                                                 <Text className="player-name-text">{selectedPlayers[4]}</Text>
                                                             </div>
@@ -1406,7 +1406,7 @@ export default function APLFantasy() {
                                                                 width: "25px",
                                                                 height: "25px",
                                                                 filter: selectedJersey === 3? 'invert(100%)' : 'none'  // Inverts the colors to make black white
-                                                            }} onClick={() => setSelectedJersey(3)} />}
+                                                            }} onClick={() => {setSelectedJersey(3); handlePositionChange("Midfielder")} }  />}
                                                             <div className="player-name-bg">
                                                                 <Text className="player-name-text">{selectedPlayers[3]}</Text>
                                                             </div>
@@ -1425,7 +1425,7 @@ export default function APLFantasy() {
                                                                 width: "25px",
                                                                 height: "25px",
                                                                 filter: selectedJersey === 2 ? 'invert(100%)' : 'none'  // Inverts the colors to make black white
-                                                            }} onClick={() => setSelectedJersey(2)} />}
+                                                            }} onClick={() => {setSelectedJersey(2); handlePositionChange("Midfielder")} } />}
                                                             <div className="player-name-bg">
                                                                 <Text className="player-name-text">{selectedPlayers[2]}</Text>
                                                             </div>
@@ -1456,7 +1456,7 @@ export default function APLFantasy() {
                                                             width: "25px",
                                                             height: "25px",
                                                             filter: selectedJersey === 1 ? 'invert(100%)' : 'none'  // Inverts the colors to make black white
-                                                        }} onClick={() => setSelectedJersey(1)} />}
+                                                        }} onClick={() =>{setSelectedJersey(1); handlePositionChange("Defender")} } />}
                                                         <div className="player-name-bg">
                                                             <Text className="player-name-text">{selectedPlayers[1]}</Text>
                                                         </div>
@@ -1477,7 +1477,7 @@ export default function APLFantasy() {
                                                         width: "25px",
                                                         height: "25px",
                                                         filter: selectedJersey === 0 ? 'invert(100%)' : 'none'  // Inverts the colors to make black white
-                                                    }} onClick={() => setSelectedJersey(0)} />}
+                                                    }} onClick={() => {setSelectedJersey(0); handlePositionChange("Goalkeeper")} } />}
                                                     <div className="player-name-bg">
                                                         <Text className="player-name-text">{selectedPlayers[0]}</Text>
                                                     </div>
