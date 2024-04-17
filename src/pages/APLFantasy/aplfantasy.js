@@ -146,7 +146,6 @@ export default function APLFantasy() {
                 position: newPosition
             });
             // Reset selected players when formation changes
-            setSelectedPlayers([]);
         }
     };
 
