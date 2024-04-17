@@ -487,7 +487,6 @@ return (
             <StatCard title="Assists" value={selectedPlayer[13]} image={assists} />
             <StatCard title="Red Cards" value={selectedPlayer[14]} image={redCards} />
             <StatCard title="Yellow Cards" value={selectedPlayer[15]} image={yellowCards} />
-            <StatCard title="Points" value={selectedPlayer[16]} />
             </Grid.Container>
 
             {/* Player Team Matches */}
