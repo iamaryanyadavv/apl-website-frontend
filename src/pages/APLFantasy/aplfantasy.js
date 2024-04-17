@@ -17,6 +17,7 @@ import redCards from "./REDCARDS.png"
 import yellowCards from "./YELLOWCARDS.png"
 import testPlayerTeamLogo from "./TESTPLAYERTEAMLOGO.png"
 import testPlayerImage from "./TESTPLAYERIMAGE.png"
+import zIndex from "@mui/material/styles/zIndex";
 
 
 
@@ -27,6 +28,7 @@ export default function APLFantasy() {
   const formationOptions = ['1-3-1', '2-1-2', '3-1-1'];
   const priceOptions = ['0M-9M', '10M-25M', '25M-50M', '50M+'];
   const [playersData, setPlayerData] = useState([])
+  const [selectedPlayer, setSelectedPlayer] = useState(null);
 
   const [selectedJersey, setSelectedJersey] = useState(null);
   const formationStructures = {
@@ -246,8 +248,15 @@ const renderPlayersList = () => {
         <div style={{display:"flex", flexDirection:"row", columnGap:"0px"}}>
 
         <div style={playerNameStyle}>{player[0]}</div>
-        <img style={{height:"12px", margin:"2px", zIndex:"1000"}}  onClick={() => setShowInfoModal(true)} src={infoIcon} alt="Jersey" />
-
+        <img 
+  style={{height:"12px", margin:"2px", zIndex:"1000"}}  
+  onClick={(e) => {
+    e.stopPropagation();  // Prevent the addPlayer event from firing
+    setSelectedPlayer(player);
+    setShowInfoModal(true);
+  }} 
+  src={infoIcon} alt="Jersey" 
+/>
 </div>
         <div style={playerPositionStyle}>{player[2]}</div>
         </div>
@@ -267,35 +276,43 @@ const renderPlayersList = () => {
 const handleSubmit = ()=>{
 }
 
-// StatCard component
 const StatCard = ({ title, value, image }) => (
   <Grid css={{
-    textAlign: "center", 
-    flexDirection: "column",
-    height: "100%", // Set the total height of the StatCard
-    flex: "1", // Ensure that all stat cards take up equal width
-    padding: "10px", // Add some padding
+    textAlign: "center",
+    display: "flex", // Ensure it's using flexbox
+    flexDirection: "column", // Align children vertically
+    height: "100%", // Fill the height
+    flex: "1", // Allow the card to expand
+    padding: "10px",
   }}>
     <div css={{
-      height: "60%", // Image takes up 60% of the card's height
+      flex: "60%", // Image takes 60% of the card's height now using flex basis
       display: "flex",
-      alignItems: "center", // Center the image vertically
-      justifyContent: "center", // Center the image horizontally
+      alignItems: "center",
+      justifyContent: "center",
     }}>
-      <Image height="100%" src={image}/>
+      <Image height="100%" src={image} />
     </div>
     <div css={{
-      height: "20%", // Value takes up 20% of the card's height
-      justifyContent:"flex-end"
-    }}><Text>{title}</Text>
+      flex: "20%", // Adjust title section
+      display: "flex",
+      alignItems: "flex-end",
+      justifyContent: "center",
+    }}>
+      <Text className="statcard-title">{title}</Text>
     </div>
     <div css={{
-      height: "20%", // Title takes up 20% of the card's height
+      flex: "20%", // Adjust value section
+      display: "flex",
+      alignItems: "flex-end",
+      justifyContent: "center",
     }}>
-            <Text>{value}</Text>
+      <Text>{value}</Text>
     </div>
   </Grid>
 );
+
+
 
 
 
@@ -402,7 +419,7 @@ return (
         {/* Close button is provided by the Modal itself */}
     </Modal.Header>
 
-    <Modal.Body className="player-info-modal">
+    {selectedPlayer && <Modal.Body className="player-info-modal">
         <Grid.Container
             css={{
                 display: "flex",
@@ -431,21 +448,20 @@ return (
                         alignItems: "center",
                     }}
                 >
-                    <img src={testPlayerImage} alt="Player" className="player-modal-image" />
+                    <img src="https://drive.google.com/file/d/1-hVuQ34XzN6_cfgrhx2rMztyKB6U5MVt/preview" alt="Player Image" className="player-modal-image"/>
                     <Grid.Container css={{ flexDirection: "column", alignItems: "center", }}>
 
                     <Grid.Container css={{ flexDirection: "row", alignItems: "center", justifyContent:"left"}}>
 
-                        <img src={testPlayerTeamLogo} alt="Player" className="player-modal-team-logo" />
-                        <Text className="player-modal-team-name">Player Team Name</Text>
-
+                    <img src={selectedPlayer[5]} alt="Team Logo" className="player-modal-team-logo" />
+                    <Text className="player-modal-team-name">{selectedPlayer[1]}</Text>
 
                         </Grid.Container>
 
-                        <Text className="player-modal-name">Dhruv Achappa</Text>
+                        <Text className="player-modal-name">{selectedPlayer[0]}</Text>
                         <Row css={{ width: "100%", justifyContent: "space-between" }}>
-                            <Text className="player-modal-position">Defender</Text>
-                            <Text className="player-modal-price">96 M</Text>
+                        <Text className="player-modal-position">{selectedPlayer[2]}</Text>
+                <Text className="player-modal-price">{selectedPlayer[3]}</Text>
                         </Row>
                         
                     </Grid.Container>
@@ -454,41 +470,216 @@ return (
 
             {/* Player Stats */}
             <Grid.Container 
-                css={{
-                    width: "100%",
-                    marginBottom: "20px", // Space between the stats and matches
-                    alignitems:"center",
-                    justifyContent:"center",
-                    height:"100%"
-                }} className="player-stats"
+              css={{
+                width: "100%",
+                marginBottom: "20px", // Space between the stats and matches
+                display: "flex", // Ensure it's a flex container
+                flexDirection: "row", // Align children in a row
+                alignItems: "stretch", // Stretch children to fill container height
+                justifyContent: "center",
+                height: "100%" // Take full height available
+              }} 
+              className="player-stats"
             >
-                {/* You would map over your stats data and create these dynamically */}
-                <StatCard title="Matches Played" value={3} image={matchesPlayerImage} />
-                <StatCard title="Clean Sheets" value={0} image={cleanSheets} />
-                <StatCard title="Goals" value={5} image={goals} />
-                <StatCard title="Assists" value={1} image={assists} />
-                <StatCard title="Red Cards" value={2} image={redCards} />
-                <StatCard title="Yellow Cards" value={3} image={yellowCards} />
-                {/* ...more stats */}
+                <StatCard title="Matches Played" value={selectedPlayer[10]} image={matchesPlayerImage} />
+            <StatCard title="Clean Sheets" value={selectedPlayer[11]} image={cleanSheets} />
+            <StatCard title="Goals" value={selectedPlayer[12]} image={goals} />
+            <StatCard title="Assists" value={selectedPlayer[13]} image={assists} />
+            <StatCard title="Red Cards" value={selectedPlayer[14]} image={redCards} />
+            <StatCard title="Yellow Cards" value={selectedPlayer[15]} image={yellowCards} />
+            <StatCard title="Points" value={selectedPlayer[16]} />
             </Grid.Container>
 
             {/* Player Team Matches */}
             <Grid.Container 
-                css={{
-                    width: "100%",
-                    justifyContent: "center",
-                }}
-                className="player-matches"
-            >
-                {/* Group and Match Icons */}
-                <Text>Group A</Text>
-                {/* You would map over your match data and create these dynamically */}
-                {/* <MatchIcon matchNumber={1} active={true} />
-                <MatchIcon matchNumber={2} active={false} />
-                <MatchIcon matchNumber={3} active={false} /> */}
-            </Grid.Container>
+              css={{
+                width: "100%",
+                marginBottom: "20px", // Space between the stats and matches
+                display: "flex", // Ensure it's a flex container
+                flexDirection: "row", // Align children in a row
+                alignItems: "stretch", // Stretch children to fill container height
+                justifyContent: "center",
+                height: "100%" // Take full height available
+              }} 
+              className="player-stats"
+            > 
+  {/* You would map over your match data and create these dynamically */}
+  <Grid css={{
+    textAlign: "center",
+    display: "flex", // Ensure it's using flexbox
+    flexDirection: "column", // Align children vertically
+    height: "100%", // Fill the height
+    flex: "1", // Allow the card to expand
+    padding: "10px",
+    alignItems:"center",
+    justifyContent:"center"
+  }}>
+    <div css={{
+      flex: "60%", // Image takes 60% of the card's height now using flex basis
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+    }}>
+    </div>
+    <div css={{
+      flex: "20%", // Adjust title section
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+    }}>
+      <Text className="game-info-title">Group</Text>
+    </div>
+    <div css={{
+      flex: "20%", // Adjust value section
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+    }}>
+      <Text className="player-group">{selectedPlayer[17]}</Text>
+    </div>
+  </Grid>
+  <Grid css={{
+    textAlign: "center",
+    display: "flex", // Ensure it's using flexbox
+    flexDirection: "column", // Align children vertically
+    height: "100%", // Fill the height
+    flex: "1", // Allow the card to expand
+    padding: "10px",
+    alignItems:"center",
+    justifyContent:"center"
+  }}>
+    <div css={{
+      flex: "60%", // Image takes 60% of the card's height now using flex basis
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+    }}>
+    </div>
+    <div css={{
+      flex: "20%", // Adjust title section
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+    }}
+    className="game-info-title">
+      <Text className="game-info-title">Match 1</Text>
+    </div>
+    <div css={{
+      flex: "20%", // Adjust value section
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+    }}>
+      <Text>PE</Text>
+    </div>
+  </Grid>  
+  <Grid css={{
+    textAlign: "center",
+    display: "flex", // Ensure it's using flexbox
+    flexDirection: "column", // Align children vertically
+    height: "100%", // Fill the height
+    flex: "1", // Allow the card to expand
+    padding: "10px",
+    alignItems:"center",
+    justifyContent:"center"
+  }}>
+    <div css={{
+      flex: "60%", // Image takes 60% of the card's height now using flex basis
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+    }}>
+    </div>
+    <div css={{
+      flex: "20%", // Adjust title section
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+    }}>
+      <Text className="game-info-title">Match 2</Text>
+    </div>
+    <div css={{
+      flex: "20%", // Adjust value section
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+    }}>
+      <Text>A</Text>
+    </div>
+  </Grid>  
+  <Grid css={{
+    textAlign: "center",
+    display: "flex", // Ensure it's using flexbox
+    flexDirection: "column", // Align children vertically
+    height: "100%", // Fill the height
+    flex: "1", // Allow the card to expand
+    padding: "10px",
+    alignItems:"center",
+    justifyContent:"center"
+  }}>
+    <div css={{
+      flex: "60%", // Image takes 60% of the card's height now using flex basis
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+    }}>
+    </div>
+    <div css={{
+      flex: "20%", // Adjust title section
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+    }}>
+      <Text className="game-info-title">Group</Text>
+    </div>
+    <div css={{
+      flex: "20%", // Adjust value section
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      backgroundColor:"#1F335B",
+      zIndex:10
+    }}>
+      <Text>A</Text>
+    </div>
+  </Grid>
+  <Grid css={{
+    textAlign: "center",
+    display: "flex", // Ensure it's using flexbox
+    flexDirection: "column", // Align children vertically
+    height: "100%", // Fill the height
+    flex: "1", // Allow the card to expand
+    padding: "10px",
+    alignItems:"center",
+    justifyContent:"center"
+  }}>
+    <div css={{
+      flex: "60%", // Image takes 60% of the card's height now using flex basis
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+    }}>
+    </div>
+    <div css={{
+      flex: "20%", // Adjust title section
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+    }}>
+      <Text className="game-info-title">Points</Text>
+    </div>
+    <div css={{
+      flex: "20%", // Adjust value section
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+    }}>
+      <Text>69</Text>
+    </div>
+  </Grid></Grid.Container>
+
         </Grid.Container>
-    </Modal.Body>
+    </Modal.Body>}
 </Modal>
 
         {formationState==1 && <>
