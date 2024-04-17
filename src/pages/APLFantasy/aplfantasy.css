@@ -95,7 +95,14 @@
   color: #282828;
 }
 
+.dropdown-item
+{
+  width: 100%;
+}
+
 .coll-dropdown {
+  display: flex;
+  flex-direction: column;
   background-color: white;
   margin-bottom: 10px;
 }
@@ -383,6 +390,7 @@
   border-radius: 5px;
 }
 
+
 /* Add any other styles as needed */
 
 .players-list {
@@ -395,6 +403,7 @@
   flex-direction: column; /* Stack name and position on top of each other */
   align-items: flex-start; /* Align items to the left */
   width: 100%;
+  cursor: pointer;
 }
 
 .players-card {
@@ -619,6 +628,10 @@
   color: white; /* White text for the labels */
   font-size: 1rem; /* Adjust the font size as needed */
   padding-left: 0.5rem; /* Space between the checkbox and label */
+  width: 100%;
+  align-items: center;
+  text-align: right;
+  justify-content: left;
 }
 
 /* Adjust the padding and margin of the collapse content to better fit the design */

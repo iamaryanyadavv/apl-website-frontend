@@ -19,6 +19,12 @@ import axios from "axios";
 import jwt_decode from "jwt-decode";
 import FantasyHelpLogo from '../../assets/images/FantasyHelp.png'
 import FantasyHelpCross from '../../assets/images/FantasyRulesCross.png'
+import T2 from "./ASSISTS.png"
+import T3 from "./ASSISTS.png"
+import T4 from "./ASSISTS.png"
+import T5 from "./ASSISTS.png"
+
+
 
 export default function APLFantasy() {
     const genderOptions = ['Male','Female' ,'Non-Cis Man'];
@@ -32,6 +38,27 @@ export default function APLFantasy() {
     const [showFantasyHelp, setShowFantasyHelp] = useState(false)
     const [selectedJersey, setSelectedJersey] = useState(null);
     const[currentPlayers, setCurrentPlayers] = useState([])
+    const [showTutorial, setShowTutorial] = useState(false)
+    const [tutorialIndex, setTutorialIndex] = useState(0)
+    const tutorialItems = [
+        {
+            image: T2,
+            text: 'Search & filter for exactly what you are looking for. No need to scroll endlessly anymore.',
+        },
+        {
+            image: T3,
+            text: "Unpublish items when sold so people don't keep spamming you. Edit if you made a mistake.",
+        },
+        {
+            image: T4,
+            text: `"Can someone send rasananda number?" "What's the THC website?" We have all of it right here.`,
+        },
+        {
+            image: T5,
+            text: "Enable notifications so you don't miss a single item! You will only be notified of items being posted.",
+        },
+    ]
+
     const formationStructures = {
         "1-3-1": [0, 1, 2, 3, 4, 5],
         "2-1-2": [0, 1, 2, 3, 4, 5],
@@ -74,9 +101,9 @@ export default function APLFantasy() {
         }
     };
     const [filters, setFilters] = useState({
-        gender: 'Female',
+        gender: 'Male',
         position: '',
-        formation: '2-1-2', // set default formation to '2-1-2'
+        formation: '1-3-1', // set default formation to '2-1-2'
         price: '10M-25M'
     });
 
@@ -167,7 +194,7 @@ export default function APLFantasy() {
     }, [currentPlayers]);
     // This useEffect ensures that the default formation '2-1-2' is set on component mount
     useEffect(() => {
-        setFilters(f => ({ ...f, formation: '2-1-2' }));
+        setFilters(f => ({ ...f, formation: '1-3-1' }));
     }, []);
 
 
@@ -706,6 +733,145 @@ export default function APLFantasy() {
                                             </Text>
                                         </Row>
                                         <div className="football-field">
+                                        <Modal
+                open={showTutorial}
+                preventClose
+                aria-label="tutorial-modal"
+            >
+                <Grid.Container css={{
+                    jc: 'center',
+                    alignItems: '',
+                    padding: '12px 0px',
+                }}>
+                    <Col css={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                    }}>
+                        <Text css={{
+                            '@xsMin': {
+                                fontSize: '$xl'
+                            },
+                            '@xsMax': {
+                                fontSize: '$lg'
+                            },
+                            fontWeight: '$medium',
+                            paddingBottom: '6px',
+                            borderStyle: 'solid',
+                            borderColor: '$gray600',
+                            borderWidth: '0px 0px 1px 0px',
+                            width: 318,
+                            marginBottom: '12px'
+                        }}>
+                            Welcome To UniSwap!
+                        </Text>
+
+                        <Col css={{
+                            display: 'flex',
+                            flexDirection: 'column',
+                            alignItems: 'center'
+                        }}>
+                            <Image
+                                src={tutorialItems[tutorialIndex].image}
+                                width={320}
+                                height={358}
+                                css={{
+                                    objectFit: 'cover',
+                                    borderRadius: '0px 0px 12px 12px'
+                                }}
+                            />
+
+                            <Row css={{
+                                display: 'flex',
+                                flexDirection: 'row',
+                                jc: 'center',
+                                width: 'max-content',
+                                gap: 4,
+                                padding: '0px 8px',
+                                borderRadius: '8px',
+                                backgroundColor: '$gray300',
+                                alignItems: 'center',
+                                marginTop: '12px',
+                            }}>
+                                {tutorialItems.map((item, index) => (
+                                    <Text key={index} css={{
+                                        color: index === tutorialIndex ? '$red600' : '$gray600',
+                                        width: 'max-content',
+                                        lineHeight: '1.1'
+                                    }}>
+                                        •
+                                    </Text>
+                                ))}
+                            </Row>
+
+                            <Text css={{
+                                fontSize: '$md',
+                                fontWeight: '$medium',
+                                jc: 'center',
+                                alignItems: 'center',
+                                padding: '8px 16px 6px 16px'
+                            }}>
+                                {tutorialItems[tutorialIndex].text}
+                            </Text>
+
+
+                            {tutorialIndex === 0 &&
+                                <Button auto light color={'error'}
+                                    onClick={() => {
+                                        setTutorialIndex(prev => prev + 1)
+                                    }}
+                                >
+                                    Next →
+                                </Button>
+                            }
+                            {tutorialIndex >= 1 && tutorialIndex <= 2 &&
+                                <Row css={{
+                                    width: 'max-content',
+                                    jc: 'center',
+                                }}>
+                                    <Button auto light color={'default'}
+                                        onClick={() => {
+                                            setTutorialIndex(prev => prev - 1)
+                                        }}
+                                    >
+                                        ← Previous
+                                    </Button>
+                                    <Button auto light color={'error'}
+                                        onClick={() => {
+                                            setTutorialIndex(prev => prev + 1)
+                                        }}
+                                    >
+                                        Next →
+                                    </Button>
+                                </Row>
+                            }
+                            {tutorialIndex === 3 &&
+                                <Row css={{
+                                    width: 'max-content',
+                                    jc: 'center',
+                                }}>
+                                    <Button auto light color={'default'}
+                                        onClick={() => {
+                                            setTutorialIndex(prev => prev - 1)
+                                        }}
+                                    >
+                                        ← Previous
+                                    </Button>
+                                    <Button auto light color={'error'}
+                                        onClick={() => {
+                                            setShowTutorial(false)
+                                        }}
+                                    >
+                                        Enable Notifications ✔️
+                                    </Button>
+                                </Row>
+                            }
+
+                        </Col>
+
+                    </Col>
+                </Grid.Container>
+            </Modal>
                                             <Modal
                                     open={showPositionModal}
                                     closeButton
