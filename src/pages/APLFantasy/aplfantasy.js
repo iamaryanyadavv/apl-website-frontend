@@ -77,6 +77,8 @@ export default function APLFantasy() {
     const [currentPage, setCurrentPage] = useState(1);
     const [showInfoModal, setShowInfoModal] = useState(false);
     const [showPositionModal, setShowPositionModal] = useState(false);
+    const [showRulesModal, setShowRulesModal] = useState(false);
+
 
 
     const playersPerPage = 10;
@@ -98,7 +100,8 @@ export default function APLFantasy() {
                     setShowPositionModal(true);
                 }
             } else {
-                alert("Not enough budget to add this player.");
+                // alert("Not enough budget to add this player.");
+                setShowRulesModal(true)
             }
         } else {
             alert('Please select a position by clicking on a jersey icon.');
@@ -782,8 +785,7 @@ export default function APLFantasy() {
         <Button auto onClick={handleSubmit}>
             Confirm Team
         </Button>
-    </Modal.Footer>
-</Modal>}
+    </Modal.Footer></Modal>}
 
                                         <Modal
                 open={showTutorial}
@@ -965,6 +967,48 @@ export default function APLFantasy() {
                                             </Modal.Body>
                                             
                                     </Modal>
+                                    <Modal
+                                    open={showRulesModal}
+                                    closeButton
+                                    onClose={()=>{setShowRulesModal(false)}}
+                                    >
+                                            <Modal.Header
+                                            css={{
+                                                paddingTop: '0px',
+                                            }}>
+                                                <Col>
+                                                    <Text 
+                                                    css={{
+                                                        textAlign: 'center',
+                                                        fontSize: '$3xl',
+                                                        fontWeight: '$bold',
+                                                        color: '$red600',
+                                                        borderStyle: 'solid',
+                                                        borderWidth: '0px 0px 1px 0px',
+                                                        borderColor: '$gray800'
+                                                    }}>
+                                                        Error!
+                                                    </Text>
+                                                    
+                                                </Col>
+                                            </Modal.Header>
+                                            <Modal.Body
+                                            css={{
+                                                paddingTop: '0px'
+                                            }}>
+                                                <Text 
+                                                css={{
+                                                    textAlign: 'center',
+                                                    fontSize: '$xl',
+                                                    fontWeight: '$bold',
+                                                    color: 'white',
+                                                }}>
+                                                    You have gone over your total budget!
+                                                </Text>
+                                            </Modal.Body>
+                                            
+                                    </Modal>
+
 
                                             <Modal
                                                 closeButton
