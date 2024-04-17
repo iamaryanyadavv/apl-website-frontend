@@ -447,9 +447,11 @@ border-radius: 5px;
 
 .player-modal-image {
     /* Style adjustments for better centering */
-    width: 150px; /* Adjust the width as needed */
-    height: auto; /* Keep the aspect ratio of the image */
+    width: 200px;
+    height: 175.26px;
     margin-bottom: 10px; /* Space between image and team logo */
+    margin-right: 20px;
+    /* 395b549b-f923-4e5b-9935-f649249f6178 Background Removed 1 */
 }
 
 .player-team-info {
@@ -464,6 +466,13 @@ border-radius: 5px;
     height: 30px;
     margin-right: 10px; /* Space between logo and team name */
     border-radius: 50%; /* Full roundness */
+    /* Dolla Sign 1 */
+
+width: 40px;
+height: 40px;
+
+border-radius: 90px;
+
 }
 
 .player-modal-team-name {
@@ -474,15 +483,43 @@ border-radius: 5px;
     text-transform: none; /* Remove uppercase */
     color: #FFFFFF;
     /* Add other styles if necessary */
+    /* dolla $ign */
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 400;
+font-size: 20px;
+line-height: 24px;
+display: flex;
+align-items: center;
+letter-spacing: 0.1em;
+text-transform: uppercase;
+
+color: #FFFFFF;
+
+
 }
 
 .player-modal-name {
     /* Style adjustments for the player's name */
-    font-size: 24px; /* Larger font size for emphasis */
+    font-size: 32px; /* Larger font size for emphasis */
     font-weight: bold; /* Make the name bold */
     margin-bottom: 5px; /* Space between name and position */
     text-transform: uppercase;
     color: #FFFFFF;
+    /* Dhruv achappa */
+font-family: 'Montserrat';
+font-style: italic;
+font-weight: 800;
+font-size: 40px;
+line-height: 49px;
+/* identical to box height */
+display: flex;
+align-items: center;
+letter-spacing: 0.21em;
+text-transform: uppercase;
+color: #FFFFFF;
+
+
 }
 
 .player-modal-position {
@@ -490,6 +527,23 @@ border-radius: 5px;
     font-size: 20px; /* Adjust font size to be smaller than the name */
     margin-bottom: 5px; /* Space between position and price */
     color: #FFFFFF;
+
+    
+
+font-family: 'Montserrat';
+font-style: italic;
+font-weight: 300;
+font-size: 35px;
+line-height: 43px;
+/* identical to box height */
+display: flex;
+align-items: center;
+letter-spacing: 0.21em;
+text-transform: uppercase;
+
+color: #FFFFFF;
+
+
 }
 
 .player-stats
@@ -506,11 +560,18 @@ border-radius: 5px;
 }
 
 .player-modal-price {
-    /* Style adjustments for the price */
-    font-size: 20px; /* Adjust font size to be consistent with the position */
-    color: #FFFFFF;
-    /* Add other styles if necessary */
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 35px;
+  line-height: 43px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end; /* This will align the text to the right */
+  color: #FFFFFF;
+  width: 100%; /* Ensure the container takes full width to push content to the edge */
 }
+
 
 /* Additional custom styles to clean up the collapse appearance */
 .coll-dropdown .ui-collapse-title {

@@ -1,4 +1,4 @@
-import { Grid, Input, Text, Dropdown, Col, Row, Modal, Button } from "@nextui-org/react";
+import { Grid, Input, Text, Dropdown, Col, Row, Modal, Button, Image } from "@nextui-org/react";
 import React, { useEffect, useState } from "react";
 import './aplfantasy.css';
 import JerseyImage from "./jersey template 1.png"
@@ -272,7 +272,7 @@ const StatCard = ({ title, value, image }) => (
   <Grid css={{
     textAlign: "center", 
     flexDirection: "column",
-    height: "150px", // Set the total height of the StatCard
+    height: "100%", // Set the total height of the StatCard
     flex: "1", // Ensure that all stat cards take up equal width
     padding: "10px", // Add some padding
   }}>
@@ -282,25 +282,17 @@ const StatCard = ({ title, value, image }) => (
       alignItems: "center", // Center the image vertically
       justifyContent: "center", // Center the image horizontally
     }}>
-      <img src={image} alt={title} css={{
-        height: "100%", // The image will fill the div's height
-      }} />
+      <Image height="100%" src={image}/>
     </div>
     <div css={{
       height: "20%", // Value takes up 20% of the card's height
-      display: "flex",
-      alignItems: "center", // Center the text vertically
-      justifyContent: "center", // Center the text horizontally
-    }}>
-      <Text css={{ fontSize: "1.25em", fontWeight: "bold" }}>{value}</Text>
+      justifyContent:"flex-end"
+    }}><Text>{title}</Text>
     </div>
     <div css={{
       height: "20%", // Title takes up 20% of the card's height
-      display: "flex",
-      alignItems: "center", // Center the text vertically
-      justifyContent: "center", // Center the text horizontally
     }}>
-      <Text css={{ fontSize: "1em" }}>{title}</Text>
+            <Text>{value}</Text>
     </div>
   </Grid>
 );
@@ -403,7 +395,7 @@ return (
     open={showInfoModal}
     onClose={() => setShowInfoModal(false)}
     className="info-modal"
-    width="60%"
+    width="40%"
     height="100%"
 >
     <Modal.Header className="modal-header">
@@ -440,9 +432,9 @@ return (
                     }}
                 >
                     <img src={testPlayerImage} alt="Player" className="player-modal-image" />
-                    <Grid.Container css={{ flexDirection: "column", alignItems: "center" }}>
+                    <Grid.Container css={{ flexDirection: "column", alignItems: "center", }}>
 
-                    <Grid.Container css={{ flexDirection: "row", alignItems: "center", justifyContent:"center"}}>
+                    <Grid.Container css={{ flexDirection: "row", alignItems: "center", justifyContent:"left"}}>
 
                         <img src={testPlayerTeamLogo} alt="Player" className="player-modal-team-logo" />
                         <Text className="player-modal-team-name">Player Team Name</Text>
@@ -451,8 +443,11 @@ return (
                         </Grid.Container>
 
                         <Text className="player-modal-name">Dhruv Achappa</Text>
-                        <Text className="player-modal-position">Defender</Text>
-                        <Text className="player-modal-price">96 M</Text>
+                        <Row css={{ width: "100%", justifyContent: "space-between" }}>
+                            <Text className="player-modal-position">Defender</Text>
+                            <Text className="player-modal-price">96 M</Text>
+                        </Row>
+                        
                     </Grid.Container>
                 </Grid>
             </Grid.Container>
@@ -461,9 +456,10 @@ return (
             <Grid.Container 
                 css={{
                     width: "100%",
-                    justifyContent: "space-evenly", // Adjust to match design
                     marginBottom: "20px", // Space between the stats and matches
-                    alignitems:"center"
+                    alignitems:"center",
+                    justifyContent:"center",
+                    height:"100%"
                 }} className="player-stats"
             >
                 {/* You would map over your stats data and create these dynamically */}
