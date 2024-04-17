@@ -630,23 +630,23 @@ export default function APLFantasy() {
                                             gap: 8,
                                             marginBottom: '16px'
                                         }}>
-                                        <Image 
-                                        src={user.picture}
-                                        css={{
-                                            borderRadius: '48px',
-                                            height: '64px',
-                                            width: '64px'
-                                        }}
-                                        />
-                                        <Text
-                                            className="apl-font"
-                                            css={{
-                                                fontSize: '$xl',
-                                                fontWeight: '$semibold',
-                                                textAlign: 'center'
-                                            }}>
-                                            {user.name}'s Team
-                                        </Text>
+                                            <Image
+                                                src={user.picture}
+                                                css={{
+                                                    borderRadius: '48px',
+                                                    height: '64px',
+                                                    width: '64px'
+                                                }}
+                                            />
+                                            <Text
+                                                className="apl-font"
+                                                css={{
+                                                    fontSize: '$xl',
+                                                    fontWeight: '$semibold',
+                                                    textAlign: 'center'
+                                                }}>
+                                                {user.name}'s Team
+                                            </Text>
                                         </Row>
                                         <div className="football-field">
 
@@ -1081,60 +1081,66 @@ export default function APLFantasy() {
                                                         gap: '10vw',
                                                         height: "20%"
                                                     }}>
-                                                    <div className="player-jersey">
-                                                        <img src={JerseyImage} alt="Jersey" />
-                                                        {!selectedPlayers[4] && <img src={addPlayerButton} alt="Add Player" style={{
-                                                            position: 'absolute',
-                                                            top: '40%',
-                                                            left: '49%',
-                                                            transform: 'translate(-50%, -50%)',
-                                                            cursor: 'pointer',
-                                                            width: "25px",
-                                                            height: "25px"
-                                                        }} onClick={() => setSelectedJersey(4)} />}
-                                                        <div className="player-name-bg">
-                                                            <Text className="player-name-text">{selectedPlayers[4]}</Text>
+                                                    <Row css={{
+                                                        width: '100%',
+                                                        justifyContent: 'space-around',
+                                                        alignItems: 'center'
+                                                    }}>
+                                                        <div className="player-jersey">
+                                                            <img src={JerseyImage} alt="Jersey" />
+                                                            {!selectedPlayers[4] && <img src={addPlayerButton} alt="Add Player" style={{
+                                                                position: 'absolute',
+                                                                top: '40%',
+                                                                left: '49%',
+                                                                transform: 'translate(-50%, -50%)',
+                                                                cursor: 'pointer',
+                                                                width: "25px",
+                                                                height: "25px"
+                                                            }} onClick={() => setSelectedJersey(4)} />}
+                                                            <div className="player-name-bg">
+                                                                <Text className="player-name-text">{selectedPlayers[4]}</Text>
+                                                            </div>
+                                                            <div className="player-price-bg">
+                                                                <Text className="player-price-text" color="black">{playersData.find(p => p[0] === selectedPlayers[4]) ? playersData.find(p => p[0] === selectedPlayers[4])[3] : "MIDFIELDER"}</Text>
+                                                            </div>
                                                         </div>
-                                                        <div className="player-price-bg">
-                                                            <Text className="player-price-text" color="black">{playersData.find(p => p[0] === selectedPlayers[4]) ? playersData.find(p => p[0] === selectedPlayers[4])[3] : "MIDFIELDER"}</Text>
+                                                        <div className="player-jersey">
+                                                            <img src={JerseyImage} alt="Jersey" />
+                                                            {!selectedPlayers[3] && <img src={addPlayerButton} alt="Add Player" style={{
+                                                                position: 'absolute',
+                                                                top: '40%',
+                                                                left: '49%',
+                                                                transform: 'translate(-50%, -50%)',
+                                                                cursor: 'pointer',
+                                                                width: "25px",
+                                                                height: "25px"
+                                                            }} onClick={() => setSelectedJersey(3)} />}
+                                                            <div className="player-name-bg">
+                                                                <Text className="player-name-text">{selectedPlayers[3]}</Text>
+                                                            </div>
+                                                            <div className="player-price-bg">
+                                                                <Text className="player-price-text" color="black">{playersData.find(p => p[0] === selectedPlayers[3]) ? playersData.find(p => p[0] === selectedPlayers[3])[3] : "MIDFIELDER"}</Text>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                    <div className="player-jersey">
-                                                        <img src={JerseyImage} alt="Jersey" />
-                                                        {!selectedPlayers[3] && <img src={addPlayerButton} alt="Add Player" style={{
-                                                            position: 'absolute',
-                                                            top: '40%',
-                                                            left: '49%',
-                                                            transform: 'translate(-50%, -50%)',
-                                                            cursor: 'pointer',
-                                                            width: "25px",
-                                                            height: "25px"
-                                                        }} onClick={() => setSelectedJersey(3)} />}
-                                                        <div className="player-name-bg">
-                                                            <Text className="player-name-text">{selectedPlayers[3]}</Text>
+                                                        <div className="player-jersey">
+                                                            <img src={JerseyImage} alt="Jersey" />
+                                                            {!selectedPlayers[2] && <img src={addPlayerButton} alt="Add Player" style={{
+                                                                position: 'absolute',
+                                                                top: '40%',
+                                                                left: '49%',
+                                                                transform: 'translate(-50%, -50%)',
+                                                                cursor: 'pointer',
+                                                                width: "25px",
+                                                                height: "25px"
+                                                            }} onClick={() => setSelectedJersey(2)} />}
+                                                            <div className="player-name-bg">
+                                                                <Text className="player-name-text">{selectedPlayers[2]}</Text>
+                                                            </div>
+                                                            <div className="player-price-bg">
+                                                                <Text className="player-price-text" color="black">{playersData.find(p => p[0] === selectedPlayers[2]) ? playersData.find(p => p[0] === selectedPlayers[2])[3] : "MIDFIELDER"}</Text>
+                                                            </div>
                                                         </div>
-                                                        <div className="player-price-bg">
-                                                            <Text className="player-price-text" color="black">{playersData.find(p => p[0] === selectedPlayers[3]) ? playersData.find(p => p[0] === selectedPlayers[3])[3] : "MIDFIELDER"}</Text>
-                                                        </div>
-                                                    </div>
-                                                    <div className="player-jersey">
-                                                        <img src={JerseyImage} alt="Jersey" />
-                                                        {!selectedPlayers[2] && <img src={addPlayerButton} alt="Add Player" style={{
-                                                            position: 'absolute',
-                                                            top: '40%',
-                                                            left: '49%',
-                                                            transform: 'translate(-50%, -50%)',
-                                                            cursor: 'pointer',
-                                                            width: "25px",
-                                                            height: "25px"
-                                                        }} onClick={() => setSelectedJersey(2)} />}
-                                                        <div className="player-name-bg">
-                                                            <Text className="player-name-text">{selectedPlayers[2]}</Text>
-                                                        </div>
-                                                        <div className="player-price-bg">
-                                                            <Text className="player-price-text" color="black">{playersData.find(p => p[0] === selectedPlayers[2]) ? playersData.find(p => p[0] === selectedPlayers[2])[3] : "MIDFIELDER"}</Text>
-                                                        </div>
-                                                    </div>
+                                                    </Row>
                                                 </Grid.Container>
 
                                                 <Grid.Container
@@ -1164,6 +1170,7 @@ export default function APLFantasy() {
                                                             <Text className="player-price-text" color="black">{playersData.find(p => p[0] === selectedPlayers[1]) ? playersData.find(p => p[0] === selectedPlayers[1])[3] : "DEFENDER"}</Text>
                                                         </div>
                                                     </div>
+
                                                 </Grid.Container>
                                                 <div className="player-jersey">
                                                     <img src={JerseyImage} alt="Jersey" />
