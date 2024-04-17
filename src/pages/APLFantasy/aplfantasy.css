@@ -2,29 +2,26 @@
 
 /* Fantasy Game */
 
-.fantasytitle
-{
-font-family: 'Montserrat';
-font-style: italic;
-font-weight: 900;
-font-size: 59px;
-line-height: 72px;
-display: flex;
-align-items: center;
-letter-spacing: 0.15em;
-text-transform: uppercase;
+.fantasytitle {
+  font-family: "Montserrat";
+  font-style: italic;
+  font-weight: 900;
+  font-size: 59px;
+  line-height: 72px;
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
 
-color: #FFFFFF;
+  color: #ffffff;
 
-
-    align-items: center;
-    justify-content: center;
-    color: #FFFFFF;
-    text-align: center;
-    margin-bottom: 30px;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  text-align: center;
+  margin-bottom: 30px;
 }
-.nextui-collapse-title
-{
+.nextui-collapse-title {
   color: black;
 }
 
@@ -33,14 +30,27 @@ color: #FFFFFF;
   justify-content: center; /* Center the players in the row */
   margin-bottom: 10px; /* Adjust as needed for spacing */
 }
-.sponsor-section
-{
+.sponsor-section {
   display: flex;
   flex-direction: column;
   align-items: center;
   transform: scale(0.8);
   transform-origin: center;
 }
+
+.rules-text {
+  font-family: "Montserrat";
+  font-style: normal;
+  letter-spacing: 0.03em;
+  font-weight: 700;
+}
+
+.rules-text2 {
+    font-family: "Montserrat";
+    font-style: normal;
+    letter-spacing: 0.03em;
+    font-weight: 600;
+  }
 
 /* Money Left Section */
 .money-left {
@@ -57,48 +67,7 @@ color: #FFFFFF;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-font-family: 'Montserrat';
-font-style: italic;
-font-weight: 900;
-font-size: 20px;
-line-height: 24px;
-display: flex;
-align-items: center;
-letter-spacing: 0.03em;
-text-transform: uppercase;
-
-color: #FFFFFF;
-/* width: 302px; */
-height: 86px;
-
-
-}
-
-.nextui-c-hPzDAx .nextui-collapse-title-content h3
-{
-  color: black;
-  font-family: 'Montserrat';
-font-style: normal;
-font-weight: 800;
-font-size: 15px;
-line-height: 18px;
-
-letter-spacing: 0.24em;
-
-color: #282828;
-}
-
-.coll-dropdown
-{
-  background-color: white;
-  margin-bottom: 10px;
-}
-
-
-
-.money-left-text
-{
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   font-style: italic;
   font-weight: 900;
   font-size: 20px;
@@ -107,131 +76,156 @@ color: #282828;
   align-items: center;
   letter-spacing: 0.03em;
   text-transform: uppercase;
-  
-  color: #FFFFFF;
+
+  color: #ffffff;
+  /* width: 302px; */
+  height: 86px;
+}
+
+.nextui-c-hPzDAx .nextui-collapse-title-content h3 {
+  color: black;
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 800;
+  font-size: 15px;
+  line-height: 18px;
+
+  letter-spacing: 0.24em;
+
+  color: #282828;
+}
+
+.coll-dropdown {
+  background-color: white;
+  margin-bottom: 10px;
+}
+
+.money-left-text {
+  font-family: "Montserrat";
+  font-style: italic;
+  font-weight: 900;
+  font-size: 20px;
+  line-height: 24px;
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+
+  color: #ffffff;
 }
 
 .fantasy-game-container {
-    color: #fff;
-    background-color: #1a1a1a;
-    padding: 20px;
-    padding-bottom: 50px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    margin: 0% 10% 0 10% ;
-  }
-  
-  .fanup-logo {
-    width: 266px;
-    height: 77px;
-    margin-bottom: 1vh;
-
+  color: #fff;
+  background-color: #1a1a1a;
+  padding: 20px;
+  padding-bottom: 50px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin: 0% 10% 0 10%;
 }
 
-.apl-font{
-    font-family: 'Montserrat';
-    font-style: italic;
-    font-weight: 700;
+.fanup-logo {
+  width: 266px;
+  height: 77px;
+  margin-bottom: 1vh;
+}
+
+.apl-font {
+  font-family: "Montserrat";
+  font-style: italic;
+  font-weight: 700;
 }
 
 /* GENDER DROPDOWN */
-.nextui-c-hPzDAx .nextui-collapse-title-container
-{
+.nextui-c-hPzDAx .nextui-collapse-title-container {
   border-radius: 10px;
   border-bottom: black;
 }
-  .sponsortext
-  {
-    font-family: 'Montserrat';
-    font-style: italic;
-    font-weight: 200;
-    font-size: 20px;
-    line-height: 24px;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    letter-spacing: 0.21em;
-    text-transform: uppercase;
-    color: #FFFFFF;
-    margin-bottom: 20px;
-  }
+.sponsortext {
+  font-family: "Montserrat";
+  font-style: italic;
+  font-weight: 200;
+  font-size: 20px;
+  line-height: 24px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  letter-spacing: 0.21em;
+  text-transform: uppercase;
+  color: #ffffff;
+  margin-bottom: 20px;
+}
 
+.leftcol {
+  width: 70vw; /* You may adjust this value to find the best fit for your layout */
+  align-items: center;
+  align-self: center;
+  justify-content: center;
+}
 
-  
-  .leftcol {
-    width: 70vw; /* You may adjust this value to find the best fit for your layout */
-    align-items: center;
-    align-self: center;
-    justify-content: center;
-  }
-  
-  .football-field {
-    background: url('footballfield.png') no-repeat center; /* This will align your background to the left */
-    background-size: contain;
-    position: relative;
-    width: 100%; /* Make this 100% of the parent container's width */
-    height: 75vh;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    align-content: space-around;
-    margin-left: 0; /* Adjust or remove any left margin if needed */
-    margin-right: auto; /* This will keep the field aligned to the left */
-  }
-  .rightcol
-  {
-    display: flex;
-    flex-direction: column;
-    width: 25vw;
-    align-items: center;
-    align-self: center;
-    justify-content: center;
- }
+.football-field {
+  background: url("footballfield.png") no-repeat center; /* This will align your background to the left */
+  background-size: contain;
+  position: relative;
+  width: 100%; /* Make this 100% of the parent container's width */
+  height: 75vh;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-content: space-around;
+  margin-left: 0; /* Adjust or remove any left margin if needed */
+  margin-right: auto; /* This will keep the field aligned to the left */
+}
+.rightcol {
+  display: flex;
+  flex-direction: column;
+  width: 25vw;
+  align-items: center;
+  align-self: center;
+  justify-content: center;
+}
 
- .rightcolcontainer{
+.rightcolcontainer {
   display: flex;
   align-items: center;
   justify-content: center;
- }
-  
-  .player-jersey {
-    position: relative;
-    text-align: center;
-    justify-content: center;
-    width: 150px; /* Reduce the width to the size that matches your second image */
-  }
-  .midfielder-1
-  {
-    height: 20%;
-  }
+}
 
-  .player-name-bg, .player-price-bg {
-    padding: 0px 4px; /* Reduce padding to decrease the height */
-    width: auto; /* This will only be as wide as the content, plus padding */
-    font-size: 8px; /* Reduce the font size to match your second image */
-  }
+.player-jersey {
+  position: relative;
+  text-align: center;
+  justify-content: center;
+  width: 150px; /* Reduce the width to the size that matches your second image */
+}
+.midfielder-1 {
+  height: 20%;
+}
 
-  .player-name-bg
-  {
-    display: flex;  
-    align-items: center;
-    justify-content: center;
-    background-color: #1F335B;
-    height: 20px;
-  }
+.player-name-bg,
+.player-price-bg {
+  padding: 0px 4px; /* Reduce padding to decrease the height */
+  width: auto; /* This will only be as wide as the content, plus padding */
+  font-size: 8px; /* Reduce the font size to match your second image */
+}
 
-  .player-price-bg 
-  {
-    background-color: #F4F4F4;
-    height: 20px;
-    display: flex;  
-    align-items: center;
-    justify-content: center; 
-  }
+.player-name-bg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #1f335b;
+  height: 20px;
+}
 
-  
+.player-price-bg {
+  background-color: #f4f4f4;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 /* General scrollbar styles */
 .sidebar::-webkit-scrollbar {
   width: 10px; /* Adjust the width of the scrollbar */
@@ -253,112 +247,107 @@ color: #282828;
   background-color: white; /* Darker grey handle on hover */
 }
 
-  .player-name-text
- {
-    height: 100%;
-    width: 100%;
-    justify-content: center;
-    justify-self: center;
-    text-align: center;
-    margin-bottom: 0;
-    font-size: 14px;
-font-family: 'Montserrat';
-font-style: normal;
-font-weight: 500;
-font-size: 12px;
-line-height: 15px;
-/* identical to box height */
-display: flex;
-align-items: center;
-text-align: center;
-text-transform: uppercase;
+.player-name-text {
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  justify-self: center;
+  text-align: center;
+  margin-bottom: 0;
+  font-size: 14px;
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 15px;
+  /* identical to box height */
+  display: flex;
+  align-items: center;
+  text-align: center;
+  text-transform: uppercase;
 
-color: #FFFFFF;
-
-
-  }
-
-  .player-price-text
-  {
-    font-family: 'Montserrat';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 15px;
-    line-height: 18px;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    letter-spacing: 0.02em;
-    text-transform: uppercase;
-    color: #000000;
-  }
-  
-  .player-jersey img {
-    width: 120px; /* Reduce the width as needed */
-  }
-  
-  .sidebar {
-    width: 80%;
-    height: auto;
-    background-color: #333;
-    padding: 12px;
-    border-radius: 8px; /* Adjust if needed to match the corner radius */
-    height: auto; /* Set to auto so it grows with content */
-    margin: 0 0 20px 0; /* Adjust the margin as needed */
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center; /* Center the items on cross-axis */
-    width: 311px;
-    height: 766px;
-    background: #666666;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 5px;
-    overflow-y: auto; /* Enable vertical scrolling */
-    overflow-x: hidden;
-  }
-
-  .nextui-c-lfcDHB {
-    width: 100%;
-    display: block;
-    text-align: left;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    outline: none;
-    padding: 0 0 0px 0;
+  color: #ffffff;
 }
-.coll-group
-{
+
+.player-price-text {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 18px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: #000000;
+}
+
+.player-jersey img {
+  width: 120px; /* Reduce the width as needed */
+}
+
+.sidebar {
+  width: 80%;
+  height: auto;
+  background-color: #333;
+  padding: 12px;
+  border-radius: 8px; /* Adjust if needed to match the corner radius */
+  height: auto; /* Set to auto so it grows with content */
+  margin: 0 0 20px 0; /* Adjust the margin as needed */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center; /* Center the items on cross-axis */
+  width: 311px;
+  height: 766px;
+  background: #666666;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+  overflow-y: auto; /* Enable vertical scrolling */
+  overflow-x: hidden;
+}
+
+.nextui-c-lfcDHB {
+  width: 100%;
+  display: block;
+  text-align: left;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  padding: 0 0 0px 0;
+}
+.coll-group {
   padding: 0;
   border: white;
   /* background-color: white; */
-  border-radius: 4px ;
+  border-radius: 4px;
   margin-bottom: 8px;
 }
-  .sidebar h3 {
-    font-size: 18px; /* Adjust the font size as needed */
-    color: #fff;
-    margin-bottom: 40px; /* Space between 'Money Left' and dropdown */
-    font-weight: 700; /* Bold font weight */
-    text-align: center;
-    width: 100%; /* Full width */
-  }
-  
-  .sidebar .dropdown-button {
-    font-size: 18px; /* Adjust the font size as needed */
-    text-transform: uppercase; /* Uppercase text */
-    margin-bottom: 30px; /* Space between dropdown and 'Selected Players' */
-    font-weight: 500; /* Medium font weight */
-  }
-  
-  .sidebar ul {
-    list-style: none;
-    padding: 0;
-    width: 100%; /* Full width */
-  }
-  
-  /* aplfantasy.css */
+.sidebar h3 {
+  font-size: 18px; /* Adjust the font size as needed */
+  color: #fff;
+  margin-bottom: 40px; /* Space between 'Money Left' and dropdown */
+  font-weight: 700; /* Bold font weight */
+  text-align: center;
+  width: 100%; /* Full width */
+}
+
+.sidebar .dropdown-button {
+  font-size: 18px; /* Adjust the font size as needed */
+  text-transform: uppercase; /* Uppercase text */
+  margin-bottom: 30px; /* Space between dropdown and 'Selected Players' */
+  font-weight: 500; /* Medium font weight */
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  width: 100%; /* Full width */
+}
+
+/* aplfantasy.css */
 
 /* Styles for the player card */
 .player-card {
@@ -389,243 +378,215 @@ color: #FFFFFF;
   margin-left: 10px; /* Space between the button and the player info */
 }
 
-.info-modal{
-
-
-background: #1F335B;
-border-radius: 5px;
-
+.info-modal {
+  background: #1f335b;
+  border-radius: 5px;
 }
 
 /* Add any other styles as needed */
 
+.players-list {
+  background-color: #4dffa8; /* Background color for list items */
+  color: black; /* Text color for player name */
+  margin-bottom: 10px;
+  padding: 15px 20px;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column; /* Stack name and position on top of each other */
+  align-items: flex-start; /* Align items to the left */
+  width: 100%;
+}
 
-  .players-list {
-    background-color: #4DFFA8; /* Background color for list items */
-    color: black; /* Text color for player name */
-    margin-bottom: 10px;
-    padding: 15px 20px;
-    border-radius: 4px;
-    display: flex;
-    flex-direction: column; /* Stack name and position on top of each other */
-    align-items: flex-start; /* Align items to the left */
-    width: 100%;
-  }
+.players-card {
+  background-color: #4dffa8; /* Background color for list items */
+  color: black; /* Text color for player name */
+  margin-bottom: 10px;
+  padding: 15px 20px;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column; /* Stack name and position on top of each other */
+  align-items: flex-start; /* Align items to the left */
+}
 
-  .players-card{
-    background-color: #4DFFA8; /* Background color for list items */
-    color: black; /* Text color for player name */
-    margin-bottom: 10px;
-    padding: 15px 20px;
-    border-radius: 4px;
-    display: flex;
-    flex-direction: column; /* Stack name and position on top of each other */
-    align-items: flex-start; /* Align items to the left */
-  }
-  
-  
-  .sidebar li .player-name {
-    font-size: 18px; /* Adjust the font size as needed for the name */
-    font-weight: 500; /* Medium font weight for the name */
-  }
-  
-  .sidebar li .player-position {
-    font-size: 14px; /* Smaller font size for the position */
-    color: black; /* Text color for the position */
-    font-weight: 300; /* Lighter font weight for the position */
-    margin-top: 5px; /* Space between name and position */
-  }
-  .nextui-collapse-title {
-    font-size: 8px; 
-    padding: 8px 16px; 
-    color: white;
-  }
-  
+.sidebar li .player-name {
+  font-size: 18px; /* Adjust the font size as needed for the name */
+  font-weight: 500; /* Medium font weight for the name */
+}
 
-  .player-info-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 20px; /* Add padding to match the design's spacing */
+.sidebar li .player-position {
+  font-size: 14px; /* Smaller font size for the position */
+  color: black; /* Text color for the position */
+  font-weight: 300; /* Lighter font weight for the position */
+  margin-top: 5px; /* Space between name and position */
+}
+.nextui-collapse-title {
+  font-size: 8px;
+  padding: 8px 16px;
+  color: white;
+}
+
+.player-info-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px; /* Add padding to match the design's spacing */
 }
 
 .player-modal-image {
-    /* Style adjustments for better centering */
-    width: 200px;
-    height: 175.26px;
-    margin-bottom: 10px; /* Space between image and team logo */
-    margin-right: 20px;
-    /* 395b549b-f923-4e5b-9935-f649249f6178 Background Removed 1 */
+  /* Style adjustments for better centering */
+  width: 200px;
+  height: 175.26px;
+  margin-bottom: 10px; /* Space between image and team logo */
+  margin-right: 20px;
+  /* 395b549b-f923-4e5b-9935-f649249f6178 Background Removed 1 */
 }
 
 .player-team-info {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 5px; /* Adjust spacing between team info and player name */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 5px; /* Adjust spacing between team info and player name */
 }
 
 .player-modal-team-logo {
-    width: 30px; /* Adjust size to match the design */
-    height: 30px;
-    margin-right: 10px; /* Space between logo and team name */
-    border-radius: 50%; /* Full roundness */
-    /* Dolla Sign 1 */
+  width: 30px; /* Adjust size to match the design */
+  height: 30px;
+  margin-right: 10px; /* Space between logo and team name */
+  border-radius: 50%; /* Full roundness */
+  /* Dolla Sign 1 */
 
-width: 40px;
-height: 40px;
+  width: 40px;
+  height: 40px;
 
-border-radius: 90px;
-
+  border-radius: 90px;
 }
 
 .player-modal-team-name {
-    /* Adjust to more closely resemble the design */
-    font-size: 16px; /* Smaller font size */
-    letter-spacing: normal; /* Adjust letter spacing */
-    margin-bottom: 0; /* Remove bottom margin */
-    text-transform: none; /* Remove uppercase */
-    color: #FFFFFF;
-    /* Add other styles if necessary */
-    /* dolla $ign */
-font-family: 'Montserrat';
-font-style: normal;
-font-weight: 400;
-font-size: 20px;
-line-height: 24px;
-display: flex;
-align-items: center;
-letter-spacing: 0.1em;
-text-transform: uppercase;
+  /* Adjust to more closely resemble the design */
+  font-size: 16px; /* Smaller font size */
+  letter-spacing: normal; /* Adjust letter spacing */
+  margin-bottom: 0; /* Remove bottom margin */
+  text-transform: none; /* Remove uppercase */
+  color: #ffffff;
+  /* Add other styles if necessary */
+  /* dolla $ign */
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
 
-color: #FFFFFF;
-
-
+  color: #ffffff;
 }
 
 .player-modal-name {
-    /* Style adjustments for the player's name */
-    font-size: 32px; /* Larger font size for emphasis */
-    font-weight: bold; /* Make the name bold */
-    margin-bottom: 5px; /* Space between name and position */
-    text-transform: uppercase;
-    color: #FFFFFF;
-    /* Dhruv achappa */
-font-family: 'Montserrat';
-font-style: italic;
-font-weight: 800;
-font-size: 40px;
-line-height: 49px;
-/* identical to box height */
-display: flex;
-align-items: center;
-letter-spacing: 0.21em;
-text-transform: uppercase;
-color: #FFFFFF;
-
-
+  /* Style adjustments for the player's name */
+  font-size: 32px; /* Larger font size for emphasis */
+  font-weight: bold; /* Make the name bold */
+  margin-bottom: 5px; /* Space between name and position */
+  text-transform: uppercase;
+  color: #ffffff;
+  /* Dhruv achappa */
+  font-family: "Montserrat";
+  font-style: italic;
+  font-weight: 800;
+  font-size: 40px;
+  line-height: 49px;
+  /* identical to box height */
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.21em;
+  text-transform: uppercase;
+  color: #ffffff;
 }
 
 .player-modal-position {
-    /* Style adjustments for the position */
-    font-size: 20px; /* Adjust font size to be smaller than the name */
-    margin-bottom: 5px; /* Space between position and price */
-    color: #FFFFFF;
+  /* Style adjustments for the position */
+  font-size: 20px; /* Adjust font size to be smaller than the name */
+  margin-bottom: 5px; /* Space between position and price */
+  color: #ffffff;
 
-    
+  font-family: "Montserrat";
+  font-style: italic;
+  font-weight: 300;
+  font-size: 35px;
+  line-height: 43px;
+  /* identical to box height */
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.21em;
+  text-transform: uppercase;
 
-font-family: 'Montserrat';
-font-style: italic;
-font-weight: 300;
-font-size: 35px;
-line-height: 43px;
-/* identical to box height */
-display: flex;
-align-items: center;
-letter-spacing: 0.21em;
-text-transform: uppercase;
-
-color: #FFFFFF;
-
-
+  color: #ffffff;
 }
-.game-info-title
-{
-font-family: 'Montserrat';
-font-style: normal;
-font-weight: 700;
-font-size: 15px;
-line-height: 18px;
-display: flex;
-align-items: center;
-text-align: center;
-letter-spacing: 0.1em;
-text-transform: uppercase;
+.game-info-title {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 18px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
 
-color: #FFFFFF;
-
-
+  color: #ffffff;
 }
 
-.player-group{
-/* A */
+.player-group {
+  /* A */
 
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 35px;
+  line-height: 43px;
+  /* identical to box height */
+  display: flex;
+  align-items: center;
+  text-align: center;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
 
-
-font-family: 'Montserrat';
-font-style: normal;
-font-weight: 700;
-font-size: 35px;
-line-height: 43px;
-/* identical to box height */
-display: flex;
-align-items: center;
-text-align: center;
-letter-spacing: 0.1em;
-text-transform: uppercase;
-
-color: #FFFFFF;
-
-
+  color: #ffffff;
 }
 
-.statcard-title
-{
+.statcard-title {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 18px;
+  display: flex;
+  align-items: start;
+  justify-content: center;
+  height: 40px;
+  text-align: center;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
 
-font-family: 'Montserrat';
-font-style: normal;
-font-weight: 400;
-font-size: 15px;
-line-height: 18px;
-display: flex;
-align-items: start;
-justify-content: center;
-height: 40px;
-text-align: center;
-letter-spacing: 0.1em;
-text-transform: uppercase;
-
-color: #FFFFFF;
-
-
+  color: #ffffff;
 }
-.player-stats
-{
-background: rgba(175, 198, 219, 0.69);
-border-radius: 5px;
-align-items: center;
+.player-stats {
+  background: rgba(175, 198, 219, 0.69);
+  border-radius: 5px;
+  align-items: center;
 }
 
-.player-matches
-{
-background: rgba(175, 198, 219, 0.69);
-border-radius: 5px;
+.player-matches {
+  background: rgba(175, 198, 219, 0.69);
+  border-radius: 5px;
 }
 
 .player-modal-price {
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   font-style: normal;
   font-weight: 400;
   font-size: 35px;
@@ -633,10 +594,9 @@ border-radius: 5px;
   display: flex;
   align-items: center;
   justify-content: flex-end; /* This will align the text to the right */
-  color: #FFFFFF;
+  color: #ffffff;
   width: 100%; /* Ensure the container takes full width to push content to the edge */
 }
-
 
 /* Additional custom styles to clean up the collapse appearance */
 .coll-dropdown .ui-collapse-title {
@@ -649,7 +609,7 @@ border-radius: 5px;
 }
 
 .coll-dropdown .nextui-collapse-content {
-  background-color: #B2B0B0; /* Dark background for the collapse content */
+  background-color: #b2b0b0; /* Dark background for the collapse content */
   padding: 0.5rem 1rem; /* Padding inside the collapse content */
   border: none; /* Remove any default borders */
 }
@@ -680,24 +640,23 @@ border-radius: 5px;
 
 /* These styles assume a dark theme is used as per the screenshot provided */
 
-
 .add-player-btn {
-    padding: 10px;
-    cursor: pointer;
-    background-color: white; /* Assuming a white button, but change as needed */
-    border: none;
-    border-radius: 4px;
+  padding: 10px;
+  cursor: pointer;
+  background-color: white; /* Assuming a white button, but change as needed */
+  border: none;
+  border-radius: 4px;
 }
 
 .pagination {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
 }
 
 /* Existing sidebar li styles */
 .sidebar li {
-  background-color: #4DFFA8; /* Background color for list items */
+  background-color: #4dffa8; /* Background color for list items */
   color: black; /* Text color for player name */
   margin-bottom: 10px;
   padding: 15px 20px;
@@ -709,7 +668,7 @@ border-radius: 5px;
 
 /* Styles for the player cards */
 .player-card {
-  background-color: #4DFFA8; /* Same background color as sidebar li */
+  background-color: #4dffa8; /* Same background color as sidebar li */
   color: black; /* Same text color as sidebar li */
   margin-bottom: 10px;
   padding: 15px 20px;
@@ -741,7 +700,7 @@ border-radius: 5px;
 }
 
 .pagination button {
-  background-color: #FFFFFF; /* Primary Green */
+  background-color: #ffffff; /* Primary Green */
   color: black; /* White text */
   border: none;
   padding: 10px 20px;
@@ -751,14 +710,13 @@ border-radius: 5px;
   text-transform: uppercase;
   margin-top: 20px; /* Provide some top margin */
 
-background: #FDFDFD;
-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-border-radius: 5px;
-
+  background: #fdfdfd;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
 }
 
 .next-page-button {
-  background-color: #FFFFFF; /* Primary Green */
+  background-color: #ffffff; /* Primary Green */
   color: black; /* White text */
   border: none;
   padding: 10px 20px;
@@ -768,10 +726,9 @@ border-radius: 5px;
   text-transform: uppercase;
   margin-top: 20px; /* Provide some top margin */
 
-background: #FDFDFD;
-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-border-radius: 5px;
-
+  background: #fdfdfd;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
 }
 
 .pagination button:hover {
@@ -780,7 +737,7 @@ border-radius: 5px;
 
 /* Add styles for your Submit Button */
 .submit-button {
-  background-color: #4DFFA8; /* Primary Green */
+  background-color: #4dffa8; /* Primary Green */
   color: black; /* White text */
   border: none;
   padding: 15px 30px; /* Bigger padding for larger button */
@@ -792,7 +749,7 @@ border-radius: 5px;
 }
 
 .submit-button:hover {
-  background-color: #4DFFA8; /* A darker green on hover */
+  background-color: #4dffa8; /* A darker green on hover */
 }
 
 /* Add hover effect for buttons */
@@ -807,34 +764,33 @@ border-radius: 5px;
   cursor: not-allowed;
 }
 
-
 /* Pagination button styles if not already defined */
 .pagination button {
-    padding: 5px 10px;
-    margin: 0 5px;
-    background-color: #4DFFA8; /* Same as the player card for consistency */
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+  padding: 5px 10px;
+  margin: 0 5px;
+  background-color: #4dffa8; /* Same as the player card for consistency */
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
 /* Hover effect for buttons */
 .pagination button:hover {
-    background-color: #3cb371; /* Darker shade for hover effect */
+  background-color: #3cb371; /* Darker shade for hover effect */
 }
 
 /* Disable button style */
 .pagination button:disabled {
-    background-color: #ccc;
-    cursor: not-allowed;
+  background-color: #ccc;
+  cursor: not-allowed;
 }
-  
-  /* NextUI Dropdown styles if needed */
+
+/* NextUI Dropdown styles if needed */
 /* Make the dropdown button full width and background white */
 .dropdown-button {
   width: 100%; /* Full width to match the 'Money Left' section */
-  background-color: #FFFFFF; /* White background color */
-  border: 1px solid #CCCCCC; /* Add border to match the design */
+  background-color: #ffffff; /* White background color */
+  border: 1px solid #cccccc; /* Add border to match the design */
   color: black; /* Black color for the text to ensure visibility on a white background */
   padding: 10px 20px; /* Add some padding */
   border-radius: 4px; /* Match border-radius of the 'Money Left' section */
@@ -846,23 +802,22 @@ border-radius: 5px;
 
 /* White background for the dropdown menu items */
 .dropdown-menu {
-  background-color: #FFFFFF; /* White background color */
+  background-color: #ffffff; /* White background color */
   /* Style the dropdown menu further as needed */
 }
 
 /* Style for the dropdown item on hover to match the overall design */
 .dropdown-item:hover {
-  background-color: #E8E8E8; /* Light grey background on hover */
+  background-color: #e8e8e8; /* Light grey background on hover */
 }
 
-  
-  .dropdown-item {
-    color: white;
-    padding: 10px 20px;
-    text-decoration: none;
-    display: block;
-  }
-  
-  .dropdown-item:hover {
-    background-color: #666;
-  }
+.dropdown-item {
+  color: white;
+  padding: 10px 20px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-item:hover {
+  background-color: #666;
+}

@@ -20,6 +20,8 @@ import testPlayerImage from "./TESTPLAYERIMAGE.png"
 import zIndex from "@mui/material/styles/zIndex";
 import axios from "axios";
 import jwt_decode from "jwt-decode";
+import FantasyHelpLogo from '../../assets/images/FantasyHelp.png'
+import FantasyHelpCross from '../../assets/images/FantasyRulesCross.png'
 
 export default function APLFantasy() {
     const genderOptions = ['Cis Man', 'Non Cis Man'];
@@ -29,6 +31,7 @@ export default function APLFantasy() {
     const [playersData, setPlayerData] = useState([])
     const [selectedPlayer, setSelectedPlayer] = useState(null);
     const [user, setUser] = useState({})
+    const [showFantasyHelp, setShowFantasyHelp] = useState(false)
 
     const [selectedJersey, setSelectedJersey] = useState(null);
     const formationStructures = {
@@ -495,700 +498,839 @@ export default function APLFantasy() {
                     <Row>
                         <Grid xs={12} md={8} css={{ padding: '0 10px' }}>
                             <Col className="leftcol">
-                                <Text className="fantasytitle">APL FANTASY GAME</Text>
-                                <Text
-                                    className="apl-font"
-                                    css={{
-                                        fontSize: '$xl',
-                                        fontWeight: '$semibold',
-                                        textAlign: 'center'
+                                <Row css={{
+                                    alignItems: 'center',
+                                    justifyContent: 'center'
+                                }}>
+                                    <Text className="fantasytitle">APL FANTASY GAME</Text>
+                                    {showFantasyHelp ?
+                                        <Image
+                                            src={FantasyHelpCross}
+                                            height={'80'}
+                                            width={'80'}
+                                            css={{
+                                                '&:hover': {
+                                                    cursor: 'pointer'
+                                                }
+                                            }}
+                                            onClick={() => {
+                                                setShowFantasyHelp(!showFantasyHelp)
+                                            }}
+                                        />
+                                        :
+                                        <Image
+                                            src={FantasyHelpLogo}
+                                            height={'80'}
+                                            width={'80'}
+                                            css={{
+                                                '&:hover': {
+                                                    cursor: 'pointer'
+                                                }
+                                            }}
+                                            onClick={() => {
+                                                setShowFantasyHelp(!showFantasyHelp)
+                                            }}
+                                        />
+                                    }
+                                </Row>
+                                {showFantasyHelp ?
+                                    <Grid.Container css={{
+                                        justifyContent: 'center',
+                                        borderStyle: 'solid',
+                                        borderWidth: '8px',
+                                        borderColor: '#1EA463',
+                                        backgroundColor: '#D9D9D9',
+                                        paddingBottom: '16px'
                                     }}>
-                                    {user.name}'s Team
-                                </Text>
-                                <div className="football-field">
-
-
-
-                                    <Modal
-                                        closeButton
-                                        open={showInfoModal}
-                                        onClose={() => setShowInfoModal(false)}
-                                        className="info-modal"
-                                        width="40%"
-                                        height="100%"
-                                    >
-                                        <Modal.Header className="modal-header">
-                                            {/* Close button is provided by the Modal itself */}
-                                        </Modal.Header>
-
-                                        {selectedPlayer && <Modal.Body className="player-info-modal">
-                                            <Grid.Container
+                                        <Text
+                                            className="rules-text"
+                                            css={{
+                                                fontSize: '$4xl',
+                                                color: '#484848',
+                                                margin: '24px 0px 12px 0px'
+                                            }}
+                                        >
+                                            Rules
+                                        </Text>
+                                        <Col css={{
+                                            display: 'flex',
+                                            flexDirection: 'column',
+                                            gap: 16,
+                                            alignItems: 'start',
+                                            justifyContent: 'center',
+                                            width: '100%',
+                                            margin: '0px 24px',
+                                        }}>
+                                            <Text
+                                                className="rules-text2"
                                                 css={{
-                                                    display: "flex",
-                                                    flexDirection: "column",
-                                                    justifyContent: 'space-between',
-                                                    alignItems: 'center',
-                                                    width: "100%",
-                                                    height: "100%", // Assuming you want to use the entire height
-                                                    gap: '20px', // Adjust gap size here to control the spacing between elements
-                                                    position: "relative", // For absolute positioning inside
-                                                }}
+                                                    color: '#484848',
+                                                    fontSize: '$2xl'
+                                                }}>
+                                                1. Total Sports: 12 sports available for selection.
+                                            </Text>
+                                            <Text
+                                                className="rules-text2"
+                                                css={{
+                                                    color: '#484848',
+                                                    fontSize: '$2xl'
+                                                }}>
+                                                2. Athlete Selection: Pick 1 athlete from each sport
+                                            </Text>
+                                            <Text
+                                                className="rules-text2"
+                                                css={{
+                                                    color: '#484848',
+                                                    fontSize: '$2xl'
+                                                }}>
+                                                3. Team Composition: Ensure a mix of 6 cisgender and 6 non-cisgender athletes.
+                                            </Text>
+                                            <Text
+                                                className="rules-text2"
+                                                css={{
+                                                    color: '#484848',
+                                                    fontSize: '$2xl'
+                                                }}>
+                                                4. Budget Limit: Each team has a budget of ‘X’.
+                                            </Text>
+                                            <Text
+                                                className="rules-text2"
+                                                css={{
+                                                    color: '#484848',
+                                                    fontSize: '$2xl'
+                                                }}>
+                                                5. Leadership Roles: Choose 1 captain (x2 points) and 1 vice captain (x1.5 points), each of different genders.
+                                            </Text>
+                                            <Text
+                                                className="rules-text2"
+                                                css={{
+                                                    color: '#484848',
+                                                    fontSize: '$2xl'
+                                                }}>
+                                                6. Submission: Submit your team as a one-time entry.
+                                            </Text>
+                                            <Text
+                                                className="rules-text2"
+                                                css={{
+                                                    color: '#484848',
+                                                    fontSize: '$2xl'
+                                                }}>
+                                                7. Points System: Refer to the provided link for detailed point scoring.
+                                            </Text>
+                                        </Col>
+                                    </Grid.Container>
+                                    :
+                                    <Grid.Container css={{
+                                        justifyContent: 'center'
+                                    }}>
+                                        <Row css={{
+                                            width: 'max-content',
+                                            alignItems: 'center',
+                                            justifyContent: 'center',
+                                            gap: 8,
+                                            marginBottom: '16px'
+                                        }}>
+                                        <Image 
+                                        src={user.picture}
+                                        css={{
+                                            borderRadius: '48px',
+                                            height: '64px',
+                                            width: '64px'
+                                        }}
+                                        />
+                                        <Text
+                                            className="apl-font"
+                                            css={{
+                                                fontSize: '$xl',
+                                                fontWeight: '$semibold',
+                                                textAlign: 'center'
+                                            }}>
+                                            {user.name}'s Team
+                                        </Text>
+                                        </Row>
+                                        <div className="football-field">
+
+                                            <Modal
+                                                closeButton
+                                                open={showInfoModal}
+                                                onClose={() => setShowInfoModal(false)}
+                                                className="info-modal"
+                                                width="40%"
+                                                height="100%"
                                             >
-                                                {/* Player Info Row */}
-                                                <Grid.Container
-                                                    css={{
-                                                        width: "100%",
-                                                        justifyContent: "center",
-                                                        alignItems: "center",
-                                                        marginBottom: "20px", // Space between the info row and stats
-                                                    }}
-                                                >
-                                                    <Grid
+                                                <Modal.Header className="modal-header">
+                                                    {/* Close button is provided by the Modal itself */}
+                                                </Modal.Header>
+
+                                                {selectedPlayer && <Modal.Body className="player-info-modal">
+                                                    <Grid.Container
                                                         css={{
                                                             display: "flex",
-                                                            justifyContent: "center", // Adjust to match design
-                                                            alignItems: "center",
+                                                            flexDirection: "column",
+                                                            justifyContent: 'space-between',
+                                                            alignItems: 'center',
+                                                            width: "100%",
+                                                            height: "100%", // Assuming you want to use the entire height
+                                                            gap: '20px', // Adjust gap size here to control the spacing between elements
+                                                            position: "relative", // For absolute positioning inside
                                                         }}
                                                     >
-                                                        <img src={`https://lh3.google.com/u/0/d/${selectedPlayer[4].split('/')[5]}`} referrerpolicy="no-referrer" alt="Player Image" className="player-modal-image" />
-                                                        <Grid.Container css={{ flexDirection: "column", alignItems: "center", }}>
+                                                        {/* Player Info Row */}
+                                                        <Grid.Container
+                                                            css={{
+                                                                width: "100%",
+                                                                justifyContent: "center",
+                                                                alignItems: "center",
+                                                                marginBottom: "20px", // Space between the info row and stats
+                                                            }}
+                                                        >
+                                                            <Grid
+                                                                css={{
+                                                                    display: "flex",
+                                                                    justifyContent: "center", // Adjust to match design
+                                                                    alignItems: "center",
+                                                                }}
+                                                            >
+                                                                <img src={`https://lh3.google.com/u/0/d/${selectedPlayer[4].split('/')[5]}`} referrerpolicy="no-referrer" alt="Player Image" className="player-modal-image" />
+                                                                <Grid.Container css={{ flexDirection: "column", alignItems: "center", }}>
 
-                                                            <Grid.Container css={{ flexDirection: "row", alignItems: "center", justifyContent: "left" }}>
+                                                                    <Grid.Container css={{ flexDirection: "row", alignItems: "center", justifyContent: "left" }}>
 
-                                                                <img src={selectedPlayer[5]} alt="Team Logo" className="player-modal-team-logo" />
-                                                                <Text className="player-modal-team-name">{selectedPlayer[1]}</Text>
+                                                                        <img src={selectedPlayer[5]} alt="Team Logo" className="player-modal-team-logo" />
+                                                                        <Text className="player-modal-team-name">{selectedPlayer[1]}</Text>
 
-                                                            </Grid.Container>
+                                                                    </Grid.Container>
 
-                                                            <Text className="player-modal-name">{selectedPlayer[0]}</Text>
-                                                            <Row css={{ width: "100%", justifyContent: "space-between" }}>
-                                                                <Text className="player-modal-position">{selectedPlayer[2]}</Text>
-                                                                <Text className="player-modal-price">{selectedPlayer[3]}</Text>
-                                                            </Row>
+                                                                    <Text className="player-modal-name">{selectedPlayer[0]}</Text>
+                                                                    <Row css={{ width: "100%", justifyContent: "space-between" }}>
+                                                                        <Text className="player-modal-position">{selectedPlayer[2]}</Text>
+                                                                        <Text className="player-modal-price">{selectedPlayer[3]}</Text>
+                                                                    </Row>
 
+                                                                </Grid.Container>
+                                                            </Grid>
                                                         </Grid.Container>
-                                                    </Grid>
-                                                </Grid.Container>
 
-                                                {/* Player Stats */}
+                                                        {/* Player Stats */}
+                                                        <Grid.Container
+                                                            css={{
+                                                                width: "100%",
+                                                                marginBottom: "20px", // Space between the stats and matches
+                                                                display: "flex", // Ensure it's a flex container
+                                                                flexDirection: "row", // Align children in a row
+                                                                alignItems: "center", // Stretch children to fill container height
+                                                                justifyContent: "center",
+                                                                height: "100%" // Take full height available
+                                                            }}
+                                                            className="player-stats"
+                                                        >
+                                                            <StatCard title="Matches Played" value={selectedPlayer[10]} image={matchesPlayerImage} />
+                                                            <StatCard title="Clean Sheets" value={selectedPlayer[11]} image={cleanSheets} />
+                                                            <StatCard title="Goals" value={selectedPlayer[12]} image={goals} />
+                                                            <StatCard title="Assists" value={selectedPlayer[13]} image={assists} />
+                                                            <StatCard title="Red Cards" value={selectedPlayer[14]} image={redCards} />
+                                                            <StatCard title="Yellow Cards" value={selectedPlayer[15]} image={yellowCards} />
+                                                        </Grid.Container>
+
+                                                        {/* Player Team Matches */}
+                                                        <Grid.Container
+                                                            css={{
+                                                                width: "100%",
+                                                                marginBottom: "20px", // Space between the stats and matches
+                                                                display: "flex", // Ensure it's a flex container
+                                                                flexDirection: "row", // Align children in a row
+                                                                alignItems: "stretch", // Stretch children to fill container height
+                                                                justifyContent: "center",
+                                                                height: "100%" // Take full height available
+                                                            }}
+                                                            className="player-stats"
+                                                        >
+                                                            {/* You would map over your match data and create these dynamically */}
+                                                            <Grid css={{
+                                                                textAlign: "center",
+                                                                display: "flex", // Ensure it's using flexbox
+                                                                flexDirection: "column", // Align children vertically
+                                                                height: "100%", // Fill the height
+                                                                flex: "1", // Allow the card to expand
+                                                                padding: "10px",
+                                                                alignItems: "center",
+                                                                justifyContent: "center"
+                                                            }}>
+                                                                <div css={{
+                                                                    flex: "60%", // Image takes 60% of the card's height now using flex basis
+                                                                    display: "flex",
+                                                                    alignItems: "center",
+                                                                    justifyContent: "center",
+                                                                }}>
+                                                                </div>
+                                                                <div css={{
+                                                                    flex: "20%", // Adjust title section
+                                                                    display: "flex",
+                                                                    alignItems: "center",
+                                                                    justifyContent: "center",
+                                                                }}>
+                                                                    <Text className="game-info-title">Group</Text>
+                                                                </div>
+                                                                <div css={{
+                                                                    flex: "20%", // Adjust value section
+                                                                    display: "flex",
+                                                                    alignItems: "center",
+                                                                    justifyContent: "center",
+                                                                }}>
+                                                                    <Text className="player-group">{selectedPlayer[6]}</Text>
+                                                                </div>
+                                                            </Grid>
+                                                            <Grid css={{
+                                                                textAlign: "center",
+                                                                display: "flex", // Ensure it's using flexbox
+                                                                flexDirection: "column", // Align children vertically
+                                                                height: "100%", // Fill the height
+                                                                flex: "1", // Allow the card to expand
+                                                                padding: "10px",
+                                                                alignItems: "center",
+                                                                justifyContent: "center"
+                                                            }}>
+                                                                <div css={{
+                                                                    flex: "60%", // Image takes 60% of the card's height now using flex basis
+                                                                    display: "flex",
+                                                                    alignItems: "center",
+                                                                    justifyContent: "center",
+                                                                }}>
+                                                                </div>
+                                                                <div css={{
+                                                                    flex: "20%", // Adjust title section
+                                                                    display: "flex",
+                                                                    alignItems: "center",
+                                                                    justifyContent: "center",
+                                                                }}
+                                                                    className="game-info-title">
+                                                                    <Text className="game-info-title">Match 1</Text>
+                                                                </div>
+                                                                <div css={{
+                                                                    flex: "20%", // Adjust value section
+                                                                    display: "flex",
+                                                                    alignItems: "center",
+                                                                    justifyContent: "center",
+                                                                }}>
+                                                                    <Text>{selectedPlayer[7]}</Text>
+                                                                </div>
+                                                            </Grid>
+                                                            <Grid css={{
+                                                                textAlign: "center",
+                                                                display: "flex", // Ensure it's using flexbox
+                                                                flexDirection: "column", // Align children vertically
+                                                                height: "100%", // Fill the height
+                                                                flex: "1", // Allow the card to expand
+                                                                padding: "10px",
+                                                                alignItems: "center",
+                                                                justifyContent: "center"
+                                                            }}>
+                                                                <div css={{
+                                                                    flex: "60%", // Image takes 60% of the card's height now using flex basis
+                                                                    display: "flex",
+                                                                    alignItems: "center",
+                                                                    justifyContent: "center",
+                                                                }}>
+                                                                </div>
+                                                                <div css={{
+                                                                    flex: "20%", // Adjust title section
+                                                                    display: "flex",
+                                                                    alignItems: "center",
+                                                                    justifyContent: "center",
+                                                                }}>
+                                                                    <Text className="game-info-title">Match 2</Text>
+                                                                </div>
+                                                                <div css={{
+                                                                    flex: "20%", // Adjust value section
+                                                                    display: "flex",
+                                                                    alignItems: "center",
+                                                                    justifyContent: "center",
+                                                                }}>
+                                                                    <Text>{selectedPlayer[8]}</Text>
+                                                                </div>
+                                                            </Grid>
+                                                            <Grid css={{
+                                                                textAlign: "center",
+                                                                display: "flex", // Ensure it's using flexbox
+                                                                flexDirection: "column", // Align children vertically
+                                                                height: "100%", // Fill the height
+                                                                flex: "1", // Allow the card to expand
+                                                                padding: "10px",
+                                                                alignItems: "center",
+                                                                justifyContent: "center"
+                                                            }}>
+                                                                <div css={{
+                                                                    flex: "60%", // Image takes 60% of the card's height now using flex basis
+                                                                    display: "flex",
+                                                                    alignItems: "center",
+                                                                    justifyContent: "center",
+                                                                }}>
+                                                                </div>
+                                                                <div css={{
+                                                                    flex: "20%", // Adjust title section
+                                                                    display: "flex",
+                                                                    alignItems: "center",
+                                                                    justifyContent: "center",
+                                                                }}>
+                                                                    <Text className="game-info-title">Match 3</Text>
+                                                                </div>
+                                                                <div css={{
+                                                                    flex: "20%", // Adjust value section
+                                                                    display: "flex",
+                                                                    alignItems: "center",
+                                                                    justifyContent: "center",
+                                                                    backgroundColor: "#1F335B",
+                                                                    zIndex: 10
+                                                                }}>
+                                                                    <Text>{selectedPlayer[9]}</Text>
+                                                                </div>
+                                                            </Grid>
+                                                            <Grid css={{
+                                                                textAlign: "center",
+                                                                display: "flex", // Ensure it's using flexbox
+                                                                flexDirection: "column", // Align children vertically
+                                                                height: "100%", // Fill the height
+                                                                flex: "1", // Allow the card to expand
+                                                                padding: "10px",
+                                                                alignItems: "center",
+                                                                justifyContent: "center"
+                                                            }}>
+                                                                <div css={{
+                                                                    flex: "60%", // Image takes 60% of the card's height now using flex basis
+                                                                    display: "flex",
+                                                                    alignItems: "center",
+                                                                    justifyContent: "center",
+                                                                }}>
+                                                                </div>
+                                                                <div css={{
+                                                                    flex: "20%", // Adjust title section
+                                                                    display: "flex",
+                                                                    alignItems: "center",
+                                                                    justifyContent: "center",
+                                                                }}>
+                                                                    <Text className="game-info-title">Points</Text>
+                                                                </div>
+                                                                <div css={{
+                                                                    flex: "20%", // Adjust value section
+                                                                    display: "flex",
+                                                                    alignItems: "center",
+                                                                    justifyContent: "center",
+                                                                }}>
+                                                                    <Text>{selectedPlayer[10]}</Text>
+                                                                </div>
+                                                            </Grid></Grid.Container>
+
+                                                    </Grid.Container>
+                                                </Modal.Body>}
+                                            </Modal>
+
+                                            {formationState == 1 && <>
                                                 <Grid.Container
                                                     css={{
-                                                        width: "100%",
-                                                        marginBottom: "20px", // Space between the stats and matches
-                                                        display: "flex", // Ensure it's a flex container
-                                                        flexDirection: "row", // Align children in a row
-                                                        alignItems: "center", // Stretch children to fill container height
-                                                        justifyContent: "center",
-                                                        height: "100%" // Take full height available
-                                                    }}
-                                                    className="player-stats"
-                                                >
-                                                    <StatCard title="Matches Played" value={selectedPlayer[10]} image={matchesPlayerImage} />
-                                                    <StatCard title="Clean Sheets" value={selectedPlayer[11]} image={cleanSheets} />
-                                                    <StatCard title="Goals" value={selectedPlayer[12]} image={goals} />
-                                                    <StatCard title="Assists" value={selectedPlayer[13]} image={assists} />
-                                                    <StatCard title="Red Cards" value={selectedPlayer[14]} image={redCards} />
-                                                    <StatCard title="Yellow Cards" value={selectedPlayer[15]} image={yellowCards} />
-                                                </Grid.Container>
+                                                        display: "flex",
+                                                        justifyContent: 'center',
+                                                        alignItems: 'center',
+                                                        gap: '10vw',
+                                                        height: "20%"
+                                                    }}>
+                                                    <div className="player-jersey">
+                                                        <img src={JerseyImage} alt="Jersey" />
+                                                        {!selectedPlayers[5] && <img src={addPlayerButton} alt="Add Player" style={{
+                                                            position: 'absolute',
+                                                            top: '40%',
+                                                            left: '49%',
+                                                            transform: 'translate(-50%, -50%)',
+                                                            cursor: 'pointer',
+                                                            width: "25px",
+                                                            height: "25px"
+                                                        }} onClick={() => setSelectedJersey(5)} />}
+                                                        <div className="player-name-bg">
+                                                            <Text className="player-name-text">{selectedPlayers[5]}</Text>
+                                                        </div>
+                                                        <div className="player-price-bg">
+                                                            <Text className="player-price-text" color="black">{playersData.find(p => p[0] === selectedPlayers[5]) ? playersData.find(p => p[0] === selectedPlayers[5])[3] : "ATTACKER"}</Text>
+                                                        </div>
 
-                                                {/* Player Team Matches */}
+                                                    </div>
+                                                    <div className="player-jersey">
+                                                        <img src={JerseyImage} alt="Jersey" />
+                                                        {!selectedPlayers[4] && <img src={addPlayerButton} alt="Add Player" style={{
+                                                            position: 'absolute',
+                                                            top: '40%',
+                                                            left: '48%',
+                                                            transform: 'translate(-50%, -50%)',
+                                                            cursor: 'pointer',
+                                                            width: "25px",
+                                                            height: "25px"
+                                                        }} onClick={() => setSelectedJersey(4)} />}
+                                                        <div className="player-name-bg">
+                                                            <Text className="player-name-text">{selectedPlayers[4]}</Text>
+                                                        </div>
+                                                        <div className="player-price-bg">
+                                                            <Text className="player-price-text" color="black">{playersData.find(p => p[0] === selectedPlayers[4]) ? playersData.find(p => p[0] === selectedPlayers[4])[3] : "ATTACKER"}</Text>
+                                                        </div>
+                                                    </div>
+                                                </Grid.Container>
+                                                <div className="player-jersey midfielder-1">
+                                                    <img src={JerseyImage} alt="Jersey" />
+                                                    {!selectedPlayers[3] && <img src={addPlayerButton} alt="Add Player" style={{
+                                                        position: 'absolute',
+                                                        top: '50%',
+                                                        left: '49%',
+                                                        transform: 'translate(-50%, -50%)',
+                                                        cursor: 'pointer',
+                                                        width: "25px",
+                                                        height: "25px"
+                                                    }} onClick={() => setSelectedJersey(3)} />}
+                                                    <div className="player-name-bg">
+                                                        <Text className="player-name-text">{selectedPlayers[3]}</Text>
+                                                    </div>
+                                                    <div className="player-price-bg">
+                                                        <Text className="player-price-text" color="black">{playersData.find(p => p[0] === selectedPlayers[3]) ? playersData.find(p => p[0] === selectedPlayers[3])[3] : "MIDFIELDER"}</Text>
+                                                    </div>
+                                                </div>
                                                 <Grid.Container
                                                     css={{
-                                                        width: "100%",
-                                                        marginBottom: "20px", // Space between the stats and matches
-                                                        display: "flex", // Ensure it's a flex container
-                                                        flexDirection: "row", // Align children in a row
-                                                        alignItems: "stretch", // Stretch children to fill container height
-                                                        justifyContent: "center",
-                                                        height: "100%" // Take full height available
-                                                    }}
-                                                    className="player-stats"
-                                                >
-                                                    {/* You would map over your match data and create these dynamically */}
-                                                    <Grid css={{
-                                                        textAlign: "center",
-                                                        display: "flex", // Ensure it's using flexbox
-                                                        flexDirection: "column", // Align children vertically
-                                                        height: "100%", // Fill the height
-                                                        flex: "1", // Allow the card to expand
-                                                        padding: "10px",
-                                                        alignItems: "center",
-                                                        justifyContent: "center"
+                                                        display: "flex",
+                                                        justifyContent: 'center',
+                                                        alignItems: 'center',
+                                                        gap: '10vw',// Adjust gap size here to control the spacing between columns
+                                                        height: "20%"
                                                     }}>
-                                                        <div css={{
-                                                            flex: "60%", // Image takes 60% of the card's height now using flex basis
-                                                            display: "flex",
-                                                            alignItems: "center",
-                                                            justifyContent: "center",
-                                                        }}>
+                                                    <div className="player-jersey">
+                                                        <img src={JerseyImage} alt="Jersey" />
+                                                        {!selectedPlayers[2] && <img src={addPlayerButton} alt="Add Player" style={{
+                                                            position: 'absolute',
+                                                            top: '40%',
+                                                            left: '48%',
+                                                            transform: 'translate(-50%, -50%)',
+                                                            cursor: 'pointer',
+                                                            width: "25px",
+                                                            height: "25px"
+                                                        }} onClick={() => setSelectedJersey(2)} />}
+                                                        <div className="player-name-bg">
+                                                            <Text className="player-name-text">{selectedPlayers[2]}</Text>
                                                         </div>
-                                                        <div css={{
-                                                            flex: "20%", // Adjust title section
-                                                            display: "flex",
-                                                            alignItems: "center",
-                                                            justifyContent: "center",
-                                                        }}>
-                                                            <Text className="game-info-title">Group</Text>
+                                                        <div className="player-price-bg">
+                                                            <Text className="player-price-text" color="black">{playersData.find(p => p[0] === selectedPlayers[2]) ? playersData.find(p => p[0] === selectedPlayers[2])[3] : "DEFENDER"}</Text>
                                                         </div>
-                                                        <div css={{
-                                                            flex: "20%", // Adjust value section
-                                                            display: "flex",
-                                                            alignItems: "center",
-                                                            justifyContent: "center",
-                                                        }}>
-                                                            <Text className="player-group">{selectedPlayer[6]}</Text>
+                                                    </div>
+                                                    <div className="player-jersey">
+                                                        <img src={JerseyImage} alt="Jersey" />
+                                                        {!selectedPlayers[1] && <img src={addPlayerButton} alt="Add Player" style={{
+                                                            position: 'absolute',
+                                                            top: '40%',
+                                                            left: '49%',
+                                                            transform: 'translate(-50%, -50%)',
+                                                            cursor: 'pointer',
+                                                            width: "25px",
+                                                            height: "25px"
+                                                        }} onClick={() => setSelectedJersey(1)} />}
+                                                        <div className="player-name-bg">
+                                                            <Text className="player-name-text">{selectedPlayers[1]}</Text>
                                                         </div>
-                                                    </Grid>
-                                                    <Grid css={{
-                                                        textAlign: "center",
-                                                        display: "flex", // Ensure it's using flexbox
-                                                        flexDirection: "column", // Align children vertically
-                                                        height: "100%", // Fill the height
-                                                        flex: "1", // Allow the card to expand
-                                                        padding: "10px",
-                                                        alignItems: "center",
-                                                        justifyContent: "center"
-                                                    }}>
-                                                        <div css={{
-                                                            flex: "60%", // Image takes 60% of the card's height now using flex basis
-                                                            display: "flex",
-                                                            alignItems: "center",
-                                                            justifyContent: "center",
-                                                        }}>
+                                                        <div className="player-price-bg">
+                                                            <Text className="player-price-text" color="black">{playersData.find(p => p[0] === selectedPlayers[1]) ? playersData.find(p => p[0] === selectedPlayers[1])[3] : "DEFENDER"}</Text>
                                                         </div>
-                                                        <div css={{
-                                                            flex: "20%", // Adjust title section
-                                                            display: "flex",
-                                                            alignItems: "center",
-                                                            justifyContent: "center",
-                                                        }}
-                                                            className="game-info-title">
-                                                            <Text className="game-info-title">Match 1</Text>
-                                                        </div>
-                                                        <div css={{
-                                                            flex: "20%", // Adjust value section
-                                                            display: "flex",
-                                                            alignItems: "center",
-                                                            justifyContent: "center",
-                                                        }}>
-                                                            <Text>{selectedPlayer[7]}</Text>
-                                                        </div>
-                                                    </Grid>
-                                                    <Grid css={{
-                                                        textAlign: "center",
-                                                        display: "flex", // Ensure it's using flexbox
-                                                        flexDirection: "column", // Align children vertically
-                                                        height: "100%", // Fill the height
-                                                        flex: "1", // Allow the card to expand
-                                                        padding: "10px",
-                                                        alignItems: "center",
-                                                        justifyContent: "center"
-                                                    }}>
-                                                        <div css={{
-                                                            flex: "60%", // Image takes 60% of the card's height now using flex basis
-                                                            display: "flex",
-                                                            alignItems: "center",
-                                                            justifyContent: "center",
-                                                        }}>
-                                                        </div>
-                                                        <div css={{
-                                                            flex: "20%", // Adjust title section
-                                                            display: "flex",
-                                                            alignItems: "center",
-                                                            justifyContent: "center",
-                                                        }}>
-                                                            <Text className="game-info-title">Match 2</Text>
-                                                        </div>
-                                                        <div css={{
-                                                            flex: "20%", // Adjust value section
-                                                            display: "flex",
-                                                            alignItems: "center",
-                                                            justifyContent: "center",
-                                                        }}>
-                                                            <Text>{selectedPlayer[8]}</Text>
-                                                        </div>
-                                                    </Grid>
-                                                    <Grid css={{
-                                                        textAlign: "center",
-                                                        display: "flex", // Ensure it's using flexbox
-                                                        flexDirection: "column", // Align children vertically
-                                                        height: "100%", // Fill the height
-                                                        flex: "1", // Allow the card to expand
-                                                        padding: "10px",
-                                                        alignItems: "center",
-                                                        justifyContent: "center"
-                                                    }}>
-                                                        <div css={{
-                                                            flex: "60%", // Image takes 60% of the card's height now using flex basis
-                                                            display: "flex",
-                                                            alignItems: "center",
-                                                            justifyContent: "center",
-                                                        }}>
-                                                        </div>
-                                                        <div css={{
-                                                            flex: "20%", // Adjust title section
-                                                            display: "flex",
-                                                            alignItems: "center",
-                                                            justifyContent: "center",
-                                                        }}>
-                                                            <Text className="game-info-title">Match 3</Text>
-                                                        </div>
-                                                        <div css={{
-                                                            flex: "20%", // Adjust value section
-                                                            display: "flex",
-                                                            alignItems: "center",
-                                                            justifyContent: "center",
-                                                            backgroundColor: "#1F335B",
-                                                            zIndex: 10
-                                                        }}>
-                                                            <Text>{selectedPlayer[9]}</Text>
-                                                        </div>
-                                                    </Grid>
-                                                    <Grid css={{
-                                                        textAlign: "center",
-                                                        display: "flex", // Ensure it's using flexbox
-                                                        flexDirection: "column", // Align children vertically
-                                                        height: "100%", // Fill the height
-                                                        flex: "1", // Allow the card to expand
-                                                        padding: "10px",
-                                                        alignItems: "center",
-                                                        justifyContent: "center"
-                                                    }}>
-                                                        <div css={{
-                                                            flex: "60%", // Image takes 60% of the card's height now using flex basis
-                                                            display: "flex",
-                                                            alignItems: "center",
-                                                            justifyContent: "center",
-                                                        }}>
-                                                        </div>
-                                                        <div css={{
-                                                            flex: "20%", // Adjust title section
-                                                            display: "flex",
-                                                            alignItems: "center",
-                                                            justifyContent: "center",
-                                                        }}>
-                                                            <Text className="game-info-title">Points</Text>
-                                                        </div>
-                                                        <div css={{
-                                                            flex: "20%", // Adjust value section
-                                                            display: "flex",
-                                                            alignItems: "center",
-                                                            justifyContent: "center",
-                                                        }}>
-                                                            <Text>{selectedPlayer[10]}</Text>
-                                                        </div>
-                                                    </Grid></Grid.Container>
+                                                    </div>
+                                                </Grid.Container>
+                                                <div className="player-jersey">
+                                                    <img src={JerseyImage} alt="Jersey" />
+                                                    {!selectedPlayers[0] && <img src={addPlayerButton} alt="Add Player" style={{
+                                                        position: 'absolute',
+                                                        top: '40%',
+                                                        left: '48%',
+                                                        transform: 'translate(-50%, -50%)',
+                                                        cursor: 'pointer',
+                                                        width: "25px",
+                                                        height: "25px"
+                                                    }} onClick={() => setSelectedJersey(0)} />}
+                                                    <div className="player-name-bg">
+                                                        <Text className="player-name-text">{selectedPlayers[0]}</Text>
+                                                    </div>
+                                                    <div className="player-price-bg">
+                                                        <Text className="player-price-text" color="black">{playersData.find(p => p[0] === selectedPlayers[0]) ? playersData.find(p => p[0] === selectedPlayers[0])[3] : "GOALKEEPER"}</Text>
+                                                    </div>
+                                                </div>
+                                            </>}
 
-                                            </Grid.Container>
-                                        </Modal.Body>}
-                                    </Modal>
+                                            {formationState == 2 && <>
+                                                <div className="player-jersey midfielder-1">
+                                                    <img src={JerseyImage} alt="Jersey" />
+                                                    {!selectedPlayers[5] && <img src={addPlayerButton} alt="Add Player" style={{
+                                                        position: 'absolute',
+                                                        top: '50%',
+                                                        left: '48%',
+                                                        transform: 'translate(-50%, -50%)',
+                                                        cursor: 'pointer',
+                                                        width: "25px",
+                                                        height: "25px"
+                                                    }} onClick={() => setSelectedJersey(5)} />}
+                                                    <div className="player-name-bg">
+                                                        <Text className="player-name-text">{selectedPlayers[5]}</Text>
+                                                    </div>
+                                                    <div className="player-price-bg">
+                                                        <Text className="player-price-text" color="black">{playersData.find(p => p[0] === selectedPlayers[5]) ? playersData.find(p => p[0] === selectedPlayers[5])[3] : "ATTACKER"}</Text>
+                                                    </div>
+                                                </div>
+                                                <Grid.Container
+                                                    css={{
+                                                        display: "flex",
+                                                        justifyContent: 'center',
+                                                        alignItems: 'center',
+                                                        gap: '10vw',
+                                                        height: "20%"
+                                                    }}>
+                                                    <div className="player-jersey">
+                                                        <img src={JerseyImage} alt="Jersey" />
+                                                        {!selectedPlayers[4] && <img src={addPlayerButton} alt="Add Player" style={{
+                                                            position: 'absolute',
+                                                            top: '40%',
+                                                            left: '49%',
+                                                            transform: 'translate(-50%, -50%)',
+                                                            cursor: 'pointer',
+                                                            width: "25px",
+                                                            height: "25px"
+                                                        }} onClick={() => setSelectedJersey(4)} />}
+                                                        <div className="player-name-bg">
+                                                            <Text className="player-name-text">{selectedPlayers[4]}</Text>
+                                                        </div>
+                                                        <div className="player-price-bg">
+                                                            <Text className="player-price-text" color="black">{playersData.find(p => p[0] === selectedPlayers[4]) ? playersData.find(p => p[0] === selectedPlayers[4])[3] : "MIDFIELDER"}</Text>
+                                                        </div>
+                                                    </div>
+                                                    <div className="player-jersey">
+                                                        <img src={JerseyImage} alt="Jersey" />
+                                                        {!selectedPlayers[3] && <img src={addPlayerButton} alt="Add Player" style={{
+                                                            position: 'absolute',
+                                                            top: '40%',
+                                                            left: '49%',
+                                                            transform: 'translate(-50%, -50%)',
+                                                            cursor: 'pointer',
+                                                            width: "25px",
+                                                            height: "25px"
+                                                        }} onClick={() => setSelectedJersey(3)} />}
+                                                        <div className="player-name-bg">
+                                                            <Text className="player-name-text">{selectedPlayers[3]}</Text>
+                                                        </div>
+                                                        <div className="player-price-bg">
+                                                            <Text className="player-price-text" color="black">{playersData.find(p => p[0] === selectedPlayers[3]) ? playersData.find(p => p[0] === selectedPlayers[3])[3] : "MIDFIELDER"}</Text>
+                                                        </div>
+                                                    </div>
+                                                    <div className="player-jersey">
+                                                        <img src={JerseyImage} alt="Jersey" />
+                                                        {!selectedPlayers[2] && <img src={addPlayerButton} alt="Add Player" style={{
+                                                            position: 'absolute',
+                                                            top: '40%',
+                                                            left: '49%',
+                                                            transform: 'translate(-50%, -50%)',
+                                                            cursor: 'pointer',
+                                                            width: "25px",
+                                                            height: "25px"
+                                                        }} onClick={() => setSelectedJersey(2)} />}
+                                                        <div className="player-name-bg">
+                                                            <Text className="player-name-text">{selectedPlayers[2]}</Text>
+                                                        </div>
+                                                        <div className="player-price-bg">
+                                                            <Text className="player-price-text" color="black">{playersData.find(p => p[0] === selectedPlayers[2]) ? playersData.find(p => p[0] === selectedPlayers[2])[3] : "MIDFIELDER"}</Text>
+                                                        </div>
+                                                    </div>
+                                                </Grid.Container>
 
-                                    {formationState == 1 && <>
-                                        <Grid.Container
-                                            css={{
-                                                display: "flex",
-                                                justifyContent: 'center',
-                                                alignItems: 'center',
-                                                gap: '10vw',
-                                                height: "20%"
-                                            }}>
-                                            <div className="player-jersey">
-                                                <img src={JerseyImage} alt="Jersey" />
-                                                {!selectedPlayers[5] && <img src={addPlayerButton} alt="Add Player" style={{
-                                                    position: 'absolute',
-                                                    top: '40%',
-                                                    left: '49%',
-                                                    transform: 'translate(-50%, -50%)',
-                                                    cursor: 'pointer',
-                                                    width: "25px",
-                                                    height: "25px"
-                                                }} onClick={() => setSelectedJersey(5)} />}
-                                                <div className="player-name-bg">
-                                                    <Text className="player-name-text">{selectedPlayers[5]}</Text>
-                                                </div>
-                                                <div className="player-price-bg">
-                                                    <Text className="player-price-text" color="black">{playersData.find(p => p[0] === selectedPlayers[5]) ? playersData.find(p => p[0] === selectedPlayers[5])[3] : "ATTACKER"}</Text>
-                                                </div>
+                                                <Grid.Container
+                                                    css={{
+                                                        display: "flex",
+                                                        justifyContent: 'center',
+                                                        alignItems: 'center',
+                                                        gap: '10vw',// Adjust gap size here to control the spacing between columns
+                                                        height: "20%"
+                                                    }}>
 
-                                            </div>
-                                            <div className="player-jersey">
-                                                <img src={JerseyImage} alt="Jersey" />
-                                                {!selectedPlayers[4] && <img src={addPlayerButton} alt="Add Player" style={{
-                                                    position: 'absolute',
-                                                    top: '40%',
-                                                    left: '48%',
-                                                    transform: 'translate(-50%, -50%)',
-                                                    cursor: 'pointer',
-                                                    width: "25px",
-                                                    height: "25px"
-                                                }} onClick={() => setSelectedJersey(4)} />}
-                                                <div className="player-name-bg">
-                                                    <Text className="player-name-text">{selectedPlayers[4]}</Text>
+                                                    <div className="player-jersey">
+                                                        <img src={JerseyImage} alt="Jersey" />
+                                                        {!selectedPlayers[1] && <img src={addPlayerButton} alt="Add Player" style={{
+                                                            position: 'absolute',
+                                                            top: '40%',
+                                                            left: '49%',
+                                                            transform: 'translate(-50%, -50%)',
+                                                            cursor: 'pointer',
+                                                            width: "25px",
+                                                            height: "25px"
+                                                        }} onClick={() => setSelectedJersey(1)} />}
+                                                        <div className="player-name-bg">
+                                                            <Text className="player-name-text">{selectedPlayers[1]}</Text>
+                                                        </div>
+                                                        <div className="player-price-bg">
+                                                            <Text className="player-price-text" color="black">{playersData.find(p => p[0] === selectedPlayers[1]) ? playersData.find(p => p[0] === selectedPlayers[1])[3] : "DEFENDER"}</Text>
+                                                        </div>
+                                                    </div>
+                                                </Grid.Container>
+                                                <div className="player-jersey">
+                                                    <img src={JerseyImage} alt="Jersey" />
+                                                    {!selectedPlayers[0] && <img src={addPlayerButton} alt="Add Player" style={{
+                                                        position: 'absolute',
+                                                        top: '40%',
+                                                        left: '49%',
+                                                        transform: 'translate(-50%, -50%)',
+                                                        cursor: 'pointer',
+                                                        width: "25px",
+                                                        height: "25px"
+                                                    }} onClick={() => setSelectedJersey(0)} />}
+                                                    <div className="player-name-bg">
+                                                        <Text className="player-name-text">{selectedPlayers[0]}</Text>
+                                                    </div>
+                                                    <div className="player-price-bg">
+                                                        <Text className="player-price-text" color="black">{playersData.find(p => p[0] === selectedPlayers[0]) ? playersData.find(p => p[0] === selectedPlayers[0])[3] : "GOALKEEPER"}</Text>
+                                                    </div>
                                                 </div>
-                                                <div className="player-price-bg">
-                                                    <Text className="player-price-text" color="black">{playersData.find(p => p[0] === selectedPlayers[4]) ? playersData.find(p => p[0] === selectedPlayers[4])[3] : "ATTACKER"}</Text>
-                                                </div>
-                                            </div>
-                                        </Grid.Container>
-                                        <div className="player-jersey midfielder-1">
-                                            <img src={JerseyImage} alt="Jersey" />
-                                            {!selectedPlayers[3] && <img src={addPlayerButton} alt="Add Player" style={{
-                                                position: 'absolute',
-                                                top: '50%',
-                                                left: '49%',
-                                                transform: 'translate(-50%, -50%)',
-                                                cursor: 'pointer',
-                                                width: "25px",
-                                                height: "25px"
-                                            }} onClick={() => setSelectedJersey(3)} />}
-                                            <div className="player-name-bg">
-                                                <Text className="player-name-text">{selectedPlayers[3]}</Text>
-                                            </div>
-                                            <div className="player-price-bg">
-                                                <Text className="player-price-text" color="black">{playersData.find(p => p[0] === selectedPlayers[3]) ? playersData.find(p => p[0] === selectedPlayers[3])[3] : "MIDFIELDER"}</Text>
-                                            </div>
+                                            </>}
+
+                                            {formationState == 3 && <>
+                                                <Grid.Container
+                                                    css={{
+                                                        display: "flex",
+                                                        flexDirection: "column",
+                                                        // justifyContent: 'center',
+                                                        alignItems: 'center',
+                                                        // gap: '10vw',
+                                                        // height:"20%",
+                                                        flexWrap: "nowrap"
+                                                    }}>
+                                                    <div className="player-jersey">
+                                                        <img src={JerseyImage} alt="Jersey" />
+                                                        {!selectedPlayers[5] && <img src={addPlayerButton} alt="Add Player" style={{
+                                                            position: 'absolute',
+                                                            top: '40%',
+                                                            left: '49%',
+                                                            transform: 'translate(-50%, -50%)',
+                                                            cursor: 'pointer',
+                                                            width: "25px",
+                                                            height: "25px"
+                                                        }} onClick={() => setSelectedJersey(5)} />}
+                                                        <div className="player-name-bg">
+                                                            <Text className="player-name-text">{selectedPlayers[5]}</Text>
+                                                        </div>
+                                                        <div className="player-price-bg">
+                                                            <Text className="player-price-text" color="black">{playersData.find(p => p[0] === selectedPlayers[5]) ? playersData.find(p => p[0] === selectedPlayers[5])[3] : "ATTACKER"}</Text>
+                                                        </div>
+                                                    </div>
+                                                    <div className="player-jersey">
+                                                        <img src={JerseyImage} alt="Jersey" />
+                                                        {!selectedPlayers[4] && <img src={addPlayerButton} alt="Add Player" style={{
+                                                            position: 'absolute',
+                                                            top: '40%',
+                                                            left: '49%',
+                                                            transform: 'translate(-50%, -50%)',
+                                                            cursor: 'pointer',
+                                                            width: "25px",
+                                                            height: "25px"
+                                                        }} onClick={() => setSelectedJersey(4)} />}
+                                                        <div className="player-name-bg">
+                                                            <Text className="player-name-text">{selectedPlayers[4]}</Text>
+                                                        </div>
+                                                        <div className="player-price-bg">
+                                                            <Text className="player-price-text" color="black">{playersData.find(p => p[0] === selectedPlayers[4]) ? playersData.find(p => p[0] === selectedPlayers[4])[3] : "MIDFIELDER"}</Text>
+                                                        </div>
+                                                    </div>
+                                                </Grid.Container>
+
+                                                <Grid.Container
+                                                    css={{
+                                                        display: "flex",
+                                                        justifyContent: 'center',
+                                                        alignItems: 'center',
+                                                        gap: '10vw',
+                                                        height: "20%"
+                                                    }}>
+                                                    <div className="player-jersey">
+                                                        <img src={JerseyImage} alt="Jersey" />
+                                                        {!selectedPlayers[3] && <img src={addPlayerButton} alt="Add Player" style={{
+                                                            position: 'absolute',
+                                                            top: '40%',
+                                                            left: '49%',
+                                                            transform: 'translate(-50%, -50%)',
+                                                            cursor: 'pointer',
+                                                            width: "25px",
+                                                            height: "25px"
+                                                        }} onClick={() => setSelectedJersey(3)} />}
+                                                        <div className="player-name-bg">
+                                                            <Text className="player-name-text">{selectedPlayers[3]}</Text>
+                                                        </div>
+                                                        <div className="player-price-bg">
+                                                            <Text className="player-price-text" color="black">{playersData.find(p => p[0] === selectedPlayers[3]) ? playersData.find(p => p[0] === selectedPlayers[3])[3] : "DEFENDER"}</Text>
+                                                        </div>
+                                                    </div>
+                                                    <div className="player-jersey">
+                                                        <img src={JerseyImage} alt="Jersey" />
+                                                        {!selectedPlayers[2] && <img src={addPlayerButton} alt="Add Player" style={{
+                                                            position: 'absolute',
+                                                            top: '40%',
+                                                            left: '49%',
+                                                            transform: 'translate(-50%, -50%)',
+                                                            cursor: 'pointer',
+                                                            width: "25px",
+                                                            height: "25px"
+                                                        }} onClick={() => setSelectedJersey(2)} />}             <div className="player-name-bg">
+                                                            <Text className="player-name-text">{selectedPlayers[2]}</Text>
+                                                        </div>
+                                                        <div className="player-price-bg">
+                                                            <Text className="player-price-text" color="black">{playersData.find(p => p[0] === selectedPlayers[2]) ? playersData.find(p => p[0] === selectedPlayers[2])[3] : "DEFENDER"}</Text>
+                                                        </div>
+                                                    </div>
+                                                    <div className="player-jersey">
+                                                        <img src={JerseyImage} alt="Jersey" />
+                                                        {!selectedPlayers[1] && <img src={addPlayerButton} alt="Add Player" style={{
+                                                            position: 'absolute',
+                                                            top: '40%',
+                                                            left: '49%',
+                                                            transform: 'translate(-50%, -50%)',
+                                                            cursor: 'pointer',
+                                                            width: "25px",
+                                                            height: "25px"
+                                                        }} onClick={() => setSelectedJersey(1)} />}
+                                                        <div className="player-name-bg">
+                                                            <Text className="player-name-text">{selectedPlayers[1]}</Text>
+                                                        </div>
+                                                        <div className="player-price-bg">
+                                                            <Text className="player-price-text" color="black">{playersData.find(p => p[0] === selectedPlayers[1]) ? playersData.find(p => p[0] === selectedPlayers[1])[3] : "DEFENDER"}</Text>
+                                                        </div>
+                                                    </div>
+                                                </Grid.Container>
+
+                                                <Grid.Container
+                                                    css={{
+                                                        display: "flex",
+                                                        justifyContent: 'center',
+                                                        alignItems: 'center',
+                                                        gap: '10vw',// Adjust gap size here to control the spacing between columns
+                                                        height: "20%"
+                                                    }}>
+
+                                                    <div className="player-jersey">
+                                                        <img src={JerseyImage} alt="Jersey" />
+                                                        {!selectedPlayers[0] && <img src={addPlayerButton} alt="Add Player" style={{
+                                                            position: 'absolute',
+                                                            top: '40%',
+                                                            left: '49%',
+                                                            transform: 'translate(-50%, -50%)',
+                                                            cursor: 'pointer',
+                                                            width: "25px",
+                                                            height: "25px"
+                                                        }} onClick={() => setSelectedJersey(0)} />}
+                                                        <div className="player-name-bg">
+                                                            <Text className="player-name-text">{selectedPlayers[0]}</Text>
+                                                        </div>
+                                                        <div className="player-price-bg">
+                                                            <Text className="player-price-text" color="black">{playersData.find(p => p[0] === selectedPlayers[0]) ? playersData.find(p => p[0] === selectedPlayers[0])[3] : "GOALKEEPER"}</Text>
+                                                        </div>
+                                                    </div>
+                                                </Grid.Container>
+
+                                            </>}
+
                                         </div>
-                                        <Grid.Container
-                                            css={{
-                                                display: "flex",
-                                                justifyContent: 'center',
-                                                alignItems: 'center',
-                                                gap: '10vw',// Adjust gap size here to control the spacing between columns
-                                                height: "20%"
-                                            }}>
-                                            <div className="player-jersey">
-                                                <img src={JerseyImage} alt="Jersey" />
-                                                {!selectedPlayers[2] && <img src={addPlayerButton} alt="Add Player" style={{
-                                                    position: 'absolute',
-                                                    top: '40%',
-                                                    left: '48%',
-                                                    transform: 'translate(-50%, -50%)',
-                                                    cursor: 'pointer',
-                                                    width: "25px",
-                                                    height: "25px"
-                                                }} onClick={() => setSelectedJersey(2)} />}
-                                                <div className="player-name-bg">
-                                                    <Text className="player-name-text">{selectedPlayers[2]}</Text>
-                                                </div>
-                                                <div className="player-price-bg">
-                                                    <Text className="player-price-text" color="black">{playersData.find(p => p[0] === selectedPlayers[2]) ? playersData.find(p => p[0] === selectedPlayers[2])[3] : "DEFENDER"}</Text>
-                                                </div>
-                                            </div>
-                                            <div className="player-jersey">
-                                                <img src={JerseyImage} alt="Jersey" />
-                                                {!selectedPlayers[1] && <img src={addPlayerButton} alt="Add Player" style={{
-                                                    position: 'absolute',
-                                                    top: '40%',
-                                                    left: '49%',
-                                                    transform: 'translate(-50%, -50%)',
-                                                    cursor: 'pointer',
-                                                    width: "25px",
-                                                    height: "25px"
-                                                }} onClick={() => setSelectedJersey(1)} />}
-                                                <div className="player-name-bg">
-                                                    <Text className="player-name-text">{selectedPlayers[1]}</Text>
-                                                </div>
-                                                <div className="player-price-bg">
-                                                    <Text className="player-price-text" color="black">{playersData.find(p => p[0] === selectedPlayers[1]) ? playersData.find(p => p[0] === selectedPlayers[1])[3] : "DEFENDER"}</Text>
-                                                </div>
-                                            </div>
-                                        </Grid.Container>
-                                        <div className="player-jersey">
-                                            <img src={JerseyImage} alt="Jersey" />
-                                            {!selectedPlayers[0] && <img src={addPlayerButton} alt="Add Player" style={{
-                                                position: 'absolute',
-                                                top: '40%',
-                                                left: '48%',
-                                                transform: 'translate(-50%, -50%)',
-                                                cursor: 'pointer',
-                                                width: "25px",
-                                                height: "25px"
-                                            }} onClick={() => setSelectedJersey(0)} />}
-                                            <div className="player-name-bg">
-                                                <Text className="player-name-text">{selectedPlayers[0]}</Text>
-                                            </div>
-                                            <div className="player-price-bg">
-                                                <Text className="player-price-text" color="black">{playersData.find(p => p[0] === selectedPlayers[0]) ? playersData.find(p => p[0] === selectedPlayers[0])[3] : "GOALKEEPER"}</Text>
-                                            </div>
-                                        </div>
-                                    </>}
-
-                                    {formationState == 2 && <>
-                                        <div className="player-jersey midfielder-1">
-                                            <img src={JerseyImage} alt="Jersey" />
-                                            {!selectedPlayers[5] && <img src={addPlayerButton} alt="Add Player" style={{
-                                                position: 'absolute',
-                                                top: '50%',
-                                                left: '48%',
-                                                transform: 'translate(-50%, -50%)',
-                                                cursor: 'pointer',
-                                                width: "25px",
-                                                height: "25px"
-                                            }} onClick={() => setSelectedJersey(5)} />}
-                                            <div className="player-name-bg">
-                                                <Text className="player-name-text">{selectedPlayers[5]}</Text>
-                                            </div>
-                                            <div className="player-price-bg">
-                                                <Text className="player-price-text" color="black">{playersData.find(p => p[0] === selectedPlayers[5]) ? playersData.find(p => p[0] === selectedPlayers[5])[3] : "ATTACKER"}</Text>
-                                            </div>
-                                        </div>
-                                        <Grid.Container
-                                            css={{
-                                                display: "flex",
-                                                justifyContent: 'center',
-                                                alignItems: 'center',
-                                                gap: '10vw',
-                                                height: "20%"
-                                            }}>
-                                            <div className="player-jersey">
-                                                <img src={JerseyImage} alt="Jersey" />
-                                                {!selectedPlayers[4] && <img src={addPlayerButton} alt="Add Player" style={{
-                                                    position: 'absolute',
-                                                    top: '40%',
-                                                    left: '49%',
-                                                    transform: 'translate(-50%, -50%)',
-                                                    cursor: 'pointer',
-                                                    width: "25px",
-                                                    height: "25px"
-                                                }} onClick={() => setSelectedJersey(4)} />}
-                                                <div className="player-name-bg">
-                                                    <Text className="player-name-text">{selectedPlayers[4]}</Text>
-                                                </div>
-                                                <div className="player-price-bg">
-                                                    <Text className="player-price-text" color="black">{playersData.find(p => p[0] === selectedPlayers[4]) ? playersData.find(p => p[0] === selectedPlayers[4])[3] : "MIDFIELDER"}</Text>
-                                                </div>
-                                            </div>
-                                            <div className="player-jersey">
-                                                <img src={JerseyImage} alt="Jersey" />
-                                                {!selectedPlayers[3] && <img src={addPlayerButton} alt="Add Player" style={{
-                                                    position: 'absolute',
-                                                    top: '40%',
-                                                    left: '49%',
-                                                    transform: 'translate(-50%, -50%)',
-                                                    cursor: 'pointer',
-                                                    width: "25px",
-                                                    height: "25px"
-                                                }} onClick={() => setSelectedJersey(3)} />}
-                                                <div className="player-name-bg">
-                                                    <Text className="player-name-text">{selectedPlayers[3]}</Text>
-                                                </div>
-                                                <div className="player-price-bg">
-                                                    <Text className="player-price-text" color="black">{playersData.find(p => p[0] === selectedPlayers[3]) ? playersData.find(p => p[0] === selectedPlayers[3])[3] : "MIDFIELDER"}</Text>
-                                                </div>
-                                            </div>
-                                            <div className="player-jersey">
-                                                <img src={JerseyImage} alt="Jersey" />
-                                                {!selectedPlayers[2] && <img src={addPlayerButton} alt="Add Player" style={{
-                                                    position: 'absolute',
-                                                    top: '40%',
-                                                    left: '49%',
-                                                    transform: 'translate(-50%, -50%)',
-                                                    cursor: 'pointer',
-                                                    width: "25px",
-                                                    height: "25px"
-                                                }} onClick={() => setSelectedJersey(2)} />}
-                                                <div className="player-name-bg">
-                                                    <Text className="player-name-text">{selectedPlayers[2]}</Text>
-                                                </div>
-                                                <div className="player-price-bg">
-                                                    <Text className="player-price-text" color="black">{playersData.find(p => p[0] === selectedPlayers[2]) ? playersData.find(p => p[0] === selectedPlayers[2])[3] : "MIDFIELDER"}</Text>
-                                                </div>
-                                            </div>
-                                        </Grid.Container>
-
-                                        <Grid.Container
-                                            css={{
-                                                display: "flex",
-                                                justifyContent: 'center',
-                                                alignItems: 'center',
-                                                gap: '10vw',// Adjust gap size here to control the spacing between columns
-                                                height: "20%"
-                                            }}>
-
-                                            <div className="player-jersey">
-                                                <img src={JerseyImage} alt="Jersey" />
-                                                {!selectedPlayers[1] && <img src={addPlayerButton} alt="Add Player" style={{
-                                                    position: 'absolute',
-                                                    top: '40%',
-                                                    left: '49%',
-                                                    transform: 'translate(-50%, -50%)',
-                                                    cursor: 'pointer',
-                                                    width: "25px",
-                                                    height: "25px"
-                                                }} onClick={() => setSelectedJersey(1)} />}
-                                                <div className="player-name-bg">
-                                                    <Text className="player-name-text">{selectedPlayers[1]}</Text>
-                                                </div>
-                                                <div className="player-price-bg">
-                                                    <Text className="player-price-text" color="black">{playersData.find(p => p[0] === selectedPlayers[1]) ? playersData.find(p => p[0] === selectedPlayers[1])[3] : "DEFENDER"}</Text>
-                                                </div>
-                                            </div>
-                                        </Grid.Container>
-                                        <div className="player-jersey">
-                                            <img src={JerseyImage} alt="Jersey" />
-                                            {!selectedPlayers[0] && <img src={addPlayerButton} alt="Add Player" style={{
-                                                position: 'absolute',
-                                                top: '40%',
-                                                left: '49%',
-                                                transform: 'translate(-50%, -50%)',
-                                                cursor: 'pointer',
-                                                width: "25px",
-                                                height: "25px"
-                                            }} onClick={() => setSelectedJersey(0)} />}
-                                            <div className="player-name-bg">
-                                                <Text className="player-name-text">{selectedPlayers[0]}</Text>
-                                            </div>
-                                            <div className="player-price-bg">
-                                                <Text className="player-price-text" color="black">{playersData.find(p => p[0] === selectedPlayers[0]) ? playersData.find(p => p[0] === selectedPlayers[0])[3] : "GOALKEEPER"}</Text>
-                                            </div>
-                                        </div>
-                                    </>}
-
-
-                                    {formationState == 3 && <>
-                                        <Grid.Container
-                                            css={{
-                                                display: "flex",
-                                                flexDirection: "column",
-                                                // justifyContent: 'center',
-                                                alignItems: 'center',
-                                                // gap: '10vw',
-                                                // height:"20%",
-                                                flexWrap: "nowrap"
-                                            }}>
-                                            <div className="player-jersey">
-                                                <img src={JerseyImage} alt="Jersey" />
-                                                {!selectedPlayers[5] && <img src={addPlayerButton} alt="Add Player" style={{
-                                                    position: 'absolute',
-                                                    top: '40%',
-                                                    left: '49%',
-                                                    transform: 'translate(-50%, -50%)',
-                                                    cursor: 'pointer',
-                                                    width: "25px",
-                                                    height: "25px"
-                                                }} onClick={() => setSelectedJersey(5)} />}
-                                                <div className="player-name-bg">
-                                                    <Text className="player-name-text">{selectedPlayers[5]}</Text>
-                                                </div>
-                                                <div className="player-price-bg">
-                                                    <Text className="player-price-text" color="black">{playersData.find(p => p[0] === selectedPlayers[5]) ? playersData.find(p => p[0] === selectedPlayers[5])[3] : "ATTACKER"}</Text>
-                                                </div>
-                                            </div>
-                                            <div className="player-jersey">
-                                                <img src={JerseyImage} alt="Jersey" />
-                                                {!selectedPlayers[4] && <img src={addPlayerButton} alt="Add Player" style={{
-                                                    position: 'absolute',
-                                                    top: '40%',
-                                                    left: '49%',
-                                                    transform: 'translate(-50%, -50%)',
-                                                    cursor: 'pointer',
-                                                    width: "25px",
-                                                    height: "25px"
-                                                }} onClick={() => setSelectedJersey(4)} />}
-                                                <div className="player-name-bg">
-                                                    <Text className="player-name-text">{selectedPlayers[4]}</Text>
-                                                </div>
-                                                <div className="player-price-bg">
-                                                    <Text className="player-price-text" color="black">{playersData.find(p => p[0] === selectedPlayers[4]) ? playersData.find(p => p[0] === selectedPlayers[4])[3] : "MIDFIELDER"}</Text>
-                                                </div>
-                                            </div>
-                                        </Grid.Container>
-
-                                        <Grid.Container
-                                            css={{
-                                                display: "flex",
-                                                justifyContent: 'center',
-                                                alignItems: 'center',
-                                                gap: '10vw',
-                                                height: "20%"
-                                            }}>
-                                            <div className="player-jersey">
-                                                <img src={JerseyImage} alt="Jersey" />
-                                                {!selectedPlayers[3] && <img src={addPlayerButton} alt="Add Player" style={{
-                                                    position: 'absolute',
-                                                    top: '40%',
-                                                    left: '49%',
-                                                    transform: 'translate(-50%, -50%)',
-                                                    cursor: 'pointer',
-                                                    width: "25px",
-                                                    height: "25px"
-                                                }} onClick={() => setSelectedJersey(3)} />}
-                                                <div className="player-name-bg">
-                                                    <Text className="player-name-text">{selectedPlayers[3]}</Text>
-                                                </div>
-                                                <div className="player-price-bg">
-                                                    <Text className="player-price-text" color="black">{playersData.find(p => p[0] === selectedPlayers[3]) ? playersData.find(p => p[0] === selectedPlayers[3])[3] : "DEFENDER"}</Text>
-                                                </div>
-                                            </div>
-                                            <div className="player-jersey">
-                                                <img src={JerseyImage} alt="Jersey" />
-                                                {!selectedPlayers[2] && <img src={addPlayerButton} alt="Add Player" style={{
-                                                    position: 'absolute',
-                                                    top: '40%',
-                                                    left: '49%',
-                                                    transform: 'translate(-50%, -50%)',
-                                                    cursor: 'pointer',
-                                                    width: "25px",
-                                                    height: "25px"
-                                                }} onClick={() => setSelectedJersey(2)} />}             <div className="player-name-bg">
-                                                    <Text className="player-name-text">{selectedPlayers[2]}</Text>
-                                                </div>
-                                                <div className="player-price-bg">
-                                                    <Text className="player-price-text" color="black">{playersData.find(p => p[0] === selectedPlayers[2]) ? playersData.find(p => p[0] === selectedPlayers[2])[3] : "DEFENDER"}</Text>
-                                                </div>
-                                            </div>
-                                            <div className="player-jersey">
-                                                <img src={JerseyImage} alt="Jersey" />
-                                                {!selectedPlayers[1] && <img src={addPlayerButton} alt="Add Player" style={{
-                                                    position: 'absolute',
-                                                    top: '40%',
-                                                    left: '49%',
-                                                    transform: 'translate(-50%, -50%)',
-                                                    cursor: 'pointer',
-                                                    width: "25px",
-                                                    height: "25px"
-                                                }} onClick={() => setSelectedJersey(1)} />}
-                                                <div className="player-name-bg">
-                                                    <Text className="player-name-text">{selectedPlayers[1]}</Text>
-                                                </div>
-                                                <div className="player-price-bg">
-                                                    <Text className="player-price-text" color="black">{playersData.find(p => p[0] === selectedPlayers[1]) ? playersData.find(p => p[0] === selectedPlayers[1])[3] : "DEFENDER"}</Text>
-                                                </div>
-                                            </div>
-                                        </Grid.Container>
-
-                                        <Grid.Container
-                                            css={{
-                                                display: "flex",
-                                                justifyContent: 'center',
-                                                alignItems: 'center',
-                                                gap: '10vw',// Adjust gap size here to control the spacing between columns
-                                                height: "20%"
-                                            }}>
-
-                                            <div className="player-jersey">
-                                                <img src={JerseyImage} alt="Jersey" />
-                                                {!selectedPlayers[0] && <img src={addPlayerButton} alt="Add Player" style={{
-                                                    position: 'absolute',
-                                                    top: '40%',
-                                                    left: '49%',
-                                                    transform: 'translate(-50%, -50%)',
-                                                    cursor: 'pointer',
-                                                    width: "25px",
-                                                    height: "25px"
-                                                }} onClick={() => setSelectedJersey(0)} />}
-                                                <div className="player-name-bg">
-                                                    <Text className="player-name-text">{selectedPlayers[0]}</Text>
-                                                </div>
-                                                <div className="player-price-bg">
-                                                    <Text className="player-price-text" color="black">{playersData.find(p => p[0] === selectedPlayers[0]) ? playersData.find(p => p[0] === selectedPlayers[0])[3] : "GOALKEEPER"}</Text>
-                                                </div>
-                                            </div>
-                                        </Grid.Container>
-
-                                    </>}
-
-                                </div>
+                                    </Grid.Container>
+                                }
                             </Col>
                         </Grid>
 
