@@ -15,25 +15,22 @@ import goals from "./GOALS.png"
 import assists from "./ASSISTS.png"
 import redCards from "./REDCARDS.png"
 import yellowCards from "./YELLOWCARDS.png"
-import testPlayerTeamLogo from "./TESTPLAYERTEAMLOGO.png"
-import testPlayerImage from "./TESTPLAYERIMAGE.png"
-import zIndex from "@mui/material/styles/zIndex";
 import axios from "axios";
 import jwt_decode from "jwt-decode";
 import FantasyHelpLogo from '../../assets/images/FantasyHelp.png'
 import FantasyHelpCross from '../../assets/images/FantasyRulesCross.png'
 
 export default function APLFantasy() {
-    const genderOptions = ['Cis Man', 'Non Cis Man'];
+    const genderOptions = ['Male','Female' ,'Non-Cis Man'];
     const positionOptions = ['Defender', 'Midfielder', 'Attacker'];
     const formationOptions = ['1-3-1', '2-1-2', '3-1-1'];
-    const priceOptions = ['0M-9M', '10M-25M', '25M-50M', '50M+'];
+    const priceOptions = ['10M-25M', '25M-50M', '50M+'];
     const [playersData, setPlayerData] = useState([])
     const [selectedPlayer, setSelectedPlayer] = useState(null);
     const [user, setUser] = useState({})
     const [showFantasyHelp, setShowFantasyHelp] = useState(false)
-
     const [selectedJersey, setSelectedJersey] = useState(null);
+    const[currentPlayers, setCurrentPlayers] = useState([])
     const formationStructures = {
         "1-3-1": [0, 1, 2, 3, 4, 5],
         "2-1-2": [0, 1, 2, 3, 4, 5],
@@ -71,10 +68,10 @@ export default function APLFantasy() {
         }
     };
     const [filters, setFilters] = useState({
-        gender: {},
-        position: {},
+        gender: 'Female',
+        position: '',
         formation: '2-1-2', // set default formation to '2-1-2'
-        price: '0M-9M'
+        price: '10M-25M'
     });
 
 
@@ -98,7 +95,70 @@ export default function APLFantasy() {
             setSelectedPlayers([]);
         }
     };
+    const handleGenderChange = (newGender) => {
+        if (filters.gender !== newGender) {
+            setFilters({
+                ...filters,
+                gender: newGender
+            });
+            // Reset selected players when formation changes
+            setSelectedPlayers([]);
+        }
+    };
 
+    const handlePriceChange = (newPrice) => {
+        if (filters.price !== newPrice) {
+            setFilters({
+                ...filters,
+                price: newPrice
+            });
+            // Reset selected players when formation changes
+            setSelectedPlayers([]);
+        }
+    };
+
+    useEffect(() => {
+        // Function to apply filters
+        const applyFilters = (players) => {
+            let filteredPlayers = players;
+            // Filter by gender if specified
+            if (filters.gender!=="") {
+                filteredPlayers = filteredPlayers.filter(player =>
+                    player[17]=== filters.gender
+                );
+            }
+    
+            // Filter by position if specified
+            if (filters.position!=="") {
+                filteredPlayers = filteredPlayers.filter(player =>
+                    player[2]=== filters.position
+                );
+            }
+    
+            // Filter by price (you will need to adjust the logic to parse and compare the price range)
+            if (filters.price) {
+                const priceRange = filters.price.split('-');
+                const lowerBound = parseInt(priceRange[0]);
+                const upperBound = priceRange[1] ? parseInt(priceRange[1]) : Infinity;
+    
+                filteredPlayers = filteredPlayers.filter(player => {
+                    const price = parseInt(player[3].replace('M', ''));
+                    return price >= lowerBound && price <= upperBound;
+                });
+            }
+    
+            return filteredPlayers;
+        };
+    
+        // Apply filters to playersData
+        console.log(playersData)
+        const filteredPlayers = applyFilters(playersData);
+        setCurrentPlayers(filteredPlayers);
+        console.log(currentPlayers)
+    }, [filters, playersData]);  // Dependencies include filters and the base playersData
+    
+    useEffect(() => {
+    }, [currentPlayers]);
     // This useEffect ensures that the default formation '2-1-2' is set on component mount
     useEffect(() => {
         setFilters(f => ({ ...f, formation: '2-1-2' }));
@@ -140,15 +200,6 @@ export default function APLFantasy() {
         }
     }, [filters.formation]);
 
-    const handlePageChange = (newPage) => {
-        if (newPage > 0 && newPage <= Math.ceil(playersData.length / playersPerPage)) {
-            setCurrentPage(newPage);
-        }
-    };
-
-    const indexOfLastPlayer = currentPage * playersPerPage;
-    const indexOfFirstPlayer = indexOfLastPlayer - playersPerPage;
-    const currentPlayers = playersData.slice(indexOfFirstPlayer, indexOfLastPlayer);
 
 
     const renderPlayersList = () => {
@@ -244,7 +295,7 @@ export default function APLFantasy() {
 
         return (
             <div className="players-list">
-                {playersData.map((player, index) => (
+                {currentPlayers.map((player, index) => (
                     <div key={index} style={playerCardStyle} onClick={() => addPlayer(player[0])}>
                         <div style={{ display: "flex", flexDirection: "column", columnGap: "0px" }}>
 
@@ -428,6 +479,7 @@ export default function APLFantasy() {
             });
             // console.log(updatedPlayers)
             setPlayerData(updatedPlayers);
+            setCurrentPlayers(updatedPlayers)
         } catch (error) {
             console.error('Failed to fetch players data:', error);
         }
@@ -444,7 +496,6 @@ export default function APLFantasy() {
 
     useEffect(() => {
         fetchTeamData();
-
         window.google.accounts.id.initialize({
             client_id: "307601456989-3visvqebfkepaqi9b86e95pgn6bd8qfb.apps.googleusercontent.com",
             callback: handleCallbackresponse
@@ -460,7 +511,7 @@ export default function APLFantasy() {
     return (
         <div className="fantasy-game-container">
 
-            {playersData && <Grid.Container
+            {currentPlayers && <Grid.Container
                 css={{
                     display: "flex",
                     justifyContent: 'center',
@@ -1370,8 +1421,8 @@ export default function APLFantasy() {
                                             {genderOptions.map((gender) => (
                                                 <Checkbox
                                                     key={gender}
-                                                    checked={filters.gender[gender]}
-                                                    onChange={() => handleFilterChange('gender', gender)}
+                                                    isSelected={gender == filters.gender}
+                                                    onChange={() => handleGenderChange(gender)}
                                                 >
                                                     {gender}
                                                 </Checkbox>
@@ -1381,9 +1432,9 @@ export default function APLFantasy() {
                                         <Collapse title="Price" className="coll-dropdown">
                                             {priceOptions.map((price) => (
                                                 <Checkbox
-                                                    key={price}
-                                                    checked={filters.price === price}
-                                                    onChange={() => handleFilterChange('price', price)}
+                                                key={price}
+                                                isSelected={price == filters.price}
+                                                onChange={() => handlePriceChange(price)}
                                                 >
                                                     {price}
                                                 </Checkbox>
