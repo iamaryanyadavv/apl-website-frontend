@@ -130,6 +130,12 @@ color: #282828;
 
 }
 
+.apl-font{
+    font-family: 'Montserrat';
+    font-style: italic;
+    font-weight: 700;
+}
+
 /* GENDER DROPDOWN */
 .nextui-c-hPzDAx .nextui-collapse-title-container
 {
