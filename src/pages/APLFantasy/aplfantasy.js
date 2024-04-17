@@ -25,6 +25,7 @@ export default function APLFantasy() {
     const positionOptions = ['Defender', 'Midfielder', 'Attacker'];
     const formationOptions = ['1-3-1', '2-1-2', '3-1-1'];
     const priceOptions = ['10M-20M', '20M-30M', '30M-40m'];
+    const [wrongPosition, setWrongPosition] = useState("")
     const [playersData, setPlayerData] = useState([])
     const [selectedPlayer, setSelectedPlayer] = useState(null);
     const [user, setUser] = useState({})
@@ -38,14 +39,16 @@ export default function APLFantasy() {
     };
 
     const playerRoles = {
-        "1-3-1": ['Goalkeeper', 'Def', 'Mid', 'Mid', 'Mid', 'Att'],
-        "2-1-2": ['Goalkeeper', 'Def', 'Def', 'Mid', 'Att', 'Att'],
-        "3-1-1": ['Goalkeeper', 'Def', 'Def', 'Def', 'Mid', 'Att']
+        "1-3-1": ['Goalkeeper', 'Defender', 'Midfield', 'Midfield', 'Midfield', 'Attack'],
+        "2-1-2": ['Goalkeeper', 'Defender', 'Defender', 'Midfield', 'Attack', 'Attack'],
+        "3-1-1": ['Goalkeeper', 'Defender', 'Defender', 'Defender', 'Midfield', 'Attack']
     };
 
 
     const [currentPage, setCurrentPage] = useState(1);
     const [showInfoModal, setShowInfoModal] = useState(false);
+    const [showPositionModal, setShowPositionModal] = useState(false);
+
 
     const playersPerPage = 10;
 
@@ -61,7 +64,10 @@ export default function APLFantasy() {
                 setSelectedPlayers(newSelectedPlayers);
                 setSelectedJersey(null); // Clear the selected jersey after updating
             } else {
-                alert(`Selected player must be a ${requiredPosition}.`);
+                // alert(`Selected player must be a ${requiredPosition}.`);
+                setWrongPosition(requiredPosition)
+                setShowPositionModal(true)
+
             }
         } else {
             // alert('Please select a position by clicking on a jersey icon.');
@@ -175,7 +181,7 @@ export default function APLFantasy() {
                 let newSelectedPlayers = [...selectedPlayers];
                 newSelectedPlayers[selectedJersey] = playerName;
                 setSelectedPlayers(newSelectedPlayers);
-                setSelectedJersey(null);
+                // setSelectedJersey(null);
             } else {
                 alert('This player does not match the position requirements!');
             }
@@ -700,6 +706,47 @@ export default function APLFantasy() {
                                             </Text>
                                         </Row>
                                         <div className="football-field">
+                                            <Modal
+                                    open={showPositionModal}
+                                    closeButton
+                                    onClose={()=>{setShowPositionModal(false)}}
+                                    >
+                                            <Modal.Header
+                                            css={{
+                                                paddingTop: '0px',
+                                            }}>
+                                                <Col>
+                                                    <Text 
+                                                    css={{
+                                                        textAlign: 'center',
+                                                        fontSize: '$3xl',
+                                                        fontWeight: '$bold',
+                                                        color: '$red600',
+                                                        borderStyle: 'solid',
+                                                        borderWidth: '0px 0px 1px 0px',
+                                                        borderColor: '$gray800'
+                                                    }}>
+                                                        Error!
+                                                    </Text>
+                                                    
+                                                </Col>
+                                            </Modal.Header>
+                                            <Modal.Body
+                                            css={{
+                                                paddingTop: '0px'
+                                            }}>
+                                                <Text 
+                                                css={{
+                                                    textAlign: 'center',
+                                                    fontSize: '$xl',
+                                                    fontWeight: '$bold',
+                                                    color: 'white',
+                                                }}>
+                                                    Please choose a {wrongPosition}
+                                                </Text>
+                                            </Modal.Body>
+                                            
+                                    </Modal>
 
                                             <Modal
                                                 closeButton
