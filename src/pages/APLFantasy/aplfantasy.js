@@ -374,19 +374,142 @@ export default function APLFantasy() {
             </Dropdown>
         );
     };
+    
+    const teamLogos = [
+        {
+            name: 'A2Z',
+            logo: ''
+        },
+        {
+            name: 'Asawarpur FC',
+            logo: ''
+        },
+        {
+            name: 'backshots',
+            logo: ''
+        },
+        {
+            name: 'Brocode',
+            logo: ''
+        },
+        {
+            name: "Chang's FC",
+            logo: ''
+        },
+        {
+            name: 'Complex Madrid',
+            logo: ''
+        },
+        {
+            name: 'DAKU FC',
+            logo: ''
+        },
+        {
+            name: 'Dolla $ign',
+            logo: ''
+        },
+        {
+            name: 'Dosai Dominators',
+            logo: ''
+        },
+        {
+            name: 'ELEPHANT.',
+            logo: ''
+        },
+        {
+            name: 'Everteen FC',
+            logo: ''
+        },
+        {
+            name: 'fbb',
+            logo: ''
+        },
+        {
+            name: 'FC Pineapple',
+            logo: ''
+        },
+        {
+            name: 'FZ Warriors',
+            logo: ''
+        },
+        {
+            name: "King's Concubines",
+            logo: ''
+        },
+        {
+            name: 'Maanyaunited',
+            logo: ''
+        },
+        {
+            name: 'Magic Moments',
+            logo: ''
+        },
+        {
+            name: 'MetroBallin FC',
+            logo: ''
+        },
+        {
+            name: 'Patiala House',
+            logo: ''
+        },
+        {
+            name: 'Suiiicide Squad',
+            logo: ''
+        },
+        {
+            name: 'Supa Strikas',
+            logo: ''
+        },
+        {
+            name: 'Übermensch United',
+            logo: ''
+        },
+        {
+            name: 'Waterfall FC',
+            logo: ''
+        },
+        {
+            name: 'Wu Shang FC',
+            logo: ''
+        },
+    ]
 
+    // Function to fetch team data
+    const fetchTeamData = async () => {
+        try {
+            const response = await fetch('https://aplapi.onrender.com/seasons/apl7/teamdata');
+            const data = await response.json();
+            fetchPlayersData(data);
+        } catch (error) {
+            console.error('Failed to fetch team data:', error);
+        }
+    };
 
+    // Function to fetch player data and match team logos
     const fetchPlayersData = async (teams) => {
-        await fetch('https://aplapi.onrender.com/fantasy/apl7/playerdata')
-            .then(response => response.json())
-            .then((data) => {
-                console.log(data.values)
-                setPlayerData(data.values.slice(1))
-            })
-    }
+        try {
+            const response = await fetch('https://aplapi.onrender.com/fantasy/apl7/playerdata');
+            const data = await response.json();
+            const players = data.values.slice(1); // Assuming data.values[0] contains headers or unwanted data
+            const updatedPlayers = players.map(player => {
+                // console.log(teams)
+                // console.log(players)
+                const team = teams.find(team => team[2] === player[1]); // Match team name
+                if (team) {
+                    // console.log('FOund team', team)
+                    player[5] = team[0]; // Update player data with team logo from team data
+                }
+                return player;
+            });
+            // console.log(updatedPlayers)
+            setPlayerData(updatedPlayers);
+        } catch (error) {
+            console.error('Failed to fetch players data:', error);
+        }
+    };
 
     useEffect(() => {
-        fetchPlayersData();
+        fetchTeamData();
     }, [])
 
 
@@ -450,7 +573,7 @@ export default function APLFantasy() {
                                                         alignItems: "center",
                                                     }}
                                                 >
-                                                    <img src="https://drive.google.com/uc?export=view&id=1-hVuQ34XzN6_cfgrhx2rMztyKB6U5MVt" referrerpolicy="no-referrer" alt="Player Image" className="player-modal-image" />
+                                                    <img src={`https://lh3.google.com/u/0/d/${selectedPlayer[4].split('/')[5]}`} referrerpolicy="no-referrer" alt="Player Image" className="player-modal-image" />
                                                     <Grid.Container css={{ flexDirection: "column", alignItems: "center", }}>
 
                                                         <Grid.Container css={{ flexDirection: "row", alignItems: "center", justifyContent: "left" }}>
