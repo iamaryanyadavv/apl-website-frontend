@@ -104,7 +104,7 @@ export default function APLFantasy() {
         gender: 'Male',
         position: '',
         formation: '1-3-1', // set default formation to '2-1-2'
-        price: '10M-25M'
+        price: '10M-20M'
     });
 
 
