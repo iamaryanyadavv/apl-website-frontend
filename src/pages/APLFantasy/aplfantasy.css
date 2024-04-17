@@ -617,6 +617,34 @@
   border-radius: 4px;
 }
 
+/* .green-filter {
+  filter: hue-rotate(90deg) brightness(150%);
+  position: 'absolute';
+  top: '40%';
+  left: '49%';
+        cursor: 'pointer';
+        width: "25px";
+        height: "25px";
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+.pulsing {
+  filter: hue-rotate(90deg) brightness(150%);
+  position: 'absolute';
+  top: '40%';
+  left: '49%';
+        cursor: 'pointer';
+        width: "25px";
+        height: "25px";
+  animation: pulse 2s infinite;
+} */
+
+
 .coll-dropdown .nextui-collapse-content {
   background-color: #b2b0b0; /* Dark background for the collapse content */
   padding: 0.5rem 1rem; /* Padding inside the collapse content */
