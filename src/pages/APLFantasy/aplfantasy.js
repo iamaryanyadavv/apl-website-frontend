@@ -30,7 +30,7 @@ export default function APLFantasy() {
     const genderOptions = ['Male','Female' ,'Non-Cis Man'];
     const positionOptions = ['Defender', 'Midfielder', 'Attacker'];
     const formationOptions = ['1-3-1', '2-1-2', '3-1-1'];
-    const priceOptions = ['10M-20M', '20M-30M', '30M-40m'];
+    const priceOptions = ['10M-19M', '20M-29M', '30M-39M','40M'];
     const [wrongPosition, setWrongPosition] = useState("")
     const [playersData, setPlayerData] = useState([])
     const [selectedPlayer, setSelectedPlayer] = useState(null);
