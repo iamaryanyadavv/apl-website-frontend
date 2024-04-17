@@ -15,6 +15,8 @@ import goals from "./GOALS.png"
 import assists from "./ASSISTS.png"
 import redCards from "./REDCARDS.png"
 import yellowCards from "./YELLOWCARDS.png"
+import testPlayerTeamLogo from "./TESTPLAYERTEAMLOGO.png"
+import testPlayerImage from "./TESTPLAYERIMAGE.png"
 
 
 
@@ -401,7 +403,7 @@ return (
     open={showInfoModal}
     onClose={() => setShowInfoModal(false)}
     className="info-modal"
-    width="80%"
+    width="60%"
     height="100%"
 >
     <Modal.Header className="modal-header">
@@ -437,12 +439,12 @@ return (
                         alignItems: "center",
                     }}
                 >
-                    <img src={JerseyImage} alt="Player" className="player-modal-image" />
+                    <img src={testPlayerImage} alt="Player" className="player-modal-image" />
                     <Grid.Container css={{ flexDirection: "column", alignItems: "center" }}>
 
                     <Grid.Container css={{ flexDirection: "row", alignItems: "center", justifyContent:"center"}}>
 
-                        <img src={JerseyImage} alt="Player" className="player-modal-team-logo" />
+                        <img src={testPlayerTeamLogo} alt="Player" className="player-modal-team-logo" />
                         <Text className="player-modal-team-name">Player Team Name</Text>
 
 
