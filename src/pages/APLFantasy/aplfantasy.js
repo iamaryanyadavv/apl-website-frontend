@@ -40,6 +40,7 @@ export default function APLFantasy() {
     const[currentPlayers, setCurrentPlayers] = useState([])
     const [showTutorial, setShowTutorial] = useState(false)
     const [tutorialIndex, setTutorialIndex] = useState(0)
+    const [showConfirmModal, setShowConfirmModal] = useState(false);
     const tutorialItems = [
         {
             image: T2,
@@ -747,6 +748,43 @@ export default function APLFantasy() {
                                             </Text>
                                         </Row>
                                         <div className="football-field">
+                                      {showConfirmModal &&  <Modal
+    open={showConfirmModal}
+    onClose={() => setShowConfirmModal(false)}
+    width="800px"
+>
+    <Modal.Header>
+        <Text>Confirm Your Team</Text>
+    </Modal.Header>
+    <Modal.Body>
+        <div>
+            {selectedPlayers.map((playerName, index) => {
+                console.log(selectedPlayers)
+                const player = playersData.find(p => p[0] === playerName);
+                console.log(player)
+                return (
+                    <div key={index}>
+                        <Text><strong>Player:</strong> {player[0]}</Text>
+                        <Text><strong>Position:</strong> {player[2]}</Text>
+                        <Text><strong>Price:</strong> {player[3]}</Text>
+                    </div>
+                );
+            })}
+            <div>
+                <Text><strong>Total Budget Left:</strong> ${budget}M</Text>
+            </div>
+        </div>
+    </Modal.Body>
+    <Modal.Footer>
+        <Button auto flat color="error" onClick={() => setShowConfirmModal(false)}>
+            Cancel
+        </Button>
+        <Button auto onClick={handleSubmit}>
+            Confirm Team
+        </Button>
+    </Modal.Footer>
+</Modal>}
+
                                         <Modal
                 open={showTutorial}
                 preventClose
@@ -1703,7 +1741,7 @@ export default function APLFantasy() {
         <button className="next-page-button" onClick={() => handlePageChange(currentPage - 1)}>Previous Page</button>
       )} */}
                                 </div>
-                                <button className="submit-button" onClick={handleSubmit}>Submit Team</button>
+                                <button className="submit-button" onClick={() => setShowConfirmModal(true)}>Submit Team</button>
                             </Col>
                         </Grid>
                     </Row>
