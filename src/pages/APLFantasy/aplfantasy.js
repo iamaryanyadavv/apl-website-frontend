@@ -535,7 +535,7 @@ return (
       alignItems: "center",
       justifyContent: "center",
     }}>
-      <Text className="player-group">{selectedPlayer[17]}</Text>
+      <Text className="player-group">{selectedPlayer[6]}</Text>
     </div>
   </Grid>
   <Grid css={{
@@ -570,7 +570,7 @@ return (
       alignItems: "center",
       justifyContent: "center",
     }}>
-      <Text>PE</Text>
+      <Text>{selectedPlayer[7]}</Text>
     </div>
   </Grid>  
   <Grid css={{
@@ -604,7 +604,7 @@ return (
       alignItems: "center",
       justifyContent: "center",
     }}>
-      <Text>A</Text>
+      <Text>{selectedPlayer[8]}</Text>
     </div>
   </Grid>  
   <Grid css={{
@@ -630,7 +630,7 @@ return (
       alignItems: "center",
       justifyContent: "center",
     }}>
-      <Text className="game-info-title">Group</Text>
+      <Text className="game-info-title">Match 3</Text>
     </div>
     <div css={{
       flex: "20%", // Adjust value section
@@ -640,7 +640,7 @@ return (
       backgroundColor:"#1F335B",
       zIndex:10
     }}>
-      <Text>A</Text>
+      <Text>{selectedPlayer[9]}</Text>
     </div>
   </Grid>
   <Grid css={{
@@ -674,7 +674,7 @@ return (
       alignItems: "center",
       justifyContent: "center",
     }}>
-      <Text>69</Text>
+      <Text>{selectedPlayer[10]}</Text>
     </div>
   </Grid></Grid.Container>
 
