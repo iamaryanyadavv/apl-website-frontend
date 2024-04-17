@@ -71,6 +71,7 @@ export default function APLFantasy() {
         "3-1-1": ['Goalkeeper', 'Defender', 'Defender', 'Defender', 'Midfield', 'Attack']
     };
 
+    const [budget, setBudget] = useState(100); // Let's say the budget is 100 million dollars
 
     const [currentPage, setCurrentPage] = useState(1);
     const [showInfoModal, setShowInfoModal] = useState(false);
@@ -78,28 +79,31 @@ export default function APLFantasy() {
 
 
     const playersPerPage = 10;
-
     const addPlayer = (playerName) => {
         if (selectedJersey != null) {
             const newSelectedPlayers = [...selectedPlayers];
-            // Check if the position allows adding this player
             const playerData = playersData.find(p => p[0] === playerName);
-            const requiredPosition = playerRoles[filters.formation][selectedJersey];
-            console.log(playerData.position)
-            if (playerData[2].startsWith(requiredPosition) || requiredPosition === 'All') {
-                newSelectedPlayers[selectedJersey] = playerName; // Add the player to the selected jersey position
-                setSelectedPlayers(newSelectedPlayers);
-                setSelectedJersey(null); // Clear the selected jersey after updating
+            const playerCost = parseInt(playerData[3].replace('M', '')); // assuming the cost is in the format "XXM"
+    
+            if (budget - playerCost >= 0) { // Check if budget allows adding this player
+                const requiredPosition = playerRoles[filters.formation][selectedJersey];
+                if (playerData[2].startsWith(requiredPosition) || requiredPosition === 'All') {
+                    newSelectedPlayers[selectedJersey] = playerName;
+                    setSelectedPlayers(newSelectedPlayers);
+                    setBudget(budget - playerCost); // Deduct the player's cost from the budget
+                    setSelectedJersey(null);
+                } else {
+                    setWrongPosition(requiredPosition);
+                    setShowPositionModal(true);
+                }
             } else {
-                // alert(`Selected player must be a ${requiredPosition}.`);
-                setWrongPosition(requiredPosition)
-                setShowPositionModal(true)
-
+                alert("Not enough budget to add this player.");
             }
         } else {
-            // alert('Please select a position by clicking on a jersey icon.');
+            alert('Please select a position by clicking on a jersey icon.');
         }
     };
+    
     const [filters, setFilters] = useState({
         gender: 'Male',
         position: '',
@@ -1649,10 +1653,10 @@ export default function APLFantasy() {
                                     <img src={FanUpLogo} alt="FanUp Logo" className="fanup-logo" />
                                 </div>
                                 <div className="sidebar">
-                                    <div className="money-left">
-                                        <Text className="money-left-text">{'Money'}<br />{'Left'}</Text>
-                                        <Text className="money-left-text">$140M</Text>
-                                    </div>
+                                <div className="money-left">
+                                            <Text className="money-left-text">{'Money'}<br />{'Left'}</Text>
+                                            <Text className="money-left-text">${budget}M</Text>
+                                        </div>
                                     <div className="coll-group">
                                         <Collapse title="Formation" className="coll-dropdown">
                                             {formationOptions.map((formationOption) => {
