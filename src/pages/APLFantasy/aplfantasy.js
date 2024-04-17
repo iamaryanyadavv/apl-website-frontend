@@ -18,8 +18,7 @@ import yellowCards from "./YELLOWCARDS.png"
 import testPlayerTeamLogo from "./TESTPLAYERTEAMLOGO.png"
 import testPlayerImage from "./TESTPLAYERIMAGE.png"
 import zIndex from "@mui/material/styles/zIndex";
-
-
+import axios from "axios";
 
 
 export default function APLFantasy() {
@@ -274,7 +273,27 @@ export default function APLFantasy() {
     };
 
     const handleSubmit = () => {
-    }
+        // Assuming `selectedPlayers` is an array of player names you gathered from your selection logic
+        const payload = {
+            name: 'Team Name', // You would need a mechanism to capture and store the team name
+            player1: selectedPlayers[0],
+            player2: selectedPlayers[1],
+            player3: selectedPlayers[2],
+            player4: selectedPlayers[3],
+            player5: selectedPlayers[4],
+            player6: selectedPlayers[5]
+        };
+    
+        axios.post('https://aplapi.onrender.com/fantasy/submit', payload) // Adjust the URL to wherever your server is hosted
+            .then(response => {
+                alert('Submission successful!');
+                console.log(response.data); // Handling the response from your server
+            })
+            .catch(error => {
+                console.error('Submission failed:', error);
+                alert('Submission failed. Please try again.');
+            });
+    };
 
     const StatCard = ({ title, value, image }) => (
         <Grid css={{
