@@ -448,7 +448,7 @@ return (
                         alignItems: "center",
                     }}
                 >
-                    <img src="https://drive.google.com/file/d/1-hVuQ34XzN6_cfgrhx2rMztyKB6U5MVt/preview" alt="Player Image" className="player-modal-image"/>
+                    <img src="https://drive.google.com/uc?export=view&id=1-hVuQ34XzN6_cfgrhx2rMztyKB6U5MVt"referrerpolicy="no-referrer" alt="Player Image" className="player-modal-image"/>
                     <Grid.Container css={{ flexDirection: "column", alignItems: "center", }}>
 
                     <Grid.Container css={{ flexDirection: "row", alignItems: "center", justifyContent:"left"}}>
