@@ -2321,7 +2321,7 @@ export default function APLFantasy() {
                             </Col>
                         </Grid>
 
-                        <Grid xs={12} md={4} css={{ marginTop: '1%', width: "60%" }}>
+                        <Grid xs={12} md={4} css={{ marginTop: '1%', width: "60%", alignItems:"center", justifyContent:"center" }}>
                             <Col className="rightcol">
                                 <div className="sponsor-section" >
                                     <Text className="sponsortext" center>{'Sponsored by'}</Text>

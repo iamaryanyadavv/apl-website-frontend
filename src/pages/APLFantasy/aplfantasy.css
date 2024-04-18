@@ -142,9 +142,18 @@
 }
 
 /* Media query for phones */
-@media (max-width: 768px) {
+@media only screen and (max-width: 768px)  {
   .fantasy-game-container {
     flex-direction: column; /* Stack children vertically on small screens */
+  }
+  .football-field
+  {
+      background-size: cover;
+
+  }
+  .player-jersey img
+  {
+    height: 3vh;
   }
 }
 
