@@ -23,14 +23,15 @@ import T2 from "./ASSISTS.png"
 import T3 from "./ASSISTS.png"
 import T4 from "./ASSISTS.png"
 import T5 from "./ASSISTS.png"
-
+import captain from "./captain.png"
+import viceCaptain from "./vicecaptain.png"
 
 
 export default function APLFantasy() {
     const genderOptions = ['Male','Female' ,'Non-Cis Man'];
     const positionOptions = ['Defender', 'Midfielder', 'Attacker'];
     const formationOptions = ['1-3-1', '2-1-2', '3-1-1'];
-    const priceOptions = ['10M-19M', '20M-29M', '30M-39M','40M'];
+    const priceOptions = ['10M-19M', '20M-29M', '30M-39M','40M']
     const [wrongPosition, setWrongPosition] = useState("")
     const [playersData, setPlayerData] = useState([])
     const [selectedPlayer, setSelectedPlayer] = useState(null);
@@ -41,6 +42,9 @@ export default function APLFantasy() {
     const [showTutorial, setShowTutorial] = useState(false)
     const [tutorialIndex, setTutorialIndex] = useState(0)
     const [showConfirmModal, setShowConfirmModal] = useState(false);
+    const [teamcaptain, setTeamCaptain] = useState("")
+    const [vicecaptain, setViceCaptain] = useState("")
+
     const tutorialItems = [
         {
             image: T2,
@@ -387,7 +391,9 @@ export default function APLFantasy() {
             player3: selectedPlayers[2],
             player4: selectedPlayers[3],
             player5: selectedPlayers[4],
-            player6: selectedPlayers[5]
+            player6: selectedPlayers[5],
+            captain: teamcaptain,
+            viceCaptain: vicecaptain
         };
 
         axios.post('https://aplapi.onrender.com/fantasy/submit', payload) // Adjust the URL to wherever your server is hosted
@@ -752,9 +758,9 @@ export default function APLFantasy() {
                                         </Row>
                                         <div className="football-field">
                                       {showConfirmModal &&  <Modal
+                                          closeButton
     open={showConfirmModal}
     onClose={() => setShowConfirmModal(false)}
-    width="800px"
 >
     <Modal.Header>
         <Text>Confirm Your Team</Text>
@@ -1066,8 +1072,52 @@ export default function APLFantasy() {
                                                                         <Text className="player-modal-position">{selectedPlayer[2]}</Text>
                                                                         <Text className="player-modal-price">{selectedPlayer[3]}</Text>
                                                                     </Row>
+                                                                   
 
                                                                 </Grid.Container>
+                                                                <Grid
+                                                                css={{
+                                                                    display: "flex",
+                                                                    flexDirection:"column",
+                                                                    justifyContent: "center", // Adjust to match design
+                                                                    alignItems: "center",
+                                                                    width:"5vw",
+                                                                    padding:"10px",
+                                                                    gap:"10px"
+                                                                }}
+                                                            >
+                                                                <div style={{backgroundColor: teamcaptain === selectedPlayer[0] ? 'green' : 'none',
+}}>
+                                                                <Image
+                                                                    onClick={() => setTeamCaptain(selectedPlayer[0])}
+                                                                    style={{
+                                                                        height: "50px",
+                                                                        width: "55px",
+                                                                        cursor: 'pointer',
+                                                                        border: teamcaptain === selectedPlayer[0] ? '3px solid green' : 'none',
+                                                                    }}
+                                                                    src={captain}
+                                                                    alt="Team Captain"
+                                                                />
+                                                                </div>
+                                                                <div style={{backgroundColor: viceCaptain === selectedPlayer[0] ? 'green' : 'none',}}>
+                                                                <Image
+                                                                    onClick={() => setViceCaptain(selectedPlayer[0])}
+                                                                    style={{
+                                                                        height: "50px",
+                                                                        width: "55px",
+                                                                        cursor: 'pointer',
+                                                                        border: viceCaptain === selectedPlayer[0] ? '3px solid green' : 'none',
+                                                                    }}
+                                                                    src={viceCaptain}
+                                                                    alt="Team Vice Captain"
+                                                                />
+                                                                </div>
+
+
+                                                            </Grid>
+                                                                
+                                                                    
                                                             </Grid>
                                                         </Grid.Container>
 
