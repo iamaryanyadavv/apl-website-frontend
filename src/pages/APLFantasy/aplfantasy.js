@@ -142,6 +142,8 @@ export default function APLFantasy() {
             });
             // Reset selected players when formation changes
             setSelectedPlayers([]);
+            setTeamCaptain("")
+            setViceCaptain("")
             setBudget(100)
         }
     };
@@ -2271,7 +2273,9 @@ export default function APLFantasy() {
         <button className="next-page-button" onClick={() => handlePageChange(currentPage - 1)}>Previous Page</button>
       )} */}
                                 </div>
-                                <button className="reset-button"onClick={() => {setSelectedPlayers([]);setBudget(100)}}>Reset Team</button>
+                                <button className="reset-button"onClick={() => {setSelectedPlayers([]);
+            setTeamCaptain("");
+            setViceCaptain("");setBudget(100)}}>Reset Team</button>
                                 <button className="submit-button"onClick={() => {handleSubmit()}}>Save Team</button>
                                 
                             </Col>
