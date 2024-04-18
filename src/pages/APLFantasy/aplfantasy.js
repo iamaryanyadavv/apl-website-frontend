@@ -46,6 +46,9 @@ export default function APLFantasy() {
     const [teamcaptain, setTeamCaptain] = useState("")
     const [vicecaptain, setViceCaptain] = useState("")
     const [isLoading, setIsLoading] = useState(true);  // State to handle image loading
+    const [fantasyCaptain, setFantasyCaptain] = useState("")
+    const [fantasyViceCaptain, setFantasyViceCaptain] = useState("")
+
 
     const tutorialItems = [
         {
@@ -1006,7 +1009,11 @@ export default function APLFantasy() {
                                                                     width:"100%"
                                                                 }}
                                                             >
-                                                                {isLoading &&  <Loading type="points" />}
+                                                                {isLoading &&  
+                                                                <Grid.Container css={{ flexDirection: "column", alignItems: "center", width:"200px"}}>
+                                                                <Text>Loading Image</Text>
+                                                                <Loading color="white" size="xl" type="spinner"/>
+                                                                </Grid.Container>}
 
                                                                 {!isLoading && <Image
                                                                 
