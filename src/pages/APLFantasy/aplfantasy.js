@@ -813,12 +813,15 @@ export default function APLFantasy() {
             </Modal>
 
             {currentPlayers && <Grid.Container
-                css={{
-                    display: "flex",
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    gap: '20px'  // Adjust gap size here to control the spacing between columns
-                }}>
+    css={{
+        display: "flex",
+        justifyContent: 'center',
+        alignItems: 'center',
+        gap: '20px',  // Adjust gap size here to control the spacing between columns
+        '@media (max-width: 768px)': {
+            flexDirection: 'column'
+        }
+    }}>
 
                 {Object.keys(user).length === 0 ?
                     <Grid.Container
@@ -848,7 +851,13 @@ export default function APLFantasy() {
                         </Col>
                     </Grid.Container>
                     :
-                    <Row>
+                    <Grid.Container css={{
+                        flexDirection: 'row', // default is row
+                        alignItems:"start",
+                        '@media (max-width: 640px)': {
+                          flexDirection: 'column',
+                        }
+                      }}>
                         <Grid xs={12} md={8} css={{ padding: '0 10px' }}>
                             <Col className="leftcol">
                                 <Row className="title-container" css={{
@@ -1320,7 +1329,7 @@ export default function APLFantasy() {
                                                 open={showInfoModal}
                                                 onClose={() => setShowInfoModal(false)}
                                                 className="info-modal"
-                                                width="40%"
+                                                width="50%"
                                                 height="100%"
                                             >
                                                 <Modal.Header className="modal-header">
@@ -1356,7 +1365,7 @@ export default function APLFantasy() {
                                                                     justifyContent: "center", // Adjust to match design
                                                                     alignItems: "center",
                                                                     gap: "20px",
-                                                                    width: "95%"
+                                                                    width: "95%",
                                                                 }}
                                                             >
                                                                 <Image
@@ -1394,7 +1403,7 @@ export default function APLFantasy() {
                                                                         flexDirection: "column",
                                                                         justifyContent: "center", // Adjust to match design
                                                                         alignItems: "center",
-                                                                        width: "5vw",
+                                                                        width: "10vw",
                                                                         padding: "10px",
                                                                         gap: "10px"
                                                                     }}
@@ -1422,8 +1431,8 @@ export default function APLFantasy() {
                                                                         <Image
                                                                             onClick={() => setViceCaptain(vicecaptain === selectedPlayer[0] ? "" : selectedPlayer[0])}
                                                                             style={{
-                                                                                height: "50px",
-                                                                                width: "55px",
+                                                                                height: "100px",
+                                                                                width: "100px",
                                                                                 cursor: 'pointer',
                                                                             }}
                                                                             src={viceCaptain}
@@ -2378,7 +2387,7 @@ export default function APLFantasy() {
 
                             </Col>
                         </Grid>
-                    </Row>
+</Grid.Container>
                 }
             </Grid.Container>
             }

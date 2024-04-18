@@ -135,11 +135,21 @@
   padding: 20px;
   padding-bottom: 50px;
   display: flex;
-  flex-direction: row;
+  flex-direction: row; /* Default layout */
   align-items: center;
   justify-content: center;
-  margin: 0% 10% 0 10%;
+  margin: 0 10%;
 }
+
+/* Media query for phones */
+@media (max-width: 768px) {
+  .fantasy-game-container {
+    flex-direction: column; /* Stack children vertically on small screens */
+  }
+}
+
+
+
 
 .fanup-logo {
   width: 266px;
