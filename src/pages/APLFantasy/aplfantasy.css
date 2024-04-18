@@ -177,13 +177,14 @@
   }
   .football-field
   {
-      background-size: cover;
+      background-size: cover !important;
 
   }
   .player-jersey img
   {
     height: 3vh;
   }
+  
 }
 
 
