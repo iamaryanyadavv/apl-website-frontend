@@ -1,4 +1,4 @@
-import { Grid, Input, Text, Dropdown, Col, Row, Modal, Button, Image } from "@nextui-org/react";
+import { Grid, Input, Text, Dropdown, Col, Row, Modal, Button, Image , Loading} from "@nextui-org/react";
 import React, { useEffect, useState } from "react";
 import './aplfantasy.css';
 import JerseyImage from "./jersey template 1.png"
@@ -29,6 +29,7 @@ import viceCaptain from "./vicecaptain.png"
 
 export default function APLFantasy() {
     const genderOptions = ['Male','Female' ,'Non-Cis Man'];
+    const [apl7players, setApl7players] = useState([])
     const positionOptions = ['Defender', 'Midfielder', 'Attacker'];
     const formationOptions = ['1-3-1', '2-1-2', '3-1-1'];
     const priceOptions = ['10M-19M', '20M-29M', '30M-39M','40M']
@@ -44,6 +45,7 @@ export default function APLFantasy() {
     const [showConfirmModal, setShowConfirmModal] = useState(false);
     const [teamcaptain, setTeamCaptain] = useState("")
     const [vicecaptain, setViceCaptain] = useState("")
+    const [isLoading, setIsLoading] = useState(true);  // State to handle image loading
 
     const tutorialItems = [
         {
@@ -455,6 +457,10 @@ export default function APLFantasy() {
         try {
             const response = await fetch('https://aplapi.onrender.com/seasons/apl7/teamdata');
             const data = await response.json();
+            const response2 = await fetch('https://aplapi.onrender.com/seasons/apl7/playerdata');
+            const data2 = await response2.json();
+            console.log(data2.values)
+            setApl7players(data2.values)
             fetchPlayersData(data);
         } catch (error) {
             console.error('Failed to fetch team data:', error);
@@ -490,7 +496,6 @@ export default function APLFantasy() {
 
         var userObject = jwt_decode(response.credential)
         document.getElementById("GoogleButton").hidden = true;
-        console.log(userObject)
         setUser(userObject)
     }
 
@@ -711,9 +716,7 @@ export default function APLFantasy() {
     <Modal.Body>
         <div>
             {selectedPlayers.map((playerName, index) => {
-                console.log(selectedPlayers)
                 const player = playersData.find(p => p[0] === playerName);
-                console.log(player)
                 return (
                     <div key={index}>
                         <Text><strong>Player:</strong> {player[0]}</Text>
@@ -1000,12 +1003,27 @@ export default function APLFantasy() {
                                                                     alignItems: "center",
                                                                 }}
                                                             >
-                                                                <img src={`https://lh3.google.com/u/0/d/${selectedPlayer[4].split('/')[5]}`} referrerpolicy="no-referrer" alt="Player Image" className="player-modal-image" />
+                                                                                                                                    {isLoading &&  <Loading color='white' size={"xl"} />}
+
+                                                                <Image
+                                                                
+                                                                referrerpolicy="no-referrer" alt="Player Image" className="player-modal-image"
+                                                                src={selectedPlayer[4].split('/')[5]!=null?`https://lh3.google.com/u/0/d/${selectedPlayer[4].split('/')[5]}`:apl7players.find(p=>p[1]==selectedPlayer[0])[0]}
+                                                                        css={{ maxWidth: "100%", display: isLoading ? "none" : "block" }}
+                                                                        onLoad={() => setIsLoading(false)}
+                                                                        onError={() => setIsLoading(false)}
+                                                                        />
                                                                 <Grid.Container css={{ flexDirection: "column", alignItems: "center", }}>
 
                                                                     <Grid.Container css={{ flexDirection: "row", alignItems: "center", justifyContent: "left" }}>
 
-                                                                        <img src={selectedPlayer[5]} alt="Team Logo" className="player-modal-team-logo" />
+                                                                        <img
+                                                                        src={selectedPlayer[5]} 
+                                                                        className="player-modal-team-logo" 
+                                                                        alt="Player Image"
+                                                                        css={{ maxWidth: "100%", display: isLoading ? "none" : "block" }}
+                                                                        />
+
                                                                         <Text className="player-modal-team-name">{selectedPlayer[1]}</Text>
 
                                                                     </Grid.Container>
@@ -1314,7 +1332,6 @@ export default function APLFantasy() {
                                                             onClick={(e) => {
                                                                 e.stopPropagation();  // Prevent the addPlayer event from firing
                                                                 setSelectedPlayer(playersData.find(p => p[0] === selectedPlayers[5]));
-                                                                console.log()
                                                                 setShowInfoModal(true);
                                                             }}
                                                             src={infoIcon} alt="Jersey"
@@ -1341,6 +1358,18 @@ export default function APLFantasy() {
                                                             height: "25px",
                                                             filter: selectedJersey === 4 ? 'invert(100%)' : 'none'  // Inverts the colors to make black white
                                                         }} onClick={() =>{ setSelectedJersey(4); handlePositionChange("Attacker")}} />}
+                                                         {
+                                                            selectedPlayers[4] && <img
+                                                            style={{position:"absolute", height: "24px", margin: "2px", zIndex: "1000", width:"24px", cursor:"pointer" }}
+                                                            onClick={(e) => {
+                                                                e.stopPropagation();  // Prevent the addPlayer event from firing
+                                                                setSelectedPlayer(playersData.find(p => p[0] === selectedPlayers[4]));
+                                                                console.log()
+                                                                setShowInfoModal(true);
+                                                            }}
+                                                            src={infoIcon} alt="Jersey"
+                                                        />
+                                                        }
                                                         <div className="player-name-bg">
                                                             <Text className="player-name-text">{selectedPlayers[4]}</Text>
                                                         </div>
@@ -1362,6 +1391,18 @@ export default function APLFantasy() {
                                                         filter: selectedJersey === 3 ? 'invert(100%)' : 'none'  // Inverts the colors to make black white
 
                                                     }} onClick={() =>{ setSelectedJersey(3); handlePositionChange("Midfielder")}} />}
+                                                     {
+                                                            selectedPlayers[3] && <img
+                                                            style={{position:"absolute", height: "24px", margin: "2px", zIndex: "1000", width:"24px", cursor:"pointer" }}
+                                                            onClick={(e) => {
+                                                                e.stopPropagation();  // Prevent the addPlayer event from firing
+                                                                setSelectedPlayer(playersData.find(p => p[0] === selectedPlayers[3]));
+                                                                console.log()
+                                                                setShowInfoModal(true);
+                                                            }}
+                                                            src={infoIcon} alt="Jersey"
+                                                        />
+                                                        }
                                                     <div className="player-name-bg">
                                                         <Text className="player-name-text">{selectedPlayers[3]}</Text>
                                                     </div>
@@ -1389,6 +1430,18 @@ export default function APLFantasy() {
                                                             height: "25px",
                                                             filter: selectedJersey === 2 ? 'invert(100%)' : 'none'  // Inverts the colors to make black white
                                                         }} onClick={() =>{setSelectedJersey(2); handlePositionChange("Defender")} } />}
+                                                         {
+                                                            selectedPlayers[2] && <img
+                                                            style={{position:"absolute", height: "24px", margin: "2px", zIndex: "1000", width:"24px", cursor:"pointer" }}
+                                                            onClick={(e) => {
+                                                                e.stopPropagation();  // Prevent the addPlayer event from firing
+                                                                setSelectedPlayer(playersData.find(p => p[0] === selectedPlayers[2]));
+                                                                console.log()
+                                                                setShowInfoModal(true);
+                                                            }}
+                                                            src={infoIcon} alt="Jersey"
+                                                        />
+                                                        }
                                                         <div className="player-name-bg">
                                                             <Text className="player-name-text">{selectedPlayers[2]}</Text>
                                                         </div>
@@ -1408,6 +1461,18 @@ export default function APLFantasy() {
                                                             height: "25px",
                                                             filter: selectedJersey === 1 ? 'invert(100%)' : 'none'  // Inverts the colors to make black white
                                                         }} onClick={() => {setSelectedJersey(1); handlePositionChange("Defender")}}/>}
+                                                         {
+                                                            selectedPlayers[1] && <img
+                                                            style={{position:"absolute", height: "24px", margin: "2px", zIndex: "1000", width:"24px", cursor:"pointer" }}
+                                                            onClick={(e) => {
+                                                                e.stopPropagation();  // Prevent the addPlayer event from firing
+                                                                setSelectedPlayer(playersData.find(p => p[0] === selectedPlayers[1]));
+                                                                console.log()
+                                                                setShowInfoModal(true);
+                                                            }}
+                                                            src={infoIcon} alt="Jersey"
+                                                        />
+                                                        }
                                                         <div className="player-name-bg">
                                                             <Text className="player-name-text">{selectedPlayers[1]}</Text>
                                                         </div>
@@ -1428,6 +1493,18 @@ export default function APLFantasy() {
                                                         height: "25px",
                                                         filter: selectedJersey === 0? 'invert(100%)' : 'none'  // Inverts the colors to make black white
                                                     }} onClick={() =>{setSelectedJersey(0); handlePositionChange("Goalkeeper")} } />}
+                                                     {
+                                                            selectedPlayers[0] && <img
+                                                            style={{position:"absolute", height: "24px", margin: "2px", zIndex: "1000", width:"24px", cursor:"pointer" }}
+                                                            onClick={(e) => {
+                                                                e.stopPropagation();  // Prevent the addPlayer event from firing
+                                                                setSelectedPlayer(playersData.find(p => p[0] === selectedPlayers[0]));
+                                                                console.log()
+                                                                setShowInfoModal(true);
+                                                            }}
+                                                            src={infoIcon} alt="Jersey"
+                                                        />
+                                                        }
                                                     <div className="player-name-bg">
                                                         <Text className="player-name-text">{selectedPlayers[0]}</Text>
                                                     </div>
@@ -1450,6 +1527,18 @@ export default function APLFantasy() {
                                                         height: "25px",
                                                         filter: selectedJersey === 5 ? 'invert(100%)' : 'none'  // Inverts the colors to make black white
                                                     }} onClick={() => {setSelectedJersey(5); handlePositionChange("Attacker")} }  />}
+                                                     {
+                                                            selectedPlayers[5] && <img
+                                                            style={{position:"absolute", height: "24px", margin: "2px", zIndex: "1000", width:"24px", cursor:"pointer" }}
+                                                            onClick={(e) => {
+                                                                e.stopPropagation();  // Prevent the addPlayer event from firing
+                                                                setSelectedPlayer(playersData.find(p => p[0] === selectedPlayers[5]));
+                                                                console.log()
+                                                                setShowInfoModal(true);
+                                                            }}
+                                                            src={infoIcon} alt="Jersey"
+                                                        />
+                                                        }
                                                     <div className="player-name-bg">
                                                         <Text className="player-name-text">{selectedPlayers[5]}</Text>
                                                     </div>
@@ -1482,6 +1571,18 @@ export default function APLFantasy() {
                                                                 height: "25px",
                                                                 filter: selectedJersey === 4? 'invert(100%)' : 'none'  // Inverts the colors to make black white
                                                             }} onClick={() =>{setSelectedJersey(4); handlePositionChange("Midfielder")} }  />}
+                                                            {
+                                                            selectedPlayers[4] && <img
+                                                            style={{position:"absolute", height: "24px", margin: "2px", zIndex: "1000", width:"24px", cursor:"pointer" }}
+                                                            onClick={(e) => {
+                                                                e.stopPropagation();  // Prevent the addPlayer event from firing
+                                                                setSelectedPlayer(playersData.find(p => p[0] === selectedPlayers[4]));
+                                                                console.log()
+                                                                setShowInfoModal(true);
+                                                            }}
+                                                            src={infoIcon} alt="Jersey"
+                                                        />
+                                                        }
                                                             <div className="player-name-bg">
                                                                 <Text className="player-name-text">{selectedPlayers[4]}</Text>
                                                             </div>
@@ -1501,6 +1602,18 @@ export default function APLFantasy() {
                                                                 height: "25px",
                                                                 filter: selectedJersey === 3? 'invert(100%)' : 'none'  // Inverts the colors to make black white
                                                             }} onClick={() => {setSelectedJersey(3); handlePositionChange("Midfielder")} }  />}
+                                                            {
+                                                            selectedPlayers[3] && <img
+                                                            style={{position:"absolute", height: "24px", margin: "2px", zIndex: "1000", width:"24px", cursor:"pointer" }}
+                                                            onClick={(e) => {
+                                                                e.stopPropagation();  // Prevent the addPlayer event from firing
+                                                                setSelectedPlayer(playersData.find(p => p[0] === selectedPlayers[3]));
+                                                                console.log()
+                                                                setShowInfoModal(true);
+                                                            }}
+                                                            src={infoIcon} alt="Jersey"
+                                                        />
+                                                        }
                                                             <div className="player-name-bg">
                                                                 <Text className="player-name-text">{selectedPlayers[3]}</Text>
                                                             </div>
@@ -1520,6 +1633,18 @@ export default function APLFantasy() {
                                                                 height: "25px",
                                                                 filter: selectedJersey === 2 ? 'invert(100%)' : 'none'  // Inverts the colors to make black white
                                                             }} onClick={() => {setSelectedJersey(2); handlePositionChange("Midfielder")} } />}
+                                                            {
+                                                            selectedPlayers[2] && <img
+                                                            style={{position:"absolute", height: "24px", margin: "2px", zIndex: "1000", width:"24px", cursor:"pointer" }}
+                                                            onClick={(e) => {
+                                                                e.stopPropagation();  // Prevent the addPlayer event from firing
+                                                                setSelectedPlayer(playersData.find(p => p[0] === selectedPlayers[2]));
+                                                                console.log()
+                                                                setShowInfoModal(true);
+                                                            }}
+                                                            src={infoIcon} alt="Jersey"
+                                                        />
+                                                        }
                                                             <div className="player-name-bg">
                                                                 <Text className="player-name-text">{selectedPlayers[2]}</Text>
                                                             </div>
@@ -1551,6 +1676,18 @@ export default function APLFantasy() {
                                                             height: "25px",
                                                             filter: selectedJersey === 1 ? 'invert(100%)' : 'none'  // Inverts the colors to make black white
                                                         }} onClick={() =>{setSelectedJersey(1); handlePositionChange("Defender")} } />}
+                                                        {
+                                                            selectedPlayers[1] && <img
+                                                            style={{position:"absolute", height: "24px", margin: "2px", zIndex: "1000", width:"24px", cursor:"pointer" }}
+                                                            onClick={(e) => {
+                                                                e.stopPropagation();  // Prevent the addPlayer event from firing
+                                                                setSelectedPlayer(playersData.find(p => p[0] === selectedPlayers[1]));
+                                                                console.log()
+                                                                setShowInfoModal(true);
+                                                            }}
+                                                            src={infoIcon} alt="Jersey"
+                                                        />
+                                                        }
                                                         <div className="player-name-bg">
                                                             <Text className="player-name-text">{selectedPlayers[1]}</Text>
                                                         </div>
@@ -1572,6 +1709,18 @@ export default function APLFantasy() {
                                                         height: "25px",
                                                         filter: selectedJersey === 0 ? 'invert(100%)' : 'none'  // Inverts the colors to make black white
                                                     }} onClick={() => {setSelectedJersey(0); handlePositionChange("Goalkeeper")} } />}
+                                                    {
+                                                            selectedPlayers[0] && <img
+                                                            style={{position:"absolute", height: "24px", margin: "2px", zIndex: "1000", width:"24px", cursor:"pointer" }}
+                                                            onClick={(e) => {
+                                                                e.stopPropagation();  // Prevent the addPlayer event from firing
+                                                                setSelectedPlayer(playersData.find(p => p[0] === selectedPlayers[0]));
+                                                                console.log()
+                                                                setShowInfoModal(true);
+                                                            }}
+                                                            src={infoIcon} alt="Jersey"
+                                                        />
+                                                        }
                                                     <div className="player-name-bg">
                                                         <Text className="player-name-text">{selectedPlayers[0]}</Text>
                                                     </div>
@@ -1604,6 +1753,18 @@ export default function APLFantasy() {
                                                             height: "25px",
                                                             filter: selectedJersey === 5 ? 'invert(100%)' : 'none'  // Inverts the colors to make black white
                                                         }} onClick={() => {setSelectedJersey(5); handlePositionChange("Attacker")} }  />}
+                                                         {
+                                                            selectedPlayers[5] && <img
+                                                            style={{position:"absolute", height: "24px", margin: "2px", zIndex: "1000", width:"24px", cursor:"pointer" }}
+                                                            onClick={(e) => {
+                                                                e.stopPropagation();  // Prevent the addPlayer event from firing
+                                                                setSelectedPlayer(playersData.find(p => p[0] === selectedPlayers[5]));
+                                                                console.log()
+                                                                setShowInfoModal(true);
+                                                            }}
+                                                            src={infoIcon} alt="Jersey"
+                                                        />
+                                                        }
                                                         <div className="player-name-bg">
                                                             <Text className="player-name-text">{selectedPlayers[5]}</Text>
                                                         </div>
@@ -1623,6 +1784,18 @@ export default function APLFantasy() {
                                                             height: "25px",
                                                             filter: selectedJersey === 4 ? 'invert(100%)' : 'none'  // Inverts the colors to make black white
                                                         }} onClick={() =>{setSelectedJersey(4); handlePositionChange("Midfielder")} }  />}
+                                                         {
+                                                            selectedPlayers[4] && <img
+                                                            style={{position:"absolute", height: "24px", margin: "2px", zIndex: "1000", width:"24px", cursor:"pointer" }}
+                                                            onClick={(e) => {
+                                                                e.stopPropagation();  // Prevent the addPlayer event from firing
+                                                                setSelectedPlayer(playersData.find(p => p[0] === selectedPlayers[4]));
+                                                                console.log()
+                                                                setShowInfoModal(true);
+                                                            }}
+                                                            src={infoIcon} alt="Jersey"
+                                                        />
+                                                        }
                                                         <div className="player-name-bg">
                                                             <Text className="player-name-text">{selectedPlayers[4]}</Text>
                                                         </div>
@@ -1652,6 +1825,18 @@ export default function APLFantasy() {
                                                             height: "25px",
                                                             filter: selectedJersey === 3 ? 'invert(100%)' : 'none'  // Inverts the colors to make black white
                                                         }} onClick={() =>{setSelectedJersey(3); handlePositionChange("Defender")} } />}
+                                                        {
+                                                            selectedPlayers[3] && <img
+                                                            style={{position:"absolute", height: "24px", margin: "2px", zIndex: "1000", width:"24px", cursor:"pointer" }}
+                                                            onClick={(e) => {
+                                                                e.stopPropagation();  // Prevent the addPlayer event from firing
+                                                                setSelectedPlayer(playersData.find(p => p[0] === selectedPlayers[3]));
+                                                                console.log()
+                                                                setShowInfoModal(true);
+                                                            }}
+                                                            src={infoIcon} alt="Jersey"
+                                                        />
+                                                        }
                                                         <div className="player-name-bg">
                                                             <Text className="player-name-text">{selectedPlayers[3]}</Text>
                                                         </div>
@@ -1671,7 +1856,20 @@ export default function APLFantasy() {
                                                             height: "25px",
                                                             filter: selectedJersey === 2 ? 'invert(100%)' : 'none'  // Inverts the colors to make black white
                                                     
-                                                        }} onClick={() => {setSelectedJersey(2); handlePositionChange("Defender")} }  />}             <div className="player-name-bg">
+                                                        }} onClick={() => {setSelectedJersey(2); handlePositionChange("Defender")} }  />} 
+                                                        {
+                                                            selectedPlayers[2] && <img
+                                                            style={{position:"absolute", height: "24px", margin: "2px", zIndex: "1000", width:"24px", cursor:"pointer" }}
+                                                            onClick={(e) => {
+                                                                e.stopPropagation();  // Prevent the addPlayer event from firing
+                                                                setSelectedPlayer(playersData.find(p => p[0] === selectedPlayers[2]));
+                                                                console.log()
+                                                                setShowInfoModal(true);
+                                                            }}
+                                                            src={infoIcon} alt="Jersey"
+                                                        />
+                                                        }
+                                                                    <div className="player-name-bg">
                                                             <Text className="player-name-text">{selectedPlayers[2]}</Text>
                                                         </div>
                                                         <div className="player-price-bg">
@@ -1690,6 +1888,18 @@ export default function APLFantasy() {
                                                             height: "25px",
                                                             filter: selectedJersey ===1 ? 'invert(100%)' : 'none'  // Inverts the colors to make black white
                                                         }} onClick={() => {setSelectedJersey(1); handlePositionChange("Defender")} }  />}
+                                                        {
+                                                            selectedPlayers[1] && <img
+                                                            style={{position:"absolute", height: "24px", margin: "2px", zIndex: "1000", width:"24px", cursor:"pointer" }}
+                                                            onClick={(e) => {
+                                                                e.stopPropagation();  // Prevent the addPlayer event from firing
+                                                                setSelectedPlayer(playersData.find(p => p[0] === selectedPlayers[1]));
+                                                                console.log()
+                                                                setShowInfoModal(true);
+                                                            }}
+                                                            src={infoIcon} alt="Jersey"
+                                                        />
+                                                        }
                                                         <div className="player-name-bg">
                                                             <Text className="player-name-text">{selectedPlayers[1]}</Text>
                                                         </div>
@@ -1720,6 +1930,18 @@ export default function APLFantasy() {
                                                             height: "25px",
                                                             filter: selectedJersey === 0 ? 'invert(100%)' : 'none'  // Inverts the colors to make black white
                                                         }} onClick={() => {setSelectedJersey(0); handlePositionChange("Goalkeeper")} } />}
+                                                        {
+                                                            selectedPlayers[0] && <img
+                                                            style={{position:"absolute", height: "24px", margin: "2px", zIndex: "1000", width:"24px", cursor:"pointer" }}
+                                                            onClick={(e) => {
+                                                                e.stopPropagation();  // Prevent the addPlayer event from firing
+                                                                setSelectedPlayer(playersData.find(p => p[0] === selectedPlayers[0]));
+                                                                console.log()
+                                                                setShowInfoModal(true);
+                                                            }}
+                                                            src={infoIcon} alt="Jersey"
+                                                        />
+                                                        }
                                                         <div className="player-name-bg">
                                                             <Text className="player-name-text">{selectedPlayers[0]}</Text>
                                                         </div>
