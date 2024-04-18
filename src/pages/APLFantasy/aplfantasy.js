@@ -1342,7 +1342,7 @@ export default function APLFantasy() {
                                                         css={{
                                                             display: "flex",
                                                             flexDirection: "column",
-                                                            justifyContent: 'space-between',
+                                                            justifyContent: 'center',
                                                             alignItems: 'center',
                                                             width: "100%",
                                                             height: "100%", // Assuming you want to use the entire height
@@ -1404,8 +1404,6 @@ export default function APLFantasy() {
                                                                         flexDirection: "column",
                                                                         justifyContent: "center", // Adjust to match design
                                                                         alignItems: "center",
-                                                                        width: "10vw",
-                                                                        padding: "10px",
                                                                         gap: "10px"
                                                                     }}
                                                                 >
@@ -1419,8 +1417,8 @@ export default function APLFantasy() {
                                                                                 currentCaptain === selectedPlayer[0] ? "" : selectedPlayer[0]
                                                                             )}
                                                                             style={{
-                                                                                height: "50px",
-                                                                                width: "55px",
+                                                                                // height: "50px",
+                                                                                // width: "55px",
                                                                                 cursor: 'pointer',
                                                                             }}
                                                                             src={captain}
@@ -1660,6 +1658,11 @@ export default function APLFantasy() {
                                                     </Grid.Container>
                                                 </Modal.Body>}
                                             </Modal>
+
+
+
+
+                                            
 
                                             {formationState == 1 && <>
                                                 <Grid.Container

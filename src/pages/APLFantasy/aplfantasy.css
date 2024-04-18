@@ -605,7 +605,7 @@
 
 .player-modal-team-name {
   /* Adjust to more closely resemble the design */
-  font-size: 16px; /* Smaller font size */
+  font-size: 1em; /* Smaller font size */
   letter-spacing: normal; /* Adjust letter spacing */
   margin-bottom: 0; /* Remove bottom margin */
   text-transform: none; /* Remove uppercase */
@@ -616,10 +616,10 @@
   font-style: normal;
   font-weight: 400;
   font-size: 20px;
-  line-height: 24px;
+  /* line-height: 24px; */
   display: flex;
   align-items: center;
-  letter-spacing: 0.1em;
+  /* letter-spacing: 0.1em; */
   text-transform: uppercase;
 
   color: #ffffff;
@@ -627,7 +627,7 @@
 
 .player-modal-name {
   /* Style adjustments for the player's name */
-  font-size: 32px; /* Larger font size for emphasis */
+  font-size: 2em; /* Larger font size for emphasis */
   font-weight: bold; /* Make the name bold */
   margin-bottom: 5px; /* Space between name and position */
   text-transform: uppercase;
@@ -636,8 +636,6 @@
   font-family: "Montserrat";
   font-style: italic;
   font-weight: 800;
-  font-size: 40px;
-  line-height: 49px;
   /* identical to box height */
   display: flex;
   align-items: center;
