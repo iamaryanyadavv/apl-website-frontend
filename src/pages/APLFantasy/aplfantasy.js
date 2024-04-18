@@ -1006,25 +1006,17 @@ export default function APLFantasy() {
                                                                     justifyContent: "center", // Adjust to match design
                                                                     alignItems: "center",
                                                                     gap:"20px",
-                                                                    width:"100%"
+                                                                    width:"95%"
                                                                 }}
                                                             >
-                                                                {isLoading &&  
-                                                                <Grid.Container css={{ flexDirection: "column", alignItems: "center", width:"200px"}}>
-                                                                <Text>Loading Image</Text>
-                                                                <Loading color="white" size="xl" type="spinner"/>
-                                                                </Grid.Container>}
-
-                                                                {!isLoading && <Image
+                                                                <Image
                                                                 
                                                                 referrerpolicy="no-referrer" alt="Player Image" className="player-modal-image"
                                                                 src={selectedPlayer[4].split('/')[5]!=null?`https://lh3.google.com/u/0/d/${selectedPlayer[4].split('/')[5]}`:apl7players.find(p=>p[1]==selectedPlayer[0])[0]}
-                                                                        css={{ display: isLoading ? "none" : "flex", alignItems:"center", justifyContent:"center"}}
-                                                                        onLoad={() => setIsLoading(false)}
-                                                                        onError={() => setIsLoading(false)}
-                                                                        />}
+                                                                        css={{display:"flex",alignItems:"center", justifyContent:"center"}}
+                                                                        showSkeleton
+                                                                        />
                                                                 <Grid.Container css={{ flexDirection: "column", alignItems: "center", }}>
-
                                                                     <Grid.Container css={{ flexDirection: "row", alignItems: "center", justifyContent: "left" }}>
 
                                                                         <img
