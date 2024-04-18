@@ -819,7 +819,10 @@ export default function APLFantasy() {
         alignItems: 'center',
         gap: '20px',  // Adjust gap size here to control the spacing between columns
         '@media (max-width: 768px)': {
-            flexDirection: 'column'
+            flexDirection: 'column',
+            display: "flex",
+        justifyContent: 'center',
+        alignItems: 'center',
         }
     }}>
 
@@ -2321,7 +2324,13 @@ export default function APLFantasy() {
                             </Col>
                         </Grid>
 
-                        <Grid xs={12} md={4} css={{ marginTop: '1%', width: "60%", alignItems:"center", justifyContent:"center" }}>
+                        <Grid className="rightcol-container" xs={12} md={4} css={{ marginTop: '1%', width: "60%", alignItems:"center", justifyContent:"center",  '@media (max-width: 768px)': {
+            flexDirection: 'column',
+            display: "flex",
+        justifyContent: 'center',
+        alignItems: 'center',
+        width:"100%"
+        } }}>
                             <Col className="rightcol">
                                 <div className="sponsor-section" >
                                     <Text className="sponsortext" center>{'Sponsored by'}</Text>
