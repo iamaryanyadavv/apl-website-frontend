@@ -50,7 +50,7 @@ export default function APLFantasy() {
     const [fantasyViceCaptain, setFantasyViceCaptain] = useState("")
     const [showMaleModel, setShowMaleModel] = useState(false)
     const [showNoPlayerModal,setShowNoPlayerModal] = useState(false)
-
+    const [noCapModal, setNoCapModal] = useState(false)
 
 
     const tutorialItems = [
@@ -448,6 +448,19 @@ export default function APLFantasy() {
         if(noplayers<6)
         {
             setShowNoPlayerModal(true)
+            return
+        }
+        if(!teamcaptain)
+        {
+            setNoCapModal(true)
+            return
+
+        }
+        if(!viceCaptain)
+        {
+            setNoCapModal(true)
+            return
+
         }
         const p1 = playersData.find(p=>p[0]==selectedPlayers[0])
         const p2 = playersData.find(p=>p[0]==selectedPlayers[1])
@@ -457,6 +470,20 @@ export default function APLFantasy() {
         const p6 = playersData.find(p=>p[0]==selectedPlayers[5])
         const c = playersData.find(p=>p[0]==teamcaptain)
         const vc = playersData.find(p=>p[0]==vicecaptain)
+
+        if(c[0]!==p1[0] && c[0]!==p2[0] && c[0]!=p3[0]&& c[0]!=p4[4]&&c[0]!=p5[0]&&c[0]!=p6[0])
+        {
+            console.log('hi')
+            console.log(p1[0])
+            setNoCapModal(true)
+            return
+        }
+        if(vc[0]!==p1[0] &&vc[0]!==p2[0] &&vc[0]!=p3[0]&&vc[0]!=p4[4]&& vc[0]!=p5[0]&&vc[0]!=p6[0])
+        {
+            console.log(vc)
+            setNoCapModal(true)
+            return
+        }
 
         var male = 0
         if(p1[17]=='Male')
@@ -487,10 +514,10 @@ export default function APLFantasy() {
         if(male>4)
         {
             setShowMaleModel(true)
+            return
         }
 
-        else
-        {
+        
             const payload = {
                 name: user.name, // You would need a mechanism to capture and store the team name
                 email:user.email,
@@ -514,7 +541,7 @@ export default function APLFantasy() {
                     alert('Submission failed. Please try again.');
                 });
 
-        }
+        
 
       
     };
@@ -997,6 +1024,48 @@ export default function APLFantasy() {
                                                     color: 'white',
                                                 }}>
                                                     Please choose a {wrongPosition}
+                                                </Text>
+                                            </Modal.Body>
+                                            
+                                    </Modal>
+
+                                    <Modal
+                                    open={noCapModal}
+                                    closeButton
+                                    onClose={()=>{setNoCapModal(false)}}
+                                    >
+                                            <Modal.Header
+                                            css={{
+                                                paddingTop: '0px',
+                                            }}>
+                                                <Col>
+                                                    <Text 
+                                                    css={{
+                                                        textAlign: 'center',
+                                                        fontSize: '$3xl',
+                                                        fontWeight: '$bold',
+                                                        color: '$red600',
+                                                        borderStyle: 'solid',
+                                                        borderWidth: '0px 0px 1px 0px',
+                                                        borderColor: '$gray800'
+                                                    }}>
+                                                        Error!
+                                                    </Text>
+                                                    
+                                                </Col>
+                                            </Modal.Header>
+                                            <Modal.Body
+                                            css={{
+                                                paddingTop: '0px'
+                                            }}>
+                                                <Text 
+                                                css={{
+                                                    textAlign: 'center',
+                                                    fontSize: '$xl',
+                                                    fontWeight: '$bold',
+                                                    color: 'white',
+                                                }}>
+                                                    Please choose a Captain or Vice Captain that belongs to your team!
                                                 </Text>
                                             </Modal.Body>
                                             
