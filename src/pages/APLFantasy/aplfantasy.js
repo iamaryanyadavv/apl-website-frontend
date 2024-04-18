@@ -223,10 +223,8 @@ export default function APLFantasy() {
         };
 
         // Apply filters to playersData
-        console.log(playersData)
         const filteredPlayers = applyFilters(playersData);
         setCurrentPlayers(filteredPlayers);
-        console.log(currentPlayers)
     }, [filters, playersData]);  // Dependencies include filters and the base playersData
 
     useEffect(() => {
@@ -479,15 +477,15 @@ export default function APLFantasy() {
         const p6 = playersData.find(p => p[0] == selectedPlayers[5])
         const c = playersData.find(p => p[0] == teamcaptain)
         const vc = playersData.find(p => p[0] == vicecaptain)
+        // console.log(c, vc)
+        let playerNames = [p1[0], p2[0], p3[0], p4[0], p5[0], p6[0]]
 
-        if (c[0] !== p1[0] && c[0] !== p2[0] && c[0] != p3[0] && c[0] != p4[4] && c[0] != p5[0] && c[0] != p6[0]) {
-            console.log('hi')
-            console.log(p1[0])
+        if (!playerNames.includes(c[0])) {
             setNoCapModal(true)
             return
         }
-        if (vc[0] !== p1[0] && vc[0] !== p2[0] && vc[0] != p3[0] && vc[0] != p4[4] && vc[0] != p5[0] && vc[0] != p6[0]) {
-            console.log(vc)
+        
+        if (!playerNames.includes(vc[0])) {
             setNoCapModal(true)
             return
         }
@@ -1386,7 +1384,11 @@ export default function APLFantasy() {
                                                                             css={{ maxWidth: "100%", display: isLoading ? "none" : "block" }}
                                                                         />
 
-                                                                        <Text className="player-modal-team-name">{selectedPlayer[1]}</Text>
+                                                                        <Text className="player-modal-team-name" css={{
+                                                                            '@xsMax':{
+                                                                                fontSize: '$md'
+                                                                            }
+                                                                        }}>{selectedPlayer[1]}</Text>
 
                                                                     </Grid.Container>
 
@@ -1417,8 +1419,8 @@ export default function APLFantasy() {
                                                                                 currentCaptain === selectedPlayer[0] ? "" : selectedPlayer[0]
                                                                             )}
                                                                             style={{
-                                                                                // height: "50px",
-                                                                                // width: "55px",
+                                                                                height: "70px",
+                                                                                width: "100px",
                                                                                 cursor: 'pointer',
                                                                             }}
                                                                             src={captain}
@@ -1430,7 +1432,7 @@ export default function APLFantasy() {
                                                                         <Image
                                                                             onClick={() => setViceCaptain(vicecaptain === selectedPlayer[0] ? "" : selectedPlayer[0])}
                                                                             style={{
-                                                                                height: "100px",
+                                                                                height: "70px",
                                                                                 width: "100px",
                                                                                 cursor: 'pointer',
                                                                             }}

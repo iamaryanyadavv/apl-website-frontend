@@ -241,13 +241,21 @@
 .tutorial-modal{
   width: 800px !important;
 }
-
-.nextui-c-grJsex-ikUaMfZ-css{
-  max-width: 1000px !important;
+@media only screen and (min-width: 768px) {
+    .nextui-c-grJsex-ikUaMfZ-css{
+      max-width: 1000px !important;
+    }
+    .nextui-c-grJsex-ikUaMfZ-css 
+    {
+      width: 50vw !important; 
+    }
 }
-.nextui-c-grJsex-ikUaMfZ-css 
-{
-  width: 50vw !important; 
+
+@media only screen and (max-width: 768px) {
+    .nextui-c-grJsex-ikUaMfZ-css 
+    {
+      width: 100vw !important; 
+    }
 }
 
 .football-field {
@@ -514,7 +522,7 @@
   .info-modal {
     background: #1f335b;
     border-radius: 5px;
-    width: 100vw;
+    width: 100vw !important;
   }
 }
 
@@ -602,67 +610,141 @@
 
   border-radius: 90px;
 }
-
-.player-modal-team-name {
-  /* Adjust to more closely resemble the design */
-  font-size: 1em; /* Smaller font size */
-  letter-spacing: normal; /* Adjust letter spacing */
-  margin-bottom: 0; /* Remove bottom margin */
-  text-transform: none; /* Remove uppercase */
-  color: #ffffff;
-  /* Add other styles if necessary */
-  /* dolla $ign */
-  font-family: "Montserrat";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 20px;
-  /* line-height: 24px; */
-  display: flex;
-  align-items: center;
-  /* letter-spacing: 0.1em; */
-  text-transform: uppercase;
-
-  color: #ffffff;
+@media only screen and (min-width: 768px) {
+    .player-modal-team-name {
+      /* Adjust to more closely resemble the design */
+      font-size: 1em; /* Smaller font size */
+      letter-spacing: normal; /* Adjust letter spacing */
+      margin-bottom: 0; /* Remove bottom margin */
+      text-transform: none; /* Remove uppercase */
+      color: #ffffff;
+      /* Add other styles if necessary */
+      /* dolla $ign */
+      font-family: "Montserrat";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 20px;
+      /* line-height: 24px; */
+      display: flex;
+      align-items: center;
+      /* letter-spacing: 0.1em; */
+      text-transform: uppercase;
+    
+      color: #ffffff;
+    }
 }
 
-.player-modal-name {
-  /* Style adjustments for the player's name */
-  font-size: 2em; /* Larger font size for emphasis */
-  font-weight: bold; /* Make the name bold */
-  margin-bottom: 5px; /* Space between name and position */
-  text-transform: uppercase;
-  color: #ffffff;
-  /* Dhruv achappa */
-  font-family: "Montserrat";
-  font-style: italic;
-  font-weight: 800;
-  /* identical to box height */
-  display: flex;
-  align-items: center;
-  letter-spacing: 0.21em;
-  text-transform: uppercase;
-  color: #ffffff;
+@media only screen and (max-width: 768px) {
+    .player-modal-team-name {
+      /* Adjust to more closely resemble the design */
+      font-size: 1em; /* Smaller font size */
+      letter-spacing: normal; /* Adjust letter spacing */
+      margin-bottom: 0; /* Remove bottom margin */
+      text-transform: none; /* Remove uppercase */
+      color: #ffffff;
+      /* Add other styles if necessary */
+      /* dolla $ign */
+      font-family: "Montserrat";
+      font-style: normal;
+      font-weight: 600;
+      /* line-height: 24px; */
+      display: flex;
+      align-items: center;
+      /* letter-spacing: 0.1em; */
+      text-transform: uppercase;
+    
+      color: #ffffff;
+    }
 }
 
-.player-modal-position {
-  /* Style adjustments for the position */
-  font-size: 20px; /* Adjust font size to be smaller than the name */
-  margin-bottom: 5px; /* Space between position and price */
-  color: #ffffff;
 
-  font-family: "Montserrat";
-  font-style: italic;
-  font-weight: 300;
-  font-size: 35px;
-  line-height: 43px;
-  /* identical to box height */
-  display: flex;
-  align-items: center;
-  letter-spacing: 0.21em;
-  text-transform: uppercase;
-
-  color: #ffffff;
+@media only screen and (min-width: 768px) {
+    .player-modal-name {
+      /* Style adjustments for the player's name */
+      font-size: 2em; /* Larger font size for emphasis */
+      font-weight: bold; /* Make the name bold */
+      margin-bottom: 5px; /* Space between name and position */
+      text-transform: uppercase;
+      color: #ffffff;
+      /* Dhruv achappa */
+      font-family: "Montserrat";
+      font-style: italic;
+      font-weight: 800;
+      /* identical to box height */
+      display: flex;
+      align-items: center;
+      letter-spacing: 0.21em;
+      text-transform: uppercase;
+      color: #ffffff;
+    }
 }
+
+@media only screen and (max-width: 768px) {
+    .player-modal-name {
+      /* Style adjustments for the player's name */
+      font-size: 1em; /* Larger font size for emphasis */
+      font-weight: bold; /* Make the name bold */
+      margin-bottom: 12px; /* Space between name and position */
+      text-transform: uppercase;
+      color: #ffffff;
+      /* Dhruv achappa */
+      font-family: "Montserrat";
+      font-style: italic;
+      font-weight: 800;
+      /* identical to box height */
+      display: flex;
+      align-items: center;
+      letter-spacing: 0.21em;
+      text-transform: uppercase;
+      color: #ffffff;
+      margin-top: 12px;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .player-modal-position {
+      /* Style adjustments for the position */
+      font-size: 20px; /* Adjust font size to be smaller than the name */
+      margin-bottom: 5px; /* Space between position and price */
+      color: #ffffff;
+    
+      font-family: "Montserrat";
+      font-style: italic;
+      font-weight: 300;
+      font-size: 35px;
+      line-height: 43px;
+      /* identical to box height */
+      display: flex;
+      align-items: center;
+      letter-spacing: 0.21em;
+      text-transform: uppercase;
+    
+      color: #ffffff;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .player-modal-position {
+      /* Style adjustments for the position */
+      font-size: 20px; /* Adjust font size to be smaller than the name */
+      margin-bottom: 5px; /* Space between position and price */
+      color: #ffffff;
+    
+      font-family: "Montserrat";
+      font-style: italic;
+      font-weight: 300;
+      font-size: 16px;
+      line-height: 43px;
+      /* identical to box height */
+      display: flex;
+      align-items: center;
+      letter-spacing: 0.21em;
+      text-transform: uppercase;
+    font-weight: 600;
+      color: #ffffff;
+    }
+}
+
 .game-info-title {
   font-family: "Montserrat";
   font-style: normal;
