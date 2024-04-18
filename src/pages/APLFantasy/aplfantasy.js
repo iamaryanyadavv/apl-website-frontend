@@ -434,7 +434,7 @@ export default function APLFantasy() {
                                         setSelectedPlayer(player);
                                         setShowInfoModal(true);
                                     }}
-                                    src={infoIcon} alt="Jersey"
+                                    src={infoIcon} className="info-icon" alt="Jersey"
                                 />
                             </div>
                             <div style={playerPositionStyle}>{player[2]}</div>
@@ -1673,7 +1673,7 @@ export default function APLFantasy() {
                                                     <div className="player-jersey">
                                                         <img src={JerseyImage} alt="Jersey" />
                                                         {!selectedPlayers[5] && <img
-                                                            src={addPlayerButton}
+                                                            src={addPlayerButton} className="addplayerButton"
                                                             alt="Add Player"
                                                             style={{
                                                                 position: 'absolute',
@@ -1697,7 +1697,7 @@ export default function APLFantasy() {
                                                                     setSelectedPlayer(playersData.find(p => p[0] === selectedPlayers[5]));
                                                                     setShowInfoModal(true);
                                                                 }}
-                                                                src={infoIcon} alt="Jersey"
+                                                                src={infoIcon} className="info-icon" alt="Jersey"
                                                             />
                                                         }
 
@@ -1711,7 +1711,7 @@ export default function APLFantasy() {
                                                     </div>
                                                     <div className="player-jersey">
                                                         <img src={JerseyImage} alt="Jersey" />
-                                                        {!selectedPlayers[4] && <img src={addPlayerButton} alt="Add Player" style={{
+                                                        {!selectedPlayers[4] && <img src={addPlayerButton} className="addplayerButton" alt="Add Player" style={{
                                                             position: 'absolute',
                                                             top: '40%',
                                                             left: '48%',
@@ -1730,7 +1730,7 @@ export default function APLFantasy() {
                                                                     console.log()
                                                                     setShowInfoModal(true);
                                                                 }}
-                                                                src={infoIcon} alt="Jersey"
+                                                                src={infoIcon} className="info-icon" alt="Jersey"
                                                             />
                                                         }
                                                         <div className="player-name-bg">
@@ -1743,7 +1743,7 @@ export default function APLFantasy() {
                                                 </Grid.Container>
                                                 <div className="player-jersey midfielder-1">
                                                     <img src={JerseyImage} alt="Jersey" />
-                                                    {!selectedPlayers[3] && <img src={addPlayerButton} alt="Add Player" style={{
+                                                    {!selectedPlayers[3] && <img src={addPlayerButton} className="addplayerButton" alt="Add Player" style={{
                                                         position: 'absolute',
                                                         top: '50%',
                                                         left: '49%',
@@ -1763,7 +1763,7 @@ export default function APLFantasy() {
                                                                 console.log()
                                                                 setShowInfoModal(true);
                                                             }}
-                                                            src={infoIcon} alt="Jersey"
+                                                            src={infoIcon} className="info-icon" alt="Jersey"
                                                         />
                                                     }
                                                     <div className="player-name-bg">
@@ -1783,7 +1783,7 @@ export default function APLFantasy() {
                                                     }}>
                                                     <div className="player-jersey">
                                                         <img src={JerseyImage} alt="Jersey" />
-                                                        {!selectedPlayers[2] && <img src={addPlayerButton} alt="Add Player" style={{
+                                                        {!selectedPlayers[2] && <img src={addPlayerButton} className="addplayerButton" alt="Add Player" style={{
                                                             position: 'absolute',
                                                             top: '40%',
                                                             left: '48%',
@@ -1802,7 +1802,7 @@ export default function APLFantasy() {
                                                                     console.log()
                                                                     setShowInfoModal(true);
                                                                 }}
-                                                                src={infoIcon} alt="Jersey"
+                                                                src={infoIcon} className="info-icon" alt="Jersey"
                                                             />
                                                         }
                                                         <div className="player-name-bg">
@@ -1814,7 +1814,7 @@ export default function APLFantasy() {
                                                     </div>
                                                     <div className="player-jersey">
                                                         <img src={JerseyImage} alt="Jersey" />
-                                                        {!selectedPlayers[1] && <img src={addPlayerButton} alt="Add Player" style={{
+                                                        {!selectedPlayers[1] && <img src={addPlayerButton} className="addplayerButton" alt="Add Player" style={{
                                                             position: 'absolute',
                                                             top: '40%',
                                                             left: '49%',
@@ -1833,7 +1833,7 @@ export default function APLFantasy() {
                                                                     console.log()
                                                                     setShowInfoModal(true);
                                                                 }}
-                                                                src={infoIcon} alt="Jersey"
+                                                                src={infoIcon} className="info-icon" alt="Jersey"
                                                             />
                                                         }
                                                         <div className="player-name-bg">
@@ -1846,7 +1846,7 @@ export default function APLFantasy() {
                                                 </Grid.Container>
                                                 <div className="player-jersey">
                                                     <img src={JerseyImage} alt="Jersey" />
-                                                    {!selectedPlayers[0] && <img src={addPlayerButton} alt="Add Player" style={{
+                                                    {!selectedPlayers[0] && <img src={addPlayerButton} className="addplayerButton" alt="Add Player" style={{
                                                         position: 'absolute',
                                                         top: '40%',
                                                         left: '48%',
@@ -1865,7 +1865,7 @@ export default function APLFantasy() {
                                                                 console.log()
                                                                 setShowInfoModal(true);
                                                             }}
-                                                            src={infoIcon} alt="Jersey"
+                                                            src={infoIcon} className="info-icon" alt="Jersey"
                                                         />
                                                     }
                                                     <div className="player-name-bg">
@@ -1880,7 +1880,7 @@ export default function APLFantasy() {
                                             {formationState == 2 && <>
                                                 <div className="player-jersey midfielder-1">
                                                     <img src={JerseyImage} alt="Jersey" />
-                                                    {!selectedPlayers[5] && <img src={addPlayerButton} alt="Add Player" style={{
+                                                    {!selectedPlayers[5] && <img src={addPlayerButton} className="addplayerButton" alt="Add Player" style={{
                                                         position: 'absolute',
                                                         top: '50%',
                                                         left: '48%',
@@ -1899,7 +1899,7 @@ export default function APLFantasy() {
                                                                 console.log()
                                                                 setShowInfoModal(true);
                                                             }}
-                                                            src={infoIcon} alt="Jersey"
+                                                            src={infoIcon} className="info-icon" alt="Jersey"
                                                         />
                                                     }
                                                     <div className="player-name-bg">
@@ -1924,7 +1924,7 @@ export default function APLFantasy() {
                                                     }}>
                                                         <div className="player-jersey">
                                                             <img src={JerseyImage} alt="Jersey" />
-                                                            {!selectedPlayers[4] && <img src={addPlayerButton} alt="Add Player" style={{
+                                                            {!selectedPlayers[4] && <img src={addPlayerButton} className="addplayerButton" alt="Add Player" style={{
                                                                 position: 'absolute',
                                                                 top: '40%',
                                                                 left: '49%',
@@ -1943,7 +1943,7 @@ export default function APLFantasy() {
                                                                         console.log()
                                                                         setShowInfoModal(true);
                                                                     }}
-                                                                    src={infoIcon} alt="Jersey"
+                                                                    src={infoIcon} className="info-icon" alt="Jersey"
                                                                 />
                                                             }
                                                             <div className="player-name-bg">
@@ -1955,7 +1955,7 @@ export default function APLFantasy() {
                                                         </div>
                                                         <div className="player-jersey">
                                                             <img src={JerseyImage} alt="Jersey" />
-                                                            {!selectedPlayers[3] && <img src={addPlayerButton} alt="Add Player" style={{
+                                                            {!selectedPlayers[3] && <img src={addPlayerButton} className="addplayerButton" alt="Add Player" style={{
                                                                 position: 'absolute',
                                                                 top: '40%',
                                                                 left: '49%',
@@ -1974,7 +1974,7 @@ export default function APLFantasy() {
                                                                         console.log()
                                                                         setShowInfoModal(true);
                                                                     }}
-                                                                    src={infoIcon} alt="Jersey"
+                                                                    src={infoIcon} className="info-icon" alt="Jersey"
                                                                 />
                                                             }
                                                             <div className="player-name-bg">
@@ -1986,7 +1986,7 @@ export default function APLFantasy() {
                                                         </div>
                                                         <div className="player-jersey">
                                                             <img src={JerseyImage} alt="Jersey" />
-                                                            {!selectedPlayers[2] && <img src={addPlayerButton} alt="Add Player" style={{
+                                                            {!selectedPlayers[2] && <img src={addPlayerButton} className="addplayerButton" alt="Add Player" style={{
                                                                 position: 'absolute',
                                                                 top: '40%',
                                                                 left: '49%',
@@ -2005,7 +2005,7 @@ export default function APLFantasy() {
                                                                         console.log()
                                                                         setShowInfoModal(true);
                                                                     }}
-                                                                    src={infoIcon} alt="Jersey"
+                                                                    src={infoIcon} className="info-icon" alt="Jersey"
                                                                 />
                                                             }
                                                             <div className="player-name-bg">
@@ -2029,7 +2029,7 @@ export default function APLFantasy() {
 
                                                     <div className="player-jersey">
                                                         <img src={JerseyImage} alt="Jersey" />
-                                                        {!selectedPlayers[1] && <img src={addPlayerButton} alt="Add Player" style={{
+                                                        {!selectedPlayers[1] && <img src={addPlayerButton} className="addplayerButton" alt="Add Player" style={{
                                                             position: 'absolute',
                                                             top: '40%',
                                                             left: '49%',
@@ -2048,7 +2048,7 @@ export default function APLFantasy() {
                                                                     console.log()
                                                                     setShowInfoModal(true);
                                                                 }}
-                                                                src={infoIcon} alt="Jersey"
+                                                                src={infoIcon} className="info-icon" alt="Jersey"
                                                             />
                                                         }
                                                         <div className="player-name-bg">
@@ -2062,7 +2062,7 @@ export default function APLFantasy() {
                                                 </Grid.Container>
                                                 <div className="player-jersey">
                                                     <img src={JerseyImage} alt="Jersey" />
-                                                    {!selectedPlayers[0] && <img src={addPlayerButton} alt="Add Player" style={{
+                                                    {!selectedPlayers[0] && <img src={addPlayerButton} className="addplayerButton" alt="Add Player" style={{
                                                         position: 'absolute',
                                                         top: '40%',
                                                         left: '49%',
@@ -2081,7 +2081,7 @@ export default function APLFantasy() {
                                                                 console.log()
                                                                 setShowInfoModal(true);
                                                             }}
-                                                            src={infoIcon} alt="Jersey"
+                                                            src={infoIcon} className="info-icon" alt="Jersey"
                                                         />
                                                     }
                                                     <div className="player-name-bg">
@@ -2106,7 +2106,7 @@ export default function APLFantasy() {
                                                     }}>
                                                     <div className="player-jersey">
                                                         <img src={JerseyImage} alt="Jersey" />
-                                                        {!selectedPlayers[5] && <img src={addPlayerButton} alt="Add Player" style={{
+                                                        {!selectedPlayers[5] && <img src={addPlayerButton} className="addplayerButton" alt="Add Player" style={{
                                                             position: 'absolute',
                                                             top: '40%',
                                                             left: '49%',
@@ -2125,7 +2125,7 @@ export default function APLFantasy() {
                                                                     console.log()
                                                                     setShowInfoModal(true);
                                                                 }}
-                                                                src={infoIcon} alt="Jersey"
+                                                                src={infoIcon} className="info-icon" alt="Jersey"
                                                             />
                                                         }
                                                         <div className="player-name-bg">
@@ -2137,7 +2137,7 @@ export default function APLFantasy() {
                                                     </div>
                                                     <div className="player-jersey">
                                                         <img src={JerseyImage} alt="Jersey" />
-                                                        {!selectedPlayers[4] && <img src={addPlayerButton} alt="Add Player" style={{
+                                                        {!selectedPlayers[4] && <img src={addPlayerButton} className="addplayerButton" alt="Add Player" style={{
                                                             position: 'absolute',
                                                             top: '40%',
                                                             left: '49%',
@@ -2156,7 +2156,7 @@ export default function APLFantasy() {
                                                                     console.log()
                                                                     setShowInfoModal(true);
                                                                 }}
-                                                                src={infoIcon} alt="Jersey"
+                                                                src={infoIcon} className="info-icon" alt="Jersey"
                                                             />
                                                         }
                                                         <div className="player-name-bg">
@@ -2178,7 +2178,7 @@ export default function APLFantasy() {
                                                     }}>
                                                     <div className="player-jersey">
                                                         <img src={JerseyImage} alt="Jersey" />
-                                                        {!selectedPlayers[3] && <img src={addPlayerButton} alt="Add Player" style={{
+                                                        {!selectedPlayers[3] && <img src={addPlayerButton} className="addplayerButton" alt="Add Player" style={{
                                                             position: 'absolute',
                                                             top: '40%',
                                                             left: '49%',
@@ -2197,7 +2197,7 @@ export default function APLFantasy() {
                                                                     console.log()
                                                                     setShowInfoModal(true);
                                                                 }}
-                                                                src={infoIcon} alt="Jersey"
+                                                                src={infoIcon} className="info-icon" alt="Jersey"
                                                             />
                                                         }
                                                         <div className="player-name-bg">
@@ -2209,7 +2209,7 @@ export default function APLFantasy() {
                                                     </div>
                                                     <div className="player-jersey">
                                                         <img src={JerseyImage} alt="Jersey" />
-                                                        {!selectedPlayers[2] && <img src={addPlayerButton} alt="Add Player" style={{
+                                                        {!selectedPlayers[2] && <img src={addPlayerButton} className="addplayerButton" alt="Add Player" style={{
                                                             position: 'absolute',
                                                             top: '40%',
                                                             left: '49%',
@@ -2229,7 +2229,7 @@ export default function APLFantasy() {
                                                                     console.log()
                                                                     setShowInfoModal(true);
                                                                 }}
-                                                                src={infoIcon} alt="Jersey"
+                                                                src={infoIcon} className="info-icon" alt="Jersey"
                                                             />
                                                         }
                                                         <div className="player-name-bg">
@@ -2241,7 +2241,7 @@ export default function APLFantasy() {
                                                     </div>
                                                     <div className="player-jersey">
                                                         <img src={JerseyImage} alt="Jersey" />
-                                                        {!selectedPlayers[1] && <img src={addPlayerButton} alt="Add Player" style={{
+                                                        {!selectedPlayers[1] && <img src={addPlayerButton} className="addplayerButton" alt="Add Player" style={{
                                                             position: 'absolute',
                                                             top: '40%',
                                                             left: '49%',
@@ -2260,7 +2260,7 @@ export default function APLFantasy() {
                                                                     console.log()
                                                                     setShowInfoModal(true);
                                                                 }}
-                                                                src={infoIcon} alt="Jersey"
+                                                                src={infoIcon} className="info-icon" alt="Jersey"
                                                             />
                                                         }
                                                         <div className="player-name-bg">
@@ -2283,7 +2283,7 @@ export default function APLFantasy() {
 
                                                     <div className="player-jersey">
                                                         <img src={JerseyImage} alt="Jersey" />
-                                                        {!selectedPlayers[0] && <img src={addPlayerButton} alt="Add Player" style={{
+                                                        {!selectedPlayers[0] && <img src={addPlayerButton} className="addplayerButton" alt="Add Player" style={{
                                                             position: 'absolute',
                                                             top: '40%',
                                                             left: '49%',
@@ -2302,7 +2302,7 @@ export default function APLFantasy() {
                                                                     console.log()
                                                                     setShowInfoModal(true);
                                                                 }}
-                                                                src={infoIcon} alt="Jersey"
+                                                                src={infoIcon} className="info-icon" alt="Jersey"
                                                             />
                                                         }
                                                         <div className="player-name-bg">

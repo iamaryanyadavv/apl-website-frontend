@@ -31,6 +31,15 @@
 }
 @media only screen and (max-width: 768px)  {
 
+  .addplayerButton
+  {
+    position: relative;
+    width: "25px";
+    height: "25px";
+  }
+.info-icon{
+  height: "16px";
+}
   
 .fantasytitle {
   font-family: "Montserrat";
@@ -547,6 +556,8 @@
   font-weight: 300; /* Lighter font weight for the position */
   margin-top: 5px; /* Space between name and position */
 }
+
+
 .nextui-collapse-title {
   font-size: 8px;
   padding: 8px 16px;
