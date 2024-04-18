@@ -445,10 +445,11 @@
 
 .player-modal-image {
   /* Style adjustments for better centering */
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 200px;
   height: 175.26px;
-  margin-bottom: 10px; /* Space between image and team logo */
-  margin-right: 20px;
   /* 395b549b-f923-4e5b-9935-f649249f6178 Background Removed 1 */
 }
 

@@ -993,26 +993,29 @@ export default function APLFantasy() {
                                                                 width: "100%",
                                                                 justifyContent: "center",
                                                                 alignItems: "center",
-                                                                marginBottom: "20px", // Space between the info row and stats
+                                                                marginBottom: "10px", // Space between the info row and stats
                                                             }}
                                                         >
                                                             <Grid
                                                                 css={{
                                                                     display: "flex",
+                                                                    flexDirection:"row",
                                                                     justifyContent: "center", // Adjust to match design
                                                                     alignItems: "center",
+                                                                    gap:"20px",
+                                                                    width:"100%"
                                                                 }}
                                                             >
-                                                                                                                                    {isLoading &&  <Loading color='white' size={"xl"} />}
+                                                                {isLoading &&  <Loading type="points" />}
 
-                                                                <Image
+                                                                {!isLoading && <Image
                                                                 
                                                                 referrerpolicy="no-referrer" alt="Player Image" className="player-modal-image"
                                                                 src={selectedPlayer[4].split('/')[5]!=null?`https://lh3.google.com/u/0/d/${selectedPlayer[4].split('/')[5]}`:apl7players.find(p=>p[1]==selectedPlayer[0])[0]}
-                                                                        css={{ maxWidth: "100%", display: isLoading ? "none" : "block" }}
+                                                                        css={{ display: isLoading ? "none" : "flex", alignItems:"center", justifyContent:"center"}}
                                                                         onLoad={() => setIsLoading(false)}
                                                                         onError={() => setIsLoading(false)}
-                                                                        />
+                                                                        />}
                                                                 <Grid.Container css={{ flexDirection: "column", alignItems: "center", }}>
 
                                                                     <Grid.Container css={{ flexDirection: "row", alignItems: "center", justifyContent: "left" }}>
