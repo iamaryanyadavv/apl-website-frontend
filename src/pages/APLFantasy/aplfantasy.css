@@ -180,6 +180,18 @@
   justify-content: center;
 }
 
+.tutorial-modal{
+  width: 800px !important;
+}
+
+.nextui-c-grJsex-ikUaMfZ-css{
+  max-width: 1000px !important;
+}
+.nextui-c-grJsex-ikUaMfZ-css 
+{
+  width: 50vw !important; 
+}
+
 .football-field {
   background: url("footballfield.png") no-repeat center; /* This will align your background to the left */
   background-size: contain;

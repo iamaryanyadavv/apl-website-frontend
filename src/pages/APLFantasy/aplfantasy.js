@@ -1,4 +1,4 @@
-import { Grid, Input, Text, Dropdown, Col, Row, Modal, Button, Image , Loading} from "@nextui-org/react";
+import { Grid, Input, Text, Dropdown, Col, Row, Modal, Button, Image, Loading } from "@nextui-org/react";
 import React, { useEffect, useState } from "react";
 import './aplfantasy.css';
 import JerseyImage from "./jersey template 1.png"
@@ -19,27 +19,30 @@ import axios from "axios";
 import jwt_decode from "jwt-decode";
 import FantasyHelpLogo from '../../assets/images/FantasyHelp.png'
 import FantasyHelpCross from '../../assets/images/FantasyRulesCross.png'
-import T2 from "./ASSISTS.png"
-import T3 from "./ASSISTS.png"
-import T4 from "./ASSISTS.png"
-import T5 from "./ASSISTS.png"
+import T1 from "./T1.png"
+import T2 from "./T2.png"
+import T3 from "./T3.png"
+import T4 from "./T4.png"
+import T5 from "./T6.png"
+import T8 from "./T8.png"
+
 import captain from "./captain.png"
 import viceCaptain from "./vicecaptain.png"
 
 
 export default function APLFantasy() {
-    const genderOptions = ['Male','Female' ,'Non-Cis Man'];
+    const genderOptions = ['Male', 'Female', 'Non-Cis Man'];
     const [apl7players, setApl7players] = useState([])
     const positionOptions = ['Defender', 'Midfielder', 'Attacker'];
     const formationOptions = ['1-3-1', '2-1-2', '3-1-1'];
-    const priceOptions = ['10M-19M', '20M-29M', '30M-39M','40M']
+    const priceOptions = ['10M-19M', '20M-29M', '30M-39M', '40M-100M']
     const [wrongPosition, setWrongPosition] = useState("")
     const [playersData, setPlayerData] = useState([])
     const [selectedPlayer, setSelectedPlayer] = useState(null);
     const [user, setUser] = useState({})
     const [showFantasyHelp, setShowFantasyHelp] = useState(false)
     const [selectedJersey, setSelectedJersey] = useState(null);
-    const[currentPlayers, setCurrentPlayers] = useState([])
+    const [currentPlayers, setCurrentPlayers] = useState([])
     const [showTutorial, setShowTutorial] = useState(false)
     const [tutorialIndex, setTutorialIndex] = useState(0)
     const [showConfirmModal, setShowConfirmModal] = useState(false);
@@ -49,27 +52,36 @@ export default function APLFantasy() {
     const [fantasyCaptain, setFantasyCaptain] = useState("")
     const [fantasyViceCaptain, setFantasyViceCaptain] = useState("")
     const [showMaleModel, setShowMaleModel] = useState(false)
-    const [showNoPlayerModal,setShowNoPlayerModal] = useState(false)
+    const [showNoPlayerModal, setShowNoPlayerModal] = useState(false)
     const [noCapModal, setNoCapModal] = useState(false)
 
 
     const tutorialItems = [
         {
+            image: T1,
+            text: 'Click on the + icon on a jersey to add a player to that position',
+        },
+        {
             image: T2,
-            text: 'Search & filter for exactly what you are looking for. No need to scroll endlessly anymore.',
+            text: "You can then click on a player from the sidebar on the left, to add them to that position",
         },
         {
             image: T3,
-            text: "Unpublish items when sold so people don't keep spamming you. Edit if you made a mistake.",
+            text: "Click on the blue icon on the top right to view a player's information",
         },
         {
             image: T4,
-            text: `"Can someone send rasananda number?" "What's the THC website?" We have all of it right here.`,
+            text: "If you'd like, you can click on the two icons 'C' and 'VC' to make them your captain and/or vice captain",
+        },
+        {
+            image: T8,
+            text: "You can also choose a formation of your choice, and filter based on gender and price. Position filters are automatically applied!",
         },
         {
             image: T5,
-            text: "Enable notifications so you don't miss a single item! You will only be notified of items being posted.",
+            text: "Finally, click on the 'Save Team' button to save your fantasy team or reset, if you'd like to start over.",
         },
+
     ]
 
     const formationStructures = {
@@ -101,7 +113,7 @@ export default function APLFantasy() {
             const newSelectedPlayers = [...selectedPlayers];
             const playerData = playersData.find(p => p[0] === playerName);
             const playerCost = parseInt(playerData[3].replace('M', '')); // assuming the cost is in the format "XXM"
-    
+
             if (budget - playerCost >= 0) { // Check if budget allows adding this player
                 const requiredPosition = playerRoles[filters.formation][selectedJersey];
                 if (playerData[2].startsWith(requiredPosition) || requiredPosition === 'All') {
@@ -119,10 +131,10 @@ export default function APLFantasy() {
             }
         } else {
             setShowSelectJersey(true)
-            
+
         }
     };
-    
+
     const [filters, setFilters] = useState({
         gender: 'Male',
         position: '',
@@ -182,41 +194,41 @@ export default function APLFantasy() {
         const applyFilters = (players) => {
             let filteredPlayers = players;
             // Filter by gender if specified
-            if (filters.gender!=="") {
+            if (filters.gender !== "") {
                 filteredPlayers = filteredPlayers.filter(player =>
-                    player[17]=== filters.gender
+                    player[17] === filters.gender
                 );
             }
-    
+
             // Filter by position if specified
-            if (filters.position!=="") {
+            if (filters.position !== "") {
                 filteredPlayers = filteredPlayers.filter(player =>
-                    player[2]=== filters.position
+                    player[2] === filters.position
                 );
             }
-    
+
             // Filter by price (you will need to adjust the logic to parse and compare the price range)
             if (filters.price) {
                 const priceRange = filters.price.split('-');
                 const lowerBound = parseInt(priceRange[0]);
                 const upperBound = priceRange[1] ? parseInt(priceRange[1]) : Infinity;
-    
+
                 filteredPlayers = filteredPlayers.filter(player => {
                     const price = parseInt(player[3].replace('M', ''));
                     return price >= lowerBound && price <= upperBound;
                 });
             }
-    
+
             return filteredPlayers;
         };
-    
+
         // Apply filters to playersData
         console.log(playersData)
         const filteredPlayers = applyFilters(playersData);
         setCurrentPlayers(filteredPlayers);
         console.log(currentPlayers)
     }, [filters, playersData]);  // Dependencies include filters and the base playersData
-    
+
     useEffect(() => {
     }, [currentPlayers]);
     // This useEffect ensures that the default formation '2-1-2' is set on component mount
@@ -224,15 +236,15 @@ export default function APLFantasy() {
         setFilters(f => ({ ...f, formation: '1-3-1' }));
     }, []);
 
-    
 
 
-    const [selectedPlayers, setSelectedPlayers] = useState([localStorage.getItem('player1') || '',localStorage.getItem('player2') || '', 
+
+    const [selectedPlayers, setSelectedPlayers] = useState([localStorage.getItem('player1') || '', localStorage.getItem('player2') || '',
     localStorage.getItem('player3') || '',
-     localStorage.getItem('player4') || '',
-      localStorage.getItem('player5') || '',
-       localStorage.getItem('player6') || '',
-    localStorage.getItem('c') || '', 
+    localStorage.getItem('player4') || '',
+    localStorage.getItem('player5') || '',
+    localStorage.getItem('player6') || '',
+    localStorage.getItem('c') || '',
     localStorage.getItem('vc') || '']);
 
 
@@ -256,20 +268,20 @@ export default function APLFantasy() {
 
     useEffect(() => {
         const onStorage = () => {
-            setSelectedPlayers([localStorage.getItem('player1') || '',localStorage.getItem('player2') || '', 
+            setSelectedPlayers([localStorage.getItem('player1') || '', localStorage.getItem('player2') || '',
             localStorage.getItem('player3') || '',
-             localStorage.getItem('player4') || '',
-              localStorage.getItem('player5') || '',
-               localStorage.getItem('player6') || '',
-            localStorage.getItem('c') || '', 
+            localStorage.getItem('player4') || '',
+            localStorage.getItem('player5') || '',
+            localStorage.getItem('player6') || '',
+            localStorage.getItem('c') || '',
             localStorage.getItem('vc') || ''])
             setTeamCaptain(localStorage.getItem('c') || '')
             setViceCaptain(localStorage.getItem('vc') || '')
 
         };
-    
+
         window.addEventListener('storage', onStorage);
-    
+
         return () => {
             window.removeEventListener('storage', onStorage);
         };
@@ -282,7 +294,7 @@ export default function APLFantasy() {
                     const response = await fetch('https://aplapi.onrender.com/fantasy/apl7/playersubmissions');
                     const data = await response.json();
                     const playerData = data.values.find(player => player[1] === user.email); // Assuming the email is stored at the second index
-    
+
                     if (playerData) {
                         localStorage.setItem('player1', playerData[2]);
                         localStorage.setItem('player2', playerData[3]);
@@ -292,26 +304,26 @@ export default function APLFantasy() {
                         localStorage.setItem('player6', playerData[7]);
                         localStorage.setItem('c', playerData[8]);
                         localStorage.setItem('vc', playerData[9]);
-                        setSelectedPlayers([localStorage.getItem('player1') || '',localStorage.getItem('player2') || '', 
-    localStorage.getItem('player3') || '',
-     localStorage.getItem('player4') || '',
-      localStorage.getItem('player5') || '',
-       localStorage.getItem('player6') || '',
-    localStorage.getItem('c') || '', 
-    localStorage.getItem('vc') || ''])
-    setTeamCaptain(localStorage.getItem('c') || '')
-            setViceCaptain(localStorage.getItem('vc') || '')
+                        setSelectedPlayers([localStorage.getItem('player1') || '', localStorage.getItem('player2') || '',
+                        localStorage.getItem('player3') || '',
+                        localStorage.getItem('player4') || '',
+                        localStorage.getItem('player5') || '',
+                        localStorage.getItem('player6') || '',
+                        localStorage.getItem('c') || '',
+                        localStorage.getItem('vc') || ''])
+                        setTeamCaptain(localStorage.getItem('c') || '')
+                        setViceCaptain(localStorage.getItem('vc') || '')
                     }
                 } catch (error) {
                     console.error('Failed to fetch players data:', error);
                 }
             };
-    
+
             fetchPlayersData();
         }
     }, [user]); // This will run the effect when `user` changes
-    
-   
+
+
 
 
 
@@ -441,109 +453,97 @@ export default function APLFantasy() {
     };
     useEffect(() => {
         console.log(`Captain: ${teamcaptain}, Vice Captain: ${vicecaptain}`);
-      }, [teamcaptain, vicecaptain]);
+    }, [teamcaptain, vicecaptain]);
 
     const handleSubmit = () => {
         var noplayers = selectedPlayers.length
-        if(noplayers<6)
-        {
+        if (noplayers < 6) {
             setShowNoPlayerModal(true)
             return
         }
-        if(!teamcaptain)
-        {
+        if (!teamcaptain) {
             setNoCapModal(true)
             return
 
         }
-        if(!viceCaptain)
-        {
+        if (!viceCaptain) {
             setNoCapModal(true)
             return
 
         }
-        const p1 = playersData.find(p=>p[0]==selectedPlayers[0])
-        const p2 = playersData.find(p=>p[0]==selectedPlayers[1])
-        const p3 = playersData.find(p=>p[0]==selectedPlayers[2])
-        const p4 = playersData.find(p=>p[0]==selectedPlayers[3])
-        const p5 = playersData.find(p=>p[0]==selectedPlayers[4])
-        const p6 = playersData.find(p=>p[0]==selectedPlayers[5])
-        const c = playersData.find(p=>p[0]==teamcaptain)
-        const vc = playersData.find(p=>p[0]==vicecaptain)
+        const p1 = playersData.find(p => p[0] == selectedPlayers[0])
+        const p2 = playersData.find(p => p[0] == selectedPlayers[1])
+        const p3 = playersData.find(p => p[0] == selectedPlayers[2])
+        const p4 = playersData.find(p => p[0] == selectedPlayers[3])
+        const p5 = playersData.find(p => p[0] == selectedPlayers[4])
+        const p6 = playersData.find(p => p[0] == selectedPlayers[5])
+        const c = playersData.find(p => p[0] == teamcaptain)
+        const vc = playersData.find(p => p[0] == vicecaptain)
 
-        if(c[0]!==p1[0] && c[0]!==p2[0] && c[0]!=p3[0]&& c[0]!=p4[4]&&c[0]!=p5[0]&&c[0]!=p6[0])
-        {
+        if (c[0] !== p1[0] && c[0] !== p2[0] && c[0] != p3[0] && c[0] != p4[4] && c[0] != p5[0] && c[0] != p6[0]) {
             console.log('hi')
             console.log(p1[0])
             setNoCapModal(true)
             return
         }
-        if(vc[0]!==p1[0] &&vc[0]!==p2[0] &&vc[0]!=p3[0]&&vc[0]!=p4[4]&& vc[0]!=p5[0]&&vc[0]!=p6[0])
-        {
+        if (vc[0] !== p1[0] && vc[0] !== p2[0] && vc[0] != p3[0] && vc[0] != p4[4] && vc[0] != p5[0] && vc[0] != p6[0]) {
             console.log(vc)
             setNoCapModal(true)
             return
         }
 
         var male = 0
-        if(p1[17]=='Male')
-        {
+        if (p1[17] == 'Male') {
             male++
         }
-        if(p2[17]=='Male')
-        {
+        if (p2[17] == 'Male') {
             male++
         }
-        if(p3[17]=='Male')
-        {
+        if (p3[17] == 'Male') {
             male++
         }
-        if(p4[17]=='Male')
-        {
+        if (p4[17] == 'Male') {
             male++
         }
-        if(p5[17]=='Male')
-        {
+        if (p5[17] == 'Male') {
             male++
         }
-        if(p6[17]=='Male')
-        {
+        if (p6[17] == 'Male') {
             male++
         }
 
-        if(male>4)
-        {
+        if (male > 4) {
             setShowMaleModel(true)
             return
         }
 
-        
-            const payload = {
-                name: user.name, // You would need a mechanism to capture and store the team name
-                email:user.email,
-                player1: selectedPlayers[0],
-                player2: selectedPlayers[1],
-                player3: selectedPlayers[2],
-                player4: selectedPlayers[3],
-                player5: selectedPlayers[4],
-                player6: selectedPlayers[5],
-                captain: teamcaptain,
-                viceCaptain: vicecaptain
-            };
-    
-            axios.post('https://aplapi.onrender.com/fantasy/submit', payload) // Adjust the URL to wherever your server is hosted
-                .then(response => {
-                    setShowConfirmModal(true)
-                    console.log(response.data); // Handling the response from your server
-                })
-                .catch(error => {
-                    console.error('Submission failed:', error);
-                    alert('Submission failed. Please try again.');
-                });
 
-        
+        const payload = {
+            name: user.name, // You would need a mechanism to capture and store the team name
+            email: user.email,
+            player1: selectedPlayers[0],
+            player2: selectedPlayers[1],
+            player3: selectedPlayers[2],
+            player4: selectedPlayers[3],
+            player5: selectedPlayers[4],
+            player6: selectedPlayers[5],
+            captain: teamcaptain,
+            viceCaptain: vicecaptain
+        };
 
-      
+        axios.post('https://aplapi.onrender.com/fantasy/submit', payload) // Adjust the URL to wherever your server is hosted
+            .then(response => {
+                setShowConfirmModal(true)
+                console.log(response.data); // Handling the response from your server
+            })
+            .catch(error => {
+                console.error('Submission failed:', error);
+                alert('Submission failed. Please try again.');
+            });
+
+
+
+
     };
 
     const StatCard = ({ title, value, image }) => (
@@ -628,7 +628,7 @@ export default function APLFantasy() {
         var userObject = jwt_decode(response.credential)
         document.getElementById("GoogleButton").hidden = true;
         setUser(userObject)
-
+        setShowTutorial(true)
     }
 
     useEffect(() => {
@@ -647,6 +647,170 @@ export default function APLFantasy() {
 
     return (
         <div className="fantasy-game-container">
+            <Modal
+                open={showTutorial}
+                preventClose
+                aria-label="tutorial-modal"
+                className='tutorial-modal'
+                width={'800px'}
+            >
+                <Grid.Container css={{
+                    jc: 'center',
+                    alignItems: 'center',
+                    padding: '12px 0px',
+                    width: "100%"
+                }}>
+                    <Col css={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                    }}>
+                        <Text css={{
+                            '@xsMin': {
+                                fontSize: '$xl'
+                            },
+                            '@xsMax': {
+                                fontSize: '$lg'
+                            },
+                            fontWeight: '$medium',
+                            paddingBottom: '6px',
+                            borderStyle: 'solid',
+                            borderColor: '$gray600',
+                            borderWidth: '0px 0px 1px 0px',
+                            width: 500,
+                            marginBottom: '12px'
+                        }}>
+                            Welcome To Fantasy!
+                        </Text>
+
+                        <Col css={{
+                            display: 'flex',
+                            flexDirection: 'column',
+                            alignItems: 'center'
+                        }}>
+                            <Image
+                                src={tutorialItems[tutorialIndex].image}
+                                width={'70%'}
+                                
+                                css={{
+                                    objectFit: 'cover',
+                                    borderRadius: '0px 0px 12px 12px'
+                                }}
+                            />
+
+                            <Row css={{
+                                display: 'flex',
+                                flexDirection: 'row',
+                                jc: 'center',
+                                width: 'max-content',
+                                gap: 4,
+                                padding: '0px 8px',
+                                borderRadius: '8px',
+                                backgroundColor: '$gray300',
+                                alignItems: 'center',
+                                marginTop: '12px',
+                            }}>
+                                {tutorialItems.map((item, index) => (
+                                    <Text key={index} css={{
+                                        color: index === tutorialIndex ? '$red600' : '$gray600',
+                                        width: 'max-content',
+                                        lineHeight: '1.1'
+                                    }}>
+                                        •
+                                    </Text>
+                                ))}
+                            </Row>
+
+                            <Text css={{
+                                fontSize: '$md',
+                                fontWeight: '$medium',
+                                jc: 'center',
+                                alignItems: 'center',
+                                padding: '8px 16px 6px 16px'
+                            }}>
+                                {tutorialItems[tutorialIndex].text}
+                            </Text>
+
+
+                            {tutorialIndex === 0 &&
+                                <Button auto light color={'error'}
+                                    onClick={() => {
+                                        setTutorialIndex(prev => prev + 1)
+                                    }}
+                                >
+                                    Next →
+                                </Button>
+                            }
+                            {tutorialIndex >= 1 && tutorialIndex <= 2 &&
+                                <Row css={{
+                                    width: 'max-content',
+                                    jc: 'center',
+                                }}>
+                                    <Button auto light color={'default'}
+                                        onClick={() => {
+                                            setTutorialIndex(prev => prev - 1)
+                                        }}
+                                    >
+                                        ← Previous
+                                    </Button>
+                                    <Button auto light color={'error'}
+                                        onClick={() => {
+                                            setTutorialIndex(prev => prev + 1)
+                                        }}
+                                    >
+                                        Next →
+                                    </Button>
+                                </Row>
+                            }
+                            {tutorialIndex >= 3 && tutorialIndex <= 4 &&
+                                <Row css={{
+                                    width: 'max-content',
+                                    jc: 'center',
+                                }}>
+                                    <Button auto light color={'default'}
+                                        onClick={() => {
+                                            setTutorialIndex(prev => prev - 1)
+                                        }}
+                                    >
+                                        ← Previous
+                                    </Button>
+                                    <Button auto light color={'error'}
+                                        onClick={() => {
+                                            setTutorialIndex(prev => prev + 1)
+                                        }}
+                                    >
+                                        Next →
+                                    </Button>
+                                </Row>
+                            }
+                            {tutorialIndex >= 5 && tutorialIndex < 6 &&
+                                <Row css={{
+                                    width: 'max-content',
+                                    jc: 'center',
+                                }}>
+                                    <Button auto light color={'default'}
+                                        onClick={() => {
+                                            setTutorialIndex(prev => prev - 1)
+                                        }}
+                                    >
+                                        ← Previous
+                                    </Button>
+                                    <Button auto light color={'error'}
+                                        onClick={() => {
+                                            setShowTutorial(false)
+                                        }}
+                                    >
+                                        Let's go!
+                                    </Button>
+                                </Row>
+                            }
+                         
+
+                        </Col>
+
+                    </Col>
+                </Grid.Container>
+            </Modal>
 
             {currentPlayers && <Grid.Container
                 css={{
@@ -662,7 +826,7 @@ export default function APLFantasy() {
                             jc: 'center',
                             alignitems: 'center',
                             padding: '128px 0px 256px 0px',
-                            justifyContent:"center"
+                            justifyContent: "center"
                         }}>
                         <Col css={{
                             display: 'flex',
@@ -688,17 +852,17 @@ export default function APLFantasy() {
                         <Grid xs={12} md={8} css={{ padding: '0 10px' }}>
                             <Col className="leftcol">
                                 <Row className="title-container" css={{
-                                    display:"flex",
+                                    display: "flex",
                                     alignItems: 'center',
                                     justifyContent: 'center',
-                                    textAlign:"center"
+                                    textAlign: "center"
                                 }}>
-                                    <Text  css={{
-                                        textAlign:"center",
-                                    display:"flex",
-                                    alignItems: 'center',
-                                    justifyContent: 'center'
-                                }} className="fantasytitle">APL FANTASY GAME</Text>
+                                    <Text css={{
+                                        textAlign: "center",
+                                        display: "flex",
+                                        alignItems: 'center',
+                                        justifyContent: 'center'
+                                    }} className="fantasytitle">APL FANTASY GAME</Text>
                                     {showFantasyHelp ?
                                         <Image
                                             src={FantasyHelpCross}
@@ -817,7 +981,7 @@ export default function APLFantasy() {
                                     </Grid.Container>
                                     :
                                     <Grid.Container css={{
-                                        justifyContent: 'center'
+                                        justifyContent: 'center',
                                     }}>
                                         <Row css={{
                                             width: 'max-content',
@@ -844,449 +1008,311 @@ export default function APLFantasy() {
                                                 {user.name}'s Team
                                             </Text>
                                         </Row>
-                  
+
                                         <div className="football-field">
-                                   
-
-                                        <Modal
-                open={showTutorial}
-                preventClose
-                aria-label="tutorial-modal"
-            >
-                <Grid.Container css={{
-                    jc: 'center',
-                    alignItems: '',
-                    padding: '12px 0px',
-                }}>
-                    <Col css={{
-                        display: 'flex',
-                        flexDirection: 'column',
-                        alignItems: 'center',
-                    }}>
-                        <Text css={{
-                            '@xsMin': {
-                                fontSize: '$xl'
-                            },
-                            '@xsMax': {
-                                fontSize: '$lg'
-                            },
-                            fontWeight: '$medium',
-                            paddingBottom: '6px',
-                            borderStyle: 'solid',
-                            borderColor: '$gray600',
-                            borderWidth: '0px 0px 1px 0px',
-                            width: 318,
-                            marginBottom: '12px'
-                        }}>
-                            Welcome To UniSwap!
-                        </Text>
-
-                        <Col css={{
-                            display: 'flex',
-                            flexDirection: 'column',
-                            alignItems: 'center'
-                        }}>
-                            <Image
-                                src={tutorialItems[tutorialIndex].image}
-                                width={320}
-                                height={358}
-                                css={{
-                                    objectFit: 'cover',
-                                    borderRadius: '0px 0px 12px 12px'
-                                }}
-                            />
-
-                            <Row css={{
-                                display: 'flex',
-                                flexDirection: 'row',
-                                jc: 'center',
-                                width: 'max-content',
-                                gap: 4,
-                                padding: '0px 8px',
-                                borderRadius: '8px',
-                                backgroundColor: '$gray300',
-                                alignItems: 'center',
-                                marginTop: '12px',
-                            }}>
-                                {tutorialItems.map((item, index) => (
-                                    <Text key={index} css={{
-                                        color: index === tutorialIndex ? '$red600' : '$gray600',
-                                        width: 'max-content',
-                                        lineHeight: '1.1'
-                                    }}>
-                                        •
-                                    </Text>
-                                ))}
-                            </Row>
-
-                            <Text css={{
-                                fontSize: '$md',
-                                fontWeight: '$medium',
-                                jc: 'center',
-                                alignItems: 'center',
-                                padding: '8px 16px 6px 16px'
-                            }}>
-                                {tutorialItems[tutorialIndex].text}
-                            </Text>
 
 
-                            {tutorialIndex === 0 &&
-                                <Button auto light color={'error'}
-                                    onClick={() => {
-                                        setTutorialIndex(prev => prev + 1)
-                                    }}
-                                >
-                                    Next →
-                                </Button>
-                            }
-                            {tutorialIndex >= 1 && tutorialIndex <= 2 &&
-                                <Row css={{
-                                    width: 'max-content',
-                                    jc: 'center',
-                                }}>
-                                    <Button auto light color={'default'}
-                                        onClick={() => {
-                                            setTutorialIndex(prev => prev - 1)
-                                        }}
-                                    >
-                                        ← Previous
-                                    </Button>
-                                    <Button auto light color={'error'}
-                                        onClick={() => {
-                                            setTutorialIndex(prev => prev + 1)
-                                        }}
-                                    >
-                                        Next →
-                                    </Button>
-                                </Row>
-                            }
-                            {tutorialIndex === 3 &&
-                                <Row css={{
-                                    width: 'max-content',
-                                    jc: 'center',
-                                }}>
-                                    <Button auto light color={'default'}
-                                        onClick={() => {
-                                            setTutorialIndex(prev => prev - 1)
-                                        }}
-                                    >
-                                        ← Previous
-                                    </Button>
-                                    <Button auto light color={'error'}
-                                        onClick={() => {
-                                            setShowTutorial(false)
-                                        }}
-                                    >
-                                        Enable Notifications ✔️
-                                    </Button>
-                                </Row>
-                            }
 
-                        </Col>
-
-                    </Col>
-                </Grid.Container>
-            </Modal>
                                             <Modal
-                                    open={showPositionModal}
-                                    closeButton
-                                    onClose={()=>{setShowPositionModal(false)}}
-                                    >
-                                            <Modal.Header
-                                            css={{
-                                                paddingTop: '0px',
-                                            }}>
-                                                <Col>
-                                                    <Text 
+                                                open={showPositionModal}
+                                                closeButton
+                                                onClose={() => { setShowPositionModal(false) }}
+                                            >
+                                                <Modal.Header
                                                     css={{
-                                                        textAlign: 'center',
-                                                        fontSize: '$3xl',
-                                                        fontWeight: '$bold',
-                                                        color: '$red600',
-                                                        borderStyle: 'solid',
-                                                        borderWidth: '0px 0px 1px 0px',
-                                                        borderColor: '$gray800'
+                                                        paddingTop: '0px',
                                                     }}>
-                                                        Error!
-                                                    </Text>
-                                                    
-                                                </Col>
-                                            </Modal.Header>
-                                            <Modal.Body
-                                            css={{
-                                                paddingTop: '0px'
-                                            }}>
-                                                <Text 
-                                                css={{
-                                                    textAlign: 'center',
-                                                    fontSize: '$xl',
-                                                    fontWeight: '$bold',
-                                                    color: 'white',
-                                                }}>
-                                                    Please choose a {wrongPosition}
-                                                </Text>
-                                            </Modal.Body>
-                                            
-                                    </Modal>
+                                                    <Col>
+                                                        <Text
+                                                            css={{
+                                                                textAlign: 'center',
+                                                                fontSize: '$3xl',
+                                                                fontWeight: '$bold',
+                                                                color: '$red600',
+                                                                borderStyle: 'solid',
+                                                                borderWidth: '0px 0px 1px 0px',
+                                                                borderColor: '$gray800'
+                                                            }}>
+                                                            Error!
+                                                        </Text>
 
-                                    <Modal
-                                    open={noCapModal}
-                                    closeButton
-                                    onClose={()=>{setNoCapModal(false)}}
-                                    >
-                                            <Modal.Header
-                                            css={{
-                                                paddingTop: '0px',
-                                            }}>
-                                                <Col>
-                                                    <Text 
+                                                    </Col>
+                                                </Modal.Header>
+                                                <Modal.Body
                                                     css={{
-                                                        textAlign: 'center',
-                                                        fontSize: '$3xl',
-                                                        fontWeight: '$bold',
-                                                        color: '$red600',
-                                                        borderStyle: 'solid',
-                                                        borderWidth: '0px 0px 1px 0px',
-                                                        borderColor: '$gray800'
+                                                        paddingTop: '0px'
                                                     }}>
-                                                        Error!
+                                                    <Text
+                                                        css={{
+                                                            textAlign: 'center',
+                                                            fontSize: '$xl',
+                                                            fontWeight: '$bold',
+                                                            color: 'white',
+                                                        }}>
+                                                        Please choose a {wrongPosition}
                                                     </Text>
-                                                    
-                                                </Col>
-                                            </Modal.Header>
-                                            <Modal.Body
-                                            css={{
-                                                paddingTop: '0px'
-                                            }}>
-                                                <Text 
-                                                css={{
-                                                    textAlign: 'center',
-                                                    fontSize: '$xl',
-                                                    fontWeight: '$bold',
-                                                    color: 'white',
-                                                }}>
-                                                    Please choose a Captain or Vice Captain that belongs to your team!
-                                                </Text>
-                                            </Modal.Body>
-                                            
-                                    </Modal>
+                                                </Modal.Body>
 
+                                            </Modal>
 
-                                    <Modal
-                                    open={showNoPlayerModal}
-                                    closeButton
-                                    onClose={()=>{setShowNoPlayerModal(false)}}
-                                    >
-                                            <Modal.Header
-                                            css={{
-                                                paddingTop: '0px',
-                                            }}>
-                                                <Col>
-                                                    <Text 
+                                            <Modal
+                                                open={noCapModal}
+                                                closeButton
+                                                onClose={() => { setNoCapModal(false) }}
+                                            >
+                                                <Modal.Header
                                                     css={{
-                                                        textAlign: 'center',
-                                                        fontSize: '$3xl',
-                                                        fontWeight: '$bold',
-                                                        color: '$red600',
-                                                        borderStyle: 'solid',
-                                                        borderWidth: '0px 0px 1px 0px',
-                                                        borderColor: '$gray800'
+                                                        paddingTop: '0px',
                                                     }}>
-                                                        Error!
-                                                    </Text>
-                                                    
-                                                </Col>
-                                            </Modal.Header>
-                                            <Modal.Body
-                                            css={{
-                                                paddingTop: '0px'
-                                            }}>
-                                                <Text 
-                                                css={{
-                                                    textAlign: 'center',
-                                                    fontSize: '$xl',
-                                                    fontWeight: '$bold',
-                                                    color: 'white',
-                                                }}>
-                                                    You have not chosen 6 players!
-                                                </Text>
-                                            </Modal.Body>
-                                            
-                                    </Modal>
+                                                    <Col>
+                                                        <Text
+                                                            css={{
+                                                                textAlign: 'center',
+                                                                fontSize: '$3xl',
+                                                                fontWeight: '$bold',
+                                                                color: '$red600',
+                                                                borderStyle: 'solid',
+                                                                borderWidth: '0px 0px 1px 0px',
+                                                                borderColor: '$gray800'
+                                                            }}>
+                                                            Error!
+                                                        </Text>
 
-
-                                    <Modal
-                                    open={showMaleModel}
-                                    closeButton
-                                    onClose={()=>{setShowMaleModel(false)}}
-                                    >
-                                            <Modal.Header
-                                            css={{
-                                                paddingTop: '0px',
-                                            }}>
-                                                <Col>
-                                                    <Text 
+                                                    </Col>
+                                                </Modal.Header>
+                                                <Modal.Body
                                                     css={{
-                                                        textAlign: 'center',
-                                                        fontSize: '$3xl',
-                                                        fontWeight: '$bold',
-                                                        color: '$red600',
-                                                        borderStyle: 'solid',
-                                                        borderWidth: '0px 0px 1px 0px',
-                                                        borderColor: '$gray800'
+                                                        paddingTop: '0px'
                                                     }}>
-                                                        Error!
+                                                    <Text
+                                                        css={{
+                                                            textAlign: 'center',
+                                                            fontSize: '$xl',
+                                                            fontWeight: '$bold',
+                                                            color: 'white',
+                                                        }}>
+                                                        Please choose a Captain or Vice Captain that belongs to your team!
                                                     </Text>
-                                                    
-                                                </Col>
-                                            </Modal.Header>
-                                            <Modal.Body
-                                            css={{
-                                                paddingTop: '0px'
-                                            }}>
-                                                <Text 
-                                                css={{
-                                                    textAlign: 'center',
-                                                    fontSize: '$xl',
-                                                    fontWeight: '$bold',
-                                                    color: 'white',
-                                                }}>
-                                                    You cannot choose more than 4 male players!
-                                                </Text>
-                                            </Modal.Body>
-                                            
-                                    </Modal>
+                                                </Modal.Body>
+
+                                            </Modal>
 
 
-                                    <Modal
-                                    open={showSelectJersey}
-                                    closeButton
-                                    onClose={()=>{setShowSelectJersey(false)}}
-                                    >
-                                            <Modal.Header
-                                            css={{
-                                                paddingTop: '0px',
-                                            }}>
-                                                <Col>
-                                                    <Text 
+                                            <Modal
+                                                open={showNoPlayerModal}
+                                                closeButton
+                                                onClose={() => { setShowNoPlayerModal(false) }}
+                                            >
+                                                <Modal.Header
                                                     css={{
-                                                        textAlign: 'center',
-                                                        fontSize: '$3xl',
-                                                        fontWeight: '$bold',
-                                                        color: '$red600',
-                                                        borderStyle: 'solid',
-                                                        borderWidth: '0px 0px 1px 0px',
-                                                        borderColor: '$gray800'
+                                                        paddingTop: '0px',
                                                     }}>
-                                                        Error!
-                                                    </Text>
-                                                    
-                                                </Col>
-                                            </Modal.Header>
-                                            <Modal.Body
-                                            css={{
-                                                paddingTop: '0px'
-                                            }}>
-                                                <Text 
-                                                css={{
-                                                    textAlign: 'center',
-                                                    fontSize: '$xl',
-                                                    fontWeight: '$bold',
-                                                    color: 'white',
-                                                }}>
-                                                    Please select a jersey icon before choosing a player!
-                                                </Text>
-                                            </Modal.Body>
-                                            
-                                    </Modal>
+                                                    <Col>
+                                                        <Text
+                                                            css={{
+                                                                textAlign: 'center',
+                                                                fontSize: '$3xl',
+                                                                fontWeight: '$bold',
+                                                                color: '$red600',
+                                                                borderStyle: 'solid',
+                                                                borderWidth: '0px 0px 1px 0px',
+                                                                borderColor: '$gray800'
+                                                            }}>
+                                                            Error!
+                                                        </Text>
 
-
-
-
-
-
-                                    <Modal
-                                    open={showConfirmModal}
-                                    closeButton
-                                    onClose={()=>{setShowConfirmModal(false)}}
-                                    >
-                                            <Modal.Header
-                                            css={{
-                                                paddingTop: '0px',
-                                            }}>
-                                                <Col>
-                                                    <Text 
+                                                    </Col>
+                                                </Modal.Header>
+                                                <Modal.Body
                                                     css={{
-                                                        textAlign: 'center',
-                                                        fontSize: '$3xl',
-                                                        fontWeight: '$bold',
-                                                        color: '$green600',
-                                                        borderStyle: 'solid',
-                                                        borderWidth: '0px 0px 1px 0px',
-                                                        borderColor: '$gray800'
+                                                        paddingTop: '0px'
                                                     }}>
-                                                        Success!
+                                                    <Text
+                                                        css={{
+                                                            textAlign: 'center',
+                                                            fontSize: '$xl',
+                                                            fontWeight: '$bold',
+                                                            color: 'white',
+                                                        }}>
+                                                        You have not chosen 6 players!
                                                     </Text>
-                                                    
-                                                </Col>
-                                            </Modal.Header>
-                                            <Modal.Body
-                                            css={{
-                                                paddingTop: '0px'
-                                            }}>
-                                                <Text 
-                                                css={{
-                                                    textAlign: 'center',
-                                                    fontSize: '$xl',
-                                                    fontWeight: '$bold',
-                                                    color: 'white',
-                                                }}>
-                                                    Fantasy team saved successfully!
-                                                </Text>
-                                            </Modal.Body>
-                                            
-                                    </Modal>
-                                    <Modal
-                                    open={showRulesModal}
-                                    closeButton
-                                    onClose={()=>{setShowRulesModal(false)}}
-                                    >
-                                            <Modal.Header
-                                            css={{
-                                                paddingTop: '0px',
-                                            }}>
-                                                <Col>
-                                                    <Text 
+                                                </Modal.Body>
+
+                                            </Modal>
+
+
+                                            <Modal
+                                                open={showMaleModel}
+                                                closeButton
+                                                onClose={() => { setShowMaleModel(false) }}
+                                            >
+                                                <Modal.Header
                                                     css={{
-                                                        textAlign: 'center',
-                                                        fontSize: '$3xl',
-                                                        fontWeight: '$bold',
-                                                        color: '$red600',
-                                                        borderStyle: 'solid',
-                                                        borderWidth: '0px 0px 1px 0px',
-                                                        borderColor: '$gray800'
+                                                        paddingTop: '0px',
                                                     }}>
-                                                        Error!
+                                                    <Col>
+                                                        <Text
+                                                            css={{
+                                                                textAlign: 'center',
+                                                                fontSize: '$3xl',
+                                                                fontWeight: '$bold',
+                                                                color: '$red600',
+                                                                borderStyle: 'solid',
+                                                                borderWidth: '0px 0px 1px 0px',
+                                                                borderColor: '$gray800'
+                                                            }}>
+                                                            Error!
+                                                        </Text>
+
+                                                    </Col>
+                                                </Modal.Header>
+                                                <Modal.Body
+                                                    css={{
+                                                        paddingTop: '0px'
+                                                    }}>
+                                                    <Text
+                                                        css={{
+                                                            textAlign: 'center',
+                                                            fontSize: '$xl',
+                                                            fontWeight: '$bold',
+                                                            color: 'white',
+                                                        }}>
+                                                        You cannot choose more than 4 male players!
                                                     </Text>
-                                                    
-                                                </Col>
-                                            </Modal.Header>
-                                            <Modal.Body
-                                            css={{
-                                                paddingTop: '0px'
-                                            }}>
-                                                <Text 
-                                                css={{
-                                                    textAlign: 'center',
-                                                    fontSize: '$xl',
-                                                    fontWeight: '$bold',
-                                                    color: 'white',
-                                                }}>
-                                                    You have gone over your total budget!
-                                                </Text>
-                                            </Modal.Body>
-                                            
-                                    </Modal>
+                                                </Modal.Body>
+
+                                            </Modal>
+
+
+                                            <Modal
+                                                open={showSelectJersey}
+                                                closeButton
+                                                onClose={() => { setShowSelectJersey(false) }}
+                                            >
+                                                <Modal.Header
+                                                    css={{
+                                                        paddingTop: '0px',
+                                                    }}>
+                                                    <Col>
+                                                        <Text
+                                                            css={{
+                                                                textAlign: 'center',
+                                                                fontSize: '$3xl',
+                                                                fontWeight: '$bold',
+                                                                color: '$red600',
+                                                                borderStyle: 'solid',
+                                                                borderWidth: '0px 0px 1px 0px',
+                                                                borderColor: '$gray800'
+                                                            }}>
+                                                            Error!
+                                                        </Text>
+
+                                                    </Col>
+                                                </Modal.Header>
+                                                <Modal.Body
+                                                    css={{
+                                                        paddingTop: '0px'
+                                                    }}>
+                                                    <Text
+                                                        css={{
+                                                            textAlign: 'center',
+                                                            fontSize: '$xl',
+                                                            fontWeight: '$bold',
+                                                            color: 'white',
+                                                        }}>
+                                                        Please select a jersey icon before choosing a player!
+                                                    </Text>
+                                                </Modal.Body>
+
+                                            </Modal>
+
+
+
+
+
+
+                                            <Modal
+                                                open={showConfirmModal}
+                                                closeButton
+                                                onClose={() => { setShowConfirmModal(false) }}
+                                            >
+                                                <Modal.Header
+                                                    css={{
+                                                        paddingTop: '0px',
+                                                    }}>
+                                                    <Col>
+                                                        <Text
+                                                            css={{
+                                                                textAlign: 'center',
+                                                                fontSize: '$3xl',
+                                                                fontWeight: '$bold',
+                                                                color: '$green600',
+                                                                borderStyle: 'solid',
+                                                                borderWidth: '0px 0px 1px 0px',
+                                                                borderColor: '$gray800'
+                                                            }}>
+                                                            Success!
+                                                        </Text>
+
+                                                    </Col>
+                                                </Modal.Header>
+                                                <Modal.Body
+                                                    css={{
+                                                        paddingTop: '0px'
+                                                    }}>
+                                                    <Text
+                                                        css={{
+                                                            textAlign: 'center',
+                                                            fontSize: '$xl',
+                                                            fontWeight: '$bold',
+                                                            color: 'white',
+                                                        }}>
+                                                        Fantasy team saved successfully!
+                                                    </Text>
+                                                </Modal.Body>
+
+                                            </Modal>
+                                            <Modal
+                                                open={showRulesModal}
+                                                closeButton
+                                                onClose={() => { setShowRulesModal(false) }}
+                                            >
+                                                <Modal.Header
+                                                    css={{
+                                                        paddingTop: '0px',
+                                                    }}>
+                                                    <Col>
+                                                        <Text
+                                                            css={{
+                                                                textAlign: 'center',
+                                                                fontSize: '$3xl',
+                                                                fontWeight: '$bold',
+                                                                color: '$red600',
+                                                                borderStyle: 'solid',
+                                                                borderWidth: '0px 0px 1px 0px',
+                                                                borderColor: '$gray800'
+                                                            }}>
+                                                            Error!
+                                                        </Text>
+
+                                                    </Col>
+                                                </Modal.Header>
+                                                <Modal.Body
+                                                    css={{
+                                                        paddingTop: '0px'
+                                                    }}>
+                                                    <Text
+                                                        css={{
+                                                            textAlign: 'center',
+                                                            fontSize: '$xl',
+                                                            fontWeight: '$bold',
+                                                            color: 'white',
+                                                        }}>
+                                                        You have gone over your total budget!
+                                                    </Text>
+                                                </Modal.Body>
+
+                                            </Modal>
 
 
                                             <Modal
@@ -1326,28 +1352,28 @@ export default function APLFantasy() {
                                                             <Grid
                                                                 css={{
                                                                     display: "flex",
-                                                                    flexDirection:"row",
+                                                                    flexDirection: "row",
                                                                     justifyContent: "center", // Adjust to match design
                                                                     alignItems: "center",
-                                                                    gap:"20px",
-                                                                    width:"95%"
+                                                                    gap: "20px",
+                                                                    width: "95%"
                                                                 }}
                                                             >
                                                                 <Image
-                                                                
-                                                                referrerpolicy="no-referrer" alt="Player Image" className="player-modal-image"
-                                                                src={selectedPlayer[4].split('/')[5]!=null?`https://lh3.google.com/u/0/d/${selectedPlayer[4].split('/')[5]}`:apl7players.find(p=>p[1]==selectedPlayer[0])[0]}
-                                                                        css={{display:"flex",alignItems:"center", justifyContent:"center"}}
-                                                                        showSkeleton
-                                                                        />
+
+                                                                    referrerpolicy="no-referrer" alt="Player Image" className="player-modal-image"
+                                                                    src={selectedPlayer[4].split('/')[5] != null ? `https://lh3.google.com/u/0/d/${selectedPlayer[4].split('/')[5]}` : apl7players.find(p => p[1] == selectedPlayer[0])[0]}
+                                                                    css={{ display: "flex", alignItems: "center", justifyContent: "center" }}
+                                                                    showSkeleton
+                                                                />
                                                                 <Grid.Container css={{ flexDirection: "column", alignItems: "center", }}>
                                                                     <Grid.Container css={{ flexDirection: "row", alignItems: "center", justifyContent: "left" }}>
 
                                                                         <img
-                                                                        src={selectedPlayer[5]} 
-                                                                        className="player-modal-team-logo" 
-                                                                        alt="Player Image"
-                                                                        css={{ maxWidth: "100%", display: isLoading ? "none" : "block" }}
+                                                                            src={selectedPlayer[5]}
+                                                                            className="player-modal-team-logo"
+                                                                            alt="Player Image"
+                                                                            css={{ maxWidth: "100%", display: isLoading ? "none" : "block" }}
                                                                         />
 
                                                                         <Text className="player-modal-team-name">{selectedPlayer[1]}</Text>
@@ -1359,55 +1385,56 @@ export default function APLFantasy() {
                                                                         <Text className="player-modal-position">{selectedPlayer[2]}</Text>
                                                                         <Text className="player-modal-price">{selectedPlayer[3]}</Text>
                                                                     </Row>
-                                                                   
+
 
                                                                 </Grid.Container>
                                                                 <Grid
-                                                                css={{
-                                                                    display: "flex",
-                                                                    flexDirection:"column",
-                                                                    justifyContent: "center", // Adjust to match design
-                                                                    alignItems: "center",
-                                                                    width:"5vw",
-                                                                    padding:"10px",
-                                                                    gap:"10px"
-                                                                }}
-                                                            >
-                                                                <div
-                                                                // key={teamcaptain}
-                                                                 style={{backgroundColor: teamcaptain === selectedPlayer[0] ? 'green' : 'transparent',
-}}>
-                                                                <Image
-                                                                     onClick={() => setTeamCaptain(currentCaptain =>
-                                                                        currentCaptain === selectedPlayer[0] ? "" : selectedPlayer[0]
-                                                                    )}
-                                                                    style={{
-                                                                        height: "50px",
-                                                                        width: "55px",
-                                                                        cursor: 'pointer',
+                                                                    css={{
+                                                                        display: "flex",
+                                                                        flexDirection: "column",
+                                                                        justifyContent: "center", // Adjust to match design
+                                                                        alignItems: "center",
+                                                                        width: "5vw",
+                                                                        padding: "10px",
+                                                                        gap: "10px"
                                                                     }}
-                                                                    src={captain}
-                                                                    alt="Team Captain"
-                                                                />
-                                                                </div>
-                                                                <div
-                                                                 style={{backgroundColor: vicecaptain === selectedPlayer[0] ? 'red' : 'transparent',}}>
-                                                                <Image
-                                                                    onClick={() => setViceCaptain(vicecaptain === selectedPlayer[0]?"":selectedPlayer[0])}
-                                                                    style={{
-                                                                        height: "50px",
-                                                                        width: "55px",
-                                                                        cursor: 'pointer',
-                                                                    }}
-                                                                    src={viceCaptain}
-                                                                    alt="Team Vice Captain"
-                                                                />
-                                                                </div>
+                                                                >
+                                                                    <div
+                                                                        // key={teamcaptain}
+                                                                        style={{
+                                                                            backgroundColor: teamcaptain === selectedPlayer[0] ? 'green' : 'transparent',
+                                                                        }}>
+                                                                        <Image
+                                                                            onClick={() => setTeamCaptain(currentCaptain =>
+                                                                                currentCaptain === selectedPlayer[0] ? "" : selectedPlayer[0]
+                                                                            )}
+                                                                            style={{
+                                                                                height: "50px",
+                                                                                width: "55px",
+                                                                                cursor: 'pointer',
+                                                                            }}
+                                                                            src={captain}
+                                                                            alt="Team Captain"
+                                                                        />
+                                                                    </div>
+                                                                    <div
+                                                                        style={{ backgroundColor: vicecaptain === selectedPlayer[0] ? 'red' : 'transparent', }}>
+                                                                        <Image
+                                                                            onClick={() => setViceCaptain(vicecaptain === selectedPlayer[0] ? "" : selectedPlayer[0])}
+                                                                            style={{
+                                                                                height: "50px",
+                                                                                width: "55px",
+                                                                                cursor: 'pointer',
+                                                                            }}
+                                                                            src={viceCaptain}
+                                                                            alt="Team Vice Captain"
+                                                                        />
+                                                                    </div>
 
 
-                                                            </Grid>
-                                                                
-                                                                    
+                                                                </Grid>
+
+
                                                             </Grid>
                                                         </Grid.Container>
 
@@ -1635,9 +1662,9 @@ export default function APLFantasy() {
                                                     }}>
                                                     <div className="player-jersey">
                                                         <img src={JerseyImage} alt="Jersey" />
-                                                       {!selectedPlayers[5] && <img 
-                                                            src={addPlayerButton} 
-                                                            alt="Add Player" 
+                                                        {!selectedPlayers[5] && <img
+                                                            src={addPlayerButton}
+                                                            alt="Add Player"
                                                             style={{
                                                                 position: 'absolute',
                                                                 top: '40%',
@@ -1648,22 +1675,22 @@ export default function APLFantasy() {
                                                                 height: "25px",
                                                                 filter: selectedJersey === 5 ? 'invert(100%)' : 'none'  // Inverts the colors to make black white
 
-                                                            }} 
+                                                            }}
                                                             className={`${selectedJersey === 5 ? 'green-filter pulsing' : ''}`}
-                                                            onClick={() => {setSelectedJersey(5);handlePositionChange("Attacker")}}
+                                                            onClick={() => { setSelectedJersey(5); handlePositionChange("Attacker") }}
                                                         />}
                                                         {
                                                             selectedPlayers[5] && <img
-                                                            style={{position:"absolute", height: "24px", margin: "2px", zIndex: "1000", width:"24px", cursor:"pointer" }}
-                                                            onClick={(e) => {
-                                                                e.stopPropagation();  // Prevent the addPlayer event from firing
-                                                                setSelectedPlayer(playersData.find(p => p[0] === selectedPlayers[5]));
-                                                                setShowInfoModal(true);
-                                                            }}
-                                                            src={infoIcon} alt="Jersey"
-                                                        />
+                                                                style={{ position: "absolute", height: "24px", margin: "2px", zIndex: "1000", width: "24px", cursor: "pointer" }}
+                                                                onClick={(e) => {
+                                                                    e.stopPropagation();  // Prevent the addPlayer event from firing
+                                                                    setSelectedPlayer(playersData.find(p => p[0] === selectedPlayers[5]));
+                                                                    setShowInfoModal(true);
+                                                                }}
+                                                                src={infoIcon} alt="Jersey"
+                                                            />
                                                         }
-                                                        
+
                                                         <div className="player-name-bg">
                                                             <Text className="player-name-text">{selectedPlayers[5]}</Text>
                                                         </div>
@@ -1683,18 +1710,18 @@ export default function APLFantasy() {
                                                             width: "25px",
                                                             height: "25px",
                                                             filter: selectedJersey === 4 ? 'invert(100%)' : 'none'  // Inverts the colors to make black white
-                                                        }} onClick={() =>{ setSelectedJersey(4); handlePositionChange("Attacker")}} />}
-                                                         {
+                                                        }} onClick={() => { setSelectedJersey(4); handlePositionChange("Attacker") }} />}
+                                                        {
                                                             selectedPlayers[4] && <img
-                                                            style={{position:"absolute", height: "24px", margin: "2px", zIndex: "1000", width:"24px", cursor:"pointer" }}
-                                                            onClick={(e) => {
-                                                                e.stopPropagation();  // Prevent the addPlayer event from firing
-                                                                setSelectedPlayer(playersData.find(p => p[0] === selectedPlayers[4]));
-                                                                console.log()
-                                                                setShowInfoModal(true);
-                                                            }}
-                                                            src={infoIcon} alt="Jersey"
-                                                        />
+                                                                style={{ position: "absolute", height: "24px", margin: "2px", zIndex: "1000", width: "24px", cursor: "pointer" }}
+                                                                onClick={(e) => {
+                                                                    e.stopPropagation();  // Prevent the addPlayer event from firing
+                                                                    setSelectedPlayer(playersData.find(p => p[0] === selectedPlayers[4]));
+                                                                    console.log()
+                                                                    setShowInfoModal(true);
+                                                                }}
+                                                                src={infoIcon} alt="Jersey"
+                                                            />
                                                         }
                                                         <div className="player-name-bg">
                                                             <Text className="player-name-text">{selectedPlayers[4]}</Text>
@@ -1716,10 +1743,10 @@ export default function APLFantasy() {
                                                         height: "25px",
                                                         filter: selectedJersey === 3 ? 'invert(100%)' : 'none'  // Inverts the colors to make black white
 
-                                                    }} onClick={() =>{ setSelectedJersey(3); handlePositionChange("Midfielder")}} />}
-                                                     {
-                                                            selectedPlayers[3] && <img
-                                                            style={{position:"absolute", height: "24px", margin: "2px", zIndex: "1000", width:"24px", cursor:"pointer" }}
+                                                    }} onClick={() => { setSelectedJersey(3); handlePositionChange("Midfielder") }} />}
+                                                    {
+                                                        selectedPlayers[3] && <img
+                                                            style={{ position: "absolute", height: "24px", margin: "2px", zIndex: "1000", width: "24px", cursor: "pointer" }}
                                                             onClick={(e) => {
                                                                 e.stopPropagation();  // Prevent the addPlayer event from firing
                                                                 setSelectedPlayer(playersData.find(p => p[0] === selectedPlayers[3]));
@@ -1728,7 +1755,7 @@ export default function APLFantasy() {
                                                             }}
                                                             src={infoIcon} alt="Jersey"
                                                         />
-                                                        }
+                                                    }
                                                     <div className="player-name-bg">
                                                         <Text className="player-name-text">{selectedPlayers[3]}</Text>
                                                     </div>
@@ -1755,18 +1782,18 @@ export default function APLFantasy() {
                                                             width: "25px",
                                                             height: "25px",
                                                             filter: selectedJersey === 2 ? 'invert(100%)' : 'none'  // Inverts the colors to make black white
-                                                        }} onClick={() =>{setSelectedJersey(2); handlePositionChange("Defender")} } />}
-                                                         {
+                                                        }} onClick={() => { setSelectedJersey(2); handlePositionChange("Defender") }} />}
+                                                        {
                                                             selectedPlayers[2] && <img
-                                                            style={{position:"absolute", height: "24px", margin: "2px", zIndex: "1000", width:"24px", cursor:"pointer" }}
-                                                            onClick={(e) => {
-                                                                e.stopPropagation();  // Prevent the addPlayer event from firing
-                                                                setSelectedPlayer(playersData.find(p => p[0] === selectedPlayers[2]));
-                                                                console.log()
-                                                                setShowInfoModal(true);
-                                                            }}
-                                                            src={infoIcon} alt="Jersey"
-                                                        />
+                                                                style={{ position: "absolute", height: "24px", margin: "2px", zIndex: "1000", width: "24px", cursor: "pointer" }}
+                                                                onClick={(e) => {
+                                                                    e.stopPropagation();  // Prevent the addPlayer event from firing
+                                                                    setSelectedPlayer(playersData.find(p => p[0] === selectedPlayers[2]));
+                                                                    console.log()
+                                                                    setShowInfoModal(true);
+                                                                }}
+                                                                src={infoIcon} alt="Jersey"
+                                                            />
                                                         }
                                                         <div className="player-name-bg">
                                                             <Text className="player-name-text">{selectedPlayers[2]}</Text>
@@ -1786,18 +1813,18 @@ export default function APLFantasy() {
                                                             width: "25px",
                                                             height: "25px",
                                                             filter: selectedJersey === 1 ? 'invert(100%)' : 'none'  // Inverts the colors to make black white
-                                                        }} onClick={() => {setSelectedJersey(1); handlePositionChange("Defender")}}/>}
-                                                         {
+                                                        }} onClick={() => { setSelectedJersey(1); handlePositionChange("Defender") }} />}
+                                                        {
                                                             selectedPlayers[1] && <img
-                                                            style={{position:"absolute", height: "24px", margin: "2px", zIndex: "1000", width:"24px", cursor:"pointer" }}
-                                                            onClick={(e) => {
-                                                                e.stopPropagation();  // Prevent the addPlayer event from firing
-                                                                setSelectedPlayer(playersData.find(p => p[0] === selectedPlayers[1]));
-                                                                console.log()
-                                                                setShowInfoModal(true);
-                                                            }}
-                                                            src={infoIcon} alt="Jersey"
-                                                        />
+                                                                style={{ position: "absolute", height: "24px", margin: "2px", zIndex: "1000", width: "24px", cursor: "pointer" }}
+                                                                onClick={(e) => {
+                                                                    e.stopPropagation();  // Prevent the addPlayer event from firing
+                                                                    setSelectedPlayer(playersData.find(p => p[0] === selectedPlayers[1]));
+                                                                    console.log()
+                                                                    setShowInfoModal(true);
+                                                                }}
+                                                                src={infoIcon} alt="Jersey"
+                                                            />
                                                         }
                                                         <div className="player-name-bg">
                                                             <Text className="player-name-text">{selectedPlayers[1]}</Text>
@@ -1817,11 +1844,11 @@ export default function APLFantasy() {
                                                         cursor: 'pointer',
                                                         width: "25px",
                                                         height: "25px",
-                                                        filter: selectedJersey === 0? 'invert(100%)' : 'none'  // Inverts the colors to make black white
-                                                    }} onClick={() =>{setSelectedJersey(0); handlePositionChange("Goalkeeper")} } />}
-                                                     {
-                                                            selectedPlayers[0] && <img
-                                                            style={{position:"absolute", height: "24px", margin: "2px", zIndex: "1000", width:"24px", cursor:"pointer" }}
+                                                        filter: selectedJersey === 0 ? 'invert(100%)' : 'none'  // Inverts the colors to make black white
+                                                    }} onClick={() => { setSelectedJersey(0); handlePositionChange("Goalkeeper") }} />}
+                                                    {
+                                                        selectedPlayers[0] && <img
+                                                            style={{ position: "absolute", height: "24px", margin: "2px", zIndex: "1000", width: "24px", cursor: "pointer" }}
                                                             onClick={(e) => {
                                                                 e.stopPropagation();  // Prevent the addPlayer event from firing
                                                                 setSelectedPlayer(playersData.find(p => p[0] === selectedPlayers[0]));
@@ -1830,7 +1857,7 @@ export default function APLFantasy() {
                                                             }}
                                                             src={infoIcon} alt="Jersey"
                                                         />
-                                                        }
+                                                    }
                                                     <div className="player-name-bg">
                                                         <Text className="player-name-text">{selectedPlayers[0]}</Text>
                                                     </div>
@@ -1852,10 +1879,10 @@ export default function APLFantasy() {
                                                         width: "25px",
                                                         height: "25px",
                                                         filter: selectedJersey === 5 ? 'invert(100%)' : 'none'  // Inverts the colors to make black white
-                                                    }} onClick={() => {setSelectedJersey(5); handlePositionChange("Attacker")} }  />}
-                                                     {
-                                                            selectedPlayers[5] && <img
-                                                            style={{position:"absolute", height: "24px", margin: "2px", zIndex: "1000", width:"24px", cursor:"pointer" }}
+                                                    }} onClick={() => { setSelectedJersey(5); handlePositionChange("Attacker") }} />}
+                                                    {
+                                                        selectedPlayers[5] && <img
+                                                            style={{ position: "absolute", height: "24px", margin: "2px", zIndex: "1000", width: "24px", cursor: "pointer" }}
                                                             onClick={(e) => {
                                                                 e.stopPropagation();  // Prevent the addPlayer event from firing
                                                                 setSelectedPlayer(playersData.find(p => p[0] === selectedPlayers[5]));
@@ -1864,7 +1891,7 @@ export default function APLFantasy() {
                                                             }}
                                                             src={infoIcon} alt="Jersey"
                                                         />
-                                                        }
+                                                    }
                                                     <div className="player-name-bg">
                                                         <Text className="player-name-text">{selectedPlayers[5]}</Text>
                                                     </div>
@@ -1895,20 +1922,20 @@ export default function APLFantasy() {
                                                                 cursor: 'pointer',
                                                                 width: "25px",
                                                                 height: "25px",
-                                                                filter: selectedJersey === 4? 'invert(100%)' : 'none'  // Inverts the colors to make black white
-                                                            }} onClick={() =>{setSelectedJersey(4); handlePositionChange("Midfielder")} }  />}
+                                                                filter: selectedJersey === 4 ? 'invert(100%)' : 'none'  // Inverts the colors to make black white
+                                                            }} onClick={() => { setSelectedJersey(4); handlePositionChange("Midfielder") }} />}
                                                             {
-                                                            selectedPlayers[4] && <img
-                                                            style={{position:"absolute", height: "24px", margin: "2px", zIndex: "1000", width:"24px", cursor:"pointer" }}
-                                                            onClick={(e) => {
-                                                                e.stopPropagation();  // Prevent the addPlayer event from firing
-                                                                setSelectedPlayer(playersData.find(p => p[0] === selectedPlayers[4]));
-                                                                console.log()
-                                                                setShowInfoModal(true);
-                                                            }}
-                                                            src={infoIcon} alt="Jersey"
-                                                        />
-                                                        }
+                                                                selectedPlayers[4] && <img
+                                                                    style={{ position: "absolute", height: "24px", margin: "2px", zIndex: "1000", width: "24px", cursor: "pointer" }}
+                                                                    onClick={(e) => {
+                                                                        e.stopPropagation();  // Prevent the addPlayer event from firing
+                                                                        setSelectedPlayer(playersData.find(p => p[0] === selectedPlayers[4]));
+                                                                        console.log()
+                                                                        setShowInfoModal(true);
+                                                                    }}
+                                                                    src={infoIcon} alt="Jersey"
+                                                                />
+                                                            }
                                                             <div className="player-name-bg">
                                                                 <Text className="player-name-text">{selectedPlayers[4]}</Text>
                                                             </div>
@@ -1926,20 +1953,20 @@ export default function APLFantasy() {
                                                                 cursor: 'pointer',
                                                                 width: "25px",
                                                                 height: "25px",
-                                                                filter: selectedJersey === 3? 'invert(100%)' : 'none'  // Inverts the colors to make black white
-                                                            }} onClick={() => {setSelectedJersey(3); handlePositionChange("Midfielder")} }  />}
+                                                                filter: selectedJersey === 3 ? 'invert(100%)' : 'none'  // Inverts the colors to make black white
+                                                            }} onClick={() => { setSelectedJersey(3); handlePositionChange("Midfielder") }} />}
                                                             {
-                                                            selectedPlayers[3] && <img
-                                                            style={{position:"absolute", height: "24px", margin: "2px", zIndex: "1000", width:"24px", cursor:"pointer" }}
-                                                            onClick={(e) => {
-                                                                e.stopPropagation();  // Prevent the addPlayer event from firing
-                                                                setSelectedPlayer(playersData.find(p => p[0] === selectedPlayers[3]));
-                                                                console.log()
-                                                                setShowInfoModal(true);
-                                                            }}
-                                                            src={infoIcon} alt="Jersey"
-                                                        />
-                                                        }
+                                                                selectedPlayers[3] && <img
+                                                                    style={{ position: "absolute", height: "24px", margin: "2px", zIndex: "1000", width: "24px", cursor: "pointer" }}
+                                                                    onClick={(e) => {
+                                                                        e.stopPropagation();  // Prevent the addPlayer event from firing
+                                                                        setSelectedPlayer(playersData.find(p => p[0] === selectedPlayers[3]));
+                                                                        console.log()
+                                                                        setShowInfoModal(true);
+                                                                    }}
+                                                                    src={infoIcon} alt="Jersey"
+                                                                />
+                                                            }
                                                             <div className="player-name-bg">
                                                                 <Text className="player-name-text">{selectedPlayers[3]}</Text>
                                                             </div>
@@ -1958,19 +1985,19 @@ export default function APLFantasy() {
                                                                 width: "25px",
                                                                 height: "25px",
                                                                 filter: selectedJersey === 2 ? 'invert(100%)' : 'none'  // Inverts the colors to make black white
-                                                            }} onClick={() => {setSelectedJersey(2); handlePositionChange("Midfielder")} } />}
+                                                            }} onClick={() => { setSelectedJersey(2); handlePositionChange("Midfielder") }} />}
                                                             {
-                                                            selectedPlayers[2] && <img
-                                                            style={{position:"absolute", height: "24px", margin: "2px", zIndex: "1000", width:"24px", cursor:"pointer" }}
-                                                            onClick={(e) => {
-                                                                e.stopPropagation();  // Prevent the addPlayer event from firing
-                                                                setSelectedPlayer(playersData.find(p => p[0] === selectedPlayers[2]));
-                                                                console.log()
-                                                                setShowInfoModal(true);
-                                                            }}
-                                                            src={infoIcon} alt="Jersey"
-                                                        />
-                                                        }
+                                                                selectedPlayers[2] && <img
+                                                                    style={{ position: "absolute", height: "24px", margin: "2px", zIndex: "1000", width: "24px", cursor: "pointer" }}
+                                                                    onClick={(e) => {
+                                                                        e.stopPropagation();  // Prevent the addPlayer event from firing
+                                                                        setSelectedPlayer(playersData.find(p => p[0] === selectedPlayers[2]));
+                                                                        console.log()
+                                                                        setShowInfoModal(true);
+                                                                    }}
+                                                                    src={infoIcon} alt="Jersey"
+                                                                />
+                                                            }
                                                             <div className="player-name-bg">
                                                                 <Text className="player-name-text">{selectedPlayers[2]}</Text>
                                                             </div>
@@ -2001,18 +2028,18 @@ export default function APLFantasy() {
                                                             width: "25px",
                                                             height: "25px",
                                                             filter: selectedJersey === 1 ? 'invert(100%)' : 'none'  // Inverts the colors to make black white
-                                                        }} onClick={() =>{setSelectedJersey(1); handlePositionChange("Defender")} } />}
+                                                        }} onClick={() => { setSelectedJersey(1); handlePositionChange("Defender") }} />}
                                                         {
                                                             selectedPlayers[1] && <img
-                                                            style={{position:"absolute", height: "24px", margin: "2px", zIndex: "1000", width:"24px", cursor:"pointer" }}
-                                                            onClick={(e) => {
-                                                                e.stopPropagation();  // Prevent the addPlayer event from firing
-                                                                setSelectedPlayer(playersData.find(p => p[0] === selectedPlayers[1]));
-                                                                console.log()
-                                                                setShowInfoModal(true);
-                                                            }}
-                                                            src={infoIcon} alt="Jersey"
-                                                        />
+                                                                style={{ position: "absolute", height: "24px", margin: "2px", zIndex: "1000", width: "24px", cursor: "pointer" }}
+                                                                onClick={(e) => {
+                                                                    e.stopPropagation();  // Prevent the addPlayer event from firing
+                                                                    setSelectedPlayer(playersData.find(p => p[0] === selectedPlayers[1]));
+                                                                    console.log()
+                                                                    setShowInfoModal(true);
+                                                                }}
+                                                                src={infoIcon} alt="Jersey"
+                                                            />
                                                         }
                                                         <div className="player-name-bg">
                                                             <Text className="player-name-text">{selectedPlayers[1]}</Text>
@@ -2034,10 +2061,10 @@ export default function APLFantasy() {
                                                         width: "25px",
                                                         height: "25px",
                                                         filter: selectedJersey === 0 ? 'invert(100%)' : 'none'  // Inverts the colors to make black white
-                                                    }} onClick={() => {setSelectedJersey(0); handlePositionChange("Goalkeeper")} } />}
+                                                    }} onClick={() => { setSelectedJersey(0); handlePositionChange("Goalkeeper") }} />}
                                                     {
-                                                            selectedPlayers[0] && <img
-                                                            style={{position:"absolute", height: "24px", margin: "2px", zIndex: "1000", width:"24px", cursor:"pointer" }}
+                                                        selectedPlayers[0] && <img
+                                                            style={{ position: "absolute", height: "24px", margin: "2px", zIndex: "1000", width: "24px", cursor: "pointer" }}
                                                             onClick={(e) => {
                                                                 e.stopPropagation();  // Prevent the addPlayer event from firing
                                                                 setSelectedPlayer(playersData.find(p => p[0] === selectedPlayers[0]));
@@ -2046,7 +2073,7 @@ export default function APLFantasy() {
                                                             }}
                                                             src={infoIcon} alt="Jersey"
                                                         />
-                                                        }
+                                                    }
                                                     <div className="player-name-bg">
                                                         <Text className="player-name-text">{selectedPlayers[0]}</Text>
                                                     </div>
@@ -2078,18 +2105,18 @@ export default function APLFantasy() {
                                                             width: "25px",
                                                             height: "25px",
                                                             filter: selectedJersey === 5 ? 'invert(100%)' : 'none'  // Inverts the colors to make black white
-                                                        }} onClick={() => {setSelectedJersey(5); handlePositionChange("Attacker")} }  />}
-                                                         {
+                                                        }} onClick={() => { setSelectedJersey(5); handlePositionChange("Attacker") }} />}
+                                                        {
                                                             selectedPlayers[5] && <img
-                                                            style={{position:"absolute", height: "24px", margin: "2px", zIndex: "1000", width:"24px", cursor:"pointer" }}
-                                                            onClick={(e) => {
-                                                                e.stopPropagation();  // Prevent the addPlayer event from firing
-                                                                setSelectedPlayer(playersData.find(p => p[0] === selectedPlayers[5]));
-                                                                console.log()
-                                                                setShowInfoModal(true);
-                                                            }}
-                                                            src={infoIcon} alt="Jersey"
-                                                        />
+                                                                style={{ position: "absolute", height: "24px", margin: "2px", zIndex: "1000", width: "24px", cursor: "pointer" }}
+                                                                onClick={(e) => {
+                                                                    e.stopPropagation();  // Prevent the addPlayer event from firing
+                                                                    setSelectedPlayer(playersData.find(p => p[0] === selectedPlayers[5]));
+                                                                    console.log()
+                                                                    setShowInfoModal(true);
+                                                                }}
+                                                                src={infoIcon} alt="Jersey"
+                                                            />
                                                         }
                                                         <div className="player-name-bg">
                                                             <Text className="player-name-text">{selectedPlayers[5]}</Text>
@@ -2109,18 +2136,18 @@ export default function APLFantasy() {
                                                             width: "25px",
                                                             height: "25px",
                                                             filter: selectedJersey === 4 ? 'invert(100%)' : 'none'  // Inverts the colors to make black white
-                                                        }} onClick={() =>{setSelectedJersey(4); handlePositionChange("Midfielder")} }  />}
-                                                         {
+                                                        }} onClick={() => { setSelectedJersey(4); handlePositionChange("Midfielder") }} />}
+                                                        {
                                                             selectedPlayers[4] && <img
-                                                            style={{position:"absolute", height: "24px", margin: "2px", zIndex: "1000", width:"24px", cursor:"pointer" }}
-                                                            onClick={(e) => {
-                                                                e.stopPropagation();  // Prevent the addPlayer event from firing
-                                                                setSelectedPlayer(playersData.find(p => p[0] === selectedPlayers[4]));
-                                                                console.log()
-                                                                setShowInfoModal(true);
-                                                            }}
-                                                            src={infoIcon} alt="Jersey"
-                                                        />
+                                                                style={{ position: "absolute", height: "24px", margin: "2px", zIndex: "1000", width: "24px", cursor: "pointer" }}
+                                                                onClick={(e) => {
+                                                                    e.stopPropagation();  // Prevent the addPlayer event from firing
+                                                                    setSelectedPlayer(playersData.find(p => p[0] === selectedPlayers[4]));
+                                                                    console.log()
+                                                                    setShowInfoModal(true);
+                                                                }}
+                                                                src={infoIcon} alt="Jersey"
+                                                            />
                                                         }
                                                         <div className="player-name-bg">
                                                             <Text className="player-name-text">{selectedPlayers[4]}</Text>
@@ -2150,18 +2177,18 @@ export default function APLFantasy() {
                                                             width: "25px",
                                                             height: "25px",
                                                             filter: selectedJersey === 3 ? 'invert(100%)' : 'none'  // Inverts the colors to make black white
-                                                        }} onClick={() =>{setSelectedJersey(3); handlePositionChange("Defender")} } />}
+                                                        }} onClick={() => { setSelectedJersey(3); handlePositionChange("Defender") }} />}
                                                         {
                                                             selectedPlayers[3] && <img
-                                                            style={{position:"absolute", height: "24px", margin: "2px", zIndex: "1000", width:"24px", cursor:"pointer" }}
-                                                            onClick={(e) => {
-                                                                e.stopPropagation();  // Prevent the addPlayer event from firing
-                                                                setSelectedPlayer(playersData.find(p => p[0] === selectedPlayers[3]));
-                                                                console.log()
-                                                                setShowInfoModal(true);
-                                                            }}
-                                                            src={infoIcon} alt="Jersey"
-                                                        />
+                                                                style={{ position: "absolute", height: "24px", margin: "2px", zIndex: "1000", width: "24px", cursor: "pointer" }}
+                                                                onClick={(e) => {
+                                                                    e.stopPropagation();  // Prevent the addPlayer event from firing
+                                                                    setSelectedPlayer(playersData.find(p => p[0] === selectedPlayers[3]));
+                                                                    console.log()
+                                                                    setShowInfoModal(true);
+                                                                }}
+                                                                src={infoIcon} alt="Jersey"
+                                                            />
                                                         }
                                                         <div className="player-name-bg">
                                                             <Text className="player-name-text">{selectedPlayers[3]}</Text>
@@ -2181,21 +2208,21 @@ export default function APLFantasy() {
                                                             width: "25px",
                                                             height: "25px",
                                                             filter: selectedJersey === 2 ? 'invert(100%)' : 'none'  // Inverts the colors to make black white
-                                                    
-                                                        }} onClick={() => {setSelectedJersey(2); handlePositionChange("Defender")} }  />} 
+
+                                                        }} onClick={() => { setSelectedJersey(2); handlePositionChange("Defender") }} />}
                                                         {
                                                             selectedPlayers[2] && <img
-                                                            style={{position:"absolute", height: "24px", margin: "2px", zIndex: "1000", width:"24px", cursor:"pointer" }}
-                                                            onClick={(e) => {
-                                                                e.stopPropagation();  // Prevent the addPlayer event from firing
-                                                                setSelectedPlayer(playersData.find(p => p[0] === selectedPlayers[2]));
-                                                                console.log()
-                                                                setShowInfoModal(true);
-                                                            }}
-                                                            src={infoIcon} alt="Jersey"
-                                                        />
+                                                                style={{ position: "absolute", height: "24px", margin: "2px", zIndex: "1000", width: "24px", cursor: "pointer" }}
+                                                                onClick={(e) => {
+                                                                    e.stopPropagation();  // Prevent the addPlayer event from firing
+                                                                    setSelectedPlayer(playersData.find(p => p[0] === selectedPlayers[2]));
+                                                                    console.log()
+                                                                    setShowInfoModal(true);
+                                                                }}
+                                                                src={infoIcon} alt="Jersey"
+                                                            />
                                                         }
-                                                                    <div className="player-name-bg">
+                                                        <div className="player-name-bg">
                                                             <Text className="player-name-text">{selectedPlayers[2]}</Text>
                                                         </div>
                                                         <div className="player-price-bg">
@@ -2212,19 +2239,19 @@ export default function APLFantasy() {
                                                             cursor: 'pointer',
                                                             width: "25px",
                                                             height: "25px",
-                                                            filter: selectedJersey ===1 ? 'invert(100%)' : 'none'  // Inverts the colors to make black white
-                                                        }} onClick={() => {setSelectedJersey(1); handlePositionChange("Defender")} }  />}
+                                                            filter: selectedJersey === 1 ? 'invert(100%)' : 'none'  // Inverts the colors to make black white
+                                                        }} onClick={() => { setSelectedJersey(1); handlePositionChange("Defender") }} />}
                                                         {
                                                             selectedPlayers[1] && <img
-                                                            style={{position:"absolute", height: "24px", margin: "2px", zIndex: "1000", width:"24px", cursor:"pointer" }}
-                                                            onClick={(e) => {
-                                                                e.stopPropagation();  // Prevent the addPlayer event from firing
-                                                                setSelectedPlayer(playersData.find(p => p[0] === selectedPlayers[1]));
-                                                                console.log()
-                                                                setShowInfoModal(true);
-                                                            }}
-                                                            src={infoIcon} alt="Jersey"
-                                                        />
+                                                                style={{ position: "absolute", height: "24px", margin: "2px", zIndex: "1000", width: "24px", cursor: "pointer" }}
+                                                                onClick={(e) => {
+                                                                    e.stopPropagation();  // Prevent the addPlayer event from firing
+                                                                    setSelectedPlayer(playersData.find(p => p[0] === selectedPlayers[1]));
+                                                                    console.log()
+                                                                    setShowInfoModal(true);
+                                                                }}
+                                                                src={infoIcon} alt="Jersey"
+                                                            />
                                                         }
                                                         <div className="player-name-bg">
                                                             <Text className="player-name-text">{selectedPlayers[1]}</Text>
@@ -2255,18 +2282,18 @@ export default function APLFantasy() {
                                                             width: "25px",
                                                             height: "25px",
                                                             filter: selectedJersey === 0 ? 'invert(100%)' : 'none'  // Inverts the colors to make black white
-                                                        }} onClick={() => {setSelectedJersey(0); handlePositionChange("Goalkeeper")} } />}
+                                                        }} onClick={() => { setSelectedJersey(0); handlePositionChange("Goalkeeper") }} />}
                                                         {
                                                             selectedPlayers[0] && <img
-                                                            style={{position:"absolute", height: "24px", margin: "2px", zIndex: "1000", width:"24px", cursor:"pointer" }}
-                                                            onClick={(e) => {
-                                                                e.stopPropagation();  // Prevent the addPlayer event from firing
-                                                                setSelectedPlayer(playersData.find(p => p[0] === selectedPlayers[0]));
-                                                                console.log()
-                                                                setShowInfoModal(true);
-                                                            }}
-                                                            src={infoIcon} alt="Jersey"
-                                                        />
+                                                                style={{ position: "absolute", height: "24px", margin: "2px", zIndex: "1000", width: "24px", cursor: "pointer" }}
+                                                                onClick={(e) => {
+                                                                    e.stopPropagation();  // Prevent the addPlayer event from firing
+                                                                    setSelectedPlayer(playersData.find(p => p[0] === selectedPlayers[0]));
+                                                                    console.log()
+                                                                    setShowInfoModal(true);
+                                                                }}
+                                                                src={infoIcon} alt="Jersey"
+                                                            />
                                                         }
                                                         <div className="player-name-bg">
                                                             <Text className="player-name-text">{selectedPlayers[0]}</Text>
@@ -2292,10 +2319,10 @@ export default function APLFantasy() {
                                     <img src={FanUpLogo} alt="FanUp Logo" className="fanup-logo" />
                                 </div>
                                 <div className="sidebar">
-                                <div className="money-left">
-                                            <Text className="money-left-text">{'Money'}<br />{'Left'}</Text>
-                                            <Text className="money-left-text">${budget}M</Text>
-                                        </div>
+                                    <div className="money-left">
+                                        <Text className="money-left-text">{'Money'}<br />{'Left'}</Text>
+                                        <Text className="money-left-text">${budget}M</Text>
+                                    </div>
                                     <div className="coll-group">
                                         <Collapse title="Formation" className="coll-dropdown">
                                             {formationOptions.map((formationOption) => {
@@ -2325,9 +2352,9 @@ export default function APLFantasy() {
                                         <Collapse title="Price" className="coll-dropdown">
                                             {priceOptions.map((price) => (
                                                 <Checkbox
-                                                key={price}
-                                                isSelected={price == filters.price}
-                                                onChange={() => handlePriceChange(price)}
+                                                    key={price}
+                                                    isSelected={price == filters.price}
+                                                    onChange={() => handlePriceChange(price)}
                                                 >
                                                     {price}
                                                 </Checkbox>
@@ -2342,11 +2369,13 @@ export default function APLFantasy() {
         <button className="next-page-button" onClick={() => handlePageChange(currentPage - 1)}>Previous Page</button>
       )} */}
                                 </div>
-                                <button className="reset-button"onClick={() => {setSelectedPlayers([]);
-            setTeamCaptain("");
-            setViceCaptain("");setBudget(100)}}>Reset Team</button>
-                                <button className="submit-button"onClick={() => {handleSubmit()}}>Save Team</button>
-                                
+                                <button className="reset-button" onClick={() => {
+                                    setSelectedPlayers([]);
+                                    setTeamCaptain("");
+                                    setViceCaptain(""); setBudget(100)
+                                }}>Reset Team</button>
+                                <button className="submit-button" onClick={() => { handleSubmit() }}>Save Team</button>
+
                             </Col>
                         </Grid>
                     </Row>
