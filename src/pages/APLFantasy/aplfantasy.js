@@ -1675,6 +1675,11 @@ export default function APLFantasy() {
                                                         gap: '10vw',
                                                         height: "20%"
                                                     }}>
+                                                        <Row css={{
+                                                        width: '100%',
+                                                        justifyContent: 'space-around',
+                                                        alignItems: 'center'
+                                                    }}>
                                                     <div className="player-jersey">
                                                         <img src={JerseyImage} alt="Jersey" />
                                                         {!selectedPlayers[5] && <img
@@ -1745,6 +1750,8 @@ export default function APLFantasy() {
                                                             <Text className="player-price-text" color="black">{playersData.find(p => p[0] === selectedPlayers[4]) ? playersData.find(p => p[0] === selectedPlayers[4])[3] : "ATTACKER"}</Text>
                                                         </div>
                                                     </div>
+
+                                                    </Row>
                                                 </Grid.Container>
                                                 <div className="player-jersey midfielder-1">
                                                     <img src={JerseyImage} alt="Jersey" />
@@ -1785,6 +1792,11 @@ export default function APLFantasy() {
                                                         alignItems: 'center',
                                                         gap: '10vw',// Adjust gap size here to control the spacing between columns
                                                         height: "20%"
+                                                    }}>
+                                                        <Row css={{
+                                                        width: '100%',
+                                                        justifyContent: 'space-around',
+                                                        alignItems: 'center'
                                                     }}>
                                                     <div className="player-jersey">
                                                         <img src={JerseyImage} alt="Jersey" />
@@ -1848,6 +1860,8 @@ export default function APLFantasy() {
                                                             <Text className="player-price-text" color="black">{playersData.find(p => p[0] === selectedPlayers[1]) ? playersData.find(p => p[0] === selectedPlayers[1])[3] : "DEFENDER"}</Text>
                                                         </div>
                                                     </div>
+
+                                                    </Row>
                                                 </Grid.Container>
                                                 <div className="player-jersey">
                                                     <img src={JerseyImage} alt="Jersey" />
@@ -2181,6 +2195,11 @@ export default function APLFantasy() {
                                                         gap: '10vw',
                                                         height: "20%"
                                                     }}>
+                                                        <Row css={{
+                                                        width: '100%',
+                                                        justifyContent: 'space-around',
+                                                        alignItems: 'center'
+                                                    }}>
                                                     <div className="player-jersey">
                                                         <img src={JerseyImage} alt="Jersey" />
                                                         {!selectedPlayers[3] && <img src={addPlayerButton} className="addplayerButton" alt="Add Player" style={{
@@ -2275,6 +2294,8 @@ export default function APLFantasy() {
                                                             <Text className="player-price-text" color="black">{playersData.find(p => p[0] === selectedPlayers[1]) ? playersData.find(p => p[0] === selectedPlayers[1])[3] : "DEFENDER"}</Text>
                                                         </div>
                                                     </div>
+
+                                                    </Row>
                                                 </Grid.Container>
 
                                                 <Grid.Container
