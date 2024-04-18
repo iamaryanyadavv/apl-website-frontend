@@ -388,10 +388,8 @@ export default function APLFantasy() {
         );
     };
     useEffect(() => {
-        // This code runs when viceCaptain changes
-        console.log("Vice Captain updated:", vicecaptain);
-        // You can perform additional logic here if needed
-    }, [vicecaptain]);
+        console.log(`Captain: ${teamcaptain}, Vice Captain: ${vicecaptain}`);
+      }, [teamcaptain, vicecaptain]);
 
     const handleSubmit = () => {
         // Assuming `selectedPlayers` is an array of player names you gathered from your selection logic
@@ -1051,7 +1049,7 @@ export default function APLFantasy() {
                                                             >
                                                                 <div
                                                                 // key={teamcaptain}
-                                                                 style={{backgroundColor: teamcaptain === selectedPlayer[0] ? 'green' : 'none',
+                                                                 style={{backgroundColor: teamcaptain === selectedPlayer[0] ? 'green' : 'transparent',
 }}>
                                                                 <Image
                                                                      onClick={() => setTeamCaptain(currentCaptain =>
@@ -1067,7 +1065,7 @@ export default function APLFantasy() {
                                                                 />
                                                                 </div>
                                                                 <div
-                                                                 style={{backgroundColor: vicecaptain === selectedPlayer[0] ? 'red' : 'none',}}>
+                                                                 style={{backgroundColor: vicecaptain === selectedPlayer[0] ? 'red' : 'transparent',}}>
                                                                 <Image
                                                                     onClick={() => setViceCaptain(vicecaptain === selectedPlayer[0]?"":selectedPlayer[0])}
                                                                     style={{
