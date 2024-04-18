@@ -225,7 +225,15 @@ export default function APLFantasy() {
     
 
 
-    const [selectedPlayers, setSelectedPlayers] = useState([]);
+    const [selectedPlayers, setSelectedPlayers] = useState([localStorage.getItem('player1') || '',localStorage.getItem('player2') || '', 
+    localStorage.getItem('player3') || '',
+     localStorage.getItem('player4') || '',
+      localStorage.getItem('player5') || '',
+       localStorage.getItem('player6') || '',
+    localStorage.getItem('c') || '', 
+    localStorage.getItem('vc') || '']);
+
+
     const [formationState, setFormationState] = useState(1);
 
     useEffect(() => {
@@ -245,12 +253,33 @@ export default function APLFantasy() {
     }, [filters.formation]);
 
     useEffect(() => {
+        const onStorage = () => {
+            setSelectedPlayers([localStorage.getItem('player1') || '',localStorage.getItem('player2') || '', 
+            localStorage.getItem('player3') || '',
+             localStorage.getItem('player4') || '',
+              localStorage.getItem('player5') || '',
+               localStorage.getItem('player6') || '',
+            localStorage.getItem('c') || '', 
+            localStorage.getItem('vc') || ''])
+            setTeamCaptain(localStorage.getItem('c') || '')
+            setViceCaptain(localStorage.getItem('vc') || '')
+
+        };
+    
+        window.addEventListener('storage', onStorage);
+    
+        return () => {
+            window.removeEventListener('storage', onStorage);
+        };
+    }, []);
+
+    useEffect(() => {
         if (user) {
             const fetchPlayersData = async () => {
                 try {
                     const response = await fetch('https://aplapi.onrender.com/fantasy/apl7/playersubmissions');
                     const data = await response.json();
-                    const playerData = data.find(player => player[1] === user.email); // Assuming the email is stored at the second index
+                    const playerData = data.values.find(player => player[1] === user.email); // Assuming the email is stored at the second index
     
                     if (playerData) {
                         localStorage.setItem('player1', playerData[2]);
@@ -261,6 +290,13 @@ export default function APLFantasy() {
                         localStorage.setItem('player6', playerData[7]);
                         localStorage.setItem('c', playerData[8]);
                         localStorage.setItem('vc', playerData[9]);
+                        setSelectedPlayers([localStorage.getItem('player1') || '',localStorage.getItem('player2') || '', 
+    localStorage.getItem('player3') || '',
+     localStorage.getItem('player4') || '',
+      localStorage.getItem('player5') || '',
+       localStorage.getItem('player6') || '',
+    localStorage.getItem('c') || '', 
+    localStorage.getItem('vc') || ''])
                     }
                 } catch (error) {
                     console.error('Failed to fetch players data:', error);
@@ -271,42 +307,8 @@ export default function APLFantasy() {
         }
     }, [user]); // This will run the effect when `user` changes
     
-    useEffect(() => {
-        // Load player selections from local storage
-        const loadPlayerSelections = () => {
-            const loadedPlayers = [];
-            const positions = ['player1', 'player2', 'player3', 'player4', 'player5', 'player6'];
-            positions.forEach((position, index) => {
-                const player = localStorage.getItem(position);
-                loadedPlayers[index] = player ? player : null; // Ensure you handle null or undefined values
-            });
+   
 
-            const captain = localStorage.getItem('c');
-            const viceCaptain = localStorage.getItem('vc');
-
-            // Set state with loaded values
-            setSelectedPlayers(loadedPlayers);
-            setTeamCaptain(captain);
-            setViceCaptain(viceCaptain);
-        };
-
-        if (user && Object.keys(user).length > 0) {
-            // Only load player selections if there is a user logged in
-            loadPlayerSelections();
-        }
-    }, [user]); // Depend on the user state to reload when user logs in
-
-    // Example useEffect to demonstrate updating local storage when selections change
-    useEffect(() => {
-        // Update local storage whenever selected players or captains change
-        selectedPlayers.forEach((player, index) => {
-            if (player) {
-                localStorage.setItem(`player${index + 1}`, player);
-            }
-        });
-        if (teamcaptain) localStorage.setItem('c', teamcaptain);
-        if (viceCaptain) localStorage.setItem('vc', viceCaptain);
-    }, [selectedPlayers, teamcaptain, viceCaptain]); 
 
 
     const renderPlayersList = () => {
