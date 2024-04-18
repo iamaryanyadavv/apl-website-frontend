@@ -311,7 +311,7 @@
 }
 
 .player-jersey img {
-  width: 120px; /* Reduce the width as needed */
+  height: 12vh;
 }
 
 .sidebar {
