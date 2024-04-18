@@ -407,7 +407,7 @@ export default function APLFantasy() {
 
         axios.post('https://aplapi.onrender.com/fantasy/submit', payload) // Adjust the URL to wherever your server is hosted
             .then(response => {
-                alert('Submission successful!');
+                setShowConfirmModal(true)
                 console.log(response.data); // Handling the response from your server
             })
             .catch(error => {
@@ -705,40 +705,9 @@ export default function APLFantasy() {
                                                 {user.name}'s Team
                                             </Text>
                                         </Row>
+                  
                                         <div className="football-field">
-                                      {showConfirmModal &&  <Modal
-                                          closeButton
-    open={showConfirmModal}
-    onClose={() => setShowConfirmModal(false)}
->
-    <Modal.Header>
-        <Text>Confirm Your Team</Text>
-    </Modal.Header>
-    <Modal.Body>
-        <div>
-            {selectedPlayers.map((playerName, index) => {
-                const player = playersData.find(p => p[0] === playerName);
-                return (
-                    <div key={index}>
-                        <Text><strong>Player:</strong> {player[0]}</Text>
-                        <Text><strong>Position:</strong> {player[2]}</Text>
-                        <Text><strong>Price:</strong> {player[3]}</Text>
-                    </div>
-                );
-            })}
-            <div>
-                <Text><strong>Total Budget Left:</strong> ${budget}M</Text>
-            </div>
-        </div>
-    </Modal.Body>
-    <Modal.Footer>
-        <Button auto flat color="error" onClick={() => setShowConfirmModal(false)}>
-            Cancel
-        </Button>
-        <Button auto onClick={handleSubmit}>
-            Confirm Team
-        </Button>
-    </Modal.Footer></Modal>}
+                                   
 
                                         <Modal
                 open={showTutorial}
@@ -916,6 +885,47 @@ export default function APLFantasy() {
                                                     color: 'white',
                                                 }}>
                                                     Please choose a {wrongPosition}
+                                                </Text>
+                                            </Modal.Body>
+                                            
+                                    </Modal>
+                                    <Modal
+                                    open={showConfirmModal}
+                                    closeButton
+                                    onClose={()=>{setShowConfirmModal(false)}}
+                                    >
+                                            <Modal.Header
+                                            css={{
+                                                paddingTop: '0px',
+                                            }}>
+                                                <Col>
+                                                    <Text 
+                                                    css={{
+                                                        textAlign: 'center',
+                                                        fontSize: '$3xl',
+                                                        fontWeight: '$bold',
+                                                        color: '$green600',
+                                                        borderStyle: 'solid',
+                                                        borderWidth: '0px 0px 1px 0px',
+                                                        borderColor: '$gray800'
+                                                    }}>
+                                                        Success!
+                                                    </Text>
+                                                    
+                                                </Col>
+                                            </Modal.Header>
+                                            <Modal.Body
+                                            css={{
+                                                paddingTop: '0px'
+                                            }}>
+                                                <Text 
+                                                css={{
+                                                    textAlign: 'center',
+                                                    fontSize: '$xl',
+                                                    fontWeight: '$bold',
+                                                    color: 'white',
+                                                }}>
+                                                    Fantasy team saved successfully!
                                                 </Text>
                                             </Modal.Body>
                                             
@@ -2016,7 +2026,7 @@ export default function APLFantasy() {
         <button className="next-page-button" onClick={() => handlePageChange(currentPage - 1)}>Previous Page</button>
       )} */}
                                 </div>
-                                <button className="submit-button" onClick={() => setShowConfirmModal(true)}>Submit Team</button>
+                                <button className="submit-button" onClick={() => {handleSubmit()}}>Save Team</button>
                             </Col>
                         </Grid>
                     </Row>
