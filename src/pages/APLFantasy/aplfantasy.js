@@ -381,7 +381,8 @@ export default function APLFantasy() {
     const handleSubmit = () => {
         // Assuming `selectedPlayers` is an array of player names you gathered from your selection logic
         const payload = {
-            name: 'Team Name', // You would need a mechanism to capture and store the team name
+            name: user.name, // You would need a mechanism to capture and store the team name
+            email:user.email,
             player1: selectedPlayers[0],
             player2: selectedPlayers[1],
             player3: selectedPlayers[2],
