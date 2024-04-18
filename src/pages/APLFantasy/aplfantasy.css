@@ -37,19 +37,23 @@
   font-style: italic;
   font-weight: 900;
   font-size: 35px;
-  line-height: 72px;
+  /* line-height: 72px; */
   display: flex;
   align-items: center;
-  letter-spacing: 0.15em;
+  /* letter-spacing: 0.15em; */
   text-transform: uppercase;
-
+  text-decoration: underline;
   color: #ffffff;
 
   align-items: center;
   justify-content: center;
   color: #ffffff;
   text-align: center;
-  margin-bottom: 30px;
+}
+
+.apl-font{
+  text-align: center;
+  
 }
 
 }
@@ -492,6 +496,16 @@
 .info-modal {
   background: #1f335b;
   border-radius: 5px;
+  width: 50%;
+
+}
+
+@media only screen and (max-width: 768px)  {
+  .info-modal {
+    background: #1f335b;
+    border-radius: 5px;
+    width: 100vw;
+  }
 }
 
 

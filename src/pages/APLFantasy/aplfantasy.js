@@ -1332,8 +1332,6 @@ export default function APLFantasy() {
                                                 open={showInfoModal}
                                                 onClose={() => setShowInfoModal(false)}
                                                 className="info-modal"
-                                                width="50%"
-                                                height="100%"
                                             >
                                                 <Modal.Header className="modal-header">
                                                     {/* Close button is provided by the Modal itself */}
