@@ -138,6 +138,7 @@ export default function APLFantasy() {
             });
             // Reset selected players when formation changes
             setSelectedPlayers([]);
+            setBudget(100)
         }
     };
     const handleGenderChange = (newGender) => {
@@ -381,6 +382,11 @@ export default function APLFantasy() {
             </div>
         );
     };
+    useEffect(() => {
+        // This code runs when viceCaptain changes
+        console.log("Vice Captain updated:", vicecaptain);
+        // You can perform additional logic here if needed
+    }, [vicecaptain]);
 
     const handleSubmit = () => {
         // Assuming `selectedPlayers` is an array of player names you gathered from your selection logic
@@ -444,69 +450,6 @@ export default function APLFantasy() {
             </div>
         </Grid>
     );
-
-
-
-
-
-    const renderPlayers = () => {
-        // Define the desired layout for players
-        const formationLayout = [1, 2, 1, 2]; // The pattern of players per row
-
-        let playerElements = [];
-        let playerIndex = 0;
-        let rowIndex = 0;
-
-        while (playerIndex < selectedPlayers.length) {
-            // Determine the number of players in the current row
-            const numPlayersInRow = formationLayout[rowIndex % formationLayout.length];
-            let rowPlayers = [];
-
-            for (let i = 0; i < numPlayersInRow && playerIndex < selectedPlayers.length; i++) {
-                const player = selectedPlayers[playerIndex++];
-                rowPlayers.push(
-                    <div key={player} className="player-jersey">
-                        <img src={JerseyImage} alt="Jersey" />
-                        <Text h4 css={{ position: 'absolute', bottom: '0' }}>{player}</Text>
-                    </div>
-                );
-            }
-
-            // Add the row of players to the overall player elements
-            playerElements.push(
-                <div key={`row-${rowIndex}`} className={`player-row row-${rowIndex % formationLayout.length}`}>
-                    {rowPlayers}
-                </div>
-            );
-
-            rowIndex++; // Move to the next row
-        }
-
-        return playerElements;
-    };
-
-
-
-    const renderDropdown = () => {
-        return (
-            <Dropdown>
-                <Dropdown.Button color={"white"} className="dropdown-button" flat>{'Select Player'}</Dropdown.Button>
-                <Dropdown.Menu
-                    aria-label="Select a player"
-                    disallowEmptySelection
-                    selectionMode="single"
-                    onAction={(key) => handleSelectPlayer(key)}
-                >
-                    {playersData.map(player => (
-                        <Dropdown.Item key={player[0]}>{player[0]}</Dropdown.Item>
-                    ))}
-                </Dropdown.Menu>
-
-            </Dropdown>
-        );
-    };
-
-
     // Function to fetch team data
     const fetchTeamData = async () => {
         try {
@@ -1086,28 +1029,31 @@ export default function APLFantasy() {
                                                                     gap:"10px"
                                                                 }}
                                                             >
-                                                                <div style={{backgroundColor: teamcaptain === selectedPlayer[0] ? 'green' : 'none',
+                                                                <div
+                                                                // key={teamcaptain}
+                                                                 style={{backgroundColor: teamcaptain === selectedPlayer[0] ? 'green' : 'none',
 }}>
                                                                 <Image
-                                                                    onClick={() => setTeamCaptain(selectedPlayer[0])}
+                                                                     onClick={() => setTeamCaptain(currentCaptain =>
+                                                                        currentCaptain === selectedPlayer[0] ? "" : selectedPlayer[0]
+                                                                    )}
                                                                     style={{
                                                                         height: "50px",
                                                                         width: "55px",
                                                                         cursor: 'pointer',
-                                                                        border: teamcaptain === selectedPlayer[0] ? '3px solid green' : 'none',
                                                                     }}
                                                                     src={captain}
                                                                     alt="Team Captain"
                                                                 />
                                                                 </div>
-                                                                <div style={{backgroundColor: viceCaptain === selectedPlayer[0] ? 'green' : 'none',}}>
+                                                                <div
+                                                                 style={{backgroundColor: vicecaptain === selectedPlayer[0] ? 'red' : 'none',}}>
                                                                 <Image
-                                                                    onClick={() => setViceCaptain(selectedPlayer[0])}
+                                                                    onClick={() => setViceCaptain(vicecaptain === selectedPlayer[0]?"":selectedPlayer[0])}
                                                                     style={{
                                                                         height: "50px",
                                                                         width: "55px",
                                                                         cursor: 'pointer',
-                                                                        border: viceCaptain === selectedPlayer[0] ? '3px solid green' : 'none',
                                                                     }}
                                                                     src={viceCaptain}
                                                                     alt="Team Vice Captain"
@@ -1345,7 +1291,7 @@ export default function APLFantasy() {
                                                     }}>
                                                     <div className="player-jersey">
                                                         <img src={JerseyImage} alt="Jersey" />
-                                                        <img 
+                                                       {!selectedPlayers[5] && <img 
                                                             src={addPlayerButton} 
                                                             alt="Add Player" 
                                                             style={{
@@ -1361,7 +1307,20 @@ export default function APLFantasy() {
                                                             }} 
                                                             className={`${selectedJersey === 5 ? 'green-filter pulsing' : ''}`}
                                                             onClick={() => {setSelectedJersey(5);handlePositionChange("Attacker")}}
+                                                        />}
+                                                        {
+                                                            selectedPlayers[5] && <img
+                                                            style={{position:"absolute", height: "24px", margin: "2px", zIndex: "1000", width:"24px", cursor:"pointer" }}
+                                                            onClick={(e) => {
+                                                                e.stopPropagation();  // Prevent the addPlayer event from firing
+                                                                setSelectedPlayer(playersData.find(p => p[0] === selectedPlayers[5]));
+                                                                console.log()
+                                                                setShowInfoModal(true);
+                                                            }}
+                                                            src={infoIcon} alt="Jersey"
                                                         />
+                                                        }
+                                                        
                                                         <div className="player-name-bg">
                                                             <Text className="player-name-text">{selectedPlayers[5]}</Text>
                                                         </div>
