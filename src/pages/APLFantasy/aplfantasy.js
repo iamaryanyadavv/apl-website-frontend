@@ -43,8 +43,8 @@ export default function APLFantasy() {
     const [showTutorial, setShowTutorial] = useState(false)
     const [tutorialIndex, setTutorialIndex] = useState(0)
     const [showConfirmModal, setShowConfirmModal] = useState(false);
-    const [teamcaptain, setTeamCaptain] = useState("")
-    const [vicecaptain, setViceCaptain] = useState("")
+    const [teamcaptain, setTeamCaptain] = useState(localStorage.getItem('c') || '')
+    const [vicecaptain, setViceCaptain] = useState(localStorage.getItem('vc') || '')
     const [isLoading, setIsLoading] = useState(true);  // State to handle image loading
     const [fantasyCaptain, setFantasyCaptain] = useState("")
     const [fantasyViceCaptain, setFantasyViceCaptain] = useState("")
@@ -297,6 +297,8 @@ export default function APLFantasy() {
        localStorage.getItem('player6') || '',
     localStorage.getItem('c') || '', 
     localStorage.getItem('vc') || ''])
+    setTeamCaptain(localStorage.getItem('c') || '')
+            setViceCaptain(localStorage.getItem('vc') || '')
                     }
                 } catch (error) {
                     console.error('Failed to fetch players data:', error);
