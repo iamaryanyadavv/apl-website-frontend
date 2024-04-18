@@ -517,7 +517,8 @@ export default function APLFantasy() {
                         css={{
                             jc: 'center',
                             alignitems: 'center',
-                            padding: '128px 0px 256px 0px'
+                            padding: '128px 0px 256px 0px',
+                            justifyContent:"center"
                         }}>
                         <Col css={{
                             display: 'flex',
@@ -542,11 +543,18 @@ export default function APLFantasy() {
                     <Row>
                         <Grid xs={12} md={8} css={{ padding: '0 10px' }}>
                             <Col className="leftcol">
-                                <Row css={{
+                                <Row className="title-container" css={{
+                                    display:"flex",
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    textAlign:"center"
+                                }}>
+                                    <Text  css={{
+                                        textAlign:"center",
+                                    display:"flex",
                                     alignItems: 'center',
                                     justifyContent: 'center'
-                                }}>
-                                    <Text className="fantasytitle">APL FANTASY GAME</Text>
+                                }} className="fantasytitle">APL FANTASY GAME</Text>
                                     {showFantasyHelp ?
                                         <Image
                                             src={FantasyHelpCross}

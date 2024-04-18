@@ -2,6 +2,14 @@
 
 /* Fantasy Game */
 
+.title-container
+{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin: 10px;
+}
+
 .fantasytitle {
   font-family: "Montserrat";
   font-style: italic;
