@@ -798,6 +798,18 @@
   margin-top: 20px; /* Provide some top margin */
 }
 
+/* Add styles for your Submit Button */
+.reset-button {
+  background-color: grey; /* Primary Green */
+  color: black; /* White text */
+  border: none;
+  padding: 5px 10px; /* Bigger padding for larger button */
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-top: 20px; /* Provide some top margin */
+}
 .submit-button:hover {
   background-color: #4dffa8; /* A darker green on hover */
 }

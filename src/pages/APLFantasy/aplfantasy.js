@@ -48,6 +48,8 @@ export default function APLFantasy() {
     const [isLoading, setIsLoading] = useState(true);  // State to handle image loading
     const [fantasyCaptain, setFantasyCaptain] = useState("")
     const [fantasyViceCaptain, setFantasyViceCaptain] = useState("")
+    const [showMaleModel, setShowMaleModel] = useState(false)
+
 
 
     const tutorialItems = [
@@ -379,29 +381,75 @@ export default function APLFantasy() {
       }, [teamcaptain, vicecaptain]);
 
     const handleSubmit = () => {
-        // Assuming `selectedPlayers` is an array of player names you gathered from your selection logic
-        const payload = {
-            name: user.name, // You would need a mechanism to capture and store the team name
-            email:user.email,
-            player1: selectedPlayers[0],
-            player2: selectedPlayers[1],
-            player3: selectedPlayers[2],
-            player4: selectedPlayers[3],
-            player5: selectedPlayers[4],
-            player6: selectedPlayers[5],
-            captain: teamcaptain,
-            viceCaptain: vicecaptain
-        };
+        console.log(selectedPlayers)
+        const p1 = playersData.find(p=>p[0]==selectedPlayers[0])
+        const p2 = playersData.find(p=>p[0]==selectedPlayers[1])
+        const p3 = playersData.find(p=>p[0]==selectedPlayers[2])
+        const p4 = playersData.find(p=>p[0]==selectedPlayers[3])
+        const p5 = playersData.find(p=>p[0]==selectedPlayers[4])
+        const p6 = playersData.find(p=>p[0]==selectedPlayers[5])
+        const c = playersData.find(p=>p[0]==teamcaptain)
+        const vc = playersData.find(p=>p[0]==vicecaptain)
 
-        axios.post('https://aplapi.onrender.com/fantasy/submit', payload) // Adjust the URL to wherever your server is hosted
-            .then(response => {
-                setShowConfirmModal(true)
-                console.log(response.data); // Handling the response from your server
-            })
-            .catch(error => {
-                console.error('Submission failed:', error);
-                alert('Submission failed. Please try again.');
-            });
+        var male = 0
+        if(p1[17]=='Male')
+        {
+            male++
+        }
+        if(p2[17]=='Male')
+        {
+            male++
+        }
+        if(p3[17]=='Male')
+        {
+            male++
+        }
+        if(p4[17]=='Male')
+        {
+            male++
+        }
+        if(p5[17]=='Male')
+        {
+            male++
+        }
+        if(p6[17]=='Male')
+        {
+            male++
+        }
+
+        if(male>4)
+        {
+            setShowMaleModel(true)
+        }
+
+        else
+        {
+            const payload = {
+                name: user.name, // You would need a mechanism to capture and store the team name
+                email:user.email,
+                player1: selectedPlayers[0],
+                player2: selectedPlayers[1],
+                player3: selectedPlayers[2],
+                player4: selectedPlayers[3],
+                player5: selectedPlayers[4],
+                player6: selectedPlayers[5],
+                captain: teamcaptain,
+                viceCaptain: vicecaptain
+            };
+    
+            axios.post('https://aplapi.onrender.com/fantasy/submit', payload) // Adjust the URL to wherever your server is hosted
+                .then(response => {
+                    setShowConfirmModal(true)
+                    console.log(response.data); // Handling the response from your server
+                })
+                .catch(error => {
+                    console.error('Submission failed:', error);
+                    alert('Submission failed. Please try again.');
+                });
+
+        }
+
+      
     };
 
     const StatCard = ({ title, value, image }) => (
@@ -885,6 +933,49 @@ export default function APLFantasy() {
                                             </Modal.Body>
                                             
                                     </Modal>
+
+                                    <Modal
+                                    open={showMaleModel}
+                                    closeButton
+                                    onClose={()=>{setShowMaleModel(false)}}
+                                    >
+                                            <Modal.Header
+                                            css={{
+                                                paddingTop: '0px',
+                                            }}>
+                                                <Col>
+                                                    <Text 
+                                                    css={{
+                                                        textAlign: 'center',
+                                                        fontSize: '$3xl',
+                                                        fontWeight: '$bold',
+                                                        color: '$red600',
+                                                        borderStyle: 'solid',
+                                                        borderWidth: '0px 0px 1px 0px',
+                                                        borderColor: '$gray800'
+                                                    }}>
+                                                        Error!
+                                                    </Text>
+                                                    
+                                                </Col>
+                                            </Modal.Header>
+                                            <Modal.Body
+                                            css={{
+                                                paddingTop: '0px'
+                                            }}>
+                                                <Text 
+                                                css={{
+                                                    textAlign: 'center',
+                                                    fontSize: '$xl',
+                                                    fontWeight: '$bold',
+                                                    color: 'white',
+                                                }}>
+                                                    You cannot choose more than 4 male players!
+                                                </Text>
+                                            </Modal.Body>
+                                            
+                                    </Modal>
+
 
                                     <Modal
                                     open={showSelectJersey}
@@ -2070,7 +2161,9 @@ export default function APLFantasy() {
         <button className="next-page-button" onClick={() => handlePageChange(currentPage - 1)}>Previous Page</button>
       )} */}
                                 </div>
-                                <button className="submit-button" onClick={() => {handleSubmit()}}>Save Team</button>
+                                <button className="reset-button"onClick={() => {setSelectedPlayers([])}}>Reset Team</button>
+                                <button className="submit-button"onClick={() => {handleSubmit()}}>Save Team</button>
+                                
                             </Col>
                         </Grid>
                     </Row>
