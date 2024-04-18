@@ -87,6 +87,8 @@ export default function APLFantasy() {
     const [showInfoModal, setShowInfoModal] = useState(false);
     const [showPositionModal, setShowPositionModal] = useState(false);
     const [showRulesModal, setShowRulesModal] = useState(false);
+    const [showSelectJersey, setShowSelectJersey] = useState(false);
+
 
 
 
@@ -113,7 +115,8 @@ export default function APLFantasy() {
                 setShowRulesModal(true)
             }
         } else {
-            alert('Please select a position by clicking on a jersey icon.');
+            setShowSelectJersey(true)
+            
         }
     };
     
@@ -228,22 +231,6 @@ export default function APLFantasy() {
 
     const [selectedPlayers, setSelectedPlayers] = useState([]);
     const [formationState, setFormationState] = useState(1);
-
-    const handleSelectPlayer = (playerName, playerPosition) => {
-        if (selectedJersey !== null) {
-            // Check if the player's position matches the slot's required position
-            if (playersData.find(p => p[0] === playerName)[2] === playerRoles[filters.formation][selectedJersey]) {
-                let newSelectedPlayers = [...selectedPlayers];
-                newSelectedPlayers[selectedJersey] = playerName;
-                setSelectedPlayers(newSelectedPlayers);
-                // setSelectedJersey(null);
-            } else {
-                alert('This player does not match the position requirements!');
-            }
-        } else {
-            alert('Please select a jersey first by clicking on the add icon.');
-        }
-    };
 
     useEffect(() => {
         switch (filters.formation) {
@@ -889,6 +876,54 @@ export default function APLFantasy() {
                                             </Modal.Body>
                                             
                                     </Modal>
+
+                                    <Modal
+                                    open={showSelectJersey}
+                                    closeButton
+                                    onClose={()=>{setShowSelectJersey(false)}}
+                                    >
+                                            <Modal.Header
+                                            css={{
+                                                paddingTop: '0px',
+                                            }}>
+                                                <Col>
+                                                    <Text 
+                                                    css={{
+                                                        textAlign: 'center',
+                                                        fontSize: '$3xl',
+                                                        fontWeight: '$bold',
+                                                        color: '$red600',
+                                                        borderStyle: 'solid',
+                                                        borderWidth: '0px 0px 1px 0px',
+                                                        borderColor: '$gray800'
+                                                    }}>
+                                                        Error!
+                                                    </Text>
+                                                    
+                                                </Col>
+                                            </Modal.Header>
+                                            <Modal.Body
+                                            css={{
+                                                paddingTop: '0px'
+                                            }}>
+                                                <Text 
+                                                css={{
+                                                    textAlign: 'center',
+                                                    fontSize: '$xl',
+                                                    fontWeight: '$bold',
+                                                    color: 'white',
+                                                }}>
+                                                    Please select a jersey icon before choosing a player!
+                                                </Text>
+                                            </Modal.Body>
+                                            
+                                    </Modal>
+
+
+
+
+
+
                                     <Modal
                                     open={showConfirmModal}
                                     closeButton
