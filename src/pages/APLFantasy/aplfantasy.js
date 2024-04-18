@@ -49,6 +49,7 @@ export default function APLFantasy() {
     const [fantasyCaptain, setFantasyCaptain] = useState("")
     const [fantasyViceCaptain, setFantasyViceCaptain] = useState("")
     const [showMaleModel, setShowMaleModel] = useState(false)
+    const [showNoPlayerModal,setShowNoPlayerModal] = useState(false)
 
 
 
@@ -132,13 +133,6 @@ export default function APLFantasy() {
 
 
 
-    const handleFilterChange = (filterType, value) => {
-        setFilters(prevFilters => ({
-            ...prevFilters,
-            [filterType]: value
-        }));
-    };
-
 
     const handleFormationChange = (newFormation) => {
         if (filters.formation !== newFormation) {
@@ -158,7 +152,6 @@ export default function APLFantasy() {
                 gender: newGender
             });
             // Reset selected players when formation changes
-            setSelectedPlayers([]);
         }
     };
 
@@ -179,7 +172,6 @@ export default function APLFantasy() {
                 price: newPrice
             });
             // Reset selected players when formation changes
-            setSelectedPlayers([]);
         }
     };
 
@@ -230,6 +222,8 @@ export default function APLFantasy() {
         setFilters(f => ({ ...f, formation: '1-3-1' }));
     }, []);
 
+    
+
 
     const [selectedPlayers, setSelectedPlayers] = useState([]);
     const [formationState, setFormationState] = useState(1);
@@ -250,6 +244,69 @@ export default function APLFantasy() {
         }
     }, [filters.formation]);
 
+    useEffect(() => {
+        if (user) {
+            const fetchPlayersData = async () => {
+                try {
+                    const response = await fetch('https://aplapi.onrender.com/fantasy/apl7/playersubmissions');
+                    const data = await response.json();
+                    const playerData = data.find(player => player[1] === user.email); // Assuming the email is stored at the second index
+    
+                    if (playerData) {
+                        localStorage.setItem('player1', playerData[2]);
+                        localStorage.setItem('player2', playerData[3]);
+                        localStorage.setItem('player3', playerData[4]);
+                        localStorage.setItem('player4', playerData[5]);
+                        localStorage.setItem('player5', playerData[6]);
+                        localStorage.setItem('player6', playerData[7]);
+                        localStorage.setItem('c', playerData[8]);
+                        localStorage.setItem('vc', playerData[9]);
+                    }
+                } catch (error) {
+                    console.error('Failed to fetch players data:', error);
+                }
+            };
+    
+            fetchPlayersData();
+        }
+    }, [user]); // This will run the effect when `user` changes
+    
+    useEffect(() => {
+        // Load player selections from local storage
+        const loadPlayerSelections = () => {
+            const loadedPlayers = [];
+            const positions = ['player1', 'player2', 'player3', 'player4', 'player5', 'player6'];
+            positions.forEach((position, index) => {
+                const player = localStorage.getItem(position);
+                loadedPlayers[index] = player ? player : null; // Ensure you handle null or undefined values
+            });
+
+            const captain = localStorage.getItem('c');
+            const viceCaptain = localStorage.getItem('vc');
+
+            // Set state with loaded values
+            setSelectedPlayers(loadedPlayers);
+            setTeamCaptain(captain);
+            setViceCaptain(viceCaptain);
+        };
+
+        if (user && Object.keys(user).length > 0) {
+            // Only load player selections if there is a user logged in
+            loadPlayerSelections();
+        }
+    }, [user]); // Depend on the user state to reload when user logs in
+
+    // Example useEffect to demonstrate updating local storage when selections change
+    useEffect(() => {
+        // Update local storage whenever selected players or captains change
+        selectedPlayers.forEach((player, index) => {
+            if (player) {
+                localStorage.setItem(`player${index + 1}`, player);
+            }
+        });
+        if (teamcaptain) localStorage.setItem('c', teamcaptain);
+        if (viceCaptain) localStorage.setItem('vc', viceCaptain);
+    }, [selectedPlayers, teamcaptain, viceCaptain]); 
 
 
     const renderPlayersList = () => {
@@ -381,7 +438,11 @@ export default function APLFantasy() {
       }, [teamcaptain, vicecaptain]);
 
     const handleSubmit = () => {
-        console.log(selectedPlayers)
+        var noplayers = selectedPlayers.length
+        if(noplayers<6)
+        {
+            setShowNoPlayerModal(true)
+        }
         const p1 = playersData.find(p=>p[0]==selectedPlayers[0])
         const p2 = playersData.find(p=>p[0]==selectedPlayers[1])
         const p3 = playersData.find(p=>p[0]==selectedPlayers[2])
@@ -534,6 +595,7 @@ export default function APLFantasy() {
         var userObject = jwt_decode(response.credential)
         document.getElementById("GoogleButton").hidden = true;
         setUser(userObject)
+
     }
 
     useEffect(() => {
@@ -933,6 +995,50 @@ export default function APLFantasy() {
                                             </Modal.Body>
                                             
                                     </Modal>
+
+
+                                    <Modal
+                                    open={showNoPlayerModal}
+                                    closeButton
+                                    onClose={()=>{setShowNoPlayerModal(false)}}
+                                    >
+                                            <Modal.Header
+                                            css={{
+                                                paddingTop: '0px',
+                                            }}>
+                                                <Col>
+                                                    <Text 
+                                                    css={{
+                                                        textAlign: 'center',
+                                                        fontSize: '$3xl',
+                                                        fontWeight: '$bold',
+                                                        color: '$red600',
+                                                        borderStyle: 'solid',
+                                                        borderWidth: '0px 0px 1px 0px',
+                                                        borderColor: '$gray800'
+                                                    }}>
+                                                        Error!
+                                                    </Text>
+                                                    
+                                                </Col>
+                                            </Modal.Header>
+                                            <Modal.Body
+                                            css={{
+                                                paddingTop: '0px'
+                                            }}>
+                                                <Text 
+                                                css={{
+                                                    textAlign: 'center',
+                                                    fontSize: '$xl',
+                                                    fontWeight: '$bold',
+                                                    color: 'white',
+                                                }}>
+                                                    You have not chosen 6 players!
+                                                </Text>
+                                            </Modal.Body>
+                                            
+                                    </Modal>
+
 
                                     <Modal
                                     open={showMaleModel}
@@ -2161,7 +2267,7 @@ export default function APLFantasy() {
         <button className="next-page-button" onClick={() => handlePageChange(currentPage - 1)}>Previous Page</button>
       )} */}
                                 </div>
-                                <button className="reset-button"onClick={() => {setSelectedPlayers([])}}>Reset Team</button>
+                                <button className="reset-button"onClick={() => {setSelectedPlayers([]);setBudget(100)}}>Reset Team</button>
                                 <button className="submit-button"onClick={() => {handleSubmit()}}>Save Team</button>
                                 
                             </Col>
