@@ -1275,7 +1275,7 @@ export default function APLFantasy() {
                                                             fontWeight: '$bold',
                                                             color: 'white',
                                                         }}>
-                                                        Please choose a Captain or Vice Captain that belongs to your team by clicking on the info icon!
+                                                        Please choose a Captain or Vice Captain that belongs to your team by clicking on their information icon!
                                                     </Text>
                                                 </Modal.Body>
 
