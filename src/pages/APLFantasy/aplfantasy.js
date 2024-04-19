@@ -36,7 +36,7 @@ export default function APLFantasy() {
     const [apl7players, setApl7players] = useState([])
     const positionOptions = ['Defender', 'Midfielder', 'Attacker'];
     const formationOptions = ['1-3-1', '2-1-2', '3-1-1'];
-    const priceOptions = ['10M-19M', '20M-29M', '30M-39M', '40M-100M']
+    const priceOptions = ['10M-19M', '20M-29M', '30M-39M', '40M']
     const [wrongPosition, setWrongPosition] = useState("")
     const [playersData, setPlayerData] = useState([])
     const [selectedPlayer, setSelectedPlayer] = useState(null);
