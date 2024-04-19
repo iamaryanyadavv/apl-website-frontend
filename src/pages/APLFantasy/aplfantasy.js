@@ -55,6 +55,8 @@ export default function APLFantasy() {
     const [showNoPlayerModal, setShowNoPlayerModal] = useState(false)
     const [noCapModal, setNoCapModal] = useState(false)
     const [showSuccessModal, setShowSuccessModal] = useState(false)
+    const [samePlayerModal, setSamePlayerModal] = useState(false)
+
 
     const tutorialItems = [
         {
@@ -113,7 +115,11 @@ export default function APLFantasy() {
             const newSelectedPlayers = [...selectedPlayers];
             const playerData = playersData.find(p => p[0] === playerName);
             const playerCost = parseInt(playerData[3].replace('M', '')); // assuming the cost is in the format "XXM"
-
+            if(selectedPlayers.find(p=>p==playerName))
+            {
+                setSamePlayerModal(true)
+                return
+            }
             if (budget - playerCost >= 0) { // Check if budget allows adding this player
                 const requiredPosition = playerRoles[filters.formation][selectedJersey];
                 if (playerData[2].startsWith(requiredPosition) || requiredPosition === 'All') {
@@ -1021,6 +1027,47 @@ export default function APLFantasy() {
                                         </Row>
 
                                         <div className="football-field">
+                                        <Modal
+                                                open={samePlayerModal}
+                                                closeButton
+                                                onClose={() => { setSamePlayerModal(false) }}
+                                            >
+                                                <Modal.Header
+                                                    css={{
+                                                        paddingTop: '0px',
+                                                    }}>
+                                                    <Col>
+                                                        <Text
+                                                            css={{
+                                                                textAlign: 'center',
+                                                                fontSize: '$3xl',
+                                                                fontWeight: '$bold',
+                                                                color: '$red600',
+                                                                borderStyle: 'solid',
+                                                                borderWidth: '0px 0px 1px 0px',
+                                                                borderColor: '$gray800'
+                                                            }}>
+                                                            Error!
+                                                        </Text>
+
+                                                    </Col>
+                                                </Modal.Header>
+                                                <Modal.Body
+                                                    css={{
+                                                        paddingTop: '0px'
+                                                    }}>
+                                                    <Text
+                                                        css={{
+                                                            textAlign: 'center',
+                                                            fontSize: '$xl',
+                                                            fontWeight: '$bold',
+                                                            color: 'white',
+                                                        }}>
+                                                        You have already added this player!
+                                                    </Text>
+                                                </Modal.Body>
+
+                                            </Modal>
 
 
 
