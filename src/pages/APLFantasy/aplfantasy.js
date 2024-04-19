@@ -2275,7 +2275,7 @@ export default function APLFantasy() {
                                                                         // Create a new array with the same values as the previous one
                                                                         const newPlayers = [...prevPlayers];
                                                                         // Set the 6th player (index 5) to null
-                                                                        newPlayers[5] = null;
+                                                                        newPlayers[4] = null;
                                                                         return newPlayers;
                                                                     });
                                                                     setRemovedPlayerModal(true)
