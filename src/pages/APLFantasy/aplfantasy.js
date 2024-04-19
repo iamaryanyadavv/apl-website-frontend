@@ -2870,7 +2870,7 @@ export default function APLFantasy() {
                                         <Collapse title="Formation" className="coll-dropdown">
                                             {formationOptions.map((formationOption) => {
                                                 return (
-                                                    <Checkbox
+                                                    <Checkbox padding ="0" css={{padding:"0"}}
                                                         key={formationOption}
                                                         isSelected={formationOption == filters.formation}
                                                         onChange={() => handleFormationChange(formationOption)}
@@ -2883,6 +2883,7 @@ export default function APLFantasy() {
                                         <Collapse title="Gender" className="coll-dropdown">
                                             {genderOptions.map((gender) => (
                                                 <Checkbox
+                                                css={{padding:"0"}}
                                                     key={gender}
                                                     isSelected={gender == filters.gender}
                                                     onChange={() => handleGenderChange(gender)}
@@ -2895,6 +2896,7 @@ export default function APLFantasy() {
                                         <Collapse title="Price" className="coll-dropdown">
                                             {priceOptions.map((price) => (
                                                 <Checkbox
+                                                css={{padding:"0"}}
                                                     key={price}
                                                     isSelected={price == filters.price}
                                                     onChange={() => handlePriceChange(price)}
