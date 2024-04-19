@@ -97,31 +97,11 @@ export default function TournamentDetailsCard(props) {
                                 jc: 'center',
                             }}>
                             <Grid>
-                                {props.href == '/seasons/apl7/details' ?
-                                    <Popover>
-                                        <Popover.Trigger>
-                                            <Button shadow rounded bordered auto ghost>
-                                                <Text css={{
-                                                    fontWeight: '$medium',
-                                                }}>
-                                                    DETAILS
-                                                </Text>
-                                            </Button>
-                                        </Popover.Trigger>
-                                        <Popover.Content>
-                                            <Text
-                                                css={{
-                                                    padding: '12px'
-                                                }}>Coming Soon</Text>
-                                        </Popover.Content>
-                                    </Popover>
-                                    :
-                                    <Button shadow rounded bordered auto ghost>
-                                        <Link href={props.href}>
-                                            DETAILS
-                                        </Link>
-                                    </Button>
-                                }
+                                <Button shadow rounded bordered auto ghost>
+                                    <Link href={props.href}>
+                                        DETAILS
+                                    </Link>
+                                </Button>
                             </Grid>
                         </Grid.Container>
                     </Col>

@@ -4,35 +4,35 @@ import { Table, Grid, Loading, Avatar, Text, Col, Button, Spacer } from "@nextui
 import APL6AuctionRules from "./apl6auctionrules";
 import APL6TournamentRules from "./apl6tournamentrules";
 import ComingSoon from '../comingsoon/comingsoon'
-import APL6Games from './apl6games'
-import Pool1 from "./apl6pool1";
-import Pool2 from "./apl6pool2";
-import Pool3 from "./apl6pool3";
-import Pool4 from "./apl6pool4";
-import Pool5 from "./apl6pool5";
-import Pool6 from "./apl6pool6";
-import BOT from "./apl6BOT";
+import APL7Games from './apl7games'
+import Pool1 from "./apl7pool1";
+import Pool2 from "./apl7pool2";
+import Pool3 from "./apl7pool3";
+import Pool4 from "./apl7pool4";
+import Pool5 from "./apl7pool5";
+import Pool6 from "./apl7pool6";
+import BOT from "./apl7BOT";
 import APL6StandingsFAQs from "./apl6StandingsFAQs";
 
-export default function APL6DetailsContent() {
+export default function APL7DetailsContent() {
     const [Fetching, setFetching] = useState(false);
     const [Games, setGames] = useState(true);
     const [Standings, setStandings] = useState(false)
     const [Rules, setRules] = useState(false)
 
-    async function getStandings(){
-        await fetch('https://aplapi.onrender.com/seasons/apl6/standings')
-        .then(response=>response.json())
-        .then(data=>{
-            setFetching(false)
-        })
-    }
+    // async function getStandings(){
+    //     await fetch('https://aplapi.onrender.com/seasons/apl7/standings')
+    //     .then(response=>response.json())
+    //     .then(data=>{
+    //         setFetching(false)
+    //     })
+    // }
 
                     
-    useEffect(()=>{
-        setFetching(true)
-        getStandings();
-    }, [])
+    // useEffect(()=>{
+    //     setFetching(true)
+    //     getStandings();
+    // }, [])
 
     return(
         <div>
@@ -82,7 +82,7 @@ export default function APL6DetailsContent() {
                             Standings
                         </Button>
                     </Grid>
-                    <Grid 
+                    {/* <Grid 
                     css={{
                         padding: '10px'
                     }}>
@@ -94,7 +94,7 @@ export default function APL6DetailsContent() {
                         }}>
                             Rules
                         </Button>
-                    </Grid>
+                    </Grid> */}
                 </Grid.Container>
 
                 {Games && !Standings && !Rules &&
@@ -117,7 +117,7 @@ export default function APL6DetailsContent() {
                     }}>
                         Games
                     </Text>
-                    <APL6Games/>
+                    <APL7Games/>
                     <Spacer 
                     css={{
                         '@xsMax':{
@@ -131,8 +131,10 @@ export default function APL6DetailsContent() {
                 }
 
                 {!Games && Standings && !Rules &&
-                <div
-                >
+                <div 
+                style={{
+                    width: '100vw'
+                }}>
                     <Text hideIn={'xs'}
                     css={{
                         textAlign: 'center',
