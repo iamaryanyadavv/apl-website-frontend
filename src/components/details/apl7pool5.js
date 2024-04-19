@@ -93,7 +93,7 @@ export default function Pool5(){
                     fontWeight: '$semibold',
                     paddingTop: '60px',
                     paddingLeft: '20px'
-                }}> Pool B </Text>
+                }}> Pool E </Text>
                 <Table 
                 bordered
                 aria-label="Group B"
