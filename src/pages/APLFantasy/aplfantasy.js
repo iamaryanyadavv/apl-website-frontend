@@ -54,7 +54,7 @@ export default function APLFantasy() {
     const [showMaleModel, setShowMaleModel] = useState(false)
     const [showNoPlayerModal, setShowNoPlayerModal] = useState(false)
     const [noCapModal, setNoCapModal] = useState(false)
-
+    const [showSuccessModal, setShowSuccessModal] = useState(false)
 
     const tutorialItems = [
         {
@@ -121,6 +121,7 @@ export default function APLFantasy() {
                     setSelectedPlayers(newSelectedPlayers);
                     setBudget(budget - playerCost); // Deduct the player's cost from the budget
                     setSelectedJersey(null);
+                    setShowSuccessModal(true)
                 } else {
                     setWrongPosition(requiredPosition);
                     setShowPositionModal(true);
@@ -1060,6 +1061,90 @@ export default function APLFantasy() {
                                                             color: 'white',
                                                         }}>
                                                         Please choose a {wrongPosition}
+                                                    </Text>
+                                                </Modal.Body>
+
+                                            </Modal>
+                                            <Modal
+                                                open={showMaleModel}
+                                                closeButton
+                                                onClose={() => { setShowMaleModel(false) }}
+                                            >
+                                                <Modal.Header
+                                                    css={{
+                                                        paddingTop: '0px',
+                                                    }}>
+                                                    <Col>
+                                                        <Text
+                                                            css={{
+                                                                textAlign: 'center',
+                                                                fontSize: '$3xl',
+                                                                fontWeight: '$bold',
+                                                                color: '$red600',
+                                                                borderStyle: 'solid',
+                                                                borderWidth: '0px 0px 1px 0px',
+                                                                borderColor: '$gray800'
+                                                            }}>
+                                                            Error!
+                                                        </Text>
+
+                                                    </Col>
+                                                </Modal.Header>
+                                                <Modal.Body
+                                                    css={{
+                                                        paddingTop: '0px'
+                                                    }}>
+                                                    <Text
+                                                        css={{
+                                                            textAlign: 'center',
+                                                            fontSize: '$xl',
+                                                            fontWeight: '$bold',
+                                                            color: 'white',
+                                                        }}>
+                                                        You cannot choose more than 4 male players!
+                                                    </Text>
+                                                </Modal.Body>
+
+                                            </Modal>
+
+
+                                            <Modal
+                                                open={showSuccessModal}
+                                                closeButton
+                                                onClose={() => { setShowSuccessModal(false) }}
+                                            >
+                                                <Modal.Header
+                                                    css={{
+                                                        paddingTop: '0px',
+                                                    }}>
+                                                    <Col>
+                                                        <Text
+                                                            css={{
+                                                                textAlign: 'center',
+                                                                fontSize: '$3xl',
+                                                                fontWeight: '$bold',
+                                                                color: '$green600',
+                                                                borderStyle: 'solid',
+                                                                borderWidth: '0px 0px 1px 0px',
+                                                                borderColor: '$gray800'
+                                                            }}>
+                                                            Success!
+                                                        </Text>
+
+                                                    </Col>
+                                                </Modal.Header>
+                                                <Modal.Body
+                                                    css={{
+                                                        paddingTop: '0px'
+                                                    }}>
+                                                    <Text
+                                                        css={{
+                                                            textAlign: 'center',
+                                                            fontSize: '$xl',
+                                                            fontWeight: '$bold',
+                                                            color: 'white',
+                                                        }}>
+                                                        Player added!
                                                     </Text>
                                                 </Modal.Body>
 
