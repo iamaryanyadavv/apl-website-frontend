@@ -25,6 +25,7 @@ import T3 from "./T3.png"
 import T4 from "./T4.png"
 import T5 from "./T6.png"
 import T8 from "./T8.png"
+import cross from "./cross.png"
 
 import captain from "./captain.png"
 import viceCaptain from "./vicecaptain.png"
@@ -56,7 +57,7 @@ export default function APLFantasy() {
     const [noCapModal, setNoCapModal] = useState(false)
     const [showSuccessModal, setShowSuccessModal] = useState(false)
     const [samePlayerModal, setSamePlayerModal] = useState(false)
-
+    const [removedPlayerModal, setRemovedPlayerModal] = useState(false)
 
     const tutorialItems = [
         {
@@ -1069,6 +1070,47 @@ export default function APLFantasy() {
 
                                             </Modal>
 
+                                            <Modal
+                                                open={removedPlayerModal}
+                                                closeButton
+                                                onClose={() => { setRemovedPlayerModal(false) }}
+                                            >
+                                                <Modal.Header
+                                                    css={{
+                                                        paddingTop: '0px',
+                                                    }}>
+                                                    <Col>
+                                                        <Text
+                                                            css={{
+                                                                textAlign: 'center',
+                                                                fontSize: '$3xl',
+                                                                fontWeight: '$bold',
+                                                                color: '$yellow600',
+                                                                borderStyle: 'solid',
+                                                                borderWidth: '0px 0px 1px 0px',
+                                                                borderColor: '$gray800'
+                                                            }}>
+                                                            Removed
+                                                        </Text>
+
+                                                    </Col>
+                                                </Modal.Header>
+                                                <Modal.Body
+                                                    css={{
+                                                        paddingTop: '0px'
+                                                    }}>
+                                                    <Text
+                                                        css={{
+                                                            textAlign: 'center',
+                                                            fontSize: '$xl',
+                                                            fontWeight: '$bold',
+                                                            color: 'white',
+                                                        }}>
+                                                        Player successfully removed!
+                                                    </Text>
+                                                </Modal.Body>
+
+                                            </Modal>
 
 
                                             <Modal
@@ -1832,7 +1874,7 @@ export default function APLFantasy() {
                                                             onClick={() => { setSelectedJersey(5); handlePositionChange("Attacker") }}
                                                         />}
                                                         {
-                                                            selectedPlayers[5] && <img
+                                                            selectedPlayers[5] && <><img
                                                                 style={{ position: "absolute", height: "24px", margin: "2px", zIndex: "1000", width: "24px", cursor: "pointer" }}
                                                                 onClick={(e) => {
                                                                     e.stopPropagation();  // Prevent the addPlayer event from firing
@@ -1841,6 +1883,26 @@ export default function APLFantasy() {
                                                                 }}
                                                                 src={infoIcon} className="info-icon" alt="Jersey"
                                                             />
+                                                            <img
+                                                                style={{ position: "absolute", height: "24px", margin: "2px", zIndex: "1000", width: "24px", cursor: "pointer", left: 0 }}
+                                                                onClick={(e) => {
+                                                                    e.stopPropagation();  // Prevent any parent handler from being executed
+                                                                    setSelectedPlayers(prevPlayers => {
+                                                                        // Create a new array with the same values as the previous one
+                                                                        const newPlayers = [...prevPlayers];
+                                                                        // Set the 6th player (index 5) to null
+                                                                        newPlayers[5] = null;
+                                                                        return newPlayers;
+                                                                    });
+                                                                    setRemovedPlayerModal(true)
+                                                                }}
+                                                                src={cross}
+                                                                className="info-icon"
+                                                                alt="Jersey"
+                                                            />
+                                                            </>
+                                                            
+                                                            
                                                         }
 
                                                         <div className="player-name-bg">
@@ -1864,7 +1926,8 @@ export default function APLFantasy() {
                                                             filter: selectedJersey === 4 ? 'invert(100%)' : 'none'  // Inverts the colors to make black white
                                                         }} onClick={() => { setSelectedJersey(4); handlePositionChange("Attacker") }} />}
                                                         {
-                                                            selectedPlayers[4] && <img
+                                                            selectedPlayers[4] && 
+                                                            <><img
                                                                 style={{ position: "absolute", height: "24px", margin: "2px", zIndex: "1000", width: "24px", cursor: "pointer" }}
                                                                 onClick={(e) => {
                                                                     e.stopPropagation();  // Prevent the addPlayer event from firing
@@ -1874,6 +1937,24 @@ export default function APLFantasy() {
                                                                 }}
                                                                 src={infoIcon} className="info-icon" alt="Jersey"
                                                             />
+                                                            <img
+                                                                style={{ position: "absolute", height: "24px", margin: "2px", zIndex: "1000", width: "24px", cursor: "pointer", left: 0 }}
+                                                                onClick={(e) => {
+                                                                    e.stopPropagation();  // Prevent any parent handler from being executed
+                                                                    setSelectedPlayers(prevPlayers => {
+                                                                        // Create a new array with the same values as the previous one
+                                                                        const newPlayers = [...prevPlayers];
+                                                                        // Set the 6th player (index 5) to null
+                                                                        newPlayers[4] = null;
+                                                                        return newPlayers;
+                                                                    });
+                                                                    setRemovedPlayerModal(true)
+                                                                }}
+                                                                src={cross}
+                                                                className="info-icon"
+                                                                alt="Jersey"
+                                                            />
+                                                            </>
                                                         }
                                                         <div className="player-name-bg">
                                                             <Text className="player-name-text">{selectedPlayers[4]}</Text>
@@ -1899,7 +1980,7 @@ export default function APLFantasy() {
 
                                                     }} onClick={() => { setSelectedJersey(3); handlePositionChange("Midfielder") }} />}
                                                     {
-                                                        selectedPlayers[3] && <img
+                                                        selectedPlayers[3] &&<> <img
                                                             style={{ position: "absolute", height: "24px", margin: "2px", zIndex: "1000", width: "24px", cursor: "pointer" }}
                                                             onClick={(e) => {
                                                                 e.stopPropagation();  // Prevent the addPlayer event from firing
@@ -1909,6 +1990,24 @@ export default function APLFantasy() {
                                                             }}
                                                             src={infoIcon} className="info-icon" alt="Jersey"
                                                         />
+                                                        <img
+                                                                style={{ position: "absolute", height: "24px", margin: "2px", zIndex: "1000", width: "24px", cursor: "pointer", left: 0 }}
+                                                                onClick={(e) => {
+                                                                    e.stopPropagation();  // Prevent any parent handler from being executed
+                                                                    setSelectedPlayers(prevPlayers => {
+                                                                        // Create a new array with the same values as the previous one
+                                                                        const newPlayers = [...prevPlayers];
+                                                                        // Set the 6th player (index 5) to null
+                                                                        newPlayers[3] = null;
+                                                                        return newPlayers;
+                                                                    });
+                                                                    setRemovedPlayerModal(true)
+                                                                }}
+                                                                src={cross}
+                                                                className="info-icon"
+                                                                alt="Jersey"
+                                                            />
+                                                            </>
                                                     }
                                                     <div className="player-name-bg">
                                                         <Text className="player-name-text">{selectedPlayers[3]}</Text>
@@ -1943,7 +2042,7 @@ export default function APLFantasy() {
                                                             filter: selectedJersey === 2 ? 'invert(100%)' : 'none'  // Inverts the colors to make black white
                                                         }} onClick={() => { setSelectedJersey(2); handlePositionChange("Defender") }} />}
                                                         {
-                                                            selectedPlayers[2] && <img
+                                                            selectedPlayers[2] && <><img
                                                                 style={{ position: "absolute", height: "24px", margin: "2px", zIndex: "1000", width: "24px", cursor: "pointer" }}
                                                                 onClick={(e) => {
                                                                     e.stopPropagation();  // Prevent the addPlayer event from firing
@@ -1953,6 +2052,24 @@ export default function APLFantasy() {
                                                                 }}
                                                                 src={infoIcon} className="info-icon" alt="Jersey"
                                                             />
+                                                            <img
+                                                                style={{ position: "absolute", height: "24px", margin: "2px", zIndex: "1000", width: "24px", cursor: "pointer", left: 0 }}
+                                                                onClick={(e) => {
+                                                                    e.stopPropagation();  // Prevent any parent handler from being executed
+                                                                    setSelectedPlayers(prevPlayers => {
+                                                                        // Create a new array with the same values as the previous one
+                                                                        const newPlayers = [...prevPlayers];
+                                                                        // Set the 6th player (index 5) to null
+                                                                        newPlayers[2] = null;
+                                                                        return newPlayers;
+                                                                    });
+                                                                    setRemovedPlayerModal(true)
+                                                                }}
+                                                                src={cross}
+                                                                className="info-icon"
+                                                                alt="Jersey"
+                                                            />
+                                                            </>
                                                         }
                                                         <div className="player-name-bg">
                                                             <Text className="player-name-text">{selectedPlayers[2]}</Text>
@@ -1974,7 +2091,7 @@ export default function APLFantasy() {
                                                             filter: selectedJersey === 1 ? 'invert(100%)' : 'none'  // Inverts the colors to make black white
                                                         }} onClick={() => { setSelectedJersey(1); handlePositionChange("Defender") }} />}
                                                         {
-                                                            selectedPlayers[1] && <img
+                                                            selectedPlayers[1] &&<> <img
                                                                 style={{ position: "absolute", height: "24px", margin: "2px", zIndex: "1000", width: "24px", cursor: "pointer" }}
                                                                 onClick={(e) => {
                                                                     e.stopPropagation();  // Prevent the addPlayer event from firing
@@ -1984,6 +2101,24 @@ export default function APLFantasy() {
                                                                 }}
                                                                 src={infoIcon} className="info-icon" alt="Jersey"
                                                             />
+                                                            <img
+                                                                style={{ position: "absolute", height: "24px", margin: "2px", zIndex: "1000", width: "24px", cursor: "pointer", left: 0 }}
+                                                                onClick={(e) => {
+                                                                    e.stopPropagation();  // Prevent any parent handler from being executed
+                                                                    setSelectedPlayers(prevPlayers => {
+                                                                        // Create a new array with the same values as the previous one
+                                                                        const newPlayers = [...prevPlayers];
+                                                                        // Set the 6th player (index 5) to null
+                                                                        newPlayers[1] = null;
+                                                                        return newPlayers;
+                                                                    });
+                                                                    setRemovedPlayerModal(true)
+                                                                }}
+                                                                src={cross}
+                                                                className="info-icon"
+                                                                alt="Jersey"
+                                                            />
+                                                            </>
                                                         }
                                                         <div className="player-name-bg">
                                                             <Text className="player-name-text">{selectedPlayers[1]}</Text>
@@ -2008,7 +2143,7 @@ export default function APLFantasy() {
                                                         filter: selectedJersey === 0 ? 'invert(100%)' : 'none'  // Inverts the colors to make black white
                                                     }} onClick={() => { setSelectedJersey(0); handlePositionChange("Goalkeeper") }} />}
                                                     {
-                                                        selectedPlayers[0] && <img
+                                                        selectedPlayers[0] &&<> <img
                                                             style={{ position: "absolute", height: "24px", margin: "2px", zIndex: "1000", width: "24px", cursor: "pointer" }}
                                                             onClick={(e) => {
                                                                 e.stopPropagation();  // Prevent the addPlayer event from firing
@@ -2018,6 +2153,24 @@ export default function APLFantasy() {
                                                             }}
                                                             src={infoIcon} className="info-icon" alt="Jersey"
                                                         />
+                                                        <img
+                                                                style={{ position: "absolute", height: "24px", margin: "2px", zIndex: "1000", width: "24px", cursor: "pointer", left: 0 }}
+                                                                onClick={(e) => {
+                                                                    e.stopPropagation();  // Prevent any parent handler from being executed
+                                                                    setSelectedPlayers(prevPlayers => {
+                                                                        // Create a new array with the same values as the previous one
+                                                                        const newPlayers = [...prevPlayers];
+                                                                        // Set the 6th player (index 5) to null
+                                                                        newPlayers[0] = null;
+                                                                        return newPlayers;
+                                                                    });
+                                                                    setRemovedPlayerModal(true)
+                                                                }}
+                                                                src={cross}
+                                                                className="info-icon"
+                                                                alt="Jersey"
+                                                            />
+                                                            </>
                                                     }
                                                     <div className="player-name-bg">
                                                         <Text className="player-name-text">{selectedPlayers[0]}</Text>
@@ -2042,7 +2195,7 @@ export default function APLFantasy() {
                                                         filter: selectedJersey === 5 ? 'invert(100%)' : 'none'  // Inverts the colors to make black white
                                                     }} onClick={() => { setSelectedJersey(5); handlePositionChange("Attacker") }} />}
                                                     {
-                                                        selectedPlayers[5] && <img
+                                                        selectedPlayers[5] && <><img
                                                             style={{ position: "absolute", height: "24px", margin: "2px", zIndex: "1000", width: "24px", cursor: "pointer" }}
                                                             onClick={(e) => {
                                                                 e.stopPropagation();  // Prevent the addPlayer event from firing
@@ -2052,6 +2205,24 @@ export default function APLFantasy() {
                                                             }}
                                                             src={infoIcon} className="info-icon" alt="Jersey"
                                                         />
+                                                        <img
+                                                                style={{ position: "absolute", height: "24px", margin: "2px", zIndex: "1000", width: "24px", cursor: "pointer", left: 0 }}
+                                                                onClick={(e) => {
+                                                                    e.stopPropagation();  // Prevent any parent handler from being executed
+                                                                    setSelectedPlayers(prevPlayers => {
+                                                                        // Create a new array with the same values as the previous one
+                                                                        const newPlayers = [...prevPlayers];
+                                                                        // Set the 6th player (index 5) to null
+                                                                        newPlayers[5] = null;
+                                                                        return newPlayers;
+                                                                    });
+                                                                    setRemovedPlayerModal(true)
+                                                                }}
+                                                                src={cross}
+                                                                className="info-icon"
+                                                                alt="Jersey"
+                                                            />
+                                                            </>
                                                     }
                                                     <div className="player-name-bg">
                                                         <Text className="player-name-text">{selectedPlayers[5]}</Text>
@@ -2086,7 +2257,7 @@ export default function APLFantasy() {
                                                                 filter: selectedJersey === 4 ? 'invert(100%)' : 'none'  // Inverts the colors to make black white
                                                             }} onClick={() => { setSelectedJersey(4); handlePositionChange("Midfielder") }} />}
                                                             {
-                                                                selectedPlayers[4] && <img
+                                                                selectedPlayers[4] &&<> <img
                                                                     style={{ position: "absolute", height: "24px", margin: "2px", zIndex: "1000", width: "24px", cursor: "pointer" }}
                                                                     onClick={(e) => {
                                                                         e.stopPropagation();  // Prevent the addPlayer event from firing
@@ -2096,6 +2267,24 @@ export default function APLFantasy() {
                                                                     }}
                                                                     src={infoIcon} className="info-icon" alt="Jersey"
                                                                 />
+                                                                <img
+                                                                style={{ position: "absolute", height: "24px", margin: "2px", zIndex: "1000", width: "24px", cursor: "pointer", left: 0 }}
+                                                                onClick={(e) => {
+                                                                    e.stopPropagation();  // Prevent any parent handler from being executed
+                                                                    setSelectedPlayers(prevPlayers => {
+                                                                        // Create a new array with the same values as the previous one
+                                                                        const newPlayers = [...prevPlayers];
+                                                                        // Set the 6th player (index 5) to null
+                                                                        newPlayers[5] = null;
+                                                                        return newPlayers;
+                                                                    });
+                                                                    setRemovedPlayerModal(true)
+                                                                }}
+                                                                src={cross}
+                                                                className="info-icon"
+                                                                alt="Jersey"
+                                                            />
+                                                            </>
                                                             }
                                                             <div className="player-name-bg">
                                                                 <Text className="player-name-text">{selectedPlayers[4]}</Text>
@@ -2117,7 +2306,7 @@ export default function APLFantasy() {
                                                                 filter: selectedJersey === 3 ? 'invert(100%)' : 'none'  // Inverts the colors to make black white
                                                             }} onClick={() => { setSelectedJersey(3); handlePositionChange("Midfielder") }} />}
                                                             {
-                                                                selectedPlayers[3] && <img
+                                                                selectedPlayers[3] && <><img
                                                                     style={{ position: "absolute", height: "24px", margin: "2px", zIndex: "1000", width: "24px", cursor: "pointer" }}
                                                                     onClick={(e) => {
                                                                         e.stopPropagation();  // Prevent the addPlayer event from firing
@@ -2127,6 +2316,24 @@ export default function APLFantasy() {
                                                                     }}
                                                                     src={infoIcon} className="info-icon" alt="Jersey"
                                                                 />
+                                                                <img
+                                                                style={{ position: "absolute", height: "24px", margin: "2px", zIndex: "1000", width: "24px", cursor: "pointer", left: 0 }}
+                                                                onClick={(e) => {
+                                                                    e.stopPropagation();  // Prevent any parent handler from being executed
+                                                                    setSelectedPlayers(prevPlayers => {
+                                                                        // Create a new array with the same values as the previous one
+                                                                        const newPlayers = [...prevPlayers];
+                                                                        // Set the 6th player (index 5) to null
+                                                                        newPlayers[3] = null;
+                                                                        return newPlayers;
+                                                                    });
+                                                                    setRemovedPlayerModal(true)
+                                                                }}
+                                                                src={cross}
+                                                                className="info-icon"
+                                                                alt="Jersey"
+                                                            />
+                                                            </>
                                                             }
                                                             <div className="player-name-bg">
                                                                 <Text className="player-name-text">{selectedPlayers[3]}</Text>
@@ -2148,7 +2355,7 @@ export default function APLFantasy() {
                                                                 filter: selectedJersey === 2 ? 'invert(100%)' : 'none'  // Inverts the colors to make black white
                                                             }} onClick={() => { setSelectedJersey(2); handlePositionChange("Midfielder") }} />}
                                                             {
-                                                                selectedPlayers[2] && <img
+                                                                selectedPlayers[2] && <><img
                                                                     style={{ position: "absolute", height: "24px", margin: "2px", zIndex: "1000", width: "24px", cursor: "pointer" }}
                                                                     onClick={(e) => {
                                                                         e.stopPropagation();  // Prevent the addPlayer event from firing
@@ -2158,6 +2365,24 @@ export default function APLFantasy() {
                                                                     }}
                                                                     src={infoIcon} className="info-icon" alt="Jersey"
                                                                 />
+                                                                <img
+                                                                style={{ position: "absolute", height: "24px", margin: "2px", zIndex: "1000", width: "24px", cursor: "pointer", left: 0 }}
+                                                                onClick={(e) => {
+                                                                    e.stopPropagation();  // Prevent any parent handler from being executed
+                                                                    setSelectedPlayers(prevPlayers => {
+                                                                        // Create a new array with the same values as the previous one
+                                                                        const newPlayers = [...prevPlayers];
+                                                                        // Set the 6th player (index 5) to null
+                                                                        newPlayers[2] = null;
+                                                                        return newPlayers;
+                                                                    });
+                                                                    setRemovedPlayerModal(true)
+                                                                }}
+                                                                src={cross}
+                                                                className="info-icon"
+                                                                alt="Jersey"
+                                                            />
+                                                            </>
                                                             }
                                                             <div className="player-name-bg">
                                                                 <Text className="player-name-text">{selectedPlayers[2]}</Text>
@@ -2191,7 +2416,7 @@ export default function APLFantasy() {
                                                             filter: selectedJersey === 1 ? 'invert(100%)' : 'none'  // Inverts the colors to make black white
                                                         }} onClick={() => { setSelectedJersey(1); handlePositionChange("Defender") }} />}
                                                         {
-                                                            selectedPlayers[1] && <img
+                                                            selectedPlayers[1] &&<> <img
                                                                 style={{ position: "absolute", height: "24px", margin: "2px", zIndex: "1000", width: "24px", cursor: "pointer" }}
                                                                 onClick={(e) => {
                                                                     e.stopPropagation();  // Prevent the addPlayer event from firing
@@ -2201,6 +2426,24 @@ export default function APLFantasy() {
                                                                 }}
                                                                 src={infoIcon} className="info-icon" alt="Jersey"
                                                             />
+                                                            <img
+                                                                style={{ position: "absolute", height: "24px", margin: "2px", zIndex: "1000", width: "24px", cursor: "pointer", left: 0 }}
+                                                                onClick={(e) => {
+                                                                    e.stopPropagation();  // Prevent any parent handler from being executed
+                                                                    setSelectedPlayers(prevPlayers => {
+                                                                        // Create a new array with the same values as the previous one
+                                                                        const newPlayers = [...prevPlayers];
+                                                                        // Set the 6th player (index 5) to null
+                                                                        newPlayers[1] = null;
+                                                                        return newPlayers;
+                                                                    });
+                                                                    setRemovedPlayerModal(true)
+                                                                }}
+                                                                src={cross}
+                                                                className="info-icon"
+                                                                alt="Jersey"
+                                                            />
+                                                            </>
                                                         }
                                                         <div className="player-name-bg">
                                                             <Text className="player-name-text">{selectedPlayers[1]}</Text>
@@ -2224,7 +2467,7 @@ export default function APLFantasy() {
                                                         filter: selectedJersey === 0 ? 'invert(100%)' : 'none'  // Inverts the colors to make black white
                                                     }} onClick={() => { setSelectedJersey(0); handlePositionChange("Goalkeeper") }} />}
                                                     {
-                                                        selectedPlayers[0] && <img
+                                                        selectedPlayers[0] &&<> <img
                                                             style={{ position: "absolute", height: "24px", margin: "2px", zIndex: "1000", width: "24px", cursor: "pointer" }}
                                                             onClick={(e) => {
                                                                 e.stopPropagation();  // Prevent the addPlayer event from firing
@@ -2234,6 +2477,24 @@ export default function APLFantasy() {
                                                             }}
                                                             src={infoIcon} className="info-icon" alt="Jersey"
                                                         />
+                                                        <img
+                                                                style={{ position: "absolute", height: "24px", margin: "2px", zIndex: "1000", width: "24px", cursor: "pointer", left: 0 }}
+                                                                onClick={(e) => {
+                                                                    e.stopPropagation();  // Prevent any parent handler from being executed
+                                                                    setSelectedPlayers(prevPlayers => {
+                                                                        // Create a new array with the same values as the previous one
+                                                                        const newPlayers = [...prevPlayers];
+                                                                        // Set the 6th player (index 5) to null
+                                                                        newPlayers[0] = null;
+                                                                        return newPlayers;
+                                                                    });
+                                                                    setRemovedPlayerModal(true)
+                                                                }}
+                                                                src={cross}
+                                                                className="info-icon"
+                                                                alt="Jersey"
+                                                            />
+                                                            </>
                                                     }
                                                     <div className="player-name-bg">
                                                         <Text className="player-name-text">{selectedPlayers[0]}</Text>
@@ -2268,7 +2529,7 @@ export default function APLFantasy() {
                                                             filter: selectedJersey === 5 ? 'invert(100%)' : 'none'  // Inverts the colors to make black white
                                                         }} onClick={() => { setSelectedJersey(5); handlePositionChange("Attacker") }} />}
                                                         {
-                                                            selectedPlayers[5] && <img
+                                                            selectedPlayers[5] &&<> <img
                                                                 style={{ position: "absolute", height: "24px", margin: "2px", zIndex: "1000", width: "24px", cursor: "pointer" }}
                                                                 onClick={(e) => {
                                                                     e.stopPropagation();  // Prevent the addPlayer event from firing
@@ -2278,6 +2539,24 @@ export default function APLFantasy() {
                                                                 }}
                                                                 src={infoIcon} className="info-icon" alt="Jersey"
                                                             />
+                                                            <img
+                                                                style={{ position: "absolute", height: "24px", margin: "2px", zIndex: "1000", width: "24px", cursor: "pointer", left: 0 }}
+                                                                onClick={(e) => {
+                                                                    e.stopPropagation();  // Prevent any parent handler from being executed
+                                                                    setSelectedPlayers(prevPlayers => {
+                                                                        // Create a new array with the same values as the previous one
+                                                                        const newPlayers = [...prevPlayers];
+                                                                        // Set the 6th player (index 5) to null
+                                                                        newPlayers[5] = null;
+                                                                        return newPlayers;
+                                                                    });
+                                                                    setRemovedPlayerModal(true)
+                                                                }}
+                                                                src={cross}
+                                                                className="info-icon"
+                                                                alt="Jersey"
+                                                            />
+                                                            </>
                                                         }
                                                         <div className="player-name-bg">
                                                             <Text className="player-name-text">{selectedPlayers[5]}</Text>
@@ -2299,7 +2578,7 @@ export default function APLFantasy() {
                                                             filter: selectedJersey === 4 ? 'invert(100%)' : 'none'  // Inverts the colors to make black white
                                                         }} onClick={() => { setSelectedJersey(4); handlePositionChange("Midfielder") }} />}
                                                         {
-                                                            selectedPlayers[4] && <img
+                                                            selectedPlayers[4] &&<> <img
                                                                 style={{ position: "absolute", height: "24px", margin: "2px", zIndex: "1000", width: "24px", cursor: "pointer" }}
                                                                 onClick={(e) => {
                                                                     e.stopPropagation();  // Prevent the addPlayer event from firing
@@ -2309,6 +2588,24 @@ export default function APLFantasy() {
                                                                 }}
                                                                 src={infoIcon} className="info-icon" alt="Jersey"
                                                             />
+                                                            <img
+                                                                style={{ position: "absolute", height: "24px", margin: "2px", zIndex: "1000", width: "24px", cursor: "pointer", left: 0 }}
+                                                                onClick={(e) => {
+                                                                    e.stopPropagation();  // Prevent any parent handler from being executed
+                                                                    setSelectedPlayers(prevPlayers => {
+                                                                        // Create a new array with the same values as the previous one
+                                                                        const newPlayers = [...prevPlayers];
+                                                                        // Set the 6th player (index 5) to null
+                                                                        newPlayers[4] = null;
+                                                                        return newPlayers;
+                                                                    });
+                                                                    setRemovedPlayerModal(true)
+                                                                }}
+                                                                src={cross}
+                                                                className="info-icon"
+                                                                alt="Jersey"
+                                                            />
+                                                            </>
                                                         }
                                                         <div className="player-name-bg">
                                                             <Text className="player-name-text">{selectedPlayers[4]}</Text>
@@ -2345,7 +2642,7 @@ export default function APLFantasy() {
                                                             filter: selectedJersey === 3 ? 'invert(100%)' : 'none'  // Inverts the colors to make black white
                                                         }} onClick={() => { setSelectedJersey(3); handlePositionChange("Defender") }} />}
                                                         {
-                                                            selectedPlayers[3] && <img
+                                                            selectedPlayers[3] && <> <img
                                                                 style={{ position: "absolute", height: "24px", margin: "2px", zIndex: "1000", width: "24px", cursor: "pointer" }}
                                                                 onClick={(e) => {
                                                                     e.stopPropagation();  // Prevent the addPlayer event from firing
@@ -2355,6 +2652,24 @@ export default function APLFantasy() {
                                                                 }}
                                                                 src={infoIcon} className="info-icon" alt="Jersey"
                                                             />
+                                                            <img
+                                                                style={{ position: "absolute", height: "24px", margin: "2px", zIndex: "1000", width: "24px", cursor: "pointer", left: 0 }}
+                                                                onClick={(e) => {
+                                                                    e.stopPropagation();  // Prevent any parent handler from being executed
+                                                                    setSelectedPlayers(prevPlayers => {
+                                                                        // Create a new array with the same values as the previous one
+                                                                        const newPlayers = [...prevPlayers];
+                                                                        // Set the 6th player (index 5) to null
+                                                                        newPlayers[3] = null;
+                                                                        return newPlayers;
+                                                                    });
+                                                                    setRemovedPlayerModal(true)
+                                                                }}
+                                                                src={cross}
+                                                                className="info-icon"
+                                                                alt="Jersey"
+                                                            />
+                                                            </>
                                                         }
                                                         <div className="player-name-bg">
                                                             <Text className="player-name-text">{selectedPlayers[3]}</Text>
@@ -2377,7 +2692,7 @@ export default function APLFantasy() {
 
                                                         }} onClick={() => { setSelectedJersey(2); handlePositionChange("Defender") }} />}
                                                         {
-                                                            selectedPlayers[2] && <img
+                                                            selectedPlayers[2] && <><img
                                                                 style={{ position: "absolute", height: "24px", margin: "2px", zIndex: "1000", width: "24px", cursor: "pointer" }}
                                                                 onClick={(e) => {
                                                                     e.stopPropagation();  // Prevent the addPlayer event from firing
@@ -2387,6 +2702,24 @@ export default function APLFantasy() {
                                                                 }}
                                                                 src={infoIcon} className="info-icon" alt="Jersey"
                                                             />
+                                                            <img
+                                                                style={{ position: "absolute", height: "24px", margin: "2px", zIndex: "1000", width: "24px", cursor: "pointer", left: 0 }}
+                                                                onClick={(e) => {
+                                                                    e.stopPropagation();  // Prevent any parent handler from being executed
+                                                                    setSelectedPlayers(prevPlayers => {
+                                                                        // Create a new array with the same values as the previous one
+                                                                        const newPlayers = [...prevPlayers];
+                                                                        // Set the 6th player (index 5) to null
+                                                                        newPlayers[2] = null;
+                                                                        return newPlayers;
+                                                                    });
+                                                                    setRemovedPlayerModal(true)
+                                                                }}
+                                                                src={cross}
+                                                                className="info-icon"
+                                                                alt="Jersey"
+                                                            />
+                                                            </>
                                                         }
                                                         <div className="player-name-bg">
                                                             <Text className="player-name-text">{selectedPlayers[2]}</Text>
@@ -2408,7 +2741,7 @@ export default function APLFantasy() {
                                                             filter: selectedJersey === 1 ? 'invert(100%)' : 'none'  // Inverts the colors to make black white
                                                         }} onClick={() => { setSelectedJersey(1); handlePositionChange("Defender") }} />}
                                                         {
-                                                            selectedPlayers[1] && <img
+                                                            selectedPlayers[1] && <><img
                                                                 style={{ position: "absolute", height: "24px", margin: "2px", zIndex: "1000", width: "24px", cursor: "pointer" }}
                                                                 onClick={(e) => {
                                                                     e.stopPropagation();  // Prevent the addPlayer event from firing
@@ -2418,6 +2751,24 @@ export default function APLFantasy() {
                                                                 }}
                                                                 src={infoIcon} className="info-icon" alt="Jersey"
                                                             />
+                                                            <img
+                                                                style={{ position: "absolute", height: "24px", margin: "2px", zIndex: "1000", width: "24px", cursor: "pointer", left: 0 }}
+                                                                onClick={(e) => {
+                                                                    e.stopPropagation();  // Prevent any parent handler from being executed
+                                                                    setSelectedPlayers(prevPlayers => {
+                                                                        // Create a new array with the same values as the previous one
+                                                                        const newPlayers = [...prevPlayers];
+                                                                        // Set the 6th player (index 5) to null
+                                                                        newPlayers[1] = null;
+                                                                        return newPlayers;
+                                                                    });
+                                                                    setRemovedPlayerModal(true)
+                                                                }}
+                                                                src={cross}
+                                                                className="info-icon"
+                                                                alt="Jersey"
+                                                            />
+                                                            </>
                                                         }
                                                         <div className="player-name-bg">
                                                             <Text className="player-name-text">{selectedPlayers[1]}</Text>
@@ -2452,7 +2803,7 @@ export default function APLFantasy() {
                                                             filter: selectedJersey === 0 ? 'invert(100%)' : 'none'  // Inverts the colors to make black white
                                                         }} onClick={() => { setSelectedJersey(0); handlePositionChange("Goalkeeper") }} />}
                                                         {
-                                                            selectedPlayers[0] && <img
+                                                            selectedPlayers[0] &&<> <img
                                                                 style={{ position: "absolute", height: "24px", margin: "2px", zIndex: "1000", width: "24px", cursor: "pointer" }}
                                                                 onClick={(e) => {
                                                                     e.stopPropagation();  // Prevent the addPlayer event from firing
@@ -2462,6 +2813,24 @@ export default function APLFantasy() {
                                                                 }}
                                                                 src={infoIcon} className="info-icon" alt="Jersey"
                                                             />
+                                                            <img
+                                                                style={{ position: "absolute", height: "24px", margin: "2px", zIndex: "1000", width: "24px", cursor: "pointer", left: 0 }}
+                                                                onClick={(e) => {
+                                                                    e.stopPropagation();  // Prevent any parent handler from being executed
+                                                                    setSelectedPlayers(prevPlayers => {
+                                                                        // Create a new array with the same values as the previous one
+                                                                        const newPlayers = [...prevPlayers];
+                                                                        // Set the 6th player (index 5) to null
+                                                                        newPlayers[0] = null;
+                                                                        return newPlayers;
+                                                                    });
+                                                                    setRemovedPlayerModal(true)
+                                                                }}
+                                                                src={cross}
+                                                                className="info-icon"
+                                                                alt="Jersey"
+                                                            />
+                                                            </>
                                                         }
                                                         <div className="player-name-bg">
                                                             <Text className="player-name-text">{selectedPlayers[0]}</Text>
