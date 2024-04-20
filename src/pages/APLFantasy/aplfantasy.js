@@ -1827,7 +1827,7 @@ export default function APLFantasy() {
                                                                     alignItems: "center",
                                                                     justifyContent: "center",
                                                                 }}>
-                                                                    <Text>{selectedPlayer[10]}</Text>
+                                                                    <Text>{selectedPlayer[16]}</Text>
                                                                 </div>
                                                             </Grid></Grid.Container>
 
