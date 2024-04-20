@@ -7,7 +7,7 @@ import TransparentLogo from '../../assets/images/TransparentLogo.png'
 function Header() {
     const items = [
       {name: 'Home', href:'/'},
-      {name: 'APL x FanUp', href:'/fanup'},
+      {name: 'Fantasy', href:'/fantasy'},
       {name: 'APL 7.0', href: '/seasons/apl7'},
       {name: 'RoadToAPL', href:'/roadtoapl'},
       {name: 'Registration', href:'/registration'},

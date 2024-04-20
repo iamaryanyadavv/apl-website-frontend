@@ -58,6 +58,7 @@ export default function APLFantasy() {
     const [showSuccessModal, setShowSuccessModal] = useState(false)
     const [samePlayerModal, setSamePlayerModal] = useState(false)
     const [removedPlayerModal, setRemovedPlayerModal] = useState(false)
+    const [showCVCModal, setShowCVCModal] = useState(false)
 
     const tutorialItems = [
         {
@@ -487,7 +488,8 @@ export default function APLFantasy() {
         const vc = playersData.find(p => p[0] == vicecaptain)
         // console.log(c, vc)
         let playerNames = [p1[0], p2[0], p3[0], p4[0], p5[0], p6[0]]
-
+        console.log(c)
+        console.log(vc)
         if (!playerNames.includes(c[0])) {
             setNoCapModal(true)
             return
@@ -495,6 +497,11 @@ export default function APLFantasy() {
         
         if (!playerNames.includes(vc[0])) {
             setNoCapModal(true)
+            return
+        }
+        if(c[17]==vc[17])
+        {
+            setShowCVCModal(true)
             return
         }
 
@@ -1033,6 +1040,47 @@ export default function APLFantasy() {
                                                             color: 'white',
                                                         }}>
                                                         You have already added this player!
+                                                    </Text>
+                                                </Modal.Body>
+
+                                            </Modal>
+                                            <Modal
+                                                open={showCVCModal}
+                                                closeButton
+                                                onClose={() => { setShowCVCModal(false) }}
+                                            >
+                                                <Modal.Header
+                                                    css={{
+                                                        paddingTop: '0px',
+                                                    }}>
+                                                    <Col>
+                                                        <Text
+                                                            css={{
+                                                                textAlign: 'center',
+                                                                fontSize: '$3xl',
+                                                                fontWeight: '$bold',
+                                                                color: '$red600',
+                                                                borderStyle: 'solid',
+                                                                borderWidth: '0px 0px 1px 0px',
+                                                                borderColor: '$gray800'
+                                                            }}>
+                                                            Error!
+                                                        </Text>
+
+                                                    </Col>
+                                                </Modal.Header>
+                                                <Modal.Body
+                                                    css={{
+                                                        paddingTop: '0px'
+                                                    }}>
+                                                    <Text
+                                                        css={{
+                                                            textAlign: 'center',
+                                                            fontSize: '$xl',
+                                                            fontWeight: '$bold',
+                                                            color: 'white',
+                                                        }}>
+                                                        Captain and vice-captain cannot be the same gender!
                                                     </Text>
                                                 </Modal.Body>
 
