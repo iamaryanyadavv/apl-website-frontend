@@ -6,7 +6,7 @@ import FanUpLogo from "./fanup_logo-white 1.png"
 import APLTEXT from "./apl.png"
 import FANTASYTEXT from "./Fantasy Game.png"
 import { Collapse, Checkbox } from "@nextui-org/react";
-import { color } from "@chakra-ui/react";
+import { background, color } from "@chakra-ui/react";
 import addPlayerButton from "./addplayericon.png"
 import infoIcon from "./infoicon.png"
 import matchesPlayerImage from "./MP.png"
@@ -1472,6 +1472,7 @@ export default function APLFantasy() {
                                                 open={showInfoModal}
                                                 onClose={() => setShowInfoModal(false)}
                                                 className="info-modal"
+                                                css={{backgroundColor:"#1f335b"}}
                                             >
                                                 <Modal.Header className="modal-header">
                                                     {/* Close button is provided by the Modal itself */}
