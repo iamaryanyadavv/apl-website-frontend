@@ -1513,7 +1513,7 @@ export default function APLFantasy() {
 
                                                                     referrerpolicy="no-referrer" alt="Player Image" className="player-modal-image"
                                                                     src={selectedPlayer[4].split('/')[5] != null ? `https://lh3.google.com/u/0/d/${selectedPlayer[4].split('/')[5]}` : apl7players.find(p => p[1] == selectedPlayer[0])[0]}
-                                                                    css={{ display: "flex", alignItems: "center", justifyContent: "center" }}
+                                                                    css={{ display: "flex", alignItems: "center", justifyContent: "center", width:"200px", height:"175px"}}
                                                                     showSkeleton
                                                                 />
                                                                 <Grid.Container css={{ flexDirection: "column", alignItems: "center", }}>
