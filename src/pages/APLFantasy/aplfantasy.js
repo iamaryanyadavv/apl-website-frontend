@@ -945,7 +945,7 @@ export default function APLFantasy() {
                                                     color: '#484848',
                                                     fontSize: '$2xl'
                                                 }}>
-                                                1. Total Sports: 12 sports available for selection.
+                                                1. You must not select more than 4 cis-players on your team.
                                             </Text>
                                             <Text
                                                 className="rules-text2"
@@ -953,7 +953,7 @@ export default function APLFantasy() {
                                                     color: '#484848',
                                                     fontSize: '$2xl'
                                                 }}>
-                                                2. Athlete Selection: Pick 1 athlete from each sport
+                                                2. Your must select a captain (2x points) and vice-captain (1.5x points) and they must belong to your team.
                                             </Text>
                                             <Text
                                                 className="rules-text2"
@@ -961,39 +961,7 @@ export default function APLFantasy() {
                                                     color: '#484848',
                                                     fontSize: '$2xl'
                                                 }}>
-                                                3. Team Composition: Ensure a mix of 6 cisgender and 6 non-cisgender athletes.
-                                            </Text>
-                                            <Text
-                                                className="rules-text2"
-                                                css={{
-                                                    color: '#484848',
-                                                    fontSize: '$2xl'
-                                                }}>
-                                                4. Budget Limit: Each team has a budget of ‘X’.
-                                            </Text>
-                                            <Text
-                                                className="rules-text2"
-                                                css={{
-                                                    color: '#484848',
-                                                    fontSize: '$2xl'
-                                                }}>
-                                                5. Leadership Roles: Choose 1 captain (x2 points) and 1 vice captain (x1.5 points), each of different genders.
-                                            </Text>
-                                            <Text
-                                                className="rules-text2"
-                                                css={{
-                                                    color: '#484848',
-                                                    fontSize: '$2xl'
-                                                }}>
-                                                6. Submission: Submit your team as a one-time entry.
-                                            </Text>
-                                            <Text
-                                                className="rules-text2"
-                                                css={{
-                                                    color: '#484848',
-                                                    fontSize: '$2xl'
-                                                }}>
-                                                7. Points System: Refer to the provided link for detailed point scoring.
+                                                3. If your captain is a male, then your vice captain must be a non cis-male.
                                             </Text>
                                         </Col>
                                     </Grid.Container>
