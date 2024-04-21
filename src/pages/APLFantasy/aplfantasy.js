@@ -6,7 +6,7 @@ import FanUpLogo from "./fanup_logo-white 1.png"
 import APLTEXT from "./apl.png"
 import FANTASYTEXT from "./Fantasy Game.png"
 import { Collapse, Checkbox } from "@nextui-org/react";
-import { color } from "@chakra-ui/react";
+import { background, color } from "@chakra-ui/react";
 import addPlayerButton from "./addplayericon.png"
 import infoIcon from "./infoicon.png"
 import matchesPlayerImage from "./MP.png"
@@ -84,6 +84,7 @@ export default function APLFantasy() {
     const [showSuccessModal, setShowSuccessModal] = useState(false)
     const [samePlayerModal, setSamePlayerModal] = useState(false)
     const [removedPlayerModal, setRemovedPlayerModal] = useState(false)
+    const [showCVCModal, setShowCVCModal] = useState(false)
 
     const tutorialItems = [
         {
@@ -512,7 +513,8 @@ export default function APLFantasy() {
         const vc = playersData.find(p => p[0] == vicecaptain)
         // console.log(c, vc)
         let playerNames = [p1[0], p2[0], p3[0], p4[0], p5[0], p6[0]]
-
+        console.log(c)
+        console.log(vc)
         if (!playerNames.includes(c[0])) {
             setNoCapModal(true)
             return
@@ -520,6 +522,11 @@ export default function APLFantasy() {
 
         if (!playerNames.includes(vc[0])) {
             setNoCapModal(true)
+            return
+        }
+        if(c[17]==vc[17])
+        {
+            setShowCVCModal(true)
             return
         }
 
@@ -972,7 +979,7 @@ export default function APLFantasy() {
                                                     color: '#484848',
                                                     fontSize: '$2xl'
                                                 }}>
-                                                1. Points System: <br></br>
+                                                1. You must not select more than 4 cis-players on your team.
                                             </Text>
                                             <div
                                                 style={{
@@ -1041,7 +1048,7 @@ export default function APLFantasy() {
                                                     color: '#484848',
                                                     fontSize: '$2xl'
                                                 }}>
-                                                2. Total Sports: 12 sports available for selection.
+                                                2. Your must select a captain (2x points) and vice-captain (1.5x points) and they must belong to your team.
                                             </Text>
                                             <Text
                                                 className="rules-text2"
@@ -1049,39 +1056,7 @@ export default function APLFantasy() {
                                                     color: '#484848',
                                                     fontSize: '$2xl'
                                                 }}>
-                                                3. Athlete Selection: Pick 1 athlete from each sport
-                                            </Text>
-                                            <Text
-                                                className="rules-text2"
-                                                css={{
-                                                    color: '#484848',
-                                                    fontSize: '$2xl'
-                                                }}>
-                                                4. Team Composition: Ensure a mix of 6 cisgender and 6 non-cisgender athletes.
-                                            </Text>
-                                            <Text
-                                                className="rules-text2"
-                                                css={{
-                                                    color: '#484848',
-                                                    fontSize: '$2xl'
-                                                }}>
-                                                5. Budget Limit: Each team has a budget of ‘X’.
-                                            </Text>
-                                            <Text
-                                                className="rules-text2"
-                                                css={{
-                                                    color: '#484848',
-                                                    fontSize: '$2xl'
-                                                }}>
-                                                6. Leadership Roles: Choose 1 captain (x2 points) and 1 vice captain (x1.5 points), each of different genders.
-                                            </Text>
-                                            <Text
-                                                className="rules-text2"
-                                                css={{
-                                                    color: '#484848',
-                                                    fontSize: '$2xl'
-                                                }}>
-                                                7. Submission: Submit your team as a one-time entry.
+                                                3. If your captain is a male, then your vice captain must be a non cis-male.
                                             </Text>
                                         </Col>
                                     </Grid.Container>
@@ -1153,6 +1128,47 @@ export default function APLFantasy() {
                                                             color: 'white',
                                                         }}>
                                                         You have already added this player!
+                                                    </Text>
+                                                </Modal.Body>
+
+                                            </Modal>
+                                            <Modal
+                                                open={showCVCModal}
+                                                closeButton
+                                                onClose={() => { setShowCVCModal(false) }}
+                                            >
+                                                <Modal.Header
+                                                    css={{
+                                                        paddingTop: '0px',
+                                                    }}>
+                                                    <Col>
+                                                        <Text
+                                                            css={{
+                                                                textAlign: 'center',
+                                                                fontSize: '$3xl',
+                                                                fontWeight: '$bold',
+                                                                color: '$red600',
+                                                                borderStyle: 'solid',
+                                                                borderWidth: '0px 0px 1px 0px',
+                                                                borderColor: '$gray800'
+                                                            }}>
+                                                            Error!
+                                                        </Text>
+
+                                                    </Col>
+                                                </Modal.Header>
+                                                <Modal.Body
+                                                    css={{
+                                                        paddingTop: '0px'
+                                                    }}>
+                                                    <Text
+                                                        css={{
+                                                            textAlign: 'center',
+                                                            fontSize: '$xl',
+                                                            fontWeight: '$bold',
+                                                            color: 'white',
+                                                        }}>
+                                                        Captain and vice-captain cannot be the same gender!
                                                     </Text>
                                                 </Modal.Body>
 
@@ -1592,6 +1608,7 @@ export default function APLFantasy() {
                                                 open={showInfoModal}
                                                 onClose={() => setShowInfoModal(false)}
                                                 className="info-modal"
+                                                css={{backgroundColor:"#1f335b"}}
                                             >
                                                 <Modal.Header className="modal-header">
                                                     {/* Close button is provided by the Modal itself */}
@@ -1633,7 +1650,7 @@ export default function APLFantasy() {
 
                                                                     referrerpolicy="no-referrer" alt="Player Image" className="player-modal-image"
                                                                     src={selectedPlayer[4].split('/')[5] != null ? `https://lh3.google.com/u/0/d/${selectedPlayer[4].split('/')[5]}` : apl7players.find(p => p[1] == selectedPlayer[0])[0]}
-                                                                    css={{ display: "flex", alignItems: "center", justifyContent: "center" }}
+                                                                    css={{ display: "flex", alignItems: "center", justifyContent: "center", width:"200px", height:"175px"}}
                                                                     showSkeleton
                                                                 />
                                                                 <Grid.Container css={{ flexDirection: "column", alignItems: "center", }}>
@@ -1915,7 +1932,7 @@ export default function APLFantasy() {
                                                                     alignItems: "center",
                                                                     justifyContent: "center",
                                                                 }}>
-                                                                    <Text>{selectedPlayer[10]}</Text>
+                                                                    <Text className="player-group">{selectedPlayer[16]}</Text>
                                                                 </div>
                                                             </Grid></Grid.Container>
 
