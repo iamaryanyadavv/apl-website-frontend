@@ -172,11 +172,9 @@
   background-color: #1a1a1a;
   padding: 20px;
   padding-bottom: 50px;
-  display: flex;
-  flex-direction: row; /* Default layout */
+  display: flex; /* Default layout */
   align-items: center;
   justify-content: center;
-  margin: 0 10%;
 }
 
 /* Media query for phones */
