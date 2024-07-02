@@ -1936,6 +1936,9 @@ export default function TRegForm() {
                             jc: 'center'
                         }}>
                             <Grid>
+                            <Text>
+                                *By submitting this form I hereby grant permission for the information I have shared to be used by APL 7.0*
+                                </Text>
                                 <Button auto rounded disabled={!signedin}
                                 css={{
                                     background: '$gray900'
@@ -1956,9 +1959,7 @@ export default function TRegForm() {
                                     }
                                     setModalVisibility(CheckForm());
                                 }}>
-                                    <Text>
-                                *By submitting this form I hereby grant permission for the information I have shared to be used by APL 7.0*
-                                </Text>
+                                    
                                     <Text
                                     css={{
                                         color: 'Black',
@@ -3561,6 +3562,9 @@ export default function TRegForm() {
                                         jc: 'center',
                                         alignItems: 'center'
                                     }}>
+                                         <Text>
+                                *By submitting this form I hereby grant permission for the information I have shared to be used by APL 7.0*
+                                </Text>
                                         <Button auto rounded 
                                         css={{
                                             background: '$gray900'
@@ -3574,9 +3578,7 @@ export default function TRegForm() {
                                             // checkIfRegSuccess(manageremail)
                                             setLoadingModal(true);
                                         }}>
-                                            <Text>
-                                *By submitting this form I hereby grant permission for the information I have shared to be used by APL 7.0*
-                                </Text>
+                                           
                                             <Text
                                             css={{
                                                 color: 'Black',
