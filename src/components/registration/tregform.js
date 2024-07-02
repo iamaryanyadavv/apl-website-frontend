@@ -1956,6 +1956,9 @@ export default function TRegForm() {
                                     }
                                     setModalVisibility(CheckForm());
                                 }}>
+                                    <Text>
+                                *By submitting this form I hereby grant permission for the information I have shared to be used by APL 7.0*
+                                </Text>
                                     <Text
                                     css={{
                                         color: 'Black',
@@ -1964,9 +1967,6 @@ export default function TRegForm() {
                                         Register
                                     </Text>
                                 </Button>
-                                <Text>
-                                *By submitting this form I hereby grant permission for the information I have shared to be used by APL 7.0*
-                                </Text>
                                 
                                 <Modal
                                 closeButton
@@ -3574,6 +3574,9 @@ export default function TRegForm() {
                                             // checkIfRegSuccess(manageremail)
                                             setLoadingModal(true);
                                         }}>
+                                            <Text>
+                                *By submitting this form I hereby grant permission for the information I have shared to be used by APL 7.0*
+                                </Text>
                                             <Text
                                             css={{
                                                 color: 'Black',
@@ -3582,9 +3585,6 @@ export default function TRegForm() {
                                                 Register
                                             </Text>
                                         </Button>
-                                        <Text>
-                                *By submitting this form I hereby grant permission for the information I have shared to be used by APL 7.0*
-                                </Text>
                                     </Modal.Footer>
 
                                 </Modal>
