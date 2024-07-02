@@ -1483,6 +1483,9 @@ export default function PRegForm(){
                             jc: 'center',
                         }}>
                             <Grid>
+                            <Text>
+                                *By submitting this form I hereby grant permission for the information I have shared to be used by APL 7.0*
+                                </Text>
                                 <Button auto rounded disabled={!signedin}
                                 css={{
                                     background: '$gray900'
@@ -1497,9 +1500,7 @@ export default function PRegForm(){
                                         setPaymentSCUploaded(false)
                                     }
                                     setModalVisibility(CheckForm());
-                                }}><Text>
-                                *By submitting this form I hereby grant permission for the information I have shared to be used by APL 7.0*
-                                </Text>
+                                }}>
                                     <Text
                                     css={{
                                         color: 'Black',
@@ -2033,6 +2034,9 @@ export default function PRegForm(){
                                         jc: 'center',
                                         alignItems: 'center'
                                     }}>
+                                        <Text>
+                                *By submitting this form I hereby grant permission for the information I have shared to be used by APL 7.0*
+                                </Text>
                                         <Button auto rounded 
                                         css={{
                                             background: '$gray900'
@@ -2046,9 +2050,7 @@ export default function PRegForm(){
                                             // setRegProcess(true);
                                             // checkIfRegSuccess(emailID);
                                         }}>
-                                            <Text>
-                                *By submitting this form I hereby grant permission for the information I have shared to be used by APL 7.0*
-                                </Text>
+                                            
                                             <Text
                                             css={{
                                                 color: 'Black',
